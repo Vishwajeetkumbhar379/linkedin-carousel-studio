@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "linkedin-carousel-studio"
+version = "0.1.0"
+description = "Turn an outline into an on-brand LinkedIn carousel (PNG slides + PDF), with an optional Claude drafting step."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Vishwajeet Kumbhar" }]
+dependencies = ["playwright>=1.40", "pypdf>=4"]
+
+[project.optional-dependencies]
+ai = ["anthropic>=0.40"]
+dev = ["pytest>=8", "pillow"]
+
+[project.scripts]
+carousel = "carousel.cli:main"
+
+[tool.setuptools]
+packages = ["carousel"]
+
+[tool.setuptools.package-data]
+carousel = ["fonts/*"]

@@ -1,0 +1,15 @@
+{
+  "slug": "creator-contract-checks",
+  "author": { "name": "Vishwajeet Kumbhar", "handle": "Brand & Creator Partnerships" },
+  "caption": "Most creator deals go wrong in the contract, not the content.\n\n→ Usage rights\n→ Exclusivity\n→ Payment terms\n→ Disclosure\n→ Exit clauses\n\nSave this for your next deal. Which clause has burned you before?",
+  "slides": [
+    { "type": "cover", "badge": "Creator partnerships", "title": "5 clauses to check before you *sign* a creator", "subtitle": "Most deals go wrong in the contract, not the content." },
+    { "type": "point", "label": "01 · Usage rights", "title": "How long can the brand use the content?", "body": "Organic reposting for 30 days is very different from paid ads for 12 months. Name the channels, the duration and the territory. 'In perpetuity' should cost a lot more." },
+    { "type": "point", "label": "02 · Exclusivity", "title": "Which competitors, and for how long?", "body": "'No beauty brands for 6 months' can wipe out a creator's income. Narrow it to direct competitors and pay for every month you block." },
+    { "type": "point", "label": "03 · Payment terms", "title": "When does the money actually arrive?", "body": "Net 30 after posting is fair. Net 90 after the brand's approval is not. Agree the trigger date and a late-payment rule." },
+    { "type": "point", "label": "04 · Disclosure", "title": "Who is responsible for the ad label?", "body": "In Germany that means *Werbung* or *Anzeige* at the start of the caption, not just #ad. Write the exact label into the contract." },
+    { "type": "point", "label": "05 · Exit", "title": "What happens if it goes wrong?", "body": "Add a kill fee for cancelled work, a cap on revision rounds, and a fair morality clause that works both ways." },
+    { "type": "compare", "title": "Red flag or fair?", "left": { "label": "Red flag", "items": ["Usage in perpetuity", "Unlimited revisions", "Net 90 payment"] }, "right": { "label": "Fair", "items": ["12 months, named channels", "2 revision rounds", "Net 30 after posting"] } },
+    { "type": "cta", "title": "Save this for your next *creator deal*", "subtitle": "I post what 850+ creator deals taught me about partnerships and AI.", "button": "Save · Follow for more" }
+  ]
+}
