@@ -8,3 +8,5 @@ out/*/frames/
 *.big.png
 research/raw/
 brand/voice/
+out/batch-*/**/*.wav
+out/batch-*/*.wav
