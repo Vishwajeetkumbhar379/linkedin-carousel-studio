@@ -1,6 +1,6 @@
 # QA report: 2026-10-06-chatgpt-image-ads
 
-Run 2026-10-06 21:09 · **PASS** · 0 fail, 3 warn, 9 pass
+Run 2026-10-06 21:36 · **PASS** · 0 fail, 3 warn, 9 pass
 
 | Result | Area | Check |
 |---|---|---|
