@@ -1,7 +1,7 @@
 {
   "slug": "meta-creator-hub",
   "theme": "field",
-  "direction": "Aurora Glass · daylight (premium mix)",
+  "direction": "Aurora Glass · paper (round 4: calm serif + frosted glass)",
   "format": "single-image + text post",
   "pillar": "Creator economy x AI",
   "single": true,
@@ -17,7 +17,7 @@
       "type": "cover",
       "title": "Meta just made creator ads *one click*.",
       "subtitle": "The tool got faster. The brief didn't get easier.",
-      "hero": "c-click",
+      "hero": "c-click-v4",
       "hero_style": "left:50%;transform:translateX(-50%);bottom:90px;width:880px",
       "mid_style": "justify-content:flex-start;padding-top:60px",
       "mascot": null,
@@ -26,6 +26,6 @@
     }
   ],
   "system": "aurora",
-  "variant": "daylight",
+  "variant": "paper",
   "seed": 5
 }

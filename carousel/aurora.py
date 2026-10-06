@@ -6,6 +6,9 @@ window [i*1080, (i+1)*1080] of it, so a glow that leaves slide 2 on the right en
 Variants
 - galaxy:   near-black with violet/indigo/plum light, the default for covers, video and dark decks
 - daylight: airy lavender, sky and peach, for long-read carousels
+- paper:    round 4. Warm ivory page, calm serif headlines (Newsreader) over a clean sans body, the
+            way a well-set reading app feels. Violet stays the accent; cobalt and peach are the two
+            supporting shades, used as soft light and on glass objects only.
 
 Locked rules kept from the original system: handle top-left, pill counter top-right, #7F77DD accent,
 hairline borders, tinted (now glass) cards, save CTA with one question on the last slide.
@@ -21,7 +24,7 @@ from .studio import GRAIN, H, W, _e, _img, font_css
 VARIANTS = {
     "galaxy": {
         "base": "#07060C", "ink": "#F4F2FA", "muted": "#A9A4B8", "body": "#D9D5E6", "accent": "#B3A9FF", "accent_ink": "#B3A9FF",
-        "lights": ["#4B3FD6", "#211C78", "#6D62E8", "#2E2790", "#5446D9"], "light_alpha": [0.62, 0.7, 0.42, 0.6, 0.38],
+        "lights": ["#4B3FD6", "#1E3A9E", "#6D62E8", "#2E2790", "#B8644A"], "light_alpha": [0.62, 0.62, 0.42, 0.6, 0.26],
         "glass": "rgba(255,255,255,.055)", "glass_line": "rgba(255,255,255,.13)", "glass_hi": "rgba(255,255,255,.22)",
         "chip": "rgba(20,18,32,.72)", "chip_line": "rgba(255,255,255,.14)", "ghost": "rgba(255,255,255,.035)",
         "grain": .10, "blend": "overlay", "btn": "#F4F2FA", "btn_ink": "#0B0A12",
@@ -36,6 +39,16 @@ VARIANTS = {
         "grain": .07, "blend": "soft-light", "btn": "#17141C", "btn_ink": "#FFFFFF",
         "tints": {"purple": "rgba(255,255,255,.62)", "teal": "rgba(240,251,246,.7)", "coral": "rgba(254,246,243,.72)"},
         "inks": {"purple": "#534AB7", "teal": "#0F7A55", "coral": "#B4502A"},
+    },
+    "paper": {
+        "base": "#F4F0E8", "ink": "#1F1C24", "muted": "#6B6572", "body": "#3A3540", "accent": "#5B4FE0", "accent_ink": "#4A44C4",
+        "lights": ["#C9C2FF", "#F6CDB8", "#BFD0FF", "#E4DEFF", "#F9DCCB"], "light_alpha": [0.75, 0.7, 0.6, 0.7, 0.55],
+        "glass": "rgba(255,253,250,.62)", "glass_line": "rgba(255,255,255,.95)", "glass_hi": "rgba(255,255,255,1)",
+        "chip": "rgba(31,28,36,.86)", "chip_line": "rgba(255,255,255,.2)", "ghost": "rgba(60,40,20,.04)",
+        "grain": .06, "blend": "multiply", "btn": "#1F1C24", "btn_ink": "#FFFFFF",
+        "tints": {"purple": "rgba(255,253,250,.66)", "teal": "rgba(244,247,255,.72)", "coral": "rgba(255,246,240,.74)"},
+        "inks": {"purple": "#4A44C4", "teal": "#2747B8", "coral": "#A8492A"},
+        "display": "'Newsreader',Georgia,serif", "display_weight": 500, "display_track": "-.022em", "em_italic": True,
     },
 }
 
@@ -84,18 +97,18 @@ body{{width:{W}px;height:{H}px;background:{v['base']};font-family:'Geist',system
 .chip span{{font:500 25px 'Geist';color:#F4F2FA;padding:8px 18px 8px 14px;display:flex;align-items:center;gap:10px}}
 .chip svg{{width:22px;height:22px}}
 .chip b{{font:600 25px 'Geist';background:#7F77DD;color:#fff;border-radius:999px;padding:9px 22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}}
-h1{{font-size:92px;line-height:1.02;letter-spacing:-.04em;font-weight:600;text-wrap:balance;max-width:900px}}
-h1 em,h2 em{{font-style:normal;color:{v['accent']}}}
-h2{{font-size:60px;line-height:1.06;letter-spacing:-.035em;font-weight:600;text-wrap:balance;margin-bottom:24px}}
+h1{{font-family:{v.get('display', "'Geist'")};font-size:{96 if v.get('display') else 92}px;line-height:1.02;letter-spacing:{v.get('display_track', '-.04em')};font-weight:{v.get('display_weight', 600)};text-wrap:balance;max-width:900px}}
+h1 em,h2 em{{font-style:{'italic' if v.get('em_italic') else 'normal'};color:{v['accent']}}}
+h2{{font-family:{v.get('display', "'Geist'")};font-size:{64 if v.get('display') else 60}px;line-height:1.06;letter-spacing:{v.get('display_track', '-.035em')};font-weight:{v.get('display_weight', 600)};text-wrap:balance;margin-bottom:24px}}
 .sub{{font-size:36px;line-height:1.35;color:{v['muted']};margin-top:24px;max-width:820px;text-wrap:balance;font-weight:400}}
-.glass{{background:{v['glass']};border:1px solid {v['glass_line']};border-radius:40px;padding:56px 58px;backdrop-filter:blur(26px) saturate(1.2);box-shadow:inset 0 1px 0 {v['glass_hi']},0 50px 90px -50px rgba(0,0,0,.55);text-align:left;width:100%;position:relative}}
+.glass{{background:{v['glass']};border:1px solid {v['glass_line']};border-radius:40px;padding:56px 58px;backdrop-filter:blur(26px) saturate(1.2);box-shadow:inset 0 1px 0 {v['glass_hi']},{'0 40px 80px -46px rgba(60,40,90,.35),0 2px 6px rgba(60,40,90,.05)' if v.get('display') else '0 50px 90px -50px rgba(0,0,0,.55)'};text-align:left;width:100%;position:relative}}
 .glass p,.bodytext{{font-size:33px;line-height:1.46;color:{v['body']};text-wrap:pretty}}
 p em,li em{{font-style:normal;font-weight:600;color:{v['accent_ink']}}}
 .label{{font:500 22px 'Geist Mono',monospace;margin-bottom:26px;letter-spacing:.01em}}
-.stat{{font-size:230px;font-weight:600;letter-spacing:-.065em;line-height:.88;margin-bottom:18px}}
+.stat{{font-family:{v.get('display', "'Geist'")};font-size:230px;font-weight:{v.get('display_weight', 600)};letter-spacing:-.065em;line-height:.88;margin-bottom:18px}}
 .rows{{list-style:none;display:flex;flex-direction:column;gap:16px;width:100%;margin-top:10px}}
 .rows li{{display:flex;gap:26px;align-items:center;text-align:left;padding:28px 34px;border-radius:28px;background:{v['glass']};border:1px solid {v['glass_line']};backdrop-filter:blur(20px);font-size:31px;line-height:1.36;color:{v['body']};box-shadow:inset 0 1px 0 {v['glass_hi']}}}
-.rows li b{{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font:600 22px 'Geist Mono',monospace;color:#fff;background:linear-gradient(160deg,#9C94F0,#5B4FE0)}}
+.rows li b{{flex:none;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font:600 24px 'Geist Mono',monospace;color:#fff;background:linear-gradient(160deg,#7F77DD,#4A3FD6)}}
 .cols{{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;margin-top:6px;text-align:left}}
 .cols .glass{{padding:40px 36px;border-radius:32px}}
 .cols h3{{font:600 22px 'Geist';letter-spacing:.07em;text-transform:uppercase;margin-bottom:24px}}

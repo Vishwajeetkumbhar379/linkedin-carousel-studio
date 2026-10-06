@@ -51,10 +51,11 @@ def render(spec_path: Path, stills_only: bool = False) -> Path:
                     print(f"  {k / fps:.0f}s / {dur}s", flush=True)
             ff.stdin.close()
             ff.wait()
-            if (post / "voice.wav").exists():  # mux the voiceover (AAC 192k), keep video stream as is
+            audio = post / "mix.wav" if (post / "mix.wav").exists() else post / "voice.wav"
+            if audio.exists():  # mux voice (or voice + SFX + bed from scripts/sfx.py) as AAC 192k
                 silent = out.with_suffix(".silent.mp4")
                 out.rename(silent)
-                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(silent), "-i", str(post / "voice.wav"), "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(silent), "-i", str(audio), "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
                                 "-shortest", "-movflags", "+faststart", str(out)], check=True)
                 silent.unlink()
         b.close()

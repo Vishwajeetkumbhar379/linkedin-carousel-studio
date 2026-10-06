@@ -4,3 +4,9 @@
 @font-face{font-family:'Geist';font-weight:700;src:url(/node_modules/@fontsource/geist-sans/files/geist-sans-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Geist Mono';font-weight:400;src:url(/node_modules/@fontsource/geist-mono/files/geist-mono-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Geist Mono';font-weight:500;src:url(/node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-weight:400;font-style:normal;src:url(/node_modules/@fontsource/newsreader/files/newsreader-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-weight:400;font-style:italic;src:url(/node_modules/@fontsource/newsreader/files/newsreader-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-weight:500;font-style:normal;src:url(/node_modules/@fontsource/newsreader/files/newsreader-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-weight:500;font-style:italic;src:url(/node_modules/@fontsource/newsreader/files/newsreader-latin-500-italic.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-weight:600;font-style:normal;src:url(/node_modules/@fontsource/newsreader/files/newsreader-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-weight:600;font-style:italic;src:url(/node_modules/@fontsource/newsreader/files/newsreader-latin-600-italic.woff2) format('woff2')}

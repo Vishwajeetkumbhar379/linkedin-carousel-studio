@@ -479,3 +479,133 @@ objects.clickButton = function () {
   g.rotation.x = 0.5;
   return g;
 };
+
+// ---------- premium frost material (round 4) ----------
+// Frosted designer-toy glass without a transmission pass: vertex-colour gradient core that glows softly
+// from within, plus a fresnel rim that goes milky white at grazing angles. Looks the same on a
+// transparent background as on a solid one, and is cheap enough for video frames.
+export function frostMat({ top = 0xe9e4ff, bottom = 0x4b3fd6, rim = 0xffffff, rimStrength = 0.85, rimPower = 2.4, glow = 0.32, rough = 0.34 } = {}) {
+  const m = new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: rough, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.07,
+    sheen: 0.7, sheenRoughness: 0.5, sheenColor: new THREE.Color(0xf1eeff), iridescence: 0.18, iridescenceIOR: 1.25 });
+  m.userData.grad = [top, bottom];
+  m.onBeforeCompile = (sh) => {
+    sh.uniforms.rimColor = { value: new THREE.Color(rim) };
+    sh.uniforms.rimStrength = { value: rimStrength };
+    sh.uniforms.rimPower = { value: rimPower };
+    sh.uniforms.glowK = { value: glow };
+    sh.fragmentShader = "uniform vec3 rimColor; uniform float rimStrength; uniform float rimPower; uniform float glowK;\n" + sh.fragmentShader
+      .replace("#include <emissivemap_fragment>", "#include <emissivemap_fragment>\n#ifdef USE_COLOR\n totalEmissiveRadiance += vColor.rgb * glowK;\n#endif")
+      .replace("#include <dithering_fragment>", "float fr = pow(1.0 - clamp(abs(dot(normalize(vNormal), normalize(vViewPosition))), 0.0, 1.0), rimPower);\n gl_FragColor.rgb = mix(gl_FragColor.rgb, rimColor, fr * rimStrength);\n#include <dithering_fragment>");
+  };
+  m.customProgramCacheKey = () => `frost-${rim}-${rimStrength}-${rimPower}-${glow}`;
+  return m;
+}
+export function frostMesh(geo, opts = {}) {
+  const m = frostMat(opts);
+  return new THREE.Mesh(gradientGeometry(geo, m.userData.grad[0], m.userData.grad[1]), m);
+}
+
+// ---------- mascot v4: "Dot", the middle ground (Vish feedback, round 4) ----------
+// Not a baby, not a robot: a collectible designer toy. Taller pebble body in frosted violet glass,
+// a dark glossy pill visor with soft glowing eyes (expressions live in the eyes), cobalt ear pods,
+// slim arms, small boots. No blush, no big mouth. Antenna carries the Build with Vish diamond.
+export function premiumMascot({ expression = "neutral", pose = "idle", palette = "violet" } = {}) {
+  const P = { violet: { top: 0xb9b0ff, bottom: 0x3f33c9, accent: 0x3b6bf5, eye: 0xdcd7ff },
+              cobalt: { top: 0xb8ccff, bottom: 0x2448c8, accent: 0x7f77dd, eye: 0xd6e4ff },
+              peach: { top: 0xffd9c8, bottom: 0xd9705a, accent: 0x5a4de6, eye: 0xffe6da } }[palette] || {};
+  const g = new THREE.Group();
+  const body = frostMesh(new THREE.SphereGeometry(0.8, 128, 96), { top: P.top, bottom: P.bottom, rimStrength: 0.5, rimPower: 3.2, glow: 0.22, rough: 0.26 });
+  body.geometry.scale(0.95, 1.02, 0.86);
+  g.add(body);
+  // visor: a pill-shaped dark glass lens that sits proud of the face
+  const visor = new THREE.Mesh(new THREE.SphereGeometry(0.5, 96, 64), new THREE.MeshPhysicalMaterial({ color: 0x0f0c1e, roughness: 0.06, metalness: 0.25, clearcoat: 1, clearcoatRoughness: 0.02 }));
+  visor.scale.set(1.08, 0.6, 0.42); visor.position.set(0, 0.14, 0.5); visor.rotation.x = -0.12;
+  g.add(visor);
+  const eyeM = new THREE.MeshStandardMaterial({ color: P.eye, emissive: P.eye, emissiveIntensity: 1.25, roughness: 0.4 });
+  const face = new THREE.Group(); face.position.set(0, 0.15, 0.705); face.rotation.x = -0.12; g.add(face);
+  const eye = (x, kind) => {
+    let e;
+    if (kind === "arc") { e = new THREE.Mesh(new THREE.TorusGeometry(0.075, 0.024, 16, 40, Math.PI), eyeM); e.position.y = -0.02; }
+    else if (kind === "line") { e = new THREE.Mesh(new THREE.CapsuleGeometry(0.022, 0.1, 8, 16), eyeM); e.rotation.z = Math.PI / 2; }
+    else if (kind === "big") { e = new THREE.Mesh(new THREE.SphereGeometry(0.075, 32, 32), eyeM); e.scale.set(1, 1, 0.35); }
+    else if (kind === "look") { e = new THREE.Mesh(new THREE.CapsuleGeometry(0.04, 0.09, 8, 20), eyeM); e.scale.z = 0.4; e.position.y = 0.03; }
+    else { e = new THREE.Mesh(new THREE.CapsuleGeometry(0.042, 0.1, 8, 20), eyeM); e.scale.z = 0.4; }
+    e.position.x = x; face.add(e); return e;
+  };
+  const kinds = { happy: ["arc", "arc"], neutral: ["pill", "pill"], wink: ["pill", "arc"], surprised: ["big", "big"], thinking: ["look", "line"], focused: ["line", "line"] }[expression] || ["pill", "pill"];
+  eye(-0.19, kinds[0]); eye(0.19, kinds[1]);
+  if (expression === "happy" || expression === "wink") {
+    const s = new THREE.Mesh(new THREE.TorusGeometry(0.045, 0.012, 10, 32, Math.PI), eyeM); s.rotation.z = Math.PI; s.position.set(0, -0.15, -0.01); face.add(s);
+  }
+  // ear pods in the accent shade
+  const podM = new THREE.MeshPhysicalMaterial({ color: P.accent, roughness: 0.2, clearcoat: 1, clearcoatRoughness: 0.04, metalness: 0.1 });
+  [-1, 1].forEach((s) => {
+    const pod = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.1, 48), podM); pod.rotation.z = Math.PI / 2; pod.position.set(s * 0.745, 0.12, 0); g.add(pod);
+    const cap = new THREE.Mesh(new THREE.SphereGeometry(0.15, 48, 24, 0, Math.PI * 2, 0, Math.PI / 2), podM); cap.scale.y = 0.35; cap.rotation.z = -s * Math.PI / 2; cap.position.set(s * 0.795, 0.12, 0); g.add(cap);
+  });
+  // antenna with the diamond mark
+  const chrome = mat.metal(0xe6e3f2, 0.18);
+  const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.024, 0.22, 16), chrome); stem.position.set(0, 0.92, 0); g.add(stem);
+  const diamond = new THREE.Mesh(new THREE.TorusGeometry(0.075, 0.022, 12, 4), chrome); diamond.position.set(0, 1.1, 0); g.add(diamond);
+  const tip = new THREE.Mesh(new THREE.SphereGeometry(0.03, 20, 20), mat.glow(0xf2a07b, 1.2)); tip.position.copy(diamond.position); g.add(tip);
+  // slim arms
+  const armGeo = new THREE.CapsuleGeometry(0.075, 0.26, 8, 20);
+  const arm = (s) => { const a = frostMesh(armGeo.clone(), { top: P.top, bottom: P.bottom, glow: 0.3, rimStrength: 0.5 }); a.position.set(s * 0.76, -0.22, 0.04); a.rotation.z = s * 0.38; g.add(a); return a; };
+  const la = arm(-1), ra = arm(1);
+  if (pose === "wave") { ra.position.set(0.8, 0.26, 0.06); ra.rotation.z = -2.6; }
+  if (pose === "cheer") { la.position.set(-0.8, 0.26, 0.06); la.rotation.z = 2.6; ra.position.set(0.8, 0.26, 0.06); ra.rotation.z = -2.7; }
+  if (pose === "point") { ra.position.set(0.9, -0.02, 0.2); ra.rotation.set(0, -0.4, -1.45); }
+  // small boots
+  const boot = new THREE.MeshPhysicalMaterial({ color: 0x1b1730, roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.1 });
+  [-0.24, 0.24].forEach((x) => { const f = new THREE.Mesh(new THREE.SphereGeometry(0.16, 40, 24), boot); f.scale.set(1, 0.55, 1.3); f.position.set(x, -0.82, 0.06); g.add(f); });
+  g.userData = { body, face };
+  return g;
+}
+
+// ---------- premium frost objects (round 4: make the glass finish visible) ----------
+// Shades: violet (brand), cobalt and peach (the two supporting shades added in round 4).
+export const SHADE = {
+  violet: [0xc4bcff, 0x4a3fd6], cobalt: [0xb9cdff, 0x2448c8], peach: [0xffd8c4, 0xe07a5c], pearl: [0xffffff, 0xd9d3f5],
+};
+const whiteGloss = () => new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.18, clearcoat: 1, clearcoatRoughness: 0.05, emissive: 0xffffff, emissiveIntensity: 0.12 });
+
+objects.frostTile = function ({ shade = "violet", glyphKind = "spark", size = 1 } = {}) {
+  const [t, b] = SHADE[shade] || SHADE.violet;
+  const g = new THREE.Group();
+  g.add(frostMesh(new RoundedBoxGeometry(1.1 * size, 1.1 * size, 0.34 * size, 10, 0.32 * size), { top: t, bottom: b, rimStrength: 0.55, rimPower: 2.6, glow: 0.24, rough: 0.2 }));
+  const gl = glyph(glyphKind); gl.traverse((o) => o.material && o.material.color && o.material.color.getHex() === 0xffffff && (o.material = whiteGloss()));
+  gl.scale.setScalar(size); gl.position.z = 0.22 * size; g.add(gl);
+  return g;
+};
+
+// Frosted chat bubble: gradient glass body, white text bars, a faint peach watermark lattice.
+objects.frostBubble = function ({ shade = "violet", lattice = true } = {}) {
+  const [t, b] = SHADE[shade] || SHADE.violet;
+  const g = new THREE.Group();
+  const geo = extrude(bubbleShape(2.6, 1.7, 0.5), 0.4, 0.12); geo.translate(0, 0, -0.2);
+  g.add(frostMesh(geo, { top: t, bottom: b, rimStrength: 0.5, rimPower: 2.4, glow: 0.26, rough: 0.22 }));
+  const bar = whiteGloss();
+  [2.0, 1.7, 1.85, 1.1].forEach((w, i) => { const m = new THREE.Mesh(new RoundedBoxGeometry(w, 0.13, 0.05, 4, 0.06), bar); m.position.set(-1.0 + w / 2, 0.5 - i * 0.32, 0.36); g.add(m); });
+  if (lattice) {
+    const dm = mat.glow(0xffc9ae, 0.6), dg = new THREE.SphereGeometry(0.022, 12, 12);
+    for (let ix = 0; ix < 11; ix++) for (let iy = 0; iy < 3; iy++) {
+      if ((ix * 7 + iy * 3) % 4 === 0) continue;
+      const d = new THREE.Mesh(dg, dm); d.position.set(-1.05 + ix * 0.21, -0.72 + iy * 0.17, 0.34); g.add(d);
+    }
+  }
+  return g;
+};
+
+// Floating UI card (iconly-style): pearl frosted panel, gradient avatar, text bars, a toggle.
+objects.frostCard = function ({ shade = "cobalt", on = true } = {}) {
+  const [t, b] = SHADE[shade] || SHADE.cobalt;
+  const g = new THREE.Group();
+  g.add(frostMesh(new RoundedBoxGeometry(2.3, 1.3, 0.16, 8, 0.07), { top: 0xffffff, bottom: 0xe2ddf7, rimStrength: 0.4, glow: 0.35, rough: 0.25 }));
+  const av = frostMesh(new THREE.SphereGeometry(0.27, 48, 48), { top: t, bottom: b, glow: 0.3, rimStrength: 0.4 }); av.scale.z = 0.5; av.position.set(-0.75, 0.22, 0.12); g.add(av);
+  const ink = new THREE.MeshPhysicalMaterial({ color: 0x2a2540, roughness: 0.4, clearcoat: 0.6 }), soft = new THREE.MeshPhysicalMaterial({ color: 0xbdb6e6, roughness: 0.5 });
+  const b1 = new THREE.Mesh(new RoundedBoxGeometry(0.95, 0.11, 0.03, 3, 0.05), ink); b1.position.set(0.05, 0.3, 0.1); g.add(b1);
+  const b2 = new THREE.Mesh(new RoundedBoxGeometry(0.7, 0.09, 0.03, 3, 0.04), soft); b2.position.set(-0.07, 0.12, 0.1); g.add(b2);
+  const track = frostMesh(new RoundedBoxGeometry(0.62, 0.3, 0.1, 6, 0.14), { top: on ? t : 0xe7e3f5, bottom: on ? b : 0xc9c3e6, glow: 0.3, rimStrength: 0.3 }); track.position.set(0.6, -0.33, 0.1); g.add(track);
+  const knob = new THREE.Mesh(new THREE.SphereGeometry(0.12, 32, 32), whiteGloss()); knob.position.set(on ? 0.75 : 0.45, -0.33, 0.18); g.add(knob);
+  return g;
+};

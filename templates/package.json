@@ -5,8 +5,10 @@
   "scripts": {},
   "license": "MIT",
   "dependencies": {
+    "@fontsource-variable/newsreader": "^5.3.0",
     "@fontsource/geist-mono": "^5.3.0",
     "@fontsource/geist-sans": "^5.3.0",
+    "@fontsource/newsreader": "^5.3.0",
     "@fontsource/public-sans": "^5.3.0",
     "@fontsource/syne": "^5.3.0",
     "three": "^0.186.1"

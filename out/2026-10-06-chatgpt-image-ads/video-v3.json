@@ -1,0 +1,190 @@
+{
+  "slug": "chatgpt-image-ads",
+  "direction": "Aurora Glass · galaxy video, round 3",
+  "format": "video",
+  "template": "video/night.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "duration": 35.47,
+  "liftAt": 10.030000000000001,
+  "liftEnd": 13.78,
+  "mascotAt": 27.689999999999998,
+  "scenes": [
+    {
+      "at": 0.1,
+      "until": 4.59,
+      "kick": "AI x Marketing · US test",
+      "h1": "ChatGPT is turning image prompts into *ad space.*"
+    },
+    {
+      "at": 5.03,
+      "until": 9.29,
+      "h2": "OpenAI announced it on 5 October.",
+      "p": "Testing starts later this month. US only, with a first group of advertisers."
+    },
+    {
+      "at": 9.73,
+      "until": 14.08,
+      "h2": "Labelled. Beside your image, *not inside it.*",
+      "p": "OpenAI says ads don't influence ChatGPT's answers."
+    },
+    {
+      "at": 14.52,
+      "until": 19.31,
+      "big": "1.2B",
+      "h2": "people use ChatGPT every week.",
+      "src": "Source: OpenAI, 5 Oct 2026"
+    },
+    {
+      "at": 19.75,
+      "until": 27.05,
+      "big": "15.3%",
+      "h2": "lower attributed CPA for WeightWatchers than its blended paid-search benchmark.",
+      "src": "One brand, early data. Partner-reported (DV Rockerbox), via OpenAI"
+    },
+    {
+      "at": 27.49,
+      "until": 33.82,
+      "kick": "My take",
+      "h2": "The next ad slot is the moment someone *imagines your product.*",
+      "p": "Follow for the AI x marketing playbook."
+    }
+  ],
+  "captions": [
+    {
+      "at": 0.25,
+      "until": 2.549,
+      "text": "Okay. ChatGPT is about to put ads"
+    },
+    {
+      "at": 2.589,
+      "until": 4.269,
+      "text": "right next to the images you make."
+    },
+    {
+      "at": 5.179,
+      "until": 6.347,
+      "text": "It's a test for now."
+    },
+    {
+      "at": 6.567,
+      "until": 8.972,
+      "text": "US only, with a handful of advertisers."
+    },
+    {
+      "at": 9.882,
+      "until": 11.833,
+      "text": "The ads are labelled, and they sit"
+    },
+    {
+      "at": 11.753,
+      "until": 13.759,
+      "text": "beside your picture. Not inside it."
+    },
+    {
+      "at": 14.669,
+      "until": 15.688,
+      "text": "Why should you care?"
+    },
+    {
+      "at": 15.948,
+      "until": 17.443,
+      "text": "Over a billion people"
+    },
+    {
+      "at": 17.363,
+      "until": 18.993,
+      "text": "use ChatGPT every week."
+    },
+    {
+      "at": 19.903,
+      "until": 21.029,
+      "text": "And the early numbers?"
+    },
+    {
+      "at": 21.289,
+      "until": 23.149,
+      "text": "One brand got cheaper conversions"
+    },
+    {
+      "at": 23.069,
+      "until": 24.227,
+      "text": "than on paid search."
+    },
+    {
+      "at": 24.447,
+      "until": 25.678,
+      "text": "One brand, though. So,"
+    },
+    {
+      "at": 25.598,
+      "until": 26.725,
+      "text": "a signal. Not proof."
+    },
+    {
+      "at": 27.635,
+      "until": 28.568,
+      "text": "Here's my take."
+    },
+    {
+      "at": 28.788,
+      "until": 30.144,
+      "text": "The next ad slot is the"
+    },
+    {
+      "at": 30.064,
+      "until": 32.196,
+      "text": "moment someone pictures your product."
+    },
+    {
+      "at": 32.416,
+      "until": 33.499,
+      "text": "Follow for more."
+    }
+  ],
+  "posters": {
+    "s1": 2.94,
+    "s2": 7.76,
+    "s3": 12.51,
+    "s4": 17.52,
+    "s5": 24.0,
+    "s6": 31.26
+  },
+  "sponsoredAt": 10.13,
+  "sponsoredUntil": 13.88,
+  "narration": [
+    [
+      "Okay. ChatGPT is about to put ads",
+      "right next to the images you make."
+    ],
+    [
+      "It's a test for now.",
+      "US only, with a handful of advertisers."
+    ],
+    [
+      "The ads are labelled, and they sit beside your picture. Not inside it."
+    ],
+    [
+      "Why should you care?",
+      "Over a billion people use ChatGPT every week."
+    ],
+    [
+      "And the early numbers?",
+      "One brand got cheaper conversions than on paid search.",
+      "One brand, though. So, a signal. Not proof."
+    ],
+    [
+      "Here's my take.",
+      "The next ad slot is the moment someone pictures your product.",
+      "Follow for more."
+    ]
+  ],
+  "voice": {
+    "engine": "kokoro-82m",
+    "voice": "am_puck:0.6,am_fenrir:0.4",
+    "breaths": true,
+    "bed": true
+  },
+  "quality": 0.55
+}

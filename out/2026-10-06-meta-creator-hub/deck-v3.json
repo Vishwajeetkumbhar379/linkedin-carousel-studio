@@ -1,0 +1,31 @@
+{
+  "slug": "meta-creator-hub",
+  "theme": "field",
+  "direction": "Aurora Glass · daylight (premium mix)",
+  "format": "single-image + text post",
+  "pillar": "Creator economy x AI",
+  "single": true,
+  "tag": "Field note",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Meta just made creator ads *one click*.",
+      "subtitle": "The tool got faster. The brief didn't get easier.",
+      "hero": "c-click",
+      "hero_style": "left:50%;transform:translateX(-50%);bottom:90px;width:880px",
+      "mid_style": "justify-content:flex-start;padding-top:60px",
+      "mascot": null,
+      "chip": "Creator marketing",
+      "ghost": ""
+    }
+  ],
+  "system": "aurora",
+  "variant": "daylight",
+  "seed": 5
+}

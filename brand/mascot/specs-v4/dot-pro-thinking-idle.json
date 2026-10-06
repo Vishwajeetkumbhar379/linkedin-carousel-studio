@@ -1,0 +1,1 @@
+{"width": 600, "height": 720, "exposure": 1.0, "trim": true, "camera": {"pos": [0.6, 0.4, 6.0], "target": [0, 0.1, 0], "fov": 30}, "items": [{"type": "premiumMascot", "params": {"expression": "thinking", "pose": "idle"}, "rot": [0, -0.22, 0], "shadow": {"radius": 0.9, "y": -0.95, "opacity": 0.2}}]}

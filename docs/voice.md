@@ -21,3 +21,21 @@ Send a clean 30 to 60 second recording (phone voice memo is fine, quiet room, no
 - Engine: Chatterbox (Resemble AI, MIT licence) clones a voice from one reference clip and adds natural expressiveness (`exaggeration` setting).
 - It needs Hugging Face, which this cloud container blocks. Two ways to run it: (a) allow `huggingface.co` in the environment's network settings, or (b) run it in GitHub Actions. I'll add the Chatterbox mode to `scripts/voiceover.py` for whichever you pick.
 - Consent: only your own voice, only for your own posts. The recording stays out of the public repo (`brand/voice/` is git-ignored).
+
+
+## Round 4 (Vish: "still robotic and boring, find the best voice that's actually used")
+
+**Best natural option we can reach from the container: Gemini 3.8 Flash TTS.** It's the voice engine behind a lot of current AI video and podcast tools. It breathes, pauses and changes pace by itself, and it takes a plain-English style prompt. It's built into `scripts/voiceover.py` as `--engine gemini`, and it switches on automatically when `GEMINI_API_KEY` is set.
+
+Set it up (2 minutes, free tier):
+1. Get a key at https://aistudio.google.com/apikey (Google account, free tier, no card).
+2. In Claude Code on the web: open this environment's settings (environment menu → Edit) and add an environment variable `GEMINI_API_KEY=<your key>`. Never paste the key into chat or into the repo.
+3. Start a new session (environment variables load at session start). Then: `python scripts/voiceover.py out/<post>/video.json` (defaults to voice Puck). Try `--voice Achird`, `--voice Sadachbia` or `--voice Zubenelgenubi`, and `--style "..."` to steer delivery.
+
+Cost: the free tier covers this volume. Paid rates if it's ever needed: about $1 per 1M input text tokens and $20 per 1M audio tokens, so a 35 s voiceover costs well under one cent. Flagged anyway.
+
+**Your own voice (best of all):** Gemini voice replication can clone from a short recording. Send a 30 to 60 s voice memo of you talking normally, plus one spoken consent line ("I, Vishwajeet Kumbhar, consent to my voice being used to generate audio for Build with Vish"). Then every video sounds like you.
+
+Kokoro (the offline fallback) also improved this round: it now reads a whole scene in one pass, so intonation runs across the sentence instead of resetting at every phrase. Still not as alive as Gemini.
+
+ElevenLabs remains the paid alternative (from about $5 a month, flagged, and its API is blocked from this container).

@@ -1,4 +1,14 @@
-# Dot v3 (current): round, cute, frosted glass
+# Dot v4 (current): the middle ground, a designer toy
+
+![sheet](sheet-v4.png)
+
+Round 4 (6 Oct): Vish found v3 "very kiddish" and asked for a middle ground. v4 drops the blush, big mouth and baby proportions and keeps the warmth in the eyes. A taller pebble body in the new frost material (violet gradient core that glows from inside, milky fresnel rim, clearcoat). A dark glossy pill visor with soft glowing eyes carries every expression: pills = neutral, arcs = happy, one arc = wink, circles = surprised, a squint = thinking or focused. Cobalt ear pods, a chrome antenna with the Build with Vish diamond and a peach tip, slim arms and small dark boots. Code: `premiumMascot({expression, pose, palette})` in `templates/three/kit.js`, with palettes violet (default), cobalt and peach. Poses: idle, wave, cheer, point. Renders: `poses-v4/dot-pro-{expression}-{pose}.png`.
+
+Still original: no starburst, no pixel crab, no orange. Nothing like the Claude/Anthropic marks.
+
+---
+
+# Dot v3 (retired round 4): round, cute, frosted glass
 
 ![sheet](sheet-v3.png)
 

@@ -1,0 +1,108 @@
+{
+  "slug": "eu-ai-text-watermark",
+  "theme": "studio",
+  "direction": "Aurora Glass · galaxy (premium mix)",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-eu-ai-text-watermark",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "ChatGPT is about to sign its EU texts. *Invisibly.*",
+      "subtitle": "A hidden watermark is coming. Here's what it can prove, and what it can't.",
+      "hero": "a-cover",
+      "hero_style": "left:50%;transform:translateX(-50%);bottom:96px;width:800px",
+      "mid_style": "justify-content:flex-start;padding-top:70px",
+      "chip": "AI x Marketing",
+      "ghost": ""
+    },
+    {
+      "type": "point",
+      "tint": "purple",
+      "label": "01 · The news",
+      "title": "OpenAI announced it on 5 October.",
+      "body": "Over the coming weeks, eligible ChatGPT and Codex text made in the EU gets an invisible watermark. It's OpenAI's answer to the *EU AI Act*, which wants AI text to be machine-detectable.",
+      "mascot": "dot-cute-surprised",
+      "mascot_style": "right:96px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "tint": "teal",
+      "label": "02 · How it works",
+      "title": "It hides in word choice, not on screen.",
+      "body": "The method, called textGrain, nudges which words the model picks. A detector looks for that statistical pattern. Your text looks exactly the same.",
+      "hero": "a-dots",
+      "hero_style": "left:50%;transform:translateX(-50%);top:150px;width:520px",
+      "mascot": null,
+      "mid_style": "justify-content:flex-end;padding-bottom:40px"
+    },
+    {
+      "type": "stat",
+      "tint": "coral",
+      "label": "03 · How reliable",
+      "value": "~80%",
+      "title": "of 200-token passages detected.",
+      "body": "About 95% at 400 tokens, at a 1% false-positive target, for prose like psychology. Much lower for maths-like text, and editing weakens it. OpenAI says so itself.",
+      "source": "Source: OpenAI, 5 Oct 2026",
+      "ghost": "80"
+    },
+    {
+      "type": "compare",
+      "title": "What a watermark *can't* tell anyone",
+      "left": {
+        "label": "Can't tell",
+        "items": [
+          "Who wrote or prompted it",
+          "How much a human changed",
+          "Whether it's true",
+          "That no watermark means a human wrote it"
+        ]
+      },
+      "right": {
+        "label": "Can signal",
+        "items": [
+          "That an OpenAI model made or processed part of it",
+          "Only if the passage is long enough"
+        ]
+      }
+    },
+    {
+      "type": "point",
+      "tint": "purple",
+      "label": "05 · Who can check",
+      "title": "Not your client. Not yet.",
+      "body": "The detector isn't public. At launch, only approved researchers and expert organisations can apply. In the API, watermarking is opt-in and *off by default*.",
+      "mascot": "dot-cute-wink",
+      "mascot_style": "right:96px;top:300px;width:150px"
+    },
+    {
+      "type": "list",
+      "title": "What I'd do this week",
+      "items": [
+        "Edit AI drafts for quality and facts, not to hide AI use.",
+        "Check client and creator contracts for AI-disclosure clauses.",
+        "Decide your own disclosure rule before a client asks.",
+        "Ignore 'AI detector' screenshots. They prove very little."
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *client call*.",
+      "subtitle": "Full breakdown, sources and a disclosure template on Build with Vish.",
+      "question": "Would you tell a client a draft was AI-assisted? Yes or no?",
+      "button": "Save · Follow for AI x marketing",
+      "mascot": "dot-cute-happy",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:140px;width:170px",
+      "chip": "Free guide inside",
+      "mid_style": "padding-top:150px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "galaxy",
+  "seed": 11
+}

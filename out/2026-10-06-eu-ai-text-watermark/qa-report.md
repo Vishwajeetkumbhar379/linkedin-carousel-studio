@@ -1,12 +1,12 @@
 # QA report: 2026-10-06-eu-ai-text-watermark
 
-Run 2026-10-06 18:54 · **PASS** · 0 fail, 4 warn, 19 pass
+Run 2026-10-06 19:35 · **PASS** · 0 fail, 4 warn, 19 pass
 
 | Result | Area | Check |
 |---|---|---|
-| WARN | links | not checked (--no-net): https://buildwithvish.netlify.app/#read-eu-ai-text-watermark |
-| WARN | links | not checked (--no-net): https://community.openai.com/t/openais-approach-to-eu-text-provenance-rules/1403521 |
-| WARN | links | not checked (--no-net): https://openai.com/index/eu-text-provenance/ |
+| WARN | links | https://buildwithvish.netlify.app/#read-eu-ai-text-watermark -> <urlopen error Tunnel connection failed: 403 Forbidden> |
+| WARN | links | https://community.openai.com/t/openais-approach-to-eu-text-provenance-rules/1403521 -> <urlopen error Tunnel connection failed: 403 Forbidden> |
+| WARN | links | https://openai.com/index/eu-text-provenance/ -> <urlopen error Tunnel connection failed: 403 Forbidden> |
 | WARN | links | hash route #read-eu-ai-text-watermark always returns 200; confirm the page exists in buildwithvish src/long before posting |
 | PASS | copy | hook 9 words: "ChatGPT is about to sign its EU texts. Invisibly." |
 | PASS | copy | closes on one open question: "Would you tell a client a draft was AI-assisted? Yes or no?" |
@@ -26,6 +26,6 @@ Run 2026-10-06 18:54 · **PASS** · 0 fail, 4 warn, 19 pass
 | PASS | design | slide 6: safe area, overflow, contrast, sizes |
 | PASS | design | slide 7: safe area, overflow, contrast, sizes |
 | PASS | design | slide 8: safe area, overflow, contrast, sizes |
-| PASS | brand | Aurora Glass (galaxy) from brand tokens |
+| PASS | brand | Aurora Glass (paper) from brand tokens |
 
 Manual checks (the reviewer agent signs these off): 3D quality (banding, muddy light), mascot consistency, legal (no third-party logos or characters), tone.

@@ -1,0 +1,1 @@
+{"width": 900, "height": 700, "exposure": 1.0, "trim": true, "camera": {"pos": [0.2, 0.3, 7.2], "target": [0, 0, 0], "fov": 30}, "items": [{"type": "frostBubble", "params": {"shade": "violet"}, "rot": [0.1, -0.35, 0.04], "scale": 1.0}, {"type": "frostTile", "params": {"shade": "peach", "glyphKind": "eye", "size": 0.5}, "pos": [1.7, 0.95, 0.6], "rot": [0.2, -0.5, 0.2]}]}

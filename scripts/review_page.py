@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 REVIEW = ROOT / "out" / "_review"
 
 WHY = {
+    "paper": "Calm reading feel: warm ivory page, a bookish serif for headlines, clean sans for the body, and frosted glass objects you can actually see. Violet leads, cobalt and peach support.",
+    "motion": "Every line gets its own beat: a new background, a whip, zoom or click transition, and B-roll that shows what's being said. Nothing sits still for more than about two seconds.",
     "galaxy": "One violet family on near-black, light that flows across every swipe, a story character on the cover and a hook that earns the click.",
     "daylight": "Same system in daylight: airy lavender and sky, with the characters doing the storytelling.",
     "studio": "Instantly reads as your existing carousels, now with depth. The safest bet for saves.",
@@ -62,7 +64,7 @@ def qa_summary(p: Path) -> tuple[str, list[str]]:
 def post_section(post: Path, idx: int) -> str:
     spec_f = post / "deck.json" if (post / "deck.json").exists() else post / "video.json"
     spec = json.loads(spec_f.read_text())
-    theme = spec.get("variant") or spec.get("theme", "night")
+    theme = spec.get("variant") or ("motion" if "beats" in spec else spec.get("theme", "night"))
     caption = (post / "caption.md").read_text().strip()
     hook = caption.splitlines()[0]
     first = (post / "first-comment.md").read_text().strip() if (post / "first-comment.md").exists() else ""
@@ -72,12 +74,13 @@ def post_section(post: Path, idx: int) -> str:
         vid = REVIEW / "media" / f"{slug}.mp4"
         vid.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(post / "video.mp4", vid)
-        poster = jpg(post / "frames" / "cover.png", f"{slug}-poster.jpg")
-        stills = "".join(f'<img loading="lazy" src="{jpg(f, f"{slug}-{f.stem}.jpg", 540)}" alt="Video frame {f.stem}">' for f in sorted((post / "frames").glob("*.png")))
+        cover = post / "frames" / "cover.png" if (post / "frames" / "cover.png").exists() else post / "frames" / "b01.png"
+        poster = jpg(cover, f"{slug}-poster.jpg")
+        stills = "".join(f'<img loading="lazy" src="{jpg(f, f"{slug}-{f.stem}.jpg", 540)}" alt="Video frame {f.stem}">' for f in sorted((post / "frames").glob("b*.png")))
         visual = (f'<div class="media"><video controls playsinline muted loop preload="metadata" poster="{poster}" src="media/{slug}.mp4"></video></div>'
-                  f'<p class="cap">30 s · 1080 x 1350 · H.264. Frames:</p><div class="strip">{stills}</div>')
+                  f'<p class="cap">{spec.get("duration", 30):.0f} s · 1080 x 1350 · H.264 · voice + synthesised SFX + music bed. One frame per beat:</p><div class="strip">{stills}</div>')
         fmt = "Video with voiceover"
-        for f, label in (("voice.wav", "Voice A: young male blend, puck + fenrir (in the video)"), ("voice-alt-male.wav", "Voice B: michael + puck blend")):
+        for f, label in (("voice.wav", "Voice in this cut: offline Kokoro fallback, now reading whole sentences. The Gemini voice replaces it as soon as the key is set"),):
             if (post / f).exists():
                 dst = REVIEW / "media" / f"{slug}-{f.replace('.wav', '.mp3')}"
                 __import__("subprocess").run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(post / f), "-b:a", "160k", str(dst)], check=True)
@@ -108,7 +111,7 @@ def post_section(post: Path, idx: int) -> str:
 
 def build(posts: list[Path]) -> Path:
     REVIEW.mkdir(parents=True, exist_ok=True)
-    mascot = jpg(ROOT / "brand" / "mascot" / "sheet-v3.png", "mascot-sheet-v3.jpg", 1200)
+    mascot = jpg(ROOT / "brand" / "mascot" / "sheet-v4.png", "mascot-sheet-v4.jpg", 1200)
     backlog = json.loads((ROOT / "topics" / "backlog.json").read_text())["topics"]
     blrows = "".join(f'<tr class="{"ship" if t["ships"] else ""}"><td class="num">{t["score"]}</td><td>{escape(t["title"])}</td><td>{escape(t["pillar"])}</td><td>{escape(t["status"])}</td></tr>' for t in backlog)
     reviewer = ROOT / "out" / "_review" / "reviewer-report.md"
@@ -161,18 +164,19 @@ tr.ship td.num{{color:var(--good)}}
 a{{color:var(--accent)}}
 </style>
 <div class="wrap">
-<header><p class="meta">Build with Vish content engine · round 3 · 6 Oct 2026</p>
-<h1>Round 3: calmer, cuter, catchier.</h1>
-<p class="lead">Your round 2 notes, applied: one violet family instead of many colours, a rounder and cuter Dot, story characters on the covers, punchier hooks, and a shorter conversational voiceover in a younger male voice. Plus a full-body 3D you. Nothing has been posted, emailed or deployed.</p></header>
+<header><p class="meta">Build with Vish content engine · round 4 · 6 Oct 2026</p>
+<h1>Round 4: calmer type, real glass, a video that moves.</h1>
+<p class="lead">Your round 3 notes, applied. Dot grew up into a designer toy (not a baby, not a robot). The glass finish is now on every object. Headlines use a calm reading serif with two new support shades, cobalt and peach. The video changes on every line with whip, zoom and click transitions and real B-roll. The best natural voice is wired in and only needs a key. Your avatar now wears loose bootcut jeans and boots. Nothing has been posted, emailed or deployed.</p></header>
 <div class="ask"><b>What I need from you</b><ol>
-<li>Is this the look? If yes, say "go" and I lock it in and start the backfill and the first weekly batch.</li>
-<li>Voice: still synthetic. The real upgrade is your own voice: send a 30 to 60 s voice memo, and switch on Spaces in your Hugging Face MCP settings (details in the voice note below).</li>
-<li>Avatar: open the full-body sheet below. To let the pipeline pull Canva files itself, connect Google Drive in Zapier once: <a href="https://mcp.zapier.com/api/v1/connect-auth/GoogleDriveCLIAPI?accountId=26913753" target="_blank" rel="noopener">connect</a>. Or just download it and send it here.</li>
-<li>Still open: confirm the flagged line in the single-image caption ("the hard part was the brief and the rights").</li>
+<li><b>Voice (2 minutes, free):</b> get a Gemini API key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>, then add it as an environment variable <code>GEMINI_API_KEY</code> in this Claude Code environment's settings (environment menu → Edit). Don't paste it in chat. The next session re-voices the video with Gemini's natural voices automatically.</li>
+<li><b>Your own voice (optional, best):</b> send a 30 to 60 s voice memo plus one consent line ("I, Vishwajeet Kumbhar, consent to my voice being used to generate audio for Build with Vish") and every video speaks as you.</li>
+<li><b>Avatar:</b> open the <a href="https://www.canva.com/M/MAHXQ4Mf8bM" target="_blank" rel="noopener">new full-body sheet (bootcut jeans, boots)</a>, download the PNG and attach it here. Canva downloads are blocked inside my container.</li>
+<li>Is this the look? Say "go" and I lock it in, then start the backfill and the first weekly batch.</li>
+<li>Still open: confirm or cut the flagged line in the single-image caption.</li>
 </ol></div>
 {''.join(post_section(p, i) for i, p in enumerate(posts))}
-<section class="plain mascot"><h2>Dot v3: round, cute, frosted glass</h2><p class="meta">Rounder body, big glossy eyes set low, a small smile and blush, iridescent glass with a soft glow inside. Six expressions on dark and light. The covers also use two new story characters: a chat-bubble bot and a camera bot (generic shapes, not real logos, so no trademark trouble).</p><img src="{mascot}" alt="Cute glass mascot sheet with six expressions">
-<h3>Your 3D avatar</h3><p>Made in Canva from your site photo, in the style of the reference you sent: <a href="https://www.canva.com/M/MAHXQiVWMLk" target="_blank" rel="noopener">full-body sheet with three expressions</a> (recommended) · <a href="https://www.canva.com/M/MAHXQSEoDQQ" target="_blank" rel="noopener">head-and-shoulders</a>. Plan: you on career, build-in-public and CTA slides; Dot on explainers.</p></section>
+<section class="plain mascot"><h2>Dot v4: the middle ground</h2><p class="meta">A designer-toy build instead of a baby face. The taller frosted-glass body glows from inside, with a milky rim. The dark glossy visor carries every expression in soft light-up eyes. Cobalt ear pods, chrome antenna with your diamond mark, small boots. No blush, no big mouth. Six expressions, three palettes (violet, cobalt, peach).</p><img src="{mascot}" alt="Mascot v4 sheet with six expressions">
+<h3>Your 3D avatar</h3><p>Regenerated in Canva with straight, loose bootcut denim and brown chelsea boots, same face and three expression heads: <a href="https://www.canva.com/M/MAHXQ4Mf8bM" target="_blank" rel="noopener">open the v4 sheet</a>. Plan: you on career, build-in-public and CTA slides; Dot on explainers.</p></section>
 <section class="plain"><h2>Topic backlog</h2><p class="meta">Scored 1 to 10 on freshness, usefulness, shareability, comment potential, brand fit. Only 8+ ships.</p>
 <div class="tw"><table><tr><th>Score</th><th>Topic</th><th>Pillar</th><th>Status</th></tr>{blrows}</table></div></section>
 {rev_html}

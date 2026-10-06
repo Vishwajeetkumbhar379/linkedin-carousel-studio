@@ -51,6 +51,7 @@ _FACES = [
     ("Geist Mono", "geist-mono", (400, 500)),
     ("Syne", "syne", (600, 700, 800)),
     ("Public Sans", "public-sans", (400, 500, 600)),
+    ("Newsreader", "newsreader", (400, 500, 600)),
 ]
 
 
@@ -59,10 +60,11 @@ def font_css() -> str:
     out = []
     for fam, pkg, weights in _FACES:
         for w in weights:
-            f = FONTS / pkg / "files" / f"{pkg}-latin-{w}-normal.woff2"
-            if f.exists():
-                b64 = base64.b64encode(f.read_bytes()).decode()
-                out.append(f"@font-face{{font-family:'{fam}';font-weight:{w};font-display:block;src:url(data:font/woff2;base64,{b64}) format('woff2')}}")
+            for style in ("normal", "italic"):
+                f = FONTS / pkg / "files" / f"{pkg}-latin-{w}-{style}.woff2"
+                if f.exists():
+                    b64 = base64.b64encode(f.read_bytes()).decode()
+                    out.append(f"@font-face{{font-family:'{fam}';font-weight:{w};font-style:{style};font-display:block;src:url(data:font/woff2;base64,{b64}) format('woff2')}}")
     return "".join(out)
 
 

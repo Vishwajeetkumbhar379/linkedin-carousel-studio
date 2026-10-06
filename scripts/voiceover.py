@@ -7,7 +7,11 @@ Reads `narration` from video.json: a list of scenes, each a list of phrases. Wri
   out/<post>/voice.json     phrase and scene timings (seconds), used by the video renderer
 and rewrites each scene's `at`/`until` in video.json to match the audio, so pictures follow the voice.
 
-Engine: Kokoro-82M via kokoro-onnx (model Apache-2.0, code MIT), runs on CPU.
+Engines (pick with --engine, default: gemini when GEMINI_API_KEY is set, else kokoro):
+  gemini  Gemini 3.8 Flash TTS (natural prosody, real breaths, style prompts). Needs GEMINI_API_KEY
+          as an environment variable (set it in the cloud environment settings, never in the repo).
+          One request per scene so intonation flows across a whole thought.
+  kokoro  Kokoro-82M via kokoro-onnx (model Apache-2.0, code MIT), runs on CPU.
 Model files live in $KOKORO_DIR (default /home/user/models/kokoro), downloaded from
 github.com/thewh1teagle/kokoro-onnx releases. For Vish's own voice, see docs/voice.md.
 """
@@ -79,21 +83,125 @@ def synth(narration: list[list[str]], voice: str, breaths: bool, base_speed: flo
             out.append(b)
             t += len(b) / SR
         s_start = t
-        phrases = []
-        for pi, phrase in enumerate(scene):
-            speed = base_speed + (0.03 if pi % 3 == 1 else -0.02 if pi % 3 == 2 else 0)
-            audio, sr = k.create(phrase, voice=style, speed=speed, lang="en-us")
-            assert sr == SR
-            audio = np.trim_zeros(audio.astype(np.float32), "fb")
-            phrases.append({"text": phrase, "start": round(t, 3), "end": round(t + len(audio) / SR, 3)})
-            out.append(audio)
-            t += len(audio) / SR
-            gap = PAUSE.get(phrase.strip()[-1], 0.12)
-            out.append(np.zeros(int(SR * gap)))
-            t += gap
+        # Whole scene in one pass: intonation carries across phrases instead of resetting at each one,
+        # which is most of what made the old phrase-by-phrase read sound robotic.
+        audio, sr = k.create(" ".join(scene), voice=style, speed=base_speed, lang="en-us")
+        assert sr == SR
+        audio = _trim(audio.astype(np.float32))
+        phrases = [{"text": p, "start": round(t + a, 3), "end": round(t + b, 3)} for p, (a, b) in zip(scene, _phrase_bounds(audio, scene))]
+        out.append(audio)
+        t += len(audio) / SR
         timings.append({"start": round(s_start, 3), "end": round(t, 3), "phrases": phrases})
         out.append(np.zeros(int(SR * SCENE_GAP)))
         t += SCENE_GAP
+    return np.concatenate(out), timings
+
+
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
+GEMINI_MODEL = os.environ.get("GEMINI_TTS_MODEL", "gemini-3.8-flash-tts")
+GEMINI_STYLE = ("young male creator talking to a friend, warm and energetic, a little amused, "
+                "conversational not announcer, natural breaths, vary the pace, lean into the key word")
+
+
+def _find_audio(obj):
+    """Return the first base64 audio payload anywhere in an Interactions API response."""
+    if isinstance(obj, dict):
+        if obj.get("type") == "audio" and isinstance(obj.get("data"), str):
+            return obj["data"]
+        if "output_audio" in obj and isinstance(obj["output_audio"], dict) and obj["output_audio"].get("data"):
+            return obj["output_audio"]["data"]
+        for v in obj.values():
+            r = _find_audio(v)
+            if r:
+                return r
+    elif isinstance(obj, list):
+        for v in obj:
+            r = _find_audio(v)
+            if r:
+                return r
+    return None
+
+
+def gemini_tts(text: str, voice: str, style: str) -> np.ndarray:
+    import base64
+    import io
+    import urllib.request
+
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key:
+        raise SystemExit("GEMINI_API_KEY is not set. Add it as an environment variable in the cloud environment settings.")
+    body = {"model": GEMINI_MODEL,
+            "input": [{"type": "user_input", "content": [{"type": "text", "text": text,
+                       "annotations": [{"type": "speech_metadata", "style": style}]}]}],
+            "response_format": {"type": "audio"},
+            "generation_config": {"speech_config": [{"voice": voice}]}}
+    req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), method="POST",
+                                 headers={"Content-Type": "application/json", "x-goog-api-key": key})
+    with urllib.request.urlopen(req, timeout=180) as r:
+        resp = json.loads(r.read())
+    b64 = _find_audio(resp)
+    if not b64:
+        raise RuntimeError(f"no audio in response: {str(resp)[:300]}")
+    raw = base64.b64decode(b64)
+    if raw[:4] == b"RIFF":
+        audio, sr = sf.read(io.BytesIO(raw), dtype="float32")
+    else:  # bare 16-bit PCM at 24 kHz
+        audio, sr = np.frombuffer(raw, dtype="<i2").astype(np.float32) / 32768, SR
+    if audio.ndim > 1:
+        audio = audio.mean(axis=1)
+    if sr != SR:
+        audio = np.interp(np.linspace(0, len(audio), int(len(audio) * SR / sr), endpoint=False), np.arange(len(audio)), audio).astype(np.float32)
+    return audio
+
+
+def _trim(audio: np.ndarray, thr: float = 0.004) -> np.ndarray:
+    idx = np.where(np.abs(audio) > thr)[0]
+    return audio[max(idx[0] - 240, 0): idx[-1] + 480] if len(idx) else audio
+
+
+def _phrase_bounds(audio: np.ndarray, phrases: list[str]) -> list[tuple[float, float]]:
+    """Place phrase boundaries at the longest pauses nearest each phrase's character-share position."""
+    n = len(audio) / SR
+    if len(phrases) == 1:
+        return [(0.0, n)]
+    hop = int(SR * 0.01)
+    env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio) - hop, hop)])
+    quiet = env < max(env.max() * 0.04, 1e-4)
+    total = sum(len(p) for p in phrases)
+    cuts, acc = [], 0
+    for p in phrases[:-1]:
+        acc += len(p)
+        guess = int(acc / total * len(env))
+        lo, hi = max(guess - 60, 1), min(guess + 60, len(env) - 1)
+        best, best_len = guess, 0
+        i = lo
+        while i < hi:  # find the longest quiet run in the window
+            if quiet[i]:
+                j = i
+                while j < len(quiet) and quiet[j]:
+                    j += 1
+                if j - i > best_len:
+                    best, best_len = (i + j) // 2, j - i
+                i = j
+            else:
+                i += 1
+        cuts.append(best * hop / SR)
+    edges = [0.0, *cuts, n]
+    return [(edges[i], edges[i + 1]) for i in range(len(phrases))]
+
+
+def synth_gemini(narration: list[list[str]], voice: str, style: str) -> tuple[np.ndarray, list[dict]]:
+    out, timings, t = [np.zeros(int(SR * 0.2))], [], 0.2
+    for scene in narration:
+        audio = _trim(gemini_tts(" ".join(scene), voice, style))
+        s_start = t
+        phrases = [{"text": p, "start": round(t + a, 3), "end": round(t + b, 3)} for p, (a, b) in zip(scene, _phrase_bounds(audio, scene))]
+        out.append(audio)
+        t += len(audio) / SR
+        timings.append({"start": round(s_start, 3), "end": round(t, 3), "phrases": phrases})
+        gap = 0.28
+        out.append(np.zeros(int(SR * gap)))
+        t += gap
     return np.concatenate(out), timings
 
 
@@ -112,10 +220,13 @@ def chunk_caption(p: dict, max_words: int = 7) -> list[dict]:
     return out
 
 
-def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1.0) -> None:
+def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1.0, engine: str = "kokoro", style: str = GEMINI_STYLE) -> None:
     spec = json.loads(spec_path.read_text())
     narration = spec["narration"]
-    audio, timings = synth(narration, voice, breaths, speed)
+    if engine == "gemini":
+        audio, timings = synth_gemini(narration, voice, style)
+    else:
+        audio, timings = synth(narration, voice, breaths, speed)
     dur = len(audio) / SR + 0.8
     mix = np.zeros(int(SR * dur), dtype=np.float32)
     mix[: len(audio)] += audio
@@ -129,12 +240,17 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
                     "highshelf=f=7000:g=-2,acompressor=threshold=-20dB:ratio=2.5:attack=8:release=120,loudnorm=I=-15:TP=-1.5:LRA=9",
                     "-ar", "48000", str(post / "voice.wav")], check=True)
     raw.unlink()
-    # pictures follow the voice
-    for scene, tm in zip(spec["scenes"], timings):
+    # pictures follow the voice: one beat per spoken phrase (motion template), or one scene per scene
+    if "beats" in spec:
+        flat = [p for tm in timings for p in tm["phrases"]]
+        assert len(flat) == len(spec["beats"]), f"{len(flat)} phrases but {len(spec['beats'])} beats"
+        for b, p in zip(spec["beats"], flat):
+            b["at"], b["until"], b["say"] = round(p["start"], 2), round(p["end"], 2), p["text"]
+    for scene, tm in zip(spec.get("scenes", []), timings):
         scene["at"], scene["until"] = round(tm["start"] - 0.15, 2), round(tm["end"] + 0.1, 2)
     spec["duration"] = round(dur + 0.6, 2)
     spec["captions"] = [c for tm in timings for p in tm["phrases"] for c in chunk_caption(p)]
-    spec["voice"] = {"engine": "kokoro-82m", "voice": voice, "breaths": breaths, "bed": bed}
+    spec["voice"] = {"engine": GEMINI_MODEL if engine == "gemini" else "kokoro-82m", "voice": voice, "breaths": breaths, "bed": bed}
     spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False))
     (post / "voice.json").write_text(json.dumps({"voice": voice, "duration": dur, "scenes": timings}, indent=1))
     print(f"voice.wav {dur:.1f}s, {sum(len(s) for s in narration)} phrases, voice {voice}")
@@ -142,6 +258,8 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    v = a[a.index("--voice") + 1] if "--voice" in a else "af_heart"
+    eng = a[a.index("--engine") + 1] if "--engine" in a else ("gemini" if os.environ.get("GEMINI_API_KEY") else "kokoro")
+    v = a[a.index("--voice") + 1] if "--voice" in a else ("Puck" if eng == "gemini" else "am_puck:0.6,am_fenrir:0.4")
     sp = float(a[a.index("--speed") + 1]) if "--speed" in a else 1.0
-    main(Path(a[0]), v, "--no-breaths" not in a, "--no-bed" not in a, sp)
+    st = a[a.index("--style") + 1] if "--style" in a else GEMINI_STYLE
+    main(Path(a[0]), v, "--no-breaths" not in a, "--no-bed" not in a, sp, eng, st)

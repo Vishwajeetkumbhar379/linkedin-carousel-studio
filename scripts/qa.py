@@ -39,6 +39,15 @@ DESIGN_JS = r"""
     for (const b of stack.reverse()) { const [r, g, bl, a] = rgba(b); if (!a) continue; c = [c[0] * (1 - a) + r * a, c[1] * (1 - a) + g * a, c[2] * (1 - a) + bl * a]; }
     return `rgb(${c[0]},${c[1]},${c[2]})`;
   };
+  // Opaque gradient fills (badges, buttons): judge against the worst gradient stop, not the colour underneath.
+  const gradStops = (el) => {
+    for (let e = el; e && e !== document.documentElement; e = e.parentElement) {
+      const bi = getComputedStyle(e).backgroundImage;
+      if (bi && bi.includes("linear-gradient") && !bi.includes("url(")) return bi.match(/rgba?\([^)]+\)/g) || [];
+      if (rgba(getComputedStyle(e).backgroundColor)[3] >= 1) return [];
+    }
+    return [];
+  };
   document.querySelectorAll(".slide *").forEach((el) => {
     const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
     if (!own) return;
@@ -46,8 +55,8 @@ DESIGN_JS = r"""
     const txt = el.textContent.trim().slice(0, 40);
     if (r.left < M - 1 || r.right > W - M + 1 || r.top < M - 1 || r.bottom > H - 40) out.push(["FAIL", `outside safe area: "${txt}"`]);
     if (el.scrollWidth > el.clientWidth + 2 && cs.overflow !== "visible") out.push(["FAIL", `text overflow: "${txt}"`]);
-    const [l1] = lum(cs.color), [l2] = lum(bgOf(el));
-    const ratio = (Math.max(l1, l2) + .05) / (Math.min(l1, l2) + .05);
+    const [l1] = lum(cs.color), stops = gradStops(el);
+    const ratio = Math.min(...(stops.length ? stops : [bgOf(el)]).map((b) => { const [l2] = lum(b); return (Math.max(l1, l2) + .05) / (Math.min(l1, l2) + .05); }));
     const large = fs >= 24 && parseInt(cs.fontWeight) >= 600 || fs >= 32;
     if (ratio < (large ? 3 : 4.5)) out.push(["FAIL", `contrast ${ratio.toFixed(2)}:1 at ${fs}px: "${txt}"`]);
     if (fs < 19) out.push(["FAIL", `font ${fs}px too small for mobile: "${txt}"`]);

@@ -1,0 +1,195 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>motion video</title>
+<link rel="stylesheet" href="/video/fonts.css">
+<style>
+/* Motion-graphics template (round 4). Every narration line is a "beat": new background, a transition
+   (whip, zoom, click, pop), its own B-roll, and a slow camera push. Pure DOM, so frames render fast and
+   every frame is a function of t. Shades: violet (brand), cobalt and peach (support), ink and ivory. */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#0E0C16;font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#cam{position:absolute;inset:0;transform-origin:50% 45%}
+.beat{position:absolute;inset:0;overflow:hidden;visibility:hidden}
+.bg{position:absolute;inset:0}
+.glow{position:absolute;border-radius:50%}
+.content{position:absolute;inset:0;padding:190px 84px 300px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.serif{font-family:Newsreader,Georgia,serif;font-weight:500;letter-spacing:-.022em;line-height:1.04;text-wrap:balance}
+.serif em{font-style:italic}
+.t1{font-size:118px}.t2{font-size:92px}.t3{font-size:70px}
+.kick{font:500 24px 'Geist Mono',monospace;letter-spacing:.06em;text-transform:uppercase;margin-bottom:30px;opacity:.75}
+.sub{font-size:36px;line-height:1.38;margin-top:28px;max-width:820px;opacity:.82;text-wrap:balance}
+.src{font:400 21px 'Geist Mono',monospace;margin-top:30px;opacity:.6}
+.in{opacity:0}
+.sprite{position:absolute;filter:drop-shadow(0 30px 40px rgba(20,10,60,.28))}
+/* chat B-roll: a generic AI chat window, no real product UI */
+.win{width:820px;border-radius:40px;background:rgba(255,255,255,.88);border:1px solid #fff;box-shadow:0 60px 120px -50px rgba(40,20,120,.55),inset 0 1px 0 #fff;padding:30px;text-align:left;color:#1F1C24;position:relative;backdrop-filter:blur(20px)}
+.win .bar{display:flex;gap:10px;margin-bottom:24px}.win .bar i{width:14px;height:14px;border-radius:50%;background:#DDD8EE}
+.msg{margin-left:auto;max-width:560px;background:#ECEAFB;border-radius:26px 26px 6px 26px;padding:20px 26px;font-size:30px;line-height:1.35;min-height:82px}
+.caret{display:inline-block;width:3px;height:1em;background:#4A44C4;vertical-align:-4px;margin-left:2px}
+.gen{margin-top:24px;width:430px;height:430px;border-radius:30px;position:relative;overflow:hidden;background:#E9E5FB}
+.gen .shim{position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.75) 50%,transparent 70%)}
+.gen .art{position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,#FFD8C4,transparent 55%),radial-gradient(circle at 75% 70%,#8FA8FF,transparent 55%),linear-gradient(160deg,#C4BCFF,#4A3FD6);opacity:0}
+.gen .art::after{content:"";position:absolute;left:34%;top:30%;width:32%;height:32%;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 20px 40px rgba(30,20,90,.3)}
+.ad{position:absolute;right:30px;bottom:40px;width:300px;border-radius:26px;background:#fff;box-shadow:0 30px 60px -20px rgba(40,20,120,.45);padding:18px;opacity:0}
+.ad .pic{height:150px;border-radius:18px;background:linear-gradient(150deg,#FFD8C4,#E07A5C)}
+.ad b{display:inline-block;margin-top:14px;font:600 18px Geist;letter-spacing:.08em;text-transform:uppercase;background:#1F1C24;color:#fff;border-radius:999px;padding:6px 14px}
+.ad span{display:block;margin-top:10px;font-size:22px;color:#4A4458}
+.chips{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:34px}
+.chip{font:600 40px Geist;border-radius:999px;padding:18px 34px;background:rgba(255,255,255,.9);color:#1F1C24;box-shadow:0 24px 50px -24px rgba(40,20,120,.5)}
+.stamp{font:600 30px 'Geist Mono',monospace;letter-spacing:.12em;border:4px solid currentColor;border-radius:18px;padding:14px 28px;margin-bottom:34px}
+.big{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:270px;letter-spacing:-.05em;line-height:.9}
+.dots{position:absolute;inset:0;opacity:.55}
+.bars{display:flex;gap:60px;align-items:flex-end;height:360px;margin-top:40px}
+.bars div{width:190px;border-radius:26px 26px 10px 10px;position:relative;transform-origin:bottom}
+.bars label{position:absolute;bottom:-56px;left:0;right:0;font:500 24px Geist;opacity:.8}
+.vs{display:flex;gap:30px;margin-top:40px}
+.vs .card{width:380px;border-radius:34px;padding:26px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(16px)}
+.vs .card .pic{height:300px;border-radius:24px}
+.vs .card p{font:500 28px Geist;margin-top:20px}
+.btn{display:inline-flex;align-items:center;gap:14px;font:600 40px Geist;border-radius:999px;padding:28px 54px;background:#fff;color:#1F1C24;margin-top:46px;box-shadow:0 30px 60px -24px rgba(0,0,0,.5);position:relative}
+.cursor{position:absolute;width:56px;height:56px;z-index:30;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.ripple{position:absolute;width:140px;height:140px;margin:-70px;border-radius:50%;border:4px solid #fff;opacity:0;z-index:29}
+/* chrome */
+.top{position:absolute;left:84px;right:84px;top:80px;display:flex;justify-content:space-between;align-items:center;z-index:50;transition:none}
+.handle{display:flex;align-items:center;gap:16px;font-size:24px;font-weight:600}
+.mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(160deg,#9C94F0,#5B4FE0);position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.mark::before{content:"";position:absolute;inset:12px;border:3px solid #fff;border-radius:4px;transform:rotate(45deg)}
+.mark::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px;border-radius:50%;background:#fff}
+.handle small{display:block;font-size:19px;font-weight:400;opacity:.7}
+.pill{font:500 20px 'Geist Mono',monospace;border-radius:999px;padding:10px 20px;border:1px solid currentColor;opacity:.75}
+.cap{position:absolute;left:60px;right:60px;bottom:150px;text-align:center;z-index:50;font:600 44px/1.25 Geist,sans-serif;letter-spacing:-.01em}
+.cap span{display:inline-block;margin:0 6px;padding:2px 8px;border-radius:12px}
+.prog{position:absolute;left:84px;right:84px;bottom:96px;height:4px;border-radius:4px;z-index:50;background:rgba(127,119,221,.25)}
+.prog i{display:block;height:100%;width:0;border-radius:4px;background:#7F77DD}
+.grain{position:absolute;inset:0;z-index:60;opacity:.08;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+</style></head><body>
+<div id="cam"></div>
+<div class="top" id="top"><div class="handle"><div class="mark"></div><div>Vish Kumbhar<small>Build with Vish</small></div></div><div class="pill" id="pill"></div></div>
+<div class="cap" id="cap"></div>
+<div class="prog"><i id="prog"></i></div>
+<div class="grain"></div>
+<script>
+const ease = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
+const back = (x) => { x = Math.max(0, Math.min(1, x)); const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const T_IN = 0.42;
+
+// Backgrounds: two brand-led shades plus the two round-4 support shades, light and dark.
+const BG = {
+  ink:    { fg: "#F4F2FA", acc: "#B3A9FF", base: "#0E0C16", glows: [["#4B3FD6", .7, 760, 120], ["#1E3A9E", .55, 260, 1100]] },
+  violet: { fg: "#FFFFFF", acc: "#FFD8C4", base: "#3F33C9", glows: [["#7F77DD", .8, 820, 160], ["#241C8F", .8, 200, 1150], ["#B8644A", .25, 900, 1200]] },
+  cobalt: { fg: "#FFFFFF", acc: "#FFD8C4", base: "#1F3FB8", glows: [["#5B7CF0", .8, 800, 200], ["#122A7A", .8, 160, 1150]] },
+  peach:  { fg: "#2A1A18", acc: "#3F33C9", base: "#F6C9B2", glows: [["#FFE6D8", .9, 820, 160], ["#E9906F", .6, 180, 1150]] },
+  ivory:  { fg: "#1F1C24", acc: "#4A44C4", base: "#F4F0E8", glows: [["#DCD6FF", .8, 860, 200], ["#FFDCCB", .7, 160, 1150]] },
+};
+const em = (s) => s.replace(/\*(.+?)\*/g, "<em>$1</em>");
+const sprite = (name, style) => `<img class="sprite in" data-a="float" src="/video/sprites/${name}.png" style="${style}">`;
+
+// B-roll builders: each returns inner HTML; animated elements carry data-a (animation) and data-d (delay).
+const LOOK = {
+  hook: (b) => `${b.kick ? `<div class="kick in" data-d="0">${b.kick}</div>` : ""}<div class="serif t1 words">${wordSpans(b.title)}</div>${b.sprite ? sprite(b.sprite, b.spriteStyle || "right:40px;bottom:260px;width:300px") : ""}`,
+  text: (b) => `${b.kick ? `<div class="kick in" data-d="0">${b.kick}</div>` : ""}<div class="serif ${b.size || "t2"} words">${wordSpans(b.title)}</div>${b.sub ? `<div class="sub in" data-d=".35">${em(b.sub)}</div>` : ""}${b.sprite ? sprite(b.sprite, b.spriteStyle || "right:50px;bottom:250px;width:260px") : ""}`,
+  chat: (b) => `<div class="win in" data-a="rise" data-d="0"><div class="bar"><i></i><i></i><i></i></div>
+      <div class="msg" data-type="${b.prompt}" data-d=".2"></div>
+      <div class="gen"><div class="art" data-a="reveal" data-d="${b.genAt ?? 1.5}"></div><div class="shim" data-a="shimmer"></div></div>
+      ${b.ad ? `<div class="ad" data-a="slidein" data-d="${b.adAt ?? 0.4}"><div class="pic"></div><b>Sponsored</b><span>Ad sits beside your image</span></div>` : ""}</div>
+      ${b.sprite ? sprite(b.sprite, b.spriteStyle || "left:30px;bottom:230px;width:230px") : ""}`,
+  stamp: (b) => `<div class="stamp in" data-a="slam" data-d="0" style="color:var(--acc)">${b.stamp}</div><div class="serif t2 words">${wordSpans(b.title)}</div>${b.sub ? `<div class="sub in" data-d=".4">${em(b.sub)}</div>` : ""}`,
+  chips: (b) => `<div class="serif t2 words">${wordSpans(b.title)}</div><div class="chips">${b.chips.map((c, i) => `<div class="chip in" data-a="pop" data-d="${0.35 + i * 0.22}">${c}</div>`).join("")}</div>${b.sprite ? sprite(b.sprite, b.spriteStyle || "right:60px;bottom:240px;width:220px") : ""}`,
+  versus: (b) => `<div class="serif t3 words">${wordSpans(b.title)}</div><div class="vs">
+      <div class="card in" data-a="rise" data-d=".25"><div class="pic" style="background:linear-gradient(160deg,#C4BCFF,#4A3FD6)"></div><p>${b.left}</p></div>
+      <div class="card in" data-a="rise" data-d=".5"><div class="pic" style="background:linear-gradient(150deg,#FFD8C4,#E07A5C)"></div><p>${b.right}</p></div></div>`,
+  stat: (b) => `<canvas class="dots" width="1080" height="1350" data-dots="${b.dots || 0}"></canvas><div class="big" data-count="${b.value}" style="color:var(--acc)">${b.value}</div><div class="serif t3 words" style="margin-top:20px">${wordSpans(b.title)}</div>${b.src ? `<div class="src in" data-d=".6">${b.src}</div>` : ""}`,
+  bars: (b) => `<div class="serif t3 words">${wordSpans(b.title)}</div><div class="bars">${b.bars.map((x, i) => `<div data-a="grow" data-d="${0.3 + i * 0.25}" style="height:${x.h}%;background:${x.c}"><label>${x.label}</label></div>`).join("")}</div>${b.src ? `<div class="src in" data-d=".9" style="margin-top:80px">${b.src}</div>` : ""}`,
+  cta: (b) => `<div class="serif t2 words">${wordSpans(b.title)}</div><div class="btn in" data-a="pop" data-d=".35" id="btn${b.i}">${b.button}</div>
+      <svg class="cursor" data-a="cursor" data-d=".5" viewBox="0 0 24 24"><path d="M4 2l15 9-6.5 1.5L16 20l-3 1.5-3.4-7.3L4 18z" fill="#fff" stroke="#1F1C24" stroke-width="1.2"/></svg><div class="ripple" data-a="ripple" data-d="1.05"></div>
+      ${b.sprite ? sprite(b.sprite, b.spriteStyle || "left:60px;bottom:250px;width:240px") : ""}`,
+};
+let W_COUNT = 0;
+function wordSpans(t) { let on = false; return t.split(" ").map((w) => { if (w.startsWith("*")) on = true; const inner = w.replace(/\*/g, ""); const out = `<span class="w" style="display:inline-block">${on ? `<em style="color:var(--acc)">${inner}</em>` : inner}</span>`; if (/\*[.,!?]?$/.test(w)) on = false; return out; }).join(" "); }
+
+let D, beats = [], words = [];
+window.setup = async (spec) => {
+  D = spec;
+  const cam = document.getElementById("cam");
+  cam.innerHTML = spec.beats.map((b, i) => {
+    const c = BG[b.bg || "ink"];
+    const glows = c.glows.map(([col, a, x, y]) => `<div class="glow" data-gx="${x}" data-gy="${y}" style="left:${x - 450}px;top:${y - 450}px;width:900px;height:900px;background:radial-gradient(circle,${col},transparent 66%);opacity:${a}"></div>`).join("");
+    return `<div class="beat" id="b${i}" style="--acc:${c.acc};color:${c.fg}"><div class="bg" style="background:${c.base}">${glows}</div><div class="content">${LOOK[b.look || "text"]({ ...b, i })}</div></div>`;
+  }).join("");
+  document.getElementById("pill").textContent = spec.tag || "AI x Marketing";
+  beats = spec.beats.map((b, i) => ({ b, el: document.getElementById("b" + i), anim: [...document.querySelectorAll(`#b${i} [data-a], #b${i} .in`)], words: [...document.querySelectorAll(`#b${i} .w`)] }));
+  // dot fields for big numbers: deterministic scatter
+  document.querySelectorAll("canvas.dots").forEach((cv) => {
+    const n = +cv.dataset.dots; if (!n) return; const g = cv.getContext("2d"); let r = 7; const rnd = () => ((r = (r * 9301 + 49297) % 233280) / 233280);
+    cv._pts = Array.from({ length: n }, () => [rnd() * 1080, rnd() * 1350, 2 + rnd() * 4, rnd()]); cv._g = g;
+  });
+  await document.fonts.ready;
+  window.READY = true;
+};
+
+function animate(el, lt, beatDur) {
+  const d = parseFloat(el.dataset.d || 0), a = el.dataset.a || "fade", x = lt - d;
+  if (a === "fade" || el.classList.contains("in") && !el.dataset.a) { const k = ease(clamp(x / 0.5)); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * 30}px)`; return; }
+  if (a === "rise") { const k = ease(clamp(x / 0.6)); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * 120}px) scale(${0.94 + 0.06 * k})`; return; }
+  if (a === "pop") { const k = back(clamp(x / 0.45)); el.style.opacity = clamp(x / 0.15); el.style.transform = `scale(${0.4 + 0.6 * k})`; return; }
+  if (a === "slam") { const k = clamp(x / 0.28); el.style.opacity = k; el.style.transform = `scale(${2.4 - 1.4 * ease(k)}) rotate(${-8 * (1 - k)}deg)`; return; }
+  if (a === "float") { const k = back(clamp(x / 0.6)); el.style.opacity = clamp(x / 0.2); el.style.transform = `translateY(${(1 - k) * 160 + Math.sin(lt * 2.2) * 10}px) rotate(${Math.sin(lt * 1.3) * 2}deg)`; return; }
+  if (a === "reveal") { el.style.opacity = ease(clamp(x / 0.7)); el.style.filter = `blur(${(1 - ease(clamp(x / 0.7))) * 30}px)`; return; }
+  if (a === "shimmer") { el.style.transform = `translateX(${((lt * 0.9) % 1.4 - 0.7) * 200}%)`; el.style.opacity = 1 - ease(clamp((lt - 1.5) / 0.5)); return; }
+  if (a === "slidein") { const k = back(clamp(x / 0.55)); el.style.opacity = clamp(x / 0.2); el.style.transform = `translateX(${(1 - k) * 420}px) rotate(${(1 - k) * 8}deg)`; return; }
+  if (a === "grow") { const k = back(clamp(x / 0.7)); el.style.transform = `scaleY(${k})`; return; }
+  if (a === "cursor") { const btn = el.parentElement.querySelector(".btn"); const r = btn.getBoundingClientRect(); const k = ease(clamp(x / 0.55)); const tx = r.left + r.width * 0.62, ty = r.top + r.height * 0.55; el.style.opacity = clamp(x / 0.15); el.style.left = (tx + (1 - k) * 260) + "px"; el.style.top = (ty + (1 - k) * 300) + "px"; const press = clamp(1 - Math.abs(x - 0.6) / 0.12); el.style.transform = `scale(${1 - 0.18 * press})`; btn.style.transform = `scale(${1 - 0.06 * press})`; return; }
+  if (a === "ripple") { const btn = el.parentElement.querySelector(".btn"); const r = btn.getBoundingClientRect(); el.style.left = (r.left + r.width * 0.62) + "px"; el.style.top = (r.top + r.height * 0.55) + "px"; const k = clamp(x / 0.6); el.style.opacity = x > 0 ? 1 - k : 0; el.style.transform = `scale(${0.2 + k * 1.6})`; return; }
+}
+
+window.frame = (t) => {
+  const n = beats.length;
+  let cur = 0;
+  beats.forEach((B, i) => { if (t >= B.b.at - T_IN) cur = i; });
+  beats.forEach((B, i) => {
+    const b = B.b, el = B.el;
+    const next = beats[i + 1] ? beats[i + 1].b.at - T_IN : D.duration;
+    const end = next + T_IN + 0.05;
+    const vis = (i === cur || (i === cur - 1 && t < beats[cur].b.at + 0.05)) && t >= b.at - T_IN - 0.01 && t < end;
+    el.style.visibility = vis ? "visible" : "hidden";
+    if (!vis) return;
+    const lt = t - b.at; // local time; transition runs over [-T_IN, 0]
+    const p = ease(clamp((lt + T_IN) / T_IN));
+    el.style.zIndex = i;
+    const tr = i === 0 ? "none" : b.trans || "whip";
+    el.style.clipPath = "none"; el.style.filter = "none"; el.style.opacity = 1;
+    let tf = "";
+    if (tr === "whip") { tf = `translateX(${(1 - p) * 100}%)`; el.style.filter = `blur(${(1 - p) * 26}px)`; }
+    else if (tr === "zoom") { tf = `scale(${1 + (1 - p) * 0.9})`; el.style.opacity = p; }
+    else if (tr === "out") { tf = `scale(${0.6 + 0.4 * p})`; el.style.opacity = clamp(p * 1.5); }
+    else if (tr === "pop") { tf = `scale(${0.82 + 0.18 * back(clamp((lt + T_IN) / T_IN))})`; el.style.opacity = clamp(p * 2); }
+    else if (tr === "click") { const [cx, cy] = b.from || [540, 700]; el.style.clipPath = `circle(${p * 1800}px at ${cx}px ${cy}px)`; }
+    else if (tr === "rise") { tf = `translateY(${(1 - p) * 100}%)`; el.style.filter = `blur(${(1 - p) * 20}px)`; }
+    // camera: punch on entry, then a slow push for the rest of the beat
+    const dur = Math.max(0.5, next - b.at);
+    const punch = (1 - ease(clamp(lt / 0.5))) * 0.035 * (lt > 0 ? 1 : 0);
+    const push = 1 + 0.045 * clamp(lt / dur) + punch;
+    el.style.transform = `${tf} scale(${push})`;
+    el.querySelectorAll(".glow").forEach((g, k) => { g.style.transform = `translate(${Math.sin(t * 0.3 + k) * 60}px,${Math.cos(t * 0.25 + k) * 50}px)`; });
+    // words: blur-rise stagger
+    B.words.forEach((w, k) => { const a = ease(clamp((lt - k * 0.05) / 0.45)); w.style.opacity = a; w.style.transform = `translateY(${(1 - a) * 0.45}em)`; w.style.filter = `blur(${(1 - a) * 10}px)`; });
+    B.anim.forEach((x) => animate(x, lt, dur));
+    el.querySelectorAll(".msg[data-type]").forEach((m) => { const s = m.dataset.type, k = Math.floor(clamp((lt - parseFloat(m.dataset.d)) / 1.1) * s.length); m.innerHTML = s.slice(0, k) + (k < s.length || Math.floor(lt * 2) % 2 ? '<span class="caret"></span>' : ""); });
+    el.querySelectorAll("[data-count]").forEach((c) => { const v = c.dataset.count, m = v.match(/^([^\d]*)([\d.]+)(.*)$/); if (!m) return; const k = ease(clamp(lt / 1.1)); const num = parseFloat(m[2]) * k; const dec = (m[2].split(".")[1] || "").length; c.textContent = m[1] + num.toFixed(dec) + m[3]; c.style.transform = `scale(${0.85 + 0.15 * back(clamp(lt / 0.5))})`; });
+    el.querySelectorAll("canvas.dots").forEach((cv) => { if (!cv._pts) return; const g = cv._g; g.clearRect(0, 0, 1080, 1350); const k = clamp(lt / 1.4); const col = getComputedStyle(el).getPropertyValue("--acc"); g.fillStyle = col; cv._pts.forEach(([x, y, r, s], j) => { if (s < k) { g.globalAlpha = 0.25 + 0.5 * clamp((k - s) * 5); g.beginPath(); g.arc(x, y + Math.sin(t + j) * 4, r, 0, 7); g.fill(); } }); });
+  });
+  // chrome colour follows the current background
+  const fg = BG[beats[cur].b.bg || "ink"].fg;
+  document.getElementById("top").style.color = fg;
+  // karaoke caption: the current line, current word lit
+  const cap = document.getElementById("cap"), B = beats.find((x) => t >= x.b.at - 0.05 && t < x.b.until + 0.05);
+  if (B && B.b.say) {
+    const ws = B.b.say.split(" "), total = ws.reduce((s, w) => s + w.length + 1, 0), span = B.b.until - B.b.at;
+    let acc = 0;
+    cap.innerHTML = ws.map((w) => { const s = B.b.at + (acc / total) * span; acc += w.length + 1; const lit = t >= s; const dark = ["ivory", "peach"].includes(B.b.bg); return `<span style="color:${lit ? (dark ? "#1F1C24" : "#fff") : dark ? "rgba(31,28,36,.35)" : "rgba(255,255,255,.4)"};background:${t >= s && t < B.b.at + (acc / total) * span ? (dark ? "rgba(255,255,255,.75)" : "rgba(127,119,221,.55)") : "transparent"}">${w}</span>`; }).join(" ");
+  } else cap.innerHTML = "";
+  document.getElementById("prog").style.width = (t / D.duration) * 100 + "%";
+  return true;
+};
+window.STAGE_LOADED = true;
+</script></body></html>
