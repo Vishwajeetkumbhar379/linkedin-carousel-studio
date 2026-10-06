@@ -30,18 +30,23 @@ def jpg(src: Path, name: str, width: int = 720) -> str:
 def posts(batch: Path) -> list[Path]:
     ps = [p for p in batch.iterdir() if (p / "meta.json").exists()]
     ps += [ROOT / "out" / s for s in ("2026-10-06-chatgpt-image-ads", "2026-10-06-eu-ai-text-watermark", "2026-10-06-meta-creator-hub")]
-    return sorted(ps, key=lambda p: -float(json.loads((p / "meta.json").read_text()).get("score") or 8.5))
+    import re
+
+    def newest(p: Path) -> str:  # most recent ISO or "5 Oct 2026" style date in sources.md ("" = evergreen)
+        t = (p / "sources.md").read_text() if (p / "sources.md").exists() else ""
+        iso = re.findall(r"20\d\d-\d\d-\d\d", t)
+        mon = {m: i for i, m in enumerate("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(), 1)}
+        iso += [f"{y}-{mon[m]:02d}-{int(d):02d}" for d, m, y in re.findall(r"\b(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* (20\d\d)", t)]
+        return max(iso) if iso else ""
+    # news first (freshest first, it goes stale), evergreen after (best score first)
+    return sorted(ps, key=lambda p: (0, "~" + "".join(chr(255 - ord(c)) for c in newest(p))) if newest(p) else (1, -float(json.loads((p / "meta.json").read_text()).get("score") or 8.5)))
 
 
 def schedule(ps: list[Path]) -> list[str]:
     # weekdays, 08:30 Berlin; videos and carousels alternate so the feed never repeats a format twice in a row
-    vids = [p for p in ps if (p / "video.json").exists()]
-    rest = [p for p in ps if p not in vids]
-    order, d = [], dt.date(2026, 10, 7)
-    while vids or rest:
-        for pool in (vids, vids, rest):
-            if pool:
-                order.append(pool.pop(0))
+    order, d = list(ps), dt.date(2026, 10, 7)
+    # keep the same topic family apart: the FDE carousel repeats the FDE video, so push it to the end
+    order.sort(key=lambda p: 1 if json.loads((p / "meta.json").read_text()).get("site_slug") else 0)
     days = []
     for _ in order:
         while d.weekday() > 4:

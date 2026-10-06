@@ -180,8 +180,21 @@
       "say": "Follow for more AI and marketing news."
     }
   ],
-  "duration": 27.05,
-  "posters": {},
+  "duration": 28.45,
+  "posters": {
+    "b01": 2.13,
+    "b02": 3.8,
+    "b03": 6.57,
+    "b04": 8.44,
+    "b05": 10.18,
+    "b06": 11.65,
+    "b07": 14.16,
+    "b08": 16.5,
+    "b09": 18.25,
+    "b10": 21.18,
+    "b11": 23.12,
+    "b12": 27.52
+  },
   "sfx": true,
   "captions": [
     {

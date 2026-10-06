@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Build with Vish//content engine//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:bwv-tiktok-buy-direct-ad-network@buildwithvish
+DTSTAMP:20261007T060000Z
+DTSTART;TZID=Europe/Berlin:20261007T083000
+DTEND;TZID=Europe/Berlin:20261007T090000
+SUMMARY:Post on LinkedIn: TikTok wants shoppers to buy straight from the For You feed.
+DESCRIPTION:Video. File: out/batch-01/tiktok-buy-direct-ad-network/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-tiktok-buy-direct-ad-network
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-chatgpt-image-ads@buildwithvish
+DTSTAMP:20261008T060000Z
+DTSTART;TZID=Europe/Berlin:20261008T083000
+DTEND;TZID=Europe/Berlin:20261008T090000
+SUMMARY:Post on LinkedIn: ChatGPT is turning image prompts into ad space.
+DESCRIPTION:Video. File: out/2026-10-06-chatgpt-image-ads/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-chatgpt-image-ads
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-eu-ai-text-watermark@buildwithvish
+DTSTAMP:20261009T060000Z
+DTSTART;TZID=Europe/Berlin:20261009T083000
+DTEND;TZID=Europe/Berlin:20261009T090000
+SUMMARY:Post on LinkedIn: ChatGPT is about to sign its EU texts. Invisibly.
+DESCRIPTION:Carousel. File: out/2026-10-06-eu-ai-text-watermark/carousel.pdf. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-eu-ai-text-watermark
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-meta-creator-marketing-hub@buildwithvish
+DTSTAMP:20261012T060000Z
+DTSTART;TZID=Europe/Berlin:20261012T083000
+DTEND;TZID=Europe/Berlin:20261012T090000
+SUMMARY:Post on LinkedIn: Meta just made creator ads one click.
+DESCRIPTION:Image. File: out/2026-10-06-meta-creator-hub/image.png. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-meta-creator-marketing-hub
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-frontier-deployed-engineers-ai-ops@buildwithvish
+DTSTAMP:20261013T060000Z
+DTSTART;TZID=Europe/Berlin:20261013T083000
+DTEND;TZID=Europe/Berlin:20261013T090000
+SUMMARY:Post on LinkedIn: Anthropic is putting $100M into one job title.
+DESCRIPTION:Video. File: out/batch-01/frontier-deployed-engineers-ai-ops/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-frontier-deployed-engineers-ai-ops
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-instagram-edits-ai-assistant@buildwithvish
+DTSTAMP:20261014T060000Z
+DTSTART;TZID=Europe/Berlin:20261014T083000
+DTEND;TZID=Europe/Berlin:20261014T090000
+SUMMARY:Post on LinkedIn: Instagram's new AI reads your Reels data, then pitches ideas
+DESCRIPTION:Video. File: out/batch-01/instagram-edits-ai-assistant/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-instagram-edits-ai-assistant
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-made-on-youtube-creator-tools@buildwithvish
+DTSTAMP:20261015T060000Z
+DTSTART;TZID=Europe/Berlin:20261015T083000
+DTEND;TZID=Europe/Berlin:20261015T090000
+SUMMARY:Post on LinkedIn: YouTube's AI editor will add your text hooks for you.
+DESCRIPTION:Carousel. File: out/batch-01/made-on-youtube-creator-tools/carousel.pdf. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-made-on-youtube-creator-tools
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-openai-dots-always-on-agents@buildwithvish
+DTSTAMP:20261016T060000Z
+DTSTART;TZID=Europe/Berlin:20261016T083000
+DTEND;TZID=Europe/Berlin:20261016T090000
+SUMMARY:Post on LinkedIn: ChatGPT agents now keep working without a new prompt.
+DESCRIPTION:Video. File: out/batch-01/openai-dots-always-on-agents/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-openai-dots-always-on-agents
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-meta-muse-small-business@buildwithvish
+DTSTAMP:20261019T060000Z
+DTSTART;TZID=Europe/Berlin:20261019T083000
+DTEND;TZID=Europe/Berlin:20261019T090000
+SUMMARY:Post on LinkedIn: Meta's AI agent now plugs into your shop, books and ads.
+DESCRIPTION:Video. File: out/batch-01/meta-muse-small-business/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-meta-muse-small-business
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-youtube-custom-feeds@buildwithvish
+DTSTAMP:20261020T060000Z
+DTSTART;TZID=Europe/Berlin:20261020T083000
+DTEND;TZID=Europe/Berlin:20261020T090000
+SUMMARY:Post on LinkedIn: YouTube viewers will soon build their own homepage.
+DESCRIPTION:Video. File: out/batch-01/youtube-custom-feeds/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-youtube-custom-feeds
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-google-ai-max-ai-brief-languages@buildwithvish
+DTSTAMP:20261021T060000Z
+DTSTART;TZID=Europe/Berlin:20261021T083000
+DTEND;TZID=Europe/Berlin:20261021T090000
+SUMMARY:Post on LinkedIn: You can now brief Google's ad AI in German.
+DESCRIPTION:Carousel. File: out/batch-01/google-ai-max-ai-brief-languages/carousel.pdf. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-google-ai-max-ai-brief-languages
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-linkedin-post-proofreader@buildwithvish
+DTSTAMP:20261022T060000Z
+DTSTART;TZID=Europe/Berlin:20261022T083000
+DTEND;TZID=Europe/Berlin:20261022T090000
+SUMMARY:Post on LinkedIn: LinkedIn just killed its own AI writer.
+DESCRIPTION:Video. File: out/batch-01/linkedin-post-proofreader/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-linkedin-post-proofreader
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-ai-wont-replace-content-team-bad-brief-will@buildwithvish
+DTSTAMP:20261023T060000Z
+DTSTART;TZID=Europe/Berlin:20261023T083000
+DTEND;TZID=Europe/Berlin:20261023T090000
+SUMMARY:Post on LinkedIn: AI won't replace your content team. A bad brief will.
+DESCRIPTION:Video. File: out/batch-01/ai-wont-replace-content-team-bad-brief-will/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-ai-wont-replace-content-team-bad-brief-will
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-what-predicts-good-creator-partnership@buildwithvish
+DTSTAMP:20261026T060000Z
+DTSTART;TZID=Europe/Berlin:20261026T083000
+DTEND;TZID=Europe/Berlin:20261026T090000
+SUMMARY:Post on LinkedIn: The best creator partners ask questions before they quote.
+DESCRIPTION:Video. File: out/batch-01/what-predicts-good-creator-partnership/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-what-predicts-good-creator-partnership
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-make-ai-brief-you-back@buildwithvish
+DTSTAMP:20261027T060000Z
+DTSTART;TZID=Europe/Berlin:20261027T083000
+DTEND;TZID=Europe/Berlin:20261027T090000
+SUMMARY:Post on LinkedIn: Before AI writes anything, make it brief you back.
+DESCRIPTION:Video. File: out/batch-01/make-ai-brief-you-back/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-make-ai-brief-you-back
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-creator-brief-mistakes-that-burn-budget@buildwithvish
+DTSTAMP:20261028T060000Z
+DTSTART;TZID=Europe/Berlin:20261028T083000
+DTEND;TZID=Europe/Berlin:20261028T090000
+SUMMARY:Post on LinkedIn: Five brief mistakes that quietly burn creator budget.
+DESCRIPTION:Carousel. File: out/batch-01/creator-brief-mistakes-that-burn-budget/carousel.pdf. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-creator-brief-mistakes-that-burn-budget
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-ai-creator-rule-out-pass@buildwithvish
+DTSTAMP:20261029T060000Z
+DTSTART;TZID=Europe/Berlin:20261029T083000
+DTEND;TZID=Europe/Berlin:20261029T090000
+SUMMARY:Post on LinkedIn: Use AI to rule creators out, not find them.
+DESCRIPTION:Video. File: out/batch-01/ai-creator-rule-out-pass/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-ai-creator-rule-out-pass
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-campaign-report-three-decisions@buildwithvish
+DTSTAMP:20261030T060000Z
+DTSTART;TZID=Europe/Berlin:20261030T083000
+DTEND;TZID=Europe/Berlin:20261030T090000
+SUMMARY:Post on LinkedIn: Nobody reads your campaign report. They read the decisions.
+DESCRIPTION:Carousel. File: out/batch-01/campaign-report-three-decisions/carousel.pdf. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-campaign-report-three-decisions
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-ai-creators-cheap-trust-isnt@buildwithvish
+DTSTAMP:20261102T060000Z
+DTSTART;TZID=Europe/Berlin:20261102T083000
+DTEND;TZID=Europe/Berlin:20261102T090000
+SUMMARY:Post on LinkedIn: AI creators are cheap. Trust still isn't.
+DESCRIPTION:Video. File: out/batch-01/ai-creators-cheap-trust-isnt/video.mp4. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-ai-creators-cheap-trust-isnt
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bwv-frontier-deployed-engineers-carousel@buildwithvish
+DTSTAMP:20261103T060000Z
+DTSTART;TZID=Europe/Berlin:20261103T083000
+DTEND;TZID=Europe/Berlin:20261103T090000
+SUMMARY:Post on LinkedIn: Anthropic is putting $100M into one job title.
+DESCRIPTION:Carousel. File: out/batch-01/frontier-deployed-engineers-carousel/carousel.pdf. Caption and first comment on the batch page. Article: https://buildwithvish.netlify.app/#read-frontier-deployed-engineers-ai-ops
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Post time
+END:VALARM
+END:VEVENT
+END:VCALENDAR
