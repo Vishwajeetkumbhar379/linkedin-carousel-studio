@@ -1,0 +1,313 @@
+{
+  "slug": "frontier-deployed-engineers-ai-ops",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI careers",
+  "narration": [
+    [
+      "Anthropic just committed 100 million dollars to train one kind of person.",
+      "Frontier Deployed Engineers."
+    ],
+    [
+      "Ten thousand of them by the end of 2027."
+    ],
+    [
+      "They practise a full rollout: pick the use case, pass security review, hand it over.",
+      "Then twelve weeks leading a real project at their own company."
+    ],
+    [
+      "It's for engineers, by nomination.",
+      "I'm not one, and I won't pretend to be."
+    ],
+    [
+      "But look at the shape of the job.",
+      "Right problem, safe rollout, people actually using it."
+    ],
+    [
+      "That's AI Ops, and marketers already do half of it.",
+      "My plan is on Build with Vish.",
+      "Follow for more."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "JUST ANNOUNCED",
+      "title": "*$100M* for one job title",
+      "avatar": "surprised",
+      "avTop": 180,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 3.63,
+      "say": "Anthropic just committed 100 million dollars to train one kind of person."
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "FDE",
+      "title": "Frontier Deployed Engineer",
+      "sub": "Claude Frontier Academy",
+      "trans": "click",
+      "avatar": "surprised",
+      "avTop": 740,
+      "avSide": "left",
+      "at": 3.63,
+      "until": 5.82,
+      "say": "Frontier Deployed Engineers."
+    },
+    {
+      "look": "stat",
+      "bg": "ink",
+      "value": "10,000",
+      "title": "engineers to train by end of 2027",
+      "src": "Source: Anthropic, 2 Oct 2026",
+      "dots": 200,
+      "trans": "zoom",
+      "at": 5.82,
+      "until": 7.89,
+      "say": "Ten thousand of them by the end of 2027."
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "The practice rollout",
+      "chips": [
+        "Pick the use case",
+        "Security review",
+        "Handover"
+      ],
+      "trans": "pop",
+      "at": 7.89,
+      "until": 11.59,
+      "say": "They practise a full rollout: pick the use case, pass security review, hand it over."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "Then *12 weeks* on a real project",
+      "size": "t2",
+      "sub": "at their own organisation",
+      "trans": "rise",
+      "at": 11.59,
+      "until": 15.12,
+      "say": "Then twelve weeks leading a real project at their own company."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "For engineers. *By nomination.*",
+      "size": "t1",
+      "trans": "whip",
+      "at": 15.12,
+      "until": 16.68,
+      "say": "It's for engineers, by nomination."
+    },
+    {
+      "look": "text",
+      "bg": "ink",
+      "title": "I'm *not one*",
+      "size": "t1",
+      "trans": "click",
+      "avatar": "smirk",
+      "avTop": 730,
+      "avSide": "right",
+      "at": 16.68,
+      "until": 18.66,
+      "say": "I'm not one, and I won't pretend to be."
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "Look at the *shape* of the job",
+      "size": "t2",
+      "trans": "zoom",
+      "avatar": "point",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 18.66,
+      "until": 20.42,
+      "say": "But look at the shape of the job."
+    },
+    {
+      "look": "chips",
+      "bg": "ivory",
+      "title": "The shape",
+      "chips": [
+        "Right problem",
+        "Safe rollout",
+        "Real adoption"
+      ],
+      "trans": "pop",
+      "at": 20.42,
+      "until": 23.54,
+      "say": "Right problem, safe rollout, people actually using it."
+    },
+    {
+      "look": "stamp",
+      "bg": "ink",
+      "stamp": "AI OPS",
+      "title": "Marketers already do half of it",
+      "trans": "rise",
+      "at": 23.54,
+      "until": 26.48,
+      "say": "That's AI Ops, and marketers already do half of it."
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "My plan on *Build with Vish*",
+      "size": "t3",
+      "trans": "whip",
+      "at": 26.48,
+      "until": 28.02,
+      "say": "My plan is on Build with Vish."
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "avatar": "laugh",
+      "avTop": 185,
+      "avSide": "right",
+      "at": 28.02,
+      "until": 28.31,
+      "say": "Follow for more."
+    }
+  ],
+  "duration": 31.11,
+  "posters": {
+    "b01": 2.61,
+    "b02": 5.05,
+    "b03": 7.14,
+    "b04": 10.51,
+    "b05": 14.08,
+    "b06": 16.03,
+    "b07": 17.93,
+    "b08": 19.73,
+    "b09": 22.58,
+    "b10": 25.56,
+    "b11": 27.38,
+    "b12": 30.49
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 2.376,
+      "text": "Anthropic just committed 100 million dollars"
+    },
+    {
+      "at": 2.296,
+      "until": 3.71,
+      "text": "to train one kind of person."
+    },
+    {
+      "at": 3.63,
+      "until": 5.898,
+      "text": "Frontier Deployed Engineers."
+    },
+    {
+      "at": 5.818,
+      "until": 7.12,
+      "text": "Ten thousand of them by"
+    },
+    {
+      "at": 7.04,
+      "until": 7.97,
+      "text": "the end of 2027."
+    },
+    {
+      "at": 7.89,
+      "until": 9.279,
+      "text": "They practise a full rollout:"
+    },
+    {
+      "at": 9.199,
+      "until": 10.316,
+      "text": "pick the use case, pass"
+    },
+    {
+      "at": 10.236,
+      "until": 11.67,
+      "text": "security review, hand it over."
+    },
+    {
+      "at": 11.59,
+      "until": 13.522,
+      "text": "Then twelve weeks leading a real"
+    },
+    {
+      "at": 13.442,
+      "until": 15.2,
+      "text": "project at their own company."
+    },
+    {
+      "at": 15.12,
+      "until": 16.76,
+      "text": "It's for engineers, by nomination."
+    },
+    {
+      "at": 16.68,
+      "until": 17.698,
+      "text": "I'm not one, and I"
+    },
+    {
+      "at": 17.618,
+      "until": 18.74,
+      "text": "won't pretend to be."
+    },
+    {
+      "at": 18.66,
+      "until": 19.565,
+      "text": "But look at the"
+    },
+    {
+      "at": 19.485,
+      "until": 20.5,
+      "text": "shape of the job."
+    },
+    {
+      "at": 20.42,
+      "until": 22.148,
+      "text": "Right problem, safe rollout,"
+    },
+    {
+      "at": 22.068,
+      "until": 23.62,
+      "text": "people actually using it."
+    },
+    {
+      "at": 23.54,
+      "until": 25.266,
+      "text": "That's AI Ops, and marketers"
+    },
+    {
+      "at": 25.186,
+      "until": 26.56,
+      "text": "already do half of it."
+    },
+    {
+      "at": 26.48,
+      "until": 28.1,
+      "text": "My plan is on Build with Vish."
+    },
+    {
+      "at": 28.02,
+      "until": 28.387,
+      "text": "Follow for more."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": false,
+    "bed": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+ "slug": "openai-dots-always-on-agents",
+ "format": "video",
+ "pillar": "AI tools that change marketing work",
+ "score": 9.0,
+ "title": "OpenAI launched Dots: always-on ChatGPT agents with their own computers",
+ "hook": "ChatGPT agents now keep working *without a new prompt*.",
+ "subtitle": "OpenAI's Dots get their own cloud computer. Europe waits.",
+ "cover": {
+  "concept": "A small glowing orb sitting at its own tiny desk with a laptop, working through a night sky window, while a sleeping figure rests in the background. Context symbol: a chat bubble with a progress tick.",
+  "avatar": "surprised",
+  "label": "Always on"
+ },
+ "site_slug": null
+}

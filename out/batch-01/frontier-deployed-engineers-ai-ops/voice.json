@@ -1,0 +1,102 @@
+{
+ "voice": "voice_3rjyhtlhksw1",
+ "duration": 29.107208333333332,
+ "scenes": [
+  {
+   "start": 0.2,
+   "end": 5.818,
+   "phrases": [
+    {
+     "text": "Anthropic just committed 100 million dollars to train one kind of person.",
+     "start": 0.2,
+     "end": 3.63
+    },
+    {
+     "text": "Frontier Deployed Engineers.",
+     "start": 3.63,
+     "end": 5.818
+    }
+   ]
+  },
+  {
+   "start": 5.818,
+   "end": 7.89,
+   "phrases": [
+    {
+     "text": "Ten thousand of them by the end of 2027.",
+     "start": 5.818,
+     "end": 7.89
+    }
+   ]
+  },
+  {
+   "start": 7.89,
+   "end": 15.12,
+   "phrases": [
+    {
+     "text": "They practise a full rollout: pick the use case, pass security review, hand it over.",
+     "start": 7.89,
+     "end": 11.59
+    },
+    {
+     "text": "Then twelve weeks leading a real project at their own company.",
+     "start": 11.59,
+     "end": 15.12
+    }
+   ]
+  },
+  {
+   "start": 15.12,
+   "end": 18.66,
+   "phrases": [
+    {
+     "text": "It's for engineers, by nomination.",
+     "start": 15.12,
+     "end": 16.68
+    },
+    {
+     "text": "I'm not one, and I won't pretend to be.",
+     "start": 16.68,
+     "end": 18.66
+    }
+   ]
+  },
+  {
+   "start": 18.66,
+   "end": 23.54,
+   "phrases": [
+    {
+     "text": "But look at the shape of the job.",
+     "start": 18.66,
+     "end": 20.42
+    },
+    {
+     "text": "Right problem, safe rollout, people actually using it.",
+     "start": 20.42,
+     "end": 23.54
+    }
+   ]
+  },
+  {
+   "start": 23.54,
+   "end": 28.307,
+   "phrases": [
+    {
+     "text": "That's AI Ops, and marketers already do half of it.",
+     "start": 23.54,
+     "end": 26.48
+    },
+    {
+     "text": "My plan is on Build with Vish.",
+     "start": 26.48,
+     "end": 28.02
+    },
+    {
+     "text": "Follow for more.",
+     "start": 28.02,
+     "end": 28.307
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+Sources: TechCrunch https://techcrunch.com/2026/09/30/instagram-rolls-out-an-ai-video-assistant-for-creators/ · PetaPixel https://petapixel.com/2026/10/01/instagram-launches-ai-assistant-that-analyzes-your-reels-and-suggests-new-ideas/

@@ -1,0 +1,1 @@
+Sources: TikTok Newsroom https://newsroom.tiktok.com/tiktok-unveils-ai-powered-updates-for-advertisers-driving-discovery-action-and-measurable-business-outcomes?lang=en · PPC Land https://ppc.land/tiktok-opens-ad-network-of-nearly-400-000-apps-to-us-advertisers/ · Music Ally https://musically.com/2026/10/06/tiktok-launches-an-external-ad-network-across-nearly-400k-apps/

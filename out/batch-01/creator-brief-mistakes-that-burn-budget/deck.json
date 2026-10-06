@@ -1,0 +1,92 @@
+{
+  "slug": "creator-brief-mistakes-that-burn-budget",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "Creator economy x AI",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-creator-brief-mistakes-that-burn-budget",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Five brief mistakes that *quietly burn* creator budget.",
+      "subtitle": "From 850+ creator deals. None look expensive until the reshoot.",
+      "chip": "Creator marketing",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-burning-brief",
+      "hero_style": "left:200px;bottom:20px;width:680px",
+      "layers": [
+        {
+          "asset": "vish-badge-surprised",
+          "style": "left:40px;top:760px;width:200px;transform:rotate(-6deg)"
+        },
+        {
+          "html": "the reshoot bill <i>↓</i>",
+          "class": "tag dark",
+          "style": "right:60px;top:760px;transform:rotate(3deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · Writing their script",
+      "title": "You hired a voice, then muted it.",
+      "body": "A word-for-word script makes a creator sound like an ad. Their audience scrolls. Give them *the one thing to get across* and let them say it their way.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · Six key messages",
+      "title": "If everything matters, nothing lands.",
+      "body": "A 30-second video can carry one message, maybe two. Pick the one that matters. The rest goes on the landing page, not in the creator's mouth."
+    },
+    {
+      "type": "point",
+      "label": "03 · No approved claims",
+      "title": "Vague claims mean late rewrites.",
+      "body": "If the brief doesn't list exactly what can be said about the product, legal finds out at draft stage. That's when changes cost the most. List the *approved claims* up front."
+    },
+    {
+      "type": "point",
+      "label": "04 · Feedback from everyone",
+      "title": "Four reviewers, four directions.",
+      "body": "When nobody owns approval, the creator gets contradicting notes and a third round. Name one approver and *cap feedback at two rounds* in the brief.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "05 · Hiding the real plan",
+      "title": "Say if it'll run as an ad.",
+      "body": "Creators film differently for paid use: clean hooks, cutdowns, no time-bound jokes. Hide that, and you pay again for edits. Put *usage and the real KPI* in the brief."
+    },
+    {
+      "type": "list",
+      "title": "Before you send any brief",
+      "items": [
+        "One message, not six",
+        "Approved claims listed",
+        "One named approver",
+        "Usage and KPI stated"
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *creator brief*.",
+      "subtitle": "Free one-page brief template on Build with Vish.",
+      "question": "Which of these five have you been on the receiving end of?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free template inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 39
+}

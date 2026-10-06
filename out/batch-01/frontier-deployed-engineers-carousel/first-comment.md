@@ -1,0 +1,1 @@
+Sources: Anthropic announcement (2 Oct 2026) https://www.anthropic.com/news/claude-frontier-academy · CommBank newsroom (3 Oct 2026) https://www.commbank.com.au/articles/newsroom/2026/10/commbank-engineers-anthropic-claude-frontier-academy.html

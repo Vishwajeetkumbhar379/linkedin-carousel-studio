@@ -1,0 +1,308 @@
+{
+  "slug": "what-predicts-good-creator-partnership",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "Creator economy",
+  "narration": [
+    [
+      "850 plus creator deals taught me this.",
+      "Read the first reply before the media kit."
+    ],
+    [
+      "Good partners ask questions before they quote.",
+      "Who's it for, what's the goal, what can't I say?"
+    ],
+    [
+      "They push back on the brief.",
+      "Usually because they know their audience better than we do."
+    ],
+    [
+      "They tell you what flopped for them before."
+    ],
+    [
+      "And they turn down products that don't fit.",
+      "That no is why people trust their yes."
+    ],
+    [
+      "Fit and follow-through beat follower count.",
+      "What do you look for first?",
+      "More on Build with Vish.",
+      "Follow for more."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "850+ CREATOR DEALS",
+      "title": "Good partners *ask questions* first",
+      "avatar": "point",
+      "avTop": 180,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 2.45,
+      "say": "850 plus creator deals taught me this."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Read the *first reply* first",
+      "size": "t1",
+      "trans": "whip",
+      "avatar": "point",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 2.45,
+      "until": 4.92,
+      "say": "Read the first reply before the media kit."
+    },
+    {
+      "look": "versus",
+      "bg": "violet",
+      "title": "Two first replies",
+      "left": "Here's my rate",
+      "right": "Who's it for?",
+      "trans": "zoom",
+      "at": 4.92,
+      "until": 7.12,
+      "say": "Good partners ask questions before they quote."
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "Questions that predict a good deal",
+      "chips": [
+        "Who's it for?",
+        "What's the goal?",
+        "What can't I say?"
+      ],
+      "trans": "pop",
+      "at": 7.12,
+      "until": 9.19,
+      "say": "Who's it for, what's the goal, what can't I say?"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "PUSHBACK",
+      "title": "They challenge the brief",
+      "trans": "click",
+      "at": 9.19,
+      "until": 10.39,
+      "say": "They push back on the brief."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "They know their audience *better than we do*",
+      "size": "t2",
+      "trans": "rise",
+      "avatar": "thinking",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 10.39,
+      "until": 12.7,
+      "say": "Usually because they know their audience better than we do."
+    },
+    {
+      "look": "text",
+      "bg": "ink",
+      "title": "They tell you *what flopped*",
+      "size": "t1",
+      "trans": "whip",
+      "at": 12.7,
+      "until": 14.32,
+      "say": "They tell you what flopped for them before."
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "NO",
+      "title": "They turn down bad fits",
+      "trans": "pop",
+      "avatar": "smirk",
+      "avTop": 740,
+      "avSide": "left",
+      "at": 14.32,
+      "until": 16.34,
+      "say": "And they turn down products that don't fit."
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "That no is why people *trust their yes*",
+      "size": "t2",
+      "trans": "rise",
+      "at": 16.34,
+      "until": 18.63,
+      "say": "That no is why people trust their yes."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "Fit and follow-through *beat follower count*",
+      "size": "t2",
+      "trans": "zoom",
+      "at": 18.63,
+      "until": 20.68,
+      "say": "Fit and follow-through beat follower count."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "What do *you* look for first?",
+      "size": "t2",
+      "trans": "click",
+      "at": 20.68,
+      "until": 21.75,
+      "say": "What do you look for first?"
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "More on *Build with Vish*",
+      "size": "t3",
+      "trans": "whip",
+      "at": 21.75,
+      "until": 22.82,
+      "say": "More on Build with Vish."
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "avatar": "laugh",
+      "avTop": 185,
+      "avSide": "right",
+      "at": 22.82,
+      "until": 23.34,
+      "say": "Follow for more."
+    }
+  ],
+  "duration": 26.14,
+  "posters": {
+    "b01": 1.66,
+    "b02": 4.09,
+    "b03": 6.34,
+    "b04": 8.44,
+    "b05": 9.81,
+    "b06": 11.9,
+    "b07": 13.66,
+    "b08": 15.6,
+    "b09": 17.84,
+    "b10": 19.93,
+    "b11": 21.2,
+    "b12": 22.27,
+    "b13": 25.48
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 2.53,
+      "text": "850 plus creator deals taught me this."
+    },
+    {
+      "at": 2.45,
+      "until": 3.735,
+      "text": "Read the first reply"
+    },
+    {
+      "at": 3.655,
+      "until": 5.0,
+      "text": "before the media kit."
+    },
+    {
+      "at": 4.92,
+      "until": 7.2,
+      "text": "Good partners ask questions before they quote."
+    },
+    {
+      "at": 7.12,
+      "until": 8.257,
+      "text": "Who's it for, what's the"
+    },
+    {
+      "at": 8.177,
+      "until": 9.27,
+      "text": "goal, what can't I say?"
+    },
+    {
+      "at": 9.19,
+      "until": 10.47,
+      "text": "They push back on the brief."
+    },
+    {
+      "at": 10.39,
+      "until": 11.705,
+      "text": "Usually because they know their"
+    },
+    {
+      "at": 11.625,
+      "until": 12.78,
+      "text": "audience better than we do."
+    },
+    {
+      "at": 12.7,
+      "until": 13.474,
+      "text": "They tell you what"
+    },
+    {
+      "at": 13.394,
+      "until": 14.4,
+      "text": "flopped for them before."
+    },
+    {
+      "at": 14.32,
+      "until": 15.266,
+      "text": "And they turn down"
+    },
+    {
+      "at": 15.186,
+      "until": 16.42,
+      "text": "products that don't fit."
+    },
+    {
+      "at": 16.34,
+      "until": 17.286,
+      "text": "That no is why"
+    },
+    {
+      "at": 17.206,
+      "until": 18.71,
+      "text": "people trust their yes."
+    },
+    {
+      "at": 18.63,
+      "until": 20.76,
+      "text": "Fit and follow-through beat follower count."
+    },
+    {
+      "at": 20.68,
+      "until": 21.83,
+      "text": "What do you look for first?"
+    },
+    {
+      "at": 21.75,
+      "until": 22.9,
+      "text": "More on Build with Vish."
+    },
+    {
+      "at": 22.82,
+      "until": 23.419,
+      "text": "Follow for more."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": false,
+    "bed": false
+  }
+}

@@ -1,0 +1,108 @@
+{
+ "voice": "voice_3rjyhtlhksw1",
+ "duration": 28.663666666666668,
+ "scenes": [
+  {
+   "start": 0.2,
+   "end": 4.98,
+   "phrases": [
+    {
+     "text": "OpenAI just launched Dots.",
+     "start": 0.2,
+     "end": 1.82
+    },
+    {
+     "text": "Agents in ChatGPT that keep working without a new prompt.",
+     "start": 1.82,
+     "end": 4.98
+    }
+   ]
+  },
+  {
+   "start": 4.98,
+   "end": 9.0,
+   "phrases": [
+    {
+     "text": "Each one gets its own cloud computer,",
+     "start": 4.98,
+     "end": 7.24
+    },
+    {
+     "text": "and can reach more than four thousand apps.",
+     "start": 7.24,
+     "end": 9.0
+    }
+   ]
+  },
+  {
+   "start": 9.0,
+   "end": 11.75,
+   "phrases": [
+    {
+     "text": "You can message it in ChatGPT, Slack or Teams.",
+     "start": 9.0,
+     "end": 11.75
+    }
+   ]
+  },
+  {
+   "start": 11.75,
+   "end": 15.27,
+   "phrases": [
+    {
+     "text": "When it's idle, it looks for ways to help,",
+     "start": 11.75,
+     "end": 13.6
+    },
+    {
+     "text": "but only in read-only mode.",
+     "start": 13.6,
+     "end": 15.27
+    }
+   ]
+  },
+  {
+   "start": 15.27,
+   "end": 20.19,
+   "phrases": [
+    {
+     "text": "Here's the catch for Europe.",
+     "start": 15.27,
+     "end": 16.51
+    },
+    {
+     "text": "Pro users in the EEA, Switzerland and the UK are left out for now.",
+     "start": 16.51,
+     "end": 20.19
+    }
+   ]
+  },
+  {
+   "start": 20.19,
+   "end": 26.17,
+   "phrases": [
+    {
+     "text": "My advice: write the job description before you hire the agent.",
+     "start": 20.19,
+     "end": 23.52
+    },
+    {
+     "text": "One goal, clear limits, and what needs your approval.",
+     "start": 23.52,
+     "end": 26.17
+    }
+   ]
+  },
+  {
+   "start": 26.17,
+   "end": 27.864,
+   "phrases": [
+    {
+     "text": "Follow for more AI and marketing news.",
+     "start": 26.17,
+     "end": 27.864
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,144 @@
+{
+  "slug": "meta-muse-small-business",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "Meta just took its Muse agent to small businesses."
+    ],
+    [
+      "It connects to Shopify, Stripe, Canva and QuickBooks,",
+      "and it can read your Instagram and Facebook page stats."
+    ],
+    [
+      "Ask it to look at sales and campaigns,",
+      "and it can plan growth and draft new ads."
+    ],
+    [
+      "One rule matters most.",
+      "It won't post, send or buy anything without your approval."
+    ],
+    [
+      "Meta says about one in three early users",
+      "had already connected it to a business account."
+    ],
+    [
+      "My take: the agent is free, your brand voice isn't.",
+      "Give it a proper brief first."
+    ],
+    [
+      "Follow for more AI and marketing news."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "META NEWS",
+      "title": "Muse is coming for *small business*",
+      "avatar": "surprised",
+      "avTop": 180,
+      "avSide": "right"
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "It connects to",
+      "chips": [
+        "Shopify",
+        "Stripe",
+        "Canva",
+        "QuickBooks"
+      ],
+      "trans": "whip"
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Reads your *Instagram* and *Page* stats",
+      "size": "t2",
+      "trans": "rise"
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "Sales and campaigns, *analysed*",
+      "size": "t2",
+      "trans": "click"
+    },
+    {
+      "look": "feed",
+      "bg": "peach",
+      "title": "Drafts *new ads* for you",
+      "trans": "zoom"
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "One rule *matters most*",
+      "size": "t1",
+      "trans": "whip",
+      "avatar": "point",
+      "avTop": 730,
+      "avSide": "left"
+    },
+    {
+      "look": "stamp",
+      "bg": "ink",
+      "stamp": "APPROVAL",
+      "title": "No post, send or buy without you",
+      "trans": "pop"
+    },
+    {
+      "look": "stat",
+      "bg": "cobalt",
+      "value": "1 in 3",
+      "title": "early users linked a business account",
+      "src": "Source: Meta via Axios and The Next Web, 29 Sep 2026",
+      "dots": 200,
+      "trans": "zoom",
+      "avatar": "surprised",
+      "avTop": 185,
+      "avSide": "right"
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "They were *already* doing it",
+      "size": "t2",
+      "trans": "rise"
+    },
+    {
+      "look": "versus",
+      "bg": "violet",
+      "title": "What it costs you",
+      "left": "Agent: free",
+      "right": "Brand voice: on you",
+      "trans": "click",
+      "avatar": "smirk",
+      "avTop": 960,
+      "avSide": "left"
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Here's our brand brief: who we sell to, our tone, words we never use. Draft 3 ads.",
+      "trans": "whip"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

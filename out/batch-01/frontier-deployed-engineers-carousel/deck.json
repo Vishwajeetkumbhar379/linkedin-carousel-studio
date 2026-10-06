@@ -1,0 +1,101 @@
+{
+  "slug": "frontier-deployed-engineers-carousel",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "Career and AI Ops pivot",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-frontier-deployed-engineers-carousel",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Anthropic is putting *$100M* into one job title.",
+      "subtitle": "It's an engineering role. The shape of it is AI Ops.",
+      "chip": "AI careers",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-laptop-cap",
+      "hero_style": "left:140px;bottom:40px;width:800px",
+      "layers": [
+        {
+          "asset": "vish-badge-surprised",
+          "style": "left:40px;top:700px;width:210px;transform:rotate(-6deg)"
+        },
+        {
+          "html": "$100M · 10,000 engineers",
+          "class": "tag dark",
+          "style": "right:60px;top:690px;transform:rotate(3deg)"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "label": "01 · The news",
+      "value": "$100M",
+      "title": "to train 10,000 Frontier Deployed Engineers by the end of 2027.",
+      "body": "Anthropic launched Claude Frontier Academy on 2 October. The first badges are expected in early 2027.",
+      "source": "Source: Anthropic, 2 Oct 2026",
+      "tint": "purple"
+    },
+    {
+      "type": "point",
+      "label": "02 · Who's in",
+      "title": "Big consultancies and banks went first.",
+      "body": "Accenture, Bain, Capgemini, Commonwealth Bank of Australia, Deloitte, McKinsey, Morgan Stanley and Novo Nordisk are in the first cohorts. CommBank is sending an initial group of 20 engineers.",
+      "tint": "teal"
+    },
+    {
+      "type": "list",
+      "title": "What they actually practise",
+      "items": [
+        "Pick the right use case",
+        "Pass security review",
+        "Hand it over so people use it",
+        "Then 12 weeks leading a real rollout at their own company"
+      ]
+    },
+    {
+      "type": "compare",
+      "title": "It's an engineering role. *Here's the overlap.*",
+      "left": {
+        "label": "Engineers only",
+        "items": [
+          "Writing the code",
+          "Hands-on software work",
+          "Nomination to join"
+        ]
+      },
+      "right": {
+        "label": "Marketers already do",
+        "items": [
+          "Choosing the problem worth solving",
+          "Getting sign-off",
+          "Making people actually use it"
+        ]
+      }
+    },
+    {
+      "type": "point",
+      "label": "05 · My take",
+      "title": "That's AI Ops.",
+      "body": "I'm not an engineer and won't pretend to be. But right problem, safe rollout and real adoption is the job I'm growing into, and marketers already do half of it.",
+      "tint": "coral"
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *career chat*.",
+      "subtitle": "My AI Ops plan and the sources on Build with Vish.",
+      "question": "Would you move from marketing into AI Ops?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 36
+}

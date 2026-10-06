@@ -1,0 +1,15 @@
+{
+ "slug": "frontier-deployed-engineers-carousel",
+ "format": "carousel",
+ "pillar": "Career and AI Ops pivot",
+ "score": 8.8,
+ "title": "Anthropic is training 10,000 'Frontier Deployed Engineers'. What marketers should take from it",
+ "hook": "Anthropic is putting *$100M* into one job title.",
+ "subtitle": "It's an engineering role. The shape of it is AI Ops.",
+ "cover": {
+  "concept": "graduation cap on a laptop",
+  "avatar": "surprised",
+  "label": "$100M · 10,000 engineers"
+ },
+ "site_slug": "frontier-deployed-engineers-ai-ops"
+}

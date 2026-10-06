@@ -1,0 +1,102 @@
+{
+ "voice": "voice_3rjyhtlhksw1",
+ "duration": 24.871458333333333,
+ "scenes": [
+  {
+   "start": 0.2,
+   "end": 4.69,
+   "phrases": [
+    {
+     "text": "Most bad AI drafts come from a brief it misread.",
+     "start": 0.2,
+     "end": 2.94
+    },
+    {
+     "text": "So I stopped letting it write first.",
+     "start": 2.94,
+     "end": 4.69
+    }
+   ]
+  },
+  {
+   "start": 4.69,
+   "end": 8.79,
+   "phrases": [
+    {
+     "text": "Agencies call this the brief-back.",
+     "start": 4.69,
+     "end": 6.5
+    },
+    {
+     "text": "You hand over a brief, they tell you what they heard.",
+     "start": 6.5,
+     "end": 8.79
+    }
+   ]
+  },
+  {
+   "start": 8.79,
+   "end": 14.15,
+   "phrases": [
+    {
+     "text": "Paste your brief and ask four things.",
+     "start": 8.79,
+     "end": 10.48
+    },
+    {
+     "text": "What did you hear, what's missing, what are you assuming, how will we know it worked?",
+     "start": 10.48,
+     "end": 14.15
+    }
+   ]
+  },
+  {
+   "start": 14.15,
+   "end": 17.1,
+   "phrases": [
+    {
+     "text": "Half the time the gaps are mine.",
+     "start": 14.15,
+     "end": 15.51
+    },
+    {
+     "text": "So I fix the brief, not the draft.",
+     "start": 15.51,
+     "end": 17.1
+    }
+   ]
+  },
+  {
+   "start": 17.1,
+   "end": 22.17,
+   "phrases": [
+    {
+     "text": "Then one line: write it, using only what we agreed.",
+     "start": 17.1,
+     "end": 20.25
+    },
+    {
+     "text": "The first draft lands much closer.",
+     "start": 20.25,
+     "end": 22.17
+    }
+   ]
+  },
+  {
+   "start": 22.17,
+   "end": 24.071,
+   "phrases": [
+    {
+     "text": "The full prompt is on my site.",
+     "start": 22.17,
+     "end": 23.52
+    },
+    {
+     "text": "Follow for more.",
+     "start": 23.52,
+     "end": 24.071
+    }
+   ]
+  }
+ ]
+}

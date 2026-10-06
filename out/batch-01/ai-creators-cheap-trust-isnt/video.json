@@ -1,0 +1,276 @@
+{
+  "slug": "ai-creators-cheap-trust-isnt",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "Hot take",
+  "narration": [
+    [
+      "AI avatar ads are getting good.",
+      "Cheap, fast, no contract, no reshoots."
+    ],
+    [
+      "I get the appeal.",
+      "I've chased plenty of creator approvals."
+    ],
+    [
+      "But a creator isn't paid for a face reading a script.",
+      "They're paid for an audience that actually believes them."
+    ],
+    [
+      "An avatar has no comment history.",
+      "No record of ever saying no."
+    ],
+    [
+      "Use AI to test angles and scripts cheaply.",
+      "Use real people when you need belief."
+    ],
+    [
+      "Where do you draw the line?",
+      "Follow for more."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "HOT TAKE",
+      "title": "AI creators are cheap. *Trust isn't.*",
+      "avatar": "smirk",
+      "avTop": 180,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 1.91,
+      "say": "AI avatar ads are getting good."
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "Why brands like avatars",
+      "chips": [
+        "Cheap",
+        "Fast",
+        "No contract",
+        "No reshoots"
+      ],
+      "trans": "pop",
+      "at": 1.91,
+      "until": 3.61,
+      "say": "Cheap, fast, no contract, no reshoots."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "I *get* the appeal",
+      "size": "t1",
+      "trans": "whip",
+      "avatar": "laugh",
+      "avTop": 730,
+      "avSide": "right",
+      "at": 3.61,
+      "until": 4.59,
+      "say": "I get the appeal."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Approval chasing is *real work*",
+      "size": "t2",
+      "trans": "rise",
+      "avatar": "stressed",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 4.59,
+      "until": 7.5,
+      "say": "I've chased plenty of creator approvals."
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "Creators aren't paid for *a face*",
+      "size": "t2",
+      "trans": "zoom",
+      "at": 7.5,
+      "until": 10.02,
+      "say": "But a creator isn't paid for a face reading a script."
+    },
+    {
+      "look": "stamp",
+      "bg": "ink",
+      "stamp": "BELIEF",
+      "title": "They're paid for an audience that trusts them",
+      "trans": "click",
+      "at": 10.02,
+      "until": 12.63,
+      "say": "They're paid for an audience that actually believes them."
+    },
+    {
+      "look": "feed",
+      "bg": "peach",
+      "title": "No comment history",
+      "trans": "rise",
+      "at": 12.63,
+      "until": 14.12,
+      "say": "An avatar has no comment history."
+    },
+    {
+      "look": "text",
+      "bg": "ink",
+      "title": "No record of *saying no*",
+      "size": "t1",
+      "trans": "whip",
+      "avatar": "smirk",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 14.12,
+      "until": 15.66,
+      "say": "No record of ever saying no."
+    },
+    {
+      "look": "versus",
+      "bg": "violet",
+      "title": "Who does what",
+      "left": "AI: test angles",
+      "right": "People: earn belief",
+      "trans": "zoom",
+      "at": 15.66,
+      "until": 18.1,
+      "say": "Use AI to test angles and scripts cheaply."
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "Use people when you *need belief*",
+      "size": "t2",
+      "trans": "pop",
+      "at": 18.1,
+      "until": 19.95,
+      "say": "Use real people when you need belief."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Where do *you* draw the line?",
+      "size": "t2",
+      "trans": "click",
+      "at": 19.95,
+      "until": 21.26,
+      "say": "Where do you draw the line?"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "avatar": "laugh",
+      "avTop": 185,
+      "avSide": "right",
+      "at": 21.26,
+      "until": 21.85,
+      "say": "Follow for more."
+    }
+  ],
+  "duration": 24.65,
+  "posters": {
+    "b01": 1.23,
+    "b02": 2.93,
+    "b03": 4.06,
+    "b04": 6.58,
+    "b05": 9.18,
+    "b06": 11.77,
+    "b07": 13.49,
+    "b08": 15.02,
+    "b09": 17.28,
+    "b10": 19.24,
+    "b11": 20.66,
+    "b12": 23.97
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 1.99,
+      "text": "AI avatar ads are getting good."
+    },
+    {
+      "at": 1.91,
+      "until": 3.69,
+      "text": "Cheap, fast, no contract, no reshoots."
+    },
+    {
+      "at": 3.61,
+      "until": 4.67,
+      "text": "I get the appeal."
+    },
+    {
+      "at": 4.59,
+      "until": 7.58,
+      "text": "I've chased plenty of creator approvals."
+    },
+    {
+      "at": 7.5,
+      "until": 8.937,
+      "text": "But a creator isn't paid for"
+    },
+    {
+      "at": 8.857,
+      "until": 10.1,
+      "text": "a face reading a script."
+    },
+    {
+      "at": 10.02,
+      "until": 11.405,
+      "text": "They're paid for an audience"
+    },
+    {
+      "at": 11.325,
+      "until": 12.71,
+      "text": "that actually believes them."
+    },
+    {
+      "at": 12.63,
+      "until": 14.2,
+      "text": "An avatar has no comment history."
+    },
+    {
+      "at": 14.12,
+      "until": 15.74,
+      "text": "No record of ever saying no."
+    },
+    {
+      "at": 15.66,
+      "until": 16.573,
+      "text": "Use AI to test"
+    },
+    {
+      "at": 16.493,
+      "until": 18.18,
+      "text": "angles and scripts cheaply."
+    },
+    {
+      "at": 18.1,
+      "until": 20.03,
+      "text": "Use real people when you need belief."
+    },
+    {
+      "at": 19.95,
+      "until": 21.34,
+      "text": "Where do you draw the line?"
+    },
+    {
+      "at": 21.26,
+      "until": 21.926,
+      "text": "Follow for more."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": false,
+    "bed": false
+  }
+}

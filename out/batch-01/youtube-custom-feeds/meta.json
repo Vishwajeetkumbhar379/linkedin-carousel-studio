@@ -1,0 +1,15 @@
+{
+ "slug": "youtube-custom-feeds",
+ "format": "video",
+ "pillar": "AI tools that change marketing work",
+ "score": 8.5,
+ "title": "YouTube Custom Feeds: viewers will prompt their own homepage",
+ "hook": "YouTube viewers will soon *build their own homepage*.",
+ "subtitle": "Custom Feeds turn a mood or interest into a feed.",
+ "cover": {
+  "concept": "A TV screen splitting into several stacked feed tabs, each labelled by a mood icon (a coffee cup, a dumbbell, a cooking pot), with a hand typing into a chat bubble that builds a new tab. Context symbol: a play button.",
+  "avatar": "thinking",
+  "label": "Your feed, by prompt"
+ },
+ "site_slug": null
+}

@@ -1,0 +1,1026 @@
+[
+ {
+  "slug": "make-ai-brief-you-back",
+  "format": "video",
+  "pillar": "Real workflows and prompts",
+  "score": 8.4,
+  "title": "Make AI brief you back before it writes a word",
+  "hook": "Before AI writes anything, make it *brief you back*.",
+  "subtitle": "The agency habit that catches a bad brief in two minutes.",
+  "cover": {
+   "concept": "A friendly chat bubble holding up a clipboard and reading a brief back to a small human figure, one line on the clipboard circled with a big question mark; a stack of crumpled drafts in the background",
+   "avatar": "smirk",
+   "label": "the brief-back"
+  },
+  "facts": [],
+  "narration": [
+   [
+    "Most bad AI drafts come from a brief it misread.",
+    "So I stopped letting it write first."
+   ],
+   [
+    "Agencies call this the brief-back.",
+    "You hand over a brief, they tell you what they heard."
+   ],
+   [
+    "Paste your brief and ask four things.",
+    "What did you hear, what's missing, what are you assuming, how will we know it worked?"
+   ],
+   [
+    "Half the time the gaps are mine.",
+    "So I fix the brief, not the draft."
+   ],
+   [
+    "Then one line: write it, using only what we agreed.",
+    "The first draft lands much closer."
+   ],
+   [
+    "The full prompt is on my site.",
+    "Follow for more."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "STEAL THIS",
+    "title": "Make AI *brief you back*"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "Bad drafts start with *misread briefs*",
+    "size": "t2",
+    "trans": "whip",
+    "avatar": "stressed"
+   },
+   {
+    "look": "stamp",
+    "bg": "cobalt",
+    "stamp": "BRIEF-BACK",
+    "title": "An old agency habit",
+    "trans": "click"
+   },
+   {
+    "look": "text",
+    "bg": "peach",
+    "title": "They tell you *what they heard*",
+    "size": "t2",
+    "trans": "rise"
+   },
+   {
+    "look": "chat",
+    "bg": "ivory",
+    "prompt": "Before you write anything: tell me what you heard, what's missing, what you're assuming, and how we'll know it worked.",
+    "trans": "zoom"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "Four questions",
+    "chips": [
+     "What I heard",
+     "What's missing",
+     "Assumptions",
+     "Success test"
+    ],
+    "trans": "pop"
+   },
+   {
+    "look": "text",
+    "bg": "ink",
+    "title": "The gaps are often *mine*",
+    "size": "t1",
+    "trans": "whip",
+    "avatar": "smirk"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "Fix the brief, *not the draft*",
+    "size": "t1",
+    "trans": "click"
+   },
+   {
+    "look": "chat",
+    "bg": "ivory",
+    "prompt": "Good. Now write it, using only what we agreed above.",
+    "trans": "rise"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "First draft, *much closer*",
+    "size": "t2",
+    "trans": "zoom",
+    "avatar": "point"
+   },
+   {
+    "look": "text",
+    "bg": "peach",
+    "title": "Prompt on *Build with Vish*",
+    "size": "t3",
+    "trans": "whip"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI x marketing* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "laugh"
+   }
+  ],
+  "caption": "Before AI writes anything, make it brief you back.\n\nMost weak AI drafts I see aren't a model problem. The AI misread the brief, filled the gaps with average guesses, and wrote confidently in the wrong direction.\n\nAgencies solved this years ago with the brief-back. You hand over a brief, and before anyone writes, they tell you what they heard.\n\nI now do the same with AI:\n→ Paste the brief\n→ Ask: what did you hear, what's missing, what are you assuming, how will we know it worked?\n→ Correct the brief, not the draft\n→ Then: \"Write it, using only what we agreed.\"\n\nHonest bit: when I first tried this, most of the gaps it found were mine. Vague goal, no audience, no line about what success looks like. The AI just made them visible.\n\nIt adds two minutes and saves a round of rewrites.\n\nWhat's the last brief you sent that came back completely wrong?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-make-ai-brief-you-back",
+  "first_comment": "No stats in this one, it's a workflow. The six-box brief it builds on: https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency",
+  "article": "# Make AI brief you back before it writes a word\n\nMost weak AI drafts I see aren't a model problem. They're a listening problem. The AI read your brief, missed what mattered, filled every gap with the most average guess, and then wrote 600 confident words in the wrong direction.\n\nAgencies solved this long before AI. It's called the **brief-back**. When a client hands over a brief, the team doesn't start writing. They come back and say: \"Here's what we heard. Here's what we think is missing. Here's what we're assuming.\" Only when both sides agree does the work start.\n\nI've written hundreds of creator briefs, and the brief-back caught more problems than any revision round. So I now run it with AI on anything longer than a caption.\n\n## Step 1: Paste the brief and stop it writing\n\nUse whatever brief you have. If you use my [six-box brief](https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency), even better. Then add this:\n\n```\nDon't write anything yet. Brief me back first.\n\n1. WHAT I HEARD: the goal, audience and main message, in your own words, 3 lines max.\n2. WHAT'S MISSING: anything you'd need to do this well that I haven't given you.\n3. WHAT YOU'RE ASSUMING: every gap you'd fill with a guess. Label each guess.\n4. SUCCESS TEST: how we'd know this piece worked, in one sentence.\n5. ONE RISK: the most likely way this goes wrong.\n\nKeep it short. Ask, don't fill.\n```\n\n## Step 2: Read it like a client, not a writer\n\nThis is the useful part. Look for three things:\n\n- **A goal you didn't mean.** If it says \"drive awareness\" and you meant \"get sign-ups\", the whole draft would have been wrong.\n- **Assumptions that are guesses about your audience.** These are where generic copy comes from.\n- **A success test you can't measure.** If neither of you can say what \"worked\" means, nobody can judge the draft.\n\nHonest bit: the first few times I did this, most of the gaps were mine. Vague goal, no audience detail, nothing about what to avoid. The AI didn't create those problems. It made them visible.\n\n## Step 3: Fix the brief, not the draft\n\nAnswer its questions in the same chat. Correct anything it misheard. Then lock it:\n\n```\nUpdate the brief with my answers. Show me the final version in the same 5 parts.\n```\n\nIf the final brief-back reads right, the draft usually will too. If it still feels off, fix it here. Rewriting a brief takes a minute. Rewriting three drafts takes an afternoon.\n\n## Step 4: Write from the agreed brief only\n\n```\nNow write it. Use only what we agreed above.\nIf you need to assume anything new, list it at the end instead of guessing in the copy.\n```\n\nThat last line matters. It stops new guesses sneaking into the copy and tells you exactly what to check.\n\n## When to skip it\n\nNot everything needs a brief-back. A quick caption or a subject line test, just ask. I use it for anything that goes to a client, a creator, or a boss: campaign briefs, landing page copy, scripts, reports.\n\n## What I'd do\n\n- Save the Step 1 prompt as a text snippet or inside a Claude or ChatGPT Project so it's one click.\n- Run it on the next brief you'd normally just hand over, and count the gaps it finds.\n- Use the same habit with people. Ask a freelancer or creator to brief you back in three lines before they start. It's polite, and it saves everyone a revision round.\n\n## Sources\n\nNo statistics in this one. It's a workflow I use, built on the agency brief-back habit and my own creator briefing work. Related guide: [Brief AI the way you'd brief a pro](https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency).\n"
+ },
+ {
+  "slug": "ai-creator-rule-out-pass",
+  "format": "video",
+  "pillar": "Creator economy x AI",
+  "score": 8.3,
+  "title": "Use AI to rule creators out, then write the first line",
+  "hook": "Use AI to *rule creators out*, not find them.",
+  "subtitle": "My two-prompt shortlist and outreach workflow.",
+  "cover": {
+   "concept": "A row of five creator profile cards on a desk; a friendly robot hand stamps two of them with a red X while a highlighted card glows with a pen writing a one-line message beside it",
+   "avatar": "smirk",
+   "label": "two prompts"
+  },
+  "facts": [],
+  "narration": [
+   [
+    "Everyone asks AI to find creators.",
+    "I use it to rule them out."
+   ],
+   [
+    "The hard filters I do myself.",
+    "Country, language, budget."
+   ],
+   [
+    "Then I paste their recent captions and some comments.",
+    "And ask: what makes this a bad fit for my brief?"
+   ],
+   [
+    "It flags tone clashes and competitor deals fast.",
+    "I still check every flag myself."
+   ],
+   [
+    "Whoever survives gets a first line about one real post.",
+    "AI drafts it, I rewrite it."
+   ],
+   [
+    "Both prompts are on my site.",
+    "Follow for more."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "CREATOR SHORTLISTS",
+    "title": "Use AI to *rule creators out*"
+   },
+   {
+    "look": "versus",
+    "bg": "violet",
+    "title": "Wrong job vs right job",
+    "left": "Find creators",
+    "right": "Rule them out",
+    "trans": "whip",
+    "avatar": "smirk"
+   },
+   {
+    "look": "chips",
+    "bg": "ivory",
+    "title": "Human filters first",
+    "chips": [
+     "Country",
+     "Language",
+     "Budget"
+    ],
+    "trans": "pop"
+   },
+   {
+    "look": "feed",
+    "bg": "peach",
+    "title": "Copy recent captions and comments",
+    "trans": "rise"
+   },
+   {
+    "look": "chat",
+    "bg": "ivory",
+    "prompt": "Here's my brief and this creator's last 12 captions. What would make them a bad fit? Quote the evidence.",
+    "trans": "zoom"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "What it flags",
+    "chips": [
+     "Tone clash",
+     "Competitor deals",
+     "Off-topic audience"
+    ],
+    "trans": "click"
+   },
+   {
+    "look": "text",
+    "bg": "ink",
+    "title": "I check *every flag* myself",
+    "size": "t1",
+    "trans": "whip",
+    "avatar": "point"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "Survivors get *one real line*",
+    "size": "t2",
+    "trans": "rise"
+   },
+   {
+    "look": "chat",
+    "bg": "ivory",
+    "prompt": "Write one opening line about their post on [topic]. Specific, under 20 words, no flattery.",
+    "trans": "zoom"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "AI drafts. *I rewrite.*",
+    "size": "t1",
+    "trans": "click",
+    "avatar": "thinking"
+   },
+   {
+    "look": "text",
+    "bg": "peach",
+    "title": "Both prompts on *Build with Vish*",
+    "size": "t3",
+    "trans": "whip"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI x marketing* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "laugh"
+   }
+  ],
+  "caption": "Use AI to rule creators out, not to find them.\n\nAfter 850+ creator deals, my view is simple: finding names is easy. Saying no to the wrong ones early is where the budget is saved.\n\nSo this is how I split the work:\n→ Me: hard filters. Country, language, budget range.\n→ AI: read the creator's recent captions and a few comment threads, and tell me what makes them a bad fit for this brief. Quote the evidence.\n→ Me: check every flag myself. AI is fast, not always right.\n→ AI: draft one opening line about a specific post for the creators who survive.\n→ Me: rewrite that line so it sounds like a person.\n\nWhat AI can't do: see private audience data, or prove comments are fake. Ask for audience screenshots and read the comments yourself.\n\nDo you shortlist on fit first, or on numbers first?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-ai-creator-rule-out-pass",
+  "first_comment": "Workflow, no stats. Builds on my scoring rubric: https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai and the DM structure: https://buildwithvish.netlify.app/#read-creator-outreach-that-gets-replies",
+  "article": "# Use AI to rule creators out, then write the first line\n\nMost people ask AI to *find* creators. That's the part it's worst at. It can't see private audience data, it doesn't know who's open to brand deals, and its suggestions often lean towards names it has read about rather than the right fit for your brief.\n\nAfter 850+ creator deals, I've found the expensive mistakes rarely come from missing a great creator. They come from booking a wrong one. So I use AI for the opposite job: ruling creators out, fast, with evidence. Then I use it to draft the first line of outreach for the ones who survive.\n\n## Pass 1: Hard filters (you, not AI)\n\nThese are yes or no, and you already know them:\n\n- Audience country and language match the market\n- Rate range fits the budget\n- Platform and format match the deliverables\n\nDo this in a sheet. It's quick and doesn't need a model.\n\n## Pass 2: The rule-out prompt\n\nFor each creator still standing, copy their recent public captions (around a dozen) and two or three comment threads into the chat. Paste only public content and nothing private about the creator or their followers.\n\n```\nHere's my campaign brief: [paste brief]\nHere are [creator]'s last 12 captions and 3 comment threads: [paste]\n\nYour job is to find reasons NOT to work with this creator for this brief.\nCheck:\n1. Tone: would our product feel out of place next to these posts?\n2. Category: any recent paid posts for direct competitors?\n3. Audience: do the comments suggest a different audience than the brief targets?\n4. Comment quality: generic, repeated or off-topic comments.\n5. Brand safety: anything we'd need to discuss before signing.\n\nFor each point: verdict (fine / check / problem) and a quote as evidence.\nIf you can't tell from what I gave you, say \"can't tell\", don't guess.\n```\n\nThe \"quote as evidence\" line is the important one. It turns vague AI opinions into something you can check in ten seconds.\n\n## Pass 3: Check the flags yourself\n\nAI is fast at spotting a tone clash or a competitor mention. It is not reliable at judging whether comments are bought, and it can misread sarcasm or in-jokes. Treat every \"problem\" as a question, not a verdict. Open the post. Read the thread. Ask the creator for audience screenshots if fit is unclear.\n\nIf you want a scored version of this, my [creator shortlist rubric](https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai) weights fit, engagement health, cost and safety.\n\n## Pass 4: The first line\n\nThe creators who make it through deserve outreach that shows you actually watched their content. This is where AI helps again, as long as you rewrite the result.\n\n```\nHere's [creator]'s post about [topic]: [paste caption or describe it].\nWrite 3 options for the first line of a DM that:\n- names this specific post and one concrete thing that worked in it\n- is under 20 words\n- has no flattery words (amazing, love your content, obsessed)\n```\n\nPick one, then rewrite it in your own words. Add the offer in one sentence and an easy next step. The full three-line structure is in [Creator outreach that actually gets replies](https://buildwithvish.netlify.app/#read-creator-outreach-that-gets-replies).\n\n## What I'd do\n\n- Keep Pass 1 in a shared sheet so the team agrees on hard filters before anyone opens a chat.\n- Save the rule-out prompt in a Claude or ChatGPT Project with your brief already loaded, so each creator is one paste.\n- Log every \"problem\" you confirmed by hand. After a few campaigns you'll know which flags the AI gets right for your niche, and which ones it overcalls.\n- Never send the AI's first line unedited. Creators can tell.\n\n## Sources\n\nNo statistics in this one. It's my own workflow from creator campaign work. Related guides: [Shortlist creators with AI](https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai) and [Creator outreach that gets replies](https://buildwithvish.netlify.app/#read-creator-outreach-that-gets-replies).\n"
+ },
+ {
+  "slug": "campaign-report-three-decisions",
+  "format": "carousel",
+  "pillar": "Real workflows and prompts",
+  "score": 8.2,
+  "title": "Turn any campaign report into three decisions with AI",
+  "hook": "Nobody reads your campaign report. They read *the decisions*.",
+  "subtitle": "Three prompts that turn charts into a one-page memo.",
+  "cover": {
+   "concept": "A tall stack of chart-covered report pages being squeezed through a small funnel, with three glowing decision cards coming out the bottom",
+   "avatar": "point",
+   "label": "30 charts → 3 decisions"
+  },
+  "facts": [],
+  "slides": [
+   {
+    "type": "cover",
+    "title": "Nobody reads your campaign report. They read *the decisions*.",
+    "subtitle": "3 prompts I use to turn charts into a one-page memo.",
+    "chip": "Workflows"
+   },
+   {
+    "type": "point",
+    "label": "01 · The rule",
+    "title": "The sheet does the maths. AI does the words.",
+    "body": "Calculate every number in your spreadsheet first. Then paste the finished table and tell the AI: *do not recalculate anything*. That one rule removes most of the risk in AI reporting."
+   },
+   {
+    "type": "point",
+    "label": "02 · The so-what pass",
+    "title": "Ask for decisions, not a summary.",
+    "body": "Prompt: *Using only this table, give me 3 decisions for next month: keep, change, stop. Each with the number behind it and one line on why.* Summaries describe. Decisions get read."
+   },
+   {
+    "type": "point",
+    "label": "03 · The sceptic pass",
+    "title": "Let it argue like the CFO.",
+    "body": "Prompt: *Act as a sceptical finance lead. Which of these decisions would you challenge, and what number would you ask for?* Fix the weak ones before the meeting, not during it."
+   },
+   {
+    "type": "point",
+    "label": "04 · The what-we-don't-know pass",
+    "title": "Say what the data can't prove.",
+    "body": "Prompt: *List what this data cannot tell us, and what we'd need to measure next time.* Clients trust a report more when it admits limits. I've seen that in every honest review."
+   },
+   {
+    "type": "compare",
+    "title": "What changes",
+    "left": {
+     "label": "Old report",
+     "items": [
+      "30 charts",
+      "Every metric, equal weight",
+      "Ends with 'learnings'"
+     ]
+    },
+    "right": {
+     "label": "Decision memo",
+     "items": [
+      "3 decisions on page one",
+      "Numbers as evidence",
+      "Ends with next steps"
+     ]
+    }
+   },
+   {
+    "type": "cta",
+    "title": "Save this before your next *client review*.",
+    "subtitle": "All 3 prompts, copy-paste ready, on Build with Vish.",
+    "question": "What's the one number your boss always asks about first?",
+    "button": "Save · Follow for AI x marketing",
+    "chip": "Free guide inside"
+   }
+  ],
+  "caption": "Nobody reads your campaign report. They read the decisions.\n\nI've sat through a lot of campaign reviews on the creator side. The pattern is almost always the same: thirty charts, every metric given equal weight, and the meeting gets spent on slide two.\n\nWhat gets read is page one, if page one says what to do next.\n\nSo I now run every report through three AI passes:\n→ The so-what pass: 3 decisions (keep, change, stop), each with the number behind it\n→ The sceptic pass: AI plays the finance lead and challenges each decision\n→ The what-we-don't-know pass: what this data can't prove, and what to measure next time\n\nOne rule makes it safe: the spreadsheet does the maths, the AI only writes about numbers it's given.\n\nThe charts still go in the appendix. They just stop being the report.\n\nWhat's the one number your boss always asks about first?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-campaign-report-three-decisions",
+  "first_comment": "Workflow, no stats. The setup that writes the weekly version for you: https://buildwithvish.netlify.app/#read-report-that-writes-itself",
+  "article": "# Turn any campaign report into three decisions with AI\n\nMost campaign reports are written to prove work was done. Thirty charts, every metric given equal weight, and a \"learnings\" slide at the end that nobody reaches. I've sat through plenty of these on the creator marketing side, and the meeting nearly always gets spent on slide two.\n\nWhat people actually read is page one. If page one says what to do next, the report did its job. So I now use AI to turn the report into a short decision memo, with the charts moved to the appendix.\n\n## The one rule: the sheet does the maths\n\nBefore any AI touches the report, every number is calculated in the spreadsheet: reach, engagement rate, CPM, cost per result, whatever you report on. If you need a refresher on those four, see [Creator campaign math in plain English](https://buildwithvish.netlify.app/#read-creator-campaign-math).\n\nThe AI never calculates. It only writes about numbers it's given. That removes most of the risk of an AI report quietly inventing or rounding something.\n\n## Pass 1: The so-what pass\n\nPaste the finished table, then:\n\n```\nHere is our calculated campaign table: [paste].\nDo not recalculate or add any numbers.\n\nGive me exactly 3 decisions for next month:\n- KEEP: one thing to keep doing\n- CHANGE: one thing to change\n- STOP: one thing to stop\n\nFor each: the decision in one line, the number from the table that supports it, and one sentence on why.\nIf the data doesn't support a decision, say so instead of forcing one.\n```\n\nThe last line matters. Three forced decisions are worse than two honest ones.\n\n## Pass 2: The sceptic pass\n\n```\nNow act as a sceptical finance lead reading this.\nFor each decision: would you challenge it? What number or comparison would you ask for?\nBe specific and brief.\n```\n\nThis is the meeting before the meeting. If the AI asks \"compared to what?\", your boss will too. Add the benchmark, or soften the decision.\n\n## Pass 3: The what-we-don't-know pass\n\n```\nList what this data cannot tell us.\nFor each gap: why it matters, and what we could measure next time to close it.\nMax 4 points.\n```\n\nTypical answers: whether sales were caused by the campaign, how much reach overlapped between creators, what happened after the tracking window closed. Saying this out loud makes the report more trusted, not less. In my experience, clients relax when you name the limits before they find them.\n\n## Put it together\n\nYour page one now has three parts:\n\n1. **Three decisions**, each with its evidence number\n2. **What we'd challenge**, already answered\n3. **What we don't know yet**, and the plan to measure it\n\nEverything else, including every chart, goes behind it. Nothing is lost. It just stops being the report.\n\n## What I'd do\n\n- Build page one first next time, then decide which charts are needed to support it. You'll cut more than half.\n- Save the three prompts in a Claude or ChatGPT Project, with your report template loaded, so it's one paste per campaign.\n- Once it works for a few reports in a row, automate the weekly version. My setup is in [A weekly report that writes itself](https://buildwithvish.netlify.app/#read-report-that-writes-itself).\n- Always check the evidence number against the sheet before sending. AI can still copy a figure from the wrong row.\n\n## Sources\n\nNo statistics in this one. It's a workflow from my own reporting work. Related guides: [A weekly report that writes itself](https://buildwithvish.netlify.app/#read-report-that-writes-itself) and [The influencer campaign report clients actually read](https://buildwithvish.netlify.app/#read-influencer-report-template).\n"
+ },
+ {
+  "slug": "what-predicts-good-creator-partnership",
+  "format": "video",
+  "pillar": "Creator economy x AI",
+  "score": 8.5,
+  "title": "What actually predicts a good creator partnership",
+  "hook": "The best creator partners *ask questions* before they quote.",
+  "subtitle": "What 850+ creator deals taught me to look for first.",
+  "cover": {
+   "concept": "Two chat bubbles side by side above a phone: one filled with a price tag, the other filled with three question marks and glowing; a small handshake icon sits under the question-mark bubble",
+   "avatar": "full",
+   "label": "the first reply"
+  },
+  "facts": [],
+  "narration": [
+   [
+    "850 plus creator deals taught me this.",
+    "Read the first reply before the media kit."
+   ],
+   [
+    "Good partners ask questions before they quote.",
+    "Who's it for, what's the goal, what can't I say?"
+   ],
+   [
+    "They push back on the brief.",
+    "Usually because they know their audience better than we do."
+   ],
+   [
+    "They tell you what flopped for them before."
+   ],
+   [
+    "And they turn down products that don't fit.",
+    "That no is why people trust their yes."
+   ],
+   [
+    "Fit and follow-through beat follower count.",
+    "What do you look for first?",
+    "More on Build with Vish.",
+    "Follow for more."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "850+ CREATOR DEALS",
+    "title": "Good partners *ask questions* first"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "Read the *first reply* first",
+    "size": "t1",
+    "trans": "whip",
+    "avatar": "point"
+   },
+   {
+    "look": "versus",
+    "bg": "violet",
+    "title": "Two first replies",
+    "left": "Here's my rate",
+    "right": "Who's it for?",
+    "trans": "zoom"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "Questions that predict a good deal",
+    "chips": [
+     "Who's it for?",
+     "What's the goal?",
+     "What can't I say?"
+    ],
+    "trans": "pop"
+   },
+   {
+    "look": "stamp",
+    "bg": "cobalt",
+    "stamp": "PUSHBACK",
+    "title": "They challenge the brief",
+    "trans": "click"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "They know their audience *better than we do*",
+    "size": "t2",
+    "trans": "rise",
+    "avatar": "thinking"
+   },
+   {
+    "look": "text",
+    "bg": "ink",
+    "title": "They tell you *what flopped*",
+    "size": "t1",
+    "trans": "whip"
+   },
+   {
+    "look": "stamp",
+    "bg": "cobalt",
+    "stamp": "NO",
+    "title": "They turn down bad fits",
+    "trans": "pop",
+    "avatar": "smirk"
+   },
+   {
+    "look": "text",
+    "bg": "peach",
+    "title": "That no is why people *trust their yes*",
+    "size": "t2",
+    "trans": "rise"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "Fit and follow-through *beat follower count*",
+    "size": "t2",
+    "trans": "zoom"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "What do *you* look for first?",
+    "size": "t2",
+    "trans": "click"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "More on *Build with Vish*",
+    "size": "t3",
+    "trans": "whip"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI x marketing* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "laugh"
+   }
+  ],
+  "caption": "The best creator partners ask questions before they quote.\n\n850+ creator deals in, I've stopped trusting the media kit as the first signal. The first reply tells me more.\n\nThe partnerships that went well usually started with a creator who:\n→ asked who the campaign was for and what it needed to achieve\n→ asked what they weren't allowed to say\n→ pushed back on part of the brief, because they knew their audience better than we did\n→ told us honestly what hadn't worked for them before\n→ had turned down brands that didn't fit, and said so\n\nThe ones that went badly often started with a rate card and nothing else.\n\nNone of this shows up in follower count. It shows up in one email.\n\nThis is my experience, not a study. I'd love to hear the other side.\n\nCreators and brand folks: what's the first signal you look for?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-what-predicts-good-creator-partnership",
+  "first_comment": "Experience-based, no stats. My fit rubric if you want something to score with: https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai",
+  "article": "# What actually predicts a good creator partnership\n\nPeople ask me which number predicts a good creator partnership. Followers? Engagement rate? Average views? After 850+ creator deals, my honest answer is that the best early signal isn't a number at all. It's the creator's first reply.\n\nThis is opinion from experience, not a study. But it's the pattern I'd bet on.\n\n## They ask questions before they quote\n\nA good partner's first reply usually has questions in it:\n\n- Who is this campaign for?\n- What does it need to achieve?\n- What can't I say?\n- Is this organic only, or will it run as an ad?\n\nA creator who asks these is already thinking about their audience and your goal at the same time. That's the whole job. A reply that's only a rate card isn't a red flag on its own, plenty of busy creators work that way. But the questions tell you how they'll treat the brief.\n\n## They push back on the brief\n\nSome of the best content I've seen came from a creator saying \"this won't work for my audience, can I do it like this instead?\"\n\nThat can feel uncomfortable on the brand side, especially if a client has signed off on a script. But creators usually know their audience better than we do. Pushback is a sign they care how it lands. A creator who agrees to everything may also deliver exactly what you asked for, and nothing better.\n\n## They're honest about what flopped\n\nAsk a creator \"what kind of brand content hasn't worked for you?\" The good ones answer straight away, with specifics. That honesty is worth more than a highlight reel. It tells you what to avoid and that they'll tell you the truth when the numbers come in.\n\n## They've said no before\n\nCreators who turn down products that don't fit their audience protect the thing you're paying for: trust. If someone has promoted every brand that asked, their audience has learnt to scroll past the sponsored posts. Their \"no\" is why people believe their \"yes\".\n\nYou can often spot this in their content. Fewer sponsored posts, and the ones that exist feel like they belong.\n\n## They follow through on the boring bits\n\nDrafts on time. Disclosure labels done right the first time. A reply within a working day or two. None of this is exciting, and all of it predicts whether you'll want to work together again.\n\n## What doesn't predict much on its own\n\n- **Follower count.** It tells you the ceiling, not what you'll get.\n- **A polished media kit.** Useful, but it's marketing. Treat it like one.\n- **One viral post.** Look at the typical post, not the best one.\n\n## What I'd do\n\n- Add three questions to your first outreach, and watch how creators answer: \"What would make this work for your audience?\", \"What hasn't worked for you before?\", \"Anything you wouldn't say about a product?\"\n- Score fit before cost. My [creator shortlist rubric](https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai) puts audience and content fit first for this reason.\n- Leave room in the brief for pushback. Write \"the one thing to get across\", not a word-for-word script. My [one-page brief](https://buildwithvish.netlify.app/#read-one-page-creator-brief) shows how.\n- After each campaign, note which early signals turned out right. Your own notes will beat any rule of thumb, including mine.\n\n## Sources\n\nNo statistics here. This is based on my own experience across 850+ creator deals. Related: [Shortlist creators with AI, not follower counts](https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai).\n"
+ },
+ {
+  "slug": "creator-brief-mistakes-that-burn-budget",
+  "format": "carousel",
+  "pillar": "Creator economy x AI",
+  "score": 8.4,
+  "title": "Five creator brief mistakes that quietly burn budget",
+  "hook": "Five brief mistakes that *quietly burn* creator budget.",
+  "subtitle": "None of them look expensive until the reshoot.",
+  "cover": {
+   "concept": "A one-page brief on a clipboard slowly catching fire at one corner, with small coins floating up out of the smoke; a camera on a tripod waits beside it",
+   "avatar": "surprised",
+   "label": "the reshoot bill"
+  },
+  "facts": [],
+  "slides": [
+   {
+    "type": "cover",
+    "title": "Five brief mistakes that *quietly burn* creator budget.",
+    "subtitle": "From 850+ creator deals. None look expensive until the reshoot.",
+    "chip": "Creator marketing"
+   },
+   {
+    "type": "point",
+    "label": "01 · Writing their script",
+    "title": "You hired a voice, then muted it.",
+    "body": "A word-for-word script makes a creator sound like an ad. Their audience scrolls. Give them *the one thing to get across* and let them say it their way."
+   },
+   {
+    "type": "point",
+    "label": "02 · Six key messages",
+    "title": "If everything matters, nothing lands.",
+    "body": "A 30-second video can carry one message, maybe two. Pick the one that matters. The rest goes on the landing page, not in the creator's mouth."
+   },
+   {
+    "type": "point",
+    "label": "03 · No approved claims",
+    "title": "Vague claims mean late rewrites.",
+    "body": "If the brief doesn't list exactly what can be said about the product, legal finds out at draft stage. That's when changes cost the most. List the *approved claims* up front."
+   },
+   {
+    "type": "point",
+    "label": "04 · Feedback from everyone",
+    "title": "Four reviewers, four directions.",
+    "body": "When nobody owns approval, the creator gets contradicting notes and a third round. Name one approver and *cap feedback at two rounds* in the brief."
+   },
+   {
+    "type": "point",
+    "label": "05 · Hiding the real plan",
+    "title": "Say if it'll run as an ad.",
+    "body": "Creators film differently for paid use: clean hooks, cutdowns, no time-bound jokes. Hide that, and you pay again for edits. Put *usage and the real KPI* in the brief."
+   },
+   {
+    "type": "list",
+    "title": "Before you send any brief",
+    "items": [
+     "One message, not six",
+     "Approved claims listed",
+     "One named approver",
+     "Usage and KPI stated"
+    ]
+   },
+   {
+    "type": "cta",
+    "title": "Save this before your next *creator brief*.",
+    "subtitle": "Free one-page brief template on Build with Vish.",
+    "question": "Which of these five have you been on the receiving end of?",
+    "button": "Save · Follow for AI x marketing",
+    "chip": "Free template inside"
+   }
+  ],
+  "caption": "Five brief mistakes that quietly burn creator budget.\n\n850+ creator deals in, the expensive problems rarely came from the creator. They came from the brief.\n\nThe five I'd fix first:\n→ Writing the script for them. You hired a voice, then muted it.\n→ Six key messages in a 30-second video. One lands. Maybe two.\n→ No approved claims list. Legal finds out at draft stage, when changes cost most.\n→ No single approver. Four people, four directions, round three.\n→ Hiding that it'll run as a paid ad. Creators film differently for paid use, and you pay twice for edits.\n\nNone of these look expensive on the day you send the brief. They show up as a reshoot, a late post, or content that sounds like an ad.\n\nI've made some of these myself. The fix is usually one line in the brief.\n\nCreators: which one have you been on the receiving end of?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-creator-brief-mistakes-that-burn-budget",
+  "first_comment": "Experience-based, no stats. Free one-page template: https://buildwithvish.netlify.app/#read-one-page-creator-brief",
+  "article": "# Five creator brief mistakes that quietly burn budget\n\nWhen a creator campaign goes over budget, people usually blame the creator: late drafts, off-brief content, a reshoot. Across 850+ creator deals, I've found the cause is more often upstream. It's in the brief.\n\nNone of these mistakes look expensive on the day you send the brief. They show up weeks later as a reshoot, a missed posting date, or a video that sounds like an ad and performs like one. I've made some of these myself.\n\n## 1. Writing the script for them\n\nA word-for-word script feels safe. It isn't. You hired a creator for the way they talk to their audience, and a script takes that away. Viewers can tell when someone is reading brand copy, and they scroll.\n\n**Fix:** write \"the one thing to get across\" and two or three must-include points. Let the creator say it in their own words. If you need a script for a paid ad, that's a different job, and should be briefed and paid as one.\n\n## 2. Six key messages\n\nBrands have a lot to say. A short video can carry one message well, maybe two. Ask for six and you'll get a rushed list that nobody remembers, or a creator who picks one and leaves your favourite out.\n\n**Fix:** choose one message. Put everything else on the landing page, where people who are interested will read it.\n\n## 3. No approved claims list\n\n\"Talk about how good it is for your skin\" sounds harmless until legal sees the draft and every claim needs rewording. That's the most expensive time to change anything: the creator has filmed, edited and planned their posting date.\n\n**Fix:** list the exact approved claims in the brief. Add a line on claims to avoid. If you're working across Europe, add the disclosure label too. My [ad labels guide](https://buildwithvish.netlify.app/#read-ad-labels-in-europe) covers the basics.\n\n## 4. Feedback from everyone\n\nThe brand manager likes the draft. Then the product team, the regional lead and someone from legal each add notes, some of which contradict each other. The creator gets a long list of edits and goes into round three.\n\n**Fix:** name one approver in the brief. Collect internal feedback before it reaches the creator. Cap feedback at two rounds, and say so in writing.\n\n## 5. Hiding the real plan\n\nIf you plan to put paid budget behind the content, say so. Creators film differently for paid use: a strong opening line, cleaner cutdowns, nothing that dates the video quickly. Find out later, and you'll pay for edits, or for usage rights you didn't price in.\n\nThe same goes for the real KPI. If the goal is clicks, not views, tell them. They'll structure the video around it.\n\n**Fix:** put usage (organic, paid, how long, where) and the main KPI in the brief, and in the contract. My [contract red flags guide](https://buildwithvish.netlify.app/#read-creator-contract-red-flags) covers the clauses to check.\n\n## Use AI to check your brief\n\nBefore sending, paste your brief into any AI chat with this:\n\n```\nReview this creator brief as an experienced creator would.\nFlag: (1) any scripted lines that would sound unnatural, (2) more than 2 key messages,\n(3) missing approved claims, (4) unclear approval process, (5) missing usage or KPI.\nFor each issue, quote the line and suggest a one-line fix.\nBrief: [paste]\n```\n\nIt won't catch everything, but it catches the obvious ones before a creator has to.\n\n## What I'd do\n\n- Use a one-page brief. Mine is [here](https://buildwithvish.netlify.app/#read-one-page-creator-brief), free.\n- Run the AI check above on every brief before it goes out.\n- After each campaign, ask the creator one question: \"What in the brief made this harder?\" Then fix the template.\n\n## Sources\n\nNo statistics here. This is from my own experience across 850+ creator deals. Related: [The one-page creator brief](https://buildwithvish.netlify.app/#read-one-page-creator-brief).\n"
+ },
+ {
+  "slug": "frontier-deployed-engineers-ai-ops",
+  "format": "video",
+  "pillar": "Career and AI Ops pivot",
+  "score": 8.8,
+  "title": "Anthropic is training 10,000 'Frontier Deployed Engineers'. What marketers should take from it",
+  "hook": "Anthropic is putting *$100M* into one job title.",
+  "subtitle": "It's an engineering role. The shape of it is AI Ops.",
+  "cover": {
+   "concept": "A graduation cap sitting on top of a laptop, with a glowing badge pinned to the screen and a small three-step path (lightbulb, shield, handshake) running out of the laptop towards an office building",
+   "avatar": "surprised",
+   "label": "$100M · 10,000 engineers"
+  },
+  "facts": [
+   {
+    "claim": "Anthropic launched Claude Frontier Academy with a $100 million commitment, aiming to train 10,000 Frontier Deployed Engineers (FDEs) by the end of 2027.",
+    "source_name": "Anthropic (primary)",
+    "url": "https://www.anthropic.com/news/claude-frontier-academy",
+    "date": "2026-10-02"
+   },
+   {
+    "claim": "Engineers from Accenture, Bain, Capgemini, Commonwealth Bank of Australia, Deloitte, McKinsey, Morgan Stanley and Novo Nordisk are in the first cohorts.",
+    "source_name": "Anthropic (primary)",
+    "url": "https://www.anthropic.com/news/claude-frontier-academy",
+    "date": "2026-10-02"
+   },
+   {
+    "claim": "The FDE Residency starts with a multi-day in-person programme and a simulated enterprise deployment, from choosing the use case through security review to handover, then a 12-week residency leading a real Claude use case at the engineer's own organisation.",
+    "source_name": "Anthropic (primary)",
+    "url": "https://www.anthropic.com/news/claude-frontier-academy",
+    "date": "2026-10-02"
+   },
+   {
+    "claim": "The programme is for hands-on software engineers, participation is by nomination, and the first Claude Frontier Deployed Engineer badges are expected in early 2027.",
+    "source_name": "Anthropic (primary)",
+    "url": "https://www.anthropic.com/news/claude-frontier-academy",
+    "date": "2026-10-02"
+   },
+   {
+    "claim": "First intakes run in San Francisco, New York and London in October and November 2026; an initial group of 20 CommBank engineers will take part in a four-day intensive before the 12-week residency.",
+    "source_name": "Commonwealth Bank of Australia newsroom",
+    "url": "https://www.commbank.com.au/articles/newsroom/2026/10/commbank-engineers-anthropic-claude-frontier-academy.html",
+    "date": "2026-10-03"
+   }
+  ],
+  "narration": [
+   [
+    "Anthropic just committed 100 million dollars to train one kind of person.",
+    "Frontier Deployed Engineers."
+   ],
+   [
+    "Ten thousand of them by the end of 2027."
+   ],
+   [
+    "They practise a full rollout: pick the use case, pass security review, hand it over.",
+    "Then twelve weeks leading a real project at their own company."
+   ],
+   [
+    "It's for engineers, by nomination.",
+    "I'm not one, and I won't pretend to be."
+   ],
+   [
+    "But look at the shape of the job.",
+    "Right problem, safe rollout, people actually using it."
+   ],
+   [
+    "That's AI Ops, and marketers already do half of it.",
+    "My plan is on Build with Vish.",
+    "Follow for more."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "JUST ANNOUNCED",
+    "title": "*$100M* for one job title"
+   },
+   {
+    "look": "stamp",
+    "bg": "cobalt",
+    "stamp": "FDE",
+    "title": "Frontier Deployed Engineer",
+    "sub": "Claude Frontier Academy",
+    "trans": "click",
+    "avatar": "surprised"
+   },
+   {
+    "look": "stat",
+    "bg": "ink",
+    "value": "10,000",
+    "title": "engineers to train by end of 2027",
+    "src": "Source: Anthropic, 2 Oct 2026",
+    "dots": 200,
+    "trans": "zoom"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "The practice rollout",
+    "chips": [
+     "Pick the use case",
+     "Security review",
+     "Handover"
+    ],
+    "trans": "pop"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "Then *12 weeks* on a real project",
+    "size": "t2",
+    "sub": "at their own organisation",
+    "trans": "rise"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "For engineers. *By nomination.*",
+    "size": "t1",
+    "trans": "whip"
+   },
+   {
+    "look": "text",
+    "bg": "ink",
+    "title": "I'm *not one*",
+    "size": "t1",
+    "trans": "click",
+    "avatar": "smirk"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "Look at the *shape* of the job",
+    "size": "t2",
+    "trans": "zoom",
+    "avatar": "point"
+   },
+   {
+    "look": "chips",
+    "bg": "ivory",
+    "title": "The shape",
+    "chips": [
+     "Right problem",
+     "Safe rollout",
+     "Real adoption"
+    ],
+    "trans": "pop"
+   },
+   {
+    "look": "stamp",
+    "bg": "ink",
+    "stamp": "AI OPS",
+    "title": "Marketers already do half of it",
+    "trans": "rise"
+   },
+   {
+    "look": "text",
+    "bg": "peach",
+    "title": "My plan on *Build with Vish*",
+    "size": "t3",
+    "trans": "whip"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI x marketing* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "laugh"
+   }
+  ],
+  "caption": "Anthropic is putting $100M into one job title.\n\nOn 2 October, Anthropic launched Claude Frontier Academy. The goal: train 10,000 Frontier Deployed Engineers by the end of 2027. First cohorts include engineers from Accenture, Deloitte, McKinsey, Commonwealth Bank and others.\n\nWhat the training looks like:\n→ A simulated enterprise rollout: choose the use case, get through security review, hand it over\n→ A graded practical\n→ 12 weeks leading a real Claude project inside their own organisation\n\nTo be clear: it's for software engineers, by nomination. I'm a marketer moving into AI Ops, not an engineer, so this programme isn't for me.\n\nBut the shape of the job is the interesting part. Pick the right problem. Get it through review safely. Make sure people actually use it. Two of those three are things good marketers and project leads do every week.\n\nThe code is the part I'm still learning. The rest I've been doing on creator campaigns for years.\n\nWhat part of AI rollout do you think non-engineers are best placed to own?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-frontier-deployed-engineers-ai-ops",
+  "first_comment": "Sources: Anthropic announcement (2 Oct 2026) https://www.anthropic.com/news/claude-frontier-academy · CommBank newsroom (3 Oct 2026) https://www.commbank.com.au/articles/newsroom/2026/10/commbank-engineers-anthropic-claude-frontier-academy.html",
+  "article": "# Anthropic is training 10,000 'Frontier Deployed Engineers'. What marketers should take from it\n\nOn 2 October 2026, Anthropic launched **Claude Frontier Academy**, backed by a **$100 million** commitment. Its aim is to train **10,000 Frontier Deployed Engineers (FDEs) by the end of 2027**. Engineers from Accenture, Bain, Capgemini, Commonwealth Bank of Australia, Deloitte, McKinsey, Morgan Stanley and Novo Nordisk are in the first cohorts.\n\nI'm not an engineer, and this programme isn't for me. But I'm moving from creator marketing into AI Ops, and I think the way Anthropic describes this job is worth a close look for anyone on a similar path.\n\n## What Anthropic actually announced\n\nAccording to Anthropic's announcement, the first programme is the **Frontier Deployed Engineer Residency**:\n\n- It starts with a **multi-day, in-person programme** with Anthropic engineers and licensed instructors.\n- Participants work through a **simulated enterprise deployment**, from choosing the right use case, through security review, to handover, and finish with a graded practical.\n- Those who pass move into a **12-week residency**, leading a real Claude use case at their own organisation.\n- It's for **hands-on software engineers**, and participation is **by nomination**. The first full badges are expected in **early 2027**.\n\nCommonwealth Bank's own newsroom confirmed that first intakes run in San Francisco, New York and London in October and November 2026, and that an initial group of 20 CommBank engineers will do a four-day intensive before the residency.\n\n## The shape of the job\n\nStrip out the code and the role has three parts:\n\n1. **Pick the right problem.** Which process is worth changing, and what would \"better\" mean?\n2. **Get it through safely.** Security review, data access, compliance, sign-off.\n3. **Make people actually use it.** Handover, training, adoption.\n\nThe engineering is what makes it possible. But two of those three parts are about judgement, process and people. That's the part I'd call AI Ops, and it's where I think marketers can grow.\n\n## Why marketers are closer than they think\n\nIf you've run campaigns, you've already done versions of this:\n\n- **Choosing the use case** is like choosing the campaign objective. Most failures start with the wrong one.\n- **Security review** feels a lot like legal review of a creator contract or claims list. You learn which questions get asked, and you answer them before they're asked.\n- **Adoption** is a marketing problem. A tool nobody uses is a launch with no audience.\n\nI'm not saying a marketer can do an FDE's job. The building part is real engineering, and I'm still learning it. I'm saying the non-code half of AI rollout needs people who can brief, plan, persuade and measure. Those are marketing skills.\n\n## What I'd do\n\nIf you're a marketer curious about AI Ops, I'd start here:\n\n- **Run one internal AI project end to end.** Pick a small process (weekly reporting, brief writing), set a success test, get IT or legal sign-off, and track whether people still use it a month later.\n- **Write it up like a deployment.** Problem, approach, risks, review, adoption. That document is your portfolio piece.\n- **Learn enough of the technical side to be useful.** Projects, connectors, basic automation. My guide to [connectors and MCP](https://buildwithvish.netlify.app/#read-connectors-and-mcp) is a gentle start.\n- **Read the job descriptions, not the hype.** Look at what AI rollout roles actually ask for, and map your experience to it honestly.\n\nIf you're an engineer who might get nominated, the residency sounds like a serious programme. If you're not, the lesson is in the structure: problem, safety, adoption. You can practise all three this month.\n\n## Sources\n\n- Anthropic, \"Anthropic invests $100 million to train 10,000 engineers and tackle the enterprise AI talent gap\", 2 October 2026: [anthropic.com/news/claude-frontier-academy](https://www.anthropic.com/news/claude-frontier-academy)\n- Commonwealth Bank of Australia newsroom, \"CommBank engineers deepen expertise through Anthropic's Claude Frontier Academy\", 3 October 2026: [commbank.com.au](https://www.commbank.com.au/articles/newsroom/2026/10/commbank-engineers-anthropic-claude-frontier-academy.html)\n"
+ },
+ {
+  "slug": "ai-wont-replace-content-team-bad-brief-will",
+  "format": "video",
+  "pillar": "Contrarian takes",
+  "score": 8.6,
+  "title": "AI won't replace your content team. A bad brief will",
+  "hook": "AI won't replace your content team. *A bad brief will.*",
+  "subtitle": "Vague in, average out. Now just faster.",
+  "cover": {
+   "concept": "A desk with three empty chairs and a giant crumpled one-line brief in the middle; a small chat bubble is printing a long ribbon of identical grey drafts that spills onto the floor",
+   "avatar": "smirk",
+   "label": "the real problem"
+  },
+  "facts": [],
+  "narration": [
+   [
+    "Everyone's worried AI will replace the content team.",
+    "I'm more worried about the brief."
+   ],
+   [
+    "Give a great writer a vague brief, you get average work.",
+    "Give AI the same brief, you get average work faster."
+   ],
+   [
+    "Then someone sees a pile of average drafts.",
+    "And decides the team was the problem."
+   ],
+   [
+    "It wasn't the writing.",
+    "Nobody decided the goal, the audience, or the one thing to say."
+   ],
+   [
+    "Teams that brief well get more out of AI, not less work.",
+    "Fix the brief first.",
+    "My template is on Build with Vish."
+   ],
+   [
+    "Follow for more."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "UNPOPULAR OPINION",
+    "title": "AI won't replace you. *A bad brief will.*"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "Worry about *the brief*",
+    "size": "t1",
+    "trans": "whip",
+    "avatar": "smirk"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "Vague brief → *average work*",
+    "size": "t2",
+    "trans": "rise"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "Same brief to AI → average, *faster*",
+    "size": "t2",
+    "trans": "zoom"
+   },
+   {
+    "look": "text",
+    "bg": "peach",
+    "title": "A pile of *average drafts*",
+    "size": "t2",
+    "trans": "pop",
+    "avatar": "stressed"
+   },
+   {
+    "look": "stamp",
+    "bg": "ink",
+    "stamp": "WRONG CALL",
+    "title": "Blaming the team",
+    "trans": "click"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "It was never *the writing*",
+    "size": "t1",
+    "trans": "whip"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "What nobody decided",
+    "chips": [
+     "The goal",
+     "The audience",
+     "The one thing"
+    ],
+    "trans": "pop",
+    "avatar": "point"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "Good briefs get *more* from AI",
+    "size": "t2",
+    "trans": "rise"
+   },
+   {
+    "look": "stamp",
+    "bg": "ink",
+    "stamp": "BRIEF FIRST",
+    "title": "Then the tools",
+    "trans": "zoom"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "Template on *Build with Vish*",
+    "size": "t3",
+    "trans": "click"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI x marketing* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "laugh"
+   }
+  ],
+  "caption": "AI won't replace your content team. A bad brief will.\n\nHere's the pattern I worry about.\n\nA team gets a vague brief. \"Make it engaging. Drive awareness. Something for Gen Z.\" Average work comes back, because average is what a vague brief produces.\n\nThen the same brief goes into an AI tool. Average work comes back again, just faster and cheaper.\n\nSomeone looks at the pile and decides the team was the problem.\n\nIt wasn't. Nobody decided:\n→ the one goal\n→ the one audience\n→ the one thing to say\n→ what success looks like\n\nIn my experience, teams that brief well get more out of AI, not less work. The brief is the skill that makes both people and tools good.\n\nI learnt this writing creator briefs long before I wrote prompts. Same failure, same fix.\n\nWhat's the vaguest brief you've ever received?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-ai-wont-replace-content-team-bad-brief-will",
+  "first_comment": "Opinion piece, no stats. The brief template I use for both people and AI: https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency",
+  "article": "# AI won't replace your content team. A bad brief will\n\nThere's a lot of worry about AI replacing content teams. I understand it. But in my work, the bigger risk I see isn't the tool. It's the brief.\n\nThis is an opinion piece. No statistics, just a pattern I've watched in creator marketing and now in AI work.\n\n## The pattern\n\nIt goes like this:\n\n1. A team gets a vague brief. \"Make it engaging. Drive awareness. Something for Gen Z.\"\n2. They produce average work, because a vague brief can only produce average work. Good writers fill gaps with their best guess, and guesses average out.\n3. Someone tries the same brief in an AI tool. Average work comes back again, faster and cheaper.\n4. Someone looks at the pile of average drafts and concludes the team is the problem.\n\nThe team wasn't the problem. Nobody had decided the goal, the audience, or the one thing the piece needed to say.\n\n## Why AI makes this worse, not better\n\nA good human writer will push back on a vague brief. They'll ask \"who is this for?\" or \"what do you want people to do?\" An AI tool, by default, won't. It fills every gap with the most likely answer and hands it back with confidence.\n\nSo a weak brief that used to produce one average draft can now produce fifty. It looks like productivity. It's the same problem at volume.\n\n## The brief is the skill\n\nI wrote hundreds of creator briefs before I wrote my first prompt. The failures were identical: no clear goal, a fuzzy audience, too many messages, no example of what good looks like. The fix was identical too.\n\nA good brief answers:\n\n- **Goal.** One outcome. \"More sign-ups from the pricing page\", not \"awareness\".\n- **Audience.** Who, what they already know, what they care about.\n- **The one thing.** The single idea someone should remember.\n- **Constraints.** Tone, length, words to avoid, claims you can't make.\n- **Example.** Something close to what good looks like.\n- **Success test.** How you'll know it worked.\n\nWith that, a content team does its best work. And AI does too. In my experience, teams that brief well get *more* out of AI, because they can tell good output from bad, and they know what to ask for next.\n\n## What this means for content teams\n\nIf you lead a content team, the strongest argument for your team isn't \"AI can't write\". It can. The argument is that someone has to decide what's worth writing, for whom, and why. That's strategy, and it starts with the brief.\n\nIf you're on a content team, become the person who writes the best briefs. Ask the questions nobody asked. Turn \"make it pop\" into a goal, an audience and one message. That skill gets more valuable as the tools get faster.\n\n## What I'd do\n\n- Before any content request goes to a person or a tool, run it through the six questions above. If you can't answer one, stop and get the answer.\n- Use the AI to check the brief, not just execute it. Ask it to [brief you back](https://buildwithvish.netlify.app/#read-make-ai-brief-you-back) before it writes.\n- Keep a shared brief template. Mine is in [Brief AI the way you'd brief a pro](https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency).\n- When work comes back average, look at the brief before you look at the writer.\n\n## Sources\n\nNo statistics in this one. It's an opinion based on my experience writing creator briefs and AI prompts. Related: [Brief AI the way you'd brief a pro](https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency).\n"
+ },
+ {
+  "slug": "ai-creators-cheap-trust-isnt",
+  "format": "video",
+  "pillar": "Contrarian takes",
+  "score": 8.1,
+  "title": "AI avatars can make the ad. They can't make people trust it",
+  "hook": "AI creators are cheap. *Trust still isn't.*",
+  "subtitle": "Where I'd use AI avatars, and where I'd still pay a person.",
+  "cover": {
+   "concept": "Two phone screens side by side: on the left a shiny, perfect avatar face with a price tag reading low; on the right a real-looking creator with a busy comment section of small heart and chat icons glowing around it",
+   "avatar": "smirk",
+   "label": "face vs trust"
+  },
+  "facts": [],
+  "narration": [
+   [
+    "AI avatar ads are getting good.",
+    "Cheap, fast, no contract, no reshoots."
+   ],
+   [
+    "I get the appeal.",
+    "I've chased plenty of creator approvals."
+   ],
+   [
+    "But a creator isn't paid for a face reading a script.",
+    "They're paid for an audience that actually believes them."
+   ],
+   [
+    "An avatar has no comment history.",
+    "No record of ever saying no."
+   ],
+   [
+    "Use AI to test angles and scripts cheaply.",
+    "Use real people when you need belief."
+   ],
+   [
+    "Where do you draw the line?",
+    "Follow for more."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "HOT TAKE",
+    "title": "AI creators are cheap. *Trust isn't.*"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "Why brands like avatars",
+    "chips": [
+     "Cheap",
+     "Fast",
+     "No contract",
+     "No reshoots"
+    ],
+    "trans": "pop"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "I *get* the appeal",
+    "size": "t1",
+    "trans": "whip",
+    "avatar": "laugh"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "Approval chasing is *real work*",
+    "size": "t2",
+    "trans": "rise",
+    "avatar": "stressed"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "Creators aren't paid for *a face*",
+    "size": "t2",
+    "trans": "zoom"
+   },
+   {
+    "look": "stamp",
+    "bg": "ink",
+    "stamp": "BELIEF",
+    "title": "They're paid for an audience that trusts them",
+    "trans": "click"
+   },
+   {
+    "look": "feed",
+    "bg": "peach",
+    "title": "No comment history",
+    "trans": "rise"
+   },
+   {
+    "look": "text",
+    "bg": "ink",
+    "title": "No record of *saying no*",
+    "size": "t1",
+    "trans": "whip",
+    "avatar": "smirk"
+   },
+   {
+    "look": "versus",
+    "bg": "violet",
+    "title": "Who does what",
+    "left": "AI: test angles",
+    "right": "People: earn belief",
+    "trans": "zoom"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "Use people when you *need belief*",
+    "size": "t2",
+    "trans": "pop"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "Where do *you* draw the line?",
+    "size": "t2",
+    "trans": "click"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI x marketing* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "laugh"
+   }
+  ],
+  "caption": "AI creators are cheap. Trust still isn't.\n\nAI avatar ads keep getting better. No contracts, no shipping product, no waiting for drafts, no reshoots. After 850+ creator deals, I understand the appeal more than most. Chasing approvals is real work.\n\nBut I think brands are mixing up two different things.\n\nA creator isn't paid for a face reading a script. They're paid for an audience that believes them, built over years of posts, comments and the brands they turned down.\n\nAn avatar has none of that:\n→ no comment section history\n→ no record of saying no\n→ no one who'd notice if it changed its mind\n\nWhere I'd use AI avatars: testing hooks and angles cheaply before spending on creators, explainer content, internal training.\n\nWhere I'd still pay a person: anything where the viewer has to believe the recommendation.\n\nAnd if you use an avatar, label it clearly. Hiding it borrows trust you didn't earn.\n\nWhere do you draw the line?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-ai-creators-cheap-trust-isnt",
+  "first_comment": "Opinion piece, no stats. How I think about picking creators on fit: https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai",
+  "article": "# AI avatars can make the ad. They can't make people trust it\n\nAI avatar ads keep getting better. A brand can now produce a person-shaped video without a contract, a product shipment, a draft deadline or a reshoot. After 850+ creator deals, I understand the appeal better than most. Chasing approvals, rescheduling shoots and waiting on drafts is real work.\n\nBut I think a lot of brands are mixing up two different things: the *ad* and the *trust behind it*. AI can make the first. It can't make the second.\n\nThis is an opinion piece, from my experience on the creator side. No statistics.\n\n## What you're actually paying a creator for\n\nWhen you pay a creator, you aren't really paying for a face reading your script. You're paying for:\n\n- **An audience that chose them.** People followed for a reason, and keep watching for the same reason.\n- **A track record.** Years of posts, opinions, recommendations, and mistakes, out in public.\n- **Their \"no\".** The brands they turned down are why their \"yes\" means something.\n- **Their comment section.** Real people asking real questions, and the creator answering.\n\nThat's where belief comes from. The video is just the delivery.\n\n## What an avatar doesn't have\n\nAn AI avatar can look and sound convincing. But it has:\n\n- no audience that chose it\n- no history of recommendations to judge it by\n- no record of ever turning anything down\n- no reputation at stake if the product disappoints\n\nSo when an avatar says \"I love this product\", nobody is actually saying it. Viewers may not consciously notice. But I'd bet that over time, trust settles where there's someone behind the words.\n\n## Where I would use AI avatars\n\nI'm not against them. There are good uses:\n\n- **Testing angles cheaply.** Run five hooks with an avatar first, then brief creators with the angle that worked.\n- **Explainers and how-tos**, where the viewer needs information, not a personal recommendation.\n- **Internal content**: training, onboarding, product updates.\n- **Localising** content you already own, where rules and consent allow it.\n\nIn all of these, the viewer doesn't need to believe a person. They need to understand something.\n\n## Where I'd still pay a person\n\nAnything where the viewer has to trust the recommendation:\n\n- a product someone will put on their skin or feed their kids\n- a purchase that's expensive or hard to return\n- a category full of scepticism, like finance, health or supplements\n- a launch where comments and questions are part of the plan\n\n## Label it, whatever you choose\n\nIf you use an AI avatar in an ad, make it obvious. Hiding it borrows trust you didn't earn, and when people find out, you lose the trust you did have. Check the current rules in each market before you launch. They are changing, and this isn't legal advice.\n\n## What I'd do\n\n- Split your budget by job: AI for testing and explaining, creators for recommending.\n- Use avatar tests to write better creator briefs, not to replace the creators. The brief gets sharper, and the creator spends their trust on an angle that already works.\n- Pick creators on fit, not just reach. My [shortlist rubric](https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai) shows how.\n- Ask yourself one question before choosing: does this viewer need to *understand*, or need to *believe*?\n\n## Sources\n\nNo statistics in this one. It's an opinion based on my experience across 850+ creator deals. Related: [UGC vs influencer marketing](https://buildwithvish.netlify.app/#read-ugc-vs-influencer).\n"
+ }
+]

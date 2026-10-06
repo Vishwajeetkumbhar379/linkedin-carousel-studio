@@ -90,17 +90,18 @@ def deck_spec(t: dict) -> dict:
 
 
 def write(batch: Path) -> list[Path]:
-    out = ROOT / "out" / batch.name
+    name = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--out=")), batch.name)
+    out = ROOT / "out" / name
     posts = []
     for n, t in enumerate(load(batch), 1):
-        d = out / f"{n:02d}-{t['slug']}"
+        d = out / t["slug"]
         d.mkdir(parents=True, exist_ok=True)
         cap = t["caption"].replace("—", ",").replace("–", ",")
         (d / "caption.md").write_text(cap.strip() + "\n")
         (d / "first-comment.md").write_text(t.get("first_comment", "").strip() + "\n")
         (d / "sources.md").write_text(sources_md(t))
         (d / "article.md").write_text(f"# {t['title']}\n\n{t['article'].strip()}\n")
-        (d / "meta.json").write_text(json.dumps({k: t.get(k) for k in ("slug", "format", "pillar", "score", "title", "hook", "subtitle", "cover")}, indent=1, ensure_ascii=False))
+        (d / "meta.json").write_text(json.dumps({k: t.get(k) for k in ("slug", "format", "pillar", "score", "title", "hook", "subtitle", "cover", "site_slug")}, indent=1, ensure_ascii=False))
         if t["format"] == "video":
             spec_f = d / "video.json"
             if not spec_f.exists():
@@ -121,7 +122,8 @@ def voice_group(specs: list[Path]) -> None:
     text = "\n\n<long pause>\n\n".join("\n\n".join(" ".join(sc) for sc in d["narration"]) for d in data)
     audio = v._trim(v.gemini_tts(text, v.GEMINI_VOICE, v.GEMINI_STYLE))
     flat = [p for d in data for sc in d["narration"] for p in sc]
-    bounds = v._phrase_bounds(audio, flat)
+    sf.write(specs[0].parent.parent / f"group-{specs[0].parent.name}.wav", audio, v.SR)
+    bounds = v.phrase_bounds(audio, flat)
     k = 0
     for p, d in zip(specs, data):
         n = sum(len(sc) for sc in d["narration"])

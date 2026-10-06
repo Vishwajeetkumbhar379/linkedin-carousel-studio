@@ -1,0 +1,147 @@
+{
+  "slug": "youtube-custom-feeds",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "YouTube is letting viewers design their own homepage."
+    ],
+    [
+      "It's called Custom Feeds.",
+      "You describe a mood or an interest, and YouTube builds the feed."
+    ],
+    [
+      "It's coming to the US this autumn,",
+      "on web, mobile and TV."
+    ],
+    [
+      "Why should marketers care?",
+      "Because people can now ask for exactly what they want."
+    ],
+    [
+      "Your video has to match what someone asks for,",
+      "not just what they watched last week."
+    ],
+    [
+      "So write titles and descriptions that say exactly who it's for.",
+      "Clear beats clever here."
+    ],
+    [
+      "Follow for more AI and marketing news."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "MADE ON YOUTUBE",
+      "title": "Viewers *build their own* homepage",
+      "avatar": "surprised",
+      "avTop": 180,
+      "avSide": "right"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "NEW",
+      "title": "Custom Feeds",
+      "trans": "pop"
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Quick weeknight dinners, under 20 minutes, no fish.",
+      "trans": "whip"
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "Coming this autumn",
+      "chips": [
+        "US",
+        "Web",
+        "Mobile",
+        "TV"
+      ],
+      "trans": "rise"
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "On *every screen*",
+      "size": "t1",
+      "trans": "click"
+    },
+    {
+      "look": "text",
+      "bg": "ink",
+      "title": "Why marketers *should care*",
+      "size": "t2",
+      "trans": "zoom",
+      "avatar": "thinking",
+      "avTop": 730,
+      "avSide": "left"
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "People ask for *exactly* what they want",
+      "size": "t2",
+      "trans": "whip"
+    },
+    {
+      "look": "versus",
+      "bg": "violet",
+      "title": "How videos get found",
+      "left": "What you watched",
+      "right": "What you asked for",
+      "trans": "rise"
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "Match the *ask*",
+      "size": "t1",
+      "trans": "pop",
+      "avatar": "point",
+      "avTop": 730,
+      "avSide": "right"
+    },
+    {
+      "look": "chips",
+      "bg": "ivory",
+      "title": "Say it plainly",
+      "chips": [
+        "Who it's for",
+        "The problem",
+        "The result"
+      ],
+      "trans": "click"
+    },
+    {
+      "look": "text",
+      "bg": "ink",
+      "title": "Clear beats *clever*",
+      "size": "t1",
+      "trans": "zoom",
+      "avatar": "smirk",
+      "avTop": 730,
+      "avSide": "right"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

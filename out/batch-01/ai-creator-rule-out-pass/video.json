@@ -1,0 +1,282 @@
+{
+  "slug": "ai-creator-rule-out-pass",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "Creator economy",
+  "narration": [
+    [
+      "Everyone asks AI to find creators.",
+      "I use it to rule them out."
+    ],
+    [
+      "The hard filters I do myself.",
+      "Country, language, budget."
+    ],
+    [
+      "Then I paste their recent captions and some comments.",
+      "And ask: what makes this a bad fit for my brief?"
+    ],
+    [
+      "It flags tone clashes and competitor deals fast.",
+      "I still check every flag myself."
+    ],
+    [
+      "Whoever survives gets a first line about one real post.",
+      "AI drafts it, I rewrite it."
+    ],
+    [
+      "Both prompts are on my site.",
+      "Follow for more."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "CREATOR SHORTLISTS",
+      "title": "Use AI to *rule creators out*",
+      "avatar": "smirk",
+      "avTop": 180,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 2.47,
+      "say": "Everyone asks AI to find creators."
+    },
+    {
+      "look": "versus",
+      "bg": "violet",
+      "title": "Wrong job vs right job",
+      "left": "Find creators",
+      "right": "Rule them out",
+      "trans": "whip",
+      "avatar": "smirk",
+      "avTop": 960,
+      "avSide": "left",
+      "at": 2.47,
+      "until": 4.12,
+      "say": "I use it to rule them out."
+    },
+    {
+      "look": "chips",
+      "bg": "ivory",
+      "title": "Human filters first",
+      "chips": [
+        "Country",
+        "Language",
+        "Budget"
+      ],
+      "trans": "pop",
+      "at": 4.12,
+      "until": 5.66,
+      "say": "The hard filters I do myself."
+    },
+    {
+      "look": "feed",
+      "bg": "peach",
+      "title": "Copy recent captions and comments",
+      "trans": "rise",
+      "at": 5.66,
+      "until": 7.25,
+      "say": "Country, language, budget."
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Here's my brief and this creator's last 12 captions. What would make them a bad fit? Quote the evidence.",
+      "trans": "zoom",
+      "at": 7.25,
+      "until": 9.79,
+      "say": "Then I paste their recent captions and some comments."
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "What it flags",
+      "chips": [
+        "Tone clash",
+        "Competitor deals",
+        "Off-topic audience"
+      ],
+      "trans": "click",
+      "at": 9.79,
+      "until": 11.84,
+      "say": "And ask: what makes this a bad fit for my brief?"
+    },
+    {
+      "look": "text",
+      "bg": "ink",
+      "title": "I check *every flag* myself",
+      "size": "t1",
+      "trans": "whip",
+      "avatar": "point",
+      "avTop": 730,
+      "avSide": "right",
+      "at": 11.84,
+      "until": 14.59,
+      "say": "It flags tone clashes and competitor deals fast."
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "Survivors get *one real line*",
+      "size": "t2",
+      "trans": "rise",
+      "at": 14.59,
+      "until": 16.53,
+      "say": "I still check every flag myself."
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Write one opening line about their post on [topic]. Specific, under 20 words, no flattery.",
+      "trans": "zoom",
+      "at": 16.53,
+      "until": 19.69,
+      "say": "Whoever survives gets a first line about one real post."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "AI drafts. *I rewrite.*",
+      "size": "t1",
+      "trans": "click",
+      "avatar": "thinking",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 19.69,
+      "until": 21.5,
+      "say": "AI drafts it, I rewrite it."
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "Both prompts on *Build with Vish*",
+      "size": "t3",
+      "trans": "whip",
+      "at": 21.5,
+      "until": 22.78,
+      "say": "Both prompts are on my site."
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "avatar": "laugh",
+      "avTop": 185,
+      "avSide": "right",
+      "at": 22.78,
+      "until": 23.27,
+      "say": "Follow for more."
+    }
+  ],
+  "duration": 26.07,
+  "posters": {
+    "b01": 1.68,
+    "b02": 3.45,
+    "b03": 5.02,
+    "b04": 6.6,
+    "b05": 8.95,
+    "b06": 11.09,
+    "b07": 13.7,
+    "b08": 15.81,
+    "b09": 18.72,
+    "b10": 20.8,
+    "b11": 22.19,
+    "b12": 25.41
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 2.55,
+      "text": "Everyone asks AI to find creators."
+    },
+    {
+      "at": 2.47,
+      "until": 4.2,
+      "text": "I use it to rule them out."
+    },
+    {
+      "at": 4.12,
+      "until": 5.74,
+      "text": "The hard filters I do myself."
+    },
+    {
+      "at": 5.66,
+      "until": 7.33,
+      "text": "Country, language, budget."
+    },
+    {
+      "at": 7.25,
+      "until": 8.551,
+      "text": "Then I paste their recent"
+    },
+    {
+      "at": 8.471,
+      "until": 9.87,
+      "text": "captions and some comments."
+    },
+    {
+      "at": 9.79,
+      "until": 11.004,
+      "text": "And ask: what makes this a"
+    },
+    {
+      "at": 10.924,
+      "until": 11.92,
+      "text": "bad fit for my brief?"
+    },
+    {
+      "at": 11.84,
+      "until": 13.149,
+      "text": "It flags tone clashes"
+    },
+    {
+      "at": 13.069,
+      "until": 14.67,
+      "text": "and competitor deals fast."
+    },
+    {
+      "at": 14.59,
+      "until": 16.61,
+      "text": "I still check every flag myself."
+    },
+    {
+      "at": 16.53,
+      "until": 18.307,
+      "text": "Whoever survives gets a first"
+    },
+    {
+      "at": 18.227,
+      "until": 19.77,
+      "text": "line about one real post."
+    },
+    {
+      "at": 19.69,
+      "until": 21.58,
+      "text": "AI drafts it, I rewrite it."
+    },
+    {
+      "at": 21.5,
+      "until": 22.86,
+      "text": "Both prompts are on my site."
+    },
+    {
+      "at": 22.78,
+      "until": 23.353,
+      "text": "Follow for more."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": false,
+    "bed": false
+  }
+}

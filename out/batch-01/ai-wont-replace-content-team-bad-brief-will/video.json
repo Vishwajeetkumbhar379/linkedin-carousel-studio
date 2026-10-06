@@ -1,0 +1,290 @@
+{
+  "slug": "ai-wont-replace-content-team-bad-brief-will",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "Hot take",
+  "narration": [
+    [
+      "Everyone's worried AI will replace the content team.",
+      "I'm more worried about the brief."
+    ],
+    [
+      "Give a great writer a vague brief, you get average work.",
+      "Give AI the same brief, you get average work faster."
+    ],
+    [
+      "Then someone sees a pile of average drafts.",
+      "And decides the team was the problem."
+    ],
+    [
+      "It wasn't the writing.",
+      "Nobody decided the goal, the audience, or the one thing to say."
+    ],
+    [
+      "Teams that brief well get more out of AI, not less work.",
+      "Fix the brief first.",
+      "My template is on Build with Vish."
+    ],
+    [
+      "Follow for more."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "UNPOPULAR OPINION",
+      "title": "AI won't replace you. *A bad brief will.*",
+      "avatar": "smirk",
+      "avTop": 180,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 2.28,
+      "say": "Everyone's worried AI will replace the content team."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "Worry about *the brief*",
+      "size": "t1",
+      "trans": "whip",
+      "avatar": "smirk",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 2.28,
+      "until": 3.84,
+      "say": "I'm more worried about the brief."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Vague brief → *average work*",
+      "size": "t2",
+      "trans": "rise",
+      "at": 3.84,
+      "until": 6.78,
+      "say": "Give a great writer a vague brief, you get average work."
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "Same brief to AI → average, *faster*",
+      "size": "t2",
+      "trans": "zoom",
+      "at": 6.78,
+      "until": 10.0,
+      "say": "Give AI the same brief, you get average work faster."
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "A pile of *average drafts*",
+      "size": "t2",
+      "trans": "pop",
+      "avatar": "stressed",
+      "avTop": 730,
+      "avSide": "right",
+      "at": 10.0,
+      "until": 12.52,
+      "say": "Then someone sees a pile of average drafts."
+    },
+    {
+      "look": "stamp",
+      "bg": "ink",
+      "stamp": "WRONG CALL",
+      "title": "Blaming the team",
+      "trans": "click",
+      "at": 12.52,
+      "until": 14.68,
+      "say": "And decides the team was the problem."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "It was never *the writing*",
+      "size": "t1",
+      "trans": "whip",
+      "at": 14.68,
+      "until": 15.56,
+      "say": "It wasn't the writing."
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "What nobody decided",
+      "chips": [
+        "The goal",
+        "The audience",
+        "The one thing"
+      ],
+      "trans": "pop",
+      "avatar": "point",
+      "avTop": 780,
+      "avSide": "left",
+      "at": 15.56,
+      "until": 18.98,
+      "say": "Nobody decided the goal, the audience, or the one thing to say."
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "Good briefs get *more* from AI",
+      "size": "t2",
+      "trans": "rise",
+      "at": 18.98,
+      "until": 21.98,
+      "say": "Teams that brief well get more out of AI, not less work."
+    },
+    {
+      "look": "stamp",
+      "bg": "ink",
+      "stamp": "BRIEF FIRST",
+      "title": "Then the tools",
+      "trans": "zoom",
+      "at": 21.98,
+      "until": 22.92,
+      "say": "Fix the brief first."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Template on *Build with Vish*",
+      "size": "t3",
+      "trans": "click",
+      "at": 22.92,
+      "until": 24.3,
+      "say": "My template is on Build with Vish."
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "avatar": "laugh",
+      "avTop": 185,
+      "avSide": "right",
+      "at": 24.3,
+      "until": 25.91,
+      "say": "Follow for more."
+    }
+  ],
+  "duration": 28.71,
+  "posters": {
+    "b01": 1.53,
+    "b02": 3.19,
+    "b03": 5.86,
+    "b04": 9.02,
+    "b05": 11.68,
+    "b06": 13.91,
+    "b07": 15.05,
+    "b08": 17.96,
+    "b09": 21.04,
+    "b10": 22.4,
+    "b11": 23.69,
+    "b12": 27.83
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 1.34,
+      "text": "Everyone's worried AI will"
+    },
+    {
+      "at": 1.26,
+      "until": 2.36,
+      "text": "replace the content team."
+    },
+    {
+      "at": 2.28,
+      "until": 3.92,
+      "text": "I'm more worried about the brief."
+    },
+    {
+      "at": 3.84,
+      "until": 5.363,
+      "text": "Give a great writer a vague"
+    },
+    {
+      "at": 5.283,
+      "until": 6.86,
+      "text": "brief, you get average work."
+    },
+    {
+      "at": 6.78,
+      "until": 8.312,
+      "text": "Give AI the same brief,"
+    },
+    {
+      "at": 8.232,
+      "until": 10.08,
+      "text": "you get average work faster."
+    },
+    {
+      "at": 10.0,
+      "until": 11.22,
+      "text": "Then someone sees a"
+    },
+    {
+      "at": 11.14,
+      "until": 12.6,
+      "text": "pile of average drafts."
+    },
+    {
+      "at": 12.52,
+      "until": 14.76,
+      "text": "And decides the team was the problem."
+    },
+    {
+      "at": 14.68,
+      "until": 15.64,
+      "text": "It wasn't the writing."
+    },
+    {
+      "at": 15.56,
+      "until": 17.736,
+      "text": "Nobody decided the goal, the audience,"
+    },
+    {
+      "at": 17.656,
+      "until": 19.06,
+      "text": "or the one thing to say."
+    },
+    {
+      "at": 18.98,
+      "until": 20.696,
+      "text": "Teams that brief well get more"
+    },
+    {
+      "at": 20.616,
+      "until": 22.06,
+      "text": "out of AI, not less work."
+    },
+    {
+      "at": 21.98,
+      "until": 23.0,
+      "text": "Fix the brief first."
+    },
+    {
+      "at": 22.92,
+      "until": 24.38,
+      "text": "My template is on Build with Vish."
+    },
+    {
+      "at": 24.3,
+      "until": 25.994,
+      "text": "Follow for more."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": false,
+    "bed": false
+  }
+}

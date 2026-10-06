@@ -1,0 +1,144 @@
+{
+  "slug": "instagram-edits-ai-assistant",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "Creator economy",
+  "narration": [
+    [
+      "Instagram just gave creators an AI that reads their own numbers.",
+      "It lives inside Edits, their video app."
+    ],
+    [
+      "It looks at your views, retention, likes and shares,",
+      "plus your comments and what's trending."
+    ],
+    [
+      "Then it suggests what you should make next."
+    ],
+    [
+      "Instagram's pitch: it does the digging,",
+      "the creative calls stay yours."
+    ],
+    [
+      "The catch? Free use is capped.",
+      "More usage sits behind a Meta One subscription."
+    ],
+    [
+      "For brands, this matters.",
+      "Creators will pitch with much sharper data."
+    ],
+    [
+      "Follow for more AI and creator news."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "INSTAGRAM NEWS",
+      "title": "An AI that reads *your Reels data*",
+      "avatar": "surprised",
+      "avTop": 180,
+      "avSide": "right"
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "Inside the *Edits* app",
+      "size": "t1",
+      "trans": "whip"
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "What it reads",
+      "chips": [
+        "Views",
+        "Retention",
+        "Likes",
+        "Shares"
+      ],
+      "trans": "rise"
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Plus comments and *trends*",
+      "size": "t2",
+      "trans": "click"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "IDEAS",
+      "title": "What to make next",
+      "sub": "From your own track record",
+      "trans": "pop",
+      "avatar": "point",
+      "avTop": 740,
+      "avSide": "right"
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "AI does the *digging*",
+      "size": "t1",
+      "trans": "whip"
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "You make the *calls*",
+      "size": "t1",
+      "trans": "zoom"
+    },
+    {
+      "look": "stamp",
+      "bg": "ink",
+      "stamp": "CAPPED",
+      "title": "Free use has a limit",
+      "trans": "click",
+      "avatar": "smirk",
+      "avTop": 740,
+      "avSide": "left"
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "More with *Meta One*",
+      "size": "t2",
+      "sub": "Paid subscription",
+      "trans": "rise"
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "Brands, *pay attention*",
+      "size": "t1",
+      "trans": "pop",
+      "avatar": "thinking",
+      "avTop": 730,
+      "avSide": "left"
+    },
+    {
+      "look": "feed",
+      "bg": "peach",
+      "title": "Pitches backed by *real data*",
+      "trans": "whip"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

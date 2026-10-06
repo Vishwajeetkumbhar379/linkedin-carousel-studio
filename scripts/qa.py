@@ -83,13 +83,15 @@ def parse_dates(text: str) -> list[dt.date]:
     out = []
     for d, m, y in re.findall(r"\b(\d{1,2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* (20\d\d)\b", text):
         out.append(dt.date(int(y), MONTHS[m.lower()], int(d)))
+    for y, m, d in re.findall(r"\b(20\d\d)-(\d\d)-(\d\d)\b", text):
+        out.append(dt.date(int(y), int(m), int(d)))
     return out
 
 
 def check_copy(post: Path, deck: dict, R: list) -> None:
     banned = TOKENS["voice"]["banned"]
     texts = {"caption": (post / "caption.md").read_text() if (post / "caption.md").exists() else ""}
-    slide_txt = json.dumps(deck.get("slides", deck.get("scenes", [])), ensure_ascii=False)
+    slide_txt = json.dumps(deck.get("slides", deck.get("scenes", [])) + [{k: v for k, v in b.items() if k in ("title", "sub", "kick", "stamp", "chips", "say", "button", "src")} for b in deck.get("beats", [])], ensure_ascii=False)
     texts["slides"] = slide_txt
     for name, t in texts.items():
         low = t.lower()
@@ -110,7 +112,8 @@ def check_copy(post: Path, deck: dict, R: list) -> None:
         hook = cap.strip().splitlines()[0]
         n = _words(hook)
         R.append(("PASS" if n < 12 else "FAIL", "copy", f"hook {n} words: \"{hook}\""))
-        last = [l for l in cap.strip().splitlines() if l.strip()][-1]
+        lines = [l for l in cap.strip().splitlines() if l.strip() and not re.match(r"^(Full breakdown|Read more|Sources?)\b.*https?://", l.strip())]
+        last = lines[-1]
         R.append(("PASS" if last.strip().endswith("?") else "FAIL", "copy", f"closes on one open question: \"{last.strip()[:70]}\""))
         qs = cap.count("?")
         if qs > 2:
@@ -132,7 +135,9 @@ def check_facts(post: Path, deck: dict, R: list) -> None:
     window = WINDOWS[kind]
     dates = parse_dates(s)
     if not dates:
-        R.append(("FAIL", "facts", "no dated sources"))
+        visible = json.dumps([{k: v for k, v in sl.items() if not (k.endswith("_style") or k.endswith("Style") or k == "layers")} for sl in deck.get("slides", []) + deck.get("beats", [])])
+        claims = re.findall(r"\d+(?:[.,]\d+)?\s?(?:%|B\b|M\b|billion|million)|\$\d", visible + ((post / "caption.md").read_text() if (post / "caption.md").exists() else ""))
+        R.append(("FAIL", "facts", "no dated sources") if claims else ("WARN", "facts", "opinion post: no factual claims, no sources needed"))
     for d in sorted(set(dates)):
         age = (TODAY - d).days
         R.append(("PASS" if age <= window else "FAIL", "facts", f"source dated {d} is {age} days old ({kind} window {window}d)"))

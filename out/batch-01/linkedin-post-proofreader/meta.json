@@ -1,0 +1,15 @@
+{
+ "slug": "linkedin-post-proofreader",
+ "format": "video",
+ "pillar": "AI tools that change marketing work",
+ "score": 8.8,
+ "title": "LinkedIn retired its AI post writer and launched a proofreader instead",
+ "hook": "LinkedIn just killed its *own AI writer*.",
+ "subtitle": "The replacement only edits words you already wrote.",
+ "cover": {
+  "concept": "A giant red pen hovering over a glowing feed card, striking through a paragraph written by a small robot, while a human hand holds the original handwritten draft. Context symbol: a small flag icon for reporting.",
+  "avatar": "surprised",
+  "label": "AI writer: retired"
+ },
+ "site_slug": null
+}

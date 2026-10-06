@@ -1,0 +1,92 @@
+{
+  "slug": "made-on-youtube-creator-tools",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "Creator economy x AI",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-made-on-youtube-creator-tools",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "YouTube's AI editor will *add your text hooks* for you",
+      "subtitle": "5 Made On YouTube updates worth knowing",
+      "chip": "Creators x AI",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-hook-sticker",
+      "hero_style": "left:140px;bottom:40px;width:800px",
+      "layers": [
+        {
+          "asset": "vish-badge-surprised",
+          "style": "left:40px;top:700px;width:210px;transform:rotate(-6deg)"
+        },
+        {
+          "html": "auto text hook <i>↓</i>",
+          "class": "tag dark",
+          "style": "right:60px;top:690px;transform:rotate(3deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · Edit by chat",
+      "title": "A Gemini editing assistant",
+      "body": "Type to *trim speech, sync music, add text hooks and reorder frames* in Shorts and YouTube Create. TechCrunch reports it should arrive early next year.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · Shorts series",
+      "title": "Seasons and episodes",
+      "body": "Creators can group Shorts into seasons and episodes, built for episodic stories and microdramas on mobile and TV. Brands can brief a series, not just one video."
+    },
+    {
+      "type": "point",
+      "label": "03 · Likeness detection",
+      "title": "Protect your face and voice",
+      "body": "YouTube is expanding likeness detection to cover creators' *voice and face*. As AI copies get easier to make, this becomes part of every partnership conversation."
+    },
+    {
+      "type": "point",
+      "label": "04 · Brand deals",
+      "title": "Get found by brands on YouTube",
+      "body": "YouTube highlighted new ways to get noticed by brands and resources for pitching partnerships. More of the deal process may move onto the platform.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "05 · Live auto-dubbing",
+      "title": "Streams in other languages",
+      "body": "Real-time auto-dubbing for live streams. A live launch or Q&A can reach viewers who don't speak the creator's language."
+    },
+    {
+      "type": "list",
+      "title": "What I'd do now",
+      "items": [
+        "Add likeness terms to contracts",
+        "Sketch one Shorts series idea",
+        "Register for likeness detection",
+        "Check availability in your market"
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *creator brief*.",
+      "subtitle": "Full breakdown on Build with Vish.",
+      "question": "Which update would you use first?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 29
+}

@@ -1,0 +1,296 @@
+{
+  "slug": "linkedin-post-proofreader",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "LinkedIn just retired its own AI post writer.",
+      "Yes, the button that rewrote your posts for you."
+    ],
+    [
+      "The replacement is called Post Proofreader.",
+      "It only suggests edits to words you already wrote."
+    ],
+    [
+      "Every change shows up tracked, so you approve it first."
+    ],
+    [
+      "Why now? People reported AI slop more than a million times,",
+      "in under three weeks."
+    ],
+    [
+      "So the signal is pretty clear.",
+      "LinkedIn wants your voice, not a generated one."
+    ],
+    [
+      "My take: draft it messy, in your own words.",
+      "Then let AI tidy it up, never think for you."
+    ],
+    [
+      "Follow for more AI and marketing news that actually matters."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "LINKEDIN NEWS",
+      "title": "LinkedIn killed its *own AI writer*",
+      "avatar": "surprised",
+      "avTop": 180,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 3.12,
+      "say": "LinkedIn just retired its own AI post writer."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "The *rewrite* button is gone",
+      "size": "t1",
+      "trans": "whip",
+      "at": 3.12,
+      "until": 5.28,
+      "say": "Yes, the button that rewrote your posts for you."
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "NEW",
+      "title": "Post Proofreader",
+      "sub": "For eligible Premium members",
+      "trans": "pop",
+      "at": 5.28,
+      "until": 7.32,
+      "say": "The replacement is called Post Proofreader."
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "It only edits *your* draft",
+      "chips": [
+        "Spelling",
+        "Grammar",
+        "Shorter",
+        "Clearer"
+      ],
+      "trans": "rise",
+      "at": 7.32,
+      "until": 9.8,
+      "say": "It only suggests edits to words you already wrote."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Every change is *tracked*",
+      "size": "t2",
+      "sub": "You approve it first",
+      "trans": "click",
+      "at": 9.8,
+      "until": 12.43,
+      "say": "Every change shows up tracked, so you approve it first."
+    },
+    {
+      "look": "stat",
+      "bg": "ink",
+      "value": "1M+",
+      "title": "AI slop reports on LinkedIn",
+      "src": "Source: Social Media Today, 20 Sep 2026",
+      "dots": 200,
+      "trans": "zoom",
+      "avatar": "surprised",
+      "avTop": 185,
+      "avSide": "right",
+      "at": 12.43,
+      "until": 16.15,
+      "say": "Why now? People reported AI slop more than a million times,"
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "In under *three weeks*",
+      "size": "t1",
+      "trans": "whip",
+      "at": 16.15,
+      "until": 17.01,
+      "say": "in under three weeks."
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "The signal is *clear*",
+      "size": "t1",
+      "trans": "rise",
+      "avatar": "point",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 17.01,
+      "until": 18.43,
+      "say": "So the signal is pretty clear."
+    },
+    {
+      "look": "versus",
+      "bg": "violet",
+      "title": "What LinkedIn wants now",
+      "left": "Generated voice",
+      "right": "Your voice",
+      "trans": "pop",
+      "at": 18.43,
+      "until": 20.93,
+      "say": "LinkedIn wants your voice, not a generated one."
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Fix grammar only. Keep my wording and my tone.",
+      "trans": "click",
+      "avatar": "smirk",
+      "avTop": 960,
+      "avSide": "left",
+      "at": 20.93,
+      "until": 23.57,
+      "say": "My take: draft it messy, in your own words."
+    },
+    {
+      "look": "text",
+      "bg": "ink",
+      "title": "Draft *messy*. Polish *after*.",
+      "size": "t1",
+      "trans": "zoom",
+      "at": 23.57,
+      "until": 26.12,
+      "say": "Then let AI tidy it up, never think for you."
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "at": 26.12,
+      "until": 28.8,
+      "say": "Follow for more AI and marketing news that actually matters."
+    }
+  ],
+  "duration": 30.2,
+  "posters": {},
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 1.939,
+      "text": "LinkedIn just retired its"
+    },
+    {
+      "at": 1.859,
+      "until": 3.2,
+      "text": "own AI post writer."
+    },
+    {
+      "at": 3.12,
+      "until": 4.487,
+      "text": "Yes, the button that rewrote"
+    },
+    {
+      "at": 4.407,
+      "until": 5.36,
+      "text": "your posts for you."
+    },
+    {
+      "at": 5.28,
+      "until": 7.4,
+      "text": "The replacement is called Post Proofreader."
+    },
+    {
+      "at": 7.32,
+      "until": 8.665,
+      "text": "It only suggests edits to"
+    },
+    {
+      "at": 8.585,
+      "until": 9.88,
+      "text": "words you already wrote."
+    },
+    {
+      "at": 9.8,
+      "until": 11.341,
+      "text": "Every change shows up tracked,"
+    },
+    {
+      "at": 11.261,
+      "until": 12.51,
+      "text": "so you approve it first."
+    },
+    {
+      "at": 12.43,
+      "until": 14.562,
+      "text": "Why now? People reported AI slop"
+    },
+    {
+      "at": 14.482,
+      "until": 16.23,
+      "text": "more than a million times,"
+    },
+    {
+      "at": 16.15,
+      "until": 17.09,
+      "text": "in under three weeks."
+    },
+    {
+      "at": 17.01,
+      "until": 18.51,
+      "text": "So the signal is pretty clear."
+    },
+    {
+      "at": 18.43,
+      "until": 19.923,
+      "text": "LinkedIn wants your voice,"
+    },
+    {
+      "at": 19.843,
+      "until": 21.01,
+      "text": "not a generated one."
+    },
+    {
+      "at": 20.93,
+      "until": 22.519,
+      "text": "My take: draft it messy,"
+    },
+    {
+      "at": 22.439,
+      "until": 23.65,
+      "text": "in your own words."
+    },
+    {
+      "at": 23.57,
+      "until": 24.777,
+      "text": "Then let AI tidy it"
+    },
+    {
+      "at": 24.697,
+      "until": 26.2,
+      "text": "up, never think for you."
+    },
+    {
+      "at": 26.12,
+      "until": 27.198,
+      "text": "Follow for more AI and"
+    },
+    {
+      "at": 27.118,
+      "until": 28.876,
+      "text": "marketing news that actually matters."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": false,
+    "bed": false
+  }
+}

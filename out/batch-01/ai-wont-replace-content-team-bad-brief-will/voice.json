@@ -1,0 +1,102 @@
+{
+ "voice": "voice_3rjyhtlhksw1",
+ "duration": 26.714083333333335,
+ "scenes": [
+  {
+   "start": 0.2,
+   "end": 3.84,
+   "phrases": [
+    {
+     "text": "Everyone's worried AI will replace the content team.",
+     "start": 0.2,
+     "end": 2.28
+    },
+    {
+     "text": "I'm more worried about the brief.",
+     "start": 2.28,
+     "end": 3.84
+    }
+   ]
+  },
+  {
+   "start": 3.84,
+   "end": 10.0,
+   "phrases": [
+    {
+     "text": "Give a great writer a vague brief, you get average work.",
+     "start": 3.84,
+     "end": 6.78
+    },
+    {
+     "text": "Give AI the same brief, you get average work faster.",
+     "start": 6.78,
+     "end": 10.0
+    }
+   ]
+  },
+  {
+   "start": 10.0,
+   "end": 14.68,
+   "phrases": [
+    {
+     "text": "Then someone sees a pile of average drafts.",
+     "start": 10.0,
+     "end": 12.52
+    },
+    {
+     "text": "And decides the team was the problem.",
+     "start": 12.52,
+     "end": 14.68
+    }
+   ]
+  },
+  {
+   "start": 14.68,
+   "end": 18.98,
+   "phrases": [
+    {
+     "text": "It wasn't the writing.",
+     "start": 14.68,
+     "end": 15.56
+    },
+    {
+     "text": "Nobody decided the goal, the audience, or the one thing to say.",
+     "start": 15.56,
+     "end": 18.98
+    }
+   ]
+  },
+  {
+   "start": 18.98,
+   "end": 24.3,
+   "phrases": [
+    {
+     "text": "Teams that brief well get more out of AI, not less work.",
+     "start": 18.98,
+     "end": 21.98
+    },
+    {
+     "text": "Fix the brief first.",
+     "start": 21.98,
+     "end": 22.92
+    },
+    {
+     "text": "My template is on Build with Vish.",
+     "start": 22.92,
+     "end": 24.3
+    }
+   ]
+  },
+  {
+   "start": 24.3,
+   "end": 25.914,
+   "phrases": [
+    {
+     "text": "Follow for more.",
+     "start": 24.3,
+     "end": 25.914
+    }
+   ]
+  }
+ ]
+}

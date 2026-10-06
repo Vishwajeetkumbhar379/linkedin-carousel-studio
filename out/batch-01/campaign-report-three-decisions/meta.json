@@ -1,0 +1,14 @@
+{
+ "slug": "campaign-report-three-decisions",
+ "format": "carousel",
+ "pillar": "Real workflows and prompts",
+ "score": 8.2,
+ "title": "Turn any campaign report into three decisions with AI",
+ "hook": "Nobody reads your campaign report. They read *the decisions*.",
+ "subtitle": "Three prompts that turn charts into a one-page memo.",
+ "cover": {
+  "concept": "A tall stack of chart-covered report pages being squeezed through a small funnel, with three glowing decision cards coming out the bottom",
+  "avatar": "point",
+  "label": "30 charts → 3 decisions"
+ }
+}

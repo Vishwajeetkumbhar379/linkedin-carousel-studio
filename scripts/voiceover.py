@@ -181,36 +181,56 @@ def _trim(audio: np.ndarray, thr: float = 0.004) -> np.ndarray:
     return audio[max(idx[0] - 240, 0): idx[-1] + 480] if len(idx) else audio
 
 
+def _syll(t: str) -> int:
+    return sum(max(1, len(re.findall(r"[aeiouy]+", w.lower())) - (w.lower().endswith("e") and len(w) > 3)) for w in re.findall(r"[A-Za-z']+|\d+", t)) + 2 * len(re.findall(r"\d", t))
+
+
 def _phrase_bounds(audio: np.ndarray, phrases: list[str]) -> list[tuple[float, float]]:
-    """Split one take into phrases: walk forward, and for each phrase cut at the longest pause inside a
-    window around where its share of the characters says it should end. Never earlier than 55% of that."""
+    """Split one take into phrases. Global best fit: choose cut points among real pauses so that each
+    phrase's length matches its syllable share, preferring longer pauses (dynamic programming)."""
     n = len(audio) / SR
     if len(phrases) == 1:
         return [(0.0, n)]
     hop = int(SR * 0.01)
     env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio) - hop, hop)])
-    quiet = env < max(env.max() * 0.04, 1e-4)
-    weight = [len(p) + 6 for p in phrases]  # +6: every phrase carries some fixed onset/offset time
-    cuts, prev = [], 0
-    for k in range(len(phrases) - 1):
-        remaining = len(env) - prev
-        exp = remaining * weight[k] / sum(weight[k:])
-        lo, hi = prev + int(exp * 0.55), min(prev + int(exp * 1.6), len(env) - 1)
-        best, best_len, i = prev + int(exp), -1e9, lo
-        while i < hi:
-            if quiet[i]:
-                j = i
-                while j < len(quiet) and quiet[j]:
-                    j += 1
-                score = (j - i) - 0.12 * abs((i + j) // 2 - (prev + exp))
-                if score > best_len:
-                    best, best_len = (i + j) // 2, score
-                i = j
-            else:
-                i += 1
-        cuts.append(best)
-        prev = best
-    edges = [0.0, *[c * hop / SR for c in cuts], n]
+    quiet = env < max(env.max() * 0.05, 1e-4)
+    cands, i = [], 0
+    while i < len(quiet):  # candidate cuts: middle of every quiet run >= 40 ms
+        if quiet[i]:
+            j = i
+            while j < len(quiet) and quiet[j]:
+                j += 1
+            if j - i >= 4 and 0 < i and j < len(quiet):
+                cands.append(((i + j) // 2, (j - i) / 100))
+            i = j
+        else:
+            i += 1
+    total = len(env)
+    w = np.array([_syll(p) + 1.5 for p in phrases], float)
+    exp = w / w.sum() * total
+    K, C = len(phrases) - 1, len(cands)
+    if C < K:  # not enough pauses: fall back to syllable share
+        edges = np.concatenate([[0], np.cumsum(exp)]) / 100
+        return [(float(edges[i]), float(edges[i + 1])) for i in range(len(phrases))]
+    pos = np.array([c[0] for c in cands]); plen = np.array([c[1] for c in cands])
+
+    def cost(seg, k):  # squared relative length error for phrase k, minus a pause-length bonus
+        return ((seg - exp[k]) / exp[k]) ** 2
+
+    INF = 1e18
+    dp = np.full((K, C), INF); bp = np.zeros((K, C), int)
+    for c in range(C):
+        dp[0, c] = cost(pos[c], 0) - 0.8 * plen[c]
+    for k in range(1, K):
+        for c in range(k, C):
+            prev = dp[k - 1, :c] + cost(pos[c] - pos[:c], k)
+            j = int(np.argmin(prev)); dp[k, c] = prev[j] - 0.8 * plen[c]; bp[k, c] = j
+    last = dp[K - 1] + np.array([cost(total - pos[c], K) for c in range(C)])
+    c = int(np.argmin(last)); cuts = [c]
+    for k in range(K - 1, 0, -1):
+        c = bp[k, c]; cuts.append(c)
+    cuts = [pos[c] / 100 for c in reversed(cuts)]
+    edges = [0.0, *cuts, n]
     return [(edges[i], edges[i + 1]) for i in range(len(phrases))]
 
 def synth_gemini(narration: list[list[str]], voice: str, style: str) -> tuple[np.ndarray, list[dict]]:
@@ -218,7 +238,7 @@ def synth_gemini(narration: list[list[str]], voice: str, style: str) -> tuple[np
     3 requests a minute). Lines are then placed at the natural pauses."""
     audio = _trim(gemini_tts("\n\n".join(" ".join(sc) for sc in narration), voice, style))
     flat = [p for sc in narration for p in sc]
-    bounds = _phrase_bounds(audio, flat)
+    bounds = phrase_bounds(audio, flat)
     lead = 0.2
     timings, k = [], 0
     for sc in narration:
@@ -274,6 +294,100 @@ def synth_duo(narration: list[list[str]], who: list[str], voices: dict[str, str]
     return np.concatenate([np.zeros(int(SR * lead), dtype=np.float32), audio]), timings
 
 
+def _stt_words(audio: np.ndarray) -> list[tuple[str, float, float]] | None:
+    """Gemini transcription with sentence timestamps -> words with times (spread by characters in a sentence)."""
+    import base64
+    import subprocess as sp
+    import tempfile
+    import time
+    import urllib.error
+    import urllib.request
+
+    with tempfile.TemporaryDirectory() as td:
+        w, m = Path(td) / "a.wav", Path(td) / "a.mp3"
+        sf.write(w, audio, SR)
+        sp.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(w), "-b:a", "64k", str(m)], check=True)
+        b = base64.b64encode(m.read_bytes()).decode()
+    key = os.environ.get("GEMINI_API_KEY")
+    prompt = "Transcribe this audio. For every sentence output one line: start_seconds|end_seconds|text, with times to 0.01 s. Nothing else."
+    for attempt in range(6):
+        body = {"model": "gemini-3.8-flash", "input": [{"type": "user_input", "content": [{"type": "audio", "data": b, "mime_type": "audio/mp3"}, {"type": "text", "text": prompt}]}]}
+        req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
+        try:
+            resp = json.loads(urllib.request.urlopen(req, timeout=180).read())
+            break
+        except urllib.error.HTTPError:
+            time.sleep(8 * (attempt + 1))
+    else:
+        return None
+
+    def texts(o):
+        if isinstance(o, dict):
+            if o.get("type") == "text" and isinstance(o.get("text"), str):
+                yield o["text"]
+            for v in o.values():
+                yield from texts(v)
+        elif isinstance(o, list):
+            for v in o:
+                yield from texts(v)
+    out = list(texts(resp))
+    if not out:
+        return None
+    words = []
+    for line in out[-1].splitlines():
+        parts = line.strip().split("|")
+        if len(parts) < 3:
+            continue
+        try:
+            t0, t1 = float(parts[0]), float(parts[1])
+        except ValueError:
+            continue
+        ws = re.findall(r"[A-Za-z0-9']+", "|".join(parts[2:]))
+        total = sum(len(x) for x in ws) or 1
+        acc = 0
+        for x in ws:
+            a = t0 + (t1 - t0) * acc / total
+            acc += len(x)
+            words.append((x.lower(), a, t0 + (t1 - t0) * acc / total))
+    return words or None
+
+
+def _norm_words(t: str) -> list[str]:
+    t = t.lower().replace("+", " plus ")
+    return re.findall(r"[a-z0-9']+", t)
+
+
+def phrase_bounds(audio: np.ndarray, phrases: list[str]) -> list[tuple[float, float]]:
+    """Align phrases to real speech using transcription; fall back to the pause-based splitter."""
+    import difflib
+
+    words = _stt_words(audio) if len(phrases) > 1 else None
+    if words:
+        ours, idx = [], []
+        for k, p in enumerate(phrases):
+            for w in _norm_words(p):
+                ours.append(w); idx.append(k)
+        heard = [w for w, _, _ in words]
+        sm = difflib.SequenceMatcher(a=ours, b=heard, autojunk=False)
+        first = {}
+        for blk in sm.get_matching_blocks():
+            for j in range(blk.size):
+                k = idx[blk.a + j]
+                first.setdefault(k, words[blk.b + j][1])
+        if len(first) >= len(phrases) * 0.8:
+            n = len(audio) / SR
+            starts = [first.get(k) for k in range(len(phrases))]
+            starts[0] = 0.0
+            for k in range(1, len(starts)):  # fill gaps by interpolation, keep order
+                if starts[k] is None or starts[k] <= starts[k - 1]:
+                    nxt = next((starts[j] for j in range(k + 1, len(starts)) if starts[j] is not None and starts[j] > starts[k - 1]), n)
+                    starts[k] = starts[k - 1] + (nxt - starts[k - 1]) / 2
+            starts = [max(0.0, x - 0.06) if i else 0.0 for i, x in enumerate(starts)]
+            edges = starts + [n]
+            return [(edges[i], edges[i + 1]) for i in range(len(phrases))]
+    return _phrase_bounds(audio, phrases)
+
+
 def synth_from_take(narration: list[list[str]], path: str) -> tuple[np.ndarray, list[dict]]:
     """Re-use a saved full-script take (e.g. voice-candidates/gemini-puck.wav) without calling the API."""
     audio, sr = sf.read(path, dtype="float32")
@@ -282,7 +396,7 @@ def synth_from_take(narration: list[list[str]], path: str) -> tuple[np.ndarray, 
     assert sr == SR, sr
     audio = _trim(audio)
     flat = [p for sc in narration for p in sc]
-    bounds = _phrase_bounds(audio, flat)
+    bounds = phrase_bounds(audio, flat)
     lead, timings, k = 0.2, [], 0
     for sc in narration:
         ph = [{"text": p, "start": round(lead + bounds[k + i][0], 3), "end": round(lead + bounds[k + i][1], 3)} for i, p in enumerate(sc)]

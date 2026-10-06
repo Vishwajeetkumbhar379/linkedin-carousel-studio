@@ -24,6 +24,8 @@ def entry(post: Path, rank: int) -> dict | None:
     if not meta_f.exists():
         return None
     meta = json.loads(meta_f.read_text())
+    if meta.get("site_slug"):  # a repurposed format of another post: same article
+        return None
     long_html = post / "site-page" / f"{meta['slug']}.html"
     if long_html.exists():  # hand-written long page from an earlier round
         html = long_html.read_text()

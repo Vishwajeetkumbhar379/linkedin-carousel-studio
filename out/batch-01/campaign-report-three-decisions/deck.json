@@ -1,0 +1,96 @@
+{
+  "slug": "campaign-report-three-decisions",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "Real workflows and prompts",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-campaign-report-three-decisions",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Nobody reads your campaign report. They read *the decisions*.",
+      "subtitle": "3 prompts I use to turn charts into a one-page memo.",
+      "chip": "Workflows",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-report-funnel",
+      "hero_style": "left:60px;bottom:40px;width:660px",
+      "layers": [
+        {
+          "asset": "vish-3d-full-cut",
+          "style": "right:30px;bottom:70px;height:600px"
+        },
+        {
+          "html": "30 charts <i>→</i> 3 decisions",
+          "class": "tag dark",
+          "style": "left:330px;top:760px;transform:translateX(-50%) rotate(-2deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · The rule",
+      "title": "The sheet does the maths. AI does the words.",
+      "body": "Calculate every number in your spreadsheet first. Then paste the finished table and tell the AI: *do not recalculate anything*. That one rule removes most of the risk in AI reporting.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · The so-what pass",
+      "title": "Ask for decisions, not a summary.",
+      "body": "Prompt: *Using only this table, give me 3 decisions for next month: keep, change, stop. Each with the number behind it and one line on why.* Summaries describe. Decisions get read."
+    },
+    {
+      "type": "point",
+      "label": "03 · The sceptic pass",
+      "title": "Let it argue like the CFO.",
+      "body": "Prompt: *Act as a sceptical finance lead. Which of these decisions would you challenge, and what number would you ask for?* Fix the weak ones before the meeting, not during it."
+    },
+    {
+      "type": "point",
+      "label": "04 · The what-we-don't-know pass",
+      "title": "Say what the data can't prove.",
+      "body": "Prompt: *List what this data cannot tell us, and what we'd need to measure next time.* Clients trust a report more when it admits limits. I've seen that in every honest review.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "compare",
+      "title": "What changes",
+      "left": {
+        "label": "Old report",
+        "items": [
+          "30 charts",
+          "Every metric, equal weight",
+          "Ends with 'learnings'"
+        ]
+      },
+      "right": {
+        "label": "Decision memo",
+        "items": [
+          "3 decisions on page one",
+          "Numbers as evidence",
+          "Ends with next steps"
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *client review*.",
+      "subtitle": "All 3 prompts, copy-paste ready, on Build with Vish.",
+      "question": "What's the one number your boss always asks about first?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 31
+}

@@ -1,0 +1,102 @@
+{
+ "voice": "voice_3rjyhtlhksw1",
+ "duration": 24.07275,
+ "scenes": [
+  {
+   "start": 0.2,
+   "end": 4.12,
+   "phrases": [
+    {
+     "text": "Everyone asks AI to find creators.",
+     "start": 0.2,
+     "end": 2.47
+    },
+    {
+     "text": "I use it to rule them out.",
+     "start": 2.47,
+     "end": 4.12
+    }
+   ]
+  },
+  {
+   "start": 4.12,
+   "end": 7.25,
+   "phrases": [
+    {
+     "text": "The hard filters I do myself.",
+     "start": 4.12,
+     "end": 5.66
+    },
+    {
+     "text": "Country, language, budget.",
+     "start": 5.66,
+     "end": 7.25
+    }
+   ]
+  },
+  {
+   "start": 7.25,
+   "end": 11.84,
+   "phrases": [
+    {
+     "text": "Then I paste their recent captions and some comments.",
+     "start": 7.25,
+     "end": 9.79
+    },
+    {
+     "text": "And ask: what makes this a bad fit for my brief?",
+     "start": 9.79,
+     "end": 11.84
+    }
+   ]
+  },
+  {
+   "start": 11.84,
+   "end": 16.53,
+   "phrases": [
+    {
+     "text": "It flags tone clashes and competitor deals fast.",
+     "start": 11.84,
+     "end": 14.59
+    },
+    {
+     "text": "I still check every flag myself.",
+     "start": 14.59,
+     "end": 16.53
+    }
+   ]
+  },
+  {
+   "start": 16.53,
+   "end": 21.5,
+   "phrases": [
+    {
+     "text": "Whoever survives gets a first line about one real post.",
+     "start": 16.53,
+     "end": 19.69
+    },
+    {
+     "text": "AI drafts it, I rewrite it.",
+     "start": 19.69,
+     "end": 21.5
+    }
+   ]
+  },
+  {
+   "start": 21.5,
+   "end": 23.273,
+   "phrases": [
+    {
+     "text": "Both prompts are on my site.",
+     "start": 21.5,
+     "end": 22.78
+    },
+    {
+     "text": "Follow for more.",
+     "start": 22.78,
+     "end": 23.273
+    }
+   ]
+  }
+ ]
+}

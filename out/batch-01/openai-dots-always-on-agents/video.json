@@ -1,0 +1,304 @@
+{
+  "slug": "openai-dots-always-on-agents",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "OpenAI just launched Dots.",
+      "Agents in ChatGPT that keep working without a new prompt."
+    ],
+    [
+      "Each one gets its own cloud computer,",
+      "and can reach more than four thousand apps."
+    ],
+    [
+      "You can message it in ChatGPT, Slack or Teams."
+    ],
+    [
+      "When it's idle, it looks for ways to help,",
+      "but only in read-only mode."
+    ],
+    [
+      "Here's the catch for Europe.",
+      "Pro users in the EEA, Switzerland and the UK are left out for now."
+    ],
+    [
+      "My advice: write the job description before you hire the agent.",
+      "One goal, clear limits, and what needs your approval."
+    ],
+    [
+      "Follow for more AI and marketing news."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "OPENAI DEVDAY",
+      "title": "Agents that work *without a prompt*",
+      "avatar": "surprised",
+      "avTop": 180,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 1.82,
+      "say": "OpenAI just launched Dots."
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "DOTS",
+      "title": "Always-on agents in ChatGPT",
+      "trans": "pop",
+      "at": 1.82,
+      "until": 4.98,
+      "say": "Agents in ChatGPT that keep working without a new prompt."
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Its own *cloud computer*",
+      "size": "t1",
+      "trans": "whip",
+      "at": 4.98,
+      "until": 7.24,
+      "say": "Each one gets its own cloud computer,"
+    },
+    {
+      "look": "stat",
+      "bg": "ink",
+      "value": "4,000+",
+      "title": "apps reachable via plugins",
+      "src": "Source: SiliconANGLE, 29 Sep 2026",
+      "dots": 200,
+      "trans": "zoom",
+      "at": 7.24,
+      "until": 9.0,
+      "say": "and can reach more than four thousand apps."
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "Talk to it in",
+      "chips": [
+        "ChatGPT",
+        "Slack",
+        "Teams"
+      ],
+      "trans": "rise",
+      "at": 9.0,
+      "until": 11.75,
+      "say": "You can message it in ChatGPT, Slack or Teams."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "Idle? It looks for *work*",
+      "size": "t2",
+      "trans": "click",
+      "at": 11.75,
+      "until": 13.6,
+      "say": "When it's idle, it looks for ways to help,"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "READ-ONLY",
+      "title": "Until you give it a task",
+      "trans": "pop",
+      "avatar": "point",
+      "avTop": 740,
+      "avSide": "right",
+      "at": 13.6,
+      "until": 15.27,
+      "say": "but only in read-only mode."
+    },
+    {
+      "look": "text",
+      "bg": "ink",
+      "title": "The catch for *Europe*",
+      "size": "t1",
+      "trans": "whip",
+      "avatar": "stressed",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 15.27,
+      "until": 16.51,
+      "say": "Here's the catch for Europe."
+    },
+    {
+      "look": "chips",
+      "bg": "ivory",
+      "title": "Pro users left out for now",
+      "chips": [
+        "EEA",
+        "Switzerland",
+        "UK"
+      ],
+      "trans": "rise",
+      "at": 16.51,
+      "until": 20.19,
+      "say": "Pro users in the EEA, Switzerland and the UK are left out for now."
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "Write the *job description* first",
+      "size": "t2",
+      "trans": "zoom",
+      "avatar": "thinking",
+      "avTop": 730,
+      "avSide": "left",
+      "at": 20.19,
+      "until": 23.52,
+      "say": "My advice: write the job description before you hire the agent."
+    },
+    {
+      "look": "chips",
+      "bg": "ivory",
+      "title": "Every agent needs",
+      "chips": [
+        "One goal",
+        "Clear limits",
+        "Approval points"
+      ],
+      "trans": "click",
+      "at": 23.52,
+      "until": 26.17,
+      "say": "One goal, clear limits, and what needs your approval."
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "at": 26.17,
+      "until": 27.86,
+      "say": "Follow for more AI and marketing news."
+    }
+  ],
+  "duration": 30.66,
+  "posters": {
+    "b01": 1.16,
+    "b02": 4.01,
+    "b03": 6.45,
+    "b04": 8.31,
+    "b05": 10.86,
+    "b06": 12.89,
+    "b07": 14.6,
+    "b08": 15.93,
+    "b09": 19.12,
+    "b10": 22.52,
+    "b11": 25.3,
+    "b12": 29.76
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 1.9,
+      "text": "OpenAI just launched Dots."
+    },
+    {
+      "at": 1.82,
+      "until": 3.424,
+      "text": "Agents in ChatGPT that keep"
+    },
+    {
+      "at": 3.344,
+      "until": 5.06,
+      "text": "working without a new prompt."
+    },
+    {
+      "at": 4.98,
+      "until": 7.32,
+      "text": "Each one gets its own cloud computer,"
+    },
+    {
+      "at": 7.24,
+      "until": 8.074,
+      "text": "and can reach more"
+    },
+    {
+      "at": 7.994,
+      "until": 9.08,
+      "text": "than four thousand apps."
+    },
+    {
+      "at": 9.0,
+      "until": 10.363,
+      "text": "You can message it in"
+    },
+    {
+      "at": 10.283,
+      "until": 11.83,
+      "text": "ChatGPT, Slack or Teams."
+    },
+    {
+      "at": 11.75,
+      "until": 12.913,
+      "text": "When it's idle, it looks"
+    },
+    {
+      "at": 12.833,
+      "until": 13.68,
+      "text": "for ways to help,"
+    },
+    {
+      "at": 13.6,
+      "until": 15.35,
+      "text": "but only in read-only mode."
+    },
+    {
+      "at": 15.27,
+      "until": 16.59,
+      "text": "Here's the catch for Europe."
+    },
+    {
+      "at": 16.51,
+      "until": 18.685,
+      "text": "Pro users in the EEA, Switzerland and"
+    },
+    {
+      "at": 18.605,
+      "until": 20.27,
+      "text": "the UK are left out for now."
+    },
+    {
+      "at": 20.19,
+      "until": 22.204,
+      "text": "My advice: write the job description"
+    },
+    {
+      "at": 22.124,
+      "until": 23.6,
+      "text": "before you hire the agent."
+    },
+    {
+      "at": 23.52,
+      "until": 24.976,
+      "text": "One goal, clear limits, and"
+    },
+    {
+      "at": 24.896,
+      "until": 26.25,
+      "text": "what needs your approval."
+    },
+    {
+      "at": 26.17,
+      "until": 27.944,
+      "text": "Follow for more AI and marketing news."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": false,
+    "bed": false
+  }
+}

@@ -1,0 +1,1 @@
+Workflow, no stats. Builds on my scoring rubric: https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai and the DM structure: https://buildwithvish.netlify.app/#read-creator-outreach-that-gets-replies

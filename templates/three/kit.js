@@ -720,3 +720,67 @@ objects.arrowCurve = function ({ from = [-1, 0, 0], to = [1, 0, 0], lift = 0.8, 
   tip.position.copy(b); tip.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), curve.getTangent(1).normalize()); g.add(tip);
   return g;
 };
+
+// ---------- carousel cover props (round 7) ----------
+const inkM = () => new THREE.MeshPhysicalMaterial({ color: 0x2a2540, roughness: 0.4, clearcoat: 0.6 });
+function chartPage({ bars = [0.5, 0.8, 0.35, 0.65], tint = 0xffffff } = {}) {
+  const g = new THREE.Group();
+  g.add(frostMesh(new RoundedBoxGeometry(1.2, 1.5, 0.05, 6, 0.06), { top: tint, bottom: 0xe6e1f7, glow: 0.35, rimStrength: 0.25 }));
+  bars.forEach((h, i) => { const b = new THREE.Mesh(new RoundedBoxGeometry(0.16, h, 0.04, 3, 0.03), new THREE.MeshPhysicalMaterial({ color: [0x5b4fe0, 0x8f86e8, 0x2448c8, 0xe07a5c][i % 4], roughness: 0.3, clearcoat: 1 })); b.position.set(-0.36 + i * 0.24, -0.5 + h / 2, 0.05); g.add(b); });
+  const t = new THREE.Mesh(new RoundedBoxGeometry(0.7, 0.07, 0.03, 3, 0.03), inkM()); t.position.set(-0.15, 0.55, 0.05); g.add(t);
+  return g;
+}
+objects.reportFunnel = function () {
+  const g = new THREE.Group();
+  for (let i = 0; i < 4; i++) { const p = chartPage({ bars: [0.3 + (i % 3) * 0.2, 0.7, 0.45, 0.6 - i * 0.08] }); p.position.set(-0.3 + i * 0.22, 1.55 + i * 0.12, -i * 0.15); p.rotation.set(0.1, 0.2, -0.25 + i * 0.16); p.scale.setScalar(0.8); g.add(p); }
+  const fun = frostMesh(new THREE.CylinderGeometry(1.15, 0.28, 1.2, 64, 1, true), { top: 0xc4bcff, bottom: 0x4a3fd6, glow: 0.3, rimStrength: 0.5 });
+  fun.material.side = THREE.DoubleSide; fun.position.y = 0.35; g.add(fun);
+  const spout = frostMesh(new THREE.CylinderGeometry(0.28, 0.28, 0.4, 48), { top: 0x8f86e8, bottom: 0x3f33c9, glow: 0.3 }); spout.position.y = -0.45; g.add(spout);
+  [["spark", "violet"], ["eye", "peach"], ["lock", "cobalt"]].forEach(([k, sh], i) => { const t = objects.frostTile({ shade: sh, glyphKind: k, size: 0.55 }); t.position.set((i - 1) * 0.75, -1.35 - Math.abs(i - 1) * 0.1, 0.4); t.rotation.set(0.1, (1 - i) * 0.3, (i - 1) * -0.12); g.add(t); });
+  return g;
+};
+objects.burningBrief = function () {
+  const g = new THREE.Group();
+  const board = new THREE.Mesh(new RoundedBoxGeometry(1.5, 2.0, 0.1, 6, 0.08), new THREE.MeshPhysicalMaterial({ color: 0xc89b6d, roughness: 0.5, clearcoat: 0.6 })); g.add(board);
+  const paper = frostMesh(new RoundedBoxGeometry(1.3, 1.7, 0.03, 4, 0.03), { top: 0xffffff, bottom: 0xf1edff, glow: 0.4, rimStrength: 0.2 }); paper.position.z = 0.07; paper.position.y = -0.05; g.add(paper);
+  for (let i = 0; i < 6; i++) { const l = new THREE.Mesh(new RoundedBoxGeometry(i % 3 ? 0.9 : 1.05, 0.07, 0.02, 3, 0.03), new THREE.MeshPhysicalMaterial({ color: 0xbdb6e6, roughness: 0.5 })); l.position.set(-0.05, 0.45 - i * 0.22, 0.1); g.add(l); }
+  const clip = new THREE.Mesh(new RoundedBoxGeometry(0.6, 0.22, 0.12, 4, 0.05), mat.metal(0xd8d5e6, 0.2)); clip.position.set(0, 0.98, 0.1); g.add(clip);
+  const fl = new THREE.Group(); fl.position.set(0.55, 0.85, 0.2);
+  const flameGeo = (r, h) => { const pts = []; for (let i = 0; i <= 24; i++) { const t = i / 24; pts.push(new THREE.Vector2(r * Math.pow(Math.sin(Math.PI * Math.min(1, t * 1.15)), 0.9) * Math.pow(1 - t, 0.55), t * h)); } return new THREE.LatheGeometry(pts, 48); };
+  [[0xe8531c, 0.42, 1.1, 0.6, 0], [0xff8a3d, 0.3, 0.85, 0.75, 0.04], [0xffd166, 0.17, 0.55, 1.0, 0.08]].forEach(([c, r, h, e, z]) => { const f = new THREE.Mesh(flameGeo(r, h), mat.glow(c, e)); f.position.z = z; f.rotation.z = 0.12; fl.add(f); });
+  g.add(fl);
+  const gold = new THREE.MeshPhysicalMaterial({ color: 0xf6c453, metalness: 0.85, roughness: 0.22, clearcoat: 1, emissive: 0x6b4a00, emissiveIntensity: 0.25 });
+  [[0.9, 1.7, 0.4], [0.3, 2.1, 0.1], [1.25, 2.35, -0.2], [0.65, 2.7, 0.2]].forEach(([x, y, z], i) => { const c = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.05, 40), gold); c.position.set(x, y, z); c.rotation.set(1.2 + i * 0.3, 0.4 * i, 0.3); g.add(c); });
+  return g;
+};
+objects.laptopCap = function () {
+  const g = new THREE.Group();
+  const base = new THREE.Mesh(new RoundedBoxGeometry(2.4, 0.12, 1.6, 6, 0.05), mat.metal(0xd8d5e6, 0.25)); g.add(base);
+  const lid = new THREE.Group(); lid.position.set(0, 0.05, -0.78); lid.rotation.x = -0.32; g.add(lid);
+  const shell = new THREE.Mesh(new RoundedBoxGeometry(2.4, 1.55, 0.08, 6, 0.05), mat.metal(0xd8d5e6, 0.25)); shell.position.y = 0.78; lid.add(shell);
+  const screen = frostMesh(new RoundedBoxGeometry(2.2, 1.35, 0.02, 4, 0.03), { top: 0xc4bcff, bottom: 0x2448c8, glow: 0.45, rimStrength: 0.1 }); screen.position.set(0, 0.78, 0.05); lid.add(screen);
+  const badge = objects.frostTile({ shade: "peach", glyphKind: "spark", size: 0.45 }); badge.position.set(0.55, 0.85, 0.2); lid.add(badge);
+  const cap = new THREE.Group(); cap.position.set(-0.25, 1.75, -0.35); cap.rotation.set(0.15, 0.5, -0.12); g.add(cap);
+  const blk = new THREE.MeshPhysicalMaterial({ color: 0x1b1730, roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.1 });
+  const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.5, 0.35, 48), blk); cap.add(crown);
+  const board = new THREE.Mesh(new RoundedBoxGeometry(1.35, 0.06, 1.35, 4, 0.03), blk); board.position.y = 0.2; board.rotation.y = Math.PI / 4; cap.add(board);
+  const btn = new THREE.Mesh(new THREE.SphereGeometry(0.07, 20, 20), mat.glow(0xf6c453, 1)); btn.position.y = 0.25; cap.add(btn);
+  const tassel = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.06, 0.55, 12), mat.glow(0xf6c453, 0.8)); tassel.position.set(0.55, -0.05, 0.3); cap.add(tassel);
+  return g;
+};
+objects.hookSticker = function () {
+  const g = new THREE.Group();
+  const card = postCard({ ad: false }); card.scale.setScalar(1.15); g.add(card);
+  const strip = new THREE.Mesh(new RoundedBoxGeometry(1.5, 0.32, 0.08, 6, 0.14), new THREE.MeshPhysicalMaterial({ color: 0xf6c453, roughness: 0.25, clearcoat: 1, emissive: 0x6b4a00, emissiveIntensity: 0.15 }));
+  strip.position.set(0.2, 0.55, 0.35); strip.rotation.z = -0.12; g.add(strip);
+  [0.95, 0.65, 0.5].forEach((w, i) => { const l = new THREE.Mesh(new RoundedBoxGeometry(w * 0.6, 0.06, 0.02, 3, 0.03), inkM()); l.position.set(-0.15 + i * 0.32, 0.56 - i * 0.03, 0.4); l.rotation.z = -0.12; g.add(l); });
+  const c = objects.cursor3d({ ripples: false }); c.scale.setScalar(0.5); c.position.set(0.9, 0.3, 0.6); c.rotation.z = 0.25; g.add(c);
+  [[1.1, 1.0], [-0.9, 1.1], [1.25, -0.2]].forEach(([x, y]) => { const s = glyph("spark"); s.scale.setScalar(0.5); s.position.set(x, y, 0.5); g.add(s); });
+  return g;
+};
+objects.briefBot = function () {
+  const g = new THREE.Group();
+  const bot = objects.chatBot({ expression: "happy", holding: "ad" }); bot.scale.setScalar(0.9); bot.position.set(0.6, -0.2, 0); g.add(bot);
+  const b = objects.frostBubble({ shade: "cobalt", lattice: false }); b.scale.setScalar(0.55); b.position.set(-1.05, 0.85, 0.3); b.rotation.y = 0.3; g.add(b);
+  return g;
+};

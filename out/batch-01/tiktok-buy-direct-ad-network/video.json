@@ -1,0 +1,294 @@
+{
+  "slug": "tiktok-buy-direct-ad-network",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "TikTok just showed its plan to close the sale inside the app.",
+      "This was at Advertising Week in New York."
+    ],
+    [
+      "Buy Direct lets people purchase from the For You feed",
+      "in a single click."
+    ],
+    [
+      "A Shopping Assistant answers questions on sizing, shipping and stock."
+    ],
+    [
+      "Lead agents are coming to DMs too,",
+      "and TikTok's ads tools now plug into assistants like Claude."
+    ],
+    [
+      "For US advertisers, ads can now run",
+      "across nearly four hundred thousand outside apps."
+    ],
+    [
+      "The catch: most of this has no launch date yet.",
+      "So plan for it, but don't bet the quarter on it."
+    ],
+    [
+      "Follow for more AI and marketing news."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "TIKTOK NEWS",
+      "title": "Buy straight from *the For You feed*",
+      "avatar": "surprised",
+      "avTop": 180,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 3.44,
+      "say": "TikTok just showed its plan to close the sale inside the app."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "Announced at *Advertising Week*",
+      "size": "t2",
+      "trans": "whip",
+      "at": 3.44,
+      "until": 5.34,
+      "say": "This was at Advertising Week in New York."
+    },
+    {
+      "look": "feed",
+      "bg": "peach",
+      "title": "Buy Direct: *one click*",
+      "trans": "rise",
+      "at": 5.34,
+      "until": 7.52,
+      "say": "Buy Direct lets people purchase from the For You feed"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "1 CLICK",
+      "title": "No leaving the app",
+      "trans": "pop",
+      "at": 7.52,
+      "until": 8.72,
+      "say": "in a single click."
+    },
+    {
+      "look": "chips",
+      "bg": "ivory",
+      "title": "The Shopping Assistant answers",
+      "chips": [
+        "Sizing",
+        "Shipping",
+        "Stock"
+      ],
+      "trans": "click",
+      "at": 8.72,
+      "until": 11.94,
+      "say": "A Shopping Assistant answers questions on sizing, shipping and stock."
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "Lead agents in *DMs*",
+      "size": "t1",
+      "trans": "whip",
+      "at": 11.94,
+      "until": 13.72,
+      "say": "Lead agents are coming to DMs too,"
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Summarise my TikTok campaign performance this week.",
+      "trans": "zoom",
+      "avatar": "point",
+      "avTop": 960,
+      "avSide": "right",
+      "at": 13.72,
+      "until": 16.41,
+      "say": "and TikTok's ads tools now plug into assistants like Claude."
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "For *US* advertisers",
+      "size": "t1",
+      "trans": "rise",
+      "at": 16.41,
+      "until": 18.61,
+      "say": "For US advertisers, ads can now run"
+    },
+    {
+      "look": "stat",
+      "bg": "ink",
+      "value": "~400,000",
+      "title": "outside apps in TikTok's ad network",
+      "src": "Source: TikTok via Music Ally, 6 Oct 2026",
+      "dots": 200,
+      "trans": "zoom",
+      "avatar": "surprised",
+      "avTop": 185,
+      "avSide": "right",
+      "at": 18.61,
+      "until": 21.03,
+      "say": "across nearly four hundred thousand outside apps."
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "NO DATE",
+      "title": "Most tools have no launch date yet",
+      "trans": "click",
+      "avatar": "smirk",
+      "avTop": 740,
+      "avSide": "left",
+      "at": 21.03,
+      "until": 23.43,
+      "say": "The catch: most of this has no launch date yet."
+    },
+    {
+      "look": "text",
+      "bg": "peach",
+      "title": "Plan for it. *Don't bet on it.*",
+      "size": "t2",
+      "trans": "whip",
+      "at": 23.43,
+      "until": 25.91,
+      "say": "So plan for it, but don't bet the quarter on it."
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "at": 25.91,
+      "until": 27.72,
+      "say": "Follow for more AI and marketing news."
+    }
+  ],
+  "duration": 30.52,
+  "posters": {
+    "b01": 2.46,
+    "b02": 4.62,
+    "b03": 6.75,
+    "b04": 8.14,
+    "b05": 10.96,
+    "b06": 13.03,
+    "b07": 15.54,
+    "b08": 17.83,
+    "b09": 20.21,
+    "b10": 22.61,
+    "b11": 25.08,
+    "b12": 29.6
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 1.9,
+      "text": "TikTok just showed its plan to"
+    },
+    {
+      "at": 1.82,
+      "until": 3.52,
+      "text": "close the sale inside the app."
+    },
+    {
+      "at": 3.44,
+      "until": 4.612,
+      "text": "This was at Advertising"
+    },
+    {
+      "at": 4.532,
+      "until": 5.42,
+      "text": "Week in New York."
+    },
+    {
+      "at": 5.34,
+      "until": 6.72,
+      "text": "Buy Direct lets people purchase"
+    },
+    {
+      "at": 6.64,
+      "until": 7.6,
+      "text": "from the For You feed"
+    },
+    {
+      "at": 7.52,
+      "until": 8.8,
+      "text": "in a single click."
+    },
+    {
+      "at": 8.72,
+      "until": 10.599,
+      "text": "A Shopping Assistant answers questions"
+    },
+    {
+      "at": 10.519,
+      "until": 12.02,
+      "text": "on sizing, shipping and stock."
+    },
+    {
+      "at": 11.94,
+      "until": 13.8,
+      "text": "Lead agents are coming to DMs too,"
+    },
+    {
+      "at": 13.72,
+      "until": 14.985,
+      "text": "and TikTok's ads tools now"
+    },
+    {
+      "at": 14.905,
+      "until": 16.49,
+      "text": "plug into assistants like Claude."
+    },
+    {
+      "at": 16.41,
+      "until": 18.69,
+      "text": "For US advertisers, ads can now run"
+    },
+    {
+      "at": 18.61,
+      "until": 21.11,
+      "text": "across nearly four hundred thousand outside apps."
+    },
+    {
+      "at": 21.03,
+      "until": 22.31,
+      "text": "The catch: most of this"
+    },
+    {
+      "at": 22.23,
+      "until": 23.51,
+      "text": "has no launch date yet."
+    },
+    {
+      "at": 23.43,
+      "until": 24.829,
+      "text": "So plan for it, but don't"
+    },
+    {
+      "at": 24.749,
+      "until": 25.99,
+      "text": "bet the quarter on it."
+    },
+    {
+      "at": 25.91,
+      "until": 27.803,
+      "text": "Follow for more AI and marketing news."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": false,
+    "bed": false
+  }
+}

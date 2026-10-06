@@ -1,0 +1,1 @@
+Sources: Google Ads & Commerce Blog https://blog.google/products/ads-commerce/ai-max-language-reporting-features/ · TechWyse https://www.techwyse.com/news/platform-updates/google-ai-max-unified-reporting-ai-brief-language-expansion

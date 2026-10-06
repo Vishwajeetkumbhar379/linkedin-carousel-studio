@@ -1,0 +1,104 @@
+{
+  "slug": "google-ai-max-ai-brief-languages",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-google-ai-max-ai-brief-languages",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "You can now brief Google's ad AI *in German*",
+      "subtitle": "AI Brief expands to 7 more languages",
+      "chip": "AI tools",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-brief-bot",
+      "hero_style": "left:140px;bottom:40px;width:800px",
+      "layers": [
+        {
+          "asset": "vish-badge-smirk",
+          "style": "left:40px;top:700px;width:210px;transform:rotate(-6deg)"
+        },
+        {
+          "html": "brief it <i>auf Deutsch</i>",
+          "class": "tag dark",
+          "style": "right:60px;top:690px;transform:rotate(3deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · What changed",
+      "title": "AI Brief goes multilingual",
+      "body": "On 23 September, Google expanded the closed beta of AI Brief for AI Max to Dutch, French, German, Italian, Japanese, Portuguese and Spanish.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · What AI Brief is",
+      "title": "A written brief for the machine",
+      "body": "You guide AI Max *in your own words*, with context on your business, your audience and your key messages. Your strategy now lives in the brief."
+    },
+    {
+      "type": "point",
+      "label": "03 · New report",
+      "title": "One view of the whole journey",
+      "body": "Search term, then the creative the person saw, then the page they landed on. All in one place. Google hasn't given a general availability date yet."
+    },
+    {
+      "type": "compare",
+      "title": "Weak brief vs strong brief",
+      "left": {
+        "label": "Weak",
+        "items": [
+          "We sell great shoes",
+          "Everyone is our audience",
+          "No limits given"
+        ]
+      },
+      "right": {
+        "label": "Strong",
+        "items": [
+          "Trail shoes for wide feet",
+          "Hikers aged 30 to 55",
+          "No discount claims"
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "title": "My brief checklist",
+      "items": [
+        "Write in your customers' language",
+        "Top 3 messages, in order",
+        "What you never want said",
+        "Real proof points only"
+      ]
+    },
+    {
+      "type": "point",
+      "label": "04 · The catch",
+      "title": "Still a closed beta",
+      "body": "Not every account will see AI Brief yet. Treat it as a test: keep a control period and compare results before and after."
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *campaign brief*.",
+      "subtitle": "Full breakdown on Build with Vish.",
+      "question": "Who writes the AI brief in your team?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 32
+}
