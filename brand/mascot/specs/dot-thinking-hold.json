@@ -1,0 +1,37 @@
+{
+ "width": 600,
+ "height": 700,
+ "camera": {
+  "pos": [
+   0.6,
+   0.5,
+   6.2
+  ],
+  "target": [
+   0,
+   0.15,
+   0
+  ],
+  "fov": 30
+ },
+ "items": [
+  {
+   "type": "mascot",
+   "params": {
+    "expression": "thinking",
+    "pose": "hold"
+   },
+   "rot": [
+    0,
+    -0.22,
+    0
+   ],
+   "shadow": {
+    "radius": 1.0,
+    "y": -0.75,
+    "opacity": 0.3
+   }
+  }
+ ],
+ "trim": true
+}

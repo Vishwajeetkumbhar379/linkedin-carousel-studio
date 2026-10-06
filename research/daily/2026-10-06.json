@@ -1,0 +1,131 @@
+{
+ "date": "2026-10-06",
+ "items": [
+  {
+   "title": "Oct 1, 2026 Announcements Barclays scales Claude to upgrade operations and improve client experience",
+   "url": "https://www.anthropic.com/news/barclays-scales-claude",
+   "date": "2026-10-01",
+   "summary": "",
+   "source": "Anthropic news",
+   "kind": "news",
+   "fresh": true,
+   "boost": 1
+  },
+  {
+   "title": "Article Sep 28, 2026 Automating eval design and hillclimbing with Claude Principles for designing evals and hillclimbing against them without fooling yourself, and how the claude-api skill&#x27;s build-eval and hillclimb commands put them to work. Claude Platform (opens in new tab)",
+   "url": "https://claude.dev/blog/automating-eval-design-and-hillclimbing/",
+   "date": "2026-09-28",
+   "summary": "",
+   "source": "Claude blog",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 1
+  },
+  {
+   "title": "Article Sep 28, 2026 Building with Claude Sonnet 5.5 When to choose Sonnet over Opus, what it costs, and how to tune it. Claude Platform (opens in new tab)",
+   "url": "https://claude.dev/blog/building-with-claude-sonnet-5-5/",
+   "date": "2026-09-28",
+   "summary": "",
+   "source": "Claude blog",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 1
+  },
+  {
+   "title": "Sep 23, 2026 Science Claude discovers a novel enzyme system with CRISPR-like repeats",
+   "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+   "date": "2026-09-23",
+   "summary": "",
+   "source": "Anthropic news",
+   "kind": "news",
+   "fresh": true,
+   "boost": 1
+  },
+  {
+   "title": "Responsible Scaling Policy",
+   "url": "https://www.anthropic.com/news/announcing-our-updated-responsible-scaling-policy",
+   "date": "None",
+   "summary": "date: open the page (listing has none)",
+   "source": "Anthropic news",
+   "kind": "news",
+   "fresh": false,
+   "boost": 0
+  },
+  {
+   "title": "Oct 2, 2026 Announcements Anthropic invests $100 million to train 10,000 engineers and tackle the enterprise AI talent gap",
+   "url": "https://www.anthropic.com/news/claude-frontier-academy",
+   "date": "2026-10-02",
+   "summary": "",
+   "source": "Anthropic news",
+   "kind": "news",
+   "fresh": true,
+   "boost": 0
+  }
+ ],
+ "errors": [
+  {
+   "feed": "OpenAI news",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "Google AI blog",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "Google Ads & Commerce blog",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "Meta newsroom",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "Mistral news",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "Hugging Face blog",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "Hacker News (AI, marketing)",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "GitHub trending-ish (new AI repos)",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "feed": "r/MachineLearning",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "r/LocalLLaMA",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "arXiv cs.CL",
+   "error": "HTTP Error 403: Forbidden"
+  },
+  {
+   "feed": "Product Hunt",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "Social Media Today",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "MediaPost Marketing Daily",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "Net Influencer",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+   "feed": "TechCrunch AI",
+   "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  }
+ ]
+}

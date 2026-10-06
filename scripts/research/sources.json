@@ -1,0 +1,25 @@
+{
+  "_note": "Feeds the research engine pulls. 'kind' sets the freshness window: news 14 days, tool 30 days. Runs in GitHub Actions (open network); this cloud container blocks most hosts.",
+  "feeds": [
+    {"name": "Anthropic news", "kind": "news", "type": "html_links", "url": "https://www.anthropic.com/news", "match": "/news/"},
+    {"name": "Claude blog", "kind": "tool", "type": "html_links", "url": "https://claude.com/blog", "match": "/blog/"},
+    {"name": "OpenAI news", "kind": "news", "type": "rss", "url": "https://openai.com/news/rss.xml"},
+    {"name": "Google AI blog", "kind": "news", "type": "rss", "url": "https://blog.google/technology/ai/rss/"},
+    {"name": "Google Ads & Commerce blog", "kind": "tool", "type": "rss", "url": "https://blog.google/products/ads-commerce/rss/"},
+    {"name": "Meta newsroom", "kind": "news", "type": "rss", "url": "https://about.fb.com/news/feed/"},
+    {"name": "Mistral news", "kind": "news", "type": "html_links", "url": "https://mistral.ai/news", "match": "/news/"},
+    {"name": "Hugging Face blog", "kind": "tool", "type": "rss", "url": "https://huggingface.co/blog/feed.xml"},
+    {"name": "Hacker News (AI, marketing)", "kind": "news", "type": "hn", "query": "AI marketing OR Claude OR ChatGPT ads OR creator economy"},
+    {"name": "GitHub trending-ish (new AI repos)", "kind": "tool", "type": "github", "query": "topic:ai created:>{since} stars:>300"},
+    {"name": "r/MachineLearning", "kind": "news", "type": "reddit", "sub": "MachineLearning"},
+    {"name": "r/LocalLLaMA", "kind": "news", "type": "reddit", "sub": "LocalLLaMA"},
+    {"name": "arXiv cs.CL", "kind": "news", "type": "rss", "url": "http://export.arxiv.org/rss/cs.CL"},
+    {"name": "Product Hunt", "kind": "tool", "type": "rss", "url": "https://www.producthunt.com/feed"},
+    {"name": "Social Media Today", "kind": "news", "type": "rss", "url": "https://www.socialmediatoday.com/feeds/news/"},
+    {"name": "MediaPost Marketing Daily", "kind": "news", "type": "rss", "url": "https://www.mediapost.com/publications/rss/"},
+    {"name": "Net Influencer", "kind": "news", "type": "rss", "url": "https://www.netinfluencer.com/feed/"},
+    {"name": "TechCrunch AI", "kind": "news", "type": "rss", "url": "https://techcrunch.com/category/artificial-intelligence/feed/"}
+  ],
+  "keywords_boost": ["marketing", "ads", "advertis", "creator", "influencer", "brand", "campaign", "LinkedIn", "Instagram", "TikTok", "agent", "Claude", "ChatGPT", "Gemini", "EU", "Germany", "AI Act", "watermark", "workflow", "automation"],
+  "keywords_drop": ["crypto", "earnings call", "lawsuit settlement"]
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>stage</title>
+<style>html,body{margin:0;background:transparent;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+</head><body><canvas id="c"></canvas>
+<script type="module">
+import * as THREE from "three";
+import { createStage, objects, mascot, contactShadow } from "./kit.js";
+
+// Animation presets, all pure functions of t so any frame can be rendered on demand.
+const ANIM = {
+  float: (o, t, a) => { o.position.y = a.base.y + Math.sin(t * 1.6 + (a.phase || 0)) * (a.amp ?? 0.06); o.rotation.y = a.baseRot.y + Math.sin(t * 0.8 + (a.phase || 0)) * (a.swing ?? 0.12); },
+  spin: (o, t, a) => { o.rotation.y = a.baseRot.y + t * (a.speed ?? 0.6); },
+  none: () => {},
+};
+
+let ctx, items = [];
+window.setup = async (spec) => {
+  const canvas = document.getElementById("c");
+  canvas.style.width = spec.width + "px"; canvas.style.height = spec.height + "px";
+  ctx = createStage(canvas, spec);
+  const { scene, camera } = ctx;
+  const cam = spec.camera || {};
+  if (cam.pos) camera.position.set(...cam.pos);
+  if (cam.fov) { camera.fov = cam.fov; camera.updateProjectionMatrix(); }
+  camera.lookAt(...(cam.target || [0, 0, 0]));
+  for (const it of spec.items) {
+    const o = it.type === "mascot" ? mascot(it.params || {}) : objects[it.type](it.params || {});
+    if (it.pos) o.position.set(...it.pos);
+    if (it.rot) o.rotation.set(...it.rot);
+    if (it.scale) o.scale.setScalar(it.scale);
+    scene.add(o);
+    if (it.shadow) {
+      const s = contactShadow(it.shadow.radius ?? 1.4, it.shadow.color ?? 0x2a2440, it.shadow.opacity ?? 0.28);
+      s.position.set(o.position.x, it.shadow.y ?? o.position.y - 1.1, o.position.z);
+      scene.add(s);
+    }
+    items.push({ o, anim: it.anim || "none", a: { ...(it.animArgs || {}), base: o.position.clone(), baseRot: o.rotation.clone() }, it });
+  }
+  window.renderAt(spec.t ?? 0);
+  window.READY = true;
+};
+window.renderAt = (t) => {
+  for (const x of items) {
+    (ANIM[x.anim] || ANIM.none)(x.o, t, x.a);
+    if (window.HOOK) window.HOOK(x, t, THREE);
+  }
+  ctx.renderer.render(ctx.scene, ctx.camera);
+  return true;
+};
+window.STAGE_LOADED = true;
+</script></body></html>

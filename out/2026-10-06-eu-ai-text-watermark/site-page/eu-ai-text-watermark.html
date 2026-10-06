@@ -1,0 +1,63 @@
+<p>On 5 October 2026 OpenAI said that, over the coming weeks, eligible ChatGPT and Codex text created in the EU will carry an invisible watermark. If you write for clients, run a content team or ghostwrite on LinkedIn, you'll get questions about this. This page explains what the watermark is, what it can and can't show, and what I'd change in a marketing workflow. It takes about seven minutes to read. At the end there's a short disclosure clause you can adapt for client contracts.</p>
+
+<div class="tldr"><b>In short</b><ul>
+<li>The watermark is a hidden statistical pattern in word choice. The text you see doesn't change.</li>
+<li>It's OpenAI's response to the EU AI Act, which asks AI providers to make generated text machine-detectable.</li>
+<li>It can signal that an OpenAI model made or processed part of a text. It can't say who wrote it, how much a person changed, whether it's true, or who owns it.</li>
+<li>The detector isn't public. At launch only approved researchers and expert organisations can apply.</li>
+<li>The useful move for marketers: settle AI disclosure in your contracts and process, before a client asks.</li>
+</ul></div>
+
+<h2>What OpenAI announced</h2>
+<p>OpenAI published its approach to the EU's text provenance rules on 5 October 2026. Three parts matter for you:</p>
+<ol>
+<li><b>ChatGPT and Codex in the EU.</b> Over the coming weeks, eligible text output in the EU gets an invisible watermark, across all plans. OpenAI says it is not making this a global default at launch.</li>
+<li><b>The API.</b> Developers anywhere can opt in to watermarking for select models. It stays off by default.</li>
+<li><b>The detector.</b> Access is limited to approved researchers and expert organisations, case by case. OpenAI says the tool won't identify the user or reveal prompts.</li>
+</ol>
+<p>Source: <a href="https://openai.com/index/eu-text-provenance/" target="_blank" rel="noopener">OpenAI, Our approach to EU text provenance rules</a>.</p>
+
+<h2>How the watermark works, in plain words</h2>
+<p>When a model writes, it picks each next word from many possible options. OpenAI's method, called textGrain, nudges those choices in a way that leaves a statistical pattern across a passage. A detector looks for that pattern. Nothing visible changes: no hidden characters, no tags, no formatting.</p>
+<p>Because the signal lives in word choice, it needs room. OpenAI's own tests (at a 1% false-positive target) found watermarks in about 80% of 200-token passages and about 95% of 400-token passages, for flexible writing like psychology. A token is roughly three quarters of a word. Constrained text, like maths, is much harder to detect, and editing weakens the signal.</p>
+
+<h2>What it can and can't tell anyone</h2>
+<table>
+<tr><th>Can signal</th><th>Can't tell</th></tr>
+<tr><td>That an OpenAI model generated or processed part of a passage, when the passage is long enough</td><td>Who wrote or prompted it</td></tr>
+<tr><td></td><td>How much a person contributed or changed</td></tr>
+<tr><td></td><td>Whether the content is accurate</td></tr>
+<tr><td></td><td>Who owns it or is responsible for it</td></tr>
+</table>
+<p>One more point OpenAI makes itself: if no watermark is found, that doesn't prove a person wrote the text. It could be short, edited, translated, older, or from another company's model.</p>
+
+<h2>What I'd change in a marketing workflow</h2>
+<h3>1. Treat AI output as a draft</h3>
+<p>Editing for voice, facts and brand fit was always the job. A first AI draft that ships unedited is weak copy, watermark or not. If you need a better first draft, the <a href="#read-brief-ai-like-an-agency">six-box brief</a> fixes most of it.</p>
+<h3>2. Check contracts for AI clauses</h3>
+<p>In creator and agency work, most disputes start in the contract, not the content. Look for clauses on AI use, originality and disclosure in client agreements and creator briefs. If there's nothing, agree a line before the work starts.</p>
+<h3>3. Decide your disclosure rule</h3>
+<p>Pick a rule you're comfortable defending, for example "AI may assist with research and first drafts; a named person edits and approves everything we publish." Write it down and share it with clients.</p>
+<h3>4. Don't trust detector screenshots</h3>
+<p>Third-party "AI detectors" were unreliable before this, and the official detector isn't public. A screenshot claiming a text is "98% AI" proves very little.</p>
+
+<div class="note"><b>Not legal advice.</b> This is general information about a product change. For contract wording that has to hold up, ask a lawyer who works in your market.</div>
+
+<h2>A disclosure clause you can adapt</h2>
+<pre class="prompt">AI assistance. The agency may use AI tools for research, ideation and first drafts. A named member of the agency team reviews, edits and approves all deliverables before delivery and remains responsible for their accuracy. The agency will not enter the client's confidential information into AI tools that use inputs for model training. On request, the agency will tell the client which tools were used for a deliverable.</pre>
+
+<h2>Questions people ask</h2>
+<h3>Does this apply outside the EU?</h3>
+<p>For ChatGPT and Codex, OpenAI says the watermark applies in the EU at launch and is not a global default. In the API it's opt-in everywhere.</p>
+<h3>Can my client check my text?</h3>
+<p>Not with OpenAI's detector, for now. Access is limited to approved researchers and expert organisations.</p>
+<h3>Does it make the writing worse?</h3>
+<p>OpenAI says it saw no meaningful quality difference on its benchmarks with and without watermarking.</p>
+
+<h2>Your action plan</h2>
+<ul>
+<li>Read your top three client contracts for AI and originality clauses.</li>
+<li>Write a one-line AI disclosure rule for your team.</li>
+<li>Add the clause above (adapted) to new proposals.</li>
+<li>Keep editing every AI draft for voice and facts.</li>
+</ul>

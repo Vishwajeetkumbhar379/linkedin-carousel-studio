@@ -1,0 +1,1 @@
+Text-led graphic on warm bone paper. Headline: "Creator discovery and paid ads. Now one screen." Subline: "The tool got faster. The brief didn't get easier." Below, a 3D glass video tile with a play button sits inside a metal ring with five soft clay spheres orbiting it, representing creators feeding into one ad. A small violet robot mascot sits bottom-left.

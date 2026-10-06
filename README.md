@@ -71,6 +71,24 @@ flowchart LR
     F --> G[PNG slides + PDF]
 ```
 
+## Build with Vish content engine (new)
+
+This repo now also holds the content engine that researches, writes, designs, renders and checks Vish's LinkedIn posts. It is in a **test-first** phase: three sample directions are in `out/`, waiting for a pick.
+
+| Folder | What's in it |
+|---|---|
+| `brand/` | `identity.md`, `tokens.json` (single source of truth), `mascot/` (Dot, the sidekick) |
+| `research/` | dated findings, `competitors.md`, raw source text |
+| `topics/` | `backlog.json` (scored, only 8+ ships), `posted.json`, `queue.json` |
+| `templates/` | Three.js 3D kit, video templates, self-hosted fonts |
+| `carousel/studio.py` | 3D-aware slide templates in three themes (studio, night, field) |
+| `scripts/` | `research/fetch.py`, `render3d.py`, `build_post.py`, `render_video.py`, `qa.py` |
+| `out/YYYY-MM-DD-slug/` | review pack: slides, PDF/MP4, caption, first comment, alt text, sources, QA report |
+| `inspiration/` | sweep log, teardowns, moodboard, style directions |
+| `docs/` | capabilities, growth playbook, automation options, runbook |
+
+`make help` lists every command. Start with `docs/runbook.md`.
+
 ---
 
 Built by [Vishwajeet Kumbhar](https://www.linkedin.com/in/vishwajeetkumbhar379) with Claude Code. MIT licence.

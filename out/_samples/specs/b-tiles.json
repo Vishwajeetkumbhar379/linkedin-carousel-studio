@@ -1,0 +1,23 @@
+{
+ "width": 1000,
+ "height": 900,
+ "exposure": 0.9,
+ "camera": {
+  "pos": [
+   0,
+   0.2,
+   8.4
+  ],
+  "fov": 30
+ },
+ "items": [
+  {
+   "type": "imageTiles",
+   "rot": [
+    0.08,
+    -0.35,
+    0.02
+   ]
+  }
+ ]
+}

@@ -1,0 +1,100 @@
+{
+  "slug": "eu-ai-text-watermark",
+  "theme": "studio",
+  "direction": "A · Studio Light",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-eu-ai-text-watermark",
+  "slides": [
+    {
+      "type": "cover",
+      "badge": "AI x Marketing · EU",
+      "title": "ChatGPT text in the EU is getting an *invisible watermark*.",
+      "subtitle": "What it can show, what it can't, and what I'd change in your workflow.",
+      "hero": "a-hero",
+      "hero_style": "right:-20px;bottom:96px;width:820px",
+      "mid_style": "justify-content:flex-start;padding-top:96px"
+    },
+    {
+      "type": "point",
+      "tint": "purple",
+      "label": "01 · The news",
+      "title": "OpenAI announced it on 5 October.",
+      "body": "Over the coming weeks, eligible ChatGPT and Codex text made in the EU gets an invisible watermark. It's OpenAI's answer to the *EU AI Act*, which wants AI text to be machine-detectable.",
+      "mascot": "dot-surprised"
+    },
+    {
+      "type": "point",
+      "tint": "teal",
+      "label": "02 · How it works",
+      "title": "It hides in word choice, not on screen.",
+      "body": "The method, called textGrain, nudges which words the model picks. A detector looks for that statistical pattern. Your text looks exactly the same.",
+      "hero": "a-dots",
+      "hero_style": "right:96px;top:150px;width:470px",
+      "mascot": "dot-thinking",
+      "mid_style": "justify-content:flex-start;padding-top:330px"
+    },
+    {
+      "type": "stat",
+      "tint": "coral",
+      "label": "03 · How reliable",
+      "value": "~80%",
+      "title": "of 200-token passages detected.",
+      "body": "About 95% at 400 tokens, at a 1% false-positive target. Shorter text and heavily edited text are much harder to detect. OpenAI says so itself.",
+      "source": "Source: OpenAI, 5 Oct 2026"
+    },
+    {
+      "type": "compare",
+      "title": "What a watermark *can't* tell anyone",
+      "left": {
+        "label": "Can't tell",
+        "items": [
+          "Who wrote or prompted it",
+          "How much a human changed",
+          "Whether it's true",
+          "Who owns it"
+        ]
+      },
+      "right": {
+        "label": "Can signal",
+        "items": [
+          "That an OpenAI model made or processed part of it",
+          "Only if the passage is long enough"
+        ]
+      }
+    },
+    {
+      "type": "point",
+      "tint": "purple",
+      "label": "05 · Who can check",
+      "title": "Not your client. Not yet.",
+      "body": "The detector isn't public. At launch, only approved researchers and expert organisations can apply. In the API, watermarking is opt-in and *off by default*.",
+      "mascot": "dot-wink"
+    },
+    {
+      "type": "list",
+      "title": "What I'd do this week",
+      "items": [
+        "Treat AI output as a draft. Editing for voice and facts was always the job.",
+        "Check client and creator contracts for AI-disclosure clauses.",
+        "Decide your own disclosure rule before a client asks.",
+        "Ignore anyone selling 'AI detector' screenshots as proof."
+      ]
+    },
+    {
+      "type": "cta",
+      "badge": "Save for later",
+      "title": "Save this before your next *client call*.",
+      "subtitle": "Full breakdown, sources and a disclosure template on Build with Vish.",
+      "question": "Would you tell a client a draft was AI-assisted? Yes or no?",
+      "button": "Save · Follow for AI x marketing",
+      "mascot": "dot-happy",
+      "mascot_style": "left:auto;right:84px;bottom:150px;width:190px"
+    }
+  ]
+}

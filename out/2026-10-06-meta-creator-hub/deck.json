@@ -1,0 +1,29 @@
+{
+  "slug": "meta-creator-hub",
+  "theme": "field",
+  "direction": "C · Field Notes",
+  "format": "single-image + text post",
+  "pillar": "Creator economy x AI",
+  "single": true,
+  "tag": "Creator marketing",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai",
+  "slides": [
+    {
+      "type": "cover",
+      "badge": "850+ creator deals in",
+      "title": "Creator discovery and paid ads. Now *one screen*.",
+      "subtitle": "The tool got faster. The brief didn't get easier.",
+      "hero": "c-hub",
+      "hero_style": "left:50%;transform:translateX(-50%);bottom:40px;width:760px",
+      "mid_style": "justify-content:flex-start;padding-top:70px",
+      "mascot": "dot-focused",
+      "mascot_style": "left:84px;bottom:150px;width:150px",
+      "title_style": "font-size:80px;font-weight:700;letter-spacing:-.035em;line-height:1.04;max-width:860px"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+ChatGPT will show ads next to the images you generate.
+
+OpenAI announced it on 5 October. Testing starts later this month, US only, with a first group of advertisers.
+
+The details that matter:
+→ Ads are labelled and sit beside your image, not inside it
+→ OpenAI says ads don't influence ChatGPT's answers
+→ 1.2 billion people use ChatGPT every week (OpenAI's number)
+→ Measurement partners are already plugged in: AppsFlyer, Northbeam, Triple Whale and more
+
+Early, partner-reported data: WeightWatchers' attributed CPA on ChatGPT Ads was 15.3% lower than its blended paid-search benchmark (DV Rockerbox, via OpenAI). One brand, one partner, attributed numbers. Treat it as a signal, not proof.
+
+My take: the next ad slot is the moment someone imagines your product.
+
+If you run paid social, would you test this in Q1? Yes or no?

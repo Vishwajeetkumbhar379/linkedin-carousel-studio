@@ -1,0 +1,24 @@
+name: research
+# Weekly topic research with open network access (the cloud dev container blocks most news hosts).
+# Commits research/daily/<date>.json; no posting, no external writes.
+on:
+  schedule:
+    - cron: "17 6 * * 0"   # Sundays 06:17 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/research/fetch.py
+      - run: |
+          git config user.name "research-bot"
+          git config user.email "research-bot@users.noreply.github.com"
+          git add research/daily
+          git commit -m "research: weekly fetch $(date +%F)" || echo "nothing new"
+          git push

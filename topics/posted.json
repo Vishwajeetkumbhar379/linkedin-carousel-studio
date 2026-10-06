@@ -1,0 +1,93 @@
+{
+ "note": "Backfill list. These 8 carousels live on Build with Vish. Vish: add the LinkedIn URL + date for each one you actually posted, and any posts not listed here (or send the LinkedIn data export: Settings > Data privacy > Get a copy of your data > Posts).",
+ "posts": [
+  {
+   "slug": "six-box-brief",
+   "title": "Brief AI like a pro",
+   "hook": "Your prompts aren't bad. Your briefs are.",
+   "badge": "Prompting",
+   "site_page": "https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency",
+   "site_page_exists": true,
+   "linkedin_url": null,
+   "posted_on_linkedin": "unknown, Vish to confirm",
+   "source": "buildwithvish src/content-more.js CAROUSELS"
+  },
+  {
+   "slug": "fix-weak-answers",
+   "title": "Fix weak AI answers",
+   "hook": "The first AI answer is a draft.",
+   "badge": "Prompts",
+   "site_page": "https://buildwithvish.netlify.app/#read-one-line-follow-ups",
+   "site_page_exists": true,
+   "linkedin_url": null,
+   "posted_on_linkedin": "unknown, Vish to confirm",
+   "source": "buildwithvish src/content-more.js CAROUSELS"
+  },
+  {
+   "slug": "creators-not-followers",
+   "title": "Pick creators on fit",
+   "hook": "Stop picking creators by follower count.",
+   "badge": "Creator marketing",
+   "site_page": "https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai",
+   "site_page_exists": true,
+   "linkedin_url": null,
+   "posted_on_linkedin": "unknown, Vish to confirm",
+   "source": "buildwithvish src/content-more.js CAROUSELS"
+  },
+  {
+   "slug": "campaign-math",
+   "title": "Campaign math in 60 seconds",
+   "hook": "4 numbers every client meeting comes down to.",
+   "badge": "Creator marketing",
+   "site_page": "https://buildwithvish.netlify.app/#read-creator-campaign-math",
+   "site_page_exists": true,
+   "linkedin_url": null,
+   "posted_on_linkedin": "unknown, Vish to confirm",
+   "source": "buildwithvish src/content-more.js CAROUSELS"
+  },
+  {
+   "slug": "website-no-code",
+   "title": "A website with zero code",
+   "hook": "I built a website without writing code.",
+   "badge": "Project",
+   "site_page": "https://buildwithvish.netlify.app/#read-build-website-no-code",
+   "site_page_exists": true,
+   "linkedin_url": null,
+   "posted_on_linkedin": "unknown, Vish to confirm",
+   "source": "buildwithvish src/content-more.js CAROUSELS"
+  },
+  {
+   "slug": "about-me-folder",
+   "title": "Make AI know you",
+   "hook": "Tired of re-explaining yourself to AI?",
+   "badge": "Project",
+   "site_page": "https://buildwithvish.netlify.app/#read-ai-about-me-folder",
+   "site_page_exists": true,
+   "linkedin_url": null,
+   "posted_on_linkedin": "unknown, Vish to confirm",
+   "source": "buildwithvish src/content-more.js CAROUSELS"
+  },
+  {
+   "slug": "ad-labels",
+   "title": "Ad labels in Europe",
+   "hook": "\"#ad somewhere\" isn't a plan in Europe.",
+   "badge": "Creator marketing",
+   "site_page": "https://buildwithvish.netlify.app/#read-ad-labels-in-europe",
+   "site_page_exists": true,
+   "linkedin_url": null,
+   "posted_on_linkedin": "unknown, Vish to confirm",
+   "source": "buildwithvish src/content-more.js CAROUSELS"
+  },
+  {
+   "slug": "no-code-workflows",
+   "title": "5 no-code AI workflows",
+   "hook": "5 AI workflows. Zero code.",
+   "badge": "Workflows",
+   "site_page": "https://buildwithvish.netlify.app/#read-no-code-ai-workflows",
+   "site_page_exists": true,
+   "linkedin_url": null,
+   "posted_on_linkedin": "unknown, Vish to confirm",
+   "source": "buildwithvish src/content-more.js CAROUSELS"
+  }
+ ]
+}

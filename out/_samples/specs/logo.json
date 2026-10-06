@@ -1,0 +1,23 @@
+{
+ "width": 600,
+ "height": 600,
+ "exposure": 0.95,
+ "camera": {
+  "pos": [
+   0.5,
+   0.4,
+   4.6
+  ],
+  "fov": 30
+ },
+ "items": [
+  {
+   "type": "logoMark",
+   "rot": [
+    0.1,
+    -0.35,
+    0
+   ]
+  }
+ ]
+}

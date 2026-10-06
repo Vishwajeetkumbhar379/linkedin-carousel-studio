@@ -1,0 +1,312 @@
+{
+ "generated": "2026-10-06",
+ "rule": "Average of 5 criteria (1-10). Only 8.0+ ships. News sources must be 14 days old or less, tool updates 30 days. Every claim needs two independent sources or one primary.",
+ "topics": [
+  {
+   "id": "eu-ai-text-watermark",
+   "title": "ChatGPT text in the EU is getting an invisible watermark",
+   "pillar": "AI tools that change marketing work",
+   "angle": "What the watermark can and can't prove, and what marketers and ghostwriters in Europe should change",
+   "why_now": "OpenAI announced 5 Oct; rollout 'over the coming weeks' in the EU",
+   "sources": [
+    [
+     "OpenAI: Our approach to EU text provenance rules",
+     "https://openai.com/index/eu-text-provenance/",
+     "2026-10-05",
+     "primary"
+    ],
+    [
+     "OpenAI Developer Community post",
+     "https://community.openai.com/t/openais-approach-to-eu-text-provenance-rules/1403521",
+     "2026-10-05",
+     "primary"
+    ]
+   ],
+   "pain": "Fear that clients can now 'catch' AI-assisted copy",
+   "take": "Disclosure belongs in the contract, which is where 850+ creator deals taught me most disputes start",
+   "scores": {
+    "freshness": 10,
+    "usefulness": 9,
+    "shareability": 9,
+    "comments": 9,
+    "brand_fit": 9
+   },
+   "status": "sample drafted (Direction A)",
+   "score": 9.2,
+   "ships": true
+  },
+  {
+   "id": "chatgpt-image-ads",
+   "title": "ChatGPT will show ads next to the images you generate",
+   "pillar": "AI tools that change marketing work",
+   "angle": "A new ad slot: the moment someone imagines your product. What it means for paid social budgets",
+   "why_now": "OpenAI announced 5 Oct; US test later in October",
+   "sources": [
+    [
+     "OpenAI: Building advertising for the way people use AI",
+     "https://openai.com/",
+     "2026-10-05",
+     "primary"
+    ],
+    [
+     "TechCrunch, Sarah Perez",
+     "https://techcrunch.com/2026/10/05/openai-launches-visual-ads-that-appear-alongside-image-generation-results",
+     "2026-10-05",
+     "secondary"
+    ]
+   ],
+   "pain": "Where does next year's test budget go?",
+   "take": "New channels reward the brief, not the bid",
+   "scores": {
+    "freshness": 10,
+    "usefulness": 8,
+    "shareability": 8,
+    "comments": 8,
+    "brand_fit": 9
+   },
+   "status": "sample drafted (Direction B)",
+   "score": 8.6,
+   "ships": true
+  },
+  {
+   "id": "meta-creator-hub",
+   "title": "Meta put creator discovery and paid ads in one screen",
+   "pillar": "Creator economy x AI",
+   "angle": "One-click creator ads don't fix rights, fit or disclosure",
+   "why_now": "Launched 15 Sep (21 days, inside 30-day tool window)",
+   "sources": [
+    [
+     "MediaPost, Colin Kirkland",
+     "https://www.mediapost.com/publications/article/418022/",
+     "2026-09-15",
+     "secondary"
+    ],
+    [
+     "eMarketer, Marisa Jones",
+     "https://www.emarketer.com/content/meta-s-creator-marketing-hub-gives-brands-central-resource-partnerships",
+     "2026-09-16",
+     "secondary"
+    ]
+   ],
+   "pain": "Creator ops is still slow paperwork",
+   "take": "Usage rights and briefs are where creator deals go wrong; tooling speed was never the bottleneck",
+   "scores": {
+    "freshness": 7,
+    "usefulness": 8,
+    "shareability": 8,
+    "comments": 9,
+    "brand_fit": 10
+   },
+   "status": "sample drafted (Direction C)",
+   "score": 8.4,
+   "ships": true
+  },
+  {
+   "id": "frontier-deployed-engineer",
+   "title": "Anthropic is training 10,000 'Frontier Deployed Engineers'. The job marketers should watch",
+   "pillar": "Career and AI Ops pivot",
+   "angle": "The AI Ops / deployment role is becoming a named job. What a non-engineer can take from it",
+   "why_now": "Anthropic announced $100M Claude Frontier Academy on 2 Oct",
+   "sources": [
+    [
+     "Anthropic news: Anthropic invests $100 million to train 10,000 engineers",
+     "https://www.anthropic.com/news",
+     "2026-10-02",
+     "primary"
+    ]
+   ],
+   "pain": "Marketers unsure what AI roles they can move into",
+   "take": "Vish's own pivot to AI Ops; what transfers from running 850+ creator deals",
+   "scores": {
+    "freshness": 9,
+    "usefulness": 8,
+    "shareability": 8,
+    "comments": 8,
+    "brand_fit": 9
+   },
+   "status": "needs second source + Vish's personal angle",
+   "score": 8.4,
+   "ships": true
+  },
+  {
+   "id": "weekly-report-autopilot",
+   "title": "The weekly marketing report that writes itself (my open-source build)",
+   "pillar": "Real workflows and prompts",
+   "angle": "Walk through campaign-report-autopilot: what it automates, what a human still checks",
+   "why_now": "Evergreen build-in-public; Anthropic's own marketing ops team posted a similar 2-days-to-2-hours story on 4 Sep",
+   "sources": [
+    [
+     "Vish's repo",
+     "https://github.com/Vishwajeetkumbhar379/campaign-report-autopilot",
+     "2026-10-05",
+     "primary"
+    ],
+    [
+     "Claude LinkedIn post (marketing ops)",
+     "https://www.linkedin.com/posts/claude_ian-and-annabel-work-in-marketing-operations-activity-7500244806254743552-yn6M",
+     "2026-09-04",
+     "primary"
+    ]
+   ],
+   "pain": "Reporting eats a day a week",
+   "take": "Built and shipped by Vish; page already exists (#read-report-that-writes-itself)",
+   "scores": {
+    "freshness": 7,
+    "usefulness": 9,
+    "shareability": 8,
+    "comments": 8,
+    "brand_fit": 10
+   },
+   "status": "ready (backfill candidate)",
+   "score": 8.4,
+   "ships": true
+  },
+  {
+   "id": "instagram-live-partnership-ads",
+   "title": "Brands can now turn a creator's Instagram Live into a paid ad",
+   "pillar": "Creator economy x AI",
+   "angle": "Live shopping playbook for Q4 without burning creators",
+   "why_now": "Instagram live video ads from 29 Sep",
+   "sources": [
+    [
+     "MediaPost",
+     "https://www.mediapost.com/publications/article/418022/",
+     "2026-09-15",
+     "secondary"
+    ],
+    [
+     "Common Thread Co",
+     "https://commonthreadco.com/blogs/coachs-corner/meta-ads-changes-2026",
+     "2026-09-19",
+     "secondary"
+    ]
+   ],
+   "pain": "Q4 creative fatigue",
+   "take": "Briefing creators for live is different from briefing for Reels",
+   "scores": {
+    "freshness": 8,
+    "usefulness": 8,
+    "shareability": 7,
+    "comments": 7,
+    "brand_fit": 9
+   },
+   "status": "ready to draft",
+   "score": 7.8,
+   "ships": false
+  },
+  {
+   "id": "linkedin-engagement-bait",
+   "title": "LinkedIn now punishes 'Comment YES below'. Here's what still earns comments",
+   "pillar": "Contrarian takes",
+   "angle": "Honest CTAs that survive the 2026 Authenticity Update",
+   "why_now": "Evergreen-ish, re-verify monthly; reported March 2026 change",
+   "sources": [
+    [
+     "Dataslayer: LinkedIn Algorithm 2026",
+     "https://www.dataslayer.ai/blog/linkedin-algorithm-february-2026-whats-working-now",
+     "2026-02",
+     "secondary (evergreen, re-verify)"
+    ]
+   ],
+   "pain": "Engagement-bait habits now cost reach",
+   "take": "Vish's own A/B once he has 4 weeks of analytics",
+   "scores": {
+    "freshness": 5,
+    "usefulness": 9,
+    "shareability": 9,
+    "comments": 9,
+    "brand_fit": 7
+   },
+   "status": "hold until Vish's own data exists",
+   "score": 7.8,
+   "ships": false
+  },
+  {
+   "id": "claude-for-startups",
+   "title": "Anthropic is giving startups a free year of Claude Team and $1,000 in credits",
+   "pillar": "AI tools that change marketing work",
+   "angle": "Who qualifies and how a 3-person marketing team would use it in week one",
+   "why_now": "Announced 6 Oct at SF Tech Week",
+   "sources": [
+    [
+     "TechCrunch",
+     "https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits/",
+     "2026-10-06",
+     "secondary"
+    ],
+    [
+     "Claude for Startups page",
+     "https://claude.com/programs/startups",
+     "2026-10-06",
+     "primary"
+    ]
+   ],
+   "pain": "Small teams can't justify AI seats",
+   "take": "The first-week setup Vish uses (Projects, Skills, connectors)",
+   "scores": {
+    "freshness": 10,
+    "usefulness": 7,
+    "shareability": 7,
+    "comments": 6,
+    "brand_fit": 7
+   },
+   "status": "below bar (7.4 avg) unless paired with a real workflow",
+   "score": 7.4,
+   "ships": false
+  },
+  {
+   "id": "claude-code-mods",
+   "title": "Claude Code now has mods. I'd use them for marketing ops like this",
+   "pillar": "Build in public",
+   "angle": "Non-engineer view: a status bar that shows campaign QA, a guard before sending emails",
+   "why_now": "Released 1 Oct (Claude Code 2.1.287)",
+   "sources": [
+    [
+     "Multiple: explainx.ai, neoteo, buildcamp",
+     "https://explainx.ai/blog/claude-code-mods-typescript-plugins-guide-2026",
+     "2026-10-01",
+     "secondary"
+    ]
+   ],
+   "pain": "'Claude Code is for developers' belief",
+   "take": "Vish builds his tools as a marketer; show one real mod",
+   "scores": {
+    "freshness": 9,
+    "usefulness": 7,
+    "shareability": 6,
+    "comments": 6,
+    "brand_fit": 8
+   },
+   "status": "needs primary source and a real mod built first",
+   "score": 7.2,
+   "ships": false
+  },
+  {
+   "id": "threads-ads-no-instagram",
+   "title": "Threads ads no longer need an Instagram account",
+   "pillar": "AI tools that change marketing work",
+   "angle": "Cheap test channel for B2B brands with no Instagram presence",
+   "why_now": "22 Sep",
+   "sources": [
+    [
+     "Common Thread Co",
+     "https://commonthreadco.com/blogs/coachs-corner/meta-ads-changes-2026",
+     "2026-09-22",
+     "secondary"
+    ]
+   ],
+   "pain": "",
+   "take": "",
+   "scores": {
+    "freshness": 7,
+    "usefulness": 6,
+    "shareability": 5,
+    "comments": 5,
+    "brand_fit": 6
+   },
+   "status": "rejected: one source, weak fit",
+   "score": 5.8,
+   "ships": false
+  }
+ ]
+}
