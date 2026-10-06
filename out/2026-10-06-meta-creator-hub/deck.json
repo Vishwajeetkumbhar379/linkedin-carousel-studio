@@ -15,18 +15,14 @@
   "slides": [
     {
       "type": "cover",
-      "title": "Creator discovery and paid ads. Now *one screen*.",
+      "title": "Meta just made creator ads *one click*.",
       "subtitle": "The tool got faster. The brief didn't get easier.",
-      "hero": "c-hub",
-      "hero_style": "left:50%;transform:translateX(-50%);bottom:110px;width:780px",
+      "hero": "c-click",
+      "hero_style": "left:50%;transform:translateX(-50%);bottom:90px;width:880px",
       "mid_style": "justify-content:flex-start;padding-top:60px",
-      "mascot": "dot-glass-thinking",
-      "mascot_style": "left:96px;bottom:150px;width:150px",
+      "mascot": null,
       "chip": "Creator marketing",
-      "ghost": "1",
-      "dof_hero": "tile-eye",
-      "dof_style": "right:-60px;top:560px;width:200px;transform:rotate(-14deg)",
-      "dof": false
+      "ghost": ""
     }
   ],
   "system": "aurora",

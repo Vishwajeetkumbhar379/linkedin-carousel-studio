@@ -16,3 +16,7 @@ Score = curiosity gap (0-3) + specificity (0-3) + honest/delivered (0-2) + under
 | 10 | Invisible watermark on ChatGPT text. 4 things it can't prove. | Number + myth | 10 | 8 |
 
 Runner-up for an A/B in comments or a later repost: #3.
+
+## Round 3 (Vish asked for catchier)
+| 11 | ChatGPT is about to sign its EU texts. Invisibly. | Curiosity + specific | 9 | **9** (shipped; 'about to' matches 'over the coming weeks') |
+| 12 | ChatGPT just killed anonymous AI copy in Europe. | Contrarian | 9 | 4 (false: detector isn't public, edits weaken it) |

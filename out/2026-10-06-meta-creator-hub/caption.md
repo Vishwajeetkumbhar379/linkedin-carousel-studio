@@ -1,4 +1,4 @@
-Meta put creator discovery and paid ads in one screen.
+Meta just made creator ads one click.
 
 In mid-September, Meta launched the Creator Marketing Hub. It merges Creator Marketplace and the Partnership Ads Hub into one place.
 

@@ -24,8 +24,8 @@ import soundfile as sf
 
 SR = 24000
 KOKORO_DIR = Path(os.environ.get("KOKORO_DIR", "/home/user/models/kokoro"))
-PAUSE = {",": 0.16, ";": 0.22, ":": 0.22, ".": 0.38, "?": 0.42, "!": 0.38}
-SCENE_GAP = 0.5
+PAUSE = {",": 0.14, ";": 0.2, ":": 0.2, ".": 0.3, "?": 0.34, "!": 0.3}
+SCENE_GAP = 0.35
 
 
 def breath(seed: int, dur: float = 0.34, level_db: float = -34.0) -> np.ndarray:
@@ -55,10 +55,20 @@ def ambient_bed(seconds: float, level_db: float = -31.0) -> np.ndarray:
     return x * fade * (10 ** (level_db / 20))
 
 
-def synth(narration: list[list[str]], voice: str, breaths: bool) -> tuple[np.ndarray, list[dict]]:
+def voice_style(k, voice: str):
+    """'am_puck' or a blend like 'am_puck:0.6,am_fenrir:0.4' (weighted average of style vectors)."""
+    if ":" not in voice:
+        return voice
+    parts = [(n, float(w)) for n, w in (x.split(":") for x in voice.split(","))]
+    total = sum(w for _, w in parts)
+    return sum(k.get_voice_style(n) * (w / total) for n, w in parts)
+
+
+def synth(narration: list[list[str]], voice: str, breaths: bool, base_speed: float = 1.0) -> tuple[np.ndarray, list[dict]]:
     from kokoro_onnx import Kokoro
 
     k = Kokoro(str(KOKORO_DIR / "kokoro-v1.0.onnx"), str(KOKORO_DIR / "voices-v1.0.bin"))
+    style = voice_style(k, voice)
     out, timings, t = [], [], 0.0
     lead = np.zeros(int(SR * 0.25))
     out.append(lead)
@@ -71,8 +81,8 @@ def synth(narration: list[list[str]], voice: str, breaths: bool) -> tuple[np.nda
         s_start = t
         phrases = []
         for pi, phrase in enumerate(scene):
-            speed = 1.0 + (0.025 if pi % 3 == 1 else -0.015 if pi % 3 == 2 else 0)
-            audio, sr = k.create(phrase, voice=voice, speed=speed, lang="en-us")
+            speed = base_speed + (0.03 if pi % 3 == 1 else -0.02 if pi % 3 == 2 else 0)
+            audio, sr = k.create(phrase, voice=style, speed=speed, lang="en-us")
             assert sr == SR
             audio = np.trim_zeros(audio.astype(np.float32), "fb")
             phrases.append({"text": phrase, "start": round(t, 3), "end": round(t + len(audio) / SR, 3)})
@@ -102,10 +112,10 @@ def chunk_caption(p: dict, max_words: int = 7) -> list[dict]:
     return out
 
 
-def main(spec_path: Path, voice: str, breaths: bool, bed: bool) -> None:
+def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1.0) -> None:
     spec = json.loads(spec_path.read_text())
     narration = spec["narration"]
-    audio, timings = synth(narration, voice, breaths)
+    audio, timings = synth(narration, voice, breaths, speed)
     dur = len(audio) / SR + 0.8
     mix = np.zeros(int(SR * dur), dtype=np.float32)
     mix[: len(audio)] += audio
@@ -133,4 +143,5 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool) -> None:
 if __name__ == "__main__":
     a = sys.argv[1:]
     v = a[a.index("--voice") + 1] if "--voice" in a else "af_heart"
-    main(Path(a[0]), v, "--no-breaths" not in a, "--no-bed" not in a)
+    sp = float(a[a.index("--speed") + 1]) if "--speed" in a else 1.0
+    main(Path(a[0]), v, "--no-breaths" not in a, "--no-bed" not in a, sp)

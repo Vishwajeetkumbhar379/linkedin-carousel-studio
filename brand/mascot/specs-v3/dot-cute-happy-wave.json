@@ -1,0 +1,1 @@
+{"width": 600, "height": 700, "exposure": 1.0, "trim": true, "camera": {"pos": [0.5, 0.35, 5.6], "target": [0, 0.05, 0], "fov": 30}, "items": [{"type": "cuteMascot", "params": {"expression": "happy", "pose": "wave"}, "rot": [0, -0.18, 0], "shadow": {"radius": 0.95, "y": -0.83, "opacity": 0.22}}]}

@@ -63,7 +63,7 @@ export const objects = {
     g.add(bubble);
     const lines = [2.0, 1.7, 1.85, 1.1];
     lines.forEach((w, i) => {
-      const bar = new THREE.Mesh(new RoundedBoxGeometry(w, 0.13, 0.05, 4, 0.06), mat.clay(C.ink, 0.6));
+      const bar = new THREE.Mesh(new RoundedBoxGeometry(w, 0.13, 0.05, 4, 0.06), mat.clay(0xb7aef7, 0.5));
       bar.position.set(-1.0 + w / 2, 0.5 - i * 0.32, 0.27);
       g.add(bar);
     });
@@ -108,7 +108,7 @@ export const objects = {
   // Stack of image tiles; one tile is the warm "sponsored" slot.
   imageTiles({ count = 4, sponsored = 2 } = {}) {
     const g = new THREE.Group();
-    const cols = [C.violetLight, C.aurora, C.coral, C.violet, C.sol];
+    const cols = [0xd9d3ff, 0xb3a9ff, 0x9a90f7, 0x7f77dd, 0xc9c1ff];
     for (let i = 0; i < count; i++) {
       const t = new THREE.Group();
       const isAd = i === sponsored;
@@ -350,3 +350,132 @@ export function glassMascot({ expression = "neutral", pose = "idle" } = {}) {
   [-0.2, 0.2].forEach((x) => { const l = new THREE.Mesh(legG, body.material); l.position.set(x, -0.6, 0); g.add(l); });
   return g;
 }
+
+// ---------- mascot v3: "Dot", cuter and rounder (Vish feedback, round 3) ----------
+// Gumdrop body in frosted gradient glass with iridescent sheen, big glossy eyes set low (reads as friendly),
+// small smile, blush, stubby arms and feet. Antenna keeps the Build with Vish diamond-and-dot.
+export function cuteMascot({ expression = "happy", pose = "idle", hue = "violet" } = {}) {
+  const g = new THREE.Group();
+  const top = hue === "violet" ? 0xefeaff : 0xe8f7ff, bottom = hue === "violet" ? 0x6f63f2 : 0x3f7fe8;
+  const bodyGeo = gradientGeometry(new THREE.SphereGeometry(0.78, 96, 96), top, bottom);
+  bodyGeo.scale(1, 0.94, 0.86);
+  const glass = new THREE.MeshPhysicalMaterial({ vertexColors: true, transmission: 0.55, thickness: 1.4, roughness: 0.28, ior: 1.42,
+    clearcoat: 1, clearcoatRoughness: 0.06, iridescence: 0.35, iridescenceIOR: 1.3, sheen: 0.5, sheenColor: new THREE.Color(0xd9d3ff),
+    attenuationColor: new THREE.Color(0x7a6ff5), attenuationDistance: 1.2 });
+  const soft = new THREE.MeshPhysicalMaterial({ color: 0x9d93fa, roughness: 0.32, clearcoat: 1, clearcoatRoughness: 0.08, sheen: 0.6, sheenColor: new THREE.Color(0xe6e1ff) });
+  const body = new THREE.Mesh(bodyGeo, glass);
+  g.add(body);
+  const core = new THREE.Mesh(new THREE.SphereGeometry(0.42, 48, 48), new THREE.MeshStandardMaterial({ color: 0x8b80ff, emissive: 0x6a5ff0, emissiveIntensity: 0.55, roughness: 0.7 }));
+  core.position.set(0, -0.18, -0.12); g.add(core);
+
+  const ink = new THREE.MeshPhysicalMaterial({ color: 0x1a1626, roughness: 0.12, clearcoat: 1, clearcoatRoughness: 0.03 });
+  const white = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const face = new THREE.Group(); face.position.set(0, -0.02, 0.66); g.add(face);
+  const eye = (x, kind) => {
+    const e = new THREE.Group(); e.position.x = x;
+    if (kind === "arc") {
+      const a = new THREE.Mesh(new THREE.TorusGeometry(0.085, 0.028, 16, 32, Math.PI), ink); a.position.y = 0.0; e.add(a);
+    } else if (kind === "line") {
+      const l = new THREE.Mesh(new THREE.CapsuleGeometry(0.026, 0.12, 8, 16), ink); l.rotation.z = Math.PI / 2; e.add(l);
+    } else {
+      const s = kind === "big" ? 1.25 : 1;
+      const ball = new THREE.Mesh(new THREE.SphereGeometry(0.11 * s, 40, 40), ink); ball.scale.set(0.86, 1.08, 0.5); e.add(ball);
+      const h1 = new THREE.Mesh(new THREE.SphereGeometry(0.036 * s, 20, 20), white); h1.position.set(0.035 * s, 0.05 * s, 0.05); e.add(h1);
+      const h2 = new THREE.Mesh(new THREE.SphereGeometry(0.016 * s, 16, 16), white); h2.position.set(-0.035 * s, -0.04 * s, 0.05); e.add(h2);
+      if (kind === "look") e.children.forEach((c, i) => i && (c.position.x += 0.02));
+    }
+    face.add(e); return e;
+  };
+  const kinds = { happy: ["arc", "arc"], neutral: ["dot", "dot"], wink: ["dot", "arc"], surprised: ["big", "big"], thinking: ["look", "line"], focused: ["line", "line"] }[expression] || ["dot", "dot"];
+  eye(-0.2, kinds[0]); eye(0.2, kinds[1]);
+  if (expression === "happy" || expression === "wink") face.children.forEach((e) => e.children[0] && e.children[0].geometry.type === "TorusGeometry" && (e.rotation.z = 0));
+  // mouth
+  let mouth;
+  if (expression === "surprised") { mouth = new THREE.Mesh(new THREE.SphereGeometry(0.045, 24, 24), ink); mouth.scale.set(1, 1.2, 0.5); }
+  else if (expression === "thinking" || expression === "focused") { mouth = new THREE.Mesh(new THREE.CapsuleGeometry(0.014, 0.06, 6, 12), ink); mouth.rotation.z = Math.PI / 2; }
+  else { mouth = new THREE.Mesh(new THREE.TorusGeometry(0.06, 0.016, 12, 32, Math.PI), ink); mouth.rotation.z = Math.PI; }
+  mouth.position.set(0, -0.14, 0.02); face.add(mouth);
+  const blushM = new THREE.MeshStandardMaterial({ color: 0xff9fb5, transparent: true, opacity: 0.65, roughness: 1 });
+  [-0.36, 0.36].forEach((x) => { const b = new THREE.Mesh(new THREE.SphereGeometry(0.07, 20, 20), blushM); b.scale.set(1.3, 0.75, 0.3); b.position.set(x, -0.1, -0.06); face.add(b); });
+  // antenna
+  const stem = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0, 0.66, 0), new THREE.Vector3(0.04, 0.82, 0), new THREE.Vector3(0.12, 0.94, 0)]), 20, 0.022, 10), soft);
+  g.add(stem);
+  const diamond = new THREE.Mesh(new THREE.TorusGeometry(0.085, 0.026, 12, 4), new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.2, clearcoat: 1 }));
+  diamond.position.set(0.14, 1.03, 0); g.add(diamond);
+  const tip = new THREE.Mesh(new THREE.SphereGeometry(0.035, 20, 20), mat.glow(C.sol, 0.9)); tip.position.copy(diamond.position); g.add(tip);
+  // arms and feet
+  const limb = new THREE.CapsuleGeometry(0.1, 0.12, 8, 20);
+  const la = new THREE.Mesh(limb, soft), ra = new THREE.Mesh(limb, soft);
+  la.position.set(-0.74, -0.2, 0.05); la.rotation.z = 0.9; ra.position.set(0.74, -0.2, 0.05); ra.rotation.z = -0.9;
+  if (pose === "wave") { ra.position.set(0.74, 0.18, 0.05); ra.rotation.z = -2.6; }
+  if (pose === "cheer") { la.position.set(-0.74, 0.18, 0.05); la.rotation.z = 2.6; ra.position.set(0.74, 0.18, 0.05); ra.rotation.z = -2.6; }
+  if (pose === "point") { ra.position.set(0.8, -0.02, 0.15); ra.rotation.z = -1.5; }
+  g.add(la, ra);
+  const foot = new THREE.SphereGeometry(0.15, 32, 32);
+  [-0.26, 0.26].forEach((x) => { const f = new THREE.Mesh(foot, soft); f.scale.set(1.1, 0.62, 1.2); f.position.set(x, -0.73, 0.08); g.add(f); });
+  g.userData = { body, face };
+  return g;
+}
+
+// ---------- character "emoji" bots for story covers (generic stand-ins, never real logos) ----------
+function cuteFace(parent, { y = 0, z = 0.5, spread = 0.17, scale = 1, expression = "happy" } = {}) {
+  const ink = new THREE.MeshPhysicalMaterial({ color: 0x1a1626, roughness: 0.12, clearcoat: 1 });
+  const white = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const f = new THREE.Group(); f.position.set(0, y, z); f.scale.setScalar(scale);
+  [-spread, spread].forEach((x, i) => {
+    if (expression === "happy" || (expression === "wink" && i === 1)) {
+      const a = new THREE.Mesh(new THREE.TorusGeometry(0.07, 0.024, 16, 32, Math.PI), ink); a.position.x = x; f.add(a);
+    } else {
+      const s = expression === "surprised" ? 1.2 : 1;
+      const e = new THREE.Mesh(new THREE.SphereGeometry(0.09 * s, 32, 32), ink); e.scale.set(0.86, 1.08, 0.5); e.position.x = x; f.add(e);
+      const h = new THREE.Mesh(new THREE.SphereGeometry(0.03 * s, 16, 16), white); h.position.set(x + 0.03, 0.04, 0.045); f.add(h);
+    }
+  });
+  const m = expression === "surprised" ? new THREE.Mesh(new THREE.SphereGeometry(0.04, 20, 20), ink) : new THREE.Mesh(new THREE.TorusGeometry(0.05, 0.014, 12, 32, Math.PI), ink);
+  if (expression !== "surprised") m.rotation.z = Math.PI;
+  m.position.set(0, -0.12, 0); f.add(m);
+  const bl = new THREE.MeshStandardMaterial({ color: 0xff9fb5, transparent: true, opacity: 0.6 });
+  [-spread * 1.75, spread * 1.75].forEach((x) => { const b = new THREE.Mesh(new THREE.SphereGeometry(0.055, 16, 16), bl); b.scale.set(1.3, 0.7, 0.3); b.position.set(x, -0.08, -0.03); f.add(b); });
+  parent.add(f); return f;
+}
+
+// Chat-bubble bot: stands for "an AI chat app" without copying any logo.
+objects.chatBot = function ({ expression = "happy", holding = "ad" } = {}) {
+  const g = new THREE.Group();
+  const shape = bubbleShape(1.5, 1.2, 0.5);
+  const geo = gradientGeometry(extrude(shape, 0.5, 0.14), 0xffffff, 0xd9d3ff); geo.translate(0, 0, -0.25);
+  g.add(new THREE.Mesh(geo, new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.05, sheen: 0.5, sheenColor: new THREE.Color(0xe9e5ff) })));
+  cuteFace(g, { y: 0.05, z: 0.42, expression });
+  const arm = new THREE.MeshPhysicalMaterial({ color: 0xece9fb, roughness: 0.3, clearcoat: 1 });
+  const ra = new THREE.Mesh(new THREE.CapsuleGeometry(0.08, 0.22, 8, 16), arm); ra.position.set(0.86, 0.1, 0.1); ra.rotation.z = -2.3; g.add(ra);
+  if (holding === "ad") {
+    const card = objects.glossTile({ top: 0xffe4b8, bottom: 0xe8a25a, glyphKind: "spark", size: 0.62 });
+    card.position.set(1.1, 0.72, 0.15); card.rotation.set(0.1, -0.3, -0.15); g.add(card);
+  }
+  return g;
+};
+
+// Camera bot: stands for "a social app" (classic camera body, no app-icon trade dress).
+objects.cameraBot = function ({ expression = "surprised" } = {}) {
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(gradientGeometry(new RoundedBoxGeometry(1.5, 1.05, 0.7, 8, 0.3), 0xffc7b8, 0xf27a8a),
+    new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.06 }));
+  g.add(body);
+  const lensRing = new THREE.Mesh(new THREE.TorusGeometry(0.3, 0.07, 24, 64), mat.metal(0xe9e6f2, 0.15)); lensRing.position.set(0.2, 0.0, 0.36); g.add(lensRing);
+  const lens = new THREE.Mesh(new THREE.SphereGeometry(0.26, 48, 48), new THREE.MeshPhysicalMaterial({ color: 0x241c3a, roughness: 0.05, clearcoat: 1 })); lens.scale.z = 0.4; lens.position.set(0.2, 0, 0.36); g.add(lens);
+  const top = new THREE.Mesh(new RoundedBoxGeometry(0.42, 0.18, 0.4, 4, 0.08), mat.clay(0xf9a6a6, 0.5)); top.position.set(-0.4, 0.6, 0); g.add(top);
+  cuteFace(g, { y: 0.15, z: 0.37, spread: 0.12, scale: 0.85, expression }).position.x = -0.38;
+  return g;
+};
+
+// Big glossy one-click button.
+objects.clickButton = function () {
+  const g = new THREE.Group();
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 0.82, 0.22, 64), new THREE.MeshPhysicalMaterial({ color: 0xe9e6f6, roughness: 0.4, clearcoat: 1 }));
+  g.add(base);
+  const cap = new THREE.Mesh(gradientGeometry(new THREE.SphereGeometry(0.6, 64, 32, 0, Math.PI * 2, 0, Math.PI / 2), 0xb3a9ff, 0x5b4fe0),
+    new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.15, clearcoat: 1, clearcoatRoughness: 0.03 }));
+  cap.scale.y = 0.45; cap.position.y = 0.1; g.add(cap);
+  g.rotation.x = 0.5;
+  return g;
+};

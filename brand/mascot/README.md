@@ -1,3 +1,13 @@
+# Dot v3 (current): round, cute, frosted glass
+
+![sheet](sheet-v3.png)
+
+Round 3 (6 Oct): Vish asked for cuter and more approachable. Gumdrop body in frosted gradient glass with an iridescent sheen and a glowing core, big glossy eyes with highlights set low on the face, small smile, blush, stubby arms and feet, logo antenna. Code: `cuteMascot()` in `templates/three/kit.js`. Story characters for covers: `chatBot` (any AI chat app) and `cameraBot` (any social app), generic shapes, never real logos.
+
+Dot v1 (visor robot) and v2 (glass robot) below are retired.
+
+---
+
 # Dot: the Build with Vish sidekick
 
 ![sheet](sheet.png)

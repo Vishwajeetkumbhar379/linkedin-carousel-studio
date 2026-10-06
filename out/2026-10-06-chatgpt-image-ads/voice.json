@@ -1,115 +1,105 @@
 {
- "voice": "af_heart",
- "duration": 55.33133333333333,
+ "voice": "am_puck:0.6,am_fenrir:0.4",
+ "duration": 34.86866666666666,
  "scenes": [
   {
    "start": 0.25,
-   "end": 4.95,
+   "end": 4.489,
    "phrases": [
     {
-     "text": "ChatGPT is testing ads,",
+     "text": "Okay. ChatGPT is about to put ads",
      "start": 0.25,
-     "end": 2.213
+     "end": 2.469
     },
     {
-     "text": "right next to the images you generate.",
-     "start": 2.373,
-     "end": 4.57
+     "text": "right next to the images you make.",
+     "start": 2.589,
+     "end": 4.189
     }
    ]
   },
   {
-   "start": 5.79,
-   "end": 14.251,
+   "start": 5.179,
+   "end": 9.192,
    "phrases": [
     {
-     "text": "OpenAI announced it on the fifth of October.",
-     "start": 5.79,
-     "end": 8.499
+     "text": "It's a test for now.",
+     "start": 5.179,
+     "end": 6.267
     },
     {
-     "text": "The test starts later this month, in the US only, with a small group of advertisers.",
-     "start": 8.879,
-     "end": 13.871
+     "text": "US only, with a handful of advertisers.",
+     "start": 6.567,
+     "end": 8.892
     }
    ]
   },
   {
-   "start": 15.091,
-   "end": 23.527,
+   "start": 9.882,
+   "end": 13.979,
    "phrases": [
     {
-     "text": "The ads are labelled.",
-     "start": 15.091,
-     "end": 16.371
-    },
-    {
-     "text": "They sit beside your image, not inside it.",
-     "start": 16.751,
-     "end": 19.119
-    },
-    {
-     "text": "And OpenAI says they don't change ChatGPT's answers.",
-     "start": 19.499,
-     "end": 23.147
+     "text": "The ads are labelled, and they sit beside your picture. Not inside it.",
+     "start": 9.882,
+     "end": 13.679
     }
    ]
   },
   {
-   "start": 24.367,
-   "end": 31.653,
+   "start": 14.669,
+   "end": 19.213,
    "phrases": [
     {
-     "text": "So why should marketers care?",
-     "start": 24.367,
-     "end": 25.989
+     "text": "Why should you care?",
+     "start": 14.669,
+     "end": 15.608
     },
     {
-     "text": "OpenAI says one point two billion people use ChatGPT every week.",
-     "start": 26.409,
-     "end": 31.273
+     "text": "Over a billion people use ChatGPT every week.",
+     "start": 15.948,
+     "end": 18.913
     }
    ]
   },
   {
-   "start": 32.493,
-   "end": 46.465,
+   "start": 19.903,
+   "end": 26.945,
    "phrases": [
     {
-     "text": "One early data point:",
-     "start": 32.493,
-     "end": 33.858
+     "text": "And the early numbers?",
+     "start": 19.903,
+     "end": 20.949
     },
     {
-     "text": "WeightWatchers saw a fifteen point three percent lower attributed cost per acquisition, compared with its blended paid search benchmark.",
-     "start": 34.078,
-     "end": 41.971
+     "text": "One brand got cheaper conversions than on paid search.",
+     "start": 21.289,
+     "end": 24.147
     },
     {
-     "text": "That's one brand, reported by a partner. Treat it as a signal.",
-     "start": 42.351,
-     "end": 46.085
+     "text": "One brand, though. So, a signal. Not proof.",
+     "start": 24.447,
+     "end": 26.645
     }
    ]
   },
   {
-   "start": 47.305,
-   "end": 54.031,
+   "start": 27.635,
+   "end": 33.719,
    "phrases": [
     {
-     "text": "My take?",
-     "start": 47.305,
-     "end": 48.158
+     "text": "Here's my take.",
+     "start": 27.635,
+     "end": 28.488
     },
     {
-     "text": "The next ad slot is the moment someone imagines your product.",
-     "start": 48.578,
-     "end": 52.141
+     "text": "The next ad slot is the moment someone pictures your product.",
+     "start": 28.788,
+     "end": 32.116
     },
     {
      "text": "Follow for more.",
-     "start": 52.521,
-     "end": 53.651
+     "start": 32.416,
+     "end": 33.419
     }
    ]
   }

@@ -32,7 +32,7 @@ p{font-size:36px;line-height:1.4;color:#CFCDD6;margin-top:22px;text-wrap:pretty}
 .cap{position:absolute;left:50%;bottom:150px;transform:translateX(-50%);max-width:900px;text-align:center;font:500 30px/1.3 Geist,sans-serif;color:#F4F2FA;white-space:nowrap;background:rgba(20,18,32,.62);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px);border-radius:18px;padding:10px 20px;z-index:5}
 .cap:empty{display:none}
 </style></head><body>
-<div class="wash" id="wash"><i style="left:640px;top:-120px;width:900px;height:900px;background:radial-gradient(circle,#5B4FE0,transparent 68%);opacity:.8"></i><i style="left:-260px;top:820px;width:1000px;height:1000px;background:radial-gradient(circle,#2D2A9A,transparent 68%);opacity:.75"></i><i style="left:520px;top:980px;width:700px;height:700px;background:radial-gradient(circle,#6B1F55,transparent 68%);opacity:.55"></i><i style="left:-200px;top:200px;width:600px;height:600px;background:radial-gradient(circle,#1E7F8C,transparent 68%);opacity:.3"></i></div><canvas id="c"></canvas>
+<div class="wash" id="wash"><i style="left:640px;top:-120px;width:900px;height:900px;background:radial-gradient(circle,#5B4FE0,transparent 68%);opacity:.8"></i><i style="left:-260px;top:820px;width:1000px;height:1000px;background:radial-gradient(circle,#2D2A9A,transparent 68%);opacity:.75"></i><i style="left:520px;top:980px;width:700px;height:700px;background:radial-gradient(circle,#3A2FB0,transparent 68%);opacity:.5"></i><i style="left:-200px;top:200px;width:600px;height:600px;background:radial-gradient(circle,#211C78,transparent 68%);opacity:.5"></i></div><canvas id="c"></canvas>
 <div class="top"><div class="handle"><div class="avatar">VK</div><div>Vish Kumbhar<small>Build with Vish</small></div></div><div class="pill" id="pill">AI x Marketing</div></div>
 <div id="scenes"></div>
 <img class="mascot" id="mascot" src="/video/mascot.png" alt="">
@@ -47,7 +47,7 @@ import { createStage, objects, mat, C } from "/three/kit.js";
 const ease = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
 
-let S, tiles, stars, D;
+let S, tiles, stars, D, bot;
 window.setup = async (spec) => {
   D = spec;
   const html = spec.scenes.map((s, i) => {
@@ -60,6 +60,8 @@ window.setup = async (spec) => {
   S.renderer.setClearColor(0x08070d, 0);
   tiles = objects.imageTiles({ count: 5, sponsored: 4 });
   S.scene.add(tiles);
+  bot = objects.chatBot({ expression: "happy", holding: "none" });
+  bot.scale.setScalar(0.62); S.scene.add(bot);
   // Video budget: no transmission pass (software GPU), 3D layer at reduced resolution under crisp HTML text.
   tiles.traverse((o) => { if (o.material && o.material.transmission > 0) { o.material.transmission = 0; o.material.transparent = true; o.material.opacity = 0.9; o.material.roughness = 0.3; } });
   const q = spec.quality ?? 0.6;
@@ -105,6 +107,10 @@ window.frame = (t) => {
     tile.scale.setScalar(tile.userData.isAd ? 1 + lift * 0.1 : 1 - lift * 0.08);
   });
   tiles.rotation.y = Math.sin(t * 0.35) * 0.18;
+  tiles.position.x = 0.7; tiles.scale.setScalar(0.82);
+  const bi = ease(clamp((t - 0.4) / 0.9));
+  bot.position.set(-1.75 + (1 - bi) * -1.5, 2.05 + Math.sin(t * 2.1) * 0.06, 1.8);
+  bot.rotation.set(0, 0.35 + Math.sin(t * 0.9) * 0.08, Math.sin(t * 1.3) * 0.04);
   tiles.position.y = Math.sin(t * 1.1) * 0.06;
   stars.rotation.y = t * 0.012; stars.position.y = -t * 0.04;
   S.camera.position.set(Math.sin(t * 0.2) * 0.6, 1.55, 14.2 - t * 0.05);

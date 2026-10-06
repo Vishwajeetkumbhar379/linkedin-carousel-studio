@@ -13,16 +13,13 @@
   "slides": [
     {
       "type": "cover",
-      "title": "ChatGPT text in the EU is getting an *invisible watermark*.",
-      "subtitle": "What it can show, what it can't, and what I'd change in your workflow.",
-      "hero": "a-hero",
-      "hero_style": "left:50%;transform:translateX(-50%);bottom:150px;width:760px",
+      "title": "ChatGPT is about to sign its EU texts. *Invisibly.*",
+      "subtitle": "A hidden watermark is coming. Here's what it can prove, and what it can't.",
+      "hero": "a-cover",
+      "hero_style": "left:50%;transform:translateX(-50%);bottom:96px;width:800px",
       "mid_style": "justify-content:flex-start;padding-top:70px",
       "chip": "AI x Marketing",
-      "ghost": "EU",
-      "dof": true,
-      "dof_style": "right:-40px;top:190px;width:230px;transform:rotate(16deg)",
-      "dof_hero": "tile-eye"
+      "ghost": ""
     },
     {
       "type": "point",
@@ -30,7 +27,7 @@
       "label": "01 · The news",
       "title": "OpenAI announced it on 5 October.",
       "body": "Over the coming weeks, eligible ChatGPT and Codex text made in the EU gets an invisible watermark. It's OpenAI's answer to the *EU AI Act*, which wants AI text to be machine-detectable.",
-      "mascot": "dot-glass-surprised",
+      "mascot": "dot-cute-surprised",
       "mascot_style": "right:96px;top:250px;width:150px"
     },
     {
@@ -80,7 +77,7 @@
       "label": "05 · Who can check",
       "title": "Not your client. Not yet.",
       "body": "The detector isn't public. At launch, only approved researchers and expert organisations can apply. In the API, watermarking is opt-in and *off by default*.",
-      "mascot": "dot-glass-wink",
+      "mascot": "dot-cute-wink",
       "mascot_style": "right:96px;top:300px;width:150px"
     },
     {
@@ -99,8 +96,8 @@
       "subtitle": "Full breakdown, sources and a disclosure template on Build with Vish.",
       "question": "Would you tell a client a draft was AI-assisted? Yes or no?",
       "button": "Save · Follow for AI x marketing",
-      "mascot": "dot-glass-happy",
-      "mascot_style": "left:50%;transform:translateX(-50%);top:150px;width:150px",
+      "mascot": "dot-cute-happy",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:140px;width:170px",
       "chip": "Free guide inside",
       "mid_style": "padding-top:150px"
     }

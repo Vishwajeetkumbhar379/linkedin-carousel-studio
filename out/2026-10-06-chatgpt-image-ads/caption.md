@@ -1,4 +1,4 @@
-ChatGPT is testing ads next to the images you generate.
+ChatGPT is turning image prompts into ad space.
 
 OpenAI announced it on 5 October. Testing starts later this month, US only, with a first group of advertisers.
 

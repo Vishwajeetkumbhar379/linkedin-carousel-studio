@@ -21,12 +21,12 @@ from .studio import GRAIN, H, W, _e, _img, font_css
 VARIANTS = {
     "galaxy": {
         "base": "#07060C", "ink": "#F4F2FA", "muted": "#A9A4B8", "body": "#D9D5E6", "accent": "#B3A9FF", "accent_ink": "#B3A9FF",
-        "lights": ["#5B4FE0", "#2D2A9A", "#7F77DD", "#6B1F55", "#1E7F8C"], "light_alpha": [0.75, 0.6, 0.55, 0.5, 0.35],
+        "lights": ["#4B3FD6", "#211C78", "#6D62E8", "#2E2790", "#5446D9"], "light_alpha": [0.62, 0.7, 0.42, 0.6, 0.38],
         "glass": "rgba(255,255,255,.055)", "glass_line": "rgba(255,255,255,.13)", "glass_hi": "rgba(255,255,255,.22)",
         "chip": "rgba(20,18,32,.72)", "chip_line": "rgba(255,255,255,.14)", "ghost": "rgba(255,255,255,.035)",
         "grain": .10, "blend": "overlay", "btn": "#F4F2FA", "btn_ink": "#0B0A12",
-        "tints": {"purple": "rgba(127,119,221,.16)", "teal": "rgba(111,224,210,.11)", "coral": "rgba(245,180,156,.11)"},
-        "inks": {"purple": "#C9C1FF", "teal": "#86E6D8", "coral": "#F5B49C"},
+        "tints": {"purple": "rgba(127,119,221,.14)", "teal": "rgba(127,119,221,.09)", "coral": "rgba(180,170,255,.08)"},
+        "inks": {"purple": "#C9C1FF", "teal": "#C9C1FF", "coral": "#DCD6FF"},
     },
     "daylight": {
         "base": "#EEEEF6", "ink": "#121018", "muted": "#5E5970", "body": "#2F2B3D", "accent": "#5B4FE0", "accent_ink": "#4A44C4",
@@ -44,8 +44,8 @@ def panorama(n: int, v: dict, seed: int = 7) -> list[dict]:
     """Soft light sources across the whole deck, in panorama pixel coordinates."""
     rnd = random.Random(seed)
     out = []
-    for k in range(int(n * 1.6) + 2):
-        x = (k + 0.5) * (n * W) / (n * 1.6 + 1) + rnd.uniform(-180, 180)
+    for k in range(int(n * 1.15) + 2):
+        x = (k + 0.5) * (n * W) / (n * 1.15 + 1) + rnd.uniform(-180, 180)
         y = rnd.choice([rnd.uniform(-150, 380), rnd.uniform(950, 1500)])
         r = rnd.uniform(520, 860)
         i = k % len(v["lights"])

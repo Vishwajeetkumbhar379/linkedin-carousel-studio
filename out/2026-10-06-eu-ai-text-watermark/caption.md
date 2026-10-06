@@ -1,4 +1,4 @@
-ChatGPT text in the EU is getting an invisible watermark.
+ChatGPT is about to sign its EU texts. Invisibly.
 
 OpenAI announced it on 5 October. Over the coming weeks, eligible ChatGPT and Codex text made in the EU will carry a hidden statistical signal in its word choices.
 

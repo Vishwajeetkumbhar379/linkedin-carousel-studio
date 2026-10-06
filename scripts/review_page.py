@@ -17,8 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 REVIEW = ROOT / "out" / "_review"
 
 WHY = {
-    "galaxy": "Your violet in a dark galaxy: soft light that flows across every swipe, grain, glass and centred type. Premium and still clearly yours.",
-    "daylight": "The same system in daylight: airy lavender and sky with frosted glass. For long reads and lighter topics.",
+    "galaxy": "One violet family on near-black, light that flows across every swipe, a story character on the cover and a hook that earns the click.",
+    "daylight": "Same system in daylight: airy lavender and sky, with the characters doing the storytelling.",
     "studio": "Instantly reads as your existing carousels, now with depth. The safest bet for saves.",
     "night": "Dark covers stand out on LinkedIn's light feed, and video is where dwell time grows fastest.",
     "field": "Looks like nobody else in AI x marketing. Operator voice, good for opinion and creator posts.",
@@ -77,7 +77,7 @@ def post_section(post: Path, idx: int) -> str:
         visual = (f'<div class="media"><video controls playsinline muted loop preload="metadata" poster="{poster}" src="media/{slug}.mp4"></video></div>'
                   f'<p class="cap">30 s · 1080 x 1350 · H.264. Frames:</p><div class="strip">{stills}</div>')
         fmt = "Video with voiceover"
-        for f, label in (("voice.wav", "Voice A: af_heart (default)"), ("voice-alt-male.wav", "Voice B: am_michael (male)")):
+        for f, label in (("voice.wav", "Voice A: young male blend, puck + fenrir (in the video)"), ("voice-alt-male.wav", "Voice B: michael + puck blend")):
             if (post / f).exists():
                 dst = REVIEW / "media" / f"{slug}-{f.replace('.wav', '.mp3')}"
                 __import__("subprocess").run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(post / f), "-b:a", "160k", str(dst)], check=True)
@@ -108,7 +108,7 @@ def post_section(post: Path, idx: int) -> str:
 
 def build(posts: list[Path]) -> Path:
     REVIEW.mkdir(parents=True, exist_ok=True)
-    mascot = jpg(ROOT / "brand" / "mascot" / "sheet-v2.png", "mascot-sheet-v2.jpg", 1200)
+    mascot = jpg(ROOT / "brand" / "mascot" / "sheet-v3.png", "mascot-sheet-v3.jpg", 1200)
     backlog = json.loads((ROOT / "topics" / "backlog.json").read_text())["topics"]
     blrows = "".join(f'<tr class="{"ship" if t["ships"] else ""}"><td class="num">{t["score"]}</td><td>{escape(t["title"])}</td><td>{escape(t["pillar"])}</td><td>{escape(t["status"])}</td></tr>' for t in backlog)
     reviewer = ROOT / "out" / "_review" / "reviewer-report.md"
@@ -161,18 +161,18 @@ tr.ship td.num{{color:var(--good)}}
 a{{color:var(--accent)}}
 </style>
 <div class="wrap">
-<header><p class="meta">Build with Vish content engine · round 2 · 6 Oct 2026</p>
-<h1>Round 2: the premium mix.</h1>
-<p class="lead">Rebuilt from your references: soft light that flows across every swipe, film grain, frosted glass, centred type, depth of field. A carousel in galaxy dark, a video with a voiceover, and a single image in daylight. Nothing has been posted, emailed or deployed.</p></header>
+<header><p class="meta">Build with Vish content engine · round 3 · 6 Oct 2026</p>
+<h1>Round 3: calmer, cuter, catchier.</h1>
+<p class="lead">Your round 2 notes, applied: one violet family instead of many colours, a rounder and cuter Dot, story characters on the covers, punchier hooks, and a shorter conversational voiceover in a younger male voice. Plus a full-body 3D you. Nothing has been posted, emailed or deployed.</p></header>
 <div class="ask"><b>What I need from you</b><ol>
-<li>Is this the look? If yes, say "go" and I lock it into brand tokens and start the backfill and the first weekly batch.</li>
-<li>Voice: A (af_heart) or B (am_michael)? Or send a 30 to 60 s voice memo and I'll clone your voice.</li>
-<li>Avatar: open the Canva link below; if you like it, download it and send it back (I can't download from Canva here).</li>
+<li>Is this the look? If yes, say "go" and I lock it in and start the backfill and the first weekly batch.</li>
+<li>Voice: still synthetic. The real upgrade is your own voice: send a 30 to 60 s voice memo, and switch on Spaces in your Hugging Face MCP settings (details in the voice note below).</li>
+<li>Avatar: open the full-body sheet below. To let the pipeline pull Canva files itself, connect Google Drive in Zapier once: <a href="https://mcp.zapier.com/api/v1/connect-auth/GoogleDriveCLIAPI?accountId=26913753" target="_blank" rel="noopener">connect</a>. Or just download it and send it here.</li>
 <li>Still open: confirm the flagged line in the single-image caption ("the hard part was the brief and the rights").</li>
 </ol></div>
 {''.join(post_section(p, i) for i, p in enumerate(posts))}
-<section class="plain mascot"><h2>Dot v2: frosted glass</h2><p class="meta">Premium glass body with a glowing violet core and little legs, inspired by the toy you sent but keeping Dot's own visor and logo antenna so it stays original. Six expressions, on dark and light.</p><img src="{mascot}" alt="Glass mascot sheet with six expressions">
-<h3>Your 3D avatar</h3><p>Made in Canva from your site photo. <a href="https://www.canva.com/M/MAHXQSEoDQQ" target="_blank" rel="noopener">Open avatar v2 in Canva</a> (recommended) · <a href="https://www.canva.com/M/MAHXQUwQ-oI" target="_blank" rel="noopener">v1, too photo-real</a>. Use: CTA slides, build-in-public and career posts.</p></section>
+<section class="plain mascot"><h2>Dot v3: round, cute, frosted glass</h2><p class="meta">Rounder body, big glossy eyes set low, a small smile and blush, iridescent glass with a soft glow inside. Six expressions on dark and light. The covers also use two new story characters: a chat-bubble bot and a camera bot (generic shapes, not real logos, so no trademark trouble).</p><img src="{mascot}" alt="Cute glass mascot sheet with six expressions">
+<h3>Your 3D avatar</h3><p>Made in Canva from your site photo, in the style of the reference you sent: <a href="https://www.canva.com/M/MAHXQiVWMLk" target="_blank" rel="noopener">full-body sheet with three expressions</a> (recommended) · <a href="https://www.canva.com/M/MAHXQSEoDQQ" target="_blank" rel="noopener">head-and-shoulders</a>. Plan: you on career, build-in-public and CTA slides; Dot on explainers.</p></section>
 <section class="plain"><h2>Topic backlog</h2><p class="meta">Scored 1 to 10 on freshness, usefulness, shareability, comment potential, brand fit. Only 8+ ships.</p>
 <div class="tw"><table><tr><th>Score</th><th>Topic</th><th>Pillar</th><th>Status</th></tr>{blrows}</table></div></section>
 {rev_html}
