@@ -1,0 +1,229 @@
+<title>Test Gate Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one long review sheet; each direction is a band with the work first, then copy and sources side by side. */
+:root{--bg:#F4F2F6;--paper:#FFFFFF;--ink:#17141C;--muted:#5F5967;--line:#DDD8E3;--accent:#4A44C4;--brand:#7F77DD;--good:#0E7A6E;--warn:#9A5B0C;--tint:#EEEDFD;
+--f-d:"Geist","SF Pro Display","Helvetica Neue",Arial,sans-serif;--f-b:"Geist","Segoe UI",system-ui,sans-serif;--f-m:"Geist Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0A10;--paper:#15141B;--ink:#F2F1F5;--muted:#A6A2AE;--line:#2B2934;--accent:#A99CFF;--brand:#A99CFF;--good:#6FE0D2;--warn:#F3C584;--tint:#1B1A2E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B0A10;--paper:#15141B;--ink:#F2F1F5;--muted:#A6A2AE;--line:#2B2934;--accent:#A99CFF;--brand:#A99CFF;--good:#6FE0D2;--warn:#F3C584;--tint:#1B1A2E;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-b);padding-inline:clamp(16px,4vw,48px);padding-block:32px 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+h1{font:700 clamp(2rem,5vw,3.2rem)/1.02 var(--f-d);letter-spacing:-.035em;text-wrap:balance;margin:0}
+h2{font:700 1.6rem/1.1 var(--f-d);letter-spacing:-.02em;margin:0}
+h3{font:600 .78rem/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px;display:flex;align-items:center;gap:10px}
+.lead{font-size:1.12rem;color:var(--muted);max-width:62ch;margin:12px 0 0}
+.ask{background:var(--tint);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.ask ol{margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.dir,.plain{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,3vw,32px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.dh{display:flex;gap:16px;align-items:center}
+.letter{flex:none;width:52px;height:52px;border-radius:14px;background:var(--brand);color:#fff;display:grid;place-items:center;font:700 1.5rem var(--f-d)}
+.meta{color:var(--muted);font:500 .86rem/1.4 var(--f-m);margin:4px 0 0}
+.why{margin:0;max-width:75ch}
+.strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.strip img{width:min(300px,70vw);flex:none;border-radius:10px;border:1px solid var(--line);scroll-snap-align:start;max-width:100%}
+.strip.single img{width:min(460px,100%)}
+.media video{width:min(460px,100%);border-radius:12px;border:1px solid var(--line);display:block;background:#08070D}
+.cap{margin:0;color:var(--muted);font:500 .8rem var(--f-m)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px}
+.col{min-width:0}
+.hook{font:700 1.3rem/1.2 var(--f-d);letter-spacing:-.02em;margin:0}
+pre.caption{white-space:pre-wrap;font:15px/1.55 var(--f-b);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;margin:0;max-height:420px;overflow:auto}
+pre.small{font-size:14px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.86rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font:600 .72rem var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td a{color:var(--accent);word-break:break-all}
+td.num{font:600 1rem var(--f-m);font-variant-numeric:tabular-nums}
+tr.ship td.num{color:var(--good)}
+.warn{margin:0;padding-left:18px;color:var(--warn);font-size:.9rem;display:flex;flex-direction:column;gap:4px}
+.copy{font:600 .72rem var(--f-m);letter-spacing:.04em;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:5px 10px;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mascot img{border-radius:14px;max-width:100%;border:1px solid var(--line)}
+a{color:var(--accent)}
+</style>
+<div class="wrap">
+<header><p class="meta">Build with Vish content engine · test-first gate · 6 Oct 2026</p>
+<h1>Three directions. Pick one, mix, or send it back.</h1>
+<p class="lead">Each sample is a real post on a topic from this week, researched, written, designed in 3D, rendered and run through the QA gate. Nothing has been posted, emailed or deployed.</p></header>
+<div class="ask"><b>What I need from you</b><ol>
+<li>Which direction (A, B, C, or a mix like "A for carousels, B for video")?</li>
+<li>What to change and what to drop: type, colour, 3D objects, the mascot "Dot", copy tone.</li>
+<li>Confirm the flagged line in C ("the hard part was the brief and the rights") is true for you.</li>
+<li>Screenshots of the 7 Instagram posts you liked (Instagram blocked images here).</li>
+</ol></div>
+
+<section class="dir" id="a">
+  <header class="dh"><span class="letter">A</span><div><h2>A · Studio Light</h2>
+  <p class="meta">Carousel PDF · AI tools that change marketing work · QA PASS · 0 fail, 4 warn, 19 pass</p></div></header>
+  <p class="why"><b>Why it could work:</b> Instantly reads as your existing carousels, now with depth. The safest bet for saves.</p>
+  <div class="strip "><img loading="lazy" src="img/2026-10-06-eu-ai-text-watermark-slide-01.jpg" alt="Slide 1"><img loading="lazy" src="img/2026-10-06-eu-ai-text-watermark-slide-02.jpg" alt="Slide 2"><img loading="lazy" src="img/2026-10-06-eu-ai-text-watermark-slide-03.jpg" alt="Slide 3"><img loading="lazy" src="img/2026-10-06-eu-ai-text-watermark-slide-04.jpg" alt="Slide 4"><img loading="lazy" src="img/2026-10-06-eu-ai-text-watermark-slide-05.jpg" alt="Slide 5"><img loading="lazy" src="img/2026-10-06-eu-ai-text-watermark-slide-06.jpg" alt="Slide 6"><img loading="lazy" src="img/2026-10-06-eu-ai-text-watermark-slide-07.jpg" alt="Slide 7"><img loading="lazy" src="img/2026-10-06-eu-ai-text-watermark-slide-08.jpg" alt="Slide 8"></div>
+  <div class="cols">
+    <div class="col"><h3>Hook</h3><p class="hook">ChatGPT text in the EU is getting an invisible watermark.</p>
+      <h3>Caption <button class="copy" type="button" data-copy="cap-0">Copy</button></h3><pre id="cap-0" class="caption">ChatGPT text in the EU is getting an invisible watermark.
+
+OpenAI announced it on 5 October. Over the coming weeks, eligible ChatGPT and Codex text made in the EU will carry a hidden statistical signal in its word choices.
+
+What it can&#x27;t do, according to OpenAI itself:
+
+→ It can&#x27;t tell who wrote or prompted the text
+→ It can&#x27;t tell how much a human changed it
+→ It can&#x27;t tell whether the text is true
+→ No watermark doesn&#x27;t prove a human wrote it
+→ The detector isn&#x27;t public. Only approved researchers and expert organisations can apply
+
+OpenAI&#x27;s own test numbers, at a 1% false-positive target: about 80% detection on 200-token passages of prose like psychology, about 95% on 400. Much lower for maths-like text.
+
+What I&#x27;d do as a marketer this week:
+→ Edit AI drafts for quality and facts, not to hide AI use
+→ Check client and creator contracts for AI-disclosure clauses
+→ Decide your disclosure rule before a client asks
+→ Stop trusting &quot;AI detector&quot; screenshots as proof
+
+Save this before your next client call.
+
+Would you tell a client a draft was AI-assisted? Yes or no?</pre>
+      <h3>First comment</h3><pre class="caption small">Full breakdown, OpenAI&#x27;s source, and a one-paragraph AI-disclosure template you can paste into client contracts:
+<a href="https://buildwithvish.netlify.app/#read-eu-ai-text-watermark" target="_blank" rel="noopener">https://buildwithvish.netlify.app/#read-eu-ai-text-watermark</a>
+
+(Not legal advice. Check your own contracts.)</pre></div>
+    <div class="col"><h3>Sources</h3><div class="tw"><table><tr><th>Claim</th><th>Source</th><th>Date</th></tr><tr><td>Invisible watermark on eligible ChatGPT and Codex text in the EU, &quot;over the coming weeks&quot;; API opt-in, off by default; detector limited to approved researchers</td><td>OpenAI, &quot;Our approach to EU text provenance rules&quot; <a href="https://openai.com/index/eu-text-provenance/" target="_blank" rel="noopener">https://openai.com/index/eu-text-provenance/</a></td><td>5 Oct 2026</td></tr><tr><td>Same, plus &quot;will not become a global default at launch&quot;</td><td>OpenAI Developer Community post <a href="https://community.openai.com/t/openais-approach-to-eu-text-provenance-rules/1403521" target="_blank" rel="noopener">https://community.openai.com/t/openais-approach-to-eu-text-provenance-rules/1403521</a></td><td>5 Oct 2026</td></tr><tr><td>textGrain method; ~80% (200 tokens) / ~95% (400 tokens) at 1% FPR; editing weakens it</td><td>OpenAI, same page</td><td>5 Oct 2026</td></tr><tr><td>What a watermark cannot tell (human contribution, ownership, user identity, accuracy)</td><td>OpenAI, same page</td><td>5 Oct 2026</td></tr><tr><td>EU AI Act requires machine-readable marking of generated text</td><td>OpenAI, same page (restating the Act)</td><td>5 Oct 2026</td></tr></table></div>
+      <h3>QA warnings to look at</h3><ul class="warn"><li>links: not checked (--no-net): <a href="https://buildwithvish.netlify.app/#read-eu-ai-text-watermark" target="_blank" rel="noopener">https://buildwithvish.netlify.app/#read-eu-ai-text-watermark</a></li><li>links: not checked (--no-net): <a href="https://community.openai.com/t/openais-approach-to-eu-text-provenance-rules/1403521" target="_blank" rel="noopener">https://community.openai.com/t/openais-approach-to-eu-text-provenance-rules/1403521</a></li><li>links: not checked (--no-net): <a href="https://openai.com/index/eu-text-provenance/" target="_blank" rel="noopener">https://openai.com/index/eu-text-provenance/</a></li><li>links: hash route #read-eu-ai-text-watermark always returns 200; confirm the page exists in buildwithvish src/long before posting</li></ul></div>
+  </div>
+</section>
+<section class="dir" id="b">
+  <header class="dh"><span class="letter">B</span><div><h2>B · Night Lab</h2>
+  <p class="meta">Video · AI tools that change marketing work · QA PASS · 0 fail, 3 warn, 9 pass</p></div></header>
+  <p class="why"><b>Why it could work:</b> Dark covers stand out on LinkedIn&#x27;s light feed, and video is where dwell time grows fastest.</p>
+  <div class="media"><video controls playsinline muted loop preload="metadata" poster="img/2026-10-06-chatgpt-image-ads-poster.jpg" src="media/2026-10-06-chatgpt-image-ads.mp4"></video></div><p class="cap">30 s · 1080 x 1350 · H.264. Frames:</p><div class="strip"><img loading="lazy" src="img/2026-10-06-chatgpt-image-ads-cover.jpg" alt="Video frame cover"><img loading="lazy" src="img/2026-10-06-chatgpt-image-ads-end.jpg" alt="Video frame end"><img loading="lazy" src="img/2026-10-06-chatgpt-image-ads-s2.jpg" alt="Video frame s2"><img loading="lazy" src="img/2026-10-06-chatgpt-image-ads-s3.jpg" alt="Video frame s3"><img loading="lazy" src="img/2026-10-06-chatgpt-image-ads-s4.jpg" alt="Video frame s4"><img loading="lazy" src="img/2026-10-06-chatgpt-image-ads-s5.jpg" alt="Video frame s5"></div>
+  <div class="cols">
+    <div class="col"><h3>Hook</h3><p class="hook">ChatGPT is testing ads next to the images you generate.</p>
+      <h3>Caption <button class="copy" type="button" data-copy="cap-1">Copy</button></h3><pre id="cap-1" class="caption">ChatGPT is testing ads next to the images you generate.
+
+OpenAI announced it on 5 October. Testing starts later this month, US only, with a first group of advertisers.
+
+The details that matter:
+→ Ads are labelled and sit beside your image, not inside it
+→ OpenAI says ads don&#x27;t influence ChatGPT&#x27;s answers
+→ 1.2 billion people use ChatGPT every week (OpenAI&#x27;s number)
+→ Measurement partners are already plugged in: AppsFlyer, Northbeam, Triple Whale and more
+
+Early, partner-reported data: WeightWatchers&#x27; attributed CPA on ChatGPT Ads was 15.3% lower than its blended paid-search benchmark (DV Rockerbox, via OpenAI). One brand, one partner, attributed numbers. Treat it as a signal, not proof.
+
+My take: the next ad slot is the moment someone imagines your product.
+
+It&#x27;s US-only for now. What would you need to see before you&#x27;d move test budget there?</pre>
+      <h3>First comment</h3><pre class="caption small">How I&#x27;d brief AI (and agencies) before testing any new ad channel, the 6-box brief:
+<a href="https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency" target="_blank" rel="noopener">https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency</a></pre></div>
+    <div class="col"><h3>Sources</h3><div class="tw"><table><tr><th>Claim</th><th>Source</th><th>Date</th></tr><tr><td>New visual ad format tested during image generation; labelled; separate from the image; doesn&#x27;t influence answers; testing later this month in the US with an initial group of advertisers</td><td>OpenAI, &quot;Building advertising for the way people use AI&quot; (via Releasebot mirror)</td><td>5 Oct 2026</td></tr><tr><td>Same, independent</td><td>TechCrunch, Sarah Perez <a href="https://techcrunch.com/2026/10/05/openai-launches-visual-ads-that-appear-alongside-image-generation-results" target="_blank" rel="noopener">https://techcrunch.com/2026/10/05/openai-launches-visual-ads-that-appear-alongside-image-generation-results</a></td><td>5 Oct 2026</td></tr><tr><td>1.2 billion weekly people</td><td>OpenAI (same post); TechCrunch repeats it</td><td>5 Oct 2026</td></tr><tr><td>WeightWatchers attributed CPA 15.3% lower than blended paid-search benchmark</td><td>OpenAI post, citing DV Rockerbox (partner-reported)</td><td>5 Oct 2026</td></tr><tr><td>Measurement partners list</td><td>OpenAI post + TechCrunch</td><td>5 Oct 2026</td></tr></table></div>
+      <h3>QA warnings to look at</h3><ul class="warn"><li>links: not checked (--no-net): <a href="https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency" target="_blank" rel="noopener">https://buildwithvish.netlify.app/#read-brief-ai-like-an-agency</a></li><li>links: not checked (--no-net): <a href="https://techcrunch.com/2026/10/05/openai-launches-visual-ads-that-appear-alongside-image-generation-results" target="_blank" rel="noopener">https://techcrunch.com/2026/10/05/openai-launches-visual-ads-that-appear-alongside-image-generation-results</a></li><li>links: hash route #read-brief-ai-like-an-agency always returns 200; confirm the page exists in buildwithvish src/long before posting</li></ul></div>
+  </div>
+</section>
+<section class="dir" id="c">
+  <header class="dh"><span class="letter">C</span><div><h2>C · Field Notes</h2>
+  <p class="meta">Single image + text post · Creator economy x AI · QA PASS · 0 fail, 5 warn, 9 pass</p></div></header>
+  <p class="why"><b>Why it could work:</b> Looks like nobody else in AI x marketing. Operator voice, good for opinion and creator posts.</p>
+  <div class="strip single"><img loading="lazy" src="img/2026-10-06-meta-creator-hub-slide-01.jpg" alt="Slide 1"></div>
+  <div class="cols">
+    <div class="col"><h3>Hook</h3><p class="hook">Meta put creator discovery and paid ads in one screen.</p>
+      <h3>Caption <button class="copy" type="button" data-copy="cap-2">Copy</button></h3><pre id="cap-2" class="caption">Meta put creator discovery and paid ads in one screen.
+
+In mid-September, Meta launched the Creator Marketing Hub. It merges Creator Marketplace and the Partnership Ads Hub into one place.
+
+What&#x27;s inside:
+→ Creator discovery and content search
+→ Content-level permissions with expiry dates
+→ One-click ads from creator posts
+→ Messaging creators inside the hub
+→ Facebook creators added to the Creator Marketplace API, which until now only covered Instagram creators
+
+Here&#x27;s what most people miss: speed was never the bottleneck.
+
+After 850+ creator deals, the hard part wasn&#x27;t finding a creator or boosting a post. It was the brief and the rights. [VISH: confirm this line is true for you before posting]
+
+What a one-click button doesn&#x27;t fix:
+→ Usage rights. How long, which channels, which markets
+→ Fit. Would your product look natural in their last 12 posts?
+→ Disclosure. In Germany, &quot;Werbung&quot; or &quot;Anzeige&quot; at the start of the caption (general info, not legal advice)
+→ Payment. When the creator actually gets paid, and what triggers it
+
+Faster tools make the brief matter more.
+
+Which part of creator campaigns still eats most of your week?</pre>
+      <h3>First comment</h3><pre class="caption small">The 5-factor creator fit score I use (free, with the sheet):
+<a href="https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai" target="_blank" rel="noopener">https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai</a></pre></div>
+    <div class="col"><h3>Sources</h3><div class="tw"><table><tr><th>Claim</th><th>Source</th><th>Date</th></tr><tr><td>Creator Marketing Hub launched, merging Creator Marketplace and Partnership Ads Hub</td><td>MediaPost, Colin Kirkland <a href="https://www.mediapost.com/publications/article/418022/" target="_blank" rel="noopener">https://www.mediapost.com/publications/article/418022/</a></td><td>15 Sep 2026</td></tr><tr><td>Same, &quot;officially launched on Wednesday&quot;</td><td>eMarketer, Marisa Jones <a href="https://www.emarketer.com/content/meta-s-creator-marketing-hub-gives-brands-central-resource-partnerships" target="_blank" rel="noopener">https://www.emarketer.com/content/meta-s-creator-marketing-hub-gives-brands-central-resource-partnerships</a></td><td>16 Sep 2026</td></tr><tr><td>&quot;Until now only accessible to Instagram creators&quot; (Creator Marketplace API)</td><td>MediaPost (above)</td><td>15 Sep 2026</td></tr><tr><td>Launch date: MediaPost dated 15 Sep, eMarketer (16 Sep) says &quot;Wednesday&quot;. Copy says &quot;mid-September&quot;</td><td>both</td><td>15-16 Sep 2026</td></tr><tr><td>Content-level permissions with expiry dates, one-click ad creation, messaging, Facebook creators added to Creator Marketplace API</td><td>MediaPost (above); cross-checked with commonthreadco.com coverage</td><td>15 Sep 2026</td></tr><tr><td>&quot;Werbung&quot; / &quot;Anzeige&quot; ad labels in Germany</td><td>Evergreen; already on Build with Vish (ad-labels-in-europe). Re-verify before posting</td><td>n/a</td></tr></table></div>
+      <h3>QA warnings to look at</h3><ul class="warn"><li>copy: contains a line Vish must confirm before posting</li><li>links: not checked (--no-net): <a href="https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai" target="_blank" rel="noopener">https://buildwithvish.netlify.app/#read-shortlist-creators-with-ai</a></li><li>links: not checked (--no-net): <a href="https://www.emarketer.com/content/meta-s-creator-marketing-hub-gives-brands-central-resource-partnerships" target="_blank" rel="noopener">https://www.emarketer.com/content/meta-s-creator-marketing-hub-gives-brands-central-resource-partnerships</a></li><li>links: not checked (--no-net): <a href="https://www.mediapost.com/publications/article/418022/" target="_blank" rel="noopener">https://www.mediapost.com/publications/article/418022/</a></li><li>links: hash route #read-shortlist-creators-with-ai always returns 200; confirm the page exists in buildwithvish src/long before posting</li></ul></div>
+  </div>
+</section>
+<section class="plain mascot"><h2>Dot, the sidekick</h2><p class="meta">Original character in your violet. Antenna carries the Build with Vish logo mark. Six expressions, five poses, rendered from code so it never drifts.</p><img src="img/mascot-sheet.jpg" alt="Mascot sheet with six expressions"></section>
+<section class="plain"><h2>Topic backlog</h2><p class="meta">Scored 1 to 10 on freshness, usefulness, shareability, comment potential, brand fit. Only 8+ ships.</p>
+<div class="tw"><table><tr><th>Score</th><th>Topic</th><th>Pillar</th><th>Status</th></tr><tr class="ship"><td class="num">9.2</td><td>ChatGPT text in the EU is getting an invisible watermark</td><td>AI tools that change marketing work</td><td>sample drafted (Direction A)</td></tr><tr class="ship"><td class="num">8.6</td><td>ChatGPT will show ads next to the images you generate</td><td>AI tools that change marketing work</td><td>sample drafted (Direction B)</td></tr><tr class="ship"><td class="num">8.4</td><td>Meta put creator discovery and paid ads in one screen</td><td>Creator economy x AI</td><td>sample drafted (Direction C)</td></tr><tr class="ship"><td class="num">8.4</td><td>Anthropic is training 10,000 &#x27;Frontier Deployed Engineers&#x27;. The job marketers should watch</td><td>Career and AI Ops pivot</td><td>needs second source + Vish&#x27;s personal angle</td></tr><tr class="ship"><td class="num">8.4</td><td>The weekly marketing report that writes itself (my open-source build)</td><td>Real workflows and prompts</td><td>ready (backfill candidate)</td></tr><tr class=""><td class="num">7.8</td><td>Brands can now turn a creator&#x27;s Instagram Live into a paid ad</td><td>Creator economy x AI</td><td>ready to draft</td></tr><tr class=""><td class="num">7.8</td><td>LinkedIn now punishes &#x27;Comment YES below&#x27;. Here&#x27;s what still earns comments</td><td>Contrarian takes</td><td>hold until Vish&#x27;s own data exists</td></tr><tr class=""><td class="num">7.4</td><td>Anthropic is giving startups a free year of Claude Team and $1,000 in credits</td><td>AI tools that change marketing work</td><td>below bar (7.4 avg) unless paired with a real workflow</td></tr><tr class=""><td class="num">7.2</td><td>Claude Code now has mods. I&#x27;d use them for marketing ops like this</td><td>Build in public</td><td>needs primary source and a real mod built first</td></tr><tr class=""><td class="num">5.8</td><td>Threads ads no longer need an Instagram account</td><td>AI tools that change marketing work</td><td>rejected: one source, weak fit</td></tr></table></div></section>
+<section class="plain"><h2>Independent reviewer</h2><p class="meta">A separate agent that didn't make the samples checked facts against the saved sources and looked at every image. Its report, unedited:</p><pre class="caption"># Reviewer report, 6 Oct 2026
+
+## Verdicts
+- **EU watermark (carousel): fix first.** Missing a key hedge and a key limitation. Weak cover art.
+- **ChatGPT image ads (video): fix first.** The hook overstates a US-only test. video.mp4 was still rendering and failed ffprobe (&quot;moov atom not found&quot;), so it is **unreviewed**.
+- **Meta Creator Hub (image): don&#x27;t ship yet.** It has a live placeholder, an unsourced claim, and stale &quot;just&quot; framing.
+
+## Issues
+
+| # | Sev | Location | Issue | Fix |
+|---|---|---|---|---|
+| 1 | blocker | meta/caption.md para 5 | `[VISH: confirm this line...]` is still in the caption. The 850+ claim is unconfirmed. | Vish confirms the line, then delete the bracket. |
+| 2 | blocker | chatgpt/video.mp4 | The file is invalid (render in progress). | After the render, run ffprobe and scrub all 30 s against video.json. |
+| 3 | should fix | meta/caption.md bullet 5 | &quot;what used to be Instagram-only&quot; isn&#x27;t in any source. MediaPost only says Facebook creators were onboarded to the Creator Marketplace API. | &quot;Facebook creators now in the Creator Marketplace API&quot;. |
+| 4 | should fix | meta/caption.md L1 | &quot;Meta **just**...&quot; about news that&#x27;s 21 days old. sources.md itself says not to frame it as news. | &quot;Meta merged creator discovery and paid ads into one hub.&quot; |
+| 5 | should fix | meta/sources.md | No Meta primary source. Dates disagree: MediaPost (Tue 15 Sep) vs eMarketer &quot;launched on Wednesday&quot;. | Verify on the Meta newsroom, or write &quot;mid-September&quot;. |
+| 6 | should fix | meta/caption.md, Disclosure line | The &quot;Werbung&quot;/&quot;Anzeige&quot; rule is a legal claim marked &quot;re-verify&quot;. | Verify it, link the ad-labels page and add &quot;not legal advice&quot;. |
+| 7 | should fix | meta/image.png art | The ring cuts through the glass tile and splits the play icon. Horizontal refraction seams. The ring&#x27;s right end curls open. It looks broken. | Re-render with the ring behind the tile, closed and with no seams, or drop the ring. |
+| 8 | should fix | meta/image.png mascot | The &quot;focused&quot; eyes read as angry. | Use the neutral or happy variant. |
+| 9 | nit | meta/image.png | The badge &quot;850+ CREATOR DEALS IN&quot; reads as cut off. &quot;One screen&quot; overstates &quot;one platform&quot;. About 230px of dead space above the art. | &quot;From 850+ creator deals&quot;. &quot;one hub&quot;. Move the art up. |
+| 10 | should fix | chatgpt scene 1, caption L1, cover poster | &quot;ChatGPT **will show** ads next to the images you generate&quot; implies every user. It&#x27;s a US-only test with initial advertisers, and ads run on the free and low-cost tiers (TechCrunch). | &quot;ChatGPT is testing ads next to the images you generate.&quot; |
+| 11 | should fix | chatgpt scene 5 | On screen it drops &quot;**blended** paid-search benchmark&quot; and has no single-brand hedge (that&#x27;s only in the caption). | Add &quot;blended&quot; and &quot;One brand, early data.&quot; |
+| 12 | should fix | chatgpt/caption.md CTA | &quot;Test this in Q1?&quot; goes to an EU audience, but the format is US-only. | Add &quot;Not in Europe yet&quot;, or ask &quot;if it reached the EU&quot;. |
+| 13 | should fix | chatgpt s3 frame | The text says &quot;Labelled&quot;, but the ad tile has no &quot;Sponsored&quot; tag, and it sits inside the fan, which undercuts &quot;beside, not inside&quot;. | Add a &quot;Sponsored&quot; chip and offset the tile clearly to the side. |
+| 14 | nit | chatgpt end.png, s5, s3 | Thin vertical line artefact on the purple tile (about x627, y345-420). s5: tile clips the right edge. s3: tile nearly touches the header pill. The same art in all 6 scenes feels static. | Fix the seam. Keep 48px padding. Vary scale and camera per scene. |
+| 16 | should fix | eu/slide-04, caption | ~80%/~95% is &quot;for content such as psychology&quot;. It&#x27;s &quot;substantially lower&quot; for maths. The caption drops &quot;at 1% false-positive&quot; and &quot;expert organisations&quot;. | &quot;Best case, prose. Much lower for maths.&quot; Restore both in the caption. |
+| 17 | should fix | eu/slide-05 | Missing &quot;**no watermark doesn&#x27;t prove a human wrote it**&quot; (OpenAI says this explicitly). &quot;Only if long enough&quot; is a condition, not a signal, and it also needs unedited, untranslated text from an eligible model. | Change the right column to a single item. Add a footer: &quot;No watermark ≠ human-written.&quot; |
+| 18 | should fix | eu/slide-04 + slide-07 #1 + caption | &quot;Heavily edited text is harder to detect&quot; next to &quot;Editing... was always the job&quot; can read as evasion advice. | Add &quot;Edit for quality, not to hide AI use. Disclose anyway.&quot; Never cite the synonym-swap stats. |
+| 20 | should fix | eu/slide-01 art | Blurry halos and a ghosted left edge on the bubble. Violet fringing on the bars. The magnifier lens shows empty white, so the &quot;reveals hidden mark&quot; idea fails. | Re-render with clean edges and have the lens enlarge the dot grid. |
+| 21 | nit | eu/slides 5, 7, 8 | The numbering jumps 03 → 05 (slides 5 and 7 have no label). Widows: &quot;it&quot; (slide 5), &quot;no?&quot; (slide 8). | Add &quot;04 ·&quot; and &quot;06 ·&quot; labels. Balance the line breaks. |
+| 22 | nit | eu/slides 2, 4, 6; all source lines | Cards float with about 250px of empty space above them. Source lines (about 18px grey mono) become about 7px on a phone. | Anchor the cards higher. Source text at least 24px. |
+| 24 | nit | eu + chatgpt captions | Both end &quot;Yes or no?&quot; on the same day. It feels templated and close to vote-bait. | Use an open question on one of them. |
+| 25 | should fix | all first-comment.md | Hash routes always return 200, so the linked pages aren&#x27;t verified. | Confirm each page exists before posting. |
+
+## Passed
+No dashes, no banned words, British spelling, hooks of 10 to 11 words, no third-party logos, a consistent mascot. All numbers trace to the sources, and the hedges are correct.
+</pre><h3>What I changed after the review</h3><pre class="caption"># Reviewer findings: what changed (6 Oct 2026)
+
+| Finding | Action |
+|---|---|
+| A: 80%/95% figures missing &quot;prose like psychology&quot;, 1% FPR, maths caveat | Added to slide 4 and caption |
+| A: &quot;no watermark doesn&#x27;t prove human authorship&quot; missing | Added to slide 5 and caption |
+| A: editing lines could read as evasion advice | Now &quot;Edit AI drafts for quality and facts, not to hide AI use&quot; |
+| A: caption dropped &quot;expert organisations&quot; | Added |
+| A: blurry bubble, empty lens | Bubble re-made as crisp porcelain; lens now reveals the magnified dot lattice |
+| B: hook overstated a US-only test | &quot;ChatGPT is testing ads next to the images you generate.&quot; |
+| B: 15.3% screen dropped &quot;blended&quot;, no caveat | &quot;blended paid-search benchmark&quot; + &quot;One brand, early data&quot; |
+| B: Q1 question wrong for EU audience | New closing question, notes US-only |
+| B: no &quot;Sponsored&quot; tag on the ad tile | Added a tracked &quot;Sponsored&quot; chip during the labelled scene |
+| B: video not verifiable | Re-rendered after fixes; ffprobe checked |
+| C: &quot;Meta just&quot; on 21-day-old news; date conflict | &quot;Meta put…&quot;, &quot;In mid-September&quot; |
+| C: &quot;Instagram-only&quot; unsourced | It is in MediaPost (&quot;until now, has only been accessible to Instagram creators&quot;); now cited in sources.md |
+| C: Werbung/Anzeige legal claim | Marked &quot;general info, not legal advice&quot;; re-verify stays on the checklist |
+| C: ring cut through tile, angry mascot | Tile lifted above the ring; mascot now neutral |
+| C: unconfirmed 850+ line | **Kept as a gate for Vish.** Post is blocked until he confirms or deletes it |
+| All: &quot;Source:&quot; lines too small | Raised from 19 px to 22 px |
+| All: two &quot;Yes or no?&quot; closers | B now ends on an open question |
+| All: hash-route links can&#x27;t be verified | Known: the watermark page is drafted in `out/…/site-page/`, the other two pages exist in the buildwithvish repo |
+| B: thin line on purple tile (end frame) | Not reproduced in the re-render stills; left as is |
+</pre></section>
+</div>
+<script>
+document.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
+  const el = document.getElementById(b.dataset.copy);
+  navigator.clipboard.writeText(el.textContent).then(() => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); })
+    .catch(() => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+}));
+</script>

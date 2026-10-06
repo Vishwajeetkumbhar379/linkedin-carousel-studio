@@ -106,7 +106,7 @@ def build(posts: list[Path]) -> Path:
     reviewer = ROOT / "out" / "_review" / "reviewer-report.md"
     rev_html = ""
     if reviewer.exists():
-        rev_html = f'<section class="plain"><h2>Independent reviewer</h2><p class="meta">A separate agent that didn\'t make the samples checked facts against the saved sources and looked at every image. Its report, unedited:</p><pre class="caption">{escape(reviewer.read_text())}</pre></section>'
+        rev_html = f'<section class="plain"><h2>Independent reviewer</h2><p class="meta">A separate agent that didn\'t make the samples checked facts against the saved sources and looked at every image. Its report, unedited:</p><pre class="caption">{escape(reviewer.read_text())}</pre><h3>What I changed after the review</h3><pre class="caption">{escape((ROOT / "out" / "_review" / "fixes-applied.md").read_text())}</pre></section>'
     html = f"""<title>Test Gate Review</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&display=swap">
 <style>
