@@ -1,6 +1,6 @@
 # QA report: 2026-10-06-meta-creator-hub
 
-Run 2026-10-06 17:17 · **PASS** · 0 fail, 5 warn, 9 pass
+Run 2026-10-06 18:03 · **PASS** · 0 fail, 5 warn, 9 pass
 
 | Result | Area | Check |
 |---|---|---|
@@ -17,6 +17,6 @@ Run 2026-10-06 17:17 · **PASS** · 0 fail, 5 warn, 9 pass
 | PASS | facts | source dated 2026-09-16 is 20 days old (tool window 30d) |
 | PASS | facts | source dated 2026-10-06 is 0 days old (tool window 30d) |
 | PASS | design | slide 1: safe area, overflow, contrast, sizes |
-| PASS | brand | theme 'field' comes from brand tokens |
+| PASS | brand | Aurora Glass (daylight) from brand tokens |
 
 Manual checks (the reviewer agent signs these off): 3D quality (banding, muddy light), mascot consistency, legal (no third-party logos or characters), tone.

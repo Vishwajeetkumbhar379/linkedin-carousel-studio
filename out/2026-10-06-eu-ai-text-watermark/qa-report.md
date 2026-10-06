@@ -1,6 +1,6 @@
 # QA report: 2026-10-06-eu-ai-text-watermark
 
-Run 2026-10-06 17:17 · **PASS** · 0 fail, 4 warn, 19 pass
+Run 2026-10-06 18:03 · **PASS** · 0 fail, 4 warn, 19 pass
 
 | Result | Area | Check |
 |---|---|---|
@@ -26,6 +26,6 @@ Run 2026-10-06 17:17 · **PASS** · 0 fail, 4 warn, 19 pass
 | PASS | design | slide 6: safe area, overflow, contrast, sizes |
 | PASS | design | slide 7: safe area, overflow, contrast, sizes |
 | PASS | design | slide 8: safe area, overflow, contrast, sizes |
-| PASS | brand | theme 'studio' comes from brand tokens |
+| PASS | brand | Aurora Glass (galaxy) from brand tokens |
 
 Manual checks (the reviewer agent signs these off): 3D quality (banding, muddy light), mascot consistency, legal (no third-party logos or characters), tone.

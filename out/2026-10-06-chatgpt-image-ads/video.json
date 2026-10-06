@@ -1,51 +1,51 @@
 {
   "slug": "chatgpt-image-ads",
-  "direction": "B · Night Lab",
+  "direction": "Aurora Glass · galaxy video (premium mix)",
   "format": "video",
   "template": "video/night.html",
   "width": 1080,
   "height": 1350,
   "fps": 30,
-  "duration": 30,
-  "liftAt": 8.6,
-  "liftEnd": 13.4,
-  "mascotAt": 25.2,
+  "duration": 55.93,
+  "liftAt": 15.24,
+  "liftEnd": 23.23,
+  "mascotAt": 47.36,
   "scenes": [
     {
-      "at": 0.15,
-      "until": 3.6,
+      "at": 0.1,
+      "until": 5.05,
       "kick": "AI x Marketing · New ad format",
       "h1": "ChatGPT is testing ads next to the *images you generate.*"
     },
     {
-      "at": 3.8,
-      "until": 8.4,
+      "at": 5.64,
+      "until": 14.35,
       "h2": "OpenAI announced it on 5 October.",
       "p": "Testing starts later this month. US only, with a first group of advertisers."
     },
     {
-      "at": 8.6,
-      "until": 13.4,
+      "at": 14.94,
+      "until": 23.63,
       "h2": "Labelled. Beside your image, *not inside it.*",
       "p": "OpenAI says ads don't influence ChatGPT's answers."
     },
     {
-      "at": 13.6,
-      "until": 18.9,
+      "at": 24.22,
+      "until": 31.75,
       "big": "1.2B",
       "h2": "people use ChatGPT every week.",
       "src": "Source: OpenAI, 5 Oct 2026"
     },
     {
-      "at": 19.1,
-      "until": 24.9,
+      "at": 32.34,
+      "until": 46.57,
       "big": "15.3%",
       "h2": "lower attributed CPA for WeightWatchers than its blended paid-search benchmark.",
       "src": "One brand, early data. Partner-reported (DV Rockerbox), via OpenAI"
     },
     {
-      "at": 25.1,
-      "until": 30.5,
+      "at": 47.16,
+      "until": 54.13,
       "kick": "My take",
       "h2": "The next ad slot is the moment someone *imagines your product.*",
       "p": "Follow for the AI x marketing playbook."
@@ -53,24 +53,175 @@
   ],
   "captions": [
     {
-      "at": 0,
-      "until": 3.6,
-      "text": ""
+      "at": 0.25,
+      "until": 2.293,
+      "text": "ChatGPT is testing ads,"
     },
     {
-      "at": 25.1,
-      "until": 31,
-      "text": "buildwithvish.netlify.app"
+      "at": 2.373,
+      "until": 4.65,
+      "text": "right next to the images you generate."
+    },
+    {
+      "at": 5.79,
+      "until": 7.256,
+      "text": "OpenAI announced it on"
+    },
+    {
+      "at": 7.176,
+      "until": 8.579,
+      "text": "the fifth of October."
+    },
+    {
+      "at": 8.879,
+      "until": 10.968,
+      "text": "The test starts later this month,"
+    },
+    {
+      "at": 10.888,
+      "until": 12.307,
+      "text": "in the US only, with a"
+    },
+    {
+      "at": 12.227,
+      "until": 13.951,
+      "text": "small group of advertisers."
+    },
+    {
+      "at": 15.091,
+      "until": 16.451,
+      "text": "The ads are labelled."
+    },
+    {
+      "at": 16.751,
+      "until": 17.986,
+      "text": "They sit beside your"
+    },
+    {
+      "at": 17.906,
+      "until": 19.199,
+      "text": "image, not inside it."
+    },
+    {
+      "at": 19.499,
+      "until": 21.01,
+      "text": "And OpenAI says they"
+    },
+    {
+      "at": 20.93,
+      "until": 23.227,
+      "text": "don't change ChatGPT's answers."
+    },
+    {
+      "at": 24.367,
+      "until": 26.069,
+      "text": "So why should marketers care?"
+    },
+    {
+      "at": 26.409,
+      "until": 29.037,
+      "text": "OpenAI says one point two billion"
+    },
+    {
+      "at": 28.957,
+      "until": 31.353,
+      "text": "people use ChatGPT every week."
+    },
+    {
+      "at": 32.493,
+      "until": 33.938,
+      "text": "One early data point:"
+    },
+    {
+      "at": 34.078,
+      "until": 36.985,
+      "text": "WeightWatchers saw a fifteen point three percent"
+    },
+    {
+      "at": 36.905,
+      "until": 40.048,
+      "text": "lower attributed cost per acquisition, compared with"
+    },
+    {
+      "at": 39.968,
+      "until": 42.051,
+      "text": "its blended paid search benchmark."
+    },
+    {
+      "at": 42.351,
+      "until": 44.329,
+      "text": "That's one brand, reported by a"
+    },
+    {
+      "at": 44.249,
+      "until": 46.165,
+      "text": "partner. Treat it as a signal."
+    },
+    {
+      "at": 47.305,
+      "until": 48.238,
+      "text": "My take?"
+    },
+    {
+      "at": 48.578,
+      "until": 50.024,
+      "text": "The next ad slot is the"
+    },
+    {
+      "at": 49.944,
+      "until": 52.221,
+      "text": "moment someone imagines your product."
+    },
+    {
+      "at": 52.521,
+      "until": 53.731,
+      "text": "Follow for more."
     }
   ],
   "posters": {
-    "cover": 2.4,
-    "s2": 6.5,
-    "s3": 11.5,
-    "s4": 17.0,
-    "s5": 23.0,
-    "end": 29.0
+    "s1": 3.57,
+    "s2": 10.99,
+    "s3": 20.29,
+    "s4": 28.98,
+    "s5": 40.45,
+    "s6": 51.64
   },
-  "sponsoredAt": 8.8,
-  "sponsoredUntil": 13.3
+  "sponsoredAt": 15.44,
+  "sponsoredUntil": 23.33,
+  "narration": [
+    [
+      "ChatGPT is testing ads,",
+      "right next to the images you generate."
+    ],
+    [
+      "OpenAI announced it on the fifth of October.",
+      "The test starts later this month, in the US only, with a small group of advertisers."
+    ],
+    [
+      "The ads are labelled.",
+      "They sit beside your image, not inside it.",
+      "And OpenAI says they don't change ChatGPT's answers."
+    ],
+    [
+      "So why should marketers care?",
+      "OpenAI says one point two billion people use ChatGPT every week."
+    ],
+    [
+      "One early data point:",
+      "WeightWatchers saw a fifteen point three percent lower attributed cost per acquisition, compared with its blended paid search benchmark.",
+      "That's one brand, reported by a partner. Treat it as a signal."
+    ],
+    [
+      "My take?",
+      "The next ad slot is the moment someone imagines your product.",
+      "Follow for more."
+    ]
+  ],
+  "voice": {
+    "engine": "kokoro-82m",
+    "voice": "af_heart",
+    "breaths": true,
+    "bed": true
+  },
+  "quality": 0.55
 }

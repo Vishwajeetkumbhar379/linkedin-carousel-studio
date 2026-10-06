@@ -5,7 +5,7 @@
 </head><body><canvas id="c"></canvas>
 <script type="module">
 import * as THREE from "three";
-import { createStage, objects, mascot, contactShadow } from "./kit.js";
+import { createStage, objects, mascot, glassMascot, contactShadow } from "./kit.js";
 
 // Animation presets, all pure functions of t so any frame can be rendered on demand.
 const ANIM = {
@@ -25,7 +25,7 @@ window.setup = async (spec) => {
   if (cam.fov) { camera.fov = cam.fov; camera.updateProjectionMatrix(); }
   camera.lookAt(...(cam.target || [0, 0, 0]));
   for (const it of spec.items) {
-    const o = it.type === "mascot" ? mascot(it.params || {}) : objects[it.type](it.params || {});
+    const o = it.type === "mascot" ? mascot(it.params || {}) : it.type === "glassMascot" ? glassMascot(it.params || {}) : objects[it.type](it.params || {});
     if (it.pos) o.position.set(...it.pos);
     if (it.rot) o.rotation.set(...it.rot);
     if (it.scale) o.scale.setScalar(it.scale);

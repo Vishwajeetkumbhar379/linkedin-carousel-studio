@@ -12,13 +12,14 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from carousel.render import _merge  # noqa: E402
+from carousel import aurora  # noqa: E402
 from carousel.studio import H, W, render_html_page, render_slide  # noqa: E402
 
-SEARCH = [ROOT / "out" / "_samples" / "3d", ROOT / "brand" / "mascot" / "poses"]
+SEARCH = [ROOT / "out" / "_samples" / "3d", ROOT / "brand" / "mascot" / "poses-v2", ROOT / "brand" / "mascot" / "poses", ROOT / "brand" / "avatar"]
 
 
 def find_assets(deck: dict, post: Path) -> dict:
-    keys = {s.get(k) for s in deck["slides"] for k in ("hero", "mascot")} - {None}
+    keys = {s.get(k) for s in deck["slides"] for k in ("hero", "mascot", "dof_hero")} - {None}
     keys |= {deck.get("cover_hero")} - {None}
     found = {}
     for k in keys:
@@ -44,7 +45,7 @@ def build(post: Path) -> Path:
         b = p.chromium.launch()
         page = b.new_page(viewport={"width": W, "height": H})
         for i, s in enumerate(slides, 1):
-            html = render_slide(s, i, len(slides), deck, assets)
+            html = (aurora.render_slide if deck.get("system") == "aurora" else render_slide)(s, i, len(slides), deck, assets)
             (post / "slides" / f"slide-{i:02d}.html").write_text(html) if "--keep-html" in sys.argv else None
             render_html_page(html, post / "slides" / f"slide-{i:02d}.png", parts, page)
         b.close()

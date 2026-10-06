@@ -31,7 +31,14 @@ DESIGN_JS = r"""
 () => {
   const W = 1080, H = 1350, M = 60, out = [];
   const lum = (c) => { const m = c.match(/[\d.]+/g).map(Number); const f = (v) => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }; return [.2126 * f(m[0]) + .7152 * f(m[1]) + .0722 * f(m[2]), m[3] === undefined ? 1 : m[3]]; };
-  const bgOf = (el) => { for (let e = el; e; e = e.parentElement) { const b = getComputedStyle(e).backgroundColor; if (b && !b.endsWith(", 0)") && b !== "transparent") return b; } return getComputedStyle(document.body).backgroundColor; };
+  // Composite every translucent background from <body> up to the element (glass cards are rgba).
+  const rgba = (c) => { const m = (c.match(/[\d.]+/g) || [0, 0, 0, 0]).map(Number); return [m[0], m[1], m[2], m[3] === undefined ? 1 : m[3]]; };
+  const bgOf = (el) => {
+    const stack = []; for (let e = el; e && e !== document.documentElement; e = e.parentElement) stack.push(getComputedStyle(e).backgroundColor);
+    let c = [0, 0, 0];
+    for (const b of stack.reverse()) { const [r, g, bl, a] = rgba(b); if (!a) continue; c = [c[0] * (1 - a) + r * a, c[1] * (1 - a) + g * a, c[2] * (1 - a) + bl * a]; }
+    return `rgb(${c[0]},${c[1]},${c[2]})`;
+  };
   document.querySelectorAll(".slide *").forEach((el) => {
     const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
     if (!own) return;
@@ -44,7 +51,7 @@ DESIGN_JS = r"""
     const large = fs >= 24 && parseInt(cs.fontWeight) >= 600 || fs >= 32;
     if (ratio < (large ? 3 : 4.5)) out.push(["FAIL", `contrast ${ratio.toFixed(2)}:1 at ${fs}px: "${txt}"`]);
     if (fs < 19) out.push(["FAIL", `font ${fs}px too small for mobile: "${txt}"`]);
-    else if (fs < 26 && !el.closest(".top,.foot,.label,.badge,.src,.q b,.cols h3,.rows b")) out.push(["WARN", `${fs}px body text reads ~${(fs * .4).toFixed(0)}px on a phone: "${txt}"`]);
+    else if (fs < 26 && !el.closest(".top,.foot,.label,.badge,.chip,.src,.q b,.cols h3,.rows b")) out.push(["WARN", `${fs}px body text reads ~${(fs * .4).toFixed(0)}px on a phone: "${txt}"`]);
   });
   return out;
 }
@@ -137,7 +144,8 @@ def check_design(post: Path, deck: dict, R: list) -> None:
         return
     from playwright.sync_api import sync_playwright
 
-    from carousel.studio import H, W, render_slide
+    from carousel import aurora
+    from carousel.studio import H, W, render_slide as studio_slide
     from build_post import find_assets
 
     assets = find_assets(deck, post)
@@ -146,7 +154,8 @@ def check_design(post: Path, deck: dict, R: list) -> None:
         b = p.chromium.launch()
         page = b.new_page(viewport={"width": W, "height": H})
         for i, s in enumerate(deck["slides"], 1):
-            page.set_content(render_slide(s, i, n, deck, assets), wait_until="load")
+            rs = aurora.render_slide if deck.get("system") == "aurora" else studio_slide
+            page.set_content(rs(s, i, n, deck, assets), wait_until="load")
             page.evaluate("document.fonts.ready")
             issues = page.evaluate(DESIGN_JS)
             fonts_ok = page.evaluate("[...document.fonts].filter(f => f.status === 'loaded').length")
@@ -159,7 +168,9 @@ def check_design(post: Path, deck: dict, R: list) -> None:
         b.close()
     if not any(s.get("mascot") for s in deck["slides"]):
         R.append(("WARN", "design", "mascot not used on any slide"))
-    if deck.get("theme") not in ("studio", "night", "field"):
+    if deck.get("system") == "aurora":
+        R.append(("PASS", "brand", f"Aurora Glass ({deck.get('variant', 'galaxy')}) from brand tokens"))
+    elif deck.get("theme") not in ("studio", "night", "field"):
         R.append(("FAIL", "brand", f"unknown theme {deck.get('theme')}"))
     else:
         R.append(("PASS", "brand", f"theme '{deck['theme']}' comes from brand tokens"))

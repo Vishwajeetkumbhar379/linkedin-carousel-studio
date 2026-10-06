@@ -1,0 +1,117 @@
+{
+ "voice": "af_heart",
+ "duration": 55.33133333333333,
+ "scenes": [
+  {
+   "start": 0.25,
+   "end": 4.95,
+   "phrases": [
+    {
+     "text": "ChatGPT is testing ads,",
+     "start": 0.25,
+     "end": 2.213
+    },
+    {
+     "text": "right next to the images you generate.",
+     "start": 2.373,
+     "end": 4.57
+    }
+   ]
+  },
+  {
+   "start": 5.79,
+   "end": 14.251,
+   "phrases": [
+    {
+     "text": "OpenAI announced it on the fifth of October.",
+     "start": 5.79,
+     "end": 8.499
+    },
+    {
+     "text": "The test starts later this month, in the US only, with a small group of advertisers.",
+     "start": 8.879,
+     "end": 13.871
+    }
+   ]
+  },
+  {
+   "start": 15.091,
+   "end": 23.527,
+   "phrases": [
+    {
+     "text": "The ads are labelled.",
+     "start": 15.091,
+     "end": 16.371
+    },
+    {
+     "text": "They sit beside your image, not inside it.",
+     "start": 16.751,
+     "end": 19.119
+    },
+    {
+     "text": "And OpenAI says they don't change ChatGPT's answers.",
+     "start": 19.499,
+     "end": 23.147
+    }
+   ]
+  },
+  {
+   "start": 24.367,
+   "end": 31.653,
+   "phrases": [
+    {
+     "text": "So why should marketers care?",
+     "start": 24.367,
+     "end": 25.989
+    },
+    {
+     "text": "OpenAI says one point two billion people use ChatGPT every week.",
+     "start": 26.409,
+     "end": 31.273
+    }
+   ]
+  },
+  {
+   "start": 32.493,
+   "end": 46.465,
+   "phrases": [
+    {
+     "text": "One early data point:",
+     "start": 32.493,
+     "end": 33.858
+    },
+    {
+     "text": "WeightWatchers saw a fifteen point three percent lower attributed cost per acquisition, compared with its blended paid search benchmark.",
+     "start": 34.078,
+     "end": 41.971
+    },
+    {
+     "text": "That's one brand, reported by a partner. Treat it as a signal.",
+     "start": 42.351,
+     "end": 46.085
+    }
+   ]
+  },
+  {
+   "start": 47.305,
+   "end": 54.031,
+   "phrases": [
+    {
+     "text": "My take?",
+     "start": 47.305,
+     "end": 48.158
+    },
+    {
+     "text": "The next ad slot is the moment someone imagines your product.",
+     "start": 48.578,
+     "end": 52.141
+    },
+    {
+     "text": "Follow for more.",
+     "start": 52.521,
+     "end": 53.651
+    }
+   ]
+  }
+ ]
+}

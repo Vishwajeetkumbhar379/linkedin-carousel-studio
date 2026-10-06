@@ -279,3 +279,74 @@ export function createStage(canvas, { width, height, background = null, exposure
   scene.add(key, rim, fill);
   return { renderer, scene, camera, THREE };
 }
+
+// ---------- premium additions (Aurora Glass direction) ----------
+function gradientGeometry(geo, top, bottom) {
+  // Vertex-colour gradient along Y so one mesh reads like a glossy gradient object.
+  geo.computeBoundingBox();
+  const { min, max } = geo.boundingBox, pos = geo.attributes.position, cols = [];
+  const a = new THREE.Color(bottom), b = new THREE.Color(top), c = new THREE.Color();
+  for (let i = 0; i < pos.count; i++) {
+    const k = (pos.getY(i) - min.y) / (max.y - min.y || 1);
+    c.copy(a).lerp(b, k); cols.push(c.r, c.g, c.b);
+  }
+  geo.setAttribute("color", new THREE.Float32BufferAttribute(cols, 3));
+  return geo;
+}
+
+function glyph(kind) {
+  const g = new THREE.Group(), m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.25, clearcoat: 1 });
+  if (kind === "spark") {
+    for (let i = 0; i < 4; i++) { const r = new THREE.Mesh(new THREE.CapsuleGeometry(0.045, 0.36, 6, 16), m); r.rotation.z = (i * Math.PI) / 4; g.add(r); }
+  } else if (kind === "bubble") {
+    const b = new THREE.Mesh(new THREE.SphereGeometry(0.22, 48, 32), m); b.scale.set(1.25, 0.95, 0.4); g.add(b);
+    const tail = new THREE.Mesh(new THREE.ConeGeometry(0.07, 0.16, 16), m); tail.position.set(-0.17, -0.2, 0); tail.rotation.z = 0.7; g.add(tail);
+  } else if (kind === "play") {
+    const p = new THREE.Mesh(new THREE.ConeGeometry(0.2, 0.32, 3), m); p.rotation.z = -Math.PI / 2; p.scale.z = 0.4; g.add(p);
+  } else if (kind === "pin") {
+    const s = new THREE.Mesh(new THREE.SphereGeometry(0.16, 32, 32), m); s.position.y = 0.06; g.add(s);
+    const c = new THREE.Mesh(new THREE.ConeGeometry(0.14, 0.24, 32), m); c.rotation.z = Math.PI; c.position.y = -0.13; g.add(c);
+  } else if (kind === "lock") {
+    const body = new THREE.Mesh(new RoundedBoxGeometry(0.36, 0.28, 0.1, 4, 0.05), m); body.position.y = -0.06; g.add(body);
+    const sh = new THREE.Mesh(new THREE.TorusGeometry(0.12, 0.035, 12, 32, Math.PI), m); sh.position.y = 0.08; g.add(sh);
+  } else if (kind === "eye") {
+    const e = new THREE.Mesh(new THREE.SphereGeometry(0.2, 48, 32), m); e.scale.set(1.5, 0.8, 0.35); g.add(e);
+    const p = new THREE.Mesh(new THREE.SphereGeometry(0.09, 32, 32), new THREE.MeshPhysicalMaterial({ color: 0x17141c, roughness: 0.2, clearcoat: 1 })); p.position.z = 0.06; g.add(p);
+  }
+  g.position.z = 0.2;
+  return g;
+}
+
+objects.glossTile = function ({ top = 0xafa9ec, bottom = 0x4a44c4, glyphKind = "spark", size = 1 } = {}) {
+  const g = new THREE.Group();
+  const geo = gradientGeometry(new RoundedBoxGeometry(1.1 * size, 1.1 * size, 0.32 * size, 8, 0.3 * size), top, bottom);
+  const tile = new THREE.Mesh(geo, new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.06, sheen: 0.3 }));
+  g.add(tile);
+  const gl = glyph(glyphKind); gl.scale.setScalar(size); g.add(gl);
+  return g;
+};
+
+// A frosted-glass dock holding glossy gradient tiles (hero for app/tool posts).
+objects.glassDock = function ({ tiles = [["spark", 0xc9c1ff, 0x5a4fd6], ["bubble", 0x9cf0e4, 0x0e8c80], ["eye", 0xffd6a8, 0xd9772e]] } = {}) {
+  const g = new THREE.Group();
+  const w = tiles.length * 1.3 + 0.3;
+  const dock = new THREE.Mesh(new RoundedBoxGeometry(w, 1.6, 0.3, 8, 0.48), new THREE.MeshPhysicalMaterial({ color: 0xe4e0ff, transmission: 0.25, roughness: 0.55, thickness: 0.6, ior: 1.35, clearcoat: 1, clearcoatRoughness: 0.2, transparent: true, opacity: 0.55, sheen: 0.6, sheenColor: new THREE.Color(0xc9c1ff) }));
+  dock.position.z = -0.25; g.add(dock);
+  tiles.forEach(([k, t, b], i) => { const tl = objects.glossTile({ top: t, bottom: b, glyphKind: k }); tl.position.x = (i - (tiles.length - 1) / 2) * 1.3; g.add(tl); });
+  return g;
+};
+
+// Mascot v2: premium frosted-glass Dot with a glowing violet core.
+export function glassMascot({ expression = "neutral", pose = "idle" } = {}) {
+  const g = mascot({ expression, pose });
+  const { body } = g.userData;
+  body.material = new THREE.MeshPhysicalMaterial({ color: 0xd9d4ff, transmission: 0.82, roughness: 0.42, thickness: 1.1, ior: 1.38, clearcoat: 1, clearcoatRoughness: 0.18, attenuationColor: new THREE.Color(0x6a5ff0), attenuationDistance: 0.55, sheen: 0.4, sheenColor: new THREE.Color(0xb9b2ff) });
+  const core = new THREE.Mesh(new THREE.SphereGeometry(0.33, 48, 48), new THREE.MeshStandardMaterial({ color: 0x5a4fd6, emissive: 0x5a4fd6, emissiveIntensity: 0.9, roughness: 0.6 }));
+  core.position.set(0, -0.12, -0.05); core.scale.set(1.15, 1, 1);
+  g.add(core);
+  g.children.forEach((c) => { if (c.geometry && c.geometry.type === "CapsuleGeometry" && c !== body) c.material = body.material; });
+  // little legs so it stands like a designer toy
+  const legG = new THREE.CapsuleGeometry(0.085, 0.22, 6, 16);
+  [-0.2, 0.2].forEach((x) => { const l = new THREE.Mesh(legG, body.material); l.position.set(x, -0.6, 0); g.add(l); });
+  return g;
+}
