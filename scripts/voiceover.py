@@ -100,8 +100,9 @@ def synth(narration: list[list[str]], voice: str, breaths: bool, base_speed: flo
 
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
 GEMINI_MODEL = os.environ.get("GEMINI_TTS_MODEL", "gemini-3.8-flash-tts")
-GEMINI_STYLE = ("young male creator talking to a friend, warm and energetic, a little amused, "
-                "conversational not announcer, natural breaths, vary the pace, lean into the key word")
+_T = json.loads((Path(__file__).resolve().parent.parent / "brand" / "tokens.json").read_text())["voice"]["voiceover"]
+GEMINI_STYLE = _T.get("style", "young male creator talking to a friend, warm and energetic, natural breaths")
+GEMINI_VOICE = _T.get("gemini_voice_id", "Puck")
 
 
 def _find_audio(obj):
@@ -141,15 +142,24 @@ def gemini_tts(text: str, voice: str, style: str) -> np.ndarray:
     import time
     import urllib.error
 
-    for attempt in range(6):  # free tier allows 3 requests a minute: wait and retry on 429
+    models = [GEMINI_MODEL, "gemini-3.8-flash-lite-tts"]
+    for attempt in range(8):  # free tier: 3 requests a minute, 10 a day per model; fall back to Flash-Lite TTS
+        body["model"] = models[0]
+        req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), method="POST",
+                                     headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
         try:
             with urllib.request.urlopen(req, timeout=300) as r:
                 resp = json.loads(r.read())
             break
         except urllib.error.HTTPError as e:
-            if e.code != 429 or attempt == 5:
-                raise
-            m = re.search(r"retry in (\d+)", e.read().decode())
+            msg = e.read().decode()
+            if e.code == 429 and "per day" in msg and len(models) > 1:
+                print(f"{models[0]} daily cap reached, switching to {models[1]}", flush=True)
+                models.pop(0)
+                continue
+            if e.code not in (429, 500, 502, 503) or attempt == 7:
+                raise RuntimeError(f"{e.code}: {msg[:300]}") from None
+            m = re.search(r"retry in (\d+)", msg)
             time.sleep(int(m.group(1)) + 2 if m else 25)
     b64 = _find_audio(resp)
     if not b64:
@@ -368,7 +378,7 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
 if __name__ == "__main__":
     a = sys.argv[1:]
     eng = a[a.index("--engine") + 1] if "--engine" in a else "auto"
-    v = a[a.index("--voice") + 1] if "--voice" in a else ("am_puck:0.6,am_fenrir:0.4" if eng == "kokoro" else "Puck")
+    v = a[a.index("--voice") + 1] if "--voice" in a else ("am_puck:0.6,am_fenrir:0.4" if eng == "kokoro" else GEMINI_VOICE)
     sp = float(a[a.index("--speed") + 1]) if "--speed" in a else 1.0
     st = a[a.index("--style") + 1] if "--style" in a else GEMINI_STYLE
     main(Path(a[0]), v, "--no-breaths" not in a, "--no-bed" not in a, sp, eng, st)

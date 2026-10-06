@@ -11,7 +11,7 @@ What's inside:
 
 Here's what most people miss: speed was never the bottleneck.
 
-After 850+ creator deals, the hard part wasn't finding a creator or boosting a post. It was the brief and the rights. [VISH: confirm this line is true for you before posting]
+In creator deals, the hard part is rarely finding a creator or boosting a post. It's the brief and the rights.
 
 What a one-click button doesn't fix:
 → Usage rights. How long, which channels, which markets
@@ -22,3 +22,5 @@ What a one-click button doesn't fix:
 Faster tools make the brief matter more.
 
 Which part of creator campaigns still eats most of your week?
+
+Full breakdown: https://buildwithvish.netlify.app/#read-meta-creator-marketing-hub

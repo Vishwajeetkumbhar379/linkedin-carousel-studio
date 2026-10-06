@@ -70,6 +70,18 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#0E0C16;font-fam
 .prog{position:absolute;left:84px;right:84px;bottom:96px;height:4px;border-radius:4px;z-index:50;background:rgba(127,119,221,.25)}
 .prog i{display:block;height:100%;width:0;border-radius:4px;background:#7F77DD}
 .grain{position:absolute;inset:0;z-index:60;opacity:.08;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+
+/* avatar actions (round 7): Vish reacts in context */
+.av{position:absolute;z-index:40;pointer-events:none}
+.av img{display:block;width:100%;filter:drop-shadow(0 26px 34px rgba(20,10,60,.32))}
+.av .st{position:absolute;inset:0;overflow:visible}
+.av .drop{position:absolute;width:26px;height:38px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:linear-gradient(160deg,#BFE3FF,#5BA8F5);box-shadow:inset -3px -4px 0 rgba(255,255,255,.5)}
+.av .zig{position:absolute;font:800 46px Geist;color:#E5484D}
+.av .burst{position:absolute;left:50%;top:50%;width:150%;height:150%;transform:translate(-50%,-50%);background:repeating-conic-gradient(from 0deg,rgba(246,196,83,.9) 0 6deg,transparent 6deg 30deg);-webkit-mask:radial-gradient(circle,transparent 46%,#000 47%,#000 62%,transparent 63%);mask:radial-gradient(circle,transparent 46%,#000 47%,#000 62%,transparent 63%);z-index:-1}
+.av .think{position:absolute;display:flex;gap:10px;background:#fff;border-radius:999px;padding:16px 22px;box-shadow:0 16px 30px -14px rgba(20,10,60,.4)}
+.av .think i{width:16px;height:16px;border-radius:50%;background:#5B4FE0}
+.av .spark{position:absolute;font:800 40px Geist;color:#F6C453}
+.av .ptr{position:absolute;width:120px}
 </style></head><body>
 <div id="cam"></div>
 <div class="top" id="top"><div class="handle"><div class="mark"></div><div>Vish Kumbhar<small>Build with Vish</small></div></div><div class="pill" id="pill"></div></div>
@@ -117,6 +129,36 @@ const LOOK = {
     return `${b.title ? `<div class="serif t3 words" style="margin-bottom:30px">${wordSpans(b.title)}</div>` : ""}<div class="phone in" data-a="rise" data-d="0"><div class="screen"><div class="feed" data-a="scroll" data-d="${b.scrollAt ?? 0.15}" data-to="${3 * 368 - 40}">${cards}</div></div>
       <img class="cursor" data-a="tap" data-d="${(b.scrollAt ?? 0.15) + 0.9}" src="/video/sprites/cursor-3d.png" style="left:190px;top:560px"></div>${b.badge ? `<img class="badge3d in" data-a="badge" data-d=".3" src="/video/sprites/${b.badge}.png" style="${b.badgeStyle || "right:40px;top:300px;width:220px"}">` : ""}`; },
 };
+
+// Avatar actions: beat.avatar = surprised | smirk | laugh | stressed | point | thinking.
+function avatarHTML(b, i) {
+  const a = b.avatar; if (!a) return "";
+  const side = (b.avSide || (i % 2 ? "left" : "right"));
+  const pos = side === "left" ? "left:34px" : "right:34px";
+  if (a === "point") return `<div class="av" data-av="point" style="${side === "left" ? "left:-30px" : "right:-30px"};bottom:170px;height:700px;width:212px"><img src="/video/sprites/vish-3d-full-cut.png" style="height:700px;width:auto"><img class="ptr" data-av="ptr" src="/video/sprites/cursor-3d.png" style="${side === "left" ? "left:200px;transform:scaleX(-1)" : "right:200px"};top:260px;width:120px"></div>`;
+  const face = { surprised: "surprised", smirk: "smirk", laugh: "laugh", stressed: "surprised", thinking: "smirk" }[a] || "smirk";
+  let st = "";
+  if (a === "stressed") st = `<div class="st"><i class="drop" style="right:-6px;top:30px"></i><i class="drop" style="right:22px;top:-6px;transform:scale(.7)"></i><b class="zig" style="left:-22px;top:-26px;transform:rotate(-20deg)">///</b></div>`;
+  if (a === "surprised") st = `<div class="burst"></div><div class="st"><b class="spark" style="right:-8px;top:-14px">!</b></div>`;
+  if (a === "laugh") st = `<div class="st"><b class="spark" style="right:-14px;top:0">✦</b><b class="spark" style="left:-10px;top:30px;font-size:28px">✦</b></div>`;
+  if (a === "thinking") st = `<div class="think" style="${side === "left" ? "left:120px" : "right:120px"};bottom:-26px"><i></i><i></i><i></i></div>`;
+  return `<div class="av" data-av="${a}" style="${pos};top:${b.avTop || 600}px;width:${b.avSize || 210}px"><img src="/video/sprites/vish-badge-${face}.png">${st}</div>`;
+}
+function animateAvatar(root, lt) {
+  const av = root.querySelector(".av"); if (!av) return;
+  const a = av.dataset.av, x = lt - 0.15, k = back(clamp(x / 0.5));
+  av.style.opacity = clamp(x / 0.12);
+  let tf = "";
+  if (a === "point") { const kk = back(clamp(x / 0.6)); tf = `translateX(${(av.style.left ? -1 : 1) * (1 - kk) * 420}px)`; const p = av.querySelector("[data-av=ptr]"); if (p) p.style.marginTop = (Math.sin(lt * 6) * 10) + "px"; }
+  else if (a === "stressed") tf = `scale(${0.4 + 0.6 * k}) translateX(${Math.sin(lt * 38) * 5 * clamp(x / 0.3)}px) rotate(${Math.sin(lt * 21) * 2}deg)`;
+  else if (a === "laugh") tf = `scale(${0.4 + 0.6 * k}) translateY(${-Math.abs(Math.sin(lt * 9)) * 16}px) rotate(${Math.sin(lt * 9) * 3}deg)`;
+  else if (a === "surprised") tf = `scale(${(0.4 + 0.6 * k) * (1 + 0.06 * Math.exp(-lt * 3) * Math.sin(lt * 20))}) rotate(${(1 - k) * -18}deg)`;
+  else if (a === "thinking") { tf = `scale(${0.4 + 0.6 * k}) rotate(${Math.sin(lt * 1.4) * 4}deg)`; av.querySelectorAll(".think i").forEach((d, j) => (d.style.transform = `translateY(${Math.sin(lt * 7 - j) * 6}px)`)); }
+  else tf = `scale(${0.4 + 0.6 * k}) rotate(${-6 + Math.sin(lt * 1.6) * 3}deg)`;
+  av.style.transform = tf;
+  const burst = av.querySelector(".burst"); if (burst) burst.style.transform = `translate(-50%,-50%) rotate(${lt * 40}deg) scale(${0.8 + 0.2 * k})`;
+}
+
 let W_COUNT = 0;
 function wordSpans(t) { let on = false; return t.split(" ").map((w) => { if (w.startsWith("*")) on = true; const inner = w.replace(/\*/g, ""); const out = `<span class="w" style="display:inline-block">${on ? `<em style="color:var(--acc)">${inner}</em>` : inner}</span>`; if (/\*[.,!?]?$/.test(w)) on = false; return out; }).join(" "); }
 
@@ -127,7 +169,7 @@ window.setup = async (spec) => {
   cam.innerHTML = spec.beats.map((b, i) => {
     const c = BG[b.bg || "ink"];
     const glows = c.glows.map(([col, a, x, y]) => `<div class="glow" data-gx="${x}" data-gy="${y}" style="left:${x - 450}px;top:${y - 450}px;width:900px;height:900px;background:radial-gradient(circle,${col},transparent 66%);opacity:${a}"></div>`).join("");
-    return `<div class="beat" id="b${i}" style="--acc:${c.acc};color:${c.fg}"><div class="bg" style="background:${c.base}">${glows}</div><div class="content">${LOOK[b.look || "text"]({ ...b, i })}</div></div>`;
+    return `<div class="beat" id="b${i}" style="--acc:${c.acc};color:${c.fg}"><div class="bg" style="background:${c.base}">${glows}</div><div class="content">${LOOK[b.look || "text"]({ ...b, i })}</div>${avatarHTML(b, i)}</div>`;
   }).join("");
   document.getElementById("pill").textContent = spec.tag || "AI x Marketing";
   beats = spec.beats.map((b, i) => ({ b, el: document.getElementById("b" + i), anim: [...document.querySelectorAll(`#b${i} [data-a], #b${i} .in`)], words: [...document.querySelectorAll(`#b${i} .w`)] }));
@@ -192,6 +234,7 @@ window.frame = (t) => {
     // words: blur-rise stagger
     B.words.forEach((w, k) => { const a = ease(clamp((lt - k * 0.05) / 0.45)); w.style.opacity = a; w.style.transform = `translateY(${(1 - a) * 0.45}em)`; w.style.filter = `blur(${(1 - a) * 10}px)`; });
     B.anim.forEach((x) => animate(x, lt, dur));
+    animateAvatar(el, lt);
     el.querySelectorAll(".msg[data-type]").forEach((m) => { const s = m.dataset.type, k = Math.floor(clamp((lt - parseFloat(m.dataset.d)) / 1.1) * s.length); m.innerHTML = s.slice(0, k) + (k < s.length || Math.floor(lt * 2) % 2 ? '<span class="caret"></span>' : ""); });
     el.querySelectorAll("[data-count]").forEach((c) => { const v = c.dataset.count, m = v.match(/^([^\d]*)([\d.]+)(.*)$/); if (!m) return; const k = ease(clamp(lt / 1.1)); const num = parseFloat(m[2]) * k; const dec = (m[2].split(".")[1] || "").length; c.textContent = m[1] + num.toFixed(dec) + m[3]; c.style.transform = `scale(${0.85 + 0.15 * back(clamp(lt / 0.5))})`; });
     el.querySelectorAll("canvas.dots").forEach((cv) => { if (!cv._pts) return; const g = cv._g; g.clearRect(0, 0, 1080, 1350); const k = clamp(lt / 1.4); const col = getComputedStyle(el).getPropertyValue("--acc"); g.fillStyle = col; cv._pts.forEach(([x, y, r, s], j) => { if (s < k) { g.globalAlpha = 0.25 + 0.5 * clamp((k - s) * 5); g.beginPath(); g.arc(x, y + Math.sin(t + j) * 4, r, 0, 7); g.fill(); } }); });

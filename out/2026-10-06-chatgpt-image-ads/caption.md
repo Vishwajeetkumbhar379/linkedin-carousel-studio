@@ -13,3 +13,5 @@ Early, partner-reported data: WeightWatchers' attributed CPA on ChatGPT Ads was 
 My take: the next ad slot is the moment someone imagines your product.
 
 It's US-only for now. What would you need to see before you'd move test budget there?
+
+Full breakdown: https://buildwithvish.netlify.app/#read-chatgpt-image-ads

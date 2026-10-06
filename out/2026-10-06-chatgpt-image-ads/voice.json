@@ -1,124 +1,110 @@
 {
- "voice": "Puck",
- "duration": 30.370458333333335,
+ "voice": "voice_3rjyhtlhksw1",
+ "duration": 24.912458333333333,
  "scenes": [
   {
    "start": 0.2,
-   "end": 5.92,
+   "end": 3.56,
    "phrases": [
     {
      "text": "So. ChatGPT is about to put ads",
-     "speaker": "A",
      "start": 0.2,
-     "end": 3.45
+     "end": 1.75
     },
     {
      "text": "right next to the images you make.",
-     "speaker": "A",
-     "start": 3.45,
-     "end": 5.92
+     "start": 1.75,
+     "end": 3.56
     }
    ]
   },
   {
-   "start": 5.92,
-   "end": 9.06,
+   "start": 3.56,
+   "end": 6.75,
    "phrases": [
     {
      "text": "It's a test for now.",
-     "speaker": "B",
-     "start": 5.92,
-     "end": 7.04
+     "start": 3.56,
+     "end": 4.73
     },
     {
      "text": "US only, with a handful of advertisers.",
-     "speaker": "B",
-     "start": 7.04,
-     "end": 9.06
+     "start": 4.73,
+     "end": 6.75
     }
    ]
   },
   {
-   "start": 9.06,
-   "end": 13.25,
+   "start": 6.75,
+   "end": 10.32,
    "phrases": [
     {
      "text": "The ads are labelled.",
-     "speaker": "A",
-     "start": 9.06,
-     "end": 10.45
+     "start": 6.75,
+     "end": 7.84
     },
     {
      "text": "And they sit beside your picture. Not inside it.",
-     "speaker": "A",
-     "start": 10.45,
-     "end": 13.25
+     "start": 7.84,
+     "end": 10.32
     }
    ]
   },
   {
-   "start": 13.25,
-   "end": 17.01,
+   "start": 10.32,
+   "end": 13.79,
    "phrases": [
     {
      "text": "Why should you care?",
-     "speaker": "B",
-     "start": 13.25,
-     "end": 14.34
+     "start": 10.32,
+     "end": 11.27
     },
     {
      "text": "Over a billion people use ChatGPT every week.",
-     "speaker": "A",
-     "start": 14.34,
-     "end": 17.01
+     "start": 11.27,
+     "end": 13.79
     }
    ]
   },
   {
-   "start": 17.01,
-   "end": 24.6,
+   "start": 13.79,
+   "end": 19.78,
    "phrases": [
     {
      "text": "And the early numbers?",
-     "speaker": "B",
-     "start": 17.01,
-     "end": 18.31
+     "start": 13.79,
+     "end": 14.8
     },
     {
      "text": "One brand got cheaper conversions than on paid search.",
-     "speaker": "A",
-     "start": 18.31,
-     "end": 21.98
+     "start": 14.8,
+     "end": 17.41
     },
     {
      "text": "One brand, though. So, a signal. Not proof.",
-     "speaker": "B",
-     "start": 21.98,
-     "end": 24.6
+     "start": 17.41,
+     "end": 19.78
     }
    ]
   },
   {
-   "start": 24.6,
-   "end": 29.57,
+   "start": 19.78,
+   "end": 24.112,
    "phrases": [
     {
      "text": "Here's my take.",
-     "speaker": "A",
-     "start": 24.6,
-     "end": 25.64
+     "start": 19.78,
+     "end": 20.67
     },
     {
      "text": "The next ad slot is the moment someone pictures your product.",
-     "speaker": "A",
-     "start": 25.64,
-     "end": 28.73
+     "start": 20.67,
+     "end": 23.55
     },
     {
      "text": "Follow for more.",
-     "speaker": "A",
-     "start": 28.73,
-     "end": 29.57
+     "start": 23.55,
+     "end": 24.112
     }
    ]
   }
