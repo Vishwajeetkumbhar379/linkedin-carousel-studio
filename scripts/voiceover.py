@@ -127,16 +127,16 @@ def gemini_tts(text: str, voice: str, style: str) -> np.ndarray:
     import io
     import urllib.request
 
+    # Either GEMINI_API_KEY is in the environment, or the key is an environment "API credential" that the
+    # network proxy adds as the x-goog-api-key header on requests to generativelanguage.googleapis.com.
     key = os.environ.get("GEMINI_API_KEY")
-    if not key:
-        raise SystemExit("GEMINI_API_KEY is not set. Add it as an environment variable in the cloud environment settings.")
     body = {"model": GEMINI_MODEL,
             "input": [{"type": "user_input", "content": [{"type": "text", "text": text,
                        "annotations": [{"type": "speech_metadata", "style": style}]}]}],
             "response_format": {"type": "audio"},
             "generation_config": {"speech_config": [{"voice": voice}]}}
     req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), method="POST",
-                                 headers={"Content-Type": "application/json", "x-goog-api-key": key})
+                                 headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
     with urllib.request.urlopen(req, timeout=180) as r:
         resp = json.loads(r.read())
     b64 = _find_audio(resp)
@@ -223,7 +223,15 @@ def chunk_caption(p: dict, max_words: int = 7) -> list[dict]:
 def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1.0, engine: str = "kokoro", style: str = GEMINI_STYLE) -> None:
     spec = json.loads(spec_path.read_text())
     narration = spec["narration"]
-    if engine == "gemini":
+    if engine == "auto":
+        try:
+            audio, timings = synth_gemini(narration, "Puck" if ":" in voice or "_" in voice else voice, style)
+            engine = "gemini"
+        except Exception as e:  # noqa: BLE001  (no credential or no network: fall back to the offline voice)
+            print(f"Gemini TTS unavailable ({e}); using Kokoro")
+            engine = "kokoro"
+            audio, timings = synth(narration, voice if "_" in voice else "am_puck:0.6,am_fenrir:0.4", breaths, speed)
+    elif engine == "gemini":
         audio, timings = synth_gemini(narration, voice, style)
     else:
         audio, timings = synth(narration, voice, breaths, speed)
@@ -258,8 +266,8 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    eng = a[a.index("--engine") + 1] if "--engine" in a else ("gemini" if os.environ.get("GEMINI_API_KEY") else "kokoro")
-    v = a[a.index("--voice") + 1] if "--voice" in a else ("Puck" if eng == "gemini" else "am_puck:0.6,am_fenrir:0.4")
+    eng = a[a.index("--engine") + 1] if "--engine" in a else "auto"
+    v = a[a.index("--voice") + 1] if "--voice" in a else ("am_puck:0.6,am_fenrir:0.4" if eng == "kokoro" else "Puck")
     sp = float(a[a.index("--speed") + 1]) if "--speed" in a else 1.0
     st = a[a.index("--style") + 1] if "--style" in a else GEMINI_STYLE
     main(Path(a[0]), v, "--no-breaths" not in a, "--no-bed" not in a, sp, eng, st)

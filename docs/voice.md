@@ -29,7 +29,7 @@ Send a clean 30 to 60 second recording (phone voice memo is fine, quiet room, no
 
 Set it up (2 minutes, free tier):
 1. Get a key at https://aistudio.google.com/apikey (Google account, free tier, no card).
-2. In Claude Code on the web: open this environment's settings (environment menu → Edit) and add an environment variable `GEMINI_API_KEY=<your key>`. Never paste the key into chat or into the repo.
+2. In Claude Code on the web: environment menu → Edit → API credentials → Add credential. Name `GEMINI_API_KEY`, allowed website `generativelanguage.googleapis.com`, custom header `x-goog-api-key` with no prefix, value = the key. The proxy adds the header to every Gemini request, so the session never sees the key. Never paste the key into chat or into the repo.
 3. Start a new session (environment variables load at session start). Then: `python scripts/voiceover.py out/<post>/video.json` (defaults to voice Puck). Try `--voice Achird`, `--voice Sadachbia` or `--voice Zubenelgenubi`, and `--style "..."` to steer delivery.
 
 Cost: the free tier covers this volume. Paid rates if it's ever needed: about $1 per 1M input text tokens and $20 per 1M audio tokens, so a 35 s voiceover costs well under one cent. Flagged anyway.
