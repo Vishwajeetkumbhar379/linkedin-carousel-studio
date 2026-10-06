@@ -139,7 +139,7 @@ h3{{font:600 .78rem/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;c
 .strip{{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}}
 .strip img{{width:min(300px,70vw);flex:none;border-radius:10px;border:1px solid var(--line);scroll-snap-align:start;max-width:100%}}
 .strip.single img{{width:min(460px,100%)}}
-audio{width:min(460px,100%);display:block}
+audio{{width:min(460px,100%);display:block}}
 .media video{{width:min(460px,100%);border-radius:12px;border:1px solid var(--line);display:block;background:#08070D}}
 .cap{{margin:0;color:var(--muted);font:500 .8rem var(--f-m)}}
 .cols{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px}}
