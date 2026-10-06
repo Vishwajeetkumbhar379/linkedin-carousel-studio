@@ -80,11 +80,22 @@ def post_section(post: Path, idx: int) -> str:
         visual = (f'<div class="media"><video controls playsinline muted loop preload="metadata" poster="{poster}" src="media/{slug}.mp4"></video></div>'
                   f'<p class="cap">{spec.get("duration", 30):.0f} s · 1080 x 1350 · H.264 · voice + synthesised SFX + music bed. One frame per beat:</p><div class="strip">{stills}</div>')
         fmt = "Video with voiceover"
-        for f, label in (("voice.wav", "Voice in this cut: offline Kokoro fallback, now reading whole sentences. The Gemini voice replaces it as soon as the key is set"),):
-            if (post / f).exists():
-                dst = REVIEW / "media" / f"{slug}-{f.replace('.wav', '.mp3')}"
-                __import__("subprocess").run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(post / f), "-b:a", "160k", str(dst)], check=True)
-                visual += f'<p class="cap">{label}</p><audio controls preload="none" src="media/{dst.name}"></audio>'
+        cand = post / "voice-candidates"
+        labels = {"puck": "Puck · upbeat (in the video)", "achird": "Achird · friendly", "sadachbia": "Sadachbia · lively",
+                  "zubenelgenubi": "Zubenelgenubi · casual", "fenrir": "Fenrir · excitable"}
+        if cand.exists():
+            visual += '<h3>Pick your voice (Google Gemini voices, same script)</h3>'
+            for k, label in labels.items():
+                src = cand / f"gemini-{k}.mp3"
+                if src.exists():
+                    dst = REVIEW / "media" / f"{slug}-voice-{k}.mp3"
+                    shutil.copy(src, dst)
+                    visual += f'<p class="cap">{label}</p><audio controls preload="none" src="media/{dst.name}"></audio>'
+        old = post / "voice-kokoro-v4.wav"
+        if old.exists():
+            dst = REVIEW / "media" / f"{slug}-voice-old.mp3"
+            __import__("subprocess").run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(old), "-b:a", "128k", str(dst)], check=True)
+            visual += f'<p class="cap">Before: the old offline voice, for comparison</p><audio controls preload="none" src="media/{dst.name}"></audio>'
 
     else:
         slides = sorted((post / "slides").glob("slide-*.png"))
@@ -164,19 +175,18 @@ tr.ship td.num{{color:var(--good)}}
 a{{color:var(--accent)}}
 </style>
 <div class="wrap">
-<header><p class="meta">Build with Vish content engine · round 4 · 6 Oct 2026</p>
-<h1>Round 4: calmer type, real glass, a video that moves.</h1>
-<p class="lead">Your round 3 notes, applied. Dot grew up into a designer toy (not a baby, not a robot). The glass finish is now on every object. Headlines use a calm reading serif with two new support shades, cobalt and peach. The video changes on every line with whip, zoom and click transitions and real B-roll. The best natural voice is wired in and only needs a key. Your avatar now wears loose bootcut jeans and boots. Nothing has been posted, emailed or deployed.</p></header>
+<header><p class="meta">Build with Vish content engine · round 5 · 6 Oct 2026</p>
+<h1>Round 5: a real human-sounding voice, and you, in the right skin tone.</h1>
+<p class="lead">The video now uses Google Gemini's natural voice instead of the robotic offline one. Five voices to pick from are under the video. Your 3D avatar now uses your own sheet, with the skin tone matched to your real photo. Everything from round 4 (Dot v4, paper style, motion video) stays. Nothing has been posted, emailed or deployed.</p></header>
 <div class="ask"><b>What I need from you</b><ol>
-<li><b>Voice (2 minutes, free):</b> get a Gemini API key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>, then add it as an environment variable <code>GEMINI_API_KEY</code> in this Claude Code environment's settings (environment menu → Edit). Don't paste it in chat. The next session re-voices the video with Gemini's natural voices automatically.</li>
-<li><b>Your own voice (optional, best):</b> send a 30 to 60 s voice memo plus one consent line ("I, Vishwajeet Kumbhar, consent to my voice being used to generate audio for Build with Vish") and every video speaks as you.</li>
-<li><b>Avatar:</b> open the <a href="https://www.canva.com/M/MAHXQ4Mf8bM" target="_blank" rel="noopener">new full-body sheet (bootcut jeans, boots)</a>, download the PNG and attach it here. Canva downloads are blocked inside my container.</li>
-<li>Is this the look? Say "go" and I lock it in, then start the backfill and the first weekly batch.</li>
-<li>Still open: confirm or cut the flagged line in the single-image caption.</li>
-</ol></div>
+<li><b>Pick a voice</b> from the five under the video (or say "none of these").</li>
+<li><b>Your own voice (optional):</b> Google only clones voices on its paid tier. You'd turn on billing for your AI Studio project (Tier 1). Cost: pay as you go, well under 1 cent per video. It also needs one short recording of Google's exact consent sentence: "I am the owner of this voice and I consent to Google using this voice to create a synthetic voice model."</li>
+<li>Free tier limit: 10 voice generations a day. Fine for a weekly batch, tight for experiments. Billing removes that limit too.</li>
+<li>Is this the look? Say "go" and I lock it in and start the backfill and the weekly batch.</li>
+</ol></ol></div>
 {''.join(post_section(p, i) for i, p in enumerate(posts))}
 <section class="plain mascot"><h2>Dot v4: the middle ground</h2><p class="meta">A designer-toy build instead of a baby face. The taller frosted-glass body glows from inside, with a milky rim. The dark glossy visor carries every expression in soft light-up eyes. Cobalt ear pods, chrome antenna with your diamond mark, small boots. No blush, no big mouth. Six expressions, three palettes (violet, cobalt, peach).</p><img src="{mascot}" alt="Mascot v4 sheet with six expressions">
-<h3>Your 3D avatar</h3><p>Regenerated in Canva with straight, loose bootcut denim and brown chelsea boots, same face and three expression heads: <a href="https://www.canva.com/M/MAHXQ4Mf8bM" target="_blank" rel="noopener">open the v4 sheet</a>. Plan: you on career, build-in-public and CTA slides; Dot on explainers.</p></section>
+<h3>Your 3D avatar</h3><p>Your own sheet, with the skin lifted toward your real photo (hair, clothes and boots untouched). Plan: you on career, build-in-public and CTA slides; Dot on explainers.</p><img src="{jpg(ROOT / "brand" / "avatar" / "vish-3d-sheet.png", "avatar-v5.jpg", 900)}" alt="3D avatar sheet of Vish with corrected skin tone"></section>
 <section class="plain"><h2>Topic backlog</h2><p class="meta">Scored 1 to 10 on freshness, usefulness, shareability, comment potential, brand fit. Only 8+ ships.</p>
 <div class="tw"><table><tr><th>Score</th><th>Topic</th><th>Pillar</th><th>Status</th></tr>{blrows}</table></div></section>
 {rev_html}

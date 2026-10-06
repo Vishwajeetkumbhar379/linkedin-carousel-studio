@@ -39,3 +39,10 @@ Cost: the free tier covers this volume. Paid rates if it's ever needed: about $1
 Kokoro (the offline fallback) also improved this round: it now reads a whole scene in one pass, so intonation runs across the sentence instead of resetting at every phrase. Still not as alive as Gemini.
 
 ElevenLabs remains the paid alternative (from about $5 a month, flagged, and its API is blocked from this container).
+
+## Round 5 (6 Oct, evening): Gemini is live
+
+- The key is stored as an environment **API credential** (header `x-goog-api-key`, host `generativelanguage.googleapis.com`), so sessions never see it.
+- Free tier limits for `gemini-3.8-flash-tts`: **3 requests a minute, 10 a day**. `scripts/voiceover.py --engine gemini` does one request per scene (6 for a 35 s video). For tight days use `--engine gemini-oneshot` (one request for the whole script). Use `--engine take:<file.wav>` to rebuild from a saved take with no API call.
+- Saved takes for the ChatGPT ads video: `out/2026-10-06-chatgpt-image-ads/voice-candidates/gemini-{puck,achird,sadachbia,zubenelgenubi,fenrir}.wav|mp3`.
+- **Cloning Vish's voice** (`POST /v1beta/voices`, type `replicated`) is refused on the free tier: "Voice replication requires Paid Quota Tier 1 or higher." It needs billing on the AI Studio project, plus a consent clip of Google's exact sentence: "I am the owner of this voice and I consent to Google using this voice to create a synthetic voice model." The 23 s reference clip is already cut (`brand/voice/vish-reference.wav`, git-ignored, never published).

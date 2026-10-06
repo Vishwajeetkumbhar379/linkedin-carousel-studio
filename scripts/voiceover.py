@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -137,8 +138,19 @@ def gemini_tts(text: str, voice: str, style: str) -> np.ndarray:
             "generation_config": {"speech_config": [{"voice": voice}]}}
     req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), method="POST",
                                  headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
-    with urllib.request.urlopen(req, timeout=180) as r:
-        resp = json.loads(r.read())
+    import time
+    import urllib.error
+
+    for attempt in range(6):  # free tier allows 3 requests a minute: wait and retry on 429
+        try:
+            with urllib.request.urlopen(req, timeout=300) as r:
+                resp = json.loads(r.read())
+            break
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 5:
+                raise
+            m = re.search(r"retry in (\d+)", e.read().decode())
+            time.sleep(int(m.group(1)) + 2 if m else 25)
     b64 = _find_audio(resp)
     if not b64:
         raise RuntimeError(f"no audio in response: {str(resp)[:300]}")
@@ -160,37 +172,70 @@ def _trim(audio: np.ndarray, thr: float = 0.004) -> np.ndarray:
 
 
 def _phrase_bounds(audio: np.ndarray, phrases: list[str]) -> list[tuple[float, float]]:
-    """Place phrase boundaries at the longest pauses nearest each phrase's character-share position."""
+    """Split one take into phrases: walk forward, and for each phrase cut at the longest pause inside a
+    window around where its share of the characters says it should end. Never earlier than 55% of that."""
     n = len(audio) / SR
     if len(phrases) == 1:
         return [(0.0, n)]
     hop = int(SR * 0.01)
     env = np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) for i in range(0, len(audio) - hop, hop)])
     quiet = env < max(env.max() * 0.04, 1e-4)
-    total = sum(len(p) for p in phrases)
-    cuts, acc = [], 0
-    for p in phrases[:-1]:
-        acc += len(p)
-        guess = int(acc / total * len(env))
-        lo, hi = max(guess - 60, 1), min(guess + 60, len(env) - 1)
-        best, best_len = guess, 0
-        i = lo
-        while i < hi:  # find the longest quiet run in the window
+    weight = [len(p) + 6 for p in phrases]  # +6: every phrase carries some fixed onset/offset time
+    cuts, prev = [], 0
+    for k in range(len(phrases) - 1):
+        remaining = len(env) - prev
+        exp = remaining * weight[k] / sum(weight[k:])
+        lo, hi = prev + int(exp * 0.55), min(prev + int(exp * 1.6), len(env) - 1)
+        best, best_len, i = prev + int(exp), -1e9, lo
+        while i < hi:
             if quiet[i]:
                 j = i
                 while j < len(quiet) and quiet[j]:
                     j += 1
-                if j - i > best_len:
-                    best, best_len = (i + j) // 2, j - i
+                score = (j - i) - 0.12 * abs((i + j) // 2 - (prev + exp))
+                if score > best_len:
+                    best, best_len = (i + j) // 2, score
                 i = j
             else:
                 i += 1
-        cuts.append(best * hop / SR)
-    edges = [0.0, *cuts, n]
+        cuts.append(best)
+        prev = best
+    edges = [0.0, *[c * hop / SR for c in cuts], n]
     return [(edges[i], edges[i + 1]) for i in range(len(phrases))]
 
-
 def synth_gemini(narration: list[list[str]], voice: str, style: str) -> tuple[np.ndarray, list[dict]]:
+    """Whole script in ONE request: the model paces the story itself (and the free tier allows only
+    3 requests a minute). Lines are then placed at the natural pauses."""
+    audio = _trim(gemini_tts("\n\n".join(" ".join(sc) for sc in narration), voice, style))
+    flat = [p for sc in narration for p in sc]
+    bounds = _phrase_bounds(audio, flat)
+    lead = 0.2
+    timings, k = [], 0
+    for sc in narration:
+        ph = [{"text": p, "start": round(lead + bounds[k + i][0], 3), "end": round(lead + bounds[k + i][1], 3)} for i, p in enumerate(sc)]
+        k += len(sc)
+        timings.append({"start": ph[0]["start"], "end": ph[-1]["end"], "phrases": ph})
+    return np.concatenate([np.zeros(int(SR * lead), dtype=np.float32), audio]), timings
+
+
+def synth_from_take(narration: list[list[str]], path: str) -> tuple[np.ndarray, list[dict]]:
+    """Re-use a saved full-script take (e.g. voice-candidates/gemini-puck.wav) without calling the API."""
+    audio, sr = sf.read(path, dtype="float32")
+    if audio.ndim > 1:
+        audio = audio.mean(axis=1)
+    assert sr == SR, sr
+    audio = _trim(audio)
+    flat = [p for sc in narration for p in sc]
+    bounds = _phrase_bounds(audio, flat)
+    lead, timings, k = 0.2, [], 0
+    for sc in narration:
+        ph = [{"text": p, "start": round(lead + bounds[k + i][0], 3), "end": round(lead + bounds[k + i][1], 3)} for i, p in enumerate(sc)]
+        k += len(sc)
+        timings.append({"start": ph[0]["start"], "end": ph[-1]["end"], "phrases": ph})
+    return np.concatenate([np.zeros(int(SR * lead), dtype=np.float32), audio]), timings
+
+
+def synth_gemini_per_scene(narration: list[list[str]], voice: str, style: str) -> tuple[np.ndarray, list[dict]]:
     out, timings, t = [np.zeros(int(SR * 0.2))], [], 0.2
     for scene in narration:
         audio = _trim(gemini_tts(" ".join(scene), voice, style))
@@ -225,13 +270,18 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
     narration = spec["narration"]
     if engine == "auto":
         try:
-            audio, timings = synth_gemini(narration, "Puck" if ":" in voice or "_" in voice else voice, style)
+            audio, timings = synth_gemini_per_scene(narration, "Puck" if ":" in voice or "_" in voice else voice, style)
             engine = "gemini"
         except Exception as e:  # noqa: BLE001  (no credential or no network: fall back to the offline voice)
             print(f"Gemini TTS unavailable ({e}); using Kokoro")
             engine = "kokoro"
             audio, timings = synth(narration, voice if "_" in voice else "am_puck:0.6,am_fenrir:0.4", breaths, speed)
-    elif engine == "gemini":
+    elif engine == "gemini":  # one request per scene: exact scene timing, natural flow within each thought
+        audio, timings = synth_gemini_per_scene(narration, voice, style)
+    elif engine.startswith("take:"):
+        audio, timings = synth_from_take(narration, engine[5:])
+        engine = "gemini"
+    elif engine == "gemini-oneshot":
         audio, timings = synth_gemini(narration, voice, style)
     else:
         audio, timings = synth(narration, voice, breaths, speed)
@@ -258,7 +308,7 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
         scene["at"], scene["until"] = round(tm["start"] - 0.15, 2), round(tm["end"] + 0.1, 2)
     spec["duration"] = round(dur + 0.6, 2)
     spec["captions"] = [c for tm in timings for p in tm["phrases"] for c in chunk_caption(p)]
-    spec["voice"] = {"engine": GEMINI_MODEL if engine == "gemini" else "kokoro-82m", "voice": voice, "breaths": breaths, "bed": bed}
+    spec["voice"] = {"engine": GEMINI_MODEL if engine.startswith("gemini") else "kokoro-82m", "voice": voice, "breaths": breaths, "bed": bed}
     spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False))
     (post / "voice.json").write_text(json.dumps({"voice": voice, "duration": dur, "scenes": timings}, indent=1))
     print(f"voice.wav {dur:.1f}s, {sum(len(s) for s in narration)} phrases, voice {voice}")

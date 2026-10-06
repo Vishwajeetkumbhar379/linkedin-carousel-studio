@@ -1,0 +1,108 @@
+[
+ {
+  "start": 0.2,
+  "end": 5.22,
+  "phrases": [
+   {
+    "text": "So. ChatGPT is about to put ads",
+    "start": 0.2,
+    "end": 2.93
+   },
+   {
+    "text": "right next to the images you make.",
+    "start": 2.93,
+    "end": 5.22
+   }
+  ]
+ },
+ {
+  "start": 5.22,
+  "end": 9.43,
+  "phrases": [
+   {
+    "text": "It's a test for now.",
+    "start": 5.22,
+    "end": 6.54
+   },
+   {
+    "text": "US only, with a handful of advertisers.",
+    "start": 6.54,
+    "end": 9.43
+   }
+  ]
+ },
+ {
+  "start": 9.43,
+  "end": 13.52,
+  "phrases": [
+   {
+    "text": "The ads are labelled.",
+    "start": 9.43,
+    "end": 9.48
+   },
+   {
+    "text": "And they sit beside your picture. Not inside it.",
+    "start": 9.48,
+    "end": 13.52
+   }
+  ]
+ },
+ {
+  "start": 13.52,
+  "end": 18.77,
+  "phrases": [
+   {
+    "text": "Why should you care?",
+    "start": 13.52,
+    "end": 14.86
+   },
+   {
+    "text": "Over a billion people use ChatGPT every week.",
+    "start": 14.86,
+    "end": 18.77
+   }
+  ]
+ },
+ {
+  "start": 18.77,
+  "end": 26.82,
+  "phrases": [
+   {
+    "text": "And the early numbers?",
+    "start": 18.77,
+    "end": 18.78
+   },
+   {
+    "text": "One brand got cheaper conversions than on paid search.",
+    "start": 18.78,
+    "end": 23.81
+   },
+   {
+    "text": "One brand, though. So, a signal. Not proof.",
+    "start": 23.81,
+    "end": 26.82
+   }
+  ]
+ },
+ {
+  "start": 26.82,
+  "end": 32.234,
+  "phrases": [
+   {
+    "text": "Here's my take.",
+    "start": 26.82,
+    "end": 26.82
+   },
+   {
+    "text": "The next ad slot is the moment someone pictures your product.",
+    "start": 26.82,
+    "end": 31.45
+   },
+   {
+    "text": "Follow for more.",
+    "start": 31.45,
+    "end": 32.234
+   }
+  ]
+ }
+]
