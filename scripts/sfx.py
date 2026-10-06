@@ -126,9 +126,9 @@ def mix(spec_path: Path) -> Path:
         a = max(0, int(start * SR))
         m = min(len(s), n - a)
         fx[a:a + m] += s[:m]
-        # the CTA cursor click
-        if b.get("look") == "cta":
-            c0 = int((b["at"] + 1.1) * SR)
+        # cursor clicks: CTA button, and the tap on the sponsored post in the feed
+        if b.get("look") in ("cta", "feed"):
+            c0 = int((b["at"] + (1.1 if b.get("look") == "cta" else b.get("scrollAt", 0.15) + 1.5)) * SR)
             if c0 < n:
                 c = click(99) * 0.6
                 fx[c0:c0 + len(c)] += c[: n - c0]

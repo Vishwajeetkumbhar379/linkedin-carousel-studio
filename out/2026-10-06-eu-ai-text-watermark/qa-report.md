@@ -1,6 +1,6 @@
 # QA report: 2026-10-06-eu-ai-text-watermark
 
-Run 2026-10-06 19:35 · **PASS** · 0 fail, 4 warn, 19 pass
+Run 2026-10-06 21:30 · **PASS** · 0 fail, 4 warn, 19 pass
 
 | Result | Area | Check |
 |---|---|---|

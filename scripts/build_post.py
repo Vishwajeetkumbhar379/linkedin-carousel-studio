@@ -20,6 +20,7 @@ SEARCH = [ROOT / "out" / "_samples" / "3d", ROOT / "brand" / "mascot" / "poses-v
 
 def find_assets(deck: dict, post: Path) -> dict:
     keys = {s.get(k) for s in deck["slides"] for k in ("hero", "mascot", "dof_hero")} - {None}
+    keys |= {L["asset"] for s in deck["slides"] for L in s.get("layers", []) if L.get("asset")}
     keys |= {deck.get("cover_hero")} - {None}
     found = {}
     for k in keys:

@@ -81,7 +81,7 @@ def post_section(post: Path, idx: int) -> str:
                   f'<p class="cap">{spec.get("duration", 30):.0f} s · 1080 x 1350 · H.264 · voice + synthesised SFX + music bed. One frame per beat:</p><div class="strip">{stills}</div>')
         fmt = "Video with voiceover"
         cand = post / "voice-candidates"
-        labels = {"puck": "Puck · upbeat (in the video)", "achird": "Achird · friendly", "sadachbia": "Sadachbia · lively",
+        labels = {"duo": "Puck + Sadachbia together (in the video): Puck tells the story, Sadachbia asks and pushes back", "puck": "Puck · upbeat", "achird": "Achird · friendly", "sadachbia": "Sadachbia · lively",
                   "zubenelgenubi": "Zubenelgenubi · casual", "fenrir": "Fenrir · excitable"}
         if cand.exists():
             visual += '<h3>Pick your voice (Google Gemini voices, same script)</h3>'
@@ -175,14 +175,14 @@ tr.ship td.num{{color:var(--good)}}
 a{{color:var(--accent)}}
 </style>
 <div class="wrap">
-<header><p class="meta">Build with Vish content engine · round 5 · 6 Oct 2026</p>
-<h1>Round 5: a real human-sounding voice, and you, in the right skin tone.</h1>
-<p class="lead">The video now uses Google Gemini's natural voice instead of the robotic offline one. Five voices to pick from are under the video. Your 3D avatar now uses your own sheet, with the skin tone matched to your real photo. Everything from round 4 (Dot v4, paper style, motion video) stays. Nothing has been posted, emailed or deployed.</p></header>
+<header><p class="meta">Build with Vish content engine · round 6 · 6 Oct 2026</p>
+<h1>Round 6: covers that tell the story, and more of you.</h1>
+<p class="lead">New covers where the 3D scene acts out the headline. For A, a UV torch reveals a hidden signature on a chat, inside the EU stars. For C, a cursor clicks one button and a creator post becomes a Sponsored ad. A face and a pointer label on each tells your eye where to go. You now appear across the work: reaction badges, the full-body you, and the call to action. The video mixes your two favourite voices, adds a scrolling phone feed with a 3D cursor tap, and gives you the 'my take' moment. Nothing has been posted, emailed or deployed.</p></header>
 <div class="ask"><b>What I need from you</b><ol>
-<li><b>Pick a voice</b> from the five under the video (or say "none of these").</li>
-<li><b>Your own voice (optional):</b> Google only clones voices on its paid tier. You'd turn on billing for your AI Studio project (Tier 1). Cost: pay as you go, well under 1 cent per video. It also needs one short recording of Google's exact consent sentence: "I am the owner of this voice and I consent to Google using this voice to create a synthetic voice model."</li>
-<li>Free tier limit: 10 voice generations a day. Fine for a weekly batch, tight for experiments. Billing removes that limit too.</li>
-<li>Is this the look? Say "go" and I lock it in and start the backfill and the weekly batch.</li>
+<li>Do the covers now say what the post is about at a glance? Hide the title with your thumb and check.</li>
+<li>The Puck + Sadachbia mix: keep it, or one voice only?</li>
+<li><b>Your own voice:</b> needs billing turned on in AI Studio (pay as you go, well under 1 cent per video) plus a short memo of Google's exact consent sentence: "I am the owner of this voice and I consent to Google using this voice to create a synthetic voice model." Your 23-second voice sample is already cut and ready.</li>
+<li>Say "go" and I lock the style, then start the backfill and the weekly batch.</li>
 </ol></ol></div>
 {''.join(post_section(p, i) for i, p in enumerate(posts))}
 <section class="plain mascot"><h2>Dot v4: the middle ground</h2><p class="meta">A designer-toy build instead of a baby face. The taller frosted-glass body glows from inside, with a milky rim. The dark glossy visor carries every expression in soft light-up eyes. Cobalt ear pods, chrome antenna with your diamond mark, small boots. No blush, no big mouth. Six expressions, three palettes (violet, cobalt, peach).</p><img src="{mascot}" alt="Mascot v4 sheet with six expressions">

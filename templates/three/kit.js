@@ -609,3 +609,114 @@ objects.frostCard = function ({ shade = "cobalt", on = true } = {}) {
   const knob = new THREE.Mesh(new THREE.SphereGeometry(0.12, 32, 32), whiteGloss()); knob.position.set(on ? 0.75 : 0.45, -0.33, 0.18); g.add(knob);
   return g;
 };
+
+// ---------- story props (round 6: the cover object must act out the headline) ----------
+function starShape(R = 0.16, r = 0.068) {
+  const s = new THREE.Shape();
+  for (let i = 0; i < 10; i++) {
+    const a = Math.PI / 2 + (i * Math.PI) / 5, rad = i % 2 ? r : R;
+    const x = Math.cos(a) * rad, y = Math.sin(a) * rad;
+    i ? s.lineTo(x, y) : s.moveTo(x, y);
+  }
+  s.closePath();
+  return s;
+}
+
+// Ring of twelve gold stars: reads "EU" at a glance (used for news context, never as an endorsement).
+objects.starRing = function ({ radius = 1.6, count = 12, size = 1 } = {}) {
+  const g = new THREE.Group();
+  const geo = new THREE.ExtrudeGeometry(starShape(0.16 * size, 0.068 * size), { depth: 0.06 * size, bevelEnabled: true, bevelThickness: 0.025, bevelSize: 0.018, bevelSegments: 3 });
+  geo.center();
+  const gold = new THREE.MeshPhysicalMaterial({ color: 0xf6c453, metalness: 0.85, roughness: 0.22, clearcoat: 1, clearcoatRoughness: 0.08, emissive: 0x6b4a00, emissiveIntensity: 0.25 });
+  for (let i = 0; i < count; i++) {
+    const a = (i / count) * Math.PI * 2, st = new THREE.Mesh(geo, gold);
+    st.position.set(Math.cos(a) * radius, Math.sin(a) * radius, 0); g.add(st);
+  }
+  return g;
+};
+
+// UV torch with a visible light cone (the "reveal").
+objects.uvTorch = function ({ beamLength = 0, beamColor = 0xb3a9ff } = {}) {
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.15, 1.2, 48), new THREE.MeshPhysicalMaterial({ color: 0x1b1730, roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.08 }));
+  g.add(body);
+  const grip = new THREE.Mesh(new THREE.CylinderGeometry(0.175, 0.175, 0.5, 48), mat.metal(0x8f86e8, 0.3)); grip.position.y = -0.15; g.add(grip);
+  const head = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.18, 0.4, 64), mat.metal(0xe6e3f2, 0.15)); head.position.y = 0.78; g.add(head);
+  const lens = new THREE.Mesh(new THREE.CircleGeometry(0.27, 64), mat.glow(0xd9d4ff, 3)); lens.rotation.x = -Math.PI / 2; lens.position.y = 0.985; g.add(lens);
+  const btn = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.06, 24), mat.glow(0xf2a07b, 1.2)); btn.rotation.z = Math.PI / 2; btn.position.set(0.17, 0.2, 0); g.add(btn);
+  if (beamLength > 0) {
+  const beamGeo = new THREE.CylinderGeometry(0.27, 1.25, beamLength, 64, 1, true); beamGeo.translate(0, 0.99 + beamLength / 2, 0);
+  const beam = new THREE.Mesh(beamGeo, new THREE.MeshBasicMaterial({ color: beamColor, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending }));
+  g.add(beam);
+  }
+  return g;
+};
+
+// The hidden mark, made visible: a glowing hand-drawn signature loop.
+objects.signature = function ({ color = 0x3d22d9, width = 2.0, thick = 0.05 } = {}) {
+  const pts = [];
+  for (let i = 0; i <= 120; i++) {
+    const t = i / 120, x = (t - 0.5) * width;
+    const y = Math.sin(t * Math.PI * 5.2) * 0.22 * (1 - Math.abs(t - 0.45)) + Math.sin(t * Math.PI * 1.3) * 0.12;
+    const loop = Math.exp(-((t - 0.3) ** 2) / 0.004) * 0.25;
+    pts.push(new THREE.Vector3(x + loop * Math.cos(t * 40) * 0.4, y + loop * Math.sin(t * 40), 0));
+  }
+  const g = new THREE.Group();
+  g.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 400, thick, 12), mat.glow(color, 0.9)));
+  const dot = new THREE.Mesh(new THREE.SphereGeometry(0.06, 20, 20), mat.glow(0xffc9ae, 2)); dot.position.set(width / 2 + 0.12, -0.05, 0); g.add(dot);
+  return g;
+};
+
+// Big 3D mouse pointer with click ripples.
+objects.cursor3d = function ({ ripples = true } = {}) {
+  const g = new THREE.Group();
+  const s = new THREE.Shape();
+  [[0, 0], [0, -1.15], [0.28, -0.88], [0.48, -1.32], [0.66, -1.24], [0.47, -0.81], [0.85, -0.81]].forEach(([x, y], i) => (i ? s.lineTo(x, y) : s.moveTo(x, y)));
+  s.closePath();
+  const geo = new THREE.ExtrudeGeometry(s, { depth: 0.16, bevelEnabled: true, bevelThickness: 0.05, bevelSize: 0.04, bevelSegments: 4 });
+  const ptr = new THREE.Mesh(geo, new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.2, clearcoat: 1, clearcoatRoughness: 0.05 }));
+  const edge = new THREE.Mesh(new THREE.ExtrudeGeometry(s, { depth: 0.1, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.09, bevelSegments: 3 }), new THREE.MeshPhysicalMaterial({ color: 0x17141c, roughness: 0.3, clearcoat: 1 }));
+  edge.position.z = -0.06;
+  g.add(edge, ptr);
+  if (ripples) {
+    [0.32, 0.55, 0.8].forEach((r, i) => {
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(r, 0.025 - i * 0.005, 12, 96), new THREE.MeshBasicMaterial({ color: 0xb3a9ff, transparent: true, opacity: 0.9 - i * 0.25 }));
+      ring.position.set(0, 0, -0.1); g.add(ring);
+    });
+  }
+  return g;
+};
+
+// Social post card (creator content) and the same post as a paid ad.
+function postCard({ ad = false } = {}) {
+  const g = new THREE.Group();
+  g.add(frostMesh(new RoundedBoxGeometry(1.5, 1.95, 0.12, 8, 0.12), { top: 0xffffff, bottom: 0xe6e1f7, rimStrength: 0.35, glow: 0.35, rough: 0.25 }));
+  const av = frostMesh(new THREE.SphereGeometry(0.13, 32, 32), { top: 0xffd8c4, bottom: 0xe07a5c, glow: 0.3, rimStrength: 0.3 }); av.scale.z = 0.5; av.position.set(-0.5, 0.75, 0.08); g.add(av);
+  const ink = new THREE.MeshPhysicalMaterial({ color: 0x2a2540, roughness: 0.4 }), soft = new THREE.MeshPhysicalMaterial({ color: 0xc9c3e6, roughness: 0.5 });
+  const n1 = new THREE.Mesh(new RoundedBoxGeometry(0.55, 0.08, 0.03, 3, 0.04), ink); n1.position.set(-0.05, 0.78, 0.07); g.add(n1);
+  const pic = frostMesh(new RoundedBoxGeometry(1.3, 1.05, 0.05, 6, 0.08), ad ? { top: 0xffe2b8, bottom: 0xe8955a, glow: 0.35, rimStrength: 0.2 } : { top: 0xc4bcff, bottom: 0x4a3fd6, glow: 0.35, rimStrength: 0.2 });
+  pic.position.set(0, 0.05, 0.07); g.add(pic);
+  const play = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.26, 3), new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.2, clearcoat: 1 })); play.rotation.z = -Math.PI / 2; play.scale.z = 0.35; play.position.set(0.02, 0.05, 0.13); g.add(play);
+  if (ad) {
+    const tag = new THREE.Mesh(new RoundedBoxGeometry(0.62, 0.17, 0.05, 4, 0.08), new THREE.MeshPhysicalMaterial({ color: 0xf6c453, roughness: 0.3, clearcoat: 1, emissive: 0x6b4a00, emissiveIntensity: 0.2 })); tag.position.set(-0.3, -0.66, 0.08); g.add(tag);
+    const cta = new THREE.Mesh(new RoundedBoxGeometry(0.42, 0.17, 0.05, 4, 0.08), new THREE.MeshPhysicalMaterial({ color: 0x4a3fd6, roughness: 0.3, clearcoat: 1 })); cta.position.set(0.38, -0.66, 0.08); g.add(cta);
+  } else {
+    [-0.45, -0.15].forEach((x) => { const d = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 16), soft); d.position.set(x, -0.66, 0.08); d.scale.z = 0.4; g.add(d); });
+    const l = new THREE.Mesh(new RoundedBoxGeometry(0.5, 0.07, 0.03, 3, 0.03), soft); l.position.set(0.3, -0.66, 0.07); g.add(l);
+  }
+  return g;
+}
+objects.creatorCard = () => postCard({ ad: false });
+objects.adCard = () => postCard({ ad: true });
+
+// Curved 3D arrow from A to B.
+objects.arrowCurve = function ({ from = [-1, 0, 0], to = [1, 0, 0], lift = 0.8, color = 0x5a4de6 } = {}) {
+  const g = new THREE.Group();
+  const a = new THREE.Vector3(...from), b = new THREE.Vector3(...to), m = a.clone().lerp(b, 0.5); m.y += lift;
+  const curve = new THREE.QuadraticBezierCurve3(a, m, b);
+  const m2 = new THREE.MeshPhysicalMaterial({ color, roughness: 0.25, clearcoat: 1 });
+  g.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 64, 0.06, 16), m2));
+  const tip = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.34, 32), m2);
+  tip.position.copy(b); tip.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), curve.getTangent(1).normalize()); g.add(tip);
+  return g;
+};

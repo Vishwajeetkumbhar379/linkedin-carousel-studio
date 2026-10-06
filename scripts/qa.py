@@ -137,9 +137,12 @@ def check_facts(post: Path, deck: dict, R: list) -> None:
         age = (TODAY - d).days
         R.append(("PASS" if age <= window else "FAIL", "facts", f"source dated {d} is {age} days old ({kind} window {window}d)"))
     clean = json.loads(json.dumps(deck))
-    for sl in clean.get("slides", []) + clean.get("scenes", []):
-        for k in [k for k in sl if k.endswith("_style")]:
+    for sl in clean.get("slides", []) + clean.get("scenes", []) + clean.get("beats", []):
+        for k in [k for k in sl if k.endswith("_style") or k.endswith("Style") or k in ("from", "bars")]:
             sl.pop(k)
+        # layers are design: only their visible text counts as a claim
+        sl["layers"] = [re.sub(r"<[^>]+>", "", L.get("html", "")) for L in sl.get("layers", [])]
+    clean.pop("posters", None)
     body = json.dumps(clean, ensure_ascii=False) + ((post / "caption.md").read_text() if (post / "caption.md").exists() else "")
     nums = set(re.findall(r"\d+(?:[.,]\d+)?\s?(?:%|B\b|billion|tokens)", body))
     for n in sorted(nums):

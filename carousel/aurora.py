@@ -120,6 +120,12 @@ p em,li em{{font-style:normal;font-weight:600;color:{v['accent_ink']}}}
 .hero{{position:absolute;pointer-events:none;z-index:1}}
 .hero.dof{{filter:blur(10px);opacity:.8;z-index:0}}
 .mascot{{position:absolute;z-index:6}}
+.layer{{position:absolute;z-index:7}}
+.tag{{font:600 26px 'Geist';letter-spacing:-.01em;color:#1F1C24;background:#fff;border-radius:999px;padding:12px 22px;box-shadow:0 18px 40px -18px rgba(40,20,90,.45),0 0 0 1px rgba(40,20,90,.06);white-space:nowrap}}
+.tag.dark{{background:#1F1C24;color:#fff}}
+.tag.gold{{background:#F6C453;color:#2A1A05}}
+.tag i{{font-style:normal;color:#5B4FE0}}
+.beam{{filter:blur(3px);pointer-events:none;opacity:.9}}
 .src{{font:400 22px 'Geist Mono',monospace;color:{v['muted']};margin-top:22px}}
 .q{{margin-top:36px;border-radius:30px;padding:30px 36px;font-size:32px;line-height:1.4;background:{v['glass']};border:1px solid {v['glass_line']};backdrop-filter:blur(20px);color:{v['body']};text-align:left;width:100%}}
 .q b{{display:block;font:500 20px 'Geist Mono',monospace;color:{v['accent_ink']};margin-bottom:10px;letter-spacing:.04em}}
@@ -149,6 +155,13 @@ def render_slide(s: dict, i: int, n: int, deck: dict, assets: dict) -> str:
             heroes += _img(s.get("dof_hero", s["hero"]), assets, s.get("dof_style", "left:-120px;top:120px;width:520px;transform:rotate(-12deg)"), "hero dof")
         heroes += _img(s["hero"], assets, s.get("hero_style", "left:50%;transform:translateX(-50%);bottom:150px;width:720px"))
     mascot = _img(s.get("mascot"), assets, s.get("mascot_style", "right:70px;bottom:120px;width:170px"), "mascot")
+    # free layers on top of the hero: avatar badges, pointer labels, light beams (round 6 covers)
+    for L in s.get("layers", []):
+        if L.get("asset"):
+            mascot += _img(L["asset"], assets, L.get("style", ""), "layer " + L.get("class", ""))
+        else:
+            mascot += f'<div class="layer {L.get("class", "")}" style="{L.get("style", "")}">{L.get("html", "")}</div>'
+
     if kind == "cover":
         body = f'{chip}<h1 style="{s.get("title_style", "")}">{_e(s["title"])}</h1><p class="sub">{_e(s.get("subtitle", ""))}</p>'
     elif kind == "stat":

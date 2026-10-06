@@ -17,12 +17,33 @@
       "type": "cover",
       "title": "Meta just made creator ads *one click*.",
       "subtitle": "The tool got faster. The brief didn't get easier.",
-      "hero": "c-click-v4",
-      "hero_style": "left:50%;transform:translateX(-50%);bottom:90px;width:880px",
-      "mid_style": "justify-content:flex-start;padding-top:60px",
+      "hero": "c-click-v6",
+      "hero_style": "left:26px;bottom:60px;width:780px",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
       "mascot": null,
       "chip": "Creator marketing",
-      "ghost": ""
+      "ghost": "",
+      "layers": [
+        {
+          "asset": "vish-3d-full-cut",
+          "style": "right:34px;bottom:58px;height:700px"
+        },
+        {
+          "html": "Creator post",
+          "class": "tag",
+          "style": "left:174px;top:981px;transform:translateX(-50%)"
+        },
+        {
+          "html": "Sponsored",
+          "class": "tag gold",
+          "style": "left:657px;top:981px;transform:translateX(-50%)"
+        },
+        {
+          "html": "<i>1</i> click",
+          "class": "tag dark",
+          "style": "left:221px;top:1134px;transform:translateX(-50%) rotate(-4deg);font-size:30px"
+        }
+      ]
     }
   ],
   "system": "aurora",

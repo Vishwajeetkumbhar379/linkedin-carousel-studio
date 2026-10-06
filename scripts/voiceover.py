@@ -218,6 +218,52 @@ def synth_gemini(narration: list[list[str]], voice: str, style: str) -> tuple[np
     return np.concatenate([np.zeros(int(SR * lead), dtype=np.float32), audio]), timings
 
 
+def gemini_duo(turns: list[tuple[str, str]], voices: dict[str, str], styles: dict[str, str]) -> np.ndarray:
+    """One request, two voices: each (speaker, text) is a turn; conversational mode gives natural hand-offs."""
+    import base64
+    import io
+    import time
+    import urllib.error
+    import urllib.request
+
+    key = os.environ.get("GEMINI_API_KEY")
+    body = {"model": GEMINI_MODEL,
+            "input": [{"type": "user_input", "content": [
+                {"type": "text", "text": t, "annotations": [{"type": "speech_metadata", "speaker": sp, "style": styles.get(sp, GEMINI_STYLE)}]}
+                for sp, t in turns]}],
+            "response_format": {"type": "audio"},
+            "generation_config": {"speech_config": {"mode": "conversational", "speakers": [{"speaker": k, "voice": v} for k, v in voices.items()]}}}
+    req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), method="POST",
+                                 headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=300) as r:
+                resp = json.loads(r.read())
+            break
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode()
+            if e.code != 429 or "per day" in msg or attempt == 3:
+                raise RuntimeError(f"{e.code}: {msg[:300]}") from None
+            m = re.search(r"retry in (\d+)", msg)
+            time.sleep(int(m.group(1)) + 2 if m else 25)
+    raw = base64.b64decode(_find_audio(resp))
+    audio, sr = sf.read(io.BytesIO(raw), dtype="float32") if raw[:4] == b"RIFF" else (np.frombuffer(raw, dtype="<i2").astype(np.float32) / 32768, SR)
+    return audio.mean(axis=1) if audio.ndim > 1 else audio
+
+
+def synth_duo(narration: list[list[str]], who: list[str], voices: dict[str, str], styles: dict[str, str]) -> tuple[np.ndarray, list[dict]]:
+    flat = [p for sc in narration for p in sc]
+    assert len(who) == len(flat), "one speaker per phrase"
+    audio = _trim(gemini_duo(list(zip(who, flat)), voices, styles))
+    bounds = _phrase_bounds(audio, flat)
+    lead, timings, k = 0.2, [], 0
+    for sc in narration:
+        ph = [{"text": p, "speaker": who[k + i], "start": round(lead + bounds[k + i][0], 3), "end": round(lead + bounds[k + i][1], 3)} for i, p in enumerate(sc)]
+        k += len(sc)
+        timings.append({"start": ph[0]["start"], "end": ph[-1]["end"], "phrases": ph})
+    return np.concatenate([np.zeros(int(SR * lead), dtype=np.float32), audio]), timings
+
+
 def synth_from_take(narration: list[list[str]], path: str) -> tuple[np.ndarray, list[dict]]:
     """Re-use a saved full-script take (e.g. voice-candidates/gemini-puck.wav) without calling the API."""
     audio, sr = sf.read(path, dtype="float32")
@@ -278,6 +324,11 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
             audio, timings = synth(narration, voice if "_" in voice else "am_puck:0.6,am_fenrir:0.4", breaths, speed)
     elif engine == "gemini":  # one request per scene: exact scene timing, natural flow within each thought
         audio, timings = synth_gemini_per_scene(narration, voice, style)
+    elif engine == "gemini-duo":  # spec["duo"] = {"voices": {"A": "Puck", "B": "Sadachbia"}, "who": ["A","B",...], "styles": {...}}
+        duo = spec["duo"]
+        audio, timings = synth_duo(narration, duo["who"], duo["voices"], duo.get("styles", {}))
+        sf.write(spec_path.parent / "voice-duo-raw.wav", audio, SR)
+        engine = "gemini"
     elif engine.startswith("take:"):
         audio, timings = synth_from_take(narration, engine[5:])
         engine = "gemini"
