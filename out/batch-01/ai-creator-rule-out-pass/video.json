@@ -40,11 +40,12 @@
       "kick": "CREATOR SHORTLISTS",
       "title": "Use AI to *rule creators out*",
       "avatar": "smirk",
-      "avTop": 180,
+      "avTop": 170,
       "avSide": "right",
       "at": 0.2,
       "until": 2.47,
-      "say": "Everyone asks AI to find creators."
+      "say": "Everyone asks AI to find creators.",
+      "avSize": 190
     },
     {
       "look": "versus",
@@ -167,7 +168,7 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "avatar": "laugh",
+      "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
       "at": 22.78,

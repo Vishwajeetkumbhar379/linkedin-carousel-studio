@@ -42,15 +42,22 @@
       "kick": "INSTAGRAM NEWS",
       "title": "An AI that reads *your Reels data*",
       "avatar": "surprised",
-      "avTop": 180,
-      "avSide": "right"
+      "avTop": 170,
+      "avSide": "right",
+      "at": 0.2,
+      "until": 3.54,
+      "say": "Instagram just gave creators an AI that reads their own numbers.",
+      "avSize": 190
     },
     {
       "look": "text",
       "bg": "violet",
       "title": "Inside the *Edits* app",
       "size": "t1",
-      "trans": "whip"
+      "trans": "whip",
+      "at": 3.54,
+      "until": 5.63,
+      "say": "It lives inside Edits, their video app."
     },
     {
       "look": "chips",
@@ -62,14 +69,20 @@
         "Likes",
         "Shares"
       ],
-      "trans": "rise"
+      "trans": "rise",
+      "at": 5.63,
+      "until": 8.06,
+      "say": "It looks at your views, retention, likes and shares,"
     },
     {
       "look": "text",
       "bg": "ivory",
       "title": "Plus comments and *trends*",
       "size": "t2",
-      "trans": "click"
+      "trans": "click",
+      "at": 8.06,
+      "until": 9.55,
+      "say": "plus your comments and what's trending."
     },
     {
       "look": "stamp",
@@ -80,21 +93,30 @@
       "trans": "pop",
       "avatar": "point",
       "avTop": 740,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 9.55,
+      "until": 11.84,
+      "say": "Then it suggests what you should make next."
     },
     {
       "look": "text",
       "bg": "peach",
       "title": "AI does the *digging*",
       "size": "t1",
-      "trans": "whip"
+      "trans": "whip",
+      "at": 11.84,
+      "until": 13.93,
+      "say": "Instagram's pitch: it does the digging,"
     },
     {
       "look": "text",
       "bg": "violet",
       "title": "You make the *calls*",
       "size": "t1",
-      "trans": "zoom"
+      "trans": "zoom",
+      "at": 13.93,
+      "until": 15.45,
+      "say": "the creative calls stay yours."
     },
     {
       "look": "stamp",
@@ -104,7 +126,10 @@
       "trans": "click",
       "avatar": "smirk",
       "avTop": 740,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 15.45,
+      "until": 17.38,
+      "say": "The catch? Free use is capped."
     },
     {
       "look": "text",
@@ -112,7 +137,10 @@
       "title": "More with *Meta One*",
       "size": "t2",
       "sub": "Paid subscription",
-      "trans": "rise"
+      "trans": "rise",
+      "at": 17.38,
+      "until": 20.04,
+      "say": "More usage sits behind a Meta One subscription."
     },
     {
       "look": "text",
@@ -122,23 +150,135 @@
       "trans": "pop",
       "avatar": "thinking",
       "avTop": 730,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 20.04,
+      "until": 21.43,
+      "say": "For brands, this matters."
     },
     {
       "look": "feed",
       "bg": "peach",
       "title": "Pitches backed by *real data*",
-      "trans": "whip"
+      "trans": "whip",
+      "at": 21.43,
+      "until": 23.53,
+      "say": "Creators will pitch with much sharper data."
     },
     {
       "look": "cta",
       "bg": "violet",
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
-      "trans": "pop"
+      "trans": "pop",
+      "at": 23.53,
+      "until": 25.18,
+      "say": "Follow for more AI and creator news.",
+      "avatar": "wave",
+      "avSide": "right"
     }
   ],
-  "duration": 36,
-  "posters": {},
-  "sfx": true
+  "duration": 26.59,
+  "posters": {
+    "b01": 1.09,
+    "b02": 2.71,
+    "b03": 3.82,
+    "b04": 4.81,
+    "b05": 5.88,
+    "b06": 7.12,
+    "b07": 7.7,
+    "b08": 8.74,
+    "b09": 10.12,
+    "b10": 10.88,
+    "b11": 11.83,
+    "b12": 15.43
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 2.083,
+      "text": "Instagram just gave creators an AI"
+    },
+    {
+      "at": 2.003,
+      "until": 3.62,
+      "text": "that reads their own numbers."
+    },
+    {
+      "at": 3.54,
+      "until": 5.71,
+      "text": "It lives inside Edits, their video app."
+    },
+    {
+      "at": 5.63,
+      "until": 6.806,
+      "text": "It looks at your views,"
+    },
+    {
+      "at": 6.726,
+      "until": 8.14,
+      "text": "retention, likes and shares,"
+    },
+    {
+      "at": 8.06,
+      "until": 9.63,
+      "text": "plus your comments and what's trending."
+    },
+    {
+      "at": 9.55,
+      "until": 10.775,
+      "text": "Then it suggests what"
+    },
+    {
+      "at": 10.695,
+      "until": 11.92,
+      "text": "you should make next."
+    },
+    {
+      "at": 11.84,
+      "until": 14.01,
+      "text": "Instagram's pitch: it does the digging,"
+    },
+    {
+      "at": 13.93,
+      "until": 15.53,
+      "text": "the creative calls stay yours."
+    },
+    {
+      "at": 15.45,
+      "until": 17.46,
+      "text": "The catch? Free use is capped."
+    },
+    {
+      "at": 17.38,
+      "until": 18.732,
+      "text": "More usage sits behind"
+    },
+    {
+      "at": 18.652,
+      "until": 20.12,
+      "text": "a Meta One subscription."
+    },
+    {
+      "at": 20.04,
+      "until": 21.51,
+      "text": "For brands, this matters."
+    },
+    {
+      "at": 21.43,
+      "until": 23.61,
+      "text": "Creators will pitch with much sharper data."
+    },
+    {
+      "at": 23.53,
+      "until": 25.265,
+      "text": "Follow for more AI and creator news."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": true,
+    "bed": false
+  }
 }

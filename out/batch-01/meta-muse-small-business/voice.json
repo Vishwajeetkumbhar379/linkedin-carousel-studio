@@ -1,0 +1,108 @@
+{
+ "voice": "voice_3rjyhtlhksw1",
+ "duration": 27.801333333333336,
+ "scenes": [
+  {
+   "start": 0.2,
+   "end": 2.95,
+   "phrases": [
+    {
+     "text": "Meta just took its Muse agent to small businesses.",
+     "start": 0.2,
+     "end": 2.95
+    }
+   ]
+  },
+  {
+   "start": 2.95,
+   "end": 8.37,
+   "phrases": [
+    {
+     "text": "It connects to Shopify, Stripe, Canva and QuickBooks,",
+     "start": 2.95,
+     "end": 5.8
+    },
+    {
+     "text": "and it can read your Instagram and Facebook page stats.",
+     "start": 5.8,
+     "end": 8.37
+    }
+   ]
+  },
+  {
+   "start": 8.37,
+   "end": 12.23,
+   "phrases": [
+    {
+     "text": "Ask it to look at sales and campaigns,",
+     "start": 8.37,
+     "end": 10.45
+    },
+    {
+     "text": "and it can plan growth and draft new ads.",
+     "start": 10.45,
+     "end": 12.23
+    }
+   ]
+  },
+  {
+   "start": 12.23,
+   "end": 16.86,
+   "phrases": [
+    {
+     "text": "One rule matters most.",
+     "start": 12.23,
+     "end": 13.73
+    },
+    {
+     "text": "It won't post, send or buy anything without your approval.",
+     "start": 13.73,
+     "end": 16.86
+    }
+   ]
+  },
+  {
+   "start": 16.86,
+   "end": 21.41,
+   "phrases": [
+    {
+     "text": "Meta says about one in three early users",
+     "start": 16.86,
+     "end": 19.53
+    },
+    {
+     "text": "had already connected it to a business account.",
+     "start": 19.53,
+     "end": 21.41
+    }
+   ]
+  },
+  {
+   "start": 21.41,
+   "end": 25.13,
+   "phrases": [
+    {
+     "text": "My take: the agent is free, your brand voice isn't.",
+     "start": 21.41,
+     "end": 23.67
+    },
+    {
+     "text": "Give it a proper brief first.",
+     "start": 23.67,
+     "end": 25.13
+    }
+   ]
+  },
+  {
+   "start": 25.13,
+   "end": 27.001,
+   "phrases": [
+    {
+     "text": "Follow for more AI and marketing news.",
+     "start": 25.13,
+     "end": 27.001
+    }
+   ]
+  }
+ ]
+}

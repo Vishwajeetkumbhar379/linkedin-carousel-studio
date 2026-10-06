@@ -45,13 +45,15 @@ def video_spec(t: dict) -> dict:
             b.pop("trans", None)
             b.setdefault("avatar", t.get("cover", {}).get("avatar", "surprised"))
             if b["avatar"] == "full":
-                b["avatar"] = "point"
+                b["avatar"] = "crossed"
         av = b.get("avatar")
         if av:
             b["avTop"] = AV_TOP.get(b.get("look", "text"), 600)
+            if i == 0:
+                b["avTop"], b["avSize"] = 170, 190
             b["avSide"] = "right" if b.get("look") in ("hook", "stat", "cta") else ("left" if i % 2 else "right")
             if b.get("look") == "cta":
-                b["avatar"] = "laugh"
+                b["avatar"], b["avSide"] = "wave", "right"
         beats.append(b)
     if beats and beats[-1].get("look") == "cta":
         beats[-1].setdefault("button", "Follow Vish")

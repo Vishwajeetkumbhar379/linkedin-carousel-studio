@@ -132,24 +132,31 @@ const LOOK = {
 
 // Avatar actions: beat.avatar = surprised | smirk | laugh | stressed | point | thinking.
 function avatarHTML(b, i) {
+  // Vish's own mascot pack (brand/avatar/pack): real expressions and gestures, transparent PNGs.
   const a = b.avatar; if (!a) return "";
   const side = (b.avSide || (i % 2 ? "left" : "right"));
-  const pos = side === "left" ? "left:34px" : "right:34px";
-  if (a === "point") return `<div class="av" data-av="point" style="${side === "left" ? "left:-30px" : "right:-30px"};bottom:170px;height:700px;width:212px"><img src="/video/sprites/vish-3d-full-cut.png" style="height:700px;width:auto"><img class="ptr" data-av="ptr" src="/video/sprites/cursor-3d.png" style="${side === "left" ? "left:200px;transform:scaleX(-1)" : "right:200px"};top:260px;width:120px"></div>`;
-  const face = { surprised: "surprised", smirk: "smirk", laugh: "laugh", stressed: "surprised", thinking: "smirk" }[a] || "smirk";
+  const edge = side === "left" ? "left:20px" : "right:20px";
+  const S = (n) => `/video/sprites/vish/${n}.png`;
+  const body = { point: side === "right" ? "point_screen_left" : "point_screen_right", explaining: side === "right" ? "explaining" : "present_screen_right",
+    thumbs: "thumbs_up", crossed: "arms_crossed", thinkingbody: "thinking", pointup: "point_up" }[a];
+  if (a === "wave") return `<div class="av" data-av="wave" style="${edge};bottom:250px;height:640px;width:300px">${["rest", "raise_hand", "wave_out", "wave_center", "wave_in", "return_to_rest"].map((k, j) => `<img data-k="${j}" src="${S(k)}" style="position:absolute;bottom:0;${side === "left" ? "left:0" : "right:0"};height:640px;width:auto;opacity:${j ? 0 : 1}">`).join("")}</div>`;
+  if (body) return `<div class="av" data-av="body" style="${edge};bottom:250px;height:${b.avH || 640}px"><img src="${S(body)}" style="height:${b.avH || 640}px;width:auto"></div>`;
+  const face = { surprised: "surprised", smirk: "skeptical", skeptical: "skeptical", laugh: "laughing", stressed: "concerned", thinking: "thoughtful",
+    focused: "focused", pleased: "pleased", wink: "winking", confident: "confident_smile" }[a] || "confident_smile";
   let st = "";
-  if (a === "stressed") st = `<div class="st"><i class="drop" style="right:-6px;top:30px"></i><i class="drop" style="right:22px;top:-6px;transform:scale(.7)"></i><b class="zig" style="left:-22px;top:-26px;transform:rotate(-20deg)">///</b></div>`;
-  if (a === "surprised") st = `<div class="burst"></div><div class="st"><b class="spark" style="right:-8px;top:-14px">!</b></div>`;
-  if (a === "laugh") st = `<div class="st"><b class="spark" style="right:-14px;top:0">✦</b><b class="spark" style="left:-10px;top:30px;font-size:28px">✦</b></div>`;
-  if (a === "thinking") st = `<div class="think" style="${side === "left" ? "left:120px" : "right:120px"};bottom:-26px"><i></i><i></i><i></i></div>`;
-  return `<div class="av" data-av="${a}" style="${pos};top:${b.avTop || 600}px;width:${b.avSize || 210}px"><img src="/video/sprites/vish-badge-${face}.png">${st}</div>`;
+  if (a === "stressed") st = `<div class="st"><i class="drop" style="right:6px;top:40px"></i><i class="drop" style="right:34px;top:6px;transform:scale(.7)"></i><b class="zig" style="left:-6px;top:-10px;transform:rotate(-20deg)">///</b></div>`;
+  if (a === "surprised") st = `<div class="burst"></div><div class="st"><b class="spark" style="right:4px;top:-8px">!</b></div>`;
+  if (a === "laugh") st = `<div class="st"><b class="spark" style="right:-4px;top:10px">✦</b><b class="spark" style="left:0;top:40px;font-size:28px">✦</b></div>`;
+  if (a === "thinking") st = `<div class="think" style="${side === "left" ? "left:170px" : "right:170px"};top:10px"><i></i><i></i><i></i></div>`;
+  return `<div class="av" data-av="${a}" style="${edge};top:${b.avTop || 600}px;width:${b.avSize || 250}px"><img src="${S(face)}" style="-webkit-mask-image:linear-gradient(#000 72%,transparent 98%);mask-image:linear-gradient(#000 72%,transparent 98%)">${st}</div>`;
 }
 function animateAvatar(root, lt) {
   const av = root.querySelector(".av"); if (!av) return;
   const a = av.dataset.av, x = lt - 0.15, k = back(clamp(x / 0.5));
   av.style.opacity = clamp(x / 0.12);
   let tf = "";
-  if (a === "point") { const kk = back(clamp(x / 0.6)); tf = `translateX(${(av.style.left ? -1 : 1) * (1 - kk) * 420}px)`; const p = av.querySelector("[data-av=ptr]"); if (p) p.style.marginTop = (Math.sin(lt * 6) * 10) + "px"; }
+  if (a === "body") { const kk = back(clamp(x / 0.6)); tf = `translateX(${(av.style.left ? -1 : 1) * (1 - kk) * 420}px) translateY(${Math.sin(lt * 1.8) * 4}px) rotate(${Math.sin(lt * 1.2) * 0.8}deg)`; }
+  else if (a === "wave") { const kk = back(clamp(x / 0.6)); tf = `translateX(${(av.style.left ? -1 : 1) * (1 - kk) * 420}px)`; const seq = x < 0.5 ? 0 : x < 0.75 ? 1 : 2 + (Math.floor((x - 0.75) / 0.18) % 3); av.querySelectorAll("img").forEach((im) => (im.style.opacity = +im.dataset.k === seq ? 1 : 0)); }
   else if (a === "stressed") tf = `scale(${0.4 + 0.6 * k}) translateX(${Math.sin(lt * 38) * 5 * clamp(x / 0.3)}px) rotate(${Math.sin(lt * 21) * 2}deg)`;
   else if (a === "laugh") tf = `scale(${0.4 + 0.6 * k}) translateY(${-Math.abs(Math.sin(lt * 9)) * 16}px) rotate(${Math.sin(lt * 9) * 3}deg)`;
   else if (a === "surprised") tf = `scale(${(0.4 + 0.6 * k) * (1 + 0.06 * Math.exp(-lt * 3) * Math.sin(lt * 20))}) rotate(${(1 - k) * -18}deg)`;
@@ -169,7 +176,7 @@ window.setup = async (spec) => {
   cam.innerHTML = spec.beats.map((b, i) => {
     const c = BG[b.bg || "ink"];
     const glows = c.glows.map(([col, a, x, y]) => `<div class="glow" data-gx="${x}" data-gy="${y}" style="left:${x - 450}px;top:${y - 450}px;width:900px;height:900px;background:radial-gradient(circle,${col},transparent 66%);opacity:${a}"></div>`).join("");
-    return `<div class="beat" id="b${i}" style="--acc:${c.acc};color:${c.fg}"><div class="bg" style="background:${c.base}">${glows}</div><div class="content">${LOOK[b.look || "text"]({ ...b, i })}</div>${avatarHTML(b, i)}</div>`;
+    return `<div class="beat" id="b${i}" style="--acc:${c.acc};color:${c.fg}"><div class="bg" style="background:${c.base}">${glows}</div><div class="content" style="${["point", "explaining", "thumbs", "crossed", "thinkingbody", "pointup", "wave"].includes(b.avatar) ? ((b.avSide || (i % 2 ? "left" : "right")) === "left" ? "padding-left:330px;padding-right:60px" : "padding-right:330px;padding-left:60px") : ""}">${LOOK[b.look || "text"]({ ...b, i })}</div>${avatarHTML(b, i)}</div>`;
   }).join("");
   document.getElementById("pill").textContent = spec.tag || "AI x Marketing";
   beats = spec.beats.map((b, i) => ({ b, el: document.getElementById("b" + i), anim: [...document.querySelectorAll(`#b${i} [data-a], #b${i} .in`)], words: [...document.querySelectorAll(`#b${i} .w`)] }));

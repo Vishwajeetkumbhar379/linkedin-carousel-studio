@@ -42,11 +42,12 @@
       "kick": "OPENAI DEVDAY",
       "title": "Agents that work *without a prompt*",
       "avatar": "surprised",
-      "avTop": 180,
+      "avTop": 170,
       "avSide": "right",
       "at": 0.2,
       "until": 1.82,
-      "say": "OpenAI just launched Dots."
+      "say": "OpenAI just launched Dots.",
+      "avSize": 190
     },
     {
       "look": "stamp",
@@ -179,7 +180,9 @@
       "trans": "pop",
       "at": 26.17,
       "until": 27.86,
-      "say": "Follow for more AI and marketing news."
+      "say": "Follow for more AI and marketing news.",
+      "avatar": "wave",
+      "avSide": "right"
     }
   ],
   "duration": 30.66,

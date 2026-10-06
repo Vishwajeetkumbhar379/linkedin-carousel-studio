@@ -10,8 +10,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import make_batch as m  # noqa: E402
 
 folder = Path(sys.argv[1])
+extra = [Path(a) for a in sys.argv[2:] if not a.startswith("--")]
 jobs = int(next((a.split("=")[1] for a in sys.argv if a.startswith("--jobs=")), 3))
-ready = sorted(p / "video.json" for p in folder.iterdir() if (p / "voice.wav").exists() and not (p / "video.mp4").exists())
+ready = sorted(p / "video.json" for p in [*folder.iterdir(), *extra] if (p / "voice.wav").exists() and not (p / "video.mp4").exists())
 for s in ready:
     m.finish(s)
 print("rendering", [s.parent.name for s in ready], flush=True)

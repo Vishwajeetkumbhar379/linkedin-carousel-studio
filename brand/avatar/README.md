@@ -16,3 +16,30 @@ The full-size file can't be downloaded inside the cloud container (Canva's downl
 3. Any slide can then use `"mascot": "vish-3d"` or `"hero": "vish-3d"`.
 
 Where it goes: CTA slides ("Follow Vish for…"), build-in-public posts, career posts. Dot (the glass mascot) stays the default sidekick on explainer slides. Never on posts about other people's products as if endorsing them.
+
+## v6: Vish's mascot pack (current, from Vish on 6 Oct)
+
+`brand/avatar/pack/` holds Vish's own character kit, with transparent 3D-style PNGs and his usage guide (`Vish_Mascot_Claude_Guide.md`):
+- 8 angles
+- 9 expressions: confident smile, laughing, thoughtful, surprised, skeptical, focused, concerned, pleased, winking
+- 8 gestures: point screen left or right, point up, explaining, present screen right, thinking, arms crossed, thumbs up
+- 6 wave keyframes
+
+Trimmed web copies used by videos and slides are in `templates/video/sprites/vish/`.
+
+How the pipeline uses them (video beat `avatar` field, slide layers):
+
+| Action | Asset | Use for |
+|---|---|---|
+| surprised | expressions/surprised + burst | news, "this just changed" |
+| smirk / skeptical | expressions/skeptical | the catch, caveats |
+| laugh | expressions/laughing | light moments |
+| stressed | expressions/concerned + sweat drops | pain points, mistakes |
+| thinking | expressions/thoughtful + thought dots | questions, nuance |
+| point | gestures/point_screen_left or right (towards the content) | "look at this", my take |
+| explaining | gestures/explaining or present_screen_right | process, chart |
+| thumbs | gestures/thumbs_up | positive conclusion |
+| crossed | gestures/arms_crossed | signature pose on hooks |
+| wave | wave keyframes, animated | follow ending |
+
+Rules from Vish's guide: the mascot stays secondary to the information, the gaze and gesture point at the content, and he never covers headlines or labels. Animate only with small position, scale and opacity changes or the keyframes. Never redraw his face.

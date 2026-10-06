@@ -42,11 +42,12 @@
       "kick": "TIKTOK NEWS",
       "title": "Buy straight from *the For You feed*",
       "avatar": "surprised",
-      "avTop": 180,
+      "avTop": 170,
       "avSide": "right",
       "at": 0.2,
       "until": 3.44,
-      "say": "TikTok just showed its plan to close the sale inside the app."
+      "say": "TikTok just showed its plan to close the sale inside the app.",
+      "avSize": 190
     },
     {
       "look": "text",
@@ -169,7 +170,9 @@
       "trans": "pop",
       "at": 25.91,
       "until": 27.72,
-      "say": "Follow for more AI and marketing news."
+      "say": "Follow for more AI and marketing news.",
+      "avatar": "wave",
+      "avSide": "right"
     }
   ],
   "duration": 30.52,

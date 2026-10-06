@@ -1,0 +1,108 @@
+{
+ "voice": "voice_3rjyhtlhksw1",
+ "duration": 26.449583333333333,
+ "scenes": [
+  {
+   "start": 0.2,
+   "end": 3.03,
+   "phrases": [
+    {
+     "text": "YouTube is letting viewers design their own homepage.",
+     "start": 0.2,
+     "end": 3.03
+    }
+   ]
+  },
+  {
+   "start": 3.03,
+   "end": 7.53,
+   "phrases": [
+    {
+     "text": "It's called Custom Feeds.",
+     "start": 3.03,
+     "end": 4.41
+    },
+    {
+     "text": "You describe a mood or an interest, and YouTube builds the feed.",
+     "start": 4.41,
+     "end": 7.53
+    }
+   ]
+  },
+  {
+   "start": 7.53,
+   "end": 10.87,
+   "phrases": [
+    {
+     "text": "It's coming to the US this autumn,",
+     "start": 7.53,
+     "end": 9.09
+    },
+    {
+     "text": "on web, mobile and TV.",
+     "start": 9.09,
+     "end": 10.87
+    }
+   ]
+  },
+  {
+   "start": 10.87,
+   "end": 15.05,
+   "phrases": [
+    {
+     "text": "Why should marketers care?",
+     "start": 10.87,
+     "end": 12.26
+    },
+    {
+     "text": "Because people can now ask for exactly what they want.",
+     "start": 12.26,
+     "end": 15.05
+    }
+   ]
+  },
+  {
+   "start": 15.05,
+   "end": 18.91,
+   "phrases": [
+    {
+     "text": "Your video has to match what someone asks for,",
+     "start": 15.05,
+     "end": 17.28
+    },
+    {
+     "text": "not just what they watched last week.",
+     "start": 17.28,
+     "end": 18.91
+    }
+   ]
+  },
+  {
+   "start": 18.91,
+   "end": 23.78,
+   "phrases": [
+    {
+     "text": "So write titles and descriptions that say exactly who it's for.",
+     "start": 18.91,
+     "end": 22.17
+    },
+    {
+     "text": "Clear beats clever here.",
+     "start": 22.17,
+     "end": 23.78
+    }
+   ]
+  },
+  {
+   "start": 23.78,
+   "end": 25.65,
+   "phrases": [
+    {
+     "text": "Follow for more AI and marketing news.",
+     "start": 23.78,
+     "end": 25.65
+    }
+   ]
+  }
+ ]
+}

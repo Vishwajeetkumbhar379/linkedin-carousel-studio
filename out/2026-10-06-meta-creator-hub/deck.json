@@ -25,8 +25,8 @@
       "ghost": "",
       "layers": [
         {
-          "asset": "vish-3d-full-cut",
-          "style": "right:34px;bottom:58px;height:700px"
+          "asset": "point_screen_left",
+          "style": "right:34px;bottom:58px;height:700px;filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
         },
         {
           "html": "Creator post",

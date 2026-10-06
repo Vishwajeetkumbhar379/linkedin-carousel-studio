@@ -42,11 +42,12 @@
       "kick": "LINKEDIN NEWS",
       "title": "LinkedIn killed its *own AI writer*",
       "avatar": "surprised",
-      "avTop": 180,
+      "avTop": 170,
       "avSide": "right",
       "at": 0.2,
       "until": 3.12,
-      "say": "LinkedIn just retired its own AI post writer."
+      "say": "LinkedIn just retired its own AI post writer.",
+      "avSize": 190
     },
     {
       "look": "text",
@@ -174,11 +175,26 @@
       "trans": "pop",
       "at": 26.12,
       "until": 28.8,
-      "say": "Follow for more AI and marketing news that actually matters."
+      "say": "Follow for more AI and marketing news that actually matters.",
+      "avatar": "wave",
+      "avSide": "right"
     }
   ],
-  "duration": 30.2,
-  "posters": {},
+  "duration": 31.6,
+  "posters": {
+    "b01": 2.2,
+    "b02": 4.51,
+    "b03": 6.58,
+    "b04": 8.97,
+    "b05": 11.57,
+    "b06": 15.07,
+    "b07": 16.5,
+    "b08": 17.81,
+    "b09": 20.09,
+    "b10": 22.71,
+    "b11": 25.27,
+    "b12": 30.5
+  },
   "sfx": true,
   "captions": [
     {

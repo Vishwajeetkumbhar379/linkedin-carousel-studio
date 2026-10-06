@@ -40,11 +40,12 @@
       "kick": "JUST ANNOUNCED",
       "title": "*$100M* for one job title",
       "avatar": "surprised",
-      "avTop": 180,
+      "avTop": 170,
       "avSide": "right",
       "at": 0.2,
       "until": 3.63,
-      "say": "Anthropic just committed 100 million dollars to train one kind of person."
+      "say": "Anthropic just committed 100 million dollars to train one kind of person.",
+      "avSize": 190
     },
     {
       "look": "stamp",
@@ -173,7 +174,7 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "avatar": "laugh",
+      "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
       "at": 28.02,

@@ -15,7 +15,7 @@ from carousel.render import _merge  # noqa: E402
 from carousel import aurora  # noqa: E402
 from carousel.studio import H, W, render_html_page, render_slide  # noqa: E402
 
-SEARCH = [ROOT / "out" / "_samples" / "3d", ROOT / "brand" / "mascot" / "poses-v4", ROOT / "brand" / "mascot" / "poses-v3", ROOT / "brand" / "mascot" / "poses-v2", ROOT / "brand" / "mascot" / "poses", ROOT / "brand" / "avatar"]
+SEARCH = [ROOT / "templates" / "video" / "sprites" / "vish", ROOT / "out" / "_samples" / "3d", ROOT / "brand" / "mascot" / "poses-v4", ROOT / "brand" / "mascot" / "poses-v3", ROOT / "brand" / "mascot" / "poses-v2", ROOT / "brand" / "mascot" / "poses", ROOT / "brand" / "avatar"]
 
 
 def find_assets(deck: dict, post: Path) -> dict:

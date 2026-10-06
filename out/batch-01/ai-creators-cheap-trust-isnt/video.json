@@ -40,11 +40,12 @@
       "kick": "HOT TAKE",
       "title": "AI creators are cheap. *Trust isn't.*",
       "avatar": "smirk",
-      "avTop": 180,
+      "avTop": 170,
       "avSide": "right",
       "at": 0.2,
       "until": 1.91,
-      "say": "AI avatar ads are getting good."
+      "say": "AI avatar ads are getting good.",
+      "avSize": 190
     },
     {
       "look": "chips",
@@ -166,7 +167,7 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "avatar": "laugh",
+      "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
       "at": 21.26,

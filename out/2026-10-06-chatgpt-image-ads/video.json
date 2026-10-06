@@ -45,8 +45,9 @@
       "until": 1.75,
       "say": "So. ChatGPT is about to put ads",
       "avatar": "surprised",
-      "avTop": 180,
-      "avSide": "right"
+      "avTop": 170,
+      "avSide": "right",
+      "avSize": 190
     },
     {
       "look": "chat",
@@ -220,7 +221,7 @@
       "at": 23.55,
       "until": 24.11,
       "say": "Follow for more.",
-      "avatar": "laugh",
+      "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
       "avSize": 190

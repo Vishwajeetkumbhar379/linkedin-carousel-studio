@@ -1,0 +1,510 @@
+{
+  "name": "Vish Kumbhar mascot",
+  "version": 1,
+  "format": "3D-style transparent raster assets; no mesh or rig",
+  "assets": [
+    {
+      "file": "01_angles/01_front.png",
+      "category": "angles",
+      "recommended_use": "Default introduction",
+      "source_sheet": "00_reference_sheets/Vish_01_All_Sides.png",
+      "source_cell": {
+        "row": 1,
+        "column": 1
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 246,
+      "content_height": 700
+    },
+    {
+      "file": "01_angles/02_front_facing_screen_right.png",
+      "category": "angles",
+      "recommended_use": "Three-quarter right view",
+      "source_sheet": "00_reference_sheets/Vish_01_All_Sides.png",
+      "source_cell": {
+        "row": 1,
+        "column": 2
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 241,
+      "content_height": 700
+    },
+    {
+      "file": "01_angles/03_profile_facing_screen_right.png",
+      "category": "angles",
+      "recommended_use": "Right profile",
+      "source_sheet": "00_reference_sheets/Vish_01_All_Sides.png",
+      "source_cell": {
+        "row": 1,
+        "column": 3
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 156,
+      "content_height": 700
+    },
+    {
+      "file": "01_angles/06_rear_facing_screen_left.png",
+      "category": "angles",
+      "recommended_use": "Rear left view",
+      "source_sheet": "00_reference_sheets/Vish_01_All_Sides.png",
+      "source_cell": {
+        "row": 1,
+        "column": 4
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 229,
+      "content_height": 700
+    },
+    {
+      "file": "01_angles/05_back.png",
+      "category": "angles",
+      "recommended_use": "Rear view",
+      "source_sheet": "00_reference_sheets/Vish_01_All_Sides.png",
+      "source_cell": {
+        "row": 2,
+        "column": 1
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 258,
+      "content_height": 700
+    },
+    {
+      "file": "01_angles/04_rear_facing_screen_right.png",
+      "category": "angles",
+      "recommended_use": "Rear right view",
+      "source_sheet": "00_reference_sheets/Vish_01_All_Sides.png",
+      "source_cell": {
+        "row": 2,
+        "column": 2
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 253,
+      "content_height": 700
+    },
+    {
+      "file": "01_angles/07_profile_facing_screen_left.png",
+      "category": "angles",
+      "recommended_use": "Left profile",
+      "source_sheet": "00_reference_sheets/Vish_01_All_Sides.png",
+      "source_cell": {
+        "row": 2,
+        "column": 3
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 161,
+      "content_height": 700
+    },
+    {
+      "file": "01_angles/08_front_facing_screen_left.png",
+      "category": "angles",
+      "recommended_use": "Three-quarter left view",
+      "source_sheet": "00_reference_sheets/Vish_01_All_Sides.png",
+      "source_cell": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 247,
+      "content_height": 700
+    },
+    {
+      "file": "02_expressions/01_confident_smile.png",
+      "category": "expressions",
+      "recommended_use": "Introduction or balanced take",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 1,
+        "column": 1
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 458,
+      "content_height": 480
+    },
+    {
+      "file": "02_expressions/02_laughing.png",
+      "category": "expressions",
+      "recommended_use": "Humour or celebration",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 1,
+        "column": 2
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 464,
+      "content_height": 480
+    },
+    {
+      "file": "02_expressions/03_thoughtful.png",
+      "category": "expressions",
+      "recommended_use": "Open question or analysis",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 1,
+        "column": 3
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 447,
+      "content_height": 480
+    },
+    {
+      "file": "02_expressions/04_surprised.png",
+      "category": "expressions",
+      "recommended_use": "Unexpected news",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 2,
+        "column": 1
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 455,
+      "content_height": 480
+    },
+    {
+      "file": "02_expressions/05_skeptical.png",
+      "category": "expressions",
+      "recommended_use": "Challenge a claim",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 2,
+        "column": 2
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 456,
+      "content_height": 480
+    },
+    {
+      "file": "02_expressions/06_focused.png",
+      "category": "expressions",
+      "recommended_use": "Research or precise explanation",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 2,
+        "column": 3
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 438,
+      "content_height": 480
+    },
+    {
+      "file": "02_expressions/07_concerned.png",
+      "category": "expressions",
+      "recommended_use": "Caveat or empathy",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 3,
+        "column": 1
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 453,
+      "content_height": 480
+    },
+    {
+      "file": "02_expressions/08_pleased.png",
+      "category": "expressions",
+      "recommended_use": "Positive outcome",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 3,
+        "column": 2
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 451,
+      "content_height": 480
+    },
+    {
+      "file": "02_expressions/09_winking.png",
+      "category": "expressions",
+      "recommended_use": "Lighthearted aside",
+      "source_sheet": "00_reference_sheets/Vish_02_Expressions.png",
+      "source_cell": {
+        "row": 3,
+        "column": 3
+      },
+      "width": 512,
+      "height": 512,
+      "content_width": 435,
+      "content_height": 480
+    },
+    {
+      "file": "03_gestures/01_point_screen_left.png",
+      "category": "gestures",
+      "recommended_use": "Mascot on right pointing to content on left",
+      "source_sheet": "00_reference_sheets/Vish_03_Gestures.png",
+      "source_cell": {
+        "row": 1,
+        "column": 1
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 379,
+      "content_height": 626
+    },
+    {
+      "file": "03_gestures/02_point_screen_right.png",
+      "category": "gestures",
+      "recommended_use": "Mascot on left pointing to content on right",
+      "source_sheet": "00_reference_sheets/Vish_03_Gestures.png",
+      "source_cell": {
+        "row": 1,
+        "column": 2
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 426,
+      "content_height": 686
+    },
+    {
+      "file": "03_gestures/03_point_up.png",
+      "category": "gestures",
+      "recommended_use": "Emphasize a headline above",
+      "source_sheet": "00_reference_sheets/Vish_03_Gestures.png",
+      "source_cell": {
+        "row": 1,
+        "column": 3
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 288,
+      "content_height": 700
+    },
+    {
+      "file": "03_gestures/04_present_screen_right.png",
+      "category": "gestures",
+      "recommended_use": "Present a chart on the right",
+      "source_sheet": "00_reference_sheets/Vish_03_Gestures.png",
+      "source_cell": {
+        "row": 1,
+        "column": 4
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 423,
+      "content_height": 680
+    },
+    {
+      "file": "03_gestures/05_explaining.png",
+      "category": "gestures",
+      "recommended_use": "Explain a process",
+      "source_sheet": "00_reference_sheets/Vish_03_Gestures.png",
+      "source_cell": {
+        "row": 2,
+        "column": 1
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 377,
+      "content_height": 700
+    },
+    {
+      "file": "03_gestures/06_thinking.png",
+      "category": "gestures",
+      "recommended_use": "Discuss a tradeoff",
+      "source_sheet": "00_reference_sheets/Vish_03_Gestures.png",
+      "source_cell": {
+        "row": 2,
+        "column": 2
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 265,
+      "content_height": 700
+    },
+    {
+      "file": "03_gestures/07_arms_crossed.png",
+      "category": "gestures",
+      "recommended_use": "Default confident signature pose",
+      "source_sheet": "00_reference_sheets/Vish_03_Gestures.png",
+      "source_cell": {
+        "row": 2,
+        "column": 3
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 280,
+      "content_height": 700
+    },
+    {
+      "file": "03_gestures/08_thumbs_up.png",
+      "category": "gestures",
+      "recommended_use": "Positive takeaway or completed step",
+      "source_sheet": "00_reference_sheets/Vish_03_Gestures.png",
+      "source_cell": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 305,
+      "content_height": 700
+    },
+    {
+      "file": "04_wave_keyframes/01_rest.png",
+      "category": "motion_clean",
+      "recommended_use": "Rest pose",
+      "source_sheet": "00_reference_sheets/Vish_04_Wave_Keyframes.png",
+      "source_cell": {
+        "row": 1,
+        "column": 1
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 254,
+      "content_height": 700
+    },
+    {
+      "file": "04_wave_keyframes/02_raise_hand.png",
+      "category": "motion_clean",
+      "recommended_use": "Hand rises",
+      "source_sheet": "00_reference_sheets/Vish_04_Wave_Keyframes.png",
+      "source_cell": {
+        "row": 1,
+        "column": 2
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 259,
+      "content_height": 700
+    },
+    {
+      "file": "04_wave_keyframes/03_wave_center.png",
+      "category": "motion_clean",
+      "recommended_use": "Greeting",
+      "source_sheet": "00_reference_sheets/Vish_04_Wave_Keyframes.png",
+      "source_cell": {
+        "row": 1,
+        "column": 3
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 265,
+      "content_height": 700
+    },
+    {
+      "file": "04_wave_keyframes/04_wave_out.png",
+      "category": "motion_clean",
+      "recommended_use": "Wave outward",
+      "source_sheet": "00_reference_sheets/Vish_04_Wave_Keyframes.png",
+      "source_cell": {
+        "row": 2,
+        "column": 1
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 285,
+      "content_height": 700
+    },
+    {
+      "file": "04_wave_keyframes/05_wave_in.png",
+      "category": "motion_clean",
+      "recommended_use": "Wave inward",
+      "source_sheet": "00_reference_sheets/Vish_04_Wave_Keyframes.png",
+      "source_cell": {
+        "row": 2,
+        "column": 2
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 252,
+      "content_height": 700
+    },
+    {
+      "file": "04_wave_keyframes/06_return_to_rest.png",
+      "category": "motion_clean",
+      "recommended_use": "Return to rest",
+      "source_sheet": "00_reference_sheets/Vish_04_Wave_Keyframes.png",
+      "source_cell": {
+        "row": 2,
+        "column": 3
+      },
+      "width": 512,
+      "height": 768,
+      "content_width": 257,
+      "content_height": 700
+    }
+  ],
+  "sheets": [
+    {
+      "file": "00_reference_sheets/Vish_01_All_Sides.png",
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 2,
+      "cells": [
+        "01_front",
+        "02_front_facing_screen_right",
+        "03_profile_facing_screen_right",
+        "06_rear_facing_screen_left",
+        "05_back",
+        "04_rear_facing_screen_right",
+        "07_profile_facing_screen_left",
+        "08_front_facing_screen_left"
+      ]
+    },
+    {
+      "file": "00_reference_sheets/Vish_02_Expressions.png",
+      "width": 1254,
+      "height": 1254,
+      "columns": 3,
+      "rows": 3,
+      "cells": [
+        "01_confident_smile",
+        "02_laughing",
+        "03_thoughtful",
+        "04_surprised",
+        "05_skeptical",
+        "06_focused",
+        "07_concerned",
+        "08_pleased",
+        "09_winking"
+      ]
+    },
+    {
+      "file": "00_reference_sheets/Vish_03_Gestures.png",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "rows": 2,
+      "cells": [
+        "01_point_screen_left",
+        "02_point_screen_right",
+        "03_point_up",
+        "04_present_screen_right",
+        "05_explaining",
+        "06_thinking",
+        "07_arms_crossed",
+        "08_thumbs_up"
+      ]
+    },
+    {
+      "file": "00_reference_sheets/Vish_04_Wave_Keyframes.png",
+      "width": 1536,
+      "height": 1024,
+      "columns": 3,
+      "rows": 2,
+      "cells": [
+        "01_rest",
+        "02_raise_hand",
+        "03_wave_center",
+        "04_wave_out",
+        "05_wave_in",
+        "06_return_to_rest"
+      ]
+    }
+  ]
+}

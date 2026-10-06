@@ -40,11 +40,12 @@
       "kick": "UNPOPULAR OPINION",
       "title": "AI won't replace you. *A bad brief will.*",
       "avatar": "smirk",
-      "avTop": 180,
+      "avTop": 170,
       "avSide": "right",
       "at": 0.2,
       "until": 2.28,
-      "say": "Everyone's worried AI will replace the content team."
+      "say": "Everyone's worried AI will replace the content team.",
+      "avSize": 190
     },
     {
       "look": "text",
@@ -165,7 +166,7 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "avatar": "laugh",
+      "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
       "at": 24.3,

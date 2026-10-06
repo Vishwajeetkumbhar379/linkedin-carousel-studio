@@ -28,8 +28,8 @@
           "style": "clip-path:polygon(724px 798px,751px 825px,670px 1128px,350px 1064px);inset:0;background:linear-gradient(210deg,rgba(255,255,255,1) 0%,rgba(236,232,255,.85) 35%,rgba(190,178,255,.45) 75%,rgba(190,178,255,.1))"
         },
         {
-          "asset": "vish-badge-surprised",
-          "style": "left:40px;top:700px;width:220px;transform:rotate(-6deg)"
+          "asset": "surprised",
+          "style": "left:40px;top:700px;width:250px;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
         },
         {
           "html": "invisible watermark <i>↓</i>",
@@ -113,8 +113,8 @@
       "subtitle": "Full breakdown, sources and a disclosure template on Build with Vish.",
       "question": "Would you tell a client a draft was AI-assisted? Yes or no?",
       "button": "Save · Follow for AI x marketing",
-      "mascot": "vish-badge-laugh",
-      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:210px",
+      "mascot": "laughing",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:210px;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))",
       "chip": "Free guide inside",
       "mid_style": "padding-top:200px"
     }

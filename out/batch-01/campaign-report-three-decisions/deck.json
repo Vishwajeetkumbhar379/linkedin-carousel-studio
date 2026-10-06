@@ -20,8 +20,8 @@
       "hero_style": "left:60px;bottom:40px;width:660px",
       "layers": [
         {
-          "asset": "vish-3d-full-cut",
-          "style": "right:30px;bottom:70px;height:600px"
+          "asset": "point_screen_left",
+          "style": "right:30px;bottom:70px;height:600px;filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
         },
         {
           "html": "30 charts <i>→</i> 3 decisions",
@@ -85,8 +85,8 @@
       "question": "What's the one number your boss always asks about first?",
       "button": "Save · Follow for AI x marketing",
       "chip": "Free guide inside",
-      "mascot": "vish-badge-laugh",
-      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mascot": "laughing",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))",
       "mid_style": "padding-top:200px"
     }
   ],

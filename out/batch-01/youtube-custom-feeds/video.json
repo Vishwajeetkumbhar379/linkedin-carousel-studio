@@ -42,21 +42,31 @@
       "kick": "MADE ON YOUTUBE",
       "title": "Viewers *build their own* homepage",
       "avatar": "surprised",
-      "avTop": 180,
-      "avSide": "right"
+      "avTop": 170,
+      "avSide": "right",
+      "avSize": 190,
+      "at": 0.2,
+      "until": 3.03,
+      "say": "YouTube is letting viewers design their own homepage."
     },
     {
       "look": "stamp",
       "bg": "cobalt",
       "stamp": "NEW",
       "title": "Custom Feeds",
-      "trans": "pop"
+      "trans": "pop",
+      "at": 3.03,
+      "until": 4.41,
+      "say": "It's called Custom Feeds."
     },
     {
       "look": "chat",
       "bg": "ivory",
       "prompt": "Quick weeknight dinners, under 20 minutes, no fish.",
-      "trans": "whip"
+      "trans": "whip",
+      "at": 4.41,
+      "until": 7.53,
+      "say": "You describe a mood or an interest, and YouTube builds the feed."
     },
     {
       "look": "chips",
@@ -68,14 +78,20 @@
         "Mobile",
         "TV"
       ],
-      "trans": "rise"
+      "trans": "rise",
+      "at": 7.53,
+      "until": 9.09,
+      "say": "It's coming to the US this autumn,"
     },
     {
       "look": "text",
       "bg": "violet",
       "title": "On *every screen*",
       "size": "t1",
-      "trans": "click"
+      "trans": "click",
+      "at": 9.09,
+      "until": 10.87,
+      "say": "on web, mobile and TV."
     },
     {
       "look": "text",
@@ -85,14 +101,20 @@
       "trans": "zoom",
       "avatar": "thinking",
       "avTop": 730,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 10.87,
+      "until": 12.26,
+      "say": "Why should marketers care?"
     },
     {
       "look": "text",
       "bg": "cobalt",
       "title": "People ask for *exactly* what they want",
       "size": "t2",
-      "trans": "whip"
+      "trans": "whip",
+      "at": 12.26,
+      "until": 15.05,
+      "say": "Because people can now ask for exactly what they want."
     },
     {
       "look": "versus",
@@ -100,7 +122,10 @@
       "title": "How videos get found",
       "left": "What you watched",
       "right": "What you asked for",
-      "trans": "rise"
+      "trans": "rise",
+      "at": 15.05,
+      "until": 17.28,
+      "say": "Your video has to match what someone asks for,"
     },
     {
       "look": "text",
@@ -110,7 +135,10 @@
       "trans": "pop",
       "avatar": "point",
       "avTop": 730,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 17.28,
+      "until": 18.91,
+      "say": "not just what they watched last week."
     },
     {
       "look": "chips",
@@ -121,7 +149,10 @@
         "The problem",
         "The result"
       ],
-      "trans": "click"
+      "trans": "click",
+      "at": 18.91,
+      "until": 22.17,
+      "say": "So write titles and descriptions that say exactly who it's for."
     },
     {
       "look": "text",
@@ -131,17 +162,118 @@
       "trans": "zoom",
       "avatar": "smirk",
       "avTop": 730,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 22.17,
+      "until": 23.78,
+      "say": "Clear beats clever here."
     },
     {
       "look": "cta",
       "bg": "violet",
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
-      "trans": "pop"
+      "trans": "pop",
+      "avatar": "wave",
+      "avSide": "right",
+      "at": 23.78,
+      "until": 25.65,
+      "say": "Follow for more AI and marketing news."
     }
   ],
-  "duration": 36,
+  "duration": 27.05,
   "posters": {},
-  "sfx": true
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 1.695,
+      "text": "YouTube is letting viewers"
+    },
+    {
+      "at": 1.615,
+      "until": 3.11,
+      "text": "design their own homepage."
+    },
+    {
+      "at": 3.03,
+      "until": 4.49,
+      "text": "It's called Custom Feeds."
+    },
+    {
+      "at": 4.41,
+      "until": 5.728,
+      "text": "You describe a mood or an"
+    },
+    {
+      "at": 5.648,
+      "until": 7.61,
+      "text": "interest, and YouTube builds the feed."
+    },
+    {
+      "at": 7.53,
+      "until": 9.17,
+      "text": "It's coming to the US this autumn,"
+    },
+    {
+      "at": 9.09,
+      "until": 10.95,
+      "text": "on web, mobile and TV."
+    },
+    {
+      "at": 10.87,
+      "until": 12.34,
+      "text": "Why should marketers care?"
+    },
+    {
+      "at": 12.26,
+      "until": 13.709,
+      "text": "Because people can now ask"
+    },
+    {
+      "at": 13.629,
+      "until": 15.13,
+      "text": "for exactly what they want."
+    },
+    {
+      "at": 15.05,
+      "until": 16.27,
+      "text": "Your video has to match"
+    },
+    {
+      "at": 16.19,
+      "until": 17.36,
+      "text": "what someone asks for,"
+    },
+    {
+      "at": 17.28,
+      "until": 18.99,
+      "text": "not just what they watched last week."
+    },
+    {
+      "at": 18.91,
+      "until": 20.935,
+      "text": "So write titles and descriptions that"
+    },
+    {
+      "at": 20.855,
+      "until": 22.25,
+      "text": "say exactly who it's for."
+    },
+    {
+      "at": 22.17,
+      "until": 23.86,
+      "text": "Clear beats clever here."
+    },
+    {
+      "at": 23.78,
+      "until": 25.73,
+      "text": "Follow for more AI and marketing news."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": true,
+    "bed": false
+  }
 }

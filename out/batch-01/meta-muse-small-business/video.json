@@ -43,7 +43,10 @@
       "title": "Muse is coming for *small business*",
       "avatar": "surprised",
       "avTop": 180,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 0.2,
+      "until": 2.95,
+      "say": "Meta just took its Muse agent to small businesses."
     },
     {
       "look": "chips",
@@ -55,27 +58,39 @@
         "Canva",
         "QuickBooks"
       ],
-      "trans": "whip"
+      "trans": "whip",
+      "at": 2.95,
+      "until": 5.8,
+      "say": "It connects to Shopify, Stripe, Canva and QuickBooks,"
     },
     {
       "look": "text",
       "bg": "ivory",
       "title": "Reads your *Instagram* and *Page* stats",
       "size": "t2",
-      "trans": "rise"
+      "trans": "rise",
+      "at": 5.8,
+      "until": 8.37,
+      "say": "and it can read your Instagram and Facebook page stats."
     },
     {
       "look": "text",
       "bg": "violet",
       "title": "Sales and campaigns, *analysed*",
       "size": "t2",
-      "trans": "click"
+      "trans": "click",
+      "at": 8.37,
+      "until": 10.45,
+      "say": "Ask it to look at sales and campaigns,"
     },
     {
       "look": "feed",
       "bg": "peach",
       "title": "Drafts *new ads* for you",
-      "trans": "zoom"
+      "trans": "zoom",
+      "at": 10.45,
+      "until": 12.23,
+      "say": "and it can plan growth and draft new ads."
     },
     {
       "look": "text",
@@ -85,14 +100,20 @@
       "trans": "whip",
       "avatar": "point",
       "avTop": 730,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 12.23,
+      "until": 13.73,
+      "say": "One rule matters most."
     },
     {
       "look": "stamp",
       "bg": "ink",
       "stamp": "APPROVAL",
       "title": "No post, send or buy without you",
-      "trans": "pop"
+      "trans": "pop",
+      "at": 13.73,
+      "until": 16.86,
+      "say": "It won't post, send or buy anything without your approval."
     },
     {
       "look": "stat",
@@ -104,14 +125,20 @@
       "trans": "zoom",
       "avatar": "surprised",
       "avTop": 185,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 16.86,
+      "until": 19.53,
+      "say": "Meta says about one in three early users"
     },
     {
       "look": "text",
       "bg": "ivory",
       "title": "They were *already* doing it",
       "size": "t2",
-      "trans": "rise"
+      "trans": "rise",
+      "at": 19.53,
+      "until": 21.41,
+      "say": "had already connected it to a business account."
     },
     {
       "look": "versus",
@@ -122,23 +149,145 @@
       "trans": "click",
       "avatar": "smirk",
       "avTop": 960,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 21.41,
+      "until": 23.67,
+      "say": "My take: the agent is free, your brand voice isn't."
     },
     {
       "look": "chat",
       "bg": "ivory",
       "prompt": "Here's our brand brief: who we sell to, our tone, words we never use. Draft 3 ads.",
-      "trans": "whip"
+      "trans": "whip",
+      "at": 23.67,
+      "until": 25.13,
+      "say": "Give it a proper brief first."
     },
     {
       "look": "cta",
       "bg": "violet",
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
-      "trans": "pop"
+      "trans": "pop",
+      "at": 25.13,
+      "until": 27.0,
+      "say": "Follow for more AI and marketing news."
     }
   ],
-  "duration": 36,
+  "duration": 28.4,
   "posters": {},
-  "sfx": true
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.2,
+      "until": 1.571,
+      "text": "Meta just took its Muse"
+    },
+    {
+      "at": 1.491,
+      "until": 3.03,
+      "text": "agent to small businesses."
+    },
+    {
+      "at": 2.95,
+      "until": 4.291,
+      "text": "It connects to Shopify,"
+    },
+    {
+      "at": 4.211,
+      "until": 5.88,
+      "text": "Stripe, Canva and QuickBooks,"
+    },
+    {
+      "at": 5.8,
+      "until": 6.832,
+      "text": "and it can read your"
+    },
+    {
+      "at": 6.752,
+      "until": 8.45,
+      "text": "Instagram and Facebook page stats."
+    },
+    {
+      "at": 8.37,
+      "until": 9.237,
+      "text": "Ask it to look"
+    },
+    {
+      "at": 9.157,
+      "until": 10.53,
+      "text": "at sales and campaigns,"
+    },
+    {
+      "at": 10.45,
+      "until": 11.509,
+      "text": "and it can plan growth"
+    },
+    {
+      "at": 11.429,
+      "until": 12.31,
+      "text": "and draft new ads."
+    },
+    {
+      "at": 12.23,
+      "until": 13.81,
+      "text": "One rule matters most."
+    },
+    {
+      "at": 13.73,
+      "until": 15.018,
+      "text": "It won't post, send or"
+    },
+    {
+      "at": 14.938,
+      "until": 16.94,
+      "text": "buy anything without your approval."
+    },
+    {
+      "at": 16.86,
+      "until": 18.241,
+      "text": "Meta says about one"
+    },
+    {
+      "at": 18.161,
+      "until": 19.61,
+      "text": "in three early users"
+    },
+    {
+      "at": 19.53,
+      "until": 20.591,
+      "text": "had already connected it"
+    },
+    {
+      "at": 20.511,
+      "until": 21.49,
+      "text": "to a business account."
+    },
+    {
+      "at": 21.41,
+      "until": 22.439,
+      "text": "My take: the agent is"
+    },
+    {
+      "at": 22.359,
+      "until": 23.75,
+      "text": "free, your brand voice isn't."
+    },
+    {
+      "at": 23.67,
+      "until": 25.21,
+      "text": "Give it a proper brief first."
+    },
+    {
+      "at": 25.13,
+      "until": 27.081,
+      "text": "Follow for more AI and marketing news."
+    }
+  ],
+  "voice": {
+    "engine": "gemini-3.8-flash-tts",
+    "voice": "voice_3rjyhtlhksw1",
+    "breaths": true,
+    "bed": false
+  }
 }
