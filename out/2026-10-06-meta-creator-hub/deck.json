@@ -21,7 +21,7 @@
       "hero": "c-hub",
       "hero_style": "left:50%;transform:translateX(-50%);bottom:40px;width:760px",
       "mid_style": "justify-content:flex-start;padding-top:70px",
-      "mascot": "dot-focused",
+      "mascot": "dot-neutral",
       "mascot_style": "left:84px;bottom:150px;width:150px",
       "title_style": "font-size:80px;font-weight:700;letter-spacing:-.035em;line-height:1.04;max-width:860px"
     }

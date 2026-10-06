@@ -1,4 +1,4 @@
-ChatGPT will show ads next to the images you generate.
+ChatGPT is testing ads next to the images you generate.
 
 OpenAI announced it on 5 October. Testing starts later this month, US only, with a first group of advertisers.
 
@@ -12,4 +12,4 @@ Early, partner-reported data: WeightWatchers' attributed CPA on ChatGPT Ads was 
 
 My take: the next ad slot is the moment someone imagines your product.
 
-If you run paid social, would you test this in Q1? Yes or no?
+It's US-only for now. What would you need to see before you'd move test budget there?

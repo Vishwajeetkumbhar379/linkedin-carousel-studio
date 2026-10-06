@@ -4,6 +4,8 @@
 |---|---|---|
 | Creator Marketing Hub launched, merging Creator Marketplace and Partnership Ads Hub | MediaPost, Colin Kirkland https://www.mediapost.com/publications/article/418022/ | 15 Sep 2026 |
 | Same, "officially launched on Wednesday" | eMarketer, Marisa Jones https://www.emarketer.com/content/meta-s-creator-marketing-hub-gives-brands-central-resource-partnerships | 16 Sep 2026 |
+| "Until now only accessible to Instagram creators" (Creator Marketplace API) | MediaPost (above) | 15 Sep 2026 |
+| Launch date: MediaPost dated 15 Sep, eMarketer (16 Sep) says "Wednesday". Copy says "mid-September" | both | 15-16 Sep 2026 |
 | Content-level permissions with expiry dates, one-click ad creation, messaging, Facebook creators added to Creator Marketplace API | MediaPost (above); cross-checked with commonthreadco.com coverage | 15 Sep 2026 |
 | "Werbung" / "Anzeige" ad labels in Germany | Evergreen; already on Build with Vish (ad-labels-in-europe). Re-verify before posting | n/a |
 

@@ -45,7 +45,7 @@
       "label": "03 · How reliable",
       "value": "~80%",
       "title": "of 200-token passages detected.",
-      "body": "About 95% at 400 tokens, at a 1% false-positive target. Shorter text and heavily edited text are much harder to detect. OpenAI says so itself.",
+      "body": "About 95% at 400 tokens, at a 1% false-positive target, for prose like psychology. Much lower for maths-like text, and editing weakens it. OpenAI says so itself.",
       "source": "Source: OpenAI, 5 Oct 2026"
     },
     {
@@ -57,7 +57,7 @@
           "Who wrote or prompted it",
           "How much a human changed",
           "Whether it's true",
-          "Who owns it"
+          "That no watermark means a human wrote it"
         ]
       },
       "right": {
@@ -80,10 +80,10 @@
       "type": "list",
       "title": "What I'd do this week",
       "items": [
-        "Treat AI output as a draft. Editing for voice and facts was always the job.",
+        "Edit AI drafts for quality and facts, not to hide AI use.",
         "Check client and creator contracts for AI-disclosure clauses.",
         "Decide your own disclosure rule before a client asks.",
-        "Ignore anyone selling 'AI detector' screenshots as proof."
+        "Ignore 'AI detector' screenshots. They prove very little."
       ]
     },
     {

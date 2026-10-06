@@ -3,19 +3,74 @@
   "direction": "B · Night Lab",
   "format": "video",
   "template": "video/night.html",
-  "width": 1080, "height": 1350, "fps": 30, "duration": 30,
-  "liftAt": 8.6, "liftEnd": 13.4, "mascotAt": 25.2,
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "duration": 30,
+  "liftAt": 8.6,
+  "liftEnd": 13.4,
+  "mascotAt": 25.2,
   "scenes": [
-    { "at": 0.15, "until": 3.6, "kick": "AI x Marketing · New ad format", "h1": "ChatGPT will show ads next to the *images you generate.*" },
-    { "at": 3.8, "until": 8.4, "h2": "OpenAI announced it on 5 October.", "p": "Testing starts later this month. US only, with a first group of advertisers." },
-    { "at": 8.6, "until": 13.4, "h2": "Labelled. Beside your image, *not inside it.*", "p": "OpenAI says ads don't influence ChatGPT's answers." },
-    { "at": 13.6, "until": 18.9, "big": "1.2B", "h2": "people use ChatGPT every week.", "src": "Source: OpenAI, 5 Oct 2026" },
-    { "at": 19.1, "until": 24.9, "big": "15.3%", "h2": "lower attributed CPA for WeightWatchers vs its paid-search benchmark.", "src": "Partner-reported (DV Rockerbox), via OpenAI" },
-    { "at": 25.1, "until": 30.5, "kick": "My take", "h2": "The next ad slot is the moment someone *imagines your product.*", "p": "Follow for the AI x marketing playbook." }
+    {
+      "at": 0.15,
+      "until": 3.6,
+      "kick": "AI x Marketing · New ad format",
+      "h1": "ChatGPT is testing ads next to the *images you generate.*"
+    },
+    {
+      "at": 3.8,
+      "until": 8.4,
+      "h2": "OpenAI announced it on 5 October.",
+      "p": "Testing starts later this month. US only, with a first group of advertisers."
+    },
+    {
+      "at": 8.6,
+      "until": 13.4,
+      "h2": "Labelled. Beside your image, *not inside it.*",
+      "p": "OpenAI says ads don't influence ChatGPT's answers."
+    },
+    {
+      "at": 13.6,
+      "until": 18.9,
+      "big": "1.2B",
+      "h2": "people use ChatGPT every week.",
+      "src": "Source: OpenAI, 5 Oct 2026"
+    },
+    {
+      "at": 19.1,
+      "until": 24.9,
+      "big": "15.3%",
+      "h2": "lower attributed CPA for WeightWatchers than its blended paid-search benchmark.",
+      "src": "One brand, early data. Partner-reported (DV Rockerbox), via OpenAI"
+    },
+    {
+      "at": 25.1,
+      "until": 30.5,
+      "kick": "My take",
+      "h2": "The next ad slot is the moment someone *imagines your product.*",
+      "p": "Follow for the AI x marketing playbook."
+    }
   ],
   "captions": [
-    { "at": 0, "until": 3.6, "text": "" },
-    { "at": 25.1, "until": 31, "text": "buildwithvish.netlify.app" }
+    {
+      "at": 0,
+      "until": 3.6,
+      "text": ""
+    },
+    {
+      "at": 25.1,
+      "until": 31,
+      "text": "buildwithvish.netlify.app"
+    }
   ],
-  "posters": { "cover": 2.4, "s2": 6.5, "s3": 11.5, "s4": 17.0, "s5": 23.0, "end": 29.0 }
+  "posters": {
+    "cover": 2.4,
+    "s2": 6.5,
+    "s3": 11.5,
+    "s4": 17.0,
+    "s5": 23.0,
+    "end": 29.0
+  },
+  "sponsoredAt": 8.8,
+  "sponsoredUntil": 13.3
 }

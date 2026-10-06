@@ -120,7 +120,7 @@ p em,li em{{font-style:normal;font-weight:600;color:{t['accent_ink']}}}
 .q{{margin-top:44px;border:.5px solid {t['line']};border-radius:24px;padding:30px 34px;font-size:32px;line-height:1.4;background:{t['tints']['purple']};color:{t['body']}}}
 .q b{{display:block;font:500 20px '{t['mono']}',monospace;color:{t['accent_ink']};margin-bottom:10px;letter-spacing:.02em}}
 .save{{display:inline-flex;align-items:center;gap:14px;margin-top:40px;font-size:30px;font-weight:600;background:{t['accent_ink'] if t is not THEMES['night'] else t['accent']};color:{t['on_accent']};border-radius:999px;padding:22px 34px;align-self:flex-start}}
-.src{{font:400 19px '{t['mono']}',monospace;color:{t['muted']};margin-top:26px;letter-spacing:.01em}}
+.src{{font:400 22px '{t['mono']}',monospace;color:{t['muted']};margin-top:26px;letter-spacing:.01em}}
 """
 
 

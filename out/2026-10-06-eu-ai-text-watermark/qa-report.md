@@ -1,6 +1,6 @@
 # QA report: 2026-10-06-eu-ai-text-watermark
 
-Run 2026-10-06 17:14 · **PASS** · 0 fail, 4 warn, 19 pass
+Run 2026-10-06 17:17 · **PASS** · 0 fail, 4 warn, 19 pass
 
 | Result | Area | Check |
 |---|---|---|
@@ -10,8 +10,8 @@ Run 2026-10-06 17:14 · **PASS** · 0 fail, 4 warn, 19 pass
 | WARN | links | hash route #read-eu-ai-text-watermark always returns 200; confirm the page exists in buildwithvish src/long before posting |
 | PASS | copy | hook 10 words: "ChatGPT text in the EU is getting an invisible watermark." |
 | PASS | copy | closes on one open question: "Would you tell a client a draft was AI-assisted? Yes or no?" |
-| PASS | copy | caption 992 chars (LinkedIn limit 3000) |
-| PASS | copy | reading ease 66 (aim 50+) |
+| PASS | copy | caption 1080 chars (LinkedIn limit 3000) |
+| PASS | copy | reading ease 61 (aim 50+) |
 | PASS | facts | source dated 2026-10-05 is 1 days old (news window 14d) |
 | PASS | facts | source dated 2026-10-06 is 0 days old (news window 14d) |
 | PASS | facts | number '1%' traced to sources.md |

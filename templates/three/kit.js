@@ -59,7 +59,7 @@ export const objects = {
     const g = new THREE.Group();
     const geo = extrude(bubbleShape(2.6, 1.7, 0.42), 0.34, 0.08);
     geo.translate(0, 0, -0.17);
-    const bubble = new THREE.Mesh(geo, mat.frost(0xe4e1fc));
+    const bubble = new THREE.Mesh(geo, new THREE.MeshPhysicalMaterial({ color: 0xf4f3fb, roughness: 0.32, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.12, sheen: 0.3, sheenColor: new THREE.Color(0xd9d5fb) }));
     g.add(bubble);
     const lines = [2.0, 1.7, 1.85, 1.1];
     lines.forEach((w, i) => {
@@ -68,12 +68,12 @@ export const objects = {
       g.add(bar);
     });
     const grid = new THREE.Group();
-    const dg = new THREE.SphereGeometry(0.026, 12, 12);
-    const dm = mat.glow(C.violet, 1.1);
+    const dg = new THREE.SphereGeometry(0.022, 12, 12);
+    const dm = new THREE.MeshStandardMaterial({ color: 0xd6d2f6, roughness: 0.6 });
     for (let ix = 0; ix < 11; ix++) for (let iy = 0; iy < 6; iy++) {
       if ((ix * 7 + iy * 3) % 4 === 0) continue;
       const d = new THREE.Mesh(dg, dm);
-      d.position.set(-1.05 + ix * 0.21, -0.52 + iy * 0.2, 0.02);
+      d.position.set(-1.05 + ix * 0.21, -0.52 + iy * 0.2, 0.25);
       grid.add(d);
     }
     grid.name = "dots";
@@ -83,10 +83,21 @@ export const objects = {
     return g;
   },
 
-  magnifier() {
+  magnifier({ reveal = true } = {}) {
     const g = new THREE.Group();
+    if (reveal) {
+      // The "hidden" watermark, magnified: a violet dot lattice visible only through the lens.
+      const dm = mat.glow(C.violet, 0.9), dg = new THREE.SphereGeometry(0.045, 16, 16);
+      for (let ix = -4; ix <= 4; ix++) for (let iy = -4; iy <= 4; iy++) {
+        const x = ix * 0.13, y = iy * 0.13;
+        if (x * x + y * y > 0.27 || (ix * 3 + iy * 5) % 4 === 0) continue;
+        const d = new THREE.Mesh(dg, dm); d.position.set(x, y, -0.06); g.add(d);
+      }
+      const disc = new THREE.Mesh(new THREE.CircleGeometry(0.6, 64), new THREE.MeshStandardMaterial({ color: 0xf7f6fd, roughness: 0.5 }));
+      disc.position.z = -0.1; g.add(disc);
+    }
     const ring = new THREE.Mesh(new THREE.TorusGeometry(0.62, 0.09, 32, 96), mat.metal(0xd8d5e6, 0.18));
-    const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 0.06, 64), mat.glass(0xe9f8f6, 0.02));
+    const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 0.06, 64), new THREE.MeshPhysicalMaterial({ color: 0xffffff, transmission: 1, roughness: 0.02, thickness: 0.05, ior: 1.2, clearcoat: 1 }));
     lens.rotation.x = Math.PI / 2;
     const handle = new THREE.Mesh(new RoundedBoxGeometry(0.2, 0.95, 0.2, 4, 0.09), mat.clay(C.ink, 0.5));
     handle.position.set(0.72, -0.72, 0); handle.rotation.z = Math.PI / 4;
@@ -138,9 +149,10 @@ export const objects = {
     }
     g.add(orbit);
     const tile = new THREE.Mesh(new RoundedBoxGeometry(0.95, 1.2, 0.16, 6, 0.12), mat.glass(0xd9d5fb, 0.06));
+    tile.position.y = 0.62;
     g.add(tile);
     const play = new THREE.Mesh(new THREE.ConeGeometry(0.2, 0.32, 3), mat.clay(C.ink, 0.5));
-    play.rotation.z = -Math.PI / 2; play.position.z = 0.02;
+    play.rotation.z = -Math.PI / 2; play.position.set(0.03, 0.62, 0.02);
     g.add(play);
     g.userData.orbit = orbit;
     return g;

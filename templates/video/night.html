@@ -25,6 +25,7 @@ p{font-size:36px;line-height:1.4;color:#CFCDD6;margin-top:22px;text-wrap:pretty}
 .bar{position:absolute;left:84px;right:84px;bottom:100px;height:3px;background:#1E1D2B;border-radius:3px;z-index:5}
 .bar i{display:block;height:100%;width:0;background:#A99CFF;border-radius:3px}
 .mascot{position:absolute;right:70px;bottom:330px;width:230px;opacity:0;z-index:6}
+.chip{position:absolute;z-index:6;font:600 20px Geist,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#0A0A14;background:#F3C584;border-radius:999px;padding:8px 16px;opacity:0;transform:translate(-50%,-50%)}
 .cap{position:absolute;left:84px;bottom:128px;font:500 20px 'Geist Mono',monospace;color:#A1A1A6;z-index:5}
 </style></head><body>
 <canvas id="c"></canvas><div class="wash"></div>
@@ -32,6 +33,7 @@ p{font-size:36px;line-height:1.4;color:#CFCDD6;margin-top:22px;text-wrap:pretty}
 <div id="scenes"></div>
 <img class="mascot" id="mascot" src="/video/mascot.png" alt="">
 <div class="cap" id="cap"></div>
+<div class="chip" id="chip">Sponsored</div>
 <div class="bar"><i id="bar"></i></div>
 <div class="grain"></div>
 <script type="module">
@@ -103,6 +105,10 @@ window.frame = (t) => {
   S.camera.position.set(Math.sin(t * 0.2) * 0.6, 1.55, 14.2 - t * 0.05);
   S.camera.lookAt(0, 1.05, 0);
   S.renderer.render(S.scene, S.camera);
+  const ad = tiles.userData.tiles.find((x) => x.userData.isAd), v = new THREE.Vector3();
+  ad.getWorldPosition(v); v.y -= 1.05; v.project(S.camera);
+  const chip = document.getElementById("chip"), ca = Math.min(ease(clamp((t - (D.sponsoredAt ?? 99)) / 0.5)), ease(clamp(((D.sponsoredUntil ?? 0) - t) / 0.3)));
+  chip.style.left = ((v.x + 1) / 2 * 1080) + "px"; chip.style.top = ((1 - v.y) / 2 * 1350) + "px"; chip.style.opacity = ca;
   return true;
 };
 window.STAGE_LOADED = true;
