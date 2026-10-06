@@ -1,110 +1,110 @@
 {
- "voice": "am_puck:0.6,am_fenrir:0.4",
- "duration": 32.458083333333335,
+ "voice": "Puck",
+ "duration": 33.18433333333333,
  "scenes": [
   {
-   "start": 0.25,
-   "end": 4.447,
+   "start": 0.2,
+   "end": 4.68,
    "phrases": [
     {
      "text": "So. ChatGPT is about to put ads",
-     "start": 0.25,
-     "end": 2.09
+     "start": 0.2,
+     "end": 2.24
     },
     {
      "text": "right next to the images you make.",
-     "start": 2.09,
-     "end": 4.447
+     "start": 2.24,
+     "end": 4.68
     }
    ]
   },
   {
-   "start": 5.137,
-   "end": 8.867,
+   "start": 4.68,
+   "end": 8.76,
    "phrases": [
     {
      "text": "It's a test for now.",
-     "start": 5.137,
-     "end": 6.247
+     "start": 4.68,
+     "end": 5.96
     },
     {
      "text": "US only, with a handful of advertisers.",
-     "start": 6.247,
-     "end": 8.867
+     "start": 5.96,
+     "end": 8.76
     }
    ]
   },
   {
-   "start": 9.557,
-   "end": 13.077,
+   "start": 8.76,
+   "end": 13.3,
    "phrases": [
     {
      "text": "The ads are labelled.",
-     "start": 9.557,
-     "end": 10.997
+     "start": 8.76,
+     "end": 10.18
     },
     {
      "text": "And they sit beside your picture. Not inside it.",
-     "start": 10.997,
-     "end": 13.077
+     "start": 10.18,
+     "end": 13.3
     }
    ]
   },
   {
-   "start": 13.767,
-   "end": 17.633,
+   "start": 13.3,
+   "end": 18.37,
    "phrases": [
     {
      "text": "Why should you care?",
-     "start": 13.767,
-     "end": 14.657
+     "start": 13.3,
+     "end": 14.72
     },
     {
      "text": "Over a billion people use ChatGPT every week.",
-     "start": 14.657,
-     "end": 17.633
+     "start": 14.72,
+     "end": 18.37
     }
    ]
   },
   {
-   "start": 18.323,
-   "end": 25.412,
+   "start": 18.37,
+   "end": 26.74,
    "phrases": [
     {
      "text": "And the early numbers?",
-     "start": 18.323,
-     "end": 20.123
+     "start": 18.37,
+     "end": 19.8
     },
     {
      "text": "One brand got cheaper conversions than on paid search.",
-     "start": 20.123,
-     "end": 22.483
+     "start": 19.8,
+     "end": 23.24
     },
     {
      "text": "One brand, though. So, a signal. Not proof.",
-     "start": 22.483,
-     "end": 25.412
+     "start": 23.24,
+     "end": 26.74
     }
    ]
   },
   {
-   "start": 26.102,
-   "end": 31.308,
+   "start": 26.74,
+   "end": 32.384,
    "phrases": [
     {
      "text": "Here's my take.",
-     "start": 26.102,
-     "end": 26.892
+     "start": 26.74,
+     "end": 28.07
     },
     {
      "text": "The next ad slot is the moment someone pictures your product.",
-     "start": 26.892,
-     "end": 30.352
+     "start": 28.07,
+     "end": 31.54
     },
     {
      "text": "Follow for more.",
-     "start": 30.352,
-     "end": 31.308
+     "start": 31.54,
+     "end": 32.384
     }
    ]
   }
