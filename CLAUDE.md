@@ -19,6 +19,14 @@ You produce LinkedIn content for Vishwajeet "Vish" Kumbhar (AI x marketing, 850+
   - Hooks of 12 words or fewer.
   - Every number and claim is sourced and dated: news within 14 days, tools within 30 days. Never invent stats, quotes or Vish's results.
 
+## Vish feedback, 7 Oct 2026 (overrides anything above it)
+- **Voice:** no strong Indian accent. Use one neutral, warm, young male voice: prebuilt `Puck` in the relaxed style from tokens (`voice.voiceover.style`). Pace is unhurried with real pauses between lines, never rushed. Target about 2.3 words per second; scripts are 60 to 80 words for 30 to 40 seconds.
+- **Videos must not feel rushed:** fewer lines, and every beat holds at least 2.2 s (the renderer pads short beats).
+- **B-roll must be real and in context.** Prefer real screen recordings: `scripts/screen_record.py` records live pages such as GitHub repos, docs and changelogs into `broll/` clips for the `clip` look. Otherwise use app-style cut-outs of the actual product (a phone with the app feed, plus the bot or character), using generic UI and no trademarked logos. Never use B-roll that doesn't match the line.
+- **Format mix:** more carousels and tutorials. Per week: 3 carousels or tutorial carousels, 2 videos, 1 step-by-step tutorial video.
+- **Topic style** (see `docs/reference-study.md`): big-claim tool hooks ("Opus 5.5 is crazy", "Claude just killed Instagram"), then a step-by-step "how to automate it": tools, prompts, B-roll, motion graphics, sound design. Also free-AI-resource posts ("X free tokens a month", GitHub repos, open-source tools) and topics already on buildwithvish.
+- **LLM for writing and research:** use the free-token router (`scripts/llm.py`, an OpenAI-compatible endpoint from OmniRoute or FreeLLMAPI, see `docs/llm-router.md`) when it's configured, so runs don't depend on one provider's limits.
+
 ## Weekly run (what the scheduled routine does)
 1. Research: `python scripts/research/fetch.py`, plus WebSearch for news in the last 14 days on AI x marketing, creator economy and social platforms. Avoid topics already in `out/batch-*` and `topics/posted.json`.
 2. Write 5 posts (4 videos, 1 carousel) to `content/batch-NN/*.json`, following the BRIEF schema exactly.
