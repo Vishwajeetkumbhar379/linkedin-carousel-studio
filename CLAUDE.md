@@ -28,6 +28,7 @@ You produce LinkedIn content for Vishwajeet "Vish" Kumbhar (AI x marketing, 850+
 - **LLM for writing and research:** use the free-token router (`scripts/llm.py`, an OpenAI-compatible endpoint from OmniRoute or FreeLLMAPI, see `docs/llm-router.md`) when it's configured, so runs don't depend on one provider's limits.
 
 ## Weekly run (what the scheduled routine does)
+0. Tokens: `bash scripts/router_setup.sh && python scripts/llm.py --check`. Use `scripts/llm.py` for drafting and research summaries. If the check shows no free provider, carry on with Gemini and say so in the run summary.
 1. Research: `python scripts/research/fetch.py`, plus WebSearch for news in the last 14 days on AI x marketing, creator economy and social platforms. Avoid topics already in `out/batch-*` and `topics/posted.json`.
 2. Write 5 posts (4 videos, 1 carousel) to `content/batch-NN/*.json`, following the BRIEF schema exactly.
 3. Build and voice: `python scripts/make_batch.py content/batch-NN --out=batch-NN`, then voice each video with `python scripts/voiceover.py out/batch-NN/<slug>/video.json --engine gemini-oneshot --no-bed`.

@@ -54,6 +54,10 @@ def video_spec(t: dict) -> dict:
             b["avSide"] = "right" if b.get("look") in ("hook", "stat", "cta") else ("left" if i % 2 else "right")
             if b.get("look") == "cta":
                 b["avatar"], b["avSide"] = "wave", "right"
+        if b.get("clip", {}).get("url"):  # real page as B-roll: record it once, scroll it in the clip look
+            import screen_record
+            b["look"] = "clip"
+            b["clip"]["img"] = screen_record.record(b["clip"]["url"]).name
         beats.append(b)
     if beats and beats[-1].get("look") == "cta":
         beats[-1].setdefault("button", "Follow Vish")
