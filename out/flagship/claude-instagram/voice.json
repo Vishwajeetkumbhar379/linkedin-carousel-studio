@@ -1,64 +1,80 @@
 {
  "reference": "video #25 ai-creators-cheap-trust-isnt",
  "engine": "chatterbox clone",
- "avg_similarity": 0.918,
- "duration": 33.809,
+ "avg_similarity": 0.913,
+ "duration": 31.87,
  "lines": [
   {
    "text": "Instagram isn't in Claude's connector list.",
    "start": 0.0,
-   "end": 2.437,
-   "similarity": 0.899,
-   "take": "seed 23 vc"
+   "end": 2.43,
+   "similarity": 0.881,
+   "take": "seed 11",
+   "raw_longest_pause": 0.12,
+   "wps": 2.6
   },
   {
    "text": "I connected it anyway. Five minutes, no code.",
-   "start": 3.187,
-   "end": 7.222,
-   "similarity": 0.909,
-   "take": "seed 11 vc"
+   "start": 3.08,
+   "end": 6.86,
+   "similarity": 0.902,
+   "take": "seed 37",
+   "raw_longest_pause": 0.37,
+   "wps": 2.51
   },
   {
    "text": "In Claude, tap plus, then Manage connectors.",
-   "start": 7.872,
-   "end": 11.829,
-   "similarity": 0.917,
-   "take": "seed 37 tts"
+   "start": 7.36,
+   "end": 11.17,
+   "similarity": 0.913,
+   "take": "seed 37",
+   "raw_longest_pause": 0.43,
+   "wps": 2.22
   },
   {
    "text": "Add a custom connector, paste one link, sign in.",
-   "start": 12.329,
-   "end": 15.372,
-   "similarity": 0.923,
-   "take": "seed 11 tts"
+   "start": 11.67,
+   "end": 14.85,
+   "similarity": 0.93,
+   "take": "seed 23",
+   "raw_longest_pause": 0.4,
+   "wps": 3.31
   },
   {
    "text": "Now just ask which post type gets the most saves.",
-   "start": 15.872,
-   "end": 18.964,
-   "similarity": 0.921,
-   "take": "seed 11 tts"
+   "start": 15.35,
+   "end": 18.62,
+   "similarity": 0.923,
+   "take": "seed 53",
+   "raw_longest_pause": 0.18,
+   "wps": 3.42
   },
   {
    "text": "Want it to publish carousels and read comments too? Composio does that.",
-   "start": 19.464,
-   "end": 24.053,
-   "similarity": 0.926,
-   "take": "seed 37 tts"
+   "start": 19.12,
+   "end": 22.86,
+   "similarity": 0.92,
+   "take": "seed 53",
+   "raw_longest_pause": 0.53,
+   "wps": 3.42
   },
   {
    "text": "Both plug into Meta's official API. No scraping.",
-   "start": 24.553,
-   "end": 28.508,
-   "similarity": 0.942,
-   "take": "seed 11 vc"
+   "start": 23.36,
+   "end": 27.34,
+   "similarity": 0.93,
+   "take": "seed 37",
+   "raw_longest_pause": 0.4,
+   "wps": 2.13
   },
   {
    "text": "Comment INSTA and I'll send you the full setup.",
-   "start": 29.208,
-   "end": 33.309,
-   "similarity": 0.904,
-   "take": "seed 37 vc"
+   "start": 27.84,
+   "end": 31.37,
+   "similarity": 0.903,
+   "take": "seed 23",
+   "raw_longest_pause": 0.52,
+   "wps": 2.93
   }
  ]
 }

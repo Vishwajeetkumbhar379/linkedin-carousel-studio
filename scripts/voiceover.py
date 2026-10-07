@@ -400,10 +400,10 @@ def synth_clone(narration: list[list[str]], post: Path) -> tuple[np.ndarray, lis
     after, k = {}, 0
     for sc in narration:
         k += len(sc)
-        after[str(k - 1)] = 0.6
+        after[str(k - 1)] = 0.7
     work = post / ".clone"
     work.mkdir(exist_ok=True)
-    (work / "lines.json").write_text(json.dumps({"lines": flat, "pause": 0.32, "pause_after": after}, indent=1))
+    (work / "lines.json").write_text(json.dumps({"lines": flat, "pause": 0.42, "pause_after": after}, indent=1))
     subprocess.run([str(CLONE_PY), str(Path(__file__).resolve().parent / "voice_clone.py"), str(work / "lines.json")], check=True)
     audio, sr = sf.read(str(work / "voice-raw.wav"), dtype="float32")
     if audio.ndim > 1:

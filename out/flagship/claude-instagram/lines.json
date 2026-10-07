@@ -1,10 +1,16 @@
-{"lines": [
- "Instagram isn't in Claude's connector list.",
- "I connected it anyway. Five minutes, no code.",
- "In Claude, tap plus, then Manage connectors.",
- "Add a custom connector, paste one link, sign in.",
- "Now just ask which post type gets the most saves.",
- "Want it to publish carousels and read comments too? Composio does that.",
- "Both plug into Meta's official API. No scraping.",
- "Comment INSTA and I'll send you the full setup."
-], "pause": 0.5, "pause_after": {"0": 0.75, "1": 0.65, "6": 0.7}}
+{
+ "lines": [
+  "Instagram isn't in Claude's connector list.",
+  "I connected it anyway. Five minutes, no code.",
+  "In Claude, tap plus, then Manage connectors.",
+  "Add a custom connector, paste one link, sign in.",
+  "Now just ask which post type gets the most saves.",
+  "Want it to publish carousels and read comments too? Composio does that.",
+  "Both plug into Meta's official API. No scraping.",
+  "Comment INSTA and I'll send you the full setup."
+ ],
+ "pause": 0.5,
+ "pause_after": {
+  "0": 0.65
+ }
+}
