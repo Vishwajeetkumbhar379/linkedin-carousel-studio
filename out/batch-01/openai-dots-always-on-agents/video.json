@@ -44,8 +44,8 @@
       "avatar": "surprised",
       "avTop": 170,
       "avSide": "right",
-      "at": 0.2,
-      "until": 1.82,
+      "at": 0.0,
+      "until": 2.38,
       "say": "OpenAI just launched Dots.",
       "avSize": 190
     },
@@ -55,8 +55,8 @@
       "stamp": "DOTS",
       "title": "Always-on agents in ChatGPT",
       "trans": "pop",
-      "at": 1.82,
-      "until": 4.98,
+      "at": 2.8,
+      "until": 7.41,
       "say": "Agents in ChatGPT that keep working without a new prompt."
     },
     {
@@ -65,8 +65,8 @@
       "title": "Its own *cloud computer*",
       "size": "t1",
       "trans": "whip",
-      "at": 4.98,
-      "until": 7.24,
+      "at": 8.11,
+      "until": 10.7,
       "say": "Each one gets its own cloud computer,"
     },
     {
@@ -77,8 +77,8 @@
       "src": "Source: SiliconANGLE, 29 Sep 2026",
       "dots": 200,
       "trans": "zoom",
-      "at": 7.24,
-      "until": 9.0,
+      "at": 11.12,
+      "until": 14.58,
       "say": "and can reach more than four thousand apps."
     },
     {
@@ -91,8 +91,8 @@
         "Teams"
       ],
       "trans": "rise",
-      "at": 9.0,
-      "until": 11.75,
+      "at": 15.28,
+      "until": 18.8,
       "say": "You can message it in ChatGPT, Slack or Teams."
     },
     {
@@ -101,8 +101,8 @@
       "title": "Idle? It looks for *work*",
       "size": "t2",
       "trans": "click",
-      "at": 11.75,
-      "until": 13.6,
+      "at": 19.5,
+      "until": 21.92,
       "say": "When it's idle, it looks for ways to help,"
     },
     {
@@ -114,8 +114,8 @@
       "avatar": "point",
       "avTop": 740,
       "avSide": "right",
-      "at": 13.6,
-      "until": 15.27,
+      "at": 22.34,
+      "until": 24.14,
       "say": "but only in read-only mode."
     },
     {
@@ -127,8 +127,8 @@
       "avatar": "stressed",
       "avTop": 730,
       "avSide": "left",
-      "at": 15.27,
-      "until": 16.51,
+      "at": 24.84,
+      "until": 26.52,
       "say": "Here's the catch for Europe."
     },
     {
@@ -141,8 +141,8 @@
         "UK"
       ],
       "trans": "rise",
-      "at": 16.51,
-      "until": 20.19,
+      "at": 26.94,
+      "until": 31.84,
       "say": "Pro users in the EEA, Switzerland and the UK are left out for now."
     },
     {
@@ -154,8 +154,8 @@
       "avatar": "thinking",
       "avTop": 730,
       "avSide": "left",
-      "at": 20.19,
-      "until": 23.52,
+      "at": 32.54,
+      "until": 36.88,
       "say": "My advice: write the job description before you hire the agent."
     },
     {
@@ -168,8 +168,8 @@
         "Approval points"
       ],
       "trans": "click",
-      "at": 23.52,
-      "until": 26.17,
+      "at": 37.3,
+      "until": 40.35,
       "say": "One goal, clear limits, and what needs your approval."
     },
     {
@@ -178,130 +178,130 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "at": 26.17,
-      "until": 27.86,
+      "at": 41.05,
+      "until": 43.93,
       "say": "Follow for more AI and marketing news.",
       "avatar": "wave",
       "avSide": "right"
     }
   ],
-  "duration": 30.66,
+  "duration": 46.73,
   "posters": {
-    "b01": 1.16,
-    "b02": 4.01,
-    "b03": 6.45,
-    "b04": 8.31,
-    "b05": 10.86,
-    "b06": 12.89,
-    "b07": 14.6,
-    "b08": 15.93,
-    "b09": 19.12,
-    "b10": 22.52,
-    "b11": 25.3,
-    "b12": 29.76
+    "b01": 1.9,
+    "b02": 6.71,
+    "b03": 10.18,
+    "b04": 14.11,
+    "b05": 18.32,
+    "b06": 21.44,
+    "b07": 24.0,
+    "b08": 26.18,
+    "b09": 31.08,
+    "b10": 36.01,
+    "b11": 39.96,
+    "b12": 45.59
   },
   "sfx": true,
   "captions": [
     {
-      "at": 0.2,
-      "until": 1.9,
+      "at": 0.0,
+      "until": 2.46,
       "text": "OpenAI just launched Dots."
     },
     {
-      "at": 1.82,
-      "until": 3.424,
+      "at": 2.8,
+      "until": 5.103,
       "text": "Agents in ChatGPT that keep"
     },
     {
-      "at": 3.344,
-      "until": 5.06,
+      "at": 5.023,
+      "until": 7.49,
       "text": "working without a new prompt."
     },
     {
-      "at": 4.98,
-      "until": 7.32,
+      "at": 8.11,
+      "until": 10.78,
       "text": "Each one gets its own cloud computer,"
     },
     {
-      "at": 7.24,
-      "until": 8.074,
+      "at": 11.12,
+      "until": 12.683,
       "text": "and can reach more"
     },
     {
-      "at": 7.994,
-      "until": 9.08,
+      "at": 12.603,
+      "until": 14.66,
       "text": "than four thousand apps."
     },
     {
-      "at": 9.0,
-      "until": 10.363,
+      "at": 15.28,
+      "until": 17.003,
       "text": "You can message it in"
     },
     {
-      "at": 10.283,
-      "until": 11.83,
+      "at": 16.923,
+      "until": 18.88,
       "text": "ChatGPT, Slack or Teams."
     },
     {
-      "at": 11.75,
-      "until": 12.913,
+      "at": 19.5,
+      "until": 20.997,
       "text": "When it's idle, it looks"
     },
     {
-      "at": 12.833,
-      "until": 13.68,
+      "at": 20.917,
+      "until": 22.0,
       "text": "for ways to help,"
     },
     {
-      "at": 13.6,
-      "until": 15.35,
+      "at": 22.34,
+      "until": 24.22,
       "text": "but only in read-only mode."
     },
     {
-      "at": 15.27,
-      "until": 16.59,
+      "at": 24.84,
+      "until": 26.6,
       "text": "Here's the catch for Europe."
     },
     {
-      "at": 16.51,
-      "until": 18.685,
+      "at": 26.94,
+      "until": 29.809,
       "text": "Pro users in the EEA, Switzerland and"
     },
     {
-      "at": 18.605,
-      "until": 20.27,
+      "at": 29.729,
+      "until": 31.92,
       "text": "the UK are left out for now."
     },
     {
-      "at": 20.19,
-      "until": 22.204,
+      "at": 32.54,
+      "until": 35.14,
       "text": "My advice: write the job description"
     },
     {
-      "at": 22.124,
-      "until": 23.6,
+      "at": 35.06,
+      "until": 36.96,
       "text": "before you hire the agent."
     },
     {
-      "at": 23.52,
-      "until": 24.976,
+      "at": 37.3,
+      "until": 38.964,
       "text": "One goal, clear limits, and"
     },
     {
-      "at": 24.896,
-      "until": 26.25,
+      "at": 38.884,
+      "until": 40.43,
       "text": "what needs your approval."
     },
     {
-      "at": 26.17,
-      "until": 27.944,
+      "at": 41.05,
+      "until": 44.01,
       "text": "Follow for more AI and marketing news."
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
-    "voice": "voice_3rjyhtlhksw1",
-    "breaths": false,
+    "engine": "chatterbox-clone-of-video-25",
+    "voice": "Puck",
+    "breaths": true,
     "bed": false
   }
 }

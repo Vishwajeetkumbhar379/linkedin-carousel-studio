@@ -42,7 +42,10 @@
       "avatar": "surprised",
       "avTop": 170,
       "avSize": 190,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 0.0,
+      "until": 3.9,
+      "say": "Stop using influencers to target kids right now"
     },
     {
       "look": "text",
@@ -52,7 +55,10 @@
       "trans": "whip",
       "avatar": "surprised",
       "avTop": 730,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 4.6,
+      "until": 8.56,
+      "say": "Denmark just filed a complaint over Red Bull influencer posts"
     },
     {
       "look": "stamp",
@@ -62,13 +68,19 @@
       "trans": "zoom",
       "avatar": "stressed",
       "avTop": 740,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 9.26,
+      "until": 13.73,
+      "say": "Danish law bans marketing energy drinks to anyone under 18"
     },
     {
       "look": "chat",
       "bg": "ivory",
       "prompt": "Ask Claude to verify compliance before any post goes live",
-      "trans": "click"
+      "trans": "click",
+      "at": 14.43,
+      "until": 18.49,
+      "say": "Then ask Claude to check each brief against your market's rules"
     },
     {
       "look": "feed",
@@ -77,7 +89,10 @@
       "avatar": "pleased",
       "trans": "pop",
       "avTop": 640,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 19.19,
+      "until": 22.54,
+      "say": "Review sponsored posts for hidden minor targeting on feeds"
     },
     {
       "look": "versus",
@@ -85,7 +100,10 @@
       "title": "Manual checks versus automated compliance workflows daily",
       "left": "Manual checks",
       "right": "Automated workflows",
-      "trans": "rise"
+      "trans": "rise",
+      "at": 23.24,
+      "until": 27.84,
+      "say": "Manual checks versus automated compliance workflows daily"
     },
     {
       "look": "stamp",
@@ -95,17 +113,115 @@
       "avatar": "wink",
       "trans": "click",
       "avTop": 740,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 28.54,
+      "until": 32.47,
+      "say": "Get instant alerts when rules break or thresholds exceeded"
     },
     {
       "look": "cta",
       "bg": "violet",
       "title": "Follow Vish for more AI x marketing tips every week",
       "button": "Follow Vish",
-      "trans": "pop"
+      "trans": "pop",
+      "at": 33.17,
+      "until": 36.92,
+      "say": "Follow Vish for more AI x marketing tips every week"
     }
   ],
-  "duration": 36,
-  "posters": {},
-  "sfx": true
+  "duration": 39.72,
+  "posters": {
+    "b01": 3.34,
+    "b02": 7.99,
+    "b03": 13.06,
+    "b04": 17.9,
+    "b05": 22.09,
+    "b06": 27.14,
+    "b07": 31.91,
+    "b08": 38.41
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.0,
+      "until": 2.2,
+      "text": "Stop using influencers to"
+    },
+    {
+      "at": 2.12,
+      "until": 3.98,
+      "text": "target kids right now"
+    },
+    {
+      "at": 4.6,
+      "until": 6.66,
+      "text": "Denmark just filed a complaint"
+    },
+    {
+      "at": 6.58,
+      "until": 8.64,
+      "text": "over Red Bull influencer posts"
+    },
+    {
+      "at": 9.26,
+      "until": 11.849,
+      "text": "Danish law bans marketing energy"
+    },
+    {
+      "at": 11.769,
+      "until": 13.81,
+      "text": "drinks to anyone under 18"
+    },
+    {
+      "at": 14.43,
+      "until": 16.409,
+      "text": "Then ask Claude to check each"
+    },
+    {
+      "at": 16.329,
+      "until": 18.57,
+      "text": "brief against your market's rules"
+    },
+    {
+      "at": 19.19,
+      "until": 21.209,
+      "text": "Review sponsored posts for hidden"
+    },
+    {
+      "at": 21.129,
+      "until": 22.62,
+      "text": "minor targeting on feeds"
+    },
+    {
+      "at": 23.24,
+      "until": 27.92,
+      "text": "Manual checks versus automated compliance workflows daily"
+    },
+    {
+      "at": 28.54,
+      "until": 30.619,
+      "text": "Get instant alerts when rules"
+    },
+    {
+      "at": 30.539,
+      "until": 32.55,
+      "text": "break or thresholds exceeded"
+    },
+    {
+      "at": 33.17,
+      "until": 34.975,
+      "text": "Follow Vish for more AI"
+    },
+    {
+      "at": 34.895,
+      "until": 37.0,
+      "text": "x marketing tips every week"
+    }
+  ],
+  "voice": {
+    "engine": "chatterbox-clone-of-video-25",
+    "voice": "Puck",
+    "breaths": true,
+    "bed": false
+  }
 }

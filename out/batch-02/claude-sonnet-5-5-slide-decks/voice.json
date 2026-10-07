@@ -1,0 +1,94 @@
+{
+ "voice": "Puck",
+ "duration": 36.87,
+ "scenes": [
+  {
+   "start": 0.0,
+   "end": 4.42,
+   "phrases": [
+    {
+     "start": 0.0,
+     "end": 4.42,
+     "text": "Claude Sonnet 5.5 can build decks from your own template."
+    }
+   ]
+  },
+  {
+   "start": 5.12,
+   "end": 9.4,
+   "phrases": [
+    {
+     "start": 5.12,
+     "end": 9.4,
+     "text": "In Anthropic's test, experts called its first draft ready to send."
+    }
+   ]
+  },
+  {
+   "start": 10.1,
+   "end": 14.26,
+   "phrases": [
+    {
+     "start": 10.1,
+     "end": 14.26,
+     "text": "It's also over thirty percent faster, at the same token price."
+    }
+   ]
+  },
+  {
+   "start": 14.96,
+   "end": 18.56,
+   "phrases": [
+    {
+     "start": 14.96,
+     "end": 18.56,
+     "text": "Step one: pick Sonnet 5.5 in the model menu."
+    }
+   ]
+  },
+  {
+   "start": 19.26,
+   "end": 22.71,
+   "phrases": [
+    {
+     "start": 19.26,
+     "end": 22.71,
+     "text": "Step two: upload your slide template and your source notes."
+    }
+   ]
+  },
+  {
+   "start": 23.41,
+   "end": 27.31,
+   "phrases": [
+    {
+     "start": 23.41,
+     "end": 27.31,
+     "text": "Step three: ask for ten slides, each number sourced."
+    }
+   ]
+  },
+  {
+   "start": 28.01,
+   "end": 31.45,
+   "phrases": [
+    {
+     "start": 28.01,
+     "end": 31.45,
+     "text": "Step four: check every number before a client sees it."
+    }
+   ]
+  },
+  {
+   "start": 32.15,
+   "end": 35.37,
+   "phrases": [
+    {
+     "start": 32.15,
+     "end": 35.37,
+     "text": "Follow for more AI workflows you can copy."
+    }
+   ]
+  }
+ ]
+}

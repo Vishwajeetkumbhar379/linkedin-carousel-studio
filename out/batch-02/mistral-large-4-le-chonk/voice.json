@@ -1,0 +1,94 @@
+{
+ "voice": "Puck",
+ "duration": 36.349999999999994,
+ "scenes": [
+  {
+   "start": 0.0,
+   "end": 3.46,
+   "phrases": [
+    {
+     "start": 0.0,
+     "end": 3.46,
+     "text": "Mistral just shipped a one trillion parameter model."
+    }
+   ]
+  },
+  {
+   "start": 4.16,
+   "end": 8.11,
+   "phrases": [
+    {
+     "start": 4.16,
+     "end": 8.11,
+     "text": "It's called Large 4, and the nickname is Le Chonk."
+    }
+   ]
+  },
+  {
+   "start": 8.81,
+   "end": 12.44,
+   "phrases": [
+    {
+     "start": 8.81,
+     "end": 12.44,
+     "text": "Mistral trained it on its own GPUs, inside Europe."
+    }
+   ]
+  },
+  {
+   "start": 13.14,
+   "end": 17.81,
+   "phrases": [
+    {
+     "start": 13.14,
+     "end": 17.81,
+     "text": "Its training data spans over 160 languages, every EU one included."
+    }
+   ]
+  },
+  {
+   "start": 18.51,
+   "end": 21.96,
+   "phrases": [
+    {
+     "start": 18.51,
+     "end": 21.96,
+     "text": "Mistral says it handles spreadsheets, slides and PDFs too."
+    }
+   ]
+  },
+  {
+   "start": 22.66,
+   "end": 26.08,
+   "phrases": [
+    {
+     "start": 22.66,
+     "end": 26.08,
+     "text": "The catch: the weights aren't out yet, only a preview."
+    }
+   ]
+  },
+  {
+   "start": 26.78,
+   "end": 30.86,
+   "phrases": [
+    {
+     "start": 26.78,
+     "end": 30.86,
+     "text": "Try the preview with one real brief in two languages."
+    }
+   ]
+  },
+  {
+   "start": 31.56,
+   "end": 34.85,
+   "phrases": [
+    {
+     "start": 31.56,
+     "end": 34.85,
+     "text": "Follow for AI news that matters to marketers."
+    }
+   ]
+  }
+ ]
+}

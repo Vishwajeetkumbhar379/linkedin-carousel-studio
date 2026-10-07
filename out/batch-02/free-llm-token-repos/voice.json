@@ -1,0 +1,94 @@
+{
+ "voice": "Puck",
+ "duration": 40.089999999999996,
+ "scenes": [
+  {
+   "start": 0.0,
+   "end": 3.99,
+   "phrases": [
+    {
+     "start": 0.0,
+     "end": 3.99,
+     "text": "Two GitHub repos promise billions of free AI tokens."
+    }
+   ]
+  },
+  {
+   "start": 4.69,
+   "end": 10.54,
+   "phrases": [
+    {
+     "start": 4.69,
+     "end": 10.54,
+     "text": "FreeLLMAPI says 7.4 billion a month, across 34 providers."
+    }
+   ]
+  },
+  {
+   "start": 11.24,
+   "end": 15.99,
+   "phrases": [
+    {
+     "start": 11.24,
+     "end": 15.99,
+     "text": "OmniRoute says 1.62 billion, counting each shared pool once."
+    }
+   ]
+  },
+  {
+   "start": 16.69,
+   "end": 20.39,
+   "phrases": [
+    {
+     "start": 16.69,
+     "end": 20.39,
+     "text": "Both give you one endpoint that switches when limits hit."
+    }
+   ]
+  },
+  {
+   "start": 21.09,
+   "end": 25.8,
+   "phrases": [
+    {
+     "start": 21.09,
+     "end": 25.8,
+     "text": "The catch: no frontier models, no uptime promise, daily caps."
+    }
+   ]
+  },
+  {
+   "start": 26.5,
+   "end": 30.17,
+   "phrases": [
+    {
+     "start": 26.5,
+     "end": 30.17,
+     "text": "I'd use it for drafts and research, not client data."
+    }
+   ]
+  },
+  {
+   "start": 30.87,
+   "end": 34.37,
+   "phrases": [
+    {
+     "start": 30.87,
+     "end": 34.37,
+     "text": "Setup is one command, then you add your free keys."
+    }
+   ]
+  },
+  {
+   "start": 35.07,
+   "end": 38.59,
+   "phrases": [
+    {
+     "start": 35.07,
+     "end": 38.59,
+     "text": "Follow for more free AI tools that actually work."
+    }
+   ]
+  }
+ ]
+}

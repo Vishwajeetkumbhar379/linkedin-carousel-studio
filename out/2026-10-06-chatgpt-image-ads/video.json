@@ -42,7 +42,7 @@
       "kick": "AI x Marketing · US test",
       "title": "ChatGPT is turning image prompts into *ad space.*",
       "at": 0.0,
-      "until": 2.76,
+      "until": 3.29,
       "say": "So. ChatGPT is about to put ads",
       "avatar": "surprised",
       "avTop": 170,
@@ -57,7 +57,7 @@
       "genAt": 1.0,
       "ad": true,
       "adAt": 1.7,
-      "at": 3.08,
+      "at": 3.71,
       "until": 5.6,
       "say": "right next to the images you make."
     },
@@ -68,8 +68,8 @@
       "stamp": "TEST",
       "title": "Starts *later this month.*",
       "sub": "Announced by OpenAI on 5 October.",
-      "at": 6.2,
-      "until": 7.82,
+      "at": 6.3,
+      "until": 7.47,
       "say": "It's a test for now."
     },
     {
@@ -84,8 +84,8 @@
       "scrollAt": 0.1,
       "badge": "vish-badge-smirk",
       "badgeStyle": "right:24px;top:640px;width:190px",
-      "at": 8.14,
-      "until": 11.28,
+      "at": 7.89,
+      "until": 11.05,
       "say": "US only, with a handful of advertisers."
     },
     {
@@ -96,8 +96,8 @@
       "genAt": 0.2,
       "ad": true,
       "adAt": 0.5,
-      "at": 11.88,
-      "until": 13.78,
+      "at": 11.75,
+      "until": 13.45,
       "say": "The ads are labelled."
     },
     {
@@ -107,8 +107,8 @@
       "title": "Beside your image, *not inside it.*",
       "left": "Your image",
       "right": "Labelled ad",
-      "at": 14.1,
-      "until": 16.65,
+      "at": 13.87,
+      "until": 17.12,
       "say": "And they sit beside your picture. Not inside it."
     },
     {
@@ -117,8 +117,8 @@
       "trans": "pop",
       "title": "Why should *you* care?",
       "size": "t1",
-      "at": 17.25,
-      "until": 18.72,
+      "at": 17.82,
+      "until": 19.07,
       "say": "Why should you care?",
       "avatar": "thinking",
       "avTop": 720,
@@ -132,8 +132,8 @@
       "title": "people use ChatGPT *every week.*",
       "src": "Source: OpenAI, 5 Oct 2026",
       "dots": 260,
-      "at": 19.04,
-      "until": 22.67,
+      "at": 19.49,
+      "until": 22.64,
       "say": "Over a billion people use ChatGPT every week."
     },
     {
@@ -142,8 +142,8 @@
       "trans": "whip",
       "title": "And the *early numbers?*",
       "size": "t1",
-      "at": 23.27,
-      "until": 24.95,
+      "at": 23.34,
+      "until": 24.66,
       "say": "And the early numbers?"
     },
     {
@@ -164,8 +164,8 @@
         }
       ],
       "src": "WeightWatchers vs its blended paid-search benchmark. Partner-reported (DV Rockerbox), via OpenAI",
-      "at": 25.27,
-      "until": 28.7,
+      "at": 25.08,
+      "until": 28.74,
       "say": "One brand got cheaper conversions than on paid search.",
       "avatar": "stressed",
       "avTop": 190,
@@ -178,8 +178,8 @@
       "trans": "zoom",
       "stamp": "1 BRAND",
       "title": "A signal. *Not proof.*",
-      "at": 29.02,
-      "until": 32.46,
+      "at": 29.16,
+      "until": 32.34,
       "say": "One brand, though. So, a signal. Not proof.",
       "avatar": "smirk",
       "avTop": 730,
@@ -195,8 +195,8 @@
       ],
       "kick": "My take",
       "title": "Here's *my take.*",
-      "at": 33.06,
-      "until": 34.32,
+      "at": 33.04,
+      "until": 33.95,
       "say": "Here's my take.",
       "avatar": "point",
       "avSide": "right"
@@ -207,8 +207,8 @@
       "trans": "whip",
       "title": "The next ad slot is the moment someone *imagines your product.*",
       "size": "t2",
-      "at": 34.64,
-      "until": 38.19,
+      "at": 34.37,
+      "until": 38.3,
       "say": "The next ad slot is the moment someone pictures your product."
     },
     {
@@ -218,8 +218,8 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "sprite": null,
-      "at": 38.51,
-      "until": 39.39,
+      "at": 38.72,
+      "until": 39.85,
       "say": "Follow for more.",
       "avatar": "wave",
       "avTop": 185,
@@ -227,123 +227,123 @@
       "avSize": 190
     }
   ],
-  "duration": 41.39,
+  "duration": 42.65,
   "posters": {
-    "b01": 1.1,
-    "b02": 2.86,
-    "b03": 4.16,
-    "b04": 6.01,
-    "b05": 7.29,
-    "b06": 9.49,
-    "b07": 10.74,
-    "b08": 12.95,
-    "b09": 14.26,
-    "b10": 16.55,
-    "b11": 18.97,
-    "b12": 20.16,
-    "b13": 22.64,
-    "b14": 26.24
+    "b01": 2.63,
+    "b02": 5.45,
+    "b03": 7.24,
+    "b04": 10.64,
+    "b05": 13.11,
+    "b06": 16.69,
+    "b07": 18.82,
+    "b08": 22.23,
+    "b09": 24.4,
+    "b10": 28.01,
+    "b11": 31.93,
+    "b12": 33.77,
+    "b13": 37.51,
+    "b14": 41.86
   },
   "sfx": true,
   "captions": [
     {
       "at": 0.0,
-      "until": 2.84,
+      "until": 3.37,
       "text": "So. ChatGPT is about to put ads"
     },
     {
-      "at": 3.08,
+      "at": 3.71,
       "until": 5.68,
       "text": "right next to the images you make."
     },
     {
-      "at": 6.2,
-      "until": 7.9,
+      "at": 6.3,
+      "until": 7.55,
       "text": "It's a test for now."
     },
     {
-      "at": 8.14,
-      "until": 11.36,
+      "at": 7.89,
+      "until": 11.13,
       "text": "US only, with a handful of advertisers."
     },
     {
-      "at": 11.88,
-      "until": 13.86,
+      "at": 11.75,
+      "until": 13.53,
       "text": "The ads are labelled."
     },
     {
-      "at": 14.1,
-      "until": 15.482,
+      "at": 13.87,
+      "until": 15.61,
       "text": "And they sit beside your"
     },
     {
-      "at": 15.402,
-      "until": 16.73,
+      "at": 15.53,
+      "until": 17.2,
       "text": "picture. Not inside it."
     },
     {
-      "at": 17.25,
-      "until": 18.8,
+      "at": 17.82,
+      "until": 19.15,
       "text": "Why should you care?"
     },
     {
-      "at": 19.04,
-      "until": 20.852,
+      "at": 19.49,
+      "until": 21.073,
       "text": "Over a billion people"
     },
     {
-      "at": 20.773,
-      "until": 22.75,
+      "at": 20.993,
+      "until": 22.72,
       "text": "use ChatGPT every week."
     },
     {
-      "at": 23.27,
-      "until": 25.03,
+      "at": 23.34,
+      "until": 24.74,
       "text": "And the early numbers?"
     },
     {
-      "at": 25.27,
-      "until": 27.486,
+      "at": 25.08,
+      "until": 27.439,
       "text": "One brand got cheaper conversions"
     },
     {
-      "at": 27.406,
-      "until": 28.78,
+      "at": 27.359,
+      "until": 28.82,
       "text": "than on paid search."
     },
     {
-      "at": 29.02,
-      "until": 30.902,
+      "at": 29.16,
+      "until": 30.906,
       "text": "One brand, though. So,"
     },
     {
-      "at": 30.822,
-      "until": 32.54,
+      "at": 30.826,
+      "until": 32.42,
       "text": "a signal. Not proof."
     },
     {
-      "at": 33.06,
-      "until": 34.4,
+      "at": 33.04,
+      "until": 34.03,
       "text": "Here's my take."
     },
     {
-      "at": 34.64,
-      "until": 36.081,
+      "at": 34.37,
+      "until": 35.956,
       "text": "The next ad slot is the"
     },
     {
-      "at": 36.001,
-      "until": 38.27,
+      "at": 35.877,
+      "until": 38.38,
       "text": "moment someone pictures your product."
     },
     {
-      "at": 38.51,
-      "until": 39.472,
+      "at": 38.72,
+      "until": 39.93,
       "text": "Follow for more."
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
+    "engine": "chatterbox-clone-of-video-25",
     "voice": "Puck",
     "breaths": true,
     "bed": false

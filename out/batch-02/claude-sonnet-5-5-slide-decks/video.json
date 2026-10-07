@@ -42,7 +42,10 @@
       "avatar": "crossed",
       "avTop": 170,
       "avSize": 190,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 0.0,
+      "until": 4.42,
+      "say": "Claude Sonnet 5.5 can build decks from your own template."
     },
     {
       "look": "stamp",
@@ -53,7 +56,10 @@
       "trans": "pop",
       "avatar": "surprised",
       "avTop": 740,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 5.12,
+      "until": 9.4,
+      "say": "In Anthropic's test, experts called its first draft ready to send."
     },
     {
       "look": "stat",
@@ -65,7 +71,10 @@
       "trans": "zoom",
       "avatar": "pleased",
       "avTop": 185,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 10.1,
+      "until": 14.26,
+      "say": "It's also over thirty percent faster, at the same token price."
     },
     {
       "look": "text",
@@ -76,7 +85,10 @@
       "trans": "whip",
       "avatar": "point",
       "avTop": 730,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 14.96,
+      "until": 18.56,
+      "say": "Step one: pick Sonnet 5.5 in the model menu."
     },
     {
       "look": "chips",
@@ -89,7 +101,10 @@
       "trans": "rise",
       "avatar": "explaining",
       "avTop": 780,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 19.26,
+      "until": 22.71,
+      "say": "Step two: upload your slide template and your source notes."
     },
     {
       "look": "chat",
@@ -98,7 +113,10 @@
       "trans": "click",
       "avatar": "focused",
       "avTop": 960,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 23.41,
+      "until": 27.31,
+      "say": "Step three: ask for ten slides, each number sourced."
     },
     {
       "look": "stamp",
@@ -109,7 +127,10 @@
       "trans": "zoom",
       "avatar": "stressed",
       "avTop": 740,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 28.01,
+      "until": 31.45,
+      "say": "Step four: check every number before a client sees it."
     },
     {
       "look": "cta",
@@ -119,10 +140,110 @@
       "trans": "pop",
       "avatar": "wave",
       "avTop": 185,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 32.15,
+      "until": 35.37,
+      "say": "Follow for more AI workflows you can copy."
     }
   ],
-  "duration": 36,
-  "posters": {},
-  "sfx": true
+  "duration": 38.17,
+  "posters": {
+    "b01": 3.76,
+    "b02": 8.77,
+    "b03": 13.65,
+    "b04": 18.06,
+    "b05": 22.24,
+    "b06": 26.75,
+    "b07": 30.99,
+    "b08": 36.97
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.0,
+      "until": 2.211,
+      "text": "Claude Sonnet 5.5 can build"
+    },
+    {
+      "at": 2.131,
+      "until": 4.5,
+      "text": "decks from your own template."
+    },
+    {
+      "at": 5.12,
+      "until": 7.768,
+      "text": "In Anthropic's test, experts called its"
+    },
+    {
+      "at": 7.688,
+      "until": 9.48,
+      "text": "first draft ready to send."
+    },
+    {
+      "at": 10.1,
+      "until": 12.703,
+      "text": "It's also over thirty percent faster,"
+    },
+    {
+      "at": 12.623,
+      "until": 14.34,
+      "text": "at the same token price."
+    },
+    {
+      "at": 14.96,
+      "until": 17.133,
+      "text": "Step one: pick Sonnet 5.5"
+    },
+    {
+      "at": 17.053,
+      "until": 18.64,
+      "text": "in the model menu."
+    },
+    {
+      "at": 19.26,
+      "until": 20.946,
+      "text": "Step two: upload your slide"
+    },
+    {
+      "at": 20.866,
+      "until": 22.79,
+      "text": "template and your source notes."
+    },
+    {
+      "at": 23.41,
+      "until": 25.249,
+      "text": "Step three: ask for ten"
+    },
+    {
+      "at": 25.169,
+      "until": 27.39,
+      "text": "slides, each number sourced."
+    },
+    {
+      "at": 28.01,
+      "until": 29.972,
+      "text": "Step four: check every number"
+    },
+    {
+      "at": 29.892,
+      "until": 31.53,
+      "text": "before a client sees it."
+    },
+    {
+      "at": 32.15,
+      "until": 33.644,
+      "text": "Follow for more AI"
+    },
+    {
+      "at": 33.564,
+      "until": 35.45,
+      "text": "workflows you can copy."
+    }
+  ],
+  "voice": {
+    "engine": "chatterbox-clone-of-video-25",
+    "voice": "Puck",
+    "breaths": true,
+    "bed": false
+  }
 }
