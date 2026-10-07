@@ -1,0 +1,64 @@
+{
+ "reference": "video #25 ai-creators-cheap-trust-isnt",
+ "engine": "chatterbox clone",
+ "avg_similarity": 0.918,
+ "duration": 33.809,
+ "lines": [
+  {
+   "text": "Instagram isn't in Claude's connector list.",
+   "start": 0.0,
+   "end": 2.437,
+   "similarity": 0.899,
+   "take": "seed 23 vc"
+  },
+  {
+   "text": "I connected it anyway. Five minutes, no code.",
+   "start": 3.187,
+   "end": 7.222,
+   "similarity": 0.909,
+   "take": "seed 11 vc"
+  },
+  {
+   "text": "In Claude, tap plus, then Manage connectors.",
+   "start": 7.872,
+   "end": 11.829,
+   "similarity": 0.917,
+   "take": "seed 37 tts"
+  },
+  {
+   "text": "Add a custom connector, paste one link, sign in.",
+   "start": 12.329,
+   "end": 15.372,
+   "similarity": 0.923,
+   "take": "seed 11 tts"
+  },
+  {
+   "text": "Now just ask which post type gets the most saves.",
+   "start": 15.872,
+   "end": 18.964,
+   "similarity": 0.921,
+   "take": "seed 11 tts"
+  },
+  {
+   "text": "Want it to publish carousels and read comments too? Composio does that.",
+   "start": 19.464,
+   "end": 24.053,
+   "similarity": 0.926,
+   "take": "seed 37 tts"
+  },
+  {
+   "text": "Both plug into Meta's official API. No scraping.",
+   "start": 24.553,
+   "end": 28.508,
+   "similarity": 0.942,
+   "take": "seed 11 vc"
+  },
+  {
+   "text": "Comment INSTA and I'll send you the full setup.",
+   "start": 29.208,
+   "end": 33.309,
+   "similarity": 0.904,
+   "take": "seed 37 vc"
+  }
+ ]
+}
