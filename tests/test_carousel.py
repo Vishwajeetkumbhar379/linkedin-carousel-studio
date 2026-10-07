@@ -4,7 +4,8 @@ from types import SimpleNamespace
 
 import pytest
 
-from carousel.ai import draft
+from carousel import ai
+from carousel.ai import MistralClient, draft, invented_numbers
 from carousel.templates import render_slide, validate
 
 DECK = json.loads((Path(__file__).parent.parent / "examples" / "creator-contract-checks.json").read_text())
@@ -39,6 +40,36 @@ def test_ai_draft_retries_until_rules_pass():
     fake = SimpleNamespace(messages=SimpleNamespace(create=lambda **kw: make(next(calls))))
     deck = draft("contracts", "notes", DECK["author"], client=fake)
     assert validate(deck) == []
+
+
+def test_invented_statistics_are_flagged():
+    deck = {"caption": "62% of disputes", "slides": [{"type": "point", "title": "2x faster", "body": "43% had changes, net 30"}]}
+    assert invented_numbers(deck, "62% of disputes, approved 2x faster") == ["43%"]
+
+
+def test_mistral_client_returns_anthropic_shaped_tool_use(monkeypatch):
+    good = {k: v for k, v in DECK.items() if k != "author"}
+    sent = {}
+
+    class Resp:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def read(self):
+            tc = [{"function": {"name": "build_deck", "arguments": json.dumps(good)}}]
+            return json.dumps({"choices": [{"message": {"tool_calls": tc}}]}).encode()
+
+    def fake_urlopen(req, timeout):
+        sent.update(json.loads(req.data))
+        return Resp()
+
+    monkeypatch.setattr(ai.urllib.request, "urlopen", fake_urlopen)
+    deck = draft("contracts", "notes", DECK["author"], client=MistralClient(api_key="k"))
+    assert validate(deck) == [] and sent["tools"][0]["function"]["name"] == "build_deck"
+    assert sent["messages"][0]["role"] == "system" and sent["model"] == ai.MISTRAL_MODEL
 
 
 def test_render_produces_pdf(tmp_path):

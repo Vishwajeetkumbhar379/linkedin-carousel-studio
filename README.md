@@ -56,7 +56,18 @@ carousel draft "What 850 creator deals taught me about briefs" --notes my_notes.
 carousel render deck.json
 ```
 
-Claude returns the deck as **structured JSON through tool use**, along with a caption. The same style validator checks the draft, and if it breaks a rule the errors go back to Claude for one more attempt. The prompt forbids statistics that aren't in your notes, so the post stays true to your experience. You always review the JSON before rendering.
+### Free option: Mistral
+
+No Anthropic key? Use Mistral's free tier instead. No extra package needed:
+
+```bash
+export MISTRAL_API_KEY=...
+carousel draft "What 850 creator deals taught me about briefs" --notes my_notes.txt --provider mistral
+```
+
+`--provider auto` (the default) uses Claude when `ANTHROPIC_API_KEY` is set, otherwise Mistral. The default Mistral model is `ministral-14b-latest`, the strongest model on the free tier; set `CAROUSEL_MODEL` to pick another. Free-tier rate limits (HTTP 429) are retried with backoff.
+
+Claude returns the deck as **structured JSON through tool use**, along with a caption. The same style validator checks the draft, and if it breaks a rule the errors go back to Claude for one more attempt. The prompt forbids statistics that aren't in your notes, and the code enforces it: any percentage or multiplier (`43%`, `2x`) whose number isn't in your notes goes back to the model as an error, so the post stays true to your experience. You always review the JSON before rendering.
 
 ## How it works
 
