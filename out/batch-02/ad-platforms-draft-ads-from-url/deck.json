@@ -1,0 +1,104 @@
+{
+  "slug": "ad-platforms-draft-ads-from-url",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-ad-platforms-draft-ads-from-url",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Your website URL is now *an ad brief*",
+      "subtitle": "Google, X and Meta now draft ads from what you already have",
+      "chip": "AI x Marketing",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-url-to-ads",
+      "hero_style": "left:140px;bottom:40px;width:800px",
+      "layers": [
+        {
+          "asset": "skeptical",
+          "style": "left:40px;top:700px;width:250px;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
+        },
+        {
+          "html": "URL in, <i>ads out</i>",
+          "class": "tag dark",
+          "style": "right:60px;top:690px;transform:rotate(3deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · Google",
+      "title": "URLs and photos into video",
+      "body": "Google says Asset Studio, powered by *Gemini Omni*, turns your website URLs and photos into videos you can preview before publishing. For Demand Gen and YouTube ads.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · X",
+      "title": "X Lift builds the whole campaign",
+      "body": "Enter your URL. X's AI offers images and copy, and can build the campaign, *targeting included*. You set the budget. It's aimed at new advertisers."
+    },
+    {
+      "type": "point",
+      "label": "03 · Meta",
+      "title": "Static ads become video",
+      "body": "Advantage+ creative now generates video from static assets, *generally available*. Ads Creative Studio can change hooks, audio, clip length, captions and end scenes."
+    },
+    {
+      "type": "stat",
+      "label": "Who X Lift is for",
+      "value": "50%",
+      "title": "growth in X's active self-serve advertisers",
+      "body": "Q3 2026 vs Q3 2025, as reported by X. Smaller, newer advertisers are the target.",
+      "source": "Source: Social Media Today, 6 Oct 2026"
+    },
+    {
+      "type": "point",
+      "label": "04 · Fix the page first",
+      "title": "The AI reads your landing page",
+      "body": "Put the offer, the price and the proof near the top. A vague page gives you *a vague ad*, just faster."
+    },
+    {
+      "type": "point",
+      "label": "05 · Keep a control",
+      "title": "AI draft vs your best ad",
+      "body": "Same budget, same audience, one variable. Google's own advice: change gradually and judge *quality over quantity*, so the system has time to measure."
+    },
+    {
+      "type": "list",
+      "title": "06 · Check before it goes live",
+      "items": [
+        "Every claim is true",
+        "Price matches the page",
+        "No made-up reviews or stats",
+        "Still sounds like you"
+      ]
+    },
+    {
+      "type": "point",
+      "label": "The catch",
+      "title": "Keep a human on spend",
+      "body": "X Lift can set targeting for you. Meta is adding budget changes *by prompt*. Let AI draft the options. You decide what's true and worth the money."
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *campaign launch*.",
+      "subtitle": "Full breakdown on Build with Vish.",
+      "question": "Would you let an AI pick your targeting?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 31
+}

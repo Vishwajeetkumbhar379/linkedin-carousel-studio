@@ -1,0 +1,15 @@
+{
+ "slug": "free-llm-token-repos",
+ "format": "video",
+ "pillar": "AI tools that change marketing work",
+ "score": 9.2,
+ "title": "FreeLLMAPI vs OmniRoute: two GitHub repos that stack free AI tokens, and the honest maths",
+ "hook": "Two GitHub repos promise *billions* of free AI tokens.",
+ "subtitle": "FreeLLMAPI says 7.4B a month. OmniRoute says ~1.62B. Here's why.",
+ "cover": {
+  "concept": "A laptop showing a generic code repository page, with a funnel on top merging many thin coloured pipes into one thick pipe that pours a stack of glowing token coins onto the desk. Context symbol: a generic code branch icon.",
+  "avatar": "surprised",
+  "label": "Free tokens ↓"
+ },
+ "site_slug": null
+}

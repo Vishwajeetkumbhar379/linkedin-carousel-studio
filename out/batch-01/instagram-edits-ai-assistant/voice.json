@@ -1,106 +1,106 @@
 {
- "voice": "voice_3rjyhtlhksw1",
- "duration": 25.985458333333334,
+ "voice": "Puck",
+ "duration": 37.211,
  "scenes": [
   {
-   "start": 0.2,
-   "end": 5.63,
+   "start": 0.0,
+   "end": 6.6,
    "phrases": [
     {
      "text": "Instagram just gave creators an AI that reads their own numbers.",
-     "start": 0.2,
-     "end": 3.54
+     "start": 0.0,
+     "end": 3.91
     },
     {
      "text": "It lives inside Edits, their video app.",
-     "start": 3.54,
-     "end": 5.63
+     "start": 4.23,
+     "end": 6.6
     }
    ]
   },
   {
-   "start": 5.63,
-   "end": 9.55,
+   "start": 7.2,
+   "end": 12.73,
    "phrases": [
     {
      "text": "It looks at your views, retention, likes and shares,",
-     "start": 5.63,
-     "end": 8.06
+     "start": 7.2,
+     "end": 10.34
     },
     {
      "text": "plus your comments and what's trending.",
-     "start": 8.06,
-     "end": 9.55
+     "start": 10.66,
+     "end": 12.73
     }
    ]
   },
   {
-   "start": 9.55,
-   "end": 11.84,
+   "start": 13.33,
+   "end": 15.98,
    "phrases": [
     {
      "text": "Then it suggests what you should make next.",
-     "start": 9.55,
-     "end": 11.84
+     "start": 13.33,
+     "end": 15.98
     }
    ]
   },
   {
-   "start": 11.84,
-   "end": 15.45,
+   "start": 16.58,
+   "end": 21.45,
    "phrases": [
     {
      "text": "Instagram's pitch: it does the digging,",
-     "start": 11.84,
-     "end": 13.93
+     "start": 16.58,
+     "end": 18.85
     },
     {
      "text": "the creative calls stay yours.",
-     "start": 13.93,
-     "end": 15.45
+     "start": 19.17,
+     "end": 21.45
     }
    ]
   },
   {
-   "start": 15.45,
-   "end": 20.04,
+   "start": 22.05,
+   "end": 27.54,
    "phrases": [
     {
      "text": "The catch? Free use is capped.",
-     "start": 15.45,
-     "end": 17.38
+     "start": 22.05,
+     "end": 24.4
     },
     {
      "text": "More usage sits behind a Meta One subscription.",
-     "start": 17.38,
-     "end": 20.04
+     "start": 24.72,
+     "end": 27.54
     }
    ]
   },
   {
-   "start": 20.04,
-   "end": 23.53,
+   "start": 28.14,
+   "end": 32.95,
    "phrases": [
     {
      "text": "For brands, this matters.",
-     "start": 20.04,
-     "end": 21.43
+     "start": 28.14,
+     "end": 30.19
     },
     {
      "text": "Creators will pitch with much sharper data.",
-     "start": 21.43,
-     "end": 23.53
+     "start": 30.51,
+     "end": 32.95
     }
    ]
   },
   {
-   "start": 23.53,
-   "end": 25.185,
+   "start": 33.55,
+   "end": 35.811,
    "phrases": [
     {
      "text": "Follow for more AI and creator news.",
-     "start": 23.53,
-     "end": 25.185
+     "start": 33.55,
+     "end": 35.811
     }
    ]
   }

@@ -1,0 +1,14 @@
+# Sources: FreeLLMAPI vs OmniRoute: two GitHub repos that stack free AI tokens, and the honest maths
+
+| Claim | Source | Date |
+|---|---|---|
+| The FreeLLMAPI README headline reads: 7.4 billion tokens per month, 34 free LLM providers, 635 free model endpoints, one OpenAI-compatible endpoint (README read 7 Oct 2026). | FreeLLMAPI README on GitHub: https://github.com/tashfeenahmed/freellmapi | 2026-10-07 |
+| FreeLLMAPI aggregates free tiers behind a single /v1 API; its router picks an available model, falls over to the next provider when one is rate-limited, and tracks per-key usage to stay under every free-tier cap. | FreeLLMAPI README on GitHub: https://github.com/tashfeenahmed/freellmapi | 2026-10-07 |
+| FreeLLMAPI's README lists its limitations: no frontier models, variable latency, no SLA, and the endpoint's effective intelligence dips late in the day as top models hit their daily caps, then resets at UTC midnight. | FreeLLMAPI README on GitHub: https://github.com/tashfeenahmed/freellmapi | 2026-10-07 |
+| FreeLLMAPI quick start: a one-line installer (Docker required), curl -fsSL https://freellmapi.co/install.sh | bash, then open http://localhost:3001 and add provider keys on the Keys page. The project is MIT-licensed. | FreeLLMAPI README on GitHub: https://github.com/tashfeenahmed/freellmapi | 2026-10-07 |
+| FreeLLMAPI version 0.8.0 was published to npm on 6 Oct 2026. | npm registry: freellmapi: https://registry.npmjs.org/freellmapi | 2026-10-06 |
+| The OmniRoute README headline reads: ~1.62B Free Tokens / Month. It computes the headline from free-tier pools with a published monthly budget, each shared pool counted once, and says its figures are re-audited every two weeks and move both ways. | OmniRoute README on GitHub: https://github.com/diegosouzapw/OmniRoute | 2026-10-07 |
+| OmniRoute install: npm i -g omniroute, the server runs on localhost:20128, and any OpenAI-compatible tool can point at http://localhost:20128/v1. OmniRoute is MIT-licensed. | OmniRoute README on GitHub: https://github.com/diegosouzapw/OmniRoute | 2026-10-07 |
+| OmniRoute's FREE_TIERS.md calls ~1.62B the documented recurring grant (steady) and says to use this number; ~2.22B applies to the first month only, with one-time signup credits. | OmniRoute docs: FREE_TIERS.md: https://github.com/diegosouzapw/OmniRoute/blob/HEAD/docs/reference/FREE_TIERS.md | 2026-10-07 |
+| OmniRoute's FREE_TIERS.md says each shared pool is counted once: Mistral's free plan is one 1B/month allowance per organisation, and listing it under five models does not make it 5B. Summed per model, its own catalogue would read ~7.4B. | OmniRoute docs: FREE_TIERS.md: https://github.com/diegosouzapw/OmniRoute/blob/HEAD/docs/reference/FREE_TIERS.md | 2026-10-07 |
+| OmniRoute version 3.8.51 was published to npm on 30 Sep 2026. | npm registry: omniroute: https://registry.npmjs.org/omniroute | 2026-09-30 |

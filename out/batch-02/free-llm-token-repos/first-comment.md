@@ -1,0 +1,1 @@
+Sources: FreeLLMAPI https://github.com/tashfeenahmed/freellmapi · OmniRoute https://github.com/diegosouzapw/OmniRoute · OmniRoute free-tier maths https://github.com/diegosouzapw/OmniRoute/blob/HEAD/docs/reference/FREE_TIERS.md · Full breakdown: https://buildwithvish.netlify.app/#read-free-llm-token-repos

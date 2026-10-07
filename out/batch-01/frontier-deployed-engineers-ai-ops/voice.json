@@ -1,100 +1,100 @@
 {
- "voice": "voice_3rjyhtlhksw1",
- "duration": 29.107208333333332,
+ "voice": "Puck",
+ "duration": 43.51470833333333,
  "scenes": [
   {
-   "start": 0.2,
-   "end": 5.818,
+   "start": 0.0,
+   "end": 7.7,
    "phrases": [
     {
      "text": "Anthropic just committed 100 million dollars to train one kind of person.",
-     "start": 0.2,
-     "end": 3.63
+     "start": 0.0,
+     "end": 4.8
     },
     {
      "text": "Frontier Deployed Engineers.",
-     "start": 3.63,
-     "end": 5.818
+     "start": 5.12,
+     "end": 7.7
     }
    ]
   },
   {
-   "start": 5.818,
-   "end": 7.89,
+   "start": 8.3,
+   "end": 11.0,
    "phrases": [
     {
      "text": "Ten thousand of them by the end of 2027.",
-     "start": 5.818,
-     "end": 7.89
+     "start": 8.3,
+     "end": 11.0
     }
    ]
   },
   {
-   "start": 7.89,
-   "end": 15.12,
+   "start": 11.6,
+   "end": 21.49,
    "phrases": [
     {
      "text": "They practise a full rollout: pick the use case, pass security review, hand it over.",
-     "start": 7.89,
-     "end": 11.59
+     "start": 11.6,
+     "end": 17.14
     },
     {
      "text": "Then twelve weeks leading a real project at their own company.",
-     "start": 11.59,
-     "end": 15.12
+     "start": 17.46,
+     "end": 21.49
     }
    ]
   },
   {
-   "start": 15.12,
-   "end": 18.66,
+   "start": 22.09,
+   "end": 27.27,
    "phrases": [
     {
      "text": "It's for engineers, by nomination.",
-     "start": 15.12,
-     "end": 16.68
+     "start": 22.09,
+     "end": 24.57
     },
     {
      "text": "I'm not one, and I won't pretend to be.",
-     "start": 16.68,
-     "end": 18.66
+     "start": 24.89,
+     "end": 27.27
     }
    ]
   },
   {
-   "start": 18.66,
-   "end": 23.54,
+   "start": 27.87,
+   "end": 34.5,
    "phrases": [
     {
      "text": "But look at the shape of the job.",
-     "start": 18.66,
-     "end": 20.42
+     "start": 27.87,
+     "end": 30.22
     },
     {
      "text": "Right problem, safe rollout, people actually using it.",
-     "start": 20.42,
-     "end": 23.54
+     "start": 30.54,
+     "end": 34.5
     }
    ]
   },
   {
-   "start": 23.54,
-   "end": 28.307,
+   "start": 35.1,
+   "end": 42.115,
    "phrases": [
     {
      "text": "That's AI Ops, and marketers already do half of it.",
-     "start": 23.54,
-     "end": 26.48
+     "start": 35.1,
+     "end": 38.43
     },
     {
      "text": "My plan is on Build with Vish.",
-     "start": 26.48,
-     "end": 28.02
+     "start": 38.75,
+     "end": 40.9
     },
     {
      "text": "Follow for more.",
-     "start": 28.02,
-     "end": 28.307
+     "start": 41.22,
+     "end": 42.115
     }
    ]
   }

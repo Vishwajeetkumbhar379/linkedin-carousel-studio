@@ -1,0 +1,128 @@
+{
+  "slug": "claude-sonnet-5-5-slide-decks",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "Workflows",
+  "narration": [
+    [
+      "Claude Sonnet 5.5 can build decks from your own template."
+    ],
+    [
+      "In Anthropic's test, experts called its first draft ready to send."
+    ],
+    [
+      "It's also over thirty percent faster, at the same token price."
+    ],
+    [
+      "Step one: pick Sonnet 5.5 in the model menu."
+    ],
+    [
+      "Step two: upload your slide template and your source notes."
+    ],
+    [
+      "Step three: ask for ten slides, each number sourced."
+    ],
+    [
+      "Step four: check every number before a client sees it."
+    ],
+    [
+      "Follow for more AI workflows you can copy."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "CLAUDE SONNET 5.5",
+      "title": "Decks from *your own template*",
+      "avatar": "crossed",
+      "avTop": 170,
+      "avSize": 190,
+      "avSide": "right"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "READY",
+      "title": "First draft of a *10-slide* review",
+      "sub": "Anthropic's internal test, judged by two experts",
+      "trans": "pop",
+      "avatar": "surprised",
+      "avTop": 740,
+      "avSide": "left"
+    },
+    {
+      "look": "stat",
+      "bg": "ink",
+      "value": "30%+",
+      "title": "faster than Sonnet 5, same token price",
+      "src": "Source: Anthropic, 28 Sep 2026",
+      "dots": 200,
+      "trans": "zoom",
+      "avatar": "pleased",
+      "avTop": 185,
+      "avSide": "right"
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "01 · Pick *Sonnet 5.5*",
+      "size": "t1",
+      "sub": "In the model menu",
+      "trans": "whip",
+      "avatar": "point",
+      "avTop": 730,
+      "avSide": "left"
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "02 · Upload *two things*",
+      "chips": [
+        "Your slide template",
+        "Your source notes"
+      ],
+      "trans": "rise",
+      "avatar": "explaining",
+      "avTop": 780,
+      "avSide": "right"
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Use my template. 10 slides, one message each. Cite the source for every number. Flag anything you guessed.",
+      "trans": "click",
+      "avatar": "focused",
+      "avTop": 960,
+      "avSide": "left"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "CHECK",
+      "title": "04 · Check *every number*",
+      "sub": "Before a client sees it",
+      "trans": "zoom",
+      "avatar": "stressed",
+      "avTop": 740,
+      "avSide": "right"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI workflows* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "avatar": "wave",
+      "avTop": 185,
+      "avSide": "right"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

@@ -784,3 +784,42 @@ objects.briefBot = function () {
   const b = objects.frostBubble({ shade: "cobalt", lattice: false }); b.scale.setScalar(0.55); b.position.set(-1.05, 0.85, 0.3); b.rotation.y = 0.3; g.add(b);
   return g;
 };
+
+// ---------- batch-02 cover props ----------
+// Faceless pipeline: script page -> voice -> clip -> finished post, linked by a glossy arrow.
+objects.pipelineChain = function () {
+  const g = new THREE.Group();
+  const page = chartPage({ bars: [0.25, 0.45, 0.3, 0.55] }); page.scale.setScalar(0.75); page.position.set(-1.85, 0.75, 0); page.rotation.set(0.05, 0.35, 0.08); g.add(page);
+  [["bubble", "violet"], ["play", "cobalt"], ["spark", "peach"]].forEach(([k, sh], i) => { const t = objects.frostTile({ shade: sh, glyphKind: k, size: 0.62 }); t.position.set(-1.0 + i * 0.85, -0.1 + (i % 2) * 0.35, 0.3); t.rotation.set(0.12, -0.25 + i * 0.2, (i - 1) * 0.1); g.add(t); });
+  const post = postCard({ ad: false }); post.scale.setScalar(0.8); post.position.set(1.75, 0.55, -0.1); post.rotation.set(0.05, -0.35, -0.06); g.add(post);
+  g.add(objects.arrowCurve({ from: [-1.7, -0.45, 0.4], to: [1.35, -0.55, 0.5], lift: -0.55 }));
+  return g;
+};
+// Free year: a frosted gift box with a ribbon and a "12 months" calendar tile beside it.
+objects.giftYear = function () {
+  const g = new THREE.Group();
+  const box = frostMesh(new RoundedBoxGeometry(1.5, 1.2, 1.5, 6, 0.08), { top: 0xc4bcff, bottom: 0x4a3fd6, glow: 0.32, rimStrength: 0.5 }); box.position.y = -0.3; g.add(box);
+  const lid = frostMesh(new RoundedBoxGeometry(1.65, 0.28, 1.65, 6, 0.08), { top: 0xd8d2ff, bottom: 0x5b4fe0, glow: 0.32, rimStrength: 0.5 }); lid.position.set(0.05, 0.55, 0.05); lid.rotation.z = 0.12; g.add(lid);
+  const gold = new THREE.MeshPhysicalMaterial({ color: 0xf6c453, metalness: 0.6, roughness: 0.25, clearcoat: 1, emissive: 0x6b4a00, emissiveIntensity: 0.2 });
+  const r1 = new THREE.Mesh(new RoundedBoxGeometry(0.22, 1.24, 1.54, 3, 0.04), gold); r1.position.y = -0.3; g.add(r1);
+  const r2 = new THREE.Mesh(new RoundedBoxGeometry(1.54, 1.24, 0.22, 3, 0.04), gold); r2.position.y = -0.3; g.add(r2);
+  [-1, 1].forEach((s) => { const bow = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.07, 16, 40), gold); bow.position.set(0.05 + s * 0.2, 0.85, 0.05); bow.rotation.set(0.3, s * 0.6, 0.2 + s * 0.4); g.add(bow); });
+  const cal = new THREE.Group(); cal.position.set(1.45, 0.75, 0.35); cal.rotation.set(0.05, -0.35, 0.1); g.add(cal);
+  cal.add(frostMesh(new RoundedBoxGeometry(1.0, 1.1, 0.1, 6, 0.08), { top: 0xffffff, bottom: 0xe6e1f7, glow: 0.4, rimStrength: 0.3 }));
+  const head = new THREE.Mesh(new RoundedBoxGeometry(1.0, 0.26, 0.12, 4, 0.06), new THREE.MeshPhysicalMaterial({ color: 0xe07a5c, roughness: 0.3, clearcoat: 1 })); head.position.set(0, 0.42, 0.02); cal.add(head);
+  for (let i = 0; i < 12; i++) { const d = new THREE.Mesh(new RoundedBoxGeometry(0.16, 0.13, 0.03, 2, 0.03), new THREE.MeshPhysicalMaterial({ color: i < 12 ? 0x5b4fe0 : 0xc9c3e6, roughness: 0.4, clearcoat: 0.6 })); d.position.set(-0.33 + (i % 4) * 0.22, 0.12 - Math.floor(i / 4) * 0.2, 0.07); cal.add(d); }
+  [[-1.2, 1.1], [1.2, -0.6], [-0.9, -1.0]].forEach(([x, y]) => { const s = glyph("spark"); s.scale.setScalar(0.5); s.position.set(x, y, 0.6); g.add(s); });
+  return g;
+};
+// URL in, ads out: a glossy address bar with a cursor, arrowing into two fanned ad cards.
+objects.urlToAds = function () {
+  const g = new THREE.Group();
+  const bar = frostMesh(new RoundedBoxGeometry(2.6, 0.5, 0.18, 8, 0.24), { top: 0xffffff, bottom: 0xe2ddf7, glow: 0.4, rimStrength: 0.4 }); bar.position.set(-0.6, 1.25, 0.2); bar.rotation.z = 0.06; g.add(bar);
+  const dot = frostMesh(new THREE.SphereGeometry(0.12, 32, 32), { top: 0x9cf0e4, bottom: 0x0e8c80, glow: 0.3 }); dot.scale.z = 0.5; dot.position.set(-1.65, 1.19, 0.32); g.add(dot);
+  [1.3, 0.55].forEach((w, i) => { const l = new THREE.Mesh(new RoundedBoxGeometry(w, 0.09, 0.03, 3, 0.04), i ? new THREE.MeshPhysicalMaterial({ color: 0xbdb6e6, roughness: 0.5 }) : inkM()); l.position.set(-0.75 + i * 1.05, 1.26 + i * 0.06, 0.32); l.rotation.z = 0.06; g.add(l); });
+  const c = objects.cursor3d({ ripples: false }); c.scale.setScalar(0.45); c.position.set(0.55, 1.05, 0.5); c.rotation.z = 0.25; g.add(c);
+  g.add(objects.arrowCurve({ from: [-1.2, 0.85, 0.3], to: [-0.2, -0.35, 0.6], lift: -0.2, color: 0xe07a5c }));
+  const a1 = postCard({ ad: true }); a1.scale.setScalar(0.85); a1.position.set(0.35, -0.55, 0); a1.rotation.set(0.05, -0.2, 0.1); g.add(a1);
+  const a2 = postCard({ ad: true }); a2.scale.setScalar(0.85); a2.position.set(1.35, -0.4, -0.35); a2.rotation.set(0.05, -0.4, -0.12); g.add(a2);
+  return g;
+};

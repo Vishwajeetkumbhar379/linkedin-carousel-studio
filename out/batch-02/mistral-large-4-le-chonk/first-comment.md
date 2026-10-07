@@ -1,0 +1,1 @@
+Sources: Mistral AI https://mistral.ai/news/mistral-large-4/ · TechCrunch https://techcrunch.com/2026/10/06/mistrals-new-1t-model-aims-to-leapfrog-closed-and-open-rivals/ · Full breakdown: https://buildwithvish.netlify.app/#read-mistral-large-4-le-chonk

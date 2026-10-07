@@ -42,8 +42,8 @@
       "avatar": "surprised",
       "avTop": 170,
       "avSide": "right",
-      "at": 0.2,
-      "until": 3.63,
+      "at": 0.0,
+      "until": 4.8,
       "say": "Anthropic just committed 100 million dollars to train one kind of person.",
       "avSize": 190
     },
@@ -57,8 +57,8 @@
       "avatar": "surprised",
       "avTop": 740,
       "avSide": "left",
-      "at": 3.63,
-      "until": 5.82,
+      "at": 5.12,
+      "until": 7.7,
       "say": "Frontier Deployed Engineers."
     },
     {
@@ -69,8 +69,8 @@
       "src": "Source: Anthropic, 2 Oct 2026",
       "dots": 200,
       "trans": "zoom",
-      "at": 5.82,
-      "until": 7.89,
+      "at": 8.3,
+      "until": 11.0,
       "say": "Ten thousand of them by the end of 2027."
     },
     {
@@ -83,8 +83,8 @@
         "Handover"
       ],
       "trans": "pop",
-      "at": 7.89,
-      "until": 11.59,
+      "at": 11.6,
+      "until": 17.14,
       "say": "They practise a full rollout: pick the use case, pass security review, hand it over."
     },
     {
@@ -94,8 +94,8 @@
       "size": "t2",
       "sub": "at their own organisation",
       "trans": "rise",
-      "at": 11.59,
-      "until": 15.12,
+      "at": 17.46,
+      "until": 21.49,
       "say": "Then twelve weeks leading a real project at their own company."
     },
     {
@@ -104,8 +104,8 @@
       "title": "For engineers. *By nomination.*",
       "size": "t1",
       "trans": "whip",
-      "at": 15.12,
-      "until": 16.68,
+      "at": 22.09,
+      "until": 24.57,
       "say": "It's for engineers, by nomination."
     },
     {
@@ -117,8 +117,8 @@
       "avatar": "smirk",
       "avTop": 730,
       "avSide": "right",
-      "at": 16.68,
-      "until": 18.66,
+      "at": 24.89,
+      "until": 27.27,
       "say": "I'm not one, and I won't pretend to be."
     },
     {
@@ -130,8 +130,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "left",
-      "at": 18.66,
-      "until": 20.42,
+      "at": 27.87,
+      "until": 30.22,
       "say": "But look at the shape of the job."
     },
     {
@@ -144,8 +144,8 @@
         "Real adoption"
       ],
       "trans": "pop",
-      "at": 20.42,
-      "until": 23.54,
+      "at": 30.54,
+      "until": 34.5,
       "say": "Right problem, safe rollout, people actually using it."
     },
     {
@@ -154,8 +154,8 @@
       "stamp": "AI OPS",
       "title": "Marketers already do half of it",
       "trans": "rise",
-      "at": 23.54,
-      "until": 26.48,
+      "at": 35.1,
+      "until": 38.43,
       "say": "That's AI Ops, and marketers already do half of it."
     },
     {
@@ -164,8 +164,8 @@
       "title": "My plan on *Build with Vish*",
       "size": "t3",
       "trans": "whip",
-      "at": 26.48,
-      "until": 28.02,
+      "at": 38.75,
+      "until": 40.9,
       "say": "My plan is on Build with Vish."
     },
     {
@@ -177,12 +177,12 @@
       "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
-      "at": 28.02,
-      "until": 28.31,
+      "at": 41.22,
+      "until": 42.12,
       "say": "Follow for more."
     }
   ],
-  "duration": 31.11,
+  "duration": 44.11,
   "posters": {
     "b01": 2.61,
     "b02": 5.05,
@@ -200,115 +200,115 @@
   "sfx": true,
   "captions": [
     {
-      "at": 0.2,
-      "until": 2.376,
+      "at": 0.0,
+      "until": 3.013,
       "text": "Anthropic just committed 100 million dollars"
     },
     {
-      "at": 2.296,
-      "until": 3.71,
+      "at": 2.933,
+      "until": 4.88,
       "text": "to train one kind of person."
     },
     {
-      "at": 3.63,
-      "until": 5.898,
+      "at": 5.12,
+      "until": 7.78,
       "text": "Frontier Deployed Engineers."
     },
     {
-      "at": 5.818,
-      "until": 7.12,
+      "at": 8.3,
+      "until": 9.972,
       "text": "Ten thousand of them by"
     },
     {
-      "at": 7.04,
-      "until": 7.97,
+      "at": 9.892,
+      "until": 11.08,
       "text": "the end of 2027."
     },
     {
-      "at": 7.89,
-      "until": 9.279,
+      "at": 11.6,
+      "until": 13.639,
       "text": "They practise a full rollout:"
     },
     {
-      "at": 9.199,
-      "until": 10.316,
+      "at": 13.559,
+      "until": 15.193,
       "text": "pick the use case, pass"
     },
     {
-      "at": 10.236,
-      "until": 11.67,
+      "at": 15.113,
+      "until": 17.22,
       "text": "security review, hand it over."
     },
     {
-      "at": 11.59,
-      "until": 13.522,
+      "at": 17.46,
+      "until": 19.654,
       "text": "Then twelve weeks leading a real"
     },
     {
-      "at": 13.442,
-      "until": 15.2,
+      "at": 19.574,
+      "until": 21.57,
       "text": "project at their own company."
     },
     {
-      "at": 15.12,
-      "until": 16.76,
+      "at": 22.09,
+      "until": 24.65,
       "text": "It's for engineers, by nomination."
     },
     {
-      "at": 16.68,
-      "until": 17.698,
+      "at": 24.89,
+      "until": 26.097,
       "text": "I'm not one, and I"
     },
     {
-      "at": 17.618,
-      "until": 18.74,
+      "at": 26.017,
+      "until": 27.35,
       "text": "won't pretend to be."
     },
     {
-      "at": 18.66,
-      "until": 19.565,
+      "at": 27.87,
+      "until": 29.052,
       "text": "But look at the"
     },
     {
-      "at": 19.485,
-      "until": 20.5,
+      "at": 28.972,
+      "until": 30.3,
       "text": "shape of the job."
     },
     {
-      "at": 20.42,
-      "until": 22.148,
+      "at": 30.54,
+      "until": 32.712,
       "text": "Right problem, safe rollout,"
     },
     {
-      "at": 22.068,
-      "until": 23.62,
+      "at": 32.632,
+      "until": 34.58,
       "text": "people actually using it."
     },
     {
-      "at": 23.54,
-      "until": 25.266,
+      "at": 35.1,
+      "until": 37.045,
       "text": "That's AI Ops, and marketers"
     },
     {
-      "at": 25.186,
-      "until": 26.56,
+      "at": 36.965,
+      "until": 38.51,
       "text": "already do half of it."
     },
     {
-      "at": 26.48,
-      "until": 28.1,
+      "at": 38.75,
+      "until": 40.98,
       "text": "My plan is on Build with Vish."
     },
     {
-      "at": 28.02,
-      "until": 28.387,
+      "at": 41.22,
+      "until": 42.195,
       "text": "Follow for more."
     }
   ],
   "voice": {
     "engine": "gemini-3.8-flash-tts",
-    "voice": "voice_3rjyhtlhksw1",
-    "breaths": false,
+    "voice": "Puck",
+    "breaths": true,
     "bed": false
   }
 }

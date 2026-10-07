@@ -1,0 +1,889 @@
+[
+ {
+  "slug": "faceless-ai-video-pipeline-free-tools",
+  "format": "carousel",
+  "pillar": "Real workflows and prompts",
+  "score": 9.0,
+  "title": "How to automate a faceless AI content pipeline, step by step, with free tools",
+  "hook": "A faceless AI video pipeline in *7 free steps*.",
+  "subtitle": "Script, voice, B-roll, motion, sound, captions, scheduling.",
+  "cover": {
+   "concept": "A small conveyor belt carrying a paper script into a studio microphone, then through a film strip, then out as a phone playing a vertical video with an empty silhouette where a face would be. Context symbol: a play button.",
+   "avatar": "full",
+   "label": "No face needed ↓"
+  },
+  "facts": [
+   {
+    "claim": "FreeLLMAPI aggregates free tiers from many providers behind a single OpenAI-compatible /v1 API, with fallover when a provider is rate-limited.",
+    "source_name": "FreeLLMAPI README on GitHub",
+    "url": "https://github.com/tashfeenahmed/freellmapi",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "OmniRoute offers one local OpenAI-compatible endpoint (http://localhost:20128/v1) with automatic fallback across providers, including free tiers.",
+    "source_name": "OmniRoute README on GitHub",
+    "url": "https://github.com/diegosouzapw/OmniRoute",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Kokoro is an open-weight TTS model with 82 million parameters and Apache-licensed weights (model card read 7 Oct 2026).",
+    "source_name": "Hugging Face model card: hexgrad/Kokoro-82M",
+    "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Hugging Face launched an Open TTS Leaderboard on 30 Sep 2026; hexgrad/Kokoro-82M, Supertone/supertonic-3 and fishaudio/s2-pro lead on English WER; it measures intelligibility, speed and speaker similarity, not naturalness, and has a Listen tab to compare outputs.",
+    "source_name": "Hugging Face blog: Open TTS Leaderboard",
+    "url": "https://huggingface.co/blog/open-tts-leaderboard",
+    "date": "2026-09-30"
+   },
+   {
+    "claim": "The same Hugging Face post describes Qwen3 ASR as the top-ranking open-source model on the Open ASR Leaderboard.",
+    "source_name": "Hugging Face blog: Open TTS Leaderboard",
+    "url": "https://huggingface.co/blog/open-tts-leaderboard",
+    "date": "2026-09-30"
+   },
+   {
+    "claim": "OBS Studio is free and open source software for video recording and live streaming on Windows, Mac or Linux (site read 7 Oct 2026).",
+    "source_name": "OBS Project",
+    "url": "https://obsproject.com/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Remotion's licence (as shipped with version 4.0.533 on 5 Oct 2026) lets individuals, for-profit organisations with up to 3 employees and non-profits use it for free, including commercially; larger for-profit companies need a company licence.",
+    "source_name": "Remotion LICENSE.md, v4.0.533",
+    "url": "https://unpkg.com/remotion@4.0.533/LICENSE.md",
+    "date": "2026-10-05"
+   },
+   {
+    "claim": "Freesound sounds are released under Creative Commons licences: CC0 sounds can be used for pretty much anything, attribution sounds must credit the creator, and noncommercial sounds cannot be used commercially (FAQ read 7 Oct 2026).",
+    "source_name": "Freesound FAQ",
+    "url": "https://freesound.org/help/faq/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Buffer's free plan (free forever) connects up to 3 channels with 10 scheduled posts per channel (pricing page read 7 Oct 2026).",
+    "source_name": "Buffer pricing",
+    "url": "https://buffer.com/pricing",
+    "date": "2026-10-07"
+   }
+  ],
+  "caption": "A faceless AI video pipeline in 7 free steps.\n\nNo camera. No studio. Just a stack you can copy:\n\n→ Script: free models through one endpoint (FreeLLMAPI or OmniRoute)\n→ Voice: Kokoro-82M, an open-weight voice model with Apache-licensed weights\n→ B-roll: screen-record the real page with OBS Studio\n→ Motion: Remotion, free for individuals and companies of up to 3 people\n→ Sound: Freesound, filtered to CC0\n→ Captions: transcribe your own voiceover, then fix names by hand\n→ Schedule: Buffer's free plan, 3 channels\n\nThe step people skip is B-roll. A real screen recording of the actual repo or docs page is far more believable than a stock clip of someone typing.\n\nThe honest part: free tiers have caps, licences differ, and open models still make confident mistakes. Every fact still needs a human check.\n\nI've put the prompts and the catch for each step in the carousel.\n\nWhich step would you automate first?",
+  "first_comment": "Sources: Hugging Face Open TTS Leaderboard https://huggingface.co/blog/open-tts-leaderboard · Kokoro-82M https://huggingface.co/hexgrad/Kokoro-82M · OBS https://obsproject.com/ · Remotion licence https://unpkg.com/remotion@4.0.533/LICENSE.md · Freesound https://freesound.org/help/faq/ · Buffer https://buffer.com/pricing · Full breakdown: https://buildwithvish.netlify.app/#read-faceless-ai-video-pipeline-free-tools",
+  "article": "## The pipeline in one line\n\nScript → voice → B-roll → motion → sound → captions → schedule. Each step has a free option, and none of them needs your face on camera. Here is the stack I'd use, with the catch for each step.\n\n## 01 · Script with free models\n\nWrite the script with an LLM routed through FreeLLMAPI or OmniRoute. Both are open-source projects that put many free tiers behind one OpenAI-compatible endpoint, so a rate limit on one provider doesn't stop your run. A prompt to start with:\n\n> Write a 70-word voiceover for a 35-second video. One idea per line. Plain British English. Every number needs a source link I can check.\n\nThen read every claim yourself. Free models make confident mistakes.\n\n## 02 · Voice with an open model\n\nKokoro-82M is an open-weight text-to-speech model with 82 million parameters and Apache-licensed weights. On Hugging Face's new Open TTS Leaderboard, published on 30 September, it's one of three models leading on English word error rate, alongside `Supertone/supertonic-3` and `fishaudio/s2-pro`. The leaderboard measures intelligibility, speed and speaker similarity, not how natural a voice sounds, so use its Listen tab before you pick. Write lines you can say in one breath.\n\n## 03 · B-roll from real screens\n\nRecord the actual thing you're talking about: the GitHub repo, the docs page, the changelog. OBS Studio is free, open-source software for recording and streaming on Windows, Mac and Linux. A real screen is more believable than a stock clip of someone typing, and it shows you did the homework.\n\n## 04 · Motion graphics in code\n\nRemotion lets you build videos with React. Its licence, as shipped with version 4.0.533 on 5 October, is free, commercial use included, for individuals, for-profit companies with up to 3 employees, and non-profits. Bigger companies need a company licence. Keep one idea per screen and let text move only when the line changes.\n\n## 05 · Sound design\n\nFreesound hosts sounds under Creative Commons licences. CC0 sounds can be used almost any way you like. Attribution sounds need a credit. Noncommercial sounds can't be used commercially, which rules out ads. A soft whoosh on scene changes and a quiet music bed go a long way.\n\n## 06 · Captions\n\nTranscribe your own voiceover so the captions match word for word. Hugging Face describes Qwen3 ASR as the top-ranking open-source model on its Open ASR Leaderboard. Whatever you use, fix names, brands and numbers by hand.\n\n## 07 · Scheduling\n\nBuffer's free plan connects up to 3 channels with 10 scheduled posts per channel. Schedule the post, then turn up in the comments yourself. Automation can publish. It can't have the conversation.\n\n## What I'd do\n\nStart with steps 01, 02 and 06 this week, because they save the most time. Add screen recordings next, because they make the video believable. Leave motion graphics until the script and voice feel right. And keep a human check on every fact before anything goes live.\n\n## Sources\n\n- FreeLLMAPI README: https://github.com/tashfeenahmed/freellmapi\n- OmniRoute README: https://github.com/diegosouzapw/OmniRoute\n- Kokoro-82M model card: https://huggingface.co/hexgrad/Kokoro-82M\n- Hugging Face, Open TTS Leaderboard (30 Sep 2026): https://huggingface.co/blog/open-tts-leaderboard\n- OBS Studio: https://obsproject.com/\n- Remotion licence, v4.0.533: https://unpkg.com/remotion@4.0.533/LICENSE.md\n- Freesound FAQ (licences): https://freesound.org/help/faq/\n- Buffer pricing: https://buffer.com/pricing\n",
+  "slides": [
+   {
+    "type": "cover",
+    "title": "A faceless AI video pipeline in *7 free steps*",
+    "subtitle": "Script, voice, B-roll, motion, sound, captions, scheduling",
+    "chip": "Workflows"
+   },
+   {
+    "type": "point",
+    "label": "01 · Script",
+    "title": "Write it with free models",
+    "body": "Route drafts through FreeLLMAPI or OmniRoute: one endpoint over many free tiers. Prompt: \"Write a 70-word voiceover. One idea per line. Every number needs a source link.\""
+   },
+   {
+    "type": "point",
+    "label": "02 · Voice",
+    "title": "Voice it with an open model",
+    "body": "Kokoro-82M has *Apache-licensed weights*. Hugging Face's new Open TTS Leaderboard puts it among the top three on English intelligibility. Use the Listen tab before you pick."
+   },
+   {
+    "type": "point",
+    "label": "03 · B-roll",
+    "title": "Screen-record the real thing",
+    "body": "Record the actual repo, docs page or changelog you talk about. OBS Studio is free and open source on Windows, Mac and Linux. *Real screens* beat stock typing clips."
+   },
+   {
+    "type": "point",
+    "label": "04 · Motion",
+    "title": "Animate text with code",
+    "body": "Remotion builds videos with React. Free, even commercially, for individuals and companies with up to 3 employees. Bigger teams need a company licence. One idea per screen."
+   },
+   {
+    "type": "point",
+    "label": "05 · Sound",
+    "title": "Use sounds you're allowed to use",
+    "body": "Freesound uses Creative Commons. *CC0* means use freely. Attribution means credit the creator. Noncommercial means no ads. A soft whoosh per scene change is enough."
+   },
+   {
+    "type": "point",
+    "label": "06 · Captions",
+    "title": "Caption every word",
+    "body": "Transcribe your own voiceover so captions match exactly. Hugging Face calls Qwen3 ASR the top open model on its Open ASR Leaderboard. Fix names and numbers *by hand*."
+   },
+   {
+    "type": "point",
+    "label": "07 · Schedule",
+    "title": "Schedule, then show up",
+    "body": "Buffer's free plan connects up to 3 channels with 10 scheduled posts each. Automation can publish. It can't reply to comments *like you do*."
+   },
+   {
+    "type": "list",
+    "title": "The honest catch",
+    "items": [
+     "Free tiers have daily caps",
+     "Open models still make mistakes",
+     "Every licence reads differently",
+     "Facts need a human check"
+    ]
+   },
+   {
+    "type": "cta",
+    "title": "Save this before your next *content sprint*.",
+    "subtitle": "Full breakdown on Build with Vish.",
+    "question": "Which step would you automate first?",
+    "button": "Save · Follow for AI x marketing",
+    "chip": "Free guide inside"
+   }
+  ]
+ },
+ {
+  "slug": "claude-startups-free-year",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "score": 8.7,
+  "title": "Anthropic's Claude Startups programme: a free year of Claude Team, $1,000 in API credits, and how to apply",
+  "hook": "Anthropic is giving startups a *free year of Claude*.",
+  "subtitle": "Plus $1,000 in API credits. How to apply, step by step.",
+  "cover": {
+   "concept": "An open gift box with a glowing chat bubble rising out of it and a wall calendar page showing twelve months ticked off, a small toy rocket leaning against the box. Context symbol: a rocket for startups.",
+   "avatar": "surprised",
+   "label": "Free for a year ↓"
+  },
+  "facts": [
+   {
+    "claim": "On 6 Oct 2026 Anthropic expanded Claude Startups. Members can get a free year of Claude Team (up to five Premium seats for companies new to Team) and a one-time API credit of $1,000, plus the Claude Startup Stack: partner discounts and credits worth up to $45,000.",
+    "source_name": "Claude blog: We're expanding the Claude Startups program",
+    "url": "https://claude.com/blog/were-expanding-the-claude-startups-program-to-help-founders-build",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "Members can book virtual office hours with Anthropic's Applied AI team, get hands-on help building and submitting a Claude Marketplace listing, and access events such as Founder House, hackathons and meetups.",
+    "source_name": "Claude blog: We're expanding the Claude Startups program",
+    "url": "https://claude.com/blog/were-expanding-the-claude-startups-program-to-help-founders-build",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "Startups founded in the last five years or funded in the last two are eligible to apply.",
+    "source_name": "Claude blog: We're expanding the Claude Startups program",
+    "url": "https://claude.com/blog/were-expanding-the-claude-startups-program-to-help-founders-build",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "The up to $7,000 figure is based on one year of Claude Team with five Premium seats at $100 per seat per month, billed annually ($6,000), plus the one-time $1,000 credit; actual value depends on the number and type of seats. Partner offers may not combine.",
+    "source_name": "Claude blog: We're expanding the Claude Startups program",
+    "url": "https://claude.com/blog/were-expanding-the-claude-startups-program-to-help-founders-build",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "To apply you need a Claude Console account, a company email that matches your website's domain, and a short description of what you're building; Anthropic says it reviews every application. The programme is open to bootstrapped, pre-seed and venture-backed startups (page read 7 Oct 2026).",
+    "source_name": "Claude for Startups programme page",
+    "url": "https://claude.com/programs/startups",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "After acceptance, members get an email linking to the Claude Startups page in Claude Console, where they claim the Team offer. Only orgs new to Team qualify. Credits apply to the first-party Claude API through Claude Console, not AWS Bedrock or Google Cloud Vertex AI. Founders backed by a VC in Anthropic's partner network can get up to $100K in additional API credits through their VC.",
+    "source_name": "Claude for Startups programme page",
+    "url": "https://claude.com/programs/startups",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Claude Startup Stack offers listed include ElevenLabs (12 months free + 33M characters), Gamma (25% off the first year of Gamma Pro annual) and Granola (3 months of Business free, up to 10 seats); the offers come from independent third-party companies, not Anthropic.",
+    "source_name": "Claude for Startups programme page",
+    "url": "https://claude.com/programs/startups",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "TechCrunch reported the expanded programme launched as part of Anthropic's SF Tech Week event, with a free year of Claude Team for up to five premium seats and $1,000 in API credits.",
+    "source_name": "TechCrunch",
+    "url": "https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits/",
+    "date": "2026-10-06"
+   }
+  ],
+  "caption": "Anthropic is giving startups a free year of Claude.\n\nOn 6 October, Anthropic expanded its Claude Startups programme. Approved startups get:\n\n→ a free year of Claude Team, up to five Premium seats (if you're new to Team)\n→ $1,000 in Claude API credits, once\n→ partner offers worth up to $45,000 in total\n→ office hours with Anthropic's Applied AI team\n\nWho qualifies: startups founded in the last five years, or funded in the last two. No VC needed. Bootstrapped and pre-seed teams can apply.\n\nWhat you need: a Claude Console account, a company email that matches your website's domain, and a short description of what you're building.\n\nThe fine print, so nobody's surprised:\n→ Team is free only for organisations new to Team\n→ credits work on the first-party Claude API, not Bedrock or Vertex\n→ the \"up to $7,000\" headline assumes five seats\n\nIf I ran a small marketing-tech startup, I'd spend the $1,000 on one workflow I can measure before anything flashy.\n\nThe step-by-step is in the carousel.\n\nWhat would you build first with $1,000 of Claude credits?",
+  "first_comment": "Sources: Anthropic https://claude.com/blog/were-expanding-the-claude-startups-program-to-help-founders-build · Programme page and FAQ https://claude.com/programs/startups · TechCrunch https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits/ · Full breakdown: https://buildwithvish.netlify.app/#read-claude-startups-free-year",
+  "article": "## What Anthropic announced\n\nOn 6 October Anthropic expanded **Claude Startups**, its programme for founders building companies on Claude. TechCrunch reported that it launched as part of Anthropic's SF Tech Week event. Approved startups can get:\n\n- a free year of **Claude Team**, for up to five Premium seats, if the company is new to Team\n- a one-time **$1,000 in Claude API credits**, available as soon as you're approved\n- the **Claude Startup Stack**: partner discounts and credits worth up to $45,000 combined\n- virtual office hours with Anthropic's Applied AI team, help building a Claude Marketplace listing, and events like Founder House and hackathons\n\n## Who can apply\n\nStartups founded in the last five years, or funded in the last two. You don't need venture funding: Anthropic says the programme is open to bootstrapped, pre-seed and venture-backed startups. If a VC in Anthropic's partner network backs you, you can also get up to $100K in additional API credits, claimed through your VC.\n\n## How to apply, step by step\n\n1. **Check the dates.** Founded in the last five years, or funded in the last two.\n2. **Set up the basics.** Create a Claude Console account and use a company email that matches your website's domain.\n3. **Write a short description.** Anthropic says it reviews every application, so write it like a brief: who it's for, what it does, why Claude.\n4. **Apply** on the Claude Startups page.\n5. **Claim Team in Console.** Once approved, you get an email linking to the Claude Startups page in Claude Console. Sign in there to claim the Team offer.\n6. **Redeem partner offers** in the Console. Examples listed today: ElevenLabs (12 months free plus 33M characters), Gamma (25% off the first year of Gamma Pro annual) and Granola (3 months of Business free, up to 10 seats).\n\n## The fine print\n\n- Team is free only for organisations new to Team.\n- The \"up to $7,000\" figure assumes five Premium seats at $100 per seat per month, billed annually ($6,000), plus the $1,000 credit. Fewer seats means less value.\n- Credits apply to the first-party Claude API through Claude Console. They can't be used on AWS Bedrock, Google Cloud Vertex AI or other third-party platforms.\n- Partner offers come from independent companies, on their own terms, and may not combine.\n\n## What I'd do\n\nIf I ran a small marketing-tech startup, I'd spend the $1,000 on one workflow I can measure before anything flashy. Something like scoring creator shortlists against a brief, or checking every campaign brief for missing information before it goes out. Pick a task you already do every week, so you can compare before and after.\n\nI'd give the five Team seats to the people who write the most: briefs, reports, client emails. That's where a shared AI workspace pays back fastest.\n\n## Sources\n\n- Anthropic, We're expanding the Claude Startups program (6 Oct 2026): https://claude.com/blog/were-expanding-the-claude-startups-program-to-help-founders-build\n- Claude for Startups programme page and FAQ: https://claude.com/programs/startups\n- TechCrunch (6 Oct 2026): https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits/\n",
+  "slides": [
+   {
+    "type": "cover",
+    "title": "Anthropic is giving startups a *free year of Claude*",
+    "subtitle": "Plus $1,000 in API credits. How to apply, step by step.",
+    "chip": "AI tools"
+   },
+   {
+    "type": "stat",
+    "label": "What you get",
+    "value": "$1,000",
+    "title": "in Claude API credits, once",
+    "body": "Plus a free year of Claude Team for up to *five Premium seats*, if your company is new to Team.",
+    "source": "Source: Anthropic, 6 Oct 2026"
+   },
+   {
+    "type": "point",
+    "label": "01 · Check you qualify",
+    "title": "Founded in 5 years, or funded in 2",
+    "body": "Startups founded in the last five years, or funded in the last two, can apply. *No VC needed*: bootstrapped and pre-seed teams are welcome."
+   },
+   {
+    "type": "point",
+    "label": "02 · Set up the basics",
+    "title": "Console account, matching email",
+    "body": "You need a Claude Console account, a company email that matches your website's domain, and a short description of what you're building."
+   },
+   {
+    "type": "point",
+    "label": "03 · Apply",
+    "title": "Write it like a brief",
+    "body": "Apply on the Claude Startups page. Anthropic says it reviews every application. Say who it's for, what it does, and *why Claude*. Two plain sentences."
+   },
+   {
+    "type": "point",
+    "label": "04 · Claim Team",
+    "title": "Watch for the approval email",
+    "body": "It links to the Claude Startups page in Claude Console. Sign in there to claim Team. Credits work on the *first-party Claude API*, not Bedrock or Vertex."
+   },
+   {
+    "type": "point",
+    "label": "05 · Stack the extras",
+    "title": "Partner offers, up to $45K",
+    "body": "The Claude Startup Stack lists offers like ElevenLabs, Gamma and Granola. They come from *independent companies*, on their own terms, and may not combine."
+   },
+   {
+    "type": "list",
+    "title": "What I'd build with $1,000",
+    "items": [
+     "A brief checker",
+     "A creator shortlist scorer",
+     "A weekly report summary",
+     "A caption first-drafter"
+    ]
+   },
+   {
+    "type": "point",
+    "label": "The catch",
+    "title": "Read the fine print",
+    "body": "Team is free only if you're *new to Team*. The \"up to $7,000\" headline assumes five seats at $100 a month plus credits. Fewer seats, less value."
+   },
+   {
+    "type": "cta",
+    "title": "Save this before you *apply*.",
+    "subtitle": "Full breakdown on Build with Vish.",
+    "question": "What would you build first with $1,000 of credits?",
+    "button": "Save · Follow for AI x marketing",
+    "chip": "Free guide inside"
+   }
+  ]
+ },
+ {
+  "slug": "ad-platforms-draft-ads-from-url",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "score": 8.5,
+  "title": "Google, X and Meta now draft ads from your URL and photos: how to test them without wasting budget",
+  "hook": "Your website URL is now *an ad brief*.",
+  "subtitle": "Google, X and Meta now draft ads from what you already have.",
+  "cover": {
+   "concept": "A browser address bar stretching out like a ribbon and feeding into a small printer that prints three ad cards: a video frame with a play button, an image post, and a card marked Sponsored. Context symbol: a link chain icon.",
+   "avatar": "surprised",
+   "label": "URL in, ads out ↓"
+  },
+  "facts": [
+   {
+    "claim": "Google says Asset Studio's multimodal video creation, powered by Gemini Omni, turns website URLs and photos into high-quality videos that stakeholders can preview before publishing (Ads Decoded post on Demand Gen and YouTube ads, 1 Oct 2026).",
+    "source_name": "Google Ads & Commerce Blog",
+    "url": "https://blog.google/products/ads-commerce/creating-assets-youtube-ads/",
+    "date": "2026-10-01"
+   },
+   {
+    "claim": "Google advises starting with existing creative such as social assets, as long as it follows its asset specs and guidelines, and making changes gradually, focusing on the quality of new assets rather than quantity, to give the system time for measurement.",
+    "source_name": "Google Ads & Commerce Blog",
+    "url": "https://blog.google/products/ads-commerce/creating-assets-youtube-ads/",
+    "date": "2026-10-01"
+   },
+   {
+    "claim": "X launched X Lift at Advertising Week New York: advertisers enter their URL, X's AI generates ad options including images and copy, and it can build an entire campaign including targeting; advertisers set a budget. Its main target audience is new advertisers.",
+    "source_name": "Social Media Today",
+    "url": "https://www.socialmediatoday.com/news/x-launches-ai-powered-ad-creation-option/832276/",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "In its press release, X reported that active self-serve advertisers grew 50% in Q3 2026 compared with Q3 2025.",
+    "source_name": "Social Media Today",
+    "url": "https://www.socialmediatoday.com/news/x-launches-ai-powered-ad-creation-option/832276/",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "Meta said that in Advantage+ creative, advertisers and agencies can now generate video from existing static assets, a feature that is now generally available; in Ads Creative Studio, marketers can generate video concepts and edit them to change hooks, adjust audio and clip length, add text overlays and captions, or change end scenes.",
+    "source_name": "Social Media Today",
+    "url": "https://www.socialmediatoday.com/news/meta-introduces-new-ai-powered-tools-at-advertising-week/832288/",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "Meta is adding more agentic capacity so its business assistant can generate creative elements, update targeting and change an ad's budget using conversational prompts, and is testing tools to import strategy and brand voice guidelines.",
+    "source_name": "Social Media Today",
+    "url": "https://www.socialmediatoday.com/news/meta-introduces-new-ai-powered-tools-at-advertising-week/832288/",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "Common Thread Collective reported that Meta announced generative video ads at Advertising Week New York on 6 Oct 2026, with Image-to-Video in Advantage+ Creative to turn static ad creatives into video.",
+    "source_name": "Common Thread Collective",
+    "url": "https://commonthreadco.com/blogs/coachs-corner/meta-launches-generative-video-ads-and-in-conversation-checkout-at-advertising-week-ny-what-ecommerce-brands-must-do-now",
+    "date": "2026-10-06"
+   }
+  ],
+  "caption": "Your website URL is now an ad brief.\n\nIn one week, three ad platforms showed tools that draft ads from what you already have:\n\n→ Google: Asset Studio turns website URLs and photos into videos, powered by Gemini Omni\n→ X: X Lift turns your URL into ad options, and can build the whole campaign, targeting included\n→ Meta: Advantage+ creative now turns static ads into video, generally available\n\nSo the brief is quietly moving from a document to your landing page.\n\nThat's good news if your page is clear. Bad news if it's vague, because the AI drafts from what's there.\n\nHow I'd test it without wasting budget:\n→ fix the page first: offer, price, proof\n→ run AI drafts against your best current ad, one variable at a time\n→ change things gradually, as Google itself recommends\n→ check every claim before it goes live\n→ keep a human sign-off on budget and targeting\n\nMy take: a clear brief beats a clever tool. That stays true when the reader is a machine.\n\nWould you let an AI pick your targeting?",
+  "first_comment": "Sources: Google https://blog.google/products/ads-commerce/creating-assets-youtube-ads/ · X Lift via Social Media Today https://www.socialmediatoday.com/news/x-launches-ai-powered-ad-creation-option/832276/ · Meta via Social Media Today https://www.socialmediatoday.com/news/meta-introduces-new-ai-powered-tools-at-advertising-week/832288/ · Common Thread Collective https://commonthreadco.com/blogs/coachs-corner/meta-launches-generative-video-ads-and-in-conversation-checkout-at-advertising-week-ny-what-ecommerce-brands-must-do-now · Full breakdown: https://buildwithvish.netlify.app/#read-ad-platforms-draft-ads-from-url",
+  "article": "## Three launches, one pattern\n\nIn the space of a week, three ad platforms showed tools that draft ads from what you already have.\n\n**Google (1 October).** In an Ads Decoded post on Demand Gen and YouTube ads, Google said Asset Studio's multimodal video creation, powered by Gemini Omni, turns your website URLs and photos into high-quality videos that stakeholders can preview before you publish.\n\n**X (6 October).** At Advertising Week New York, X launched **X Lift**. You enter your URL, X's AI generates ad options including images and copy, and it can build the whole campaign, targeting included. You set the budget. Social Media Today notes the main audience is new advertisers, and X reported that active self-serve advertisers grew 50% in Q3 2026 compared with Q3 2025.\n\n**Meta (6 October).** Meta said advertisers can now generate video from existing static assets in Advantage+ creative, and that the feature is generally available. In Ads Creative Studio, marketers can generate video concepts and edit them to change hooks, adjust audio and clip length, add text overlays and captions, or change end scenes. Meta is also adding the ability for its business assistant to update targeting and change budgets through conversational prompts.\n\n## Why this matters\n\nThe input is shifting. For years the creative brief was a document. Now, for a lot of small advertisers, the brief is the landing page and the assets already sitting in your folder. If the page is clear, these tools have something good to work with. If it's vague, you'll get a vague ad, just faster.\n\n## How to test it without wasting budget\n\n1. **Fix the page first.** Offer, price and proof near the top. That's what the AI will read.\n2. **Start with what you have.** Google's own advice is that existing social assets are a solid base, as long as they follow its asset specs.\n3. **Run AI drafts against your best current ad.** Same budget, same audience, one variable.\n4. **Change things gradually.** Google recommends focusing on quality over quantity, so the system has time to measure.\n5. **Check before anything goes live.** Every claim true, price and offer matching the page, no made-up reviews or numbers, and it still sounds like your brand.\n6. **Keep a human sign-off on spend.** Especially as assistants gain the power to change budgets and targeting by prompt.\n\n## The catch\n\nX Lift can build the whole campaign, which means trusting X's system with targeting as well as creative. Meta's assistant is moving the same way. Automation is great at producing options. Deciding which option is true to your brand and worth the money is still your job.\n\n## What I'd do\n\nMy rule from creator marketing carries straight over: a clear brief beats a clever tool. So I'd treat the landing page as the brief now. I'd rewrite it for one audience, one offer and one proof point, then let one of these tools draft against it, and compare the result to my best existing ad for two weeks before scaling anything.\n\n## Sources\n\n- Google Ads & Commerce Blog (1 Oct 2026): https://blog.google/products/ads-commerce/creating-assets-youtube-ads/\n- Social Media Today on X Lift (6 Oct 2026): https://www.socialmediatoday.com/news/x-launches-ai-powered-ad-creation-option/832276/\n- Social Media Today on Meta at Advertising Week (6 Oct 2026): https://www.socialmediatoday.com/news/meta-introduces-new-ai-powered-tools-at-advertising-week/832288/\n- Common Thread Collective on Meta at Advertising Week (6 Oct 2026): https://commonthreadco.com/blogs/coachs-corner/meta-launches-generative-video-ads-and-in-conversation-checkout-at-advertising-week-ny-what-ecommerce-brands-must-do-now\n",
+  "slides": [
+   {
+    "type": "cover",
+    "title": "Your website URL is now *an ad brief*",
+    "subtitle": "Google, X and Meta now draft ads from what you already have",
+    "chip": "AI x Marketing"
+   },
+   {
+    "type": "point",
+    "label": "01 · Google",
+    "title": "URLs and photos into video",
+    "body": "Google says Asset Studio, powered by *Gemini Omni*, turns your website URLs and photos into videos you can preview before publishing. For Demand Gen and YouTube ads."
+   },
+   {
+    "type": "point",
+    "label": "02 · X",
+    "title": "X Lift builds the whole campaign",
+    "body": "Enter your URL. X's AI offers images and copy, and can build the campaign, *targeting included*. You set the budget. It's aimed at new advertisers."
+   },
+   {
+    "type": "point",
+    "label": "03 · Meta",
+    "title": "Static ads become video",
+    "body": "Advantage+ creative now generates video from static assets, *generally available*. Ads Creative Studio can change hooks, audio, clip length, captions and end scenes."
+   },
+   {
+    "type": "stat",
+    "label": "Who X Lift is for",
+    "value": "50%",
+    "title": "growth in X's active self-serve advertisers",
+    "body": "Q3 2026 vs Q3 2025, as reported by X. Smaller, newer advertisers are the target.",
+    "source": "Source: Social Media Today, 6 Oct 2026"
+   },
+   {
+    "type": "point",
+    "label": "04 · Fix the page first",
+    "title": "The AI reads your landing page",
+    "body": "Put the offer, the price and the proof near the top. A vague page gives you *a vague ad*, just faster."
+   },
+   {
+    "type": "point",
+    "label": "05 · Keep a control",
+    "title": "AI draft vs your best ad",
+    "body": "Same budget, same audience, one variable. Google's own advice: change gradually and judge *quality over quantity*, so the system has time to measure."
+   },
+   {
+    "type": "list",
+    "title": "06 · Check before it goes live",
+    "items": [
+     "Every claim is true",
+     "Price matches the page",
+     "No made-up reviews or stats",
+     "Still sounds like you"
+    ]
+   },
+   {
+    "type": "point",
+    "label": "The catch",
+    "title": "Keep a human on spend",
+    "body": "X Lift can set targeting for you. Meta is adding budget changes *by prompt*. Let AI draft the options. You decide what's true and worth the money."
+   },
+   {
+    "type": "cta",
+    "title": "Save this before your next *campaign launch*.",
+    "subtitle": "Full breakdown on Build with Vish.",
+    "question": "Would you let an AI pick your targeting?",
+    "button": "Save · Follow for AI x marketing",
+    "chip": "Free guide inside"
+   }
+  ]
+ },
+ {
+  "slug": "free-llm-token-repos",
+  "format": "video",
+  "pillar": "AI tools that change marketing work",
+  "score": 9.2,
+  "title": "FreeLLMAPI vs OmniRoute: two GitHub repos that stack free AI tokens, and the honest maths",
+  "hook": "Two GitHub repos promise *billions* of free AI tokens.",
+  "subtitle": "FreeLLMAPI says 7.4B a month. OmniRoute says ~1.62B. Here's why.",
+  "cover": {
+   "concept": "A laptop showing a generic code repository page, with a funnel on top merging many thin coloured pipes into one thick pipe that pours a stack of glowing token coins onto the desk. Context symbol: a generic code branch icon.",
+   "avatar": "surprised",
+   "label": "Free tokens ↓"
+  },
+  "facts": [
+   {
+    "claim": "The FreeLLMAPI README headline reads: 7.4 billion tokens per month, 34 free LLM providers, 635 free model endpoints, one OpenAI-compatible endpoint (README read 7 Oct 2026).",
+    "source_name": "FreeLLMAPI README on GitHub",
+    "url": "https://github.com/tashfeenahmed/freellmapi",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "FreeLLMAPI aggregates free tiers behind a single /v1 API; its router picks an available model, falls over to the next provider when one is rate-limited, and tracks per-key usage to stay under every free-tier cap.",
+    "source_name": "FreeLLMAPI README on GitHub",
+    "url": "https://github.com/tashfeenahmed/freellmapi",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "FreeLLMAPI's README lists its limitations: no frontier models, variable latency, no SLA, and the endpoint's effective intelligence dips late in the day as top models hit their daily caps, then resets at UTC midnight.",
+    "source_name": "FreeLLMAPI README on GitHub",
+    "url": "https://github.com/tashfeenahmed/freellmapi",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "FreeLLMAPI quick start: a one-line installer (Docker required), curl -fsSL https://freellmapi.co/install.sh | bash, then open http://localhost:3001 and add provider keys on the Keys page. The project is MIT-licensed.",
+    "source_name": "FreeLLMAPI README on GitHub",
+    "url": "https://github.com/tashfeenahmed/freellmapi",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "FreeLLMAPI version 0.8.0 was published to npm on 6 Oct 2026.",
+    "source_name": "npm registry: freellmapi",
+    "url": "https://registry.npmjs.org/freellmapi",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "The OmniRoute README headline reads: ~1.62B Free Tokens / Month. It computes the headline from free-tier pools with a published monthly budget, each shared pool counted once, and says its figures are re-audited every two weeks and move both ways.",
+    "source_name": "OmniRoute README on GitHub",
+    "url": "https://github.com/diegosouzapw/OmniRoute",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "OmniRoute install: npm i -g omniroute, the server runs on localhost:20128, and any OpenAI-compatible tool can point at http://localhost:20128/v1. OmniRoute is MIT-licensed.",
+    "source_name": "OmniRoute README on GitHub",
+    "url": "https://github.com/diegosouzapw/OmniRoute",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "OmniRoute's FREE_TIERS.md calls ~1.62B the documented recurring grant (steady) and says to use this number; ~2.22B applies to the first month only, with one-time signup credits.",
+    "source_name": "OmniRoute docs: FREE_TIERS.md",
+    "url": "https://github.com/diegosouzapw/OmniRoute/blob/HEAD/docs/reference/FREE_TIERS.md",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "OmniRoute's FREE_TIERS.md says each shared pool is counted once: Mistral's free plan is one 1B/month allowance per organisation, and listing it under five models does not make it 5B. Summed per model, its own catalogue would read ~7.4B.",
+    "source_name": "OmniRoute docs: FREE_TIERS.md",
+    "url": "https://github.com/diegosouzapw/OmniRoute/blob/HEAD/docs/reference/FREE_TIERS.md",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "OmniRoute version 3.8.51 was published to npm on 30 Sep 2026.",
+    "source_name": "npm registry: omniroute",
+    "url": "https://registry.npmjs.org/omniroute",
+    "date": "2026-09-30"
+   }
+  ],
+  "caption": "Two GitHub repos promise billions of free AI tokens.\n\nI read both READMEs this week.\n\n→ FreeLLMAPI: \"7.4 billion tokens per month. 34 free LLM providers.\" One OpenAI-compatible endpoint that switches provider when one hits a rate limit.\n→ OmniRoute: \"~1.62B free tokens / month.\" Same idea, plus a long write-up on how they count.\n\nWhy the gap? OmniRoute counts each shared pool once. Its own docs say that adding up its catalogue model by model would read about 7.4B. But one Mistral allowance listed under five models is still one allowance.\n\nBoth numbers are the maintainers' figures, not mine.\n\nThe honest catch, straight from FreeLLMAPI's README: no frontier models, no SLA, and quality dips late in the day as top models hit their daily caps.\n\nHow I'd use it: drafts, research summaries, rewrites, batch jobs. Not client data, and not anything that has to work at 9am on launch day.\n\nWould you run your first drafts through free models?",
+  "first_comment": "Sources: FreeLLMAPI https://github.com/tashfeenahmed/freellmapi · OmniRoute https://github.com/diegosouzapw/OmniRoute · OmniRoute free-tier maths https://github.com/diegosouzapw/OmniRoute/blob/HEAD/docs/reference/FREE_TIERS.md · Full breakdown: https://buildwithvish.netlify.app/#read-free-llm-token-repos",
+  "article": "## Two repos, one promise\n\nFree AI tokens are having a moment on GitHub. Two open-source projects keep turning up in my feed, and both make big claims at the top of their READMEs.\n\n**FreeLLMAPI** opens with: \"7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. One OpenAI-compatible endpoint.\" It stacks the free tiers of many AI providers behind a single `/v1` API. A router picks an available model, falls over to the next provider when one is rate-limited, and tracks usage per key so you stay under each free cap. Version 0.8.0 landed on npm on 6 October, and the project is MIT-licensed.\n\n**OmniRoute** headlines \"~1.62B Free Tokens / Month\". The core idea is the same: one local endpoint (`http://localhost:20128/v1`) that any OpenAI-compatible tool can point at, with automatic fallback when a provider says no. Version 3.8.51 shipped on npm on 30 September, also MIT.\n\n## Why one says 7.4B and the other says 1.62B\n\nThis is the part worth reading slowly. OmniRoute's free-tier document explains that it counts each shared pool once. Its own example: Mistral's free plan is one 1B a month allowance per organisation, and listing it under five models does not make it 5B. The same document says that summing its catalogue model by model would read about 7.4B.\n\nSo OmniRoute publishes the lower, pool-deduplicated number and calls ~1.62B the documented recurring grant. A first month with one-time signup credits can reach ~2.22B, but that part does not recur.\n\nThe two headlines are not a contradiction. They are two ways of counting. Treat both as the maintainers' figures, and treat the smaller one as closer to what a single account can actually spend in a month.\n\n## The honest catch\n\nFreeLLMAPI's README is refreshingly direct about its limits: no frontier models, variable latency, no SLA, and the endpoint gets less capable late in the day as the best models hit their daily caps, then resets at midnight UTC. OmniRoute says its figures are re-audited every two weeks and move both ways, because providers change free tiers without much warning.\n\nFree also has a data question. Every provider in the chain has its own terms, so check them before you send anything sensitive.\n\n## What I'd do\n\n- Use a router like this for drafts, research summaries, rewrites and batch jobs, where a slower or weaker model is fine.\n- Keep client data, contracts and anything personal out of it.\n- Start with three or four provider keys, not thirty-four. Add more once you know what you actually use.\n- Keep your important workflows on a model you pay for and trust. Let free capacity take the overflow.\n\nGetting started is short. FreeLLMAPI has a one-line installer (Docker required): `curl -fsSL https://freellmapi.co/install.sh | bash`, then open `http://localhost:3001` and add your keys on the Keys page. For OmniRoute, run `npm i -g omniroute` and point your tool at `http://localhost:20128/v1`.\n\nMy honest view: the real win isn't the giant number. It's one endpoint that keeps working when a single provider hits its limit.\n\n## Sources\n\n- FreeLLMAPI README: https://github.com/tashfeenahmed/freellmapi\n- FreeLLMAPI release history (npm): https://registry.npmjs.org/freellmapi\n- OmniRoute README: https://github.com/diegosouzapw/OmniRoute\n- OmniRoute free-tier methodology (FREE_TIERS.md): https://github.com/diegosouzapw/OmniRoute/blob/HEAD/docs/reference/FREE_TIERS.md\n- OmniRoute release history (npm): https://registry.npmjs.org/omniroute\n",
+  "narration": [
+   [
+    "Two GitHub repos promise billions of free AI tokens."
+   ],
+   [
+    "FreeLLMAPI says 7.4 billion a month, across 34 providers."
+   ],
+   [
+    "OmniRoute says 1.62 billion, counting each shared pool once."
+   ],
+   [
+    "Both give you one endpoint that switches when limits hit."
+   ],
+   [
+    "The catch: no frontier models, no uptime promise, daily caps."
+   ],
+   [
+    "I'd use it for drafts and research, not client data."
+   ],
+   [
+    "Setup is one command, then you add your free keys."
+   ],
+   [
+    "Follow for more free AI tools that actually work."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "FREE AI TOKENS",
+    "title": "Billions of *free tokens*?",
+    "avatar": "crossed"
+   },
+   {
+    "look": "clip",
+    "bg": "ivory",
+    "title": "FreeLLMAPI: *7.4B* tokens a month",
+    "clip": {
+     "url": "https://github.com/tashfeenahmed/freellmapi",
+     "scrollPx": 1600
+    },
+    "trans": "whip",
+    "avatar": "surprised"
+   },
+   {
+    "look": "clip",
+    "bg": "ink",
+    "title": "OmniRoute: *~1.62B*, pools counted once",
+    "clip": {
+     "url": "https://github.com/diegosouzapw/OmniRoute",
+     "scrollPx": 1600
+    },
+    "trans": "zoom",
+    "avatar": "thinking"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "One endpoint, *auto fallback*",
+    "chips": [
+     "One /v1 endpoint",
+     "Switches on limits",
+     "Your own keys"
+    ],
+    "trans": "rise",
+    "avatar": "explaining"
+   },
+   {
+    "look": "stamp",
+    "bg": "cobalt",
+    "stamp": "THE CATCH",
+    "title": "No frontier models. *Daily caps.*",
+    "sub": "No uptime promise either",
+    "trans": "pop",
+    "avatar": "smirk"
+   },
+   {
+    "look": "versus",
+    "bg": "violet",
+    "title": "Where I'd use it",
+    "left": "Client data",
+    "right": "Drafts and research",
+    "trans": "whip",
+    "avatar": "thinking"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "One command. *Add your keys.*",
+    "size": "t2",
+    "sub": "Then point any OpenAI-compatible tool at it",
+    "trans": "click",
+    "avatar": "point"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *free AI tools* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "wave"
+   }
+  ]
+ },
+ {
+  "slug": "mistral-large-4-le-chonk",
+  "format": "video",
+  "pillar": "AI tools that change marketing work",
+  "score": 8.2,
+  "title": "Mistral Large 4: Europe's 1 trillion parameter model, and what marketers can do with it",
+  "hook": "Mistral just shipped a *1 trillion* parameter model.",
+  "subtitle": "Preview API now. Open weights promised by the end of October.",
+  "cover": {
+   "concept": "One huge chunky glowing cube towering over a row of small cubes, with a ring of gold stars orbiting it. Context symbol: a ring of gold stars for Europe.",
+   "avatar": "surprised",
+   "label": "1 trillion parameters ↓"
+  },
+  "facts": [
+   {
+    "claim": "On 6 Oct 2026 Mistral launched a public preview of Mistral Large 4 (nickname: le Chonk), a 1 trillion-parameter natively multimodal model with 49 billion active parameters. The preview API can be tried on Mistral Studio, and Mistral says it will release the weights by the end of the month.",
+    "source_name": "Mistral AI: Introducing Mistral Large 4",
+    "url": "https://mistral.ai/news/mistral-large-4/",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "Mistral says ML4 was trained from scratch on 3,800 NVIDIA Grace Blackwell GPUs in Mistral's own datacentres in Europe, and that the preview is served on the same infrastructure.",
+    "source_name": "Mistral AI: Introducing Mistral Large 4",
+    "url": "https://mistral.ai/news/mistral-large-4/",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "Mistral says a significant share of ML4's training data was multilingual, spanning more than 160 languages, including every official language of the European Union, and that it will offer a European deployment it operates end to end under European law.",
+    "source_name": "Mistral AI: Introducing Mistral Large 4",
+    "url": "https://mistral.ai/news/mistral-large-4/",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "Mistral says ML4 is just as strong on professional deliverables such as spreadsheets, slides and PDFs, reaching 1,393 Elo on AA-Briefcase.",
+    "source_name": "Mistral AI: Introducing Mistral Large 4",
+    "url": "https://mistral.ai/news/mistral-large-4/",
+    "date": "2026-10-06"
+   },
+   {
+    "claim": "TechCrunch reported that ML4, nicknamed Le Chonk for its 1 trillion parameters, is not an open-weight model yet: for now it can only be accessed via a public guardrail endpoint, with weights planned in about three weeks after safety testing.",
+    "source_name": "TechCrunch",
+    "url": "https://techcrunch.com/2026/10/06/mistrals-new-1t-model-aims-to-leapfrog-closed-and-open-rivals/",
+    "date": "2026-10-06"
+   }
+  ],
+  "caption": "Mistral just shipped a 1 trillion parameter model.\n\nIt's called Mistral Large 4. Its very official nickname: Le Chonk.\n\nWhat Mistral says about it:\n→ 1 trillion parameters, 49 billion active\n→ trained on 3,800 GPUs in Mistral's own European datacentres\n→ training data spanning more than 160 languages, including every official EU language\n→ strong on spreadsheets, slides and PDFs\n→ a European deployment run under European law\n\nWhy this caught my eye from Germany: European teams often market in several languages, and where data is processed is a real question here. A strong European option helps with both.\n\nThe catch: it's a preview. The weights aren't out yet. Mistral says they'll land by the end of the month, after safety testing.\n\nHow I'd try it this week: take one real campaign brief, ask it for a German and a French version, and have a native speaker judge the result before you trust it.\n\nWould you pick a European model for client work?",
+  "first_comment": "Sources: Mistral AI https://mistral.ai/news/mistral-large-4/ · TechCrunch https://techcrunch.com/2026/10/06/mistrals-new-1t-model-aims-to-leapfrog-closed-and-open-rivals/ · Full breakdown: https://buildwithvish.netlify.app/#read-mistral-large-4-le-chonk",
+  "article": "## What Mistral released\n\nOn 6 October Mistral launched a public preview of **Mistral Large 4**, or ML4. Its very official nickname, according to Mistral, is \"le Chonk\". Mistral describes it as a 1 trillion-parameter, natively multimodal model with 49 billion active parameters, and says it's the company's largest and most capable model to date.\n\nYou can try the preview API on Mistral Studio today. Mistral says it will release the weights by the end of the month. TechCrunch reported that, for now, it's only reachable through a public guardrail endpoint while safety testing finishes.\n\n## The parts that matter for marketers\n\n**Languages.** Mistral says a significant share of ML4's training data was multilingual, spanning more than 160 languages, including every official language of the European Union. If you run campaigns across several markets, that's the headline for you.\n\n**Where it runs.** Mistral says ML4 was trained from scratch on 3,800 NVIDIA Grace Blackwell GPUs in its own datacentres in Europe, and that it will offer a European deployment it operates end to end under European law. For clients who ask where their data is processed, that's a real answer.\n\n**Deliverables.** Mistral says ML4 is strong on the professional work people actually hand over: spreadsheets, slides and PDFs. On AA-Briefcase, a benchmark of long-horizon knowledge work, it reports 1,393 Elo.\n\n## The catch\n\nIt's a preview. The open weights, which are the reason many teams care about Mistral, aren't released yet. Benchmarks in the launch post are Mistral's own claims or tests it chose to report. And \"trained on 160+ languages\" isn't the same as \"writes great German ad copy\". You still have to check.\n\n## How to try it, step by step\n\n1. **Pick one real brief.** Not a toy prompt. A campaign brief you've already shipped, so you know what good looks like.\n2. **Ask for localised versions.** For example: \"Rewrite this brief for our German and French markets. Keep every claim. Flag anything that needs a local legal or cultural check.\"\n3. **Have a native speaker judge it.** Blind, next to your existing human version.\n4. **Compare cost and speed** against the model you use today.\n5. **Decide later.** If the weights land as promised, you'll have the option to run it yourself.\n\n## What I'd do\n\nFrom where I sit in Germany, multilingual work is normal, not a special project. I'd run steps 1 to 3 on one German brief this week and keep a short log of what it got right and wrong. If it holds up, a European model with open weights could be a sensible default for client work where data location matters. If not, nothing lost but an hour.\n\n## Sources\n\n- Mistral AI, Introducing Mistral Large 4 (6 Oct 2026): https://mistral.ai/news/mistral-large-4/\n- TechCrunch (6 Oct 2026): https://techcrunch.com/2026/10/06/mistrals-new-1t-model-aims-to-leapfrog-closed-and-open-rivals/\n",
+  "narration": [
+   [
+    "Mistral just shipped a one trillion parameter model."
+   ],
+   [
+    "It's called Large 4, and the nickname is Le Chonk."
+   ],
+   [
+    "Mistral trained it on its own GPUs, inside Europe."
+   ],
+   [
+    "Its training data spans over 160 languages, every EU one included."
+   ],
+   [
+    "Mistral says it handles spreadsheets, slides and PDFs too."
+   ],
+   [
+    "The catch: the weights aren't out yet, only a preview."
+   ],
+   [
+    "Try the preview with one real brief in two languages."
+   ],
+   [
+    "Follow for AI news that matters to marketers."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "NEW MODEL",
+    "title": "*1 trillion* parameters",
+    "avatar": "crossed"
+   },
+   {
+    "look": "stamp",
+    "bg": "violet",
+    "stamp": "LE CHONK",
+    "title": "Mistral Large 4",
+    "sub": "Its very official nickname",
+    "trans": "pop",
+    "avatar": "laugh"
+   },
+   {
+    "look": "stat",
+    "bg": "cobalt",
+    "value": "3,800",
+    "title": "GPUs in Mistral's own European datacentres",
+    "src": "Source: Mistral, 6 Oct 2026",
+    "dots": 200,
+    "trans": "zoom",
+    "avatar": "surprised"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "Trained on *160+ languages*",
+    "chips": [
+     "Every EU language",
+     "Multimodal",
+     "Built in Europe"
+    ],
+    "trans": "rise",
+    "avatar": "pleased"
+   },
+   {
+    "look": "text",
+    "bg": "ivory",
+    "title": "Spreadsheets, slides *and PDFs*",
+    "size": "t2",
+    "sub": "Mistral's own claim",
+    "trans": "click",
+    "avatar": "thinking"
+   },
+   {
+    "look": "stamp",
+    "bg": "ink",
+    "stamp": "THE CATCH",
+    "title": "Weights *not out yet*",
+    "sub": "Preview API now, weights promised by end of month",
+    "trans": "whip",
+    "avatar": "smirk"
+   },
+   {
+    "look": "chat",
+    "bg": "ivory",
+    "prompt": "Rewrite this campaign brief for our German and French markets. Keep every claim. Flag anything that needs a local check.",
+    "trans": "rise",
+    "avatar": "focused"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI x marketing* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "wave"
+   }
+  ]
+ },
+ {
+  "slug": "claude-sonnet-5-5-slide-decks",
+  "format": "video",
+  "pillar": "Real workflows and prompts",
+  "score": 8.8,
+  "title": "Claude Sonnet 5.5 builds decks from your own template: a 4-step workflow for marketers",
+  "hook": "Claude Sonnet 5.5 now builds decks from *your own template*.",
+  "subtitle": "Anthropic's test: two experts called the first draft ready to send.",
+  "cover": {
+   "concept": "A generic slide template card on the left being copied by a glowing chat bubble into a neat stack of ten finished slides on the right, with a small green tick on the top slide. Context symbol: a chat bubble.",
+   "avatar": "surprised",
+   "label": "Your template ↓"
+  },
+  "facts": [
+   {
+    "claim": "Anthropic released Claude Sonnet 5.5 on 28 Sep 2026, the second model in the Claude 5.5 family after Opus 5.5. It is strongest at well-scoped everyday tasks, fixing bugs, and creating polished documents, slides, and spreadsheets.",
+    "source_name": "Anthropic: Introducing Claude Sonnet 5.5",
+    "url": "https://www.anthropic.com/claude-sonnet-5-5",
+    "date": "2026-09-28"
+   },
+   {
+    "claim": "Early testers noted it can follow slide templates to create decks that require minimal editing. In one internal test, Anthropic gave it a public company's quarterly earnings materials, call transcripts and a slide template, and asked for a 10-slide operating review; two experts judged the first draft ready to send as is.",
+    "source_name": "Anthropic: Introducing Claude Sonnet 5.5",
+    "url": "https://www.anthropic.com/claude-sonnet-5-5",
+    "date": "2026-09-28"
+   },
+   {
+    "claim": "Sonnet 5.5 generates outputs 30%+ faster than Sonnet 5 and costs up to 30% less per task in Anthropic's testing, at the same price: $2 per million input tokens and $10 per million output tokens.",
+    "source_name": "Anthropic: Introducing Claude Sonnet 5.5",
+    "url": "https://www.anthropic.com/claude-sonnet-5-5",
+    "date": "2026-09-28"
+   },
+   {
+    "claim": "Sonnet 5.5 is available on all platforms; in Claude Code and the Claude apps the default effort is Medium.",
+    "source_name": "Anthropic: Introducing Claude Sonnet 5.5",
+    "url": "https://www.anthropic.com/claude-sonnet-5-5",
+    "date": "2026-09-28"
+   },
+   {
+    "claim": "Anthropic's developer guide says Sonnet 5.5 fits best when the task has a clear spec and a way to check the result, and that for the hardest long-horizon work an Opus model is the better choice.",
+    "source_name": "claude.dev blog: Building with Claude Sonnet 5.5",
+    "url": "https://claude.dev/blog/building-with-claude-sonnet-5-5/",
+    "date": "2026-09-28"
+   }
+  ],
+  "caption": "Claude Sonnet 5.5 now builds decks from your own template.\n\nAnthropic released it on 28 September. The line that caught my eye: it's strongest at \"creating polished documents, slides, and spreadsheets\".\n\nTheir own test: earnings materials, call transcripts and a slide template in, a 10-slide operating review out. Two experts judged the first draft ready to send as is.\n\nThat's Anthropic's test, not an independent one. So here's how I'd try it on real work:\n\n→ 01 Pick Sonnet 5.5 in the model menu\n→ 02 Upload your actual slide template and your source notes\n→ 03 Prompt with rules: \"Use my template. 10 slides, one message each. Cite the source for every number. Flag anything you guessed.\"\n→ 04 Check every number before a client sees it\n\nIt's also 30%+ faster than Sonnet 5, at the same token price.\n\nAnthropic's own advice: Sonnet suits tasks with a clear spec and a way to check the result. For messy, judgement-heavy strategy work, they point to Opus.\n\nThe deck I'd test first: a monthly campaign review, because the structure barely changes.\n\nWhich deck would you hand over first?",
+  "first_comment": "Sources: Anthropic https://www.anthropic.com/claude-sonnet-5-5 · Developer guide https://claude.dev/blog/building-with-claude-sonnet-5-5/ · Full breakdown: https://buildwithvish.netlify.app/#read-claude-sonnet-5-5-slide-decks",
+  "article": "## What Anthropic released\n\nOn 28 September Anthropic released **Claude Sonnet 5.5**, the second model in the Claude 5.5 family after Opus 5.5. Anthropic says it generates output 30%+ faster than Sonnet 5 and costs up to 30% less per task in its testing, at the same per-token price: $2 per million input tokens and $10 per million output tokens.\n\n## The part marketers should notice\n\nAnthropic describes Sonnet 5.5 as strongest at well-scoped everyday tasks and at \"creating polished documents, slides, and spreadsheets\". Early testers said it can follow slide templates to create decks that need minimal editing.\n\nThe most concrete example is Anthropic's own: it gave the model a public company's quarterly earnings materials, call transcripts and a slide template, and asked for a 10-slide operating review. Two experts judged the first draft ready to send as is.\n\nThat's an internal test, not an independent benchmark, so treat it as a promise to check, not a result to quote to your boss. Still, it's a clear signal that \"build me a deck from my template\" is becoming a normal workflow.\n\n## The 4-step workflow\n\n**01 · Pick Sonnet 5.5.** Anthropic says it's available on all platforms. In the Claude apps the default effort is Medium, which is fine for a first draft.\n\n**02 · Upload two things.** Your real slide template, and your source material: the brief, the report, the data export. The template is what stops it inventing a layout.\n\n**03 · Prompt with rules.** Something like:\n\n> Use my template. 10 slides, one message per slide. Cite the source for every number. Flag anything you guessed.\n\n**04 · Check every number.** Open the sources, compare, correct. The model drafts. You sign it off.\n\n## When to use Opus instead\n\nAnthropic's developer guide is direct about this: Sonnet 5.5 fits best when the task has a clear spec and a way to check the result, and for the hardest long-horizon work an Opus model is the better choice. A deck built from clear inputs suits Sonnet. A strategy that needs judgement across messy, conflicting inputs may be better on Opus 5.5.\n\n## What I'd do\n\nI'd start with the deck I build most often, like a monthly campaign review, and run Sonnet 5.5 alongside my usual process for one cycle. I'd track two things: time to a first draft, and how many corrections I make before it's sendable. If the corrections stay high, I'd look at my inputs first. A vague brief makes a vague deck, whichever model you use.\n\nAnd I'd never let a number go out that I haven't traced back to its source.\n\n## Sources\n\n- Anthropic, Introducing Claude Sonnet 5.5 (28 Sep 2026): https://www.anthropic.com/claude-sonnet-5-5\n- Anthropic developer guide, Building with Claude Sonnet 5.5 (28 Sep 2026): https://claude.dev/blog/building-with-claude-sonnet-5-5/\n",
+  "narration": [
+   [
+    "Claude Sonnet 5.5 can build decks from your own template."
+   ],
+   [
+    "In Anthropic's test, experts called its first draft ready to send."
+   ],
+   [
+    "It's also over thirty percent faster, at the same token price."
+   ],
+   [
+    "Step one: pick Sonnet 5.5 in the model menu."
+   ],
+   [
+    "Step two: upload your slide template and your source notes."
+   ],
+   [
+    "Step three: ask for ten slides, each number sourced."
+   ],
+   [
+    "Step four: check every number before a client sees it."
+   ],
+   [
+    "Follow for more AI workflows you can copy."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "CLAUDE SONNET 5.5",
+    "title": "Decks from *your own template*",
+    "avatar": "crossed"
+   },
+   {
+    "look": "stamp",
+    "bg": "cobalt",
+    "stamp": "READY",
+    "title": "First draft of a *10-slide* review",
+    "sub": "Anthropic's internal test, judged by two experts",
+    "trans": "pop",
+    "avatar": "surprised"
+   },
+   {
+    "look": "stat",
+    "bg": "ink",
+    "value": "30%+",
+    "title": "faster than Sonnet 5, same token price",
+    "src": "Source: Anthropic, 28 Sep 2026",
+    "dots": 200,
+    "trans": "zoom",
+    "avatar": "pleased"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "01 · Pick *Sonnet 5.5*",
+    "size": "t1",
+    "sub": "In the model menu",
+    "trans": "whip",
+    "avatar": "point"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "02 · Upload *two things*",
+    "chips": [
+     "Your slide template",
+     "Your source notes"
+    ],
+    "trans": "rise",
+    "avatar": "explaining"
+   },
+   {
+    "look": "chat",
+    "bg": "ivory",
+    "prompt": "Use my template. 10 slides, one message each. Cite the source for every number. Flag anything you guessed.",
+    "trans": "click",
+    "avatar": "focused"
+   },
+   {
+    "look": "stamp",
+    "bg": "cobalt",
+    "stamp": "CHECK",
+    "title": "04 · Check *every number*",
+    "sub": "Before a client sees it",
+    "trans": "zoom",
+    "avatar": "stressed"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI workflows* every week.",
+    "button": "Follow Vish",
+    "trans": "pop",
+    "avatar": "wave"
+   }
+  ]
+ }
+]

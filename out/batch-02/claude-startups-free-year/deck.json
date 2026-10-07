@@ -1,0 +1,104 @@
+{
+  "slug": "claude-startups-free-year",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-claude-startups-free-year",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Anthropic is giving startups a *free year of Claude*",
+      "subtitle": "Plus $1,000 in API credits. How to apply, step by step.",
+      "chip": "AI tools",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-gift-year",
+      "hero_style": "left:140px;bottom:40px;width:800px",
+      "layers": [
+        {
+          "asset": "surprised",
+          "style": "left:40px;top:700px;width:250px;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
+        },
+        {
+          "html": "a free <i>year</i>",
+          "class": "tag dark",
+          "style": "right:60px;top:690px;transform:rotate(3deg)"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "label": "What you get",
+      "value": "$1,000",
+      "title": "in Claude API credits, once",
+      "body": "Plus a free year of Claude Team for up to *five Premium seats*, if your company is new to Team.",
+      "source": "Source: Anthropic, 6 Oct 2026"
+    },
+    {
+      "type": "point",
+      "label": "01 · Check you qualify",
+      "title": "Founded in 5 years, or funded in 2",
+      "body": "Startups founded in the last five years, or funded in the last two, can apply. *No VC needed*: bootstrapped and pre-seed teams are welcome."
+    },
+    {
+      "type": "point",
+      "label": "02 · Set up the basics",
+      "title": "Console account, matching email",
+      "body": "You need a Claude Console account, a company email that matches your website's domain, and a short description of what you're building."
+    },
+    {
+      "type": "point",
+      "label": "03 · Apply",
+      "title": "Write it like a brief",
+      "body": "Apply on the Claude Startups page. Anthropic says it reviews every application. Say who it's for, what it does, and *why Claude*. Two plain sentences.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "04 · Claim Team",
+      "title": "Watch for the approval email",
+      "body": "It links to the Claude Startups page in Claude Console. Sign in there to claim Team. Credits work on the *first-party Claude API*, not Bedrock or Vertex."
+    },
+    {
+      "type": "point",
+      "label": "05 · Stack the extras",
+      "title": "Partner offers, up to $45K",
+      "body": "The Claude Startup Stack lists offers like ElevenLabs, Gamma and Granola. They come from *independent companies*, on their own terms, and may not combine."
+    },
+    {
+      "type": "list",
+      "title": "What I'd build with $1,000",
+      "items": [
+        "A brief checker",
+        "A creator shortlist scorer",
+        "A weekly report summary",
+        "A caption first-drafter"
+      ]
+    },
+    {
+      "type": "point",
+      "label": "The catch",
+      "title": "Read the fine print",
+      "body": "Team is free only if you're *new to Team*. The \"up to $7,000\" headline assumes five seats at $100 a month plus credits. Fewer seats, less value."
+    },
+    {
+      "type": "cta",
+      "title": "Save this before you *apply*.",
+      "subtitle": "Full breakdown on Build with Vish.",
+      "question": "What would you build first with $1,000 of credits?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 25
+}

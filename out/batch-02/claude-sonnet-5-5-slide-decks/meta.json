@@ -1,0 +1,15 @@
+{
+ "slug": "claude-sonnet-5-5-slide-decks",
+ "format": "video",
+ "pillar": "Real workflows and prompts",
+ "score": 8.8,
+ "title": "Claude Sonnet 5.5 builds decks from your own template: a 4-step workflow for marketers",
+ "hook": "Claude Sonnet 5.5 now builds decks from *your own template*.",
+ "subtitle": "Anthropic's test: two experts called the first draft ready to send.",
+ "cover": {
+  "concept": "A generic slide template card on the left being copied by a glowing chat bubble into a neat stack of ten finished slides on the right, with a small green tick on the top slide. Context symbol: a chat bubble.",
+  "avatar": "surprised",
+  "label": "Your template ↓"
+ },
+ "site_slug": null
+}

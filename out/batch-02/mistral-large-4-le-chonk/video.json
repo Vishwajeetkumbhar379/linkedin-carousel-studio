@@ -1,0 +1,129 @@
+{
+  "slug": "mistral-large-4-le-chonk",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "Mistral just shipped a one trillion parameter model."
+    ],
+    [
+      "It's called Large 4, and the nickname is Le Chonk."
+    ],
+    [
+      "Mistral trained it on its own GPUs, inside Europe."
+    ],
+    [
+      "Its training data spans over 160 languages, every EU one included."
+    ],
+    [
+      "Mistral says it handles spreadsheets, slides and PDFs too."
+    ],
+    [
+      "The catch: the weights aren't out yet, only a preview."
+    ],
+    [
+      "Try the preview with one real brief in two languages."
+    ],
+    [
+      "Follow for AI news that matters to marketers."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "NEW MODEL",
+      "title": "*1 trillion* parameters",
+      "avatar": "crossed",
+      "avTop": 170,
+      "avSize": 190,
+      "avSide": "right"
+    },
+    {
+      "look": "stamp",
+      "bg": "violet",
+      "stamp": "LE CHONK",
+      "title": "Mistral Large 4",
+      "sub": "Its very official nickname",
+      "trans": "pop",
+      "avatar": "laugh",
+      "avTop": 740,
+      "avSide": "left"
+    },
+    {
+      "look": "stat",
+      "bg": "cobalt",
+      "value": "3,800",
+      "title": "GPUs in Mistral's own European datacentres",
+      "src": "Source: Mistral, 6 Oct 2026",
+      "dots": 200,
+      "trans": "zoom",
+      "avatar": "surprised",
+      "avTop": 185,
+      "avSide": "right"
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "Trained on *160+ languages*",
+      "chips": [
+        "Every EU language",
+        "Multimodal",
+        "Built in Europe"
+      ],
+      "trans": "rise",
+      "avatar": "pleased",
+      "avTop": 780,
+      "avSide": "left"
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "Spreadsheets, slides *and PDFs*",
+      "size": "t2",
+      "sub": "Mistral's own claim",
+      "trans": "click",
+      "avatar": "thinking",
+      "avTop": 730,
+      "avSide": "right"
+    },
+    {
+      "look": "stamp",
+      "bg": "ink",
+      "stamp": "THE CATCH",
+      "title": "Weights *not out yet*",
+      "sub": "Preview API now, weights promised by end of month",
+      "trans": "whip",
+      "avatar": "smirk",
+      "avTop": 740,
+      "avSide": "left"
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Rewrite this campaign brief for our German and French markets. Keep every claim. Flag anything that needs a local check.",
+      "trans": "rise",
+      "avatar": "focused",
+      "avTop": 960,
+      "avSide": "right"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "avatar": "wave",
+      "avTop": 185,
+      "avSide": "right"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

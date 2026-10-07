@@ -1,0 +1,136 @@
+{
+  "slug": "free-llm-token-repos",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "Two GitHub repos promise billions of free AI tokens."
+    ],
+    [
+      "FreeLLMAPI says 7.4 billion a month, across 34 providers."
+    ],
+    [
+      "OmniRoute says 1.62 billion, counting each shared pool once."
+    ],
+    [
+      "Both give you one endpoint that switches when limits hit."
+    ],
+    [
+      "The catch: no frontier models, no uptime promise, daily caps."
+    ],
+    [
+      "I'd use it for drafts and research, not client data."
+    ],
+    [
+      "Setup is one command, then you add your free keys."
+    ],
+    [
+      "Follow for more free AI tools that actually work."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "FREE AI TOKENS",
+      "title": "Billions of *free tokens*?",
+      "avatar": "crossed",
+      "avTop": 170,
+      "avSize": 190,
+      "avSide": "right"
+    },
+    {
+      "look": "clip",
+      "bg": "ivory",
+      "title": "FreeLLMAPI: *7.4B* tokens a month",
+      "clip": {
+        "url": "https://github.com/tashfeenahmed/freellmapi",
+        "scrollPx": 1600,
+        "img": "github-com-tashfeenahmed-freellmapi.png"
+      },
+      "trans": "whip",
+      "avatar": "surprised",
+      "avTop": 600,
+      "avSide": "left"
+    },
+    {
+      "look": "clip",
+      "bg": "ink",
+      "title": "OmniRoute: *~1.62B*, pools counted once",
+      "clip": {
+        "url": "https://github.com/diegosouzapw/OmniRoute",
+        "scrollPx": 1600,
+        "img": "github-com-diegosouzapw-omniroute.png"
+      },
+      "trans": "zoom",
+      "avatar": "thinking",
+      "avTop": 600,
+      "avSide": "right"
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "One endpoint, *auto fallback*",
+      "chips": [
+        "One /v1 endpoint",
+        "Switches on limits",
+        "Your own keys"
+      ],
+      "trans": "rise",
+      "avatar": "explaining",
+      "avTop": 780,
+      "avSide": "left"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "THE CATCH",
+      "title": "No frontier models. *Daily caps.*",
+      "sub": "No uptime promise either",
+      "trans": "pop",
+      "avatar": "smirk",
+      "avTop": 740,
+      "avSide": "right"
+    },
+    {
+      "look": "versus",
+      "bg": "violet",
+      "title": "Where I'd use it",
+      "left": "Client data",
+      "right": "Drafts and research",
+      "trans": "whip",
+      "avatar": "thinking",
+      "avTop": 960,
+      "avSide": "left"
+    },
+    {
+      "look": "text",
+      "bg": "ivory",
+      "title": "One command. *Add your keys.*",
+      "size": "t2",
+      "sub": "Then point any OpenAI-compatible tool at it",
+      "trans": "click",
+      "avatar": "point",
+      "avTop": 730,
+      "avSide": "right"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *free AI tools* every week.",
+      "button": "Follow Vish",
+      "trans": "pop",
+      "avatar": "wave",
+      "avTop": 185,
+      "avSide": "right"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

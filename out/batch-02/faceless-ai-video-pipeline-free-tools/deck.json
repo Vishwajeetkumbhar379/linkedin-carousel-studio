@@ -1,0 +1,106 @@
+{
+  "slug": "faceless-ai-video-pipeline-free-tools",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "Real workflows and prompts",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-faceless-ai-video-pipeline-free-tools",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "A faceless AI video pipeline in *7 free steps*",
+      "subtitle": "Script, voice, B-roll, motion, sound, captions, scheduling",
+      "chip": "Workflows",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-pipeline-chain",
+      "hero_style": "left:40px;bottom:50px;width:720px",
+      "layers": [
+        {
+          "asset": "point_screen_left",
+          "style": "right:30px;bottom:70px;height:600px;filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
+        },
+        {
+          "html": "7 free <i>steps</i>",
+          "class": "tag dark",
+          "style": "left:360px;top:760px;transform:translateX(-50%) rotate(-2deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · Script",
+      "title": "Write it with free models",
+      "body": "Route drafts through FreeLLMAPI or OmniRoute: one endpoint over many free tiers. Prompt: \"Write a 70-word voiceover. One idea per line. Every number needs a source link.\"",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · Voice",
+      "title": "Voice it with an open model",
+      "body": "Kokoro-82M has *Apache-licensed weights*. Hugging Face's new Open TTS Leaderboard puts it among the top three on English intelligibility. Use the Listen tab before you pick."
+    },
+    {
+      "type": "point",
+      "label": "03 · B-roll",
+      "title": "Screen-record the real thing",
+      "body": "Record the actual repo, docs page or changelog you talk about. OBS Studio is free and open source on Windows, Mac and Linux. *Real screens* beat stock typing clips."
+    },
+    {
+      "type": "point",
+      "label": "04 · Motion",
+      "title": "Animate text with code",
+      "body": "Remotion builds videos with React. Free, even commercially, for individuals and companies with up to 3 employees. Bigger teams need a company licence. One idea per screen.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "05 · Sound",
+      "title": "Use sounds you're allowed to use",
+      "body": "Freesound uses Creative Commons. *CC0* means use freely. Attribution means credit the creator. Noncommercial means no ads. A soft whoosh per scene change is enough."
+    },
+    {
+      "type": "point",
+      "label": "06 · Captions",
+      "title": "Caption every word",
+      "body": "Transcribe your own voiceover so captions match exactly. Hugging Face calls Qwen3 ASR the top open model on its Open ASR Leaderboard. Fix names and numbers *by hand*."
+    },
+    {
+      "type": "point",
+      "label": "07 · Schedule",
+      "title": "Schedule, then show up",
+      "body": "Buffer's free plan connects up to 3 channels with 10 scheduled posts each. Automation can publish. It can't reply to comments *like you do*.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "list",
+      "title": "The honest catch",
+      "items": [
+        "Free tiers have daily caps",
+        "Open models still make mistakes",
+        "Every licence reads differently",
+        "Facts need a human check"
+      ]
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *content sprint*.",
+      "subtitle": "Full breakdown on Build with Vish.",
+      "question": "Which step would you automate first?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 37
+}

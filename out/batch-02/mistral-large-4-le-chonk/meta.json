@@ -1,0 +1,15 @@
+{
+ "slug": "mistral-large-4-le-chonk",
+ "format": "video",
+ "pillar": "AI tools that change marketing work",
+ "score": 8.2,
+ "title": "Mistral Large 4: Europe's 1 trillion parameter model, and what marketers can do with it",
+ "hook": "Mistral just shipped a *1 trillion* parameter model.",
+ "subtitle": "Preview API now. Open weights promised by the end of October.",
+ "cover": {
+  "concept": "One huge chunky glowing cube towering over a row of small cubes, with a ring of gold stars orbiting it. Context symbol: a ring of gold stars for Europe.",
+  "avatar": "surprised",
+  "label": "1 trillion parameters ↓"
+ },
+ "site_slug": null
+}
