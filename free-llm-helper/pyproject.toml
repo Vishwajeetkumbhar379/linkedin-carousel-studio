@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "free-llm-helper"
+version = "0.1.0"
+description = "Offload bulk reading and drafting from Claude to free LLM providers, with a folder allowlist and secret scrubbing."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Vishwajeet Kumbhar" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+freellm = "freellm.cli:main"
+
+[tool.setuptools]
+packages = ["freellm"]
