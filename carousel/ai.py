@@ -85,6 +85,8 @@ class OpenAICompatClient:
                 time.sleep(wait)
             except (urllib.error.URLError, TimeoutError) as e:
                 raise LLMError(f"{self.name}: {e}") from e
+            except (ValueError, KeyError, IndexError) as e:
+                raise LLMError(f"{self.name}: unexpected reply ({e})") from e
         try:
             args = message["tool_calls"][0]["function"]["arguments"]
             data = json.loads(args) if isinstance(args, str) else args
@@ -152,14 +154,20 @@ def _cloudflare_url(key: str) -> str:
 # Free providers, best quality first. "keys" lists accepted env var names (common misspellings included).
 PROVIDERS = {
     "nvidia": {"keys": ["NVIDIA_API_KEY"], "url": "https://integrate.api.nvidia.com/v1", "model": "moonshotai/kimi-k3"},
+    "github": {"keys": ["GITHUB_MODELS_TOKEN", "GITHUB_API_KEY"], "url": "https://models.github.ai/inference",
+               "model": "openai/gpt-4.1"},
+    "openrouter": {"keys": ["OPENROUTER_API_KEY"], "url": "https://openrouter.ai/api/v1",
+                   "model": "nvidia/nemotron-3-super-120b-a12b:free"},
     "groq": {"keys": ["GROQ_API_KEY", "GROG_API_KEY"], "url": "https://api.groq.com/openai/v1", "model": "openai/gpt-oss-120b"},
     "cloudflare": {"keys": ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_API_KEY", "CLOUDFARE_API_KEY"], "url": _cloudflare_url,
                    "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"},
+    "zai": {"keys": ["ZAI_API_KEY", "Z_AI_API_KEY", "ZHIPU_API_KEY", "GLM_API_KEY"], "url": "https://api.z.ai/api/paas/v4",
+            "model": "glm-4.5-flash"},
     "llm7": {"keys": ["LLM7_API_KEY"], "url": "https://api.llm7.io/v1", "model": "deepseek-v4-pro"},
     "mistral": {"keys": ["MISTRAL_API_KEY"], "url": "https://api.mistral.ai/v1", "model": "ministral-14b-latest",
                 "tool_choice": "any"},
+    "sambanova": {"keys": ["SAMBANOVA_API_KEY"], "url": "https://api.sambanova.ai/v1", "model": "gpt-oss-120b"},
 }
-
 
 def provider_client(name: str, model: str | None = None) -> OpenAICompatClient | None:
     p = PROVIDERS[name]

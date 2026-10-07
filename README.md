@@ -63,10 +63,14 @@ Without `ANTHROPIC_API_KEY`, `carousel draft` uses every free provider you have 
 | Order | Provider | Env var | Default model |
 |---|---|---|---|
 | 1 | NVIDIA (build.nvidia.com) | `NVIDIA_API_KEY` | `moonshotai/kimi-k3` |
-| 2 | Groq | `GROQ_API_KEY` | `openai/gpt-oss-120b` |
-| 3 | Cloudflare Workers AI | `CLOUDFLARE_API_TOKEN` (+ optional `CLOUDFLARE_ACCOUNT_ID`, looked up from the token if missing) | `@cf/meta/llama-3.3-70b-instruct-fp8-fast` |
-| 4 | LLM7 | `LLM7_API_KEY` | `deepseek-v4-pro` |
-| 5 | Mistral | `MISTRAL_API_KEY` | `ministral-14b-latest` |
+| 2 | GitHub Models | `GITHUB_MODELS_TOKEN` or `GITHUB_API_KEY` | `openai/gpt-4.1` |
+| 3 | OpenRouter | `OPENROUTER_API_KEY` | `nvidia/nemotron-3-super-120b-a12b:free` |
+| 4 | Groq | `GROQ_API_KEY` | `openai/gpt-oss-120b` |
+| 5 | Cloudflare Workers AI | `CLOUDFLARE_API_TOKEN` (+ optional `CLOUDFLARE_ACCOUNT_ID`, looked up from the token if missing) | `@cf/meta/llama-3.3-70b-instruct-fp8-fast` |
+| 6 | Z.AI (GLM) | `ZAI_API_KEY` | `glm-4.5-flash` |
+| 7 | LLM7 | `LLM7_API_KEY` | `deepseek-v4-pro` |
+| 8 | Mistral | `MISTRAL_API_KEY` | `ministral-14b-latest` |
+| 9 | SambaNova | `SAMBANOVA_API_KEY` | `gpt-oss-120b` (needs a payment method on file) |
 
 ```bash
 carousel draft "What 850 creator deals taught me about briefs" --notes my_notes.txt   # auto chain

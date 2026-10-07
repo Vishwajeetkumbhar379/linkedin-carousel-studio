@@ -7,6 +7,7 @@ import argparse
 import json
 from pathlib import Path
 
+from .ai import PROVIDERS
 from .render import load, render
 
 
@@ -22,7 +23,7 @@ def main(argv: list[str] | None = None) -> int:
     d.add_argument("--name", default="Your Name")
     d.add_argument("--handle", default="@yourhandle")
     d.add_argument("--out", type=Path, default=Path("deck.json"))
-    d.add_argument("--provider", choices=["auto", "anthropic", "nvidia", "groq", "cloudflare", "llm7", "mistral"],
+    d.add_argument("--provider", choices=["auto", "anthropic", *PROVIDERS],
                    default="auto", help="auto = Claude if ANTHROPIC_API_KEY is set, else every free provider with a key, "
                                         "best first, falling back on failure")
     a = ap.parse_args(argv)
