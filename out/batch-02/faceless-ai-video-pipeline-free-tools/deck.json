@@ -21,7 +21,7 @@
       "layers": [
         {
           "asset": "point_screen_left",
-          "style": "right:30px;bottom:70px;height:600px;filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
+          "style": "right:30px;bottom:120px;height:540px;filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
         },
         {
           "html": "7 free <i>steps</i>",
