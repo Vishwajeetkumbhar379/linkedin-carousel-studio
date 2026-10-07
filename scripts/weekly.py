@@ -228,7 +228,25 @@ def problems(p: dict, allowed: dict) -> list[str]:
     return errs
 
 
+def as_post(x) -> dict:
+    """Models sometimes wrap the object in a list or nest it under a key."""
+    while isinstance(x, list) and x:
+        x = x[0]
+    if isinstance(x, dict) and "slug" not in x and len(x) == 1 and isinstance(next(iter(x.values())), (dict, list)):
+        x = as_post(next(iter(x.values())))
+    if not isinstance(x, dict):
+        raise ValueError("model did not return a post object")
+    x["facts"] = [f for f in x.get("facts", []) if isinstance(f, dict)]
+    for k in ("beats", "slides"):
+        if k in x:
+            x[k] = [b for b in x[k] if isinstance(b, dict)]
+    if "narration" in x:
+        x["narration"] = [[sc] if isinstance(sc, str) else [str(t) for t in sc] for sc in x["narration"]]
+    return x
+
+
 def clean(p: dict, allowed: dict, slug_taken: set) -> dict:
+    p = as_post(p)
     s = json.dumps(p, ensure_ascii=False).replace(" — ", ", ").replace("—", ", ").replace(" – ", ", ").replace("–", "-")
     p = json.loads(s)
     p["slug"] = re.sub(r"[^a-z0-9]+", "-", p.get("slug") or p.get("title", "post").lower()).strip("-")[:60]
@@ -254,7 +272,10 @@ def write_all(picks: list[dict]) -> list[dict]:
                     + "\n\nAllowed source URLs: " + ", ".join(allowed) + "\n\nPOST:\n" + json.dumps(post, ensure_ascii=False))
             except Exception as e:  # noqa: BLE001
                 log("write failed:", e); continue
-            post = clean(post, allowed, taken)
+            try:
+                post = clean(post, allowed, taken)
+            except Exception as e:  # noqa: BLE001
+                log("bad post shape:", e); errs = [str(e)]; post = None; continue
             post["facts"] = [f for f in post.get("facts", []) if f.get("url") in allowed]
             errs = problems(post, allowed)
             if not errs:
