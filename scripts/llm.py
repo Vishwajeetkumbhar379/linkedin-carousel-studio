@@ -51,7 +51,7 @@ PROVIDERS = [
      "signup": "https://huggingface.co/settings/tokens (read token, Inference Providers on)"},
     {"id": "cerebras", "env": "CEREBRAS_API_KEY", "base": "https://api.cerebras.ai/v1", "model": "gpt-oss-120b", "budget": 0,
      "signup": "https://cloud.cerebras.ai"},
-    {"id": "nvidia", "env": "NVIDIA_API_KEY", "base": "https://integrate.api.nvidia.com/v1", "model": "openai/gpt-oss-120b", "alts": ["deepseek-ai/deepseek-v3.1", "qwen/qwen3-235b-a22b"], "budget": 0,
+    {"id": "nvidia", "env": "NVIDIA_API_KEY", "base": "https://integrate.api.nvidia.com/v1", "model": "nvidia/nemotron-3-super-120b-a12b", "alts": ["openai/gpt-oss-20b"], "budget": 0,
      "signup": "https://build.nvidia.com (Get API key)"},
     {"id": "zai", "env": "ZAI_API_KEY", "base": "https://api.z.ai/api/paas/v4", "model": "glm-4.5-flash", "budget": 0,
      "signup": "https://z.ai/manage-apikey/apikey-list"},
