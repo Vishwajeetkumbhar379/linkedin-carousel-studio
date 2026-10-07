@@ -11,7 +11,7 @@ You produce LinkedIn content for Vishwajeet "Vish" Kumbhar (AI x marketing, 850+
   - point, explaining, thumbs, crossed (hook signature), wave (CTA)
 
   He stays secondary, points at the content, and never covers text. Dot v4 (`premiumMascot`) appears only on explainer slides.
-- **Voice:** one Gemini designed voice, `voice_3rjyhtlhksw1`, in the energetic style from tokens. Fallback is Flash-Lite TTS. Lines are aligned by transcription (`voiceover.phrase_bounds`).
+- **Voice:** see the 7 Oct section below (Puck, relaxed). The old designed voice `voice_3rjyhtlhksw1` is retired. Fallback is Flash-Lite TTS. Lines are aligned by transcription (`voiceover.phrase_bounds`).
   - The key is the environment API credential `GEMINI_API_KEY`: header `x-goog-api-key` for `generativelanguage.googleapis.com`. Never ask for it in chat.
   - Free tier: 10 TTS requests a day per model. Voice one video per request; multi-video requests get truncated on Flash-Lite.
 - **Writing:** follow `content/batch-01/BRIEF.md`.
@@ -30,7 +30,7 @@ You produce LinkedIn content for Vishwajeet "Vish" Kumbhar (AI x marketing, 850+
 ## Weekly run (what the scheduled routine does)
 0. Tokens: `bash scripts/router_setup.sh && python scripts/llm.py --check`. Use `scripts/llm.py` for drafting and research summaries. If the check shows no free provider, carry on with Gemini and say so in the run summary.
 1. Research: `python scripts/research/fetch.py`, plus WebSearch for news in the last 14 days on AI x marketing, creator economy and social platforms. Avoid topics already in `out/batch-*` and `topics/posted.json`.
-2. Write 5 posts (4 videos, 1 carousel) to `content/batch-NN/*.json`, following the BRIEF schema exactly.
+2. Write 6 posts (3 carousels or tutorial carousels, 2 videos, 1 step-by-step tutorial video) to `content/batch-NN/*.json`, following the BRIEF schema exactly.
 3. Build and voice: `python scripts/make_batch.py content/batch-NN --out=batch-NN`, then voice each video with `python scripts/voiceover.py out/batch-NN/<slug>/video.json --engine gemini-oneshot --no-bed`.
 4. Carousel covers: render a story-prop 3D hero (`out/_samples/specs*` as examples) and set `hero` and `layers` in `deck.json`. Then run `python scripts/build_post.py out/batch-NN/<slug>`.
 5. Render: `python scripts/render_ready.py out/batch-NN --jobs=4` (about 15 min per wave of 4).

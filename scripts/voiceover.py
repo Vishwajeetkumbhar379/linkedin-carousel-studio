@@ -420,6 +420,23 @@ def synth_gemini_per_scene(narration: list[list[str]], voice: str, style: str) -
     return np.concatenate(out), timings
 
 
+def spread(audio: np.ndarray, timings: list[dict], line: float, scene: float) -> tuple[np.ndarray, list[dict]]:
+    """Re-assemble the take with a real pause after every line (longer between scenes) so videos breathe."""
+    out, t, new = [], 0.0, []
+    for si, sc in enumerate(timings):
+        s0, phrases = t, []
+        for pi, p in enumerate(sc["phrases"]):
+            seg = audio[int(p["start"] * SR): int(p["end"] * SR)]
+            phrases.append({**p, "start": round(t, 3), "end": round(t + len(seg) / SR, 3)})
+            out.append(seg)
+            t += len(seg) / SR
+            gap = scene if pi == len(sc["phrases"]) - 1 else line
+            out.append(np.zeros(int(SR * gap), dtype=np.float32))
+            t += gap
+        new.append({"start": round(s0, 3), "end": phrases[-1]["end"], "phrases": phrases})
+    return np.concatenate(out), new
+
+
 def chunk_caption(p: dict, max_words: int = 7) -> list[dict]:
     """Split a phrase into short subtitle chunks, timed by character share (good enough at speech pace)."""
     words = p["text"].split()
@@ -460,6 +477,9 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
         audio, timings = synth_gemini(narration, voice, style)
     else:
         audio, timings = synth(narration, voice, breaths, speed)
+    pz = _T.get("pause_s", {})
+    if pz and engine.startswith("gemini"):
+        audio, timings = spread(audio, timings, pz.get("line", 0.3), pz.get("scene", 0.55))
     dur = len(audio) / SR + 0.8
     mix = np.zeros(int(SR * dur), dtype=np.float32)
     mix[: len(audio)] += audio
