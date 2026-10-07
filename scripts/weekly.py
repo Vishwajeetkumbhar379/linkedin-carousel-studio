@@ -583,7 +583,11 @@ def fix_existing(name: str) -> None:
                 items.append({"url": fc["url"], "date": fc.get("date", TODAY.isoformat()), "title": fc.get("source_name", ""),
                               "source": fc.get("source_name", ""), "summary": fc.get("claim", "")})
         slot = post["format"] + ("-tutorial" if any(b.get("look") == "ui" for b in post.get("beats", [])) else "")
-        fixed, errs = write_one({"slot": slot, "items": items, "angle": post.get("title", "")}, set(), draft=post)
+        pick = {"slot": slot, "items": items, "angle": post.get("hook", "") + ": " + post.get("title", "")}
+        fixed, errs = write_one(pick, set(), draft=post)
+        if not fixed:  # repairs did not take: write it fresh from the same sources
+            log("repair failed, writing fresh:", post["slug"])
+            fixed, errs = write_one(pick, set())
         if fixed:
             fixed["slug"] = post["slug"]
             out.append(fixed)
