@@ -12,3 +12,9 @@ out/batch-*/**/*.wav
 out/batch-*/*.wav
 revoice.log
 voice.old.wav
+
+# voice-clone and reel working files (takes, QA stills, intermediate audio)
+.clone/
+.takes/
+out/flagship/*/frames/
+out/flagship/*/*.wav
