@@ -32,7 +32,7 @@ GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
 # re-audited 2 Sep 2026; 0 = free but rate-limited with no published token cap). model = preferred model;
 # if it is retired the client picks a capable one from the provider's /models list.
 PROVIDERS = [
-    {"id": "mistral", "env": "MISTRAL_API_KEY", "base": "https://api.mistral.ai/v1", "model": "mistral-medium-latest", "alts": ["mistral-small-latest", "open-mistral-nemo", "ministral-8b-latest"], "budget": 1_000_000_000,
+    {"id": "mistral", "env": "MISTRAL_API_KEY", "base": "https://api.mistral.ai/v1", "model": "open-mistral-nemo", "alts": ["ministral-8b-latest", "mistral-small-latest"], "budget": 1_000_000_000,
      "signup": "https://console.mistral.ai (Experiment plan, free, phone check)"},
     {"id": "llm7", "env": "LLM7_API_KEY", "base": "https://api.llm7.io/v1", "model": "default", "budget": 150_000_000,
      "signup": "https://token.llm7.io (free token)"},
@@ -71,8 +71,8 @@ def _post(url: str, body: dict, headers: dict, timeout: int) -> dict:
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 return json.loads(r.read())
         except urllib.error.HTTPError as e:
-            if e.code != 429 or not wait:
-                raise
+            if e.code != 429 or not wait or e.headers.get("x-ratelimit-limit-req-minute") == "0":
+                raise  # limit 0 = model not in this free tier: retrying will not help
             time.sleep(wait)
 
 
@@ -130,7 +130,7 @@ def _provider(p: dict, messages: list[dict], temperature: float, timeout: int) -
             raise urllib.error.HTTPError(p["base"], 404, "pick", None, None)
         return _openai(_base(p), key, model, messages, temperature, timeout)
     except urllib.error.HTTPError as e:
-        if e.code not in (400, 403, 404):
+        if e.code not in (400, 403, 404, 429):
             raise
         for alt in p.get("alts", []):  # e.g. a model the free tier does not include (403 tier_not_allowed)
             time.sleep(1.2)
