@@ -32,13 +32,13 @@ GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
 # re-audited 2 Sep 2026; 0 = free but rate-limited with no published token cap). model = preferred model;
 # if it is retired the client picks a capable one from the provider's /models list.
 PROVIDERS = [
-    {"id": "mistral", "env": "MISTRAL_API_KEY", "base": "https://api.mistral.ai/v1", "model": "mistral-large-latest", "budget": 1_000_000_000,
+    {"id": "mistral", "env": "MISTRAL_API_KEY", "base": "https://api.mistral.ai/v1", "model": "mistral-medium-latest", "alts": ["mistral-small-latest", "open-mistral-nemo", "ministral-8b-latest"], "budget": 1_000_000_000,
      "signup": "https://console.mistral.ai (Experiment plan, free, phone check)"},
     {"id": "llm7", "env": "LLM7_API_KEY", "base": "https://api.llm7.io/v1", "model": "default", "budget": 150_000_000,
      "signup": "https://token.llm7.io (free token)"},
-    {"id": "groq", "env": "GROQ_API_KEY", "base": "https://api.groq.com/openai/v1", "model": "openai/gpt-oss-120b", "budget": 30_000_000,
+    {"id": "groq", "env": "GROQ_API_KEY", "aliases": ["GROG_API_KEY"], "base": "https://api.groq.com/openai/v1", "model": "openai/gpt-oss-120b", "budget": 30_000_000,
      "signup": "https://console.groq.com/keys"},
-    {"id": "cloudflare", "env": "CLOUDFLARE_API_TOKEN", "base": "https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai/v1",
+    {"id": "cloudflare", "env": "CLOUDFLARE_API_TOKEN", "aliases": ["CLOUDFARE_API_KEY", "CLOUDFLARE_API_KEY", "CLOUDFARE_API_TOKEN"], "base": "https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai/v1",
      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "budget": 30_000_000,
      "signup": "https://dash.cloudflare.com > AI > Workers AI > Use REST API (token + account ID)"},
     {"id": "sambanova", "env": "SAMBANOVA_API_KEY", "base": "https://api.sambanova.ai/v1", "model": "Meta-Llama-3.3-70B-Instruct", "budget": 6_000_000,
@@ -78,15 +78,26 @@ def _openai(base: str, key: str | None, model: str, messages: list[dict], temper
     return resp["choices"][0]["message"]["content"]
 
 
+def _key(p: dict) -> str | None:
+    """The provider's key from its variable or a common misspelling of it (GROG, CLOUDFARE), stripped of quotes."""
+    for name in [p["env"], *p.get("aliases", [])]:
+        v = os.environ.get(name, "").strip().strip("'\"")
+        if v:
+            return v
+    return None
+
+
 def _base(p: dict) -> str | None:
     try:
-        return p["base"].format(**os.environ)
+        env = dict(os.environ)
+        env.setdefault("CLOUDFLARE_ACCOUNT_ID", os.environ.get("CLOUDFARE_ACCOUNT_ID", ""))
+        return p["base"].format(**env) if "{CLOUDFLARE_ACCOUNT_ID}" not in p["base"] or env["CLOUDFLARE_ACCOUNT_ID"] else None
     except KeyError:
         return None  # e.g. Cloudflare without CLOUDFLARE_ACCOUNT_ID
 
 
 def configured() -> list[dict]:
-    return [p for p in PROVIDERS if os.environ.get(p["env"]) and _base(p)]
+    return [p for p in PROVIDERS if _key(p) and _base(p)]
 
 
 def _pick_model(p: dict, key: str) -> str:
@@ -103,15 +114,22 @@ def _pick_model(p: dict, key: str) -> str:
 
 
 def _provider(p: dict, messages: list[dict], temperature: float, timeout: int) -> str:
-    key = os.environ[p["env"]]
+    key = _key(p)
     model = p.get("_model") or p["model"]
     try:
         if model == ":free":
             raise urllib.error.HTTPError(p["base"], 404, "pick", None, None)
         return _openai(_base(p), key, model, messages, temperature, timeout)
     except urllib.error.HTTPError as e:
-        if e.code not in (400, 404):
+        if e.code not in (400, 403, 404):
             raise
+        for alt in p.get("alts", []):  # e.g. a model the free tier does not include (403 tier_not_allowed)
+            try:
+                out = _openai(_base(p), key, alt, messages, temperature, timeout)
+                p["_model"] = alt
+                return out
+            except urllib.error.HTTPError:
+                continue
         p["_model"] = _pick_model(p, key)  # model retired or renamed: choose again, once
         return _openai(_base(p), key, p["_model"], messages, temperature, timeout)
 
@@ -216,19 +234,19 @@ def check() -> int:
         except Exception as e:  # noqa: BLE001
             rows.append((base, "running, no provider answered", _err(e)[:90]))
     for p in PROVIDERS:
-        if not os.environ.get(p["env"]):
+        if not _key(p):
             rows.append((p["id"], f"no key ({p['env']})", p["signup"]))
             continue
         if not _base(p):
-            rows.append((p["id"], "missing CLOUDFLARE_ACCOUNT_ID", ""))
+            rows.append((p["id"], "key found, CLOUDFLARE_ACCOUNT_ID missing", "copy Account ID from the Workers AI REST API page"))
             continue
         try:
             _provider(p, msg, 0, 60)
             live += p["budget"]
             rows.append((p["id"], "OK", f"{p.get('_model') or p['model']} · {p['budget'] / 1e6:,.0f}M tokens/mo" if p["budget"] else f"{p.get('_model') or p['model']} · free, rate-limited"))
         except Exception as e:  # noqa: BLE001
-            blocked = not isinstance(e, urllib.error.HTTPError) or e.code in (403, 407)
-            hint = "blocked: Network access must be Full (or check the key)" if blocked else ""
+            blocked = not isinstance(e, urllib.error.HTTPError) or (e.code in (403, 407) and "proxy" in _err(e).lower())
+            hint = "blocked: Network access must be Full" if blocked else ""
             rows.append((p["id"], "FAILED", hint or _err(e)[:90]))
     try:
         _gemini(msg, 60)
