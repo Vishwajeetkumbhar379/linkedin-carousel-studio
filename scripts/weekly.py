@@ -3,6 +3,7 @@
     python scripts/weekly.py                 # research -> write -> build -> voice -> covers -> render -> QA -> site -> calendar -> page
     python scripts/weekly.py --no-voice      # skip Gemini TTS (quota) and rendering of videos
     python scripts/weekly.py --write-only    # stop after content/batch-NN/posts.json
+    python scripts/weekly.py --fix batch-NN  # re-check an existing posts.json and repair only failing posts
 
 Who does what:
   research   scripts/research/fetch.py (RSS and pages, no LLM)
@@ -308,12 +309,22 @@ def problems(p: dict, allowed: dict, tutorial: bool = False) -> list[str]:
             errs.append(f"{len(p.get('beats', []))} beats for {len(phrases)} phrases; needs one beat per phrase")
         if p.get("beats") and p["beats"][-1].get("look") != "cta":
             errs.append("last beat must be look cta")
+        if not 6 <= len(phrases) <= 9:
+            errs.append(f"{len(phrases)} narration lines; needs 6 to 9 short lines, one per scene")
+        long = [x for x in phrases if len(x.split()) > 16]
+        if long:
+            errs.append(f"{len(long)} narration lines over 16 words; split them so each scene has one short spoken line")
+        if p.get("beats") and p["beats"][0].get("look") != "hook":
+            errs.append("first beat must be look hook (big hook text, avatar crossed)")
         if tutorial and sum(b.get("look") == "ui" for b in p.get("beats", [])) < 2:
             errs.append("tutorial video needs 2 to 4 'ui' screen walkthrough beats (cursor clicks in the app, or the typed prompt and its result), "
                         "one per how-to step, using the ui beat format from the rules")
     else:
         if not 6 <= len(p.get("slides", [])) <= 10:
             errs.append(f"carousel has {len(p.get('slides', []))} slides; needs 8 to 10 (cover first, cta last)")
+        mid = p.get("slides", [])[1:-1]
+        if mid and not any(re.search(r"\b(I'd|What I'd|you can|try|do this|use|steal|copy|start)\b", json.dumps(s_, ensure_ascii=False), re.I) for s_ in mid[-3:]):
+            errs.append("carousel only lists facts; end with 1 or 2 slides on what the reader should do next (Vish's take: 'What I'd do')")
     if "?" not in p.get("caption", ""):
         errs.append("caption needs one closing question")
     return errs
@@ -430,6 +441,11 @@ def repair(p: dict) -> dict:
         p["beats"] = beats
     if p.get("format") == "carousel" and p.get("slides"):
         sl = p["slides"]
+        if sl[-1].get("type") == "cta":
+            for k, v in {"subtitle": "Full breakdown on Build with Vish.", "button": "Save · Follow for AI x marketing", "chip": "Free guide inside"}.items():
+                sl[-1].setdefault(k, v)
+            if len(sl[-1].get("title", "").split()) < 4:
+                sl[-1]["title"] = "Save this before your next *client call*."
         if sl[-1].get("type") != "cta":
             sl.append({"type": "cta", "title": "Save this for your next *build day*.", "subtitle": "Full breakdown on Build with Vish.",
                        "question": "Which step would you automate first?", "button": "Save · Follow for AI x marketing", "chip": "Free guide inside"})
@@ -483,10 +499,15 @@ def merge(old: dict | None, new) -> dict:
     return out
 
 
-def write_one(pick: dict, taken: set) -> tuple[dict | None, list[str]]:
+def write_one(pick: dict, taken: set, draft: dict | None = None) -> tuple[dict | None, list[str]]:
     allowed = {it["url"]: it for it in pick["items"]}
     tutorial = pick["slot"] == "video-tutorial"
-    post, errs, checked = None, [], False
+    post, errs, checked = draft, [], False
+    if draft:  # repair mode: validate first, only ask the model if something fails
+        errs = problems(repair(clean(dict(draft), allowed, taken)), allowed, tutorial)
+        if not errs:
+            return repair(clean(dict(draft), allowed, taken)), []
+        log(f"{draft.get('slug')}: {errs}")
     for attempt in range(4):
         try:
             post = write_post(pick) if post is None else merge(post, ask_json(
@@ -550,7 +571,31 @@ def covers(out: Path, posts: list[dict]) -> None:
         run(PY, "scripts/build_post.py", out / p["slug"], check=False)
 
 
+def fix_existing(name: str) -> None:
+    """Re-check content/<name>/posts.json and repair only the posts that fail, on free tokens."""
+    f = ROOT / "content" / name / "posts.json"
+    posts, out = json.loads(f.read_text()), []
+    for post in posts:
+        items, seen = [], set()
+        for fc in post.get("facts", []):
+            if fc.get("url") and fc["url"] not in seen:
+                seen.add(fc["url"])
+                items.append({"url": fc["url"], "date": fc.get("date", TODAY.isoformat()), "title": fc.get("source_name", ""),
+                              "source": fc.get("source_name", ""), "summary": fc.get("claim", "")})
+        slot = post["format"] + ("-tutorial" if any(b.get("look") == "ui" for b in post.get("beats", [])) else "")
+        fixed, errs = write_one({"slot": slot, "items": items, "angle": post.get("title", "")}, set(), draft=post)
+        if fixed:
+            fixed["slug"] = post["slug"]
+            out.append(fixed)
+        else:
+            log("still failing, kept for manual repair:", post["slug"], errs); out.append(post)
+    f.write_text(json.dumps(out, indent=1, ensure_ascii=False))
+    log(f"checked {len(posts)} posts in content/{name}")
+
+
 def main() -> None:
+    if "--fix" in sys.argv:
+        return fix_existing(sys.argv[sys.argv.index("--fix") + 1])
     name = next_batch()
     tut = [m for m in MIX if m.endswith("tutorial")]
     seeds = seed_picks(tut + tut)  # Vish's hype list fills the tutorial slots first; the next seeds are spares
