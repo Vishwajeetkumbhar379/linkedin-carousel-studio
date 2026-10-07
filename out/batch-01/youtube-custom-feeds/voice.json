@@ -1,106 +1,106 @@
 {
- "voice": "voice_3rjyhtlhksw1",
- "duration": 26.449583333333333,
+ "voice": "Puck",
+ "duration": 39.31454166666666,
  "scenes": [
   {
-   "start": 0.2,
-   "end": 3.03,
+   "start": 0.0,
+   "end": 3.27,
    "phrases": [
     {
      "text": "YouTube is letting viewers design their own homepage.",
-     "start": 0.2,
-     "end": 3.03
+     "start": 0.0,
+     "end": 3.27
     }
    ]
   },
   {
-   "start": 3.03,
-   "end": 7.53,
+   "start": 3.87,
+   "end": 10.21,
    "phrases": [
     {
      "text": "It's called Custom Feeds.",
-     "start": 3.03,
-     "end": 4.41
+     "start": 3.87,
+     "end": 5.72
     },
     {
      "text": "You describe a mood or an interest, and YouTube builds the feed.",
-     "start": 4.41,
-     "end": 7.53
+     "start": 6.04,
+     "end": 10.21
     }
    ]
   },
   {
-   "start": 7.53,
-   "end": 10.87,
+   "start": 10.81,
+   "end": 15.77,
    "phrases": [
     {
      "text": "It's coming to the US this autumn,",
-     "start": 7.53,
-     "end": 9.09
+     "start": 10.81,
+     "end": 13.82
     },
     {
      "text": "on web, mobile and TV.",
-     "start": 9.09,
-     "end": 10.87
+     "start": 14.14,
+     "end": 15.77
     }
    ]
   },
   {
-   "start": 10.87,
-   "end": 15.05,
+   "start": 16.37,
+   "end": 22.35,
    "phrases": [
     {
      "text": "Why should marketers care?",
-     "start": 10.87,
-     "end": 12.26
+     "start": 16.37,
+     "end": 18.5
     },
     {
      "text": "Because people can now ask for exactly what they want.",
-     "start": 12.26,
-     "end": 15.05
+     "start": 18.82,
+     "end": 22.35
     }
    ]
   },
   {
-   "start": 15.05,
-   "end": 18.91,
+   "start": 22.95,
+   "end": 27.98,
    "phrases": [
     {
      "text": "Your video has to match what someone asks for,",
-     "start": 15.05,
-     "end": 17.28
+     "start": 22.95,
+     "end": 25.62
     },
     {
      "text": "not just what they watched last week.",
-     "start": 17.28,
-     "end": 18.91
+     "start": 25.94,
+     "end": 27.98
     }
    ]
   },
   {
-   "start": 18.91,
-   "end": 23.78,
+   "start": 28.58,
+   "end": 35.12,
    "phrases": [
     {
      "text": "So write titles and descriptions that say exactly who it's for.",
-     "start": 18.91,
-     "end": 22.17
+     "start": 28.58,
+     "end": 32.72
     },
     {
      "text": "Clear beats clever here.",
-     "start": 22.17,
-     "end": 23.78
+     "start": 33.04,
+     "end": 35.12
     }
    ]
   },
   {
-   "start": 23.78,
-   "end": 25.65,
+   "start": 35.72,
+   "end": 37.915,
    "phrases": [
     {
      "text": "Follow for more AI and marketing news.",
-     "start": 23.78,
-     "end": 25.65
+     "start": 35.72,
+     "end": 37.915
     }
    ]
   }

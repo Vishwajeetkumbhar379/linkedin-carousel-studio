@@ -45,8 +45,8 @@
       "avTop": 170,
       "avSide": "right",
       "avSize": 190,
-      "at": 0.2,
-      "until": 3.03,
+      "at": 0.0,
+      "until": 3.27,
       "say": "YouTube is letting viewers design their own homepage."
     },
     {
@@ -55,8 +55,8 @@
       "stamp": "NEW",
       "title": "Custom Feeds",
       "trans": "pop",
-      "at": 3.03,
-      "until": 4.41,
+      "at": 3.87,
+      "until": 5.72,
       "say": "It's called Custom Feeds."
     },
     {
@@ -64,8 +64,8 @@
       "bg": "ivory",
       "prompt": "Quick weeknight dinners, under 20 minutes, no fish.",
       "trans": "whip",
-      "at": 4.41,
-      "until": 7.53,
+      "at": 6.04,
+      "until": 10.21,
       "say": "You describe a mood or an interest, and YouTube builds the feed."
     },
     {
@@ -79,8 +79,8 @@
         "TV"
       ],
       "trans": "rise",
-      "at": 7.53,
-      "until": 9.09,
+      "at": 10.81,
+      "until": 13.82,
       "say": "It's coming to the US this autumn,"
     },
     {
@@ -89,8 +89,8 @@
       "title": "On *every screen*",
       "size": "t1",
       "trans": "click",
-      "at": 9.09,
-      "until": 10.87,
+      "at": 14.14,
+      "until": 15.77,
       "say": "on web, mobile and TV."
     },
     {
@@ -102,8 +102,8 @@
       "avatar": "thinking",
       "avTop": 730,
       "avSide": "left",
-      "at": 10.87,
-      "until": 12.26,
+      "at": 16.37,
+      "until": 18.5,
       "say": "Why should marketers care?"
     },
     {
@@ -112,8 +112,8 @@
       "title": "People ask for *exactly* what they want",
       "size": "t2",
       "trans": "whip",
-      "at": 12.26,
-      "until": 15.05,
+      "at": 18.82,
+      "until": 22.35,
       "say": "Because people can now ask for exactly what they want."
     },
     {
@@ -123,8 +123,8 @@
       "left": "What you watched",
       "right": "What you asked for",
       "trans": "rise",
-      "at": 15.05,
-      "until": 17.28,
+      "at": 22.95,
+      "until": 25.62,
       "say": "Your video has to match what someone asks for,"
     },
     {
@@ -136,8 +136,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "right",
-      "at": 17.28,
-      "until": 18.91,
+      "at": 25.94,
+      "until": 27.98,
       "say": "not just what they watched last week."
     },
     {
@@ -150,8 +150,8 @@
         "The result"
       ],
       "trans": "click",
-      "at": 18.91,
-      "until": 22.17,
+      "at": 28.58,
+      "until": 32.72,
       "say": "So write titles and descriptions that say exactly who it's for."
     },
     {
@@ -163,8 +163,8 @@
       "avatar": "smirk",
       "avTop": 730,
       "avSide": "right",
-      "at": 22.17,
-      "until": 23.78,
+      "at": 33.04,
+      "until": 35.12,
       "say": "Clear beats clever here."
     },
     {
@@ -175,12 +175,12 @@
       "trans": "pop",
       "avatar": "wave",
       "avSide": "right",
-      "at": 23.78,
-      "until": 25.65,
+      "at": 35.72,
+      "until": 37.91,
       "say": "Follow for more AI and marketing news."
     }
   ],
-  "duration": 28.45,
+  "duration": 39.91,
   "posters": {
     "b01": 2.13,
     "b02": 3.8,
@@ -198,94 +198,94 @@
   "sfx": true,
   "captions": [
     {
-      "at": 0.2,
-      "until": 1.695,
+      "at": 0.0,
+      "until": 1.715,
       "text": "YouTube is letting viewers"
     },
     {
-      "at": 1.615,
-      "until": 3.11,
+      "at": 1.635,
+      "until": 3.35,
       "text": "design their own homepage."
     },
     {
-      "at": 3.03,
-      "until": 4.49,
+      "at": 3.87,
+      "until": 5.8,
       "text": "It's called Custom Feeds."
     },
     {
-      "at": 4.41,
-      "until": 5.728,
+      "at": 6.04,
+      "until": 7.775,
       "text": "You describe a mood or an"
     },
     {
-      "at": 5.648,
-      "until": 7.61,
+      "at": 7.695,
+      "until": 10.29,
       "text": "interest, and YouTube builds the feed."
     },
     {
-      "at": 7.53,
-      "until": 9.17,
+      "at": 10.81,
+      "until": 13.9,
       "text": "It's coming to the US this autumn,"
     },
     {
-      "at": 9.09,
-      "until": 10.95,
+      "at": 14.14,
+      "until": 15.85,
       "text": "on web, mobile and TV."
     },
     {
-      "at": 10.87,
-      "until": 12.34,
+      "at": 16.37,
+      "until": 18.58,
       "text": "Why should marketers care?"
     },
     {
-      "at": 12.26,
-      "until": 13.709,
+      "at": 18.82,
+      "until": 20.632,
       "text": "Because people can now ask"
     },
     {
-      "at": 13.629,
-      "until": 15.13,
+      "at": 20.552,
+      "until": 22.43,
       "text": "for exactly what they want."
     },
     {
-      "at": 15.05,
-      "until": 16.27,
+      "at": 22.95,
+      "until": 24.395,
       "text": "Your video has to match"
     },
     {
-      "at": 16.19,
-      "until": 17.36,
+      "at": 24.315,
+      "until": 25.7,
       "text": "what someone asks for,"
     },
     {
-      "at": 17.28,
-      "until": 18.99,
+      "at": 25.94,
+      "until": 28.06,
       "text": "not just what they watched last week."
     },
     {
-      "at": 18.91,
-      "until": 20.935,
+      "at": 28.58,
+      "until": 31.131,
       "text": "So write titles and descriptions that"
     },
     {
-      "at": 20.855,
-      "until": 22.25,
+      "at": 31.051,
+      "until": 32.8,
       "text": "say exactly who it's for."
     },
     {
-      "at": 22.17,
-      "until": 23.86,
+      "at": 33.04,
+      "until": 35.2,
       "text": "Clear beats clever here."
     },
     {
-      "at": 23.78,
-      "until": 25.73,
+      "at": 35.72,
+      "until": 37.995,
       "text": "Follow for more AI and marketing news."
     }
   ],
   "voice": {
     "engine": "gemini-3.8-flash-tts",
-    "voice": "voice_3rjyhtlhksw1",
+    "voice": "Puck",
     "breaths": true,
     "bed": false
   }
