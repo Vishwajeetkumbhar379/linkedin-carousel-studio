@@ -282,7 +282,7 @@ SOURCES:
     return ask_json(prompt)
 
 
-def problems(p: dict, allowed: dict) -> list[str]:
+def problems(p: dict, allowed: dict, tutorial: bool = False) -> list[str]:
     errs = []
     blob = json.dumps(p, ensure_ascii=False)
     if "—" in blob or "–" in blob:
@@ -302,12 +302,36 @@ def problems(p: dict, allowed: dict) -> list[str]:
             errs.append(f"{len(p.get('beats', []))} beats for {len(phrases)} phrases; needs one beat per phrase")
         if p.get("beats") and p["beats"][-1].get("look") != "cta":
             errs.append("last beat must be look cta")
+        if tutorial and sum(b.get("look") == "ui" for b in p.get("beats", [])) < 2:
+            errs.append("tutorial video needs 2 to 4 'ui' screen walkthrough beats (cursor clicks in the app, or the typed prompt and its result), "
+                        "one per how-to step, using the ui beat format from the rules")
     else:
         if not 6 <= len(p.get("slides", [])) <= 10:
             errs.append(f"carousel has {len(p.get('slides', []))} slides; needs 8 to 10 (cover first, cta last)")
     if "?" not in p.get("caption", ""):
         errs.append("caption needs one closing question")
     return errs
+
+
+def fact_check(p: dict, items: list[dict]) -> list[str]:
+    """Second free model reads the sources and lists any line the sources do not support (numbers, claims, clicks)."""
+    text = "\n".join([p.get("hook", "")] + [x for sc in p.get("narration", []) for x in sc]
+                     + [" ".join(str(s.get(k, "")) for k in ("title", "body", "label") if s.get(k)) for s in p.get("slides", [])])
+    src = "\n\n".join(f"SOURCE {it['url']}\n{it.get('summary', '')[:500]}\n{page_text(it['url'], 5000)}" for it in items)
+    try:
+        r = ask_json(f"""You are a strict fact checker. Below are the lines of a LinkedIn post and the sources it may use.
+List every line that states a number, a product feature, a menu or button name, or a claim that the sources do NOT clearly support.
+Opinions, advice and calls to action are fine. Return JSON {{"unsupported": [{{"line": "...", "why": "..."}}]}} (empty list if all fine).
+
+POST LINES:
+{text}
+
+SOURCES:
+{src}""")
+    except Exception as e:  # noqa: BLE001
+        log("fact check skipped:", e); return []
+    bad = [x for x in (r.get("unsupported") or []) if isinstance(x, dict) and x.get("line")]
+    return [f"unsupported by the sources, rewrite or remove: \"{x['line'][:140]}\" ({str(x.get('why', ''))[:120]})" for x in bad[:6]]
 
 
 def as_post(x) -> dict:
@@ -359,9 +383,18 @@ def repair(p: dict) -> dict:
     return p
 
 
+SWAP = {"leverage": "use", "leveraging": "using", "robust": "solid", "seamless": "smooth", "seamlessly": "smoothly", "unlock": "open up",
+        "unlocks": "opens up", "unleash": "release", "supercharge": "speed up", "elevate": "lift", "harness": "use", "empower": "help",
+        "landscape": "market", "realm": "area", "game-changer": "big shift", "game changer": "big shift", "cutting-edge": "new",
+        "delve": "dig", "synergy": "fit", "revolutionise": "change", "revolutionize": "change"}
+
+
 def clean(p: dict, allowed: dict, slug_taken: set) -> dict:
     p = as_post(p)
     s = json.dumps(p, ensure_ascii=False).replace(" — ", ", ").replace("—", ", ").replace(" – ", ", ").replace("–", "-")
+    s = s.replace("\u2011", "-").replace("\u2011", "-").replace(" - ", ", ")
+    for w, r in SWAP.items():  # banned words get a plain swap instead of a whole rewrite
+        s = re.sub(rf"\b{re.escape(w)}\b", lambda m, r=r: r.capitalize() if m.group(0)[0].isupper() else r, s, flags=re.I)
     p = json.loads(s)
     p["slug"] = re.sub(r"[^a-z0-9]+", "-", p.get("slug") or p.get("title", "post").lower()).strip("-")[:60]
     while p["slug"] in slug_taken:
@@ -374,33 +407,61 @@ def clean(p: dict, allowed: dict, slug_taken: set) -> dict:
     return p
 
 
-def write_all(picks: list[dict]) -> list[dict]:
-    posts, taken = [], {p.name for p in (ROOT / "out").glob("batch-*/*")}
+def merge(old: dict | None, new) -> dict:
+    """A fix reply may hold only the changed fields; keep everything it left out or emptied."""
+    try:
+        new = as_post(new)
+    except ValueError:
+        return old
+    if not old:
+        return new
+    out = dict(old)
+    out.update({k: v for k, v in new.items() if v not in (None, "", [], {})})
+    return out
+
+
+def write_one(pick: dict, taken: set) -> tuple[dict | None, list[str]]:
+    allowed = {it["url"]: it for it in pick["items"]}
+    tutorial = pick["slot"] == "video-tutorial"
+    post, errs, checked = None, [], False
+    for attempt in range(4):
+        try:
+            post = write_post(pick) if post is None else merge(post, ask_json(
+                "Fix these problems in the JSON post and return the FULL corrected JSON object (every field, not only the changed ones):\n- "
+                + "\n- ".join(errs) + "\n\nAllowed source URLs: " + ", ".join(allowed) + "\n\nPOST:\n" + json.dumps(post, ensure_ascii=False)))
+        except Exception as e:  # noqa: BLE001
+            log("write failed:", e); continue
+        try:
+            post = repair(clean(post, allowed, taken))
+        except Exception as e:  # noqa: BLE001
+            log("bad post shape:", e); errs = [str(e)]; post = None; continue
+        post["format"] = "video" if pick["slot"].startswith("video") else "carousel"
+        post["facts"] = [f for f in post.get("facts", []) if f.get("url") in allowed]
+        errs = problems(post, allowed, tutorial)
+        if not errs and not checked:  # one fact-check round per post, on a structurally valid draft
+            checked = True
+            errs = fact_check(post, pick["items"])
+        if not errs:
+            return post, []
+        log(f"{post.get('slug')}: {errs}")
+    return None, errs
+
+
+def write_all(picks: list[dict], spares: list[dict] | None = None) -> list[dict]:
+    """Write each pick; if one fails, a spare for the same slot type takes its place so the batch stays at six."""
+    posts, taken, spares = [], {p.name for p in (ROOT / "out").glob("batch-*/*")}, list(spares or [])
     for pick in picks:
-        allowed = {it["url"]: it for it in pick["items"]}
-        post, errs = None, []
-        for attempt in range(3):
-            try:
-                post = write_post(pick) if attempt == 0 or post is None else ask_json(
-                    "Fix these problems in the JSON post and return the full corrected JSON object only:\n- " + "\n- ".join(errs)
-                    + "\n\nAllowed source URLs: " + ", ".join(allowed) + "\n\nPOST:\n" + json.dumps(post, ensure_ascii=False))
-            except Exception as e:  # noqa: BLE001
-                log("write failed:", e); continue
-            try:
-                post = repair(clean(post, allowed, taken))
-            except Exception as e:  # noqa: BLE001
-                log("bad post shape:", e); errs = [str(e)]; post = None; continue
-            post["facts"] = [f for f in post.get("facts", []) if f.get("url") in allowed]
-            errs = problems(post, allowed)
-            if not errs:
-                break
-            log(f"{post.get('slug')}: {errs}")
-        if post and not errs:
-            post["format"] = "video" if pick["slot"].startswith("video") else "carousel"
+        post, errs = write_one(pick, taken)
+        while not post and spares:
+            log("DROPPED", pick.get("seed") or pick["angle"][:60], errs, "-> trying a spare")
+            alt = next((s for s in spares if s["slot"].split("-")[0] == pick["slot"].split("-")[0]), spares[0])
+            spares.remove(alt); alt = dict(alt, slot=pick["slot"]); pick = alt
+            post, errs = write_one(pick, taken)
+        if post:
             post["_seed"] = pick.get("seed")
             taken.add(post["slug"]); posts.append(post)
         else:
-            log("DROPPED a post after 3 tries:", errs)
+            log("DROPPED a post, no spare left:", errs)
     return posts
 
 
@@ -426,12 +487,15 @@ def covers(out: Path, posts: list[dict]) -> None:
 
 def main() -> None:
     name = next_batch()
-    seeds = seed_picks([m for m in MIX if m.endswith("tutorial")])  # Vish's hype list fills the tutorial slots first
+    tut = [m for m in MIX if m.endswith("tutorial")]
+    seeds = seed_picks(tut + tut)  # Vish's hype list fills the tutorial slots first; the next seeds are spares
+    seeds, spare_seeds = seeds[:len(tut)], seeds[len(tut):]
     rest = list(MIX)
     for sp in seeds:
         rest.remove(sp["slot"])
-    picks = seeds + plan(research(), rest)
-    posts = write_all(picks)
+    news = plan(research(), rest + ["carousel", "video", "carousel"])  # three spare news picks
+    picks = seeds + news[:len(rest)]
+    posts = write_all(picks, spare_seeds + news[len(rest):])
     mark_seeds_used([p.pop("_seed") for p in posts if p.get("_seed")])
     for p in posts:
         p.pop("_seed", None)
