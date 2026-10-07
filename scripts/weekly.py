@@ -92,6 +92,17 @@ def used_titles() -> list[str]:
     return [x for x in t if x]
 
 
+_USED: set | None = None
+
+
+def used_urls() -> set:
+    """Source URLs already used by earlier batches, so a topic is never repeated."""
+    global _USED
+    if _USED is None:
+        _USED = {u for f in (ROOT / "out").glob("batch-*/*/sources.md") for u in re.findall(r"https?://[^\s|)]+", f.read_text())}
+    return _USED
+
+
 def page_text(url: str, limit: int = 3500) -> str:
     try:
         raw = urllib.request.urlopen(urllib.request.Request(url, headers=llm.UA), timeout=20).read().decode("utf-8", "ignore")
@@ -115,7 +126,7 @@ def research() -> list[dict]:
             age = (TODAY - dt.date.fromisoformat(str(it.get("date"))[:10])).days
         except ValueError:
             continue  # undated items cannot back a claim
-        if it.get("url") and it["url"] not in seen and age <= 14:
+        if it.get("url") and it["url"] not in seen and it["url"] not in used_urls() and age <= 14:
             seen.add(it["url"]); out.append(it)
     log(f"{len(out)} fresh research items")
     return out
@@ -129,7 +140,8 @@ Slots, in this order: {json.dumps(MIX)}.
 Style Vish wants: big-claim tool hooks ("Opus 5.5 is crazy", "X just killed Y") ONLY when the item supports it, then a practical
 step-by-step "how to use or automate it" angle (tools, prompts, B-roll, motion graphics, sound design). Free AI resources
 (free tokens, GitHub repos, open-source tools) are great. AI x marketing, creator economy, social platforms, AI careers.
-Tutorial slots must be step-by-step how-tos. Do not repeat these already-covered topics:
+Tutorial slots must be step-by-step how-tos. Vary the hook shapes across the 6 (a number, a question, a "stop doing X",
+a before/after, at most ONE "X just killed Y" and at most one "X is crazy"). Never stretch a claim beyond what the item says. Do not repeat these already-covered topics:
 {avoid}
 
 Research items:
