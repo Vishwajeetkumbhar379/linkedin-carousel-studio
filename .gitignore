@@ -10,3 +10,5 @@ research/raw/
 brand/voice/
 out/batch-*/**/*.wav
 out/batch-*/*.wav
+revoice.log
+voice.old.wav
