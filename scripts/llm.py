@@ -159,7 +159,7 @@ def _gemini(messages: list[dict], timeout: int) -> str:
                 break
             except urllib.error.HTTPError as e:
                 last = e
-                if e.code not in (429, 500, 502, 503, 404):
+                if e.code not in (400, 429, 500, 502, 503, 404):  # a one-off 400 falls through to the next model
                     raise
         else:
             time.sleep(10)
