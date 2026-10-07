@@ -8,6 +8,8 @@ Reads `narration` from video.json: a list of scenes, each a list of phrases. Wri
 and rewrites each scene's `at`/`until` in video.json to match the audio, so pictures follow the voice.
 
 Engines (pick with --engine, default: gemini when GEMINI_API_KEY is set, else kokoro):
+  clone   THE DEFAULT FOR ALL VIDEOS (Vish, 7 Oct 2026): Chatterbox zero-shot clone of video #25's voice
+          (scripts/voice_clone.py, venv /home/user/venvs/chatterbox). Best of 3 takes per line by speaker similarity.
   gemini  Gemini 3.8 Flash TTS (natural prosody, real breaths, style prompts). Needs GEMINI_API_KEY
           as an environment variable (set it in the cloud environment settings, never in the repo).
           One request per scene so intonation flows across a whole thought.
@@ -388,6 +390,36 @@ def phrase_bounds(audio: np.ndarray, phrases: list[str]) -> list[tuple[float, fl
     return _phrase_bounds(audio, phrases)
 
 
+CLONE_PY = Path(os.environ.get("CLONE_PY", "/home/user/venvs/chatterbox/bin/python"))
+
+
+def synth_clone(narration: list[list[str]], post: Path) -> tuple[np.ndarray, list[dict]]:
+    """Vish's locked voice: zero-shot clone of video #25 (scripts/voice_clone.py, Chatterbox in its own venv).
+    Short pauses inside a scene, longer ones between scenes, the same rhythm as #25."""
+    flat = [ph for sc in narration for ph in sc]
+    after, k = {}, 0
+    for sc in narration:
+        k += len(sc)
+        after[str(k - 1)] = 0.6
+    work = post / ".clone"
+    work.mkdir(exist_ok=True)
+    (work / "lines.json").write_text(json.dumps({"lines": flat, "pause": 0.32, "pause_after": after}, indent=1))
+    subprocess.run([str(CLONE_PY), str(Path(__file__).resolve().parent / "voice_clone.py"), str(work / "lines.json")], check=True)
+    audio, sr = sf.read(str(work / "voice-raw.wav"), dtype="float32")
+    if audio.ndim > 1:
+        audio = audio.mean(axis=1)
+    if sr != SR:
+        idx = np.arange(0, len(audio), sr / SR)
+        audio = np.interp(idx, np.arange(len(audio)), audio).astype(np.float32)
+    lines = json.loads((work / "voice.json").read_text())["lines"]
+    timings, i = [], 0
+    for sc in narration:
+        ph = [{"start": lines[i + j]["start"], "end": lines[i + j]["end"], "text": lines[i + j]["text"]} for j in range(len(sc))]
+        timings.append({"start": ph[0]["start"], "end": ph[-1]["end"], "phrases": ph})
+        i += len(sc)
+    return audio, timings
+
+
 def synth_from_take(narration: list[list[str]], path: str) -> tuple[np.ndarray, list[dict]]:
     """Re-use a saved full-script take (e.g. voice-candidates/gemini-puck.wav) without calling the API."""
     audio, sr = sf.read(path, dtype="float32")
@@ -473,6 +505,8 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
     elif engine.startswith("take:"):
         audio, timings = synth_from_take(narration, engine[5:])
         engine = "gemini"
+    elif engine == "clone":  # the locked voice (video #25), same voice in every video
+        audio, timings = synth_clone(narration, spec_path.parent)
     elif engine == "gemini-oneshot":
         audio, timings = synth_gemini(narration, voice, style)
     else:
@@ -503,7 +537,7 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
         scene["at"], scene["until"] = round(tm["start"] - 0.15, 2), round(tm["end"] + 0.1, 2)
     spec["duration"] = round(dur + 0.6, 2)
     spec["captions"] = [c for tm in timings for p in tm["phrases"] for c in chunk_caption(p)]
-    spec["voice"] = {"engine": GEMINI_MODEL if engine.startswith("gemini") else "kokoro-82m", "voice": voice, "breaths": breaths, "bed": bed}
+    spec["voice"] = {"engine": "chatterbox-clone-of-video-25" if engine == "clone" else GEMINI_MODEL if engine.startswith("gemini") else "kokoro-82m", "voice": voice, "breaths": breaths, "bed": bed}
     spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False))
     (post / "voice.json").write_text(json.dumps({"voice": voice, "duration": dur, "scenes": timings}, indent=1))
     print(f"voice.wav {dur:.1f}s, {sum(len(s) for s in narration)} phrases, voice {voice}")

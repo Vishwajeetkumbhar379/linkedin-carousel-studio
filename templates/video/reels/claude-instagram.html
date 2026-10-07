@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/fonts.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{--paper:#FBFAF8;--ink:#17141C;--night:#08070D;--muted:#5F5967;--violet:#7F77DD;--vink:#4A44C4;--vdark:#3E39A8;--von:#A99CFF;--teal:#0E8C80;--tealon:#6FE0D2;--coral:#B4502A;--peach:#E07A5C;--sol:#F3C584;--line:#D5CFDA;--ui:#F8F6F1}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:var(--night);font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#root{position:relative;width:1080px;height:1350px;overflow:hidden}
+.bg{position:absolute;inset:0}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;will-change:transform}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden;overflow:hidden}
+.cam{position:absolute;inset:0;transform-origin:540px 600px;will-change:transform}
+.serif{font-family:Newsreader,Georgia,serif;font-weight:500;letter-spacing:-.025em;line-height:1.02}
+.serif em{font-style:italic;color:var(--violet)}
+.mono{font-family:'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.kick{position:absolute;left:70px;top:70px;font:500 22px 'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.abs{position:absolute}
+/* captions */
+#cap{position:absolute;left:60px;right:60px;top:1166px;height:104px;display:flex;align-items:center;justify-content:center;z-index:50}
+.cl{position:absolute;max-width:960px;text-align:center;font:600 40px/1.25 Geist,sans-serif;color:#F5F5F7;background:rgba(23,20,28,.88);padding:16px 28px;border-radius:22px;opacity:0;visibility:hidden;box-shadow:0 18px 40px -20px rgba(0,0,0,.5)}
+.cl span{display:inline-block;margin:0 .14em}
+/* avatar */
+.av{position:absolute;width:270px;z-index:40;filter:drop-shadow(0 26px 30px rgba(20,10,60,.35));-webkit-mask-image:linear-gradient(#000 78%,transparent 99%);mask-image:linear-gradient(#000 78%,transparent 99%);opacity:0;visibility:hidden}
+/* top chrome */
+#prog{position:absolute;left:0;top:0;height:7px;width:1080px;background:var(--violet);transform-origin:0 50%;z-index:60}
+#brand{position:absolute;right:56px;top:40px;font:500 20px 'Geist Mono',monospace;letter-spacing:.1em;text-transform:uppercase;z-index:60;color:#F5F5F7;opacity:.75}
+/* generic UI */
+.win{position:absolute;background:var(--ui);border-radius:30px;border:1.5px solid #E4DFD6;box-shadow:0 50px 90px -40px rgba(30,20,70,.45);overflow:hidden}
+.cursor{position:absolute;width:46px;height:46px;z-index:30;will-change:transform}
+.ripple{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;border:4px solid var(--violet);opacity:0;z-index:29}
+.tile{position:absolute;width:236px;height:150px;border-radius:22px;background:#1A1822;border:1.5px solid #2C2936;display:flex;flex-direction:column;justify-content:center;padding-left:26px;gap:14px;color:#ECEAF2;font:500 26px Geist}
+.tile i{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font:700 26px Geist;font-style:normal;color:#fff}
+.pill{position:absolute;border-radius:999px;font:600 30px Geist;padding:16px 30px;display:flex;align-items:center;gap:12px}
+.stamp{position:absolute;font:600 34px 'Geist Mono',monospace;letter-spacing:.12em;border:5px solid currentColor;border-radius:20px;padding:14px 28px}
+.menu{position:absolute;background:#fff;border-radius:20px;border:1.5px solid #E6E1EA;box-shadow:0 30px 60px -24px rgba(30,20,70,.35);padding:10px;font:500 28px Geist;color:var(--ink)}
+.menu div{padding:14px 20px;border-radius:12px;display:flex;justify-content:space-between;gap:30px;white-space:nowrap}
+.field{position:absolute;left:40px;right:40px;height:76px;border-radius:16px;border:2px solid #DCD6E2;background:#fff;font:500 28px Geist;color:var(--ink);display:flex;align-items:center;padding:0 22px;white-space:nowrap;overflow:hidden}
+.flabel{position:absolute;left:44px;font:500 22px Geist;color:var(--muted)}
+.btn{position:absolute;border-radius:16px;font:600 28px Geist;display:grid;place-items:center}
+.card3d{position:absolute;border-radius:26px;overflow:hidden;background:#fff;box-shadow:50px 40px 90px -30px rgba(0,0,0,.55)}
+.card3d img{position:absolute;left:0;top:0;width:100%;will-change:transform}
+.hl{position:absolute;background:rgba(127,119,221,.32);border-radius:6px;transform-origin:0 50%}
+.src{position:absolute;font:500 22px 'Geist Mono',monospace;letter-spacing:.06em;padding:10px 18px;border-radius:999px;background:rgba(23,20,28,.85);color:#F5F5F7}
+.bubble{position:absolute;left:70px;width:560px;background:#fff;border-radius:22px;padding:18px 22px;display:flex;gap:16px;align-items:center;font:600 30px Geist;color:var(--ink);box-shadow:0 20px 40px -20px rgba(0,0,0,.35)}
+.bubble b{width:52px;height:52px;border-radius:50%;flex:none}
+</style></head>
+<body><div id="root">
+  <div class="bg" id="bg"></div>
+  <div class="blob" id="b1" style="width:620px;height:620px;left:-160px;top:-120px;background:#7F77DD"></div>
+  <div class="blob" id="b2" style="width:560px;height:560px;right:-180px;bottom:80px;background:#2448C8"></div>
+
+  <!-- S1 HOOK: the missing tile -->
+  <section class="scene" id="s1"><div class="cam">
+    <div class="kick" style="color:#F5F5F7">Claude · Connectors directory</div>
+    <div class="abs serif" id="s1h" style="left:70px;top:130px;width:940px;font-size:104px;color:#F5F5F7"><div id="s1a">Instagram isn't</div><div id="s1b"><em>in the list.</em></div></div>
+    <div class="abs" id="s1panel" style="left:70px;top:440px;width:940px;height:560px;border-radius:30px;background:#121214;border:1.5px solid #2A2A2E">
+      <div class="abs" style="left:34px;top:34px;right:34px;height:84px;border-radius:18px;background:#1C1A24;border:1.5px solid #34303F;display:flex;align-items:center;padding-left:28px;gap:18px;color:#ECEAF2;font:500 32px Geist">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A1A1A6" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span id="s1q"></span><span id="s1caret" style="width:3px;height:38px;background:#A99CFF"></span>
+      </div>
+      <div id="s1tiles"></div>
+      <div class="abs mono" id="s1none" style="left:0;right:0;top:250px;text-align:center;font-size:30px;color:#F09A75;opacity:0">No connectors found</div>
+      <div class="abs" id="s1hole" style="left:352px;top:310px;width:236px;height:200px;border-radius:24px;border:4px dashed #A99CFF;display:grid;place-items:center;color:#A99CFF;font:600 30px Geist;opacity:0">Instagram ?</div>
+    </div>
+  </div></section>
+
+  <!-- S2 connected anyway -->
+  <section class="scene" id="s2"><div class="cam">
+    <div class="kick" style="color:var(--ink)">The workaround</div>
+    <div class="abs serif" id="s2h" style="left:70px;top:125px;width:940px;font-size:96px;color:var(--ink)">I connected it <em>anyway.</em></div>
+    <div class="abs" id="s2phone" style="left:80px;top:330px;width:380px;height:720px;border-radius:56px;background:#0F0E14;padding:16px;box-shadow:0 60px 90px -40px rgba(20,10,60,.55)">
+      <div style="position:absolute;inset:16px;border-radius:42px;background:#FFFFFF;overflow:hidden">
+        <div style="position:absolute;left:24px;top:46px;width:96px;height:96px;border-radius:50%;padding:5px;background:conic-gradient(#7F77DD,#E07A5C,#F3C584,#7F77DD)"><div style="width:100%;height:100%;border-radius:50%;background:#E9E5EC;border:4px solid #fff"></div></div>
+        <div style="position:absolute;left:140px;top:62px;font:700 26px Geist;color:#17141C">@yourbrand</div>
+        <div style="position:absolute;left:140px;top:100px;font:500 20px Geist;color:#5F5967">Creator account</div>
+        <div id="s2grid" style="position:absolute;left:0;right:0;top:180px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px"></div>
+      </div>
+    </div>
+    <svg class="abs" id="s2wire" style="left:0;top:0" width="1080" height="1350"><path id="s2path" d="M 450 690 C 560 690, 560 520, 640 520" fill="none" stroke="#7F77DD" stroke-width="8" stroke-linecap="round"/></svg>
+    <div class="win" id="s2chat" style="left:600px;top:360px;width:420px;height:330px;padding:28px">
+      <div class="mono" style="font-size:18px;color:var(--muted)">Claude</div>
+      <div style="margin-top:20px;font:500 28px/1.35 Geist;color:var(--ink)">Instagram data <span style="color:var(--teal)">connected</span>. Ask me anything about your posts.</div>
+      <div id="s2ok" style="position:absolute;right:26px;bottom:24px;width:64px;height:64px;border-radius:50%;background:var(--teal);display:grid;place-items:center"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    </div>
+    <div class="stamp" id="s2st1" style="left:600px;top:760px;color:var(--teal);transform:rotate(-4deg)">5 MIN</div>
+    <div class="stamp" id="s2st2" style="left:770px;top:860px;color:var(--vink);transform:rotate(3deg)">NO CODE</div>
+  </div></section>
+
+  <!-- S3 Claude: plus -> Connectors -> Manage connectors -->
+  <section class="scene" id="s3"><div class="abs mono" id="s3crumb" style="left:0;right:0;top:70px;text-align:center;font-size:28px;color:var(--ink);z-index:5;white-space:pre"><span id="c1">+</span>   →   <span id="c2">Connectors</span>   →   <span id="c3">Manage connectors</span></div><div class="cam" id="s3cam">
+    <div class="win" style="left:60px;top:150px;width:960px;height:960px">
+      <div class="abs serif" style="left:0;right:0;top:300px;text-align:center;font-size:62px;color:var(--ink)">What can I help with<em>?</em></div>
+      <div class="abs" style="left:60px;right:60px;top:430px;height:170px;border-radius:26px;background:#fff;border:2px solid #E2DDE6;box-shadow:0 14px 30px -18px rgba(30,20,70,.25)">
+        <div class="abs" style="left:30px;top:28px;font:500 30px Geist;color:#9A94A3">How can I help you today?</div>
+        <div class="abs" id="s3plus" style="left:24px;top:96px;width:56px;height:56px;border-radius:14px;border:2px solid #E2DDE6;display:grid;place-items:center;font:400 40px Geist;color:var(--ink)">+</div>
+      </div>
+      <div class="menu" id="s3menu" style="left:84px;top:610px;width:400px;opacity:0">
+        <div>Add files or photos</div><div id="s3conn">Connectors <span>›</span></div><div>Research</div><div>Web search</div>
+      </div>
+      <div class="menu" id="s3sub" style="left:500px;top:690px;width:340px;opacity:0"><div id="s3manage">Manage connectors</div><div style="color:#9A94A3">Browse connectors</div></div>
+    </div>
+    <div class="ripple" id="s3r1"></div><div class="ripple" id="s3r2"></div>
+    <svg class="cursor" id="s3cur" viewBox="0 0 24 24"><path d="M4 2l16 9.5-7 1.6 4 7.4-3 1.5-4-7.4-5 4.9z" fill="#17141C" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  </div></section>
+
+  <!-- S4 add custom connector dialog -->
+  <section class="scene" id="s4"><div class="cam" id="s4cam">
+    <div class="win" style="left:60px;top:120px;width:960px;height:1000px">
+      <div class="abs serif" style="left:44px;top:40px;font-size:54px;color:var(--ink)">Connectors</div>
+      <div class="abs" id="s4plus" style="right:44px;top:46px;width:62px;height:62px;border-radius:16px;background:var(--ink);color:#fff;display:grid;place-items:center;font:400 40px Geist">+</div>
+      <div id="s4rows"></div>
+      <div class="menu" id="s4drop" style="right:44px;top:122px;width:380px;opacity:0"><div style="color:#9A94A3">Browse connectors</div><div id="s4add">Add custom connector</div></div>
+    </div>
+    <div class="win" id="s4dlg" style="left:110px;top:330px;width:860px;height:600px;background:#fff;opacity:0">
+      <div class="abs serif" style="left:44px;top:38px;font-size:46px;color:var(--ink)">Add custom connector</div>
+      <div class="flabel" style="top:130px">Name</div><div class="field" id="s4f1" style="top:166px"></div>
+      <div class="flabel" style="top:270px">Remote MCP server URL</div><div class="field" id="s4f2" style="top:306px;font-family:'Geist Mono',monospace;font-size:26px"></div>
+      <div class="btn" id="s4btn" style="right:40px;bottom:40px;width:170px;height:76px;background:var(--ink);color:#fff">Add</div>
+    </div>
+    <div class="pill" id="s4toast" style="left:250px;top:960px;background:var(--teal);color:#fff;opacity:0"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Signed in · Porter connected</div>
+    <div class="ripple" id="s4r1"></div><div class="ripple" id="s4r2"></div><div class="ripple" id="s4r3"></div>
+    <svg class="cursor" id="s4cur" viewBox="0 0 24 24"><path d="M4 2l16 9.5-7 1.6 4 7.4-3 1.5-4-7.4-5 4.9z" fill="#17141C" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  </div></section>
+
+  <!-- S5 ask + real Porter page -->
+  <section class="scene" id="s5"><div class="cam">
+    <div class="abs" id="s5ask" style="left:70px;top:110px;width:940px;height:150px;border-radius:26px;background:#1C1A24;border:1.5px solid #34303F;padding:26px 30px;font:500 34px/1.35 Geist;color:#F5F5F7"><span id="s5q"></span></div>
+    <div class="pill" id="s5tool" style="left:70px;top:285px;background:rgba(169,156,255,.16);color:#CFC8FF;font:500 26px 'Geist Mono',monospace;opacity:0"><span id="s5dot" style="width:14px;height:14px;border-radius:50%;background:#A99CFF"></span>porter · reading Instagram data</div>
+    <div class="abs" style="left:0;top:0;width:1080px;height:1350px;perspective:1600px">
+      <div class="card3d" id="s5card" style="left:140px;top:380px;width:820px;height:700px">
+        <img id="s5img" src="/video/broll/porter-instagram-claude.png" style="width:1200px;transform-origin:0 0">
+        <div class="hl" id="s5hl" style="left:66px;width:560px"></div>
+      </div>
+    </div>
+    <div class="src" id="s5src" style="left:150px;top:1092px;opacity:0">Real page · portermetrics.com</div>
+  </div></section>
+
+  <!-- S6 Composio real page -->
+  <section class="scene" id="s6"><div class="cam">
+    <div class="kick" style="color:var(--ink)">Want it to post too?</div>
+    <div class="abs serif" style="left:70px;top:120px;width:940px;font-size:88px;color:var(--ink)" id="s6h">Publish <em>and</em> reply.</div>
+    <div class="abs" style="left:0;top:0;width:1080px;height:1350px;perspective:1600px">
+      <div class="card3d" id="s6card" style="left:110px;top:300px;width:860px;height:760px">
+        <img id="s6img" src="/video/broll/composio-instagram-claude.png" style="width:1200px;transform-origin:0 0">
+        <div class="hl" id="s6hl1"></div><div class="hl" id="s6hl2"></div>
+      </div>
+    </div>
+    <div class="src" id="s6src" style="left:130px;top:1080px;opacity:0">Real page · composio.dev</div>
+  </div></section>
+
+  <!-- S7 official API, no scraping -->
+  <section class="scene" id="s7"><div class="cam">
+    <div class="pill" id="s7a" style="left:90px;top:250px;background:#1C1A24;color:#F5F5F7;border:1.5px solid #34303F">Porter</div>
+    <div class="pill" id="s7b" style="right:90px;top:250px;background:#1C1A24;color:#F5F5F7;border:1.5px solid #34303F">Composio</div>
+    <svg class="abs" style="left:0;top:0" width="1080" height="1350"><path id="s7l1" d="M 190 330 C 190 430, 420 470, 500 520" fill="none" stroke="#A99CFF" stroke-width="6" stroke-linecap="round"/><path id="s7l2" d="M 890 330 C 890 430, 660 470, 580 520" fill="none" stroke="#A99CFF" stroke-width="6" stroke-linecap="round"/>
+      <path id="s7shield" d="M540 500 L650 545 L650 640 C650 720 600 770 540 800 C480 770 430 720 430 640 L430 545 Z" fill="rgba(14,140,128,.18)" stroke="#6FE0D2" stroke-width="8" stroke-linejoin="round"/>
+      <path id="s7check" d="M487 650 L527 690 L597 610" fill="none" stroke="#6FE0D2" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="abs serif" id="s7t1" style="left:0;right:0;top:840px;text-align:center;font-size:80px;color:#F5F5F7">Meta's <em style="color:#A99CFF">official API.</em></div>
+    <div class="abs" id="s7t2wrap" style="left:0;right:0;top:960px;text-align:center"><span class="serif" id="s7t2" style="position:relative;font-size:80px;color:#F5F5F7">No scraping.<span id="s7strike" style="position:absolute;left:-10px;right:-10px;top:52%;height:8px;background:#E07A5C;transform-origin:0 50%"></span></span></div>
+  </div></section>
+
+  <!-- S8 CTA -->
+  <section class="scene" id="s8"><div class="cam">
+    <div class="kick" style="color:#F5F5F7">Free setup guide</div>
+    <div class="abs serif" id="s8h" style="left:70px;top:150px;width:940px;font-size:120px;color:#FBFAF8">Comment</div>
+    <div class="abs" id="s8key" style="left:70px;top:300px;height:150px;padding:0 44px;border-radius:30px;background:#FBFAF8;color:var(--vdark);display:flex;align-items:center;font:700 104px 'Geist Mono',monospace;letter-spacing:.12em"><span id="s8k"></span><span id="s8caret" style="width:8px;height:96px;background:var(--violet);margin-left:10px"></span></div>
+    <div class="abs" id="s8sub" style="left:70px;top:490px;width:820px;font:500 40px/1.35 Geist;color:#E9E5FF">and I'll send you the full setup: links, clicks and the prompts to try first.</div>
+    <div id="s8bubbles"></div>
+    <div class="abs mono" id="s8end" style="left:70px;top:1098px;font-size:24px;color:#E9E5FF;opacity:0">Build with Vish · buildwithvish.netlify.app</div>
+  </div></section>
+
+  <img class="av" id="avA" src="/video/reels/assets/07_arms_crossed.png">
+  <img class="av" id="avE" src="/video/reels/assets/03_wave_center.png">
+
+  <div id="cap"></div>
+  <div id="prog"></div>
+  <div id="brand">Build with Vish</div>
+</div>
+<script>
+window.STAGE_LOADED = true;
+const $ = s => document.querySelector(s);
+const SFX = [];
+let TL;
+
+function typer(tl, el, text, at, dur) {
+  const o = {p: 0};
+  tl.fromTo(o, {p: 0}, {p: 1, duration: dur, ease: "none", onUpdate() { el.textContent = text.slice(0, Math.round(o.p * text.length)); }}, at);
+  for (let k = 0; k < Math.min(text.length, 14); k++) SFX.push({t: at + dur * k / Math.min(text.length, 14), s: "key"});
+}
+function click(tl, cur, rip, x, y, at, from) {
+  tl.fromTo(cur, {x: from[0], y: from[1]}, {x: x - 6, y: y - 4, duration: 0.55, ease: "power3.inOut"}, at - 0.6);
+  tl.to(cur, {scale: 0.82, duration: 0.07, ease: "power2.in"}, at).to(cur, {scale: 1, duration: 0.18, ease: "back.out(3)"}, at + 0.07);
+  tl.set(rip, {left: x, top: y}, at);
+  tl.fromTo(rip, {scale: 0.2, opacity: 0.9}, {scale: 1.6, opacity: 0, duration: 0.5, ease: "power2.out"}, at);
+  SFX.push({t: at, s: "click"});
+}
+function sceneIn(tl, id, at, kind, bg) {
+  const el = $(id);
+  tl.set(el, {visibility: "visible"}, at);
+  if (kind === "whip") tl.fromTo(el, {opacity: 1, x: 1080, filter: "blur(18px)"}, {x: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out"}, at);
+  else if (kind === "zoom") tl.fromTo(el, {opacity: 0, scale: 1.25, filter: "blur(14px)"}, {opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out"}, at);
+  else if (kind === "rise") tl.fromTo(el, {opacity: 1, y: 1350}, {y: 0, duration: 0.5, ease: "expo.out"}, at);
+  else tl.fromTo(el, {opacity: 0}, {opacity: 1, duration: 0.3}, at);
+  tl.to("#bg", {backgroundColor: bg, duration: 0.35, ease: "power2.out"}, at);
+  SFX.push({t: at, s: kind === "zoom" ? "zoom" : "whip"});
+}
+function sceneOut(tl, id, at, dir) {
+  tl.to($(id), {x: dir === "left" ? -1080 : 0, opacity: dir === "left" ? 1 : 0, filter: "blur(16px)", duration: 0.4, ease: "expo.in"}, at - 0.32);
+  tl.set($(id), {visibility: "hidden"}, at + 0.1);
+}
+function avatar(tl, id, at, end, pos) {
+  const el = $(id);
+  tl.set(el, {left: pos[0], top: pos[1], visibility: "visible"}, at);
+  tl.fromTo(el, {opacity: 0, y: 60, scale: 0.92}, {opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.8)"}, at + 0.15);
+  tl.to(el, {opacity: 0, y: 40, duration: 0.25, ease: "power2.in"}, end - 0.3);
+  tl.set(el, {visibility: "hidden"}, end);
+}
+
+window.setup = function (spec) {
+  const L = spec.lines, D = spec.duration;
+  const st = i => Math.max(0, L[i].start - 0.18);
+  const en = i => (i + 1 < L.length ? st(i + 1) : D);
+  const tl = gsap.timeline({paused: true});
+  // ambient
+  tl.fromTo("#b1", {x: 0, y: 0}, {x: 220, y: 160, duration: D, ease: "sine.inOut"}, 0);
+  tl.fromTo("#b2", {x: 0, y: 0}, {x: -200, y: -260, duration: D, ease: "sine.inOut"}, 0);
+  tl.fromTo("#prog", {scaleX: 0}, {scaleX: 1, duration: D, ease: "none"}, 0);
+
+  // ---------- S1 hook ----------
+  {
+    const a = st(0), z = en(0);
+    tl.set("#bg", {backgroundColor: "#08070D"}, 0);
+    tl.set("#s1", {visibility: "visible", opacity: 1}, 0);
+    const names = [["Google Drive", "#2448C8", "D"], ["Gmail", "#B4502A", "G"], ["Notion", "#3A3740", "N"], ["Slack", "#0E8C80", "S"], ["Canva", "#7F77DD", "C"], ["GitHub", "#4A44C4", "H"]];
+    const box = $("#s1tiles");
+    names.forEach((n, k) => {
+      const d = document.createElement("div"); d.className = "tile";
+      d.style.left = (34 + (k % 3) * 296) + "px"; d.style.top = (150 + Math.floor(k / 3) * 190) + "px";
+      d.innerHTML = `<i style="background:${n[1]}">${n[2]}</i>${n[0]}`; box.appendChild(d);
+      tl.fromTo(d, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.35, ease: "power3.out"}, a + 0.05 + k * 0.05);
+      tl.to(d, {opacity: 0, scale: 0.85, y: -10, duration: 0.22, ease: "power2.in"}, a + 1.45 + k * 0.05);
+    });
+    tl.fromTo("#s1a", {y: 70, opacity: 0}, {y: 0, opacity: 1, duration: 0.5, ease: "expo.out"}, a + 0.05);
+    tl.fromTo("#s1b", {y: 70, opacity: 0, scale: 1.08}, {y: 0, opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)"}, a + 0.55);
+    SFX.push({t: a + 0.02, s: "thump"});
+    typer(tl, $("#s1q"), "instagram", a + 0.45, 0.9);
+    tl.fromTo("#s1caret", {opacity: 1}, {opacity: 0, duration: 0.25, repeat: 7, yoyo: true, ease: "steps(1)"}, a);
+    tl.fromTo("#s1none", {opacity: 0}, {opacity: 1, duration: 0.2}, a + 1.8);
+    tl.to("#s1none", {keyframes: {x: [0, -14, 12, -8, 6, 0]}, duration: 0.45, ease: "none"}, a + 1.8);
+    SFX.push({t: a + 1.8, s: "pop"});
+    tl.fromTo("#s1hole", {opacity: 0, scale: 0.8}, {opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.2)"}, a + 2.1);
+    tl.fromTo("#s1 .cam", {scale: 1}, {scale: 1.06, duration: z - a, ease: "sine.inOut"}, a);
+    avatar(tl, "#avA", a + 1.75, z, [790, 720]);
+    sceneOut(tl, "#s1", z, "left");
+  }
+  // ---------- S2 connected anyway ----------
+  {
+    const a = st(1), z = en(1);
+    sceneIn(tl, "#s2", a, "whip", "#FBFAF8");
+    const g = $("#s2grid"); const cols = ["#E9E5EC", "#AFA9EC", "#F3C584", "#B9CDFF", "#E07A5C", "#6FE0D2", "#7F77DD", "#ECE7DC", "#F5F4FF", "#2448C8", "#FEF6F3", "#4A44C4"];
+    cols.forEach((c, k) => { const d = document.createElement("div"); d.style.cssText = `aspect-ratio:1;background:${c}`; g.appendChild(d);
+      tl.fromTo(d, {opacity: 0, scale: 0.6}, {opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)"}, a + 0.35 + k * 0.03); });
+    tl.fromTo("#s2h", {y: 60, opacity: 0}, {y: 0, opacity: 1, duration: 0.5, ease: "expo.out"}, a + 0.1);
+    tl.fromTo("#s2phone", {x: -500, rotation: -14}, {x: 0, rotation: -5, duration: 0.7, ease: "expo.out"}, a + 0.15);
+    tl.fromTo("#s2chat", {x: 500, opacity: 0}, {x: 0, opacity: 1, duration: 0.6, ease: "expo.out"}, a + 0.3);
+    const p = $("#s2path"), len = 420; p.style.strokeDasharray = len;
+    tl.fromTo(p, {strokeDashoffset: len}, {strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut"}, a + 0.75);
+    tl.fromTo("#s2ok", {scale: 0}, {scale: 1, duration: 0.45, ease: "back.out(3)"}, a + 1.3);
+    SFX.push({t: a + 1.3, s: "pop"});
+    tl.fromTo("#s2st1", {scale: 2.2, opacity: 0}, {scale: 1, opacity: 1, duration: 0.3, ease: "power4.in"}, L[1].start + 1.25);
+    tl.fromTo("#s2st2", {scale: 2.2, opacity: 0}, {scale: 1, opacity: 1, duration: 0.3, ease: "power4.in"}, L[1].start + 1.75);
+    SFX.push({t: L[1].start + 1.55, s: "thump"}, {t: L[1].start + 2.05, s: "thump"});
+    sceneOut(tl, "#s2", z, "left");
+  }
+  // ---------- S3 plus -> Connectors -> Manage ----------
+  {
+    const a = st(2), z = en(2), d = z - a;
+    sceneIn(tl, "#s3", a, "zoom", "#E9E5EC");
+    const cur = "#s3cur";
+    // window origin (60,150); plus button centre = (60+60+24+28, 150+430+96+28)
+    const P = [172, 704], C = [60 + 84 + 120, 150 + 610 + 88], M = [60 + 500 + 140, 150 + 690 + 38];
+    tl.fromTo("#s3cam", {scale: 1, x: 0, y: 0}, {scale: 1.22, x: 60, y: -100, duration: 0.8, ease: "power3.inOut"}, a + 0.15);
+    click(tl, cur, "#s3r1", P[0], P[1], a + 0.75, [700, 980]);
+    tl.fromTo("#s3menu", {opacity: 0, y: 20, scale: 0.96}, {opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "back.out(2)"}, a + 0.85);
+    tl.fromTo(cur, {x: P[0] - 6, y: P[1] - 4}, {x: C[0], y: C[1], duration: 0.4, ease: "power3.inOut"}, a + 1.05);
+    tl.fromTo("#s3conn", {backgroundColor: "rgba(127,119,221,0)"}, {backgroundColor: "rgba(127,119,221,.16)", duration: 0.15}, a + 1.4);
+    tl.fromTo("#s3sub", {opacity: 0, x: -20}, {opacity: 1, x: 0, duration: 0.25, ease: "power3.out"}, a + 1.5);
+    click(tl, cur, "#s3r2", M[0], M[1], Math.min(a + 2.35, z - 0.5), [C[0], C[1]]);
+    tl.fromTo("#s3manage", {backgroundColor: "rgba(127,119,221,0)"}, {backgroundColor: "rgba(127,119,221,.22)", duration: 0.15}, Math.min(a + 2.1, z - 0.7));
+    ["#c1", "#c2", "#c3"].forEach((c, k) => tl.fromTo(c, {color: "#9A94A3"}, {color: "#4A44C4", duration: 0.15}, [a + 0.75, a + 1.4, Math.min(a + 2.35, z - 0.5)][k]));
+    tl.fromTo("#s3crumb", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 0.35}, a + 0.2);
+    sceneOut(tl, "#s3", z, "fade");
+  }
+  // ---------- S4 custom connector ----------
+  {
+    const a = st(3), z = en(3), d = z - a;
+    sceneIn(tl, "#s4", a, "zoom", "#E9E5EC");
+    const rows = $("#s4rows");
+    ["Google Drive", "Gmail", "Google Calendar", "Notion"].forEach((n, k) => { const r = document.createElement("div");
+      r.style.cssText = `position:absolute;left:44px;right:44px;top:${170 + k * 110}px;height:90px;border-radius:18px;background:#fff;border:1.5px solid #E6E1EA;display:flex;align-items:center;padding:0 26px;font:500 30px Geist;color:#17141C;justify-content:space-between`;
+      r.innerHTML = `${n}<span style="font:500 22px Geist;color:#0E8C80">Connected</span>`; rows.appendChild(r); });
+    const cur = "#s4cur";
+    const PL = [60 + 960 - 44 - 31, 120 + 46 + 31], AD = [60 + 960 - 44 - 190, 120 + 122 + 88];
+    click(tl, cur, "#s4r1", PL[0], PL[1], a + 0.45, [520, 900]);
+    tl.fromTo("#s4drop", {opacity: 0, y: -10}, {opacity: 1, y: 0, duration: 0.2, ease: "power3.out"}, a + 0.5);
+    click(tl, cur, "#s4r2", AD[0], AD[1], a + 1.05, [PL[0] - 6, PL[1] - 4]);
+    tl.fromTo("#s4dlg", {opacity: 0, y: 80, scale: 0.97}, {opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "expo.out"}, a + 1.15);
+    tl.to("#s4drop", {opacity: 0, duration: 0.15}, a + 1.15);
+    tl.to(cur, {x: 640, y: 720, duration: 0.3, ease: "power2.out"}, a + 1.2);
+    const tA = a + 1.45, tB = a + 1.95, url = "https://mcp.portermetrics.com/mcp";
+    typer(tl, $("#s4f1"), "Porter", tA, 0.35);
+    tl.fromTo("#s4f2", {borderColor: "#DCD6E2"}, {borderColor: "#7F77DD", duration: 0.1}, tB - 0.05);
+    typer(tl, $("#s4f2"), url, tB, Math.max(0.6, Math.min(1.1, d - 3.0)));
+    const btnT = Math.min(a + 3.05, z - 0.9);
+    click(tl, cur, "#s4r3", 110 + 860 - 40 - 85, 330 + 600 - 40 - 38, btnT, [640, 720]);
+    tl.to("#s4dlg", {opacity: 0, y: 40, duration: 0.25, ease: "power2.in"}, btnT + 0.2);
+    tl.fromTo("#s4toast", {opacity: 0, y: 40, scale: 0.9}, {opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(2)"}, btnT + 0.35);
+    SFX.push({t: btnT + 0.35, s: "pop"});
+    tl.fromTo("#s4cam", {scale: 1.0, x: 0, y: 0}, {scale: 1.12, x: -30, y: -40, duration: d, ease: "sine.inOut"}, a);
+    sceneOut(tl, "#s4", z, "left");
+  }
+  // ---------- S5 ask + real Porter page ----------
+  {
+    const a = st(4), z = en(4);
+    sceneIn(tl, "#s5", a, "whip", "#08070D");
+    typer(tl, $("#s5q"), "Which post type gets the most saves: images, videos or carousels?", a + 0.3, 1.25);
+    tl.fromTo("#s5tool", {opacity: 0, x: -20}, {opacity: 1, x: 0, duration: 0.25}, a + 1.65);
+    tl.fromTo("#s5dot", {opacity: 1}, {opacity: 0.2, duration: 0.3, repeat: 5, yoyo: true, ease: "sine.inOut"}, a + 1.65);
+    // card: 820 wide shows 1200px page at scale .6833; crop starts below hero
+    const s = 1, y0 = 1560, yQ = 4900;
+    tl.set("#s5img", {scale: 1, x: -300}, a);
+    tl.fromTo("#s5card", {x: 700, opacity: 0, rotationY: -30, rotationX: 6}, {x: 0, opacity: 1, rotationY: -14, rotationX: 6, duration: 0.7, ease: "expo.out"}, a + 0.2);
+    tl.fromTo("#s5img", {y: -y0 * s}, {y: -(yQ - 260) * s, duration: Math.max(1.6, z - a - 1.4), ease: "power3.inOut"}, a + 0.6);
+    tl.set("#s5hl", {top: 282, height: 44}, a);
+    tl.fromTo("#s5hl", {scaleX: 0}, {scaleX: 1, duration: 0.5, ease: "power2.out"}, Math.min(a + 2.4, z - 0.8));
+    tl.fromTo("#s5src", {opacity: 0}, {opacity: 1, duration: 0.3}, a + 0.8);
+    sceneOut(tl, "#s5", z, "left");
+  }
+  // ---------- S6 Composio ----------
+  {
+    const a = st(5), z = en(5);
+    sceneIn(tl, "#s6", a, "whip", "#FBFAF8");
+    tl.fromTo("#s6h", {y: 60, opacity: 0}, {y: 0, opacity: 1, duration: 0.5, ease: "expo.out"}, a + 0.1);
+    const s = 1, top = 3400;
+    tl.set("#s6img", {scale: 1, x: -360}, a);
+    tl.fromTo("#s6card", {y: 500, opacity: 0, rotationY: 12, rotationX: 5}, {y: 0, opacity: 1, rotationY: 12, rotationX: 5, duration: 0.6, ease: "expo.out"}, a + 0.15);
+    tl.fromTo("#s6img", {y: -(top - 500) * s}, {y: -top * s, duration: 1.4, ease: "power3.out"}, a + 0.3);
+    // highlights in card coords: page y - top, scaled
+    tl.set("#s6hl1", {left: 30, top: 3520 - top - 5, width: 740, height: 32}, a);
+    tl.set("#s6hl2", {left: 30, top: 3578 - top - 5, width: 700, height: 32}, a);
+    const w = spec.words || {}, h1 = (w.publish ?? L[5].start + 0.9), h2 = (w.comments ?? L[5].start + 1.9);
+    tl.fromTo("#s6hl1", {scaleX: 0}, {scaleX: 1, duration: 0.45, ease: "power2.out"}, h1);
+    tl.fromTo("#s6hl2", {scaleX: 0}, {scaleX: 1, duration: 0.45, ease: "power2.out"}, h2);
+    SFX.push({t: h1, s: "pop"}, {t: h2, s: "pop"});
+    tl.fromTo("#s6card", {scale: 1}, {scale: 1.08, duration: z - a, ease: "sine.inOut"}, a);
+    tl.fromTo("#s6src", {opacity: 0}, {opacity: 1, duration: 0.3}, a + 0.7);
+    sceneOut(tl, "#s6", z, "left");
+  }
+  // ---------- S7 official API ----------
+  {
+    const a = st(6), z = en(6);
+    sceneIn(tl, "#s7", a, "zoom", "#08070D");
+    tl.fromTo("#s7a", {x: -300, opacity: 0}, {x: 0, opacity: 1, duration: 0.45, ease: "expo.out"}, a + 0.1);
+    tl.fromTo("#s7b", {x: 300, opacity: 0}, {x: 0, opacity: 1, duration: 0.45, ease: "expo.out"}, a + 0.1);
+    ["#s7l1", "#s7l2"].forEach(id => { const p = $(id), n = 420; p.style.strokeDasharray = n; tl.fromTo(p, {strokeDashoffset: n}, {strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut"}, a + 0.35); });
+    const sh = $("#s7shield"), sn = 900; sh.style.strokeDasharray = sn;
+    tl.fromTo(sh, {strokeDashoffset: sn, fillOpacity: 0}, {strokeDashoffset: 0, fillOpacity: 1, duration: 0.7, ease: "power2.inOut"}, a + 0.6);
+    const ck = $("#s7check"), cn = 200; ck.style.strokeDasharray = cn;
+    tl.fromTo(ck, {strokeDashoffset: cn}, {strokeDashoffset: 0, duration: 0.35, ease: "power3.out"}, a + 1.2);
+    SFX.push({t: a + 1.2, s: "pop"});
+    tl.fromTo("#s7t1", {y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 0.45, ease: "expo.out"}, a + 0.7);
+    const ns = (spec.words || {}).scraping ?? L[6].start + 2.2;
+    tl.fromTo("#s7t2wrap", {scale: 1.6, opacity: 0}, {scale: 1, opacity: 1, duration: 0.3, ease: "power4.in"}, ns - 0.35);
+    SFX.push({t: ns - 0.05, s: "thump"});
+    tl.fromTo("#s7strike", {scaleX: 0}, {scaleX: 1, duration: 0.3, ease: "power3.out"}, ns + 0.15);
+    tl.fromTo("#s7 .cam", {scale: 1}, {scale: 1.05, duration: z - a, ease: "sine.inOut"}, a);
+    sceneOut(tl, "#s7", z, "fade");
+  }
+  // ---------- S8 CTA ----------
+  {
+    const a = st(7), z = D;
+    sceneIn(tl, "#s8", a, "rise", "#3E39A8");
+    tl.fromTo("#s8h", {y: 60, opacity: 0}, {y: 0, opacity: 1, duration: 0.5, ease: "expo.out"}, a + 0.1);
+    tl.fromTo("#s8key", {scale: 0.6, opacity: 0}, {scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2.4)"}, a + 0.35);
+    typer(tl, $("#s8k"), "INSTA", a + 0.55, 0.5);
+    tl.fromTo("#s8caret", {opacity: 1}, {opacity: 0, duration: 0.3, repeat: 9, yoyo: true, ease: "steps(1)"}, a + 1.0);
+    tl.fromTo("#s8sub", {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.45, ease: "expo.out"}, a + 0.9);
+    const bb = $("#s8bubbles"), cols = ["#E07A5C", "#6FE0D2", "#F3C584", "#AFA9EC"], N = 4, T = k => a + 1.3 + k * 0.34;
+    for (let k = 0; k < N; k++) { const d = document.createElement("div"); d.className = "bubble"; d.style.top = "980px";
+      d.innerHTML = `<b style="background:${cols[k]}"></b>INSTA`; bb.appendChild(d);
+      tl.fromTo(d, {y: 260, opacity: 0}, {y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.6)"}, T(k));
+      for (let j = k + 1; j < N; j++) tl.fromTo(d, {y: -(j - 1 - k) * 100}, {y: -(j - k) * 100, duration: 0.3, ease: "power3.out", immediateRender: false}, T(j));
+      SFX.push({t: T(k) + 0.1, s: "pop"});
+    }
+    tl.fromTo("#s8end", {opacity: 0}, {opacity: 1, duration: 0.4}, Math.min(a + 2.6, D - 1));
+    avatar(tl, "#avE", a + 0.5, D + 1, [790, 700]);
+  }
+
+  // ---------- captions (word-timed) ----------
+  const cap = $("#cap");
+  L.forEach((ln, i) => {
+    const box = document.createElement("div"); box.className = "cl";
+    const words = ln.text.split(/\s+/); const tot = words.reduce((s, w) => s + w.length + 1, 0);
+    let acc = 0; const dur = ln.end - ln.start;
+    words.forEach(w => { const sp = document.createElement("span"); sp.textContent = w; box.appendChild(sp);
+      const ws = ln.start + dur * (acc / tot); acc += w.length + 1;
+      tl.fromTo(sp, {color: "#F5F5F7", scale: 1}, {color: "#A99CFF", scale: 1.06, duration: 0.08}, ws);
+      tl.to(sp, {scale: 1, duration: 0.12}, ws + 0.12); });
+    cap.appendChild(box);
+    const end = i + 1 < L.length ? L[i + 1].start - 0.05 : D;
+    tl.set(box, {visibility: "visible"}, ln.start - 0.12);
+    tl.fromTo(box, {opacity: 0, y: 16}, {opacity: 1, y: 0, duration: 0.18, ease: "power2.out"}, ln.start - 0.12);
+    tl.to(box, {opacity: 0, duration: 0.1}, end - 0.1);
+    tl.set(box, {visibility: "hidden"}, end);
+  });
+
+  TL = tl;
+  window.SFX = SFX.filter(e => e.t >= 0 && e.t < D).sort((p, q) => p.t - q.t);
+  tl.seek(0);
+  document.fonts.ready.then(() => {
+    const imgs = [...document.images];
+    Promise.all(imgs.map(im => im.complete ? 1 : new Promise(r => { im.onload = im.onerror = r; }))).then(() => { window.READY = true; });
+  });
+};
+window.frame = function (t) { TL.seek(t, false); };
+</script>
+</body></html>

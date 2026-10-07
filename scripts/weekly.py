@@ -630,7 +630,7 @@ def main() -> None:
     if "--no-voice" not in sys.argv:
         for p in posts:
             if p["format"] == "video":
-                r = run(PY, "scripts/voiceover.py", out / p["slug"] / "video.json", "--engine", "gemini-oneshot", "--no-bed", check=False)
+                r = run(PY, "scripts/voiceover.py", out / p["slug"] / "video.json", "--engine", "clone", "--no-bed", check=False)
                 (voiced if r.returncode == 0 else []).append(p["slug"])
                 time.sleep(25)
         run(PY, "scripts/render_ready.py", out, "--jobs=3", check=False)

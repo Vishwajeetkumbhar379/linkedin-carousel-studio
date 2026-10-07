@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/fonts.css">
+<style>
+:root{--paper:#FBFAF8;--ink:#17141C;--muted:#5F5967;--violet:#7F77DD;--vink:#4A44C4;--vdark:#3E39A8;--teal:#0E8C80;--tealink:#0F7A55;--coral:#B4502A;--line:#D5CFDA;--tp:#F5F4FF;--tt:#F0FBF6;--tc:#FEF6F3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ddd;font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--paper);color:var(--ink)}
+.glow{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5}
+.hdr{position:absolute;left:72px;right:72px;top:58px;display:flex;justify-content:space-between;align-items:center;font:500 22px 'Geist Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.hdr b{display:flex;align-items:center;gap:14px;color:var(--ink);font-weight:500}
+.hdr b i{width:34px;height:34px;border-radius:10px;background:var(--vink);display:inline-block}
+.serif{font-family:Newsreader,Georgia,serif;font-weight:500;letter-spacing:-.028em;line-height:1.02}
+.serif em{font-style:italic;color:var(--vink)}
+.num{position:absolute;right:52px;top:120px;font-family:Newsreader,Georgia,serif;font-weight:500;font-size:250px;line-height:1;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:3px var(--violet);opacity:.55}
+.label{position:absolute;left:72px;top:150px;font:600 24px 'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--vink)}
+.title{position:absolute;left:72px;top:200px;width:660px;font-size:86px}
+.body{position:absolute;left:72px;width:880px;font:400 36px/1.42 Geist;color:#2B2732}
+.file{position:absolute;left:72px;width:936px;border-radius:26px;background:#fff;border:1.5px solid #E2DDE6;box-shadow:0 40px 80px -40px rgba(40,20,110,.35);overflow:hidden}
+.file .bar{height:64px;background:#F3F0F4;border-bottom:1.5px solid #E2DDE6;display:flex;align-items:center;padding:0 26px;gap:12px;font:500 22px 'Geist Mono',monospace;color:var(--muted)}
+.file .bar s{width:16px;height:16px;border-radius:50%;background:#D5CFDA;text-decoration:none}
+.file pre{padding:26px 30px 30px;font:400 25px/1.6 'Geist Mono',monospace;color:#3A3542;white-space:pre-wrap;word-break:break-word}
+.file pre .k{color:var(--vink)}.file pre .d{color:#9A94A3}
+.term{position:absolute;left:72px;width:936px;border-radius:22px;background:#17141C;color:#F5F5F7;font:500 27px 'Geist Mono',monospace;padding:26px 30px;display:flex;gap:18px;align-items:center;white-space:nowrap;overflow:hidden}
+.term span{color:#6FE0D2}
+.chips{position:absolute;left:72px;display:flex;gap:14px;flex-wrap:wrap}
+.chip{font:500 24px Geist;border-radius:999px;padding:12px 22px;background:#fff;border:1.5px solid #E2DDE6;color:#3A3542}
+.foot{position:absolute;left:72px;right:72px;bottom:54px;display:flex;justify-content:space-between;font:500 21px 'Geist Mono',monospace;letter-spacing:.06em;color:var(--muted)}
+.src{position:absolute;left:72px;bottom:104px;font:400 21px 'Geist Mono',monospace;color:#8A8492}
+.cut{position:absolute;-webkit-mask-image:linear-gradient(#000 80%,transparent 99%);mask-image:linear-gradient(#000 80%,transparent 99%);filter:drop-shadow(0 30px 34px rgba(30,20,90,.3))}
+.tag{position:absolute;font:600 28px Geist;background:#17141C;color:#fff;border-radius:999px;padding:14px 26px;box-shadow:0 20px 40px -18px rgba(0,0,0,.5)}
+.card{position:absolute;width:420px;height:300px;border-radius:24px;background:#fff;border:1.5px solid #E2DDE6;box-shadow:0 30px 60px -30px rgba(40,20,110,.4);padding:24px 26px;font:400 20px/1.5 'Geist Mono',monospace;color:#5F5967;overflow:hidden}
+.card b{display:block;font:600 26px Geist;color:#17141C;margin-bottom:12px}
+</style></head>
+<body>
+<div id="deck"></div>
+<script>
+const N = 10;
+const hdr = i => `<div class="hdr"><b><i></i>Vish Kumbhar · Build with Vish</b><span>${String(i).padStart(2, "0")} / ${N}</span></div>`;
+const foot = (l, r) => `<div class="foot"><span>${l}</span><span>${r}</span></div>`;
+const glow = (a, b) => `<div class="glow" style="width:640px;height:640px;left:-200px;top:-180px;background:${a}"></div><div class="glow" style="width:560px;height:560px;right:-200px;bottom:-160px;background:${b}"></div>`;
+const S = [
+ {id: "01", key: "Taste Skill", tint: "#AFA9EC", h: "Stops the <em>generic</em> AI look.", b: "Anti-slop design rules for pages and UI. Claude reads your brief, picks a real direction, then checks layout, type and spacing before it ships.",
+  file: ["name: design-taste-frontend", "description: Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction..."],
+  cmd: "npx skills add Leonxlnx/taste-skill", tags: ["Design", "MIT licence", "tasteskill.dev"], src: "github.com/Leonxlnx/taste-skill"},
+ {id: "02", key: "HyperFrames", tint: "#B9CDFF", h: "Turns HTML into <em>motion video.</em>", b: "Kinetic text, UI walkthroughs, camera moves and roughly 400 ready-made effects. Claude writes the scene, HyperFrames renders the MP4.",
+  file: ["name: hyperframes", "description: Mandatory entry point: read this first for any request to make, create, edit, animate, or render a video, animation, or motion graphic..."],
+  cmd: "npx skills add heygen-com/hyperframes", tags: ["Video", "Apache-2.0", "by HeyGen"], src: "github.com/heygen-com/hyperframes"},
+ {id: "03", key: "GSAP skills", tint: "#6FE0D2", h: "Teaches Claude <em>real</em> animation.", b: "The official GreenSock skills: timelines, easing, stagger, plugins. And GSAP is now 100% free, every plugin included.",
+  file: ["name: gsap-timeline", "description: Official GSAP skill for timelines: gsap.timeline(), position parameter, nesting, playback..."],
+  cmd: "npx skills add greensock/gsap-skills", tags: ["Motion", "MIT licence", "Official"], src: "github.com/greensock/gsap-skills"},
+ {id: "04", key: "LinkedIn Skills", tint: "#F3C584", h: "20 hook formulas, <em>built in.</em>", b: "Post writer with 20 hook formulas, a hook extractor for any viral post, a humanizer that strips AI tells, and a weekly planner.",
+  file: ["name: linkedin-post-writer", "description: Draft a new LinkedIn post from scratch using one of 20 2026 hook formulas (anaphora, R.I.P., time-anchor, curiosity-gap, contrarian...)"],
+  cmd: "npx skills add sergebulaev/linkedin-skills", tags: ["Writing", "MIT licence", "12 skills"], src: "github.com/sergebulaev/linkedin-skills"},
+ {id: "05", key: "Web Design Guidelines", tint: "#AFA9EC", h: "A design review <em>before</em> you ship.", b: "Vercel's skill checks your UI against their interface guidelines: accessibility, layout, typography. Ask: \"review my UI\".",
+  file: ["name: web-design-guidelines", "description: Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\"..."],
+  cmd: "npx skills add vercel-labs/agent-skills", tags: ["Design QA", "by Vercel"], src: "github.com/vercel-labs/agent-skills"},
+ {id: "06", key: "Social Media Skills", tint: "#E07A5C", h: "Hooks and trends <em>on demand.</em>", b: "Six hook variations for any topic, niche research on the last 7 days, and a content matrix of 24 to 40 post ideas.",
+  file: ["name: hook-generator", "description: Generate 6 clickbait-style LinkedIn hook variations for any topic. Two-line hooks built on the formula: a 40-char opening line..."],
+  cmd: "npx skills add charlie947/social-media-skills", tags: ["Ideas", "MIT licence"], src: "github.com/charlie947/social-media-skills"},
+ {id: "07", key: "Motion Design", tint: "#6FE0D2", h: "Timing like a <em>motion designer.</em>", b: "Easing, choreography and Disney's animation principles adapted for UI. Your animations stop feeling robotic.",
+  file: ["name: motion-design", "description: Applies motion design principles to create emotionally-driven, technically sound animations and transitions. Provides timing, easing..."],
+  cmd: "npx skills add LottieFiles/motion-design-skill", tags: ["Motion", "MIT licence", "by LottieFiles"], src: "github.com/LottieFiles/motion-design-skill"},
+];
+let html = "";
+// 1 cover
+html += `<section class="slide" style="background:#FBFAF8">${glow("#AFA9EC", "#B9CDFF")}${hdr(1)}
+ <div class="label" style="top:150px">Free · open source · tested this week</div>
+ <div class="serif" style="position:absolute;left:72px;top:196px;width:940px;font-size:118px">7 free Claude Skills I installed <em>this week.</em></div>
+ <div style="position:absolute;left:72px;top:500px;font:400 36px/1.4 Geist;color:#3A3542;width:900px">Design taste, motion video and viral hooks. Each one is a folder Claude reads before it works.</div>
+ <div class="file" style="left:330px;width:690px;top:640px;z-index:5"><div class="bar"><s></s><s></s><s></s>&nbsp;.claude/skills/</div>
+  <div style="padding:10px 18px 16px">${S.map(s => `<div style="display:flex;align-items:center;gap:18px;padding:13px 10px;border-bottom:1.5px solid #F0EDF2;font:500 29px Geist;color:#17141C"><svg width="34" height="28" viewBox="0 0 34 28"><path d="M2 5a3 3 0 0 1 3-3h8l4 4h12a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z" fill="${s.tint}"/></svg>${s.key}<span style="margin-left:auto;font:500 20px 'Geist Mono',monospace;color:#8A8492">${s.id}</span></div>`).join("")}</div></div>
+ <img class="cut" src="/video/reels/assets/02_point_screen_right.png" style="left:-30px;top:700px;width:360px;z-index:21">
+ <div class="tag" style="right:72px;top:1185px;z-index:22;background:#17141C">Comment <span style="color:#A99CFF;font-family:'Geist Mono'">SKILLS</span> for the list</div>
+ <div class="foot" style="justify-content:flex-end"><span>Swipe →</span></div></section>`;
+// 2 what a skill is
+html += `<section class="slide" style="background:#F5F4FF">${glow("#AFA9EC", "#6FE0D2")}${hdr(2)}
+ <div class="label">Quick context</div>
+ <div class="serif title" style="width:920px;font-size:96px">A skill is a folder Claude reads <em>before</em> it works.</div>
+ <div class="file" style="top:560px">
+  <div class="bar"><s></s><s></s><s></s>&nbsp;.claude/skills/your-skill/SKILL.md</div>
+  <pre><span class="d">---</span>
+<span class="k">name:</span> your-skill
+<span class="k">description:</span> When to use it, in one line.
+<span class="d">---</span>
+The instructions, examples and rules
+Claude follows when the task matches.</pre></div>
+ <div class="body" style="top:1010px">Install once. Every chat that needs it gets better. No prompt pasting.</div>
+ ${foot("Claude Code: npx skills add · Claude.ai: upload the folder", "→")}</section>`;
+// 3-9 skills
+S.forEach((s, k) => {
+  html += `<section class="slide">${glow(s.tint, "#F5F4FF")}${hdr(k + 3)}
+   <div class="num">${s.id}</div>
+   <div class="label">${s.key}</div>
+   <div class="serif title">${s.h}</div>
+   <div class="body" style="top:500px">${s.b}</div>
+   <div class="file" style="top:700px"><div class="bar"><s></s><s></s><s></s>&nbsp;SKILL.md</div>
+    <pre><span class="d">---</span>
+<span class="k">${s.file[0].split(":")[0]}:</span>${s.file[0].slice(s.file[0].indexOf(":") + 1)}
+<span class="k">description:</span>${s.file[1].slice(12)}</pre></div>
+   <div class="term" style="top:1060px"><span>$</span>${s.cmd}</div>
+   <div class="src">Source: ${s.src} · read 7 Oct 2026</div>
+   ${foot(s.tags.join(" · "), "→")}</section>`;
+});
+// 10 CTA
+html += `<section class="slide" style="background:#3E39A8;color:#FBFAF8">${glow("#7F77DD", "#2448C8")}
+ <div class="hdr" style="color:#D9D4FF"><b style="color:#FBFAF8"><i style="background:#FBFAF8"></i>Vish Kumbhar · Build with Vish</b><span>10 / 10</span></div>
+ <div class="serif" style="position:absolute;left:72px;top:170px;font-size:130px;color:#FBFAF8">Comment</div>
+ <div style="position:absolute;left:72px;top:330px;height:160px;padding:0 46px;border-radius:30px;background:#FBFAF8;color:#3E39A8;display:flex;align-items:center;font:700 110px 'Geist Mono',monospace;letter-spacing:.12em">SKILLS</div>
+ <div style="position:absolute;left:72px;top:540px;width:640px;font:400 38px/1.42 Geist;color:#E9E5FF">and I'll send you the install list: links, commands and the order I'd add them in.</div>
+ <div style="position:absolute;left:72px;top:800px;width:600px;font:500 30px/1.5 Geist;color:#D9D4FF">Save this for your next build day.<br>Which one would you install first?</div>
+ <img class="cut" src="/video/reels/assets/04_present_screen_right.png" style="right:-10px;top:600px;width:470px">
+ <div class="foot" style="color:#D9D4FF"><span>buildwithvish.netlify.app</span><span>Follow for AI × marketing</span></div></section>`;
+document.getElementById("deck").innerHTML = html;
+window.READY = true;
+</script>
+</body></html>
