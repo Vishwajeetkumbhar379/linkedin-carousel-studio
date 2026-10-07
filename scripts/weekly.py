@@ -313,6 +313,41 @@ def problems(p: dict, allowed: dict, tutorial: bool = False) -> list[str]:
     return errs
 
 
+def add_ui_beats(p: dict, items: list[dict]) -> dict:
+    """Small focused call: turn 2 to 4 how-to lines of a tutorial video into screen walkthrough beats."""
+    phrases = [sc[0] for sc in p.get("narration", [])]
+    if len(phrases) < 4 or sum(b.get("look") == "ui" for b in p.get("beats", [])) >= 2:
+        return p
+    lines = "\n".join(f"{i}: {x}" for i, x in enumerate(phrases) if 0 < i < len(phrases) - 1)
+    src = "\n\n".join(f"SOURCE {it['url']}\n{it.get('summary', '')[:400]}\n{page_text(it['url'], 3000)}" for it in items)
+    try:
+        r = ask_json(f"""A tutorial video shows the app screen while the voice explains each step. For 2 to 4 of these narration lines
+that describe a step inside an app, write a screen walkthrough beat. Use only screen, menu and button names the sources mention;
+if a source does not name a menu, use the plain action (for example "New chat", "Search", "Connect").
+Beat format A (clicks): {{"look":"ui","bg":"ivory","title":"short caption, max 6 words","app":"<app name>","screen":"<screen>","steps":[{{"click":"<name>"}},{{"click":"<name>"}},{{"result":"connected"}}],"button":"Connect","toast":"<thing> connected"}}
+Beat format B (prompt): {{"look":"ui","bg":"ivory","title":"...","app":"<app name>","screen":"New chat","steps":[{{"type":"<the prompt to paste>"}},{{"result":"site"}}],"siteTitle":"...","siteSub":"..."}}
+(result may be "site", "connected", or "reply" with "reply":"<short answer>").
+
+NARRATION LINES (index: line):
+{lines}
+
+SOURCES:
+{src}
+
+Return JSON {{"ui": [{{"index": <line index>, "beat": {{...}}}}]}}""")
+    except Exception as e:  # noqa: BLE001
+        log("ui beats skipped:", e); return p
+    beats = p.get("beats", [])
+    for u in (r.get("ui") or [])[:4]:
+        i, b = u.get("index"), u.get("beat")
+        if isinstance(i, int) and 0 < i < len(beats) - 1 and isinstance(b, dict) and b.get("steps"):
+            b.update(look="ui", trans=beats[i].get("trans", "whip"), avatar="point")
+            b.setdefault("bg", "ivory")
+            b["title"] = b.get("title") or beats[i].get("title", "")
+            beats[i] = b
+    return p
+
+
 def fact_check(p: dict, items: list[dict]) -> list[str]:
     """Second free model reads the sources and lists any line the sources do not support (numbers, claims, clicks)."""
     text = "\n".join([p.get("hook", "")] + [x for sc in p.get("narration", []) for x in sc]
@@ -320,8 +355,9 @@ def fact_check(p: dict, items: list[dict]) -> list[str]:
     src = "\n\n".join(f"SOURCE {it['url']}\n{it.get('summary', '')[:500]}\n{page_text(it['url'], 5000)}" for it in items)
     try:
         r = ask_json(f"""You are a strict fact checker. Below are the lines of a LinkedIn post and the sources it may use.
-List every line that states a number, a product feature, a menu or button name, or a claim that the sources do NOT clearly support.
-Opinions, advice and calls to action are fine. Return JSON {{"unsupported": [{{"line": "...", "why": "..."}}]}} (empty list if all fine).
+List only lines that state a specific number, date, price, percentage, named product feature, or exact menu or button name
+that the sources do NOT support. Ignore step numbers and labels like "01 · Connect", headings, general how-to instructions,
+opinions, advice, hooks that frame the topic, and calls to action: those are fine. Return JSON {{"unsupported": [{{"line": "...", "why": "..."}}]}} (empty list if all fine).
 
 POST LINES:
 {text}
@@ -332,6 +368,15 @@ SOURCES:
         log("fact check skipped:", e); return []
     bad = [x for x in (r.get("unsupported") or []) if isinstance(x, dict) and x.get("line")]
     return [f"unsupported by the sources, rewrite or remove: \"{x['line'][:140]}\" ({str(x.get('why', ''))[:120]})" for x in bad[:6]]
+
+
+def _line(d) -> str:
+    if not isinstance(d, dict):
+        return str(d)
+    for k in ("line", "text", "phrase", "narration", "voiceover", "vo", "script"):
+        if isinstance(d.get(k), str):
+            return d[k]
+    return next((v for v in d.values() if isinstance(v, str) and len(v.split()) > 3), "")
 
 
 def as_post(x) -> dict:
@@ -346,13 +391,20 @@ def as_post(x) -> dict:
     for k in ("beats", "slides"):
         if k in x:
             x[k] = [b for b in x[k] if isinstance(b, dict)]
+    if not x.get("narration") and isinstance(x.get("scenes"), list):  # {"scenes": [{"line": ..., "beat": {...}}]}
+        sc = [c for c in x.pop("scenes") if isinstance(c, dict)]
+        x["narration"] = [_line(c) for c in sc]
+        if all(isinstance(c.get("beat"), dict) for c in sc):
+            x["beats"] = [c["beat"] for c in sc]
     nar = x.get("narration")
     if isinstance(nar, str):
         nar = [p for p in re.split(r"(?<=[.!?])\s+", nar.strip()) if p]
     if isinstance(nar, list):
         flat = []
         for sc in nar:
-            flat += [sc] if isinstance(sc, str) else [str(t) for t in sc if str(t).strip()]
+            if isinstance(sc, dict):
+                sc = [_line(sc)]
+            flat += [sc] if isinstance(sc, str) else [_line(t) if isinstance(t, dict) else str(t) for t in sc if str(t).strip()]
         x["narration"] = [[p] for p in flat if p.strip()]
     return x
 
@@ -417,6 +469,11 @@ def merge(old: dict | None, new) -> dict:
         return new
     out = dict(old)
     out.update({k: v for k, v in new.items() if v not in (None, "", [], {})})
+    nw = lambda d: sum(len(x.split()) for sc in d.get("narration") or [] for x in sc)  # noqa: E731
+    if old.get("narration") and nw(out) < 40 <= nw(old):  # fix reply mangled the script: keep the old one
+        out["narration"], out["beats"] = old["narration"], old.get("beats", out.get("beats"))
+    if old.get("slides") and len(out.get("slides") or []) < 6 <= len(old["slides"]):
+        out["slides"] = old["slides"]
     return out
 
 
@@ -437,6 +494,8 @@ def write_one(pick: dict, taken: set) -> tuple[dict | None, list[str]]:
             log("bad post shape:", e); errs = [str(e)]; post = None; continue
         post["format"] = "video" if pick["slot"].startswith("video") else "carousel"
         post["facts"] = [f for f in post.get("facts", []) if f.get("url") in allowed]
+        if tutorial:
+            post = add_ui_beats(post, pick["items"])
         errs = problems(post, allowed, tutorial)
         if not errs and not checked:  # one fact-check round per post, on a structurally valid draft
             checked = True
