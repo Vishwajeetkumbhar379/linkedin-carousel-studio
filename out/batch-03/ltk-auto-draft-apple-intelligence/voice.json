@@ -1,0 +1,83 @@
+{
+ "voice": "Puck",
+ "duration": 34.07,
+ "scenes": [
+  {
+   "start": 0.0,
+   "end": 4.02,
+   "phrases": [
+    {
+     "start": 0.0,
+     "end": 4.02,
+     "text": "Can Apple Intelligence write your LTK captions for you?"
+    }
+   ]
+  },
+  {
+   "start": 4.72,
+   "end": 8.43,
+   "phrases": [
+    {
+     "start": 4.72,
+     "end": 8.43,
+     "text": "First, link your photos inside the LTK Creator app."
+    }
+   ]
+  },
+  {
+   "start": 9.13,
+   "end": 13.4,
+   "phrases": [
+    {
+     "start": 9.13,
+     "end": 13.4,
+     "text": "Tap the Auto-Draft button to let Apple Intelligence analyse the image."
+    }
+   ]
+  },
+  {
+   "start": 14.1,
+   "end": 18.13,
+   "phrases": [
+    {
+     "start": 14.1,
+     "end": 18.13,
+     "text": "Review the suggested caption, pick a tone, and edit any wording."
+    }
+   ]
+  },
+  {
+   "start": 18.83,
+   "end": 22.6,
+   "phrases": [
+    {
+     "start": 18.83,
+     "end": 22.6,
+     "text": "Confirm product tags, then hit schedule or share instantly."
+    }
+   ]
+  },
+  {
+   "start": 23.3,
+   "end": 27.82,
+   "phrases": [
+    {
+     "start": 23.3,
+     "end": 27.82,
+     "text": "You can also trigger Auto-Draft via Siri or Photos app shortcuts."
+    }
+   ]
+  },
+  {
+   "start": 28.52,
+   "end": 32.57,
+   "phrases": [
+    {
+     "start": 28.52,
+     "end": 32.57,
+     "text": "Try LTK Auto-Draft today and see if AI fits your workflow."
+    }
+   ]
+  }
+ ]
+}

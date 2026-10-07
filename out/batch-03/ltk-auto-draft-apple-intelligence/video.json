@@ -39,7 +39,10 @@
       "avatar": "crossed",
       "avTop": 170,
       "avSize": 190,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 0.0,
+      "until": 4.02,
+      "say": "Can Apple Intelligence write your LTK captions for you?"
     },
     {
       "look": "text",
@@ -49,7 +52,10 @@
       "avatar": "thinking",
       "trans": "whip",
       "avTop": 730,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 4.72,
+      "until": 8.43,
+      "say": "First, link your photos inside the LTK Creator app."
     },
     {
       "look": "stamp",
@@ -59,7 +65,10 @@
       "avatar": "focused",
       "trans": "zoom",
       "avTop": 740,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 9.13,
+      "until": 13.4,
+      "say": "Tap the Auto-Draft button to let Apple Intelligence analyse the image."
     },
     {
       "look": "chips",
@@ -72,7 +81,10 @@
       "avatar": "pleased",
       "trans": "click",
       "avTop": 780,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 14.1,
+      "until": 18.13,
+      "say": "Review the suggested caption, pick a tone, and edit any wording."
     },
     {
       "look": "stat",
@@ -84,7 +96,10 @@
       "avatar": "surprised",
       "trans": "pop",
       "avTop": 185,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 18.83,
+      "until": 22.6,
+      "say": "Confirm product tags, then hit schedule or share instantly."
     },
     {
       "look": "chat",
@@ -93,7 +108,10 @@
       "avatar": "wink",
       "trans": "rise",
       "avTop": 960,
-      "avSide": "left"
+      "avSide": "left",
+      "at": 23.3,
+      "until": 27.82,
+      "say": "You can also trigger Auto-Draft via Siri or Photos app shortcuts."
     },
     {
       "look": "cta",
@@ -103,10 +121,99 @@
       "avatar": "wave",
       "trans": "whip",
       "avTop": 185,
-      "avSide": "right"
+      "avSide": "right",
+      "at": 28.52,
+      "until": 32.57,
+      "say": "Try LTK Auto-Draft today and see if AI fits your workflow."
     }
   ],
-  "duration": 36,
-  "posters": {},
-  "sfx": true
+  "duration": 35.37,
+  "posters": {
+    "b01": 3.44,
+    "b02": 7.91,
+    "b03": 12.77,
+    "b04": 17.55,
+    "b05": 22.07,
+    "b06": 27.14,
+    "b07": 34.0
+  },
+  "sfx": true,
+  "captions": [
+    {
+      "at": 0.0,
+      "until": 2.537,
+      "text": "Can Apple Intelligence write your"
+    },
+    {
+      "at": 2.457,
+      "until": 4.1,
+      "text": "LTK captions for you?"
+    },
+    {
+      "at": 4.72,
+      "until": 7.026,
+      "text": "First, link your photos inside"
+    },
+    {
+      "at": 6.946,
+      "until": 8.51,
+      "text": "the LTK Creator app."
+    },
+    {
+      "at": 9.13,
+      "until": 11.19,
+      "text": "Tap the Auto-Draft button to let"
+    },
+    {
+      "at": 11.11,
+      "until": 13.48,
+      "text": "Apple Intelligence analyse the image."
+    },
+    {
+      "at": 14.1,
+      "until": 16.483,
+      "text": "Review the suggested caption, pick a"
+    },
+    {
+      "at": 16.403,
+      "until": 18.21,
+      "text": "tone, and edit any wording."
+    },
+    {
+      "at": 18.83,
+      "until": 20.86,
+      "text": "Confirm product tags, then hit"
+    },
+    {
+      "at": 20.78,
+      "until": 22.68,
+      "text": "schedule or share instantly."
+    },
+    {
+      "at": 23.3,
+      "until": 25.852,
+      "text": "You can also trigger Auto-Draft via"
+    },
+    {
+      "at": 25.772,
+      "until": 27.9,
+      "text": "Siri or Photos app shortcuts."
+    },
+    {
+      "at": 28.52,
+      "until": 30.874,
+      "text": "Try LTK Auto-Draft today and see"
+    },
+    {
+      "at": 30.794,
+      "until": 32.65,
+      "text": "if AI fits your workflow."
+    }
+  ],
+  "voice": {
+    "engine": "chatterbox-clone-of-video-25",
+    "voice": "Puck",
+    "breaths": true,
+    "bed": false
+  }
 }
