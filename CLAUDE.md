@@ -28,6 +28,7 @@ You produce LinkedIn content for Vishwajeet "Vish" Kumbhar (AI x marketing, 850+
 - **LLM for writing and research:** use the free-token router (`scripts/llm.py`, an OpenAI-compatible endpoint from OmniRoute or FreeLLMAPI, see `docs/llm-router.md`) when it's configured, so runs don't depend on one provider's limits.
 
 ## Weekly run (what the scheduled routine does)
+**Save Claude usage: run `python scripts/weekly.py` (one command; research, writing on free LLM tokens via `scripts/llm.py`, voice on Gemini free tier, 3D covers, rendering, QA, site, calendar, batch page). Claude only reads its summary, fixes any QA FAIL with small edits, commits, pushes and publishes `out/_batch/index.html`. Do not write posts with Claude or spawn writing agents.** The steps below are what it does, for manual repair only.
 0. Tokens: `bash scripts/router_setup.sh && python scripts/llm.py --check`. Use `scripts/llm.py` for drafting and research summaries. If the check shows no free provider, carry on with Gemini and say so in the run summary.
 1. Research: `python scripts/research/fetch.py`, plus WebSearch for news in the last 14 days on AI x marketing, creator economy and social platforms. Avoid topics already in `out/batch-*` and `topics/posted.json`.
 2. Write 6 posts (3 carousels or tutorial carousels, 2 videos, 1 step-by-step tutorial video) to `content/batch-NN/*.json`, following the BRIEF schema exactly.

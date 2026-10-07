@@ -202,9 +202,14 @@ def _err(e: Exception) -> str:
     return str(e)[:160]
 
 
-def chat(prompt: str, system: str | None = None, temperature: float = 0.7, timeout: int = 180) -> str:
+WRITERS = os.environ.get("LLM_PREFER", "groq,nvidia,openrouter,mistral,cloudflare,llm7").split(",")  # strongest writers first
+
+
+def chat(prompt: str, system: str | None = None, temperature: float = 0.7, timeout: int = 180, prefer: list[str] | None = None) -> str:
+    """prefer: provider ids to try first (default WRITERS order); the rest follow as fallbacks."""
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": prompt}]
     errors = []
+    order = prefer or WRITERS
     for base in ROUTERS:
         if not _router_up(base):
             continue
@@ -214,7 +219,7 @@ def chat(prompt: str, system: str | None = None, temperature: float = 0.7, timeo
             return out
         except Exception as e:  # noqa: BLE001
             errors.append(f"{base}: {_err(e)}")
-    for p in configured():
+    for p in sorted(configured(), key=lambda p: order.index(p["id"]) if p["id"] in order else len(order)):
         try:
             out = _provider(p, messages, temperature, timeout)
             print(f"[llm] answered by {p['id']} ({p.get('_model') or p['model']})", file=sys.stderr)
