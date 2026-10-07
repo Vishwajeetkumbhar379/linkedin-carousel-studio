@@ -81,10 +81,19 @@ def _get(url: str, headers: dict, timeout: int = 20) -> dict:
         return json.loads(r.read())
 
 
+JSON_MODE = False  # set by chat(json=True): ask providers for a JSON object (dropped if a provider rejects it)
+
+
 def _openai(base: str, key: str | None, model: str, messages: list[dict], temperature: float, timeout: int) -> str:
-    resp = _post(f"{base}/chat/completions", {"model": model, "messages": messages, "temperature": temperature},
-                 {"Authorization": f"Bearer {key}"} if key else {}, timeout)
-    return resp["choices"][0]["message"]["content"]
+    body = {"model": model, "messages": messages, "temperature": temperature}
+    hdr = {"Authorization": f"Bearer {key}"} if key else {}
+    if JSON_MODE:
+        try:
+            return _post(f"{base}/chat/completions", {**body, "response_format": {"type": "json_object"}}, hdr, timeout)["choices"][0]["message"]["content"]
+        except urllib.error.HTTPError as e:
+            if e.code != 400:
+                raise
+    return _post(f"{base}/chat/completions", body, hdr, timeout)["choices"][0]["message"]["content"]
 
 
 def _key(p: dict) -> str | None:
@@ -205,8 +214,10 @@ def _err(e: Exception) -> str:
 WRITERS = os.environ.get("LLM_PREFER", "groq,nvidia,openrouter,mistral,cloudflare,llm7").split(",")  # strongest writers first
 
 
-def chat(prompt: str, system: str | None = None, temperature: float = 0.7, timeout: int = 180, prefer: list[str] | None = None) -> str:
-    """prefer: provider ids to try first (default WRITERS order); the rest follow as fallbacks."""
+def chat(prompt: str, system: str | None = None, temperature: float = 0.7, timeout: int = 180, prefer: list[str] | None = None, json: bool = False) -> str:
+    """prefer: provider ids to try first (default WRITERS order); the rest follow as fallbacks. json: ask for a JSON object."""
+    global JSON_MODE
+    JSON_MODE = json
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": prompt}]
     errors = []
     order = prefer or WRITERS

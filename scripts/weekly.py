@@ -68,7 +68,7 @@ def ask_json(prompt: str, tries: int = 3):
     """Ask the free LLMs for JSON; strip code fences; retry with the parse error."""
     msg = prompt
     for i in range(tries):
-        out = llm.chat(msg, system=SYSTEM, temperature=0.6, timeout=240)
+        out = llm.chat(msg + "\nReturn a single JSON object (wrap lists as {\"items\": [...]}).", system=SYSTEM, temperature=0.6, timeout=240, json=True)
         txt = re.sub(r"^```(?:json)?|```$", "", out.strip(), flags=re.M).strip()
         m = re.search(r"[\[{].*[\]}]", txt, re.S)
         try:
@@ -195,6 +195,8 @@ Research items:
 
 Return JSON: [{{"slot": "...", "items": [item numbers, 1-3 that back the post], "angle": "one line: the hook idea and the step-by-step payoff"}}] with {len(mix)} entries."""
     picks = ask_json(prompt)
+    if isinstance(picks, dict):
+        picks = next((v for v in picks.values() if isinstance(v, list)), [])
     out = []
     for p, slot in zip(picks, mix):
         idx = [i for i in p.get("items", []) if isinstance(i, int) and 0 <= i < len(items)]
