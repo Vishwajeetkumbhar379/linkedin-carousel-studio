@@ -120,11 +120,17 @@ OFFICIAL = ("claude.com", "anthropic.com", "support.claude.com", "openai.com", "
 def search(q: str, n: int = 4) -> list[dict]:
     """Free web search (DuckDuckGo HTML). Official pages first."""
     import urllib.parse
-    try:
-        req = urllib.request.Request("https://html.duckduckgo.com/html/", data=urllib.parse.urlencode({"q": q}).encode(), headers=llm.UA)
-        t = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore")
-    except Exception as e:  # noqa: BLE001
-        log("search failed:", e); return []
+    t = ""
+    for wait in (0, 4, 10):
+        time.sleep(wait)
+        try:
+            req = urllib.request.Request("https://html.duckduckgo.com/html/", data=urllib.parse.urlencode({"q": q}).encode(), headers=llm.UA)
+            t = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore")
+            break
+        except Exception as e:  # noqa: BLE001
+            log("search retry:", e)
+    if not t:
+        return []
     res = []
     for m in re.finditer(r'class="result__a" href="([^"]+)"[^>]*>(.*?)</a>', t):
         u = urllib.parse.parse_qs(urllib.parse.urlparse(m.group(1)).query).get("uddg", [m.group(1)])[0]
@@ -152,10 +158,15 @@ def seed_picks(slots: list[str]) -> list[dict]:
                 if r["url"] not in seen:
                     seen.add(r["url"]); items.append(r)
         if items:
-            used.add(seed["id"])
+            used.add(seed["id"])  # in-memory only, so two slots never take the same seed
             out.append({"slot": slot, "items": items[:4], "angle": seed["angle"], "seed": seed["id"]})
-    used_f.write_text(json.dumps(sorted(used), indent=1))
     return out
+
+
+def mark_seeds_used(ids: list[str]) -> None:
+    used_f = ROOT / "topics" / "seeds_used.json"
+    used = set(json.loads(used_f.read_text())) if used_f.exists() else set()
+    used_f.write_text(json.dumps(sorted(used | set(ids)), indent=1))
 
 
 # ---------- research + planning ----------
@@ -178,7 +189,24 @@ def research() -> list[dict]:
     return out
 
 
+def _words(t: str) -> set:
+    return {w for w in re.findall(r"[a-z0-9]+", t.lower()) if len(w) > 3}
+
+
+def fresh_only(items: list[dict]) -> list[dict]:
+    """Drop items whose title overlaps a topic we already covered (shared key words)."""
+    done = [_words(t) for t in used_titles()]
+    keep = []
+    for it in items:
+        w = _words(it["title"])
+        if not any(len(w & d) >= 3 or (w and len(w & d) / len(w) >= 0.5) for d in done):
+            keep.append(it)
+    log(f"{len(items) - len(keep)} items dropped as already covered")
+    return keep
+
+
 def plan(items: list[dict], mix: list[str] = MIX) -> list[dict]:
+    items = fresh_only(items)
     menu = "\n".join(f"{i}. [{it['date'][:10]}] {it.get('source', '')}: {it['title']} :: {(it.get('summary') or '')[:220]}" for i, it in enumerate(items[:120]))
     avoid = "\n".join(f"- {t}" for t in used_titles()[-60:])
     prompt = f"""Pick {len(mix)} LinkedIn post topics from these fresh research items (today is {TODAY}).
@@ -275,8 +303,8 @@ def problems(p: dict, allowed: dict) -> list[str]:
         if p.get("beats") and p["beats"][-1].get("look") != "cta":
             errs.append("last beat must be look cta")
     else:
-        if not 7 <= len(p.get("slides", [])) <= 10:
-            errs.append("carousel needs 8 to 10 slides")
+        if not 6 <= len(p.get("slides", [])) <= 10:
+            errs.append(f"carousel has {len(p.get('slides', []))} slides; needs 8 to 10 (cover first, cta last)")
     if "?" not in p.get("caption", ""):
         errs.append("caption needs one closing question")
     return errs
@@ -294,9 +322,41 @@ def as_post(x) -> dict:
     for k in ("beats", "slides"):
         if k in x:
             x[k] = [b for b in x[k] if isinstance(b, dict)]
-    if "narration" in x:
-        x["narration"] = [[sc] if isinstance(sc, str) else [str(t) for t in sc] for sc in x["narration"]]
+    nar = x.get("narration")
+    if isinstance(nar, str):
+        nar = [p for p in re.split(r"(?<=[.!?])\s+", nar.strip()) if p]
+    if isinstance(nar, list):
+        flat = []
+        for sc in nar:
+            flat += [sc] if isinstance(sc, str) else [str(t) for t in sc if str(t).strip()]
+        x["narration"] = [[p] for p in flat if p.strip()]
     return x
+
+
+def repair(p: dict) -> dict:
+    """Fix structure without another model call: beats match phrases, cta last, slide bounds, closing question."""
+    if p.get("format") == "video" and p.get("narration"):
+        phrases = [sc[0] for sc in p["narration"]]
+        beats = p.get("beats", [])
+        if not beats or beats[-1].get("look") != "cta":
+            beats = [b for b in beats if b.get("look") != "cta"] + [{"look": "cta", "bg": "violet", "title": "More *AI x marketing* every week.", "button": "Follow Vish"}]
+        while len(beats) < len(phrases):
+            beats.insert(-1, {"look": "text", "bg": ["ivory", "peach", "cobalt"][len(beats) % 3], "title": phrases[len(beats) - 1][:60], "trans": "whip"})
+        beats = beats[:len(phrases) - 1] + [beats[-1]] if len(beats) > len(phrases) else beats
+        for i, b in enumerate(beats):
+            b.setdefault("trans", "whip") if i else b.pop("trans", None)
+        p["beats"] = beats
+    if p.get("format") == "carousel" and p.get("slides"):
+        sl = p["slides"]
+        if sl[-1].get("type") != "cta":
+            sl.append({"type": "cta", "title": "Save this for your next *build day*.", "subtitle": "Full breakdown on Build with Vish.",
+                       "question": "Which step would you automate first?", "button": "Save · Follow for AI x marketing", "chip": "Free guide inside"})
+        p["slides"] = sl[:10]
+    cap = p.get("caption", "")
+    if "?" not in cap:
+        q = "\n\nWhich part would you try first?"
+        p["caption"] = re.sub(r"(\n*Full breakdown:)", q + r"\1", cap, count=1) if "Full breakdown:" in cap else cap + q
+    return p
 
 
 def clean(p: dict, allowed: dict, slug_taken: set) -> dict:
@@ -327,7 +387,7 @@ def write_all(picks: list[dict]) -> list[dict]:
             except Exception as e:  # noqa: BLE001
                 log("write failed:", e); continue
             try:
-                post = clean(post, allowed, taken)
+                post = repair(clean(post, allowed, taken))
             except Exception as e:  # noqa: BLE001
                 log("bad post shape:", e); errs = [str(e)]; post = None; continue
             post["facts"] = [f for f in post.get("facts", []) if f.get("url") in allowed]
@@ -337,6 +397,7 @@ def write_all(picks: list[dict]) -> list[dict]:
             log(f"{post.get('slug')}: {errs}")
         if post and not errs:
             post["format"] = "video" if pick["slot"].startswith("video") else "carousel"
+            post["_seed"] = pick.get("seed")
             taken.add(post["slug"]); posts.append(post)
         else:
             log("DROPPED a post after 3 tries:", errs)
@@ -371,6 +432,9 @@ def main() -> None:
         rest.remove(sp["slot"])
     picks = seeds + plan(research(), rest)
     posts = write_all(picks)
+    mark_seeds_used([p.pop("_seed") for p in posts if p.get("_seed")])
+    for p in posts:
+        p.pop("_seed", None)
     cdir = ROOT / "content" / name
     cdir.mkdir(parents=True, exist_ok=True)
     (cdir / "posts.json").write_text(json.dumps(posts, indent=1, ensure_ascii=False))
