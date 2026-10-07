@@ -1,106 +1,106 @@
 {
- "voice": "voice_3rjyhtlhksw1",
- "duration": 29.595833333333335,
+ "voice": "Puck",
+ "duration": 43.638708333333334,
  "scenes": [
   {
-   "start": 0.2,
-   "end": 5.28,
+   "start": 0.0,
+   "end": 6.57,
    "phrases": [
     {
      "text": "LinkedIn just retired its own AI post writer.",
-     "start": 0.2,
-     "end": 3.12
+     "start": 0.0,
+     "end": 3.38
     },
     {
      "text": "Yes, the button that rewrote your posts for you.",
-     "start": 3.12,
-     "end": 5.28
+     "start": 3.7,
+     "end": 6.57
     }
    ]
   },
   {
-   "start": 5.28,
-   "end": 9.8,
+   "start": 7.17,
+   "end": 13.54,
    "phrases": [
     {
      "text": "The replacement is called Post Proofreader.",
-     "start": 5.28,
-     "end": 7.32
+     "start": 7.17,
+     "end": 10.32
     },
     {
      "text": "It only suggests edits to words you already wrote.",
-     "start": 7.32,
-     "end": 9.8
+     "start": 10.64,
+     "end": 13.54
     }
    ]
   },
   {
-   "start": 9.8,
-   "end": 12.43,
+   "start": 14.14,
+   "end": 17.83,
    "phrases": [
     {
      "text": "Every change shows up tracked, so you approve it first.",
-     "start": 9.8,
-     "end": 12.43
+     "start": 14.14,
+     "end": 17.83
     }
    ]
   },
   {
-   "start": 12.43,
-   "end": 17.01,
+   "start": 18.43,
+   "end": 24.72,
    "phrases": [
     {
      "text": "Why now? People reported AI slop more than a million times,",
-     "start": 12.43,
-     "end": 16.15
+     "start": 18.43,
+     "end": 22.97
     },
     {
      "text": "in under three weeks.",
-     "start": 16.15,
-     "end": 17.01
+     "start": 23.29,
+     "end": 24.72
     }
    ]
   },
   {
-   "start": 17.01,
-   "end": 20.93,
+   "start": 25.32,
+   "end": 30.72,
    "phrases": [
     {
      "text": "So the signal is pretty clear.",
-     "start": 17.01,
-     "end": 18.43
+     "start": 25.32,
+     "end": 27.4
     },
     {
      "text": "LinkedIn wants your voice, not a generated one.",
-     "start": 18.43,
-     "end": 20.93
+     "start": 27.72,
+     "end": 30.72
     }
    ]
   },
   {
-   "start": 20.93,
-   "end": 26.12,
+   "start": 31.32,
+   "end": 38.49,
    "phrases": [
     {
      "text": "My take: draft it messy, in your own words.",
-     "start": 20.93,
-     "end": 23.57
+     "start": 31.32,
+     "end": 34.71
     },
     {
      "text": "Then let AI tidy it up, never think for you.",
-     "start": 23.57,
-     "end": 26.12
+     "start": 35.03,
+     "end": 38.49
     }
    ]
   },
   {
-   "start": 26.12,
-   "end": 28.796,
+   "start": 39.09,
+   "end": 42.239,
    "phrases": [
     {
      "text": "Follow for more AI and marketing news that actually matters.",
-     "start": 26.12,
-     "end": 28.796
+     "start": 39.09,
+     "end": 42.239
     }
    ]
   }

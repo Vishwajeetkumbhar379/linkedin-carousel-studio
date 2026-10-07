@@ -44,8 +44,8 @@
       "avatar": "surprised",
       "avTop": 170,
       "avSide": "right",
-      "at": 0.2,
-      "until": 3.12,
+      "at": 0.0,
+      "until": 3.38,
       "say": "LinkedIn just retired its own AI post writer.",
       "avSize": 190
     },
@@ -55,8 +55,8 @@
       "title": "The *rewrite* button is gone",
       "size": "t1",
       "trans": "whip",
-      "at": 3.12,
-      "until": 5.28,
+      "at": 3.7,
+      "until": 6.57,
       "say": "Yes, the button that rewrote your posts for you."
     },
     {
@@ -66,8 +66,8 @@
       "title": "Post Proofreader",
       "sub": "For eligible Premium members",
       "trans": "pop",
-      "at": 5.28,
-      "until": 7.32,
+      "at": 7.17,
+      "until": 10.32,
       "say": "The replacement is called Post Proofreader."
     },
     {
@@ -81,8 +81,8 @@
         "Clearer"
       ],
       "trans": "rise",
-      "at": 7.32,
-      "until": 9.8,
+      "at": 10.64,
+      "until": 13.54,
       "say": "It only suggests edits to words you already wrote."
     },
     {
@@ -92,8 +92,8 @@
       "size": "t2",
       "sub": "You approve it first",
       "trans": "click",
-      "at": 9.8,
-      "until": 12.43,
+      "at": 14.14,
+      "until": 17.83,
       "say": "Every change shows up tracked, so you approve it first."
     },
     {
@@ -107,8 +107,8 @@
       "avatar": "surprised",
       "avTop": 185,
       "avSide": "right",
-      "at": 12.43,
-      "until": 16.15,
+      "at": 18.43,
+      "until": 22.97,
       "say": "Why now? People reported AI slop more than a million times,"
     },
     {
@@ -117,8 +117,8 @@
       "title": "In under *three weeks*",
       "size": "t1",
       "trans": "whip",
-      "at": 16.15,
-      "until": 17.01,
+      "at": 23.29,
+      "until": 24.72,
       "say": "in under three weeks."
     },
     {
@@ -130,8 +130,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "left",
-      "at": 17.01,
-      "until": 18.43,
+      "at": 25.32,
+      "until": 27.4,
       "say": "So the signal is pretty clear."
     },
     {
@@ -141,8 +141,8 @@
       "left": "Generated voice",
       "right": "Your voice",
       "trans": "pop",
-      "at": 18.43,
-      "until": 20.93,
+      "at": 27.72,
+      "until": 30.72,
       "say": "LinkedIn wants your voice, not a generated one."
     },
     {
@@ -153,8 +153,8 @@
       "avatar": "smirk",
       "avTop": 960,
       "avSide": "left",
-      "at": 20.93,
-      "until": 23.57,
+      "at": 31.32,
+      "until": 34.71,
       "say": "My take: draft it messy, in your own words."
     },
     {
@@ -163,8 +163,8 @@
       "title": "Draft *messy*. Polish *after*.",
       "size": "t1",
       "trans": "zoom",
-      "at": 23.57,
-      "until": 26.12,
+      "at": 35.03,
+      "until": 38.49,
       "say": "Then let AI tidy it up, never think for you."
     },
     {
@@ -173,14 +173,14 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "at": 26.12,
-      "until": 28.8,
+      "at": 39.09,
+      "until": 42.24,
       "say": "Follow for more AI and marketing news that actually matters.",
       "avatar": "wave",
       "avSide": "right"
     }
   ],
-  "duration": 31.6,
+  "duration": 44.24,
   "posters": {
     "b01": 2.2,
     "b02": 4.51,
@@ -198,115 +198,115 @@
   "sfx": true,
   "captions": [
     {
-      "at": 0.2,
-      "until": 1.939,
+      "at": 0.0,
+      "until": 2.0,
       "text": "LinkedIn just retired its"
     },
     {
-      "at": 1.859,
-      "until": 3.2,
+      "at": 1.92,
+      "until": 3.46,
       "text": "own AI post writer."
     },
     {
-      "at": 3.12,
-      "until": 4.487,
+      "at": 3.7,
+      "until": 5.49,
       "text": "Yes, the button that rewrote"
     },
     {
-      "at": 4.407,
-      "until": 5.36,
+      "at": 5.41,
+      "until": 6.65,
       "text": "your posts for you."
     },
     {
-      "at": 5.28,
-      "until": 7.4,
+      "at": 7.17,
+      "until": 10.4,
       "text": "The replacement is called Post Proofreader."
     },
     {
-      "at": 7.32,
-      "until": 8.665,
+      "at": 10.64,
+      "until": 12.2,
       "text": "It only suggests edits to"
     },
     {
-      "at": 8.585,
-      "until": 9.88,
+      "at": 12.12,
+      "until": 13.62,
       "text": "words you already wrote."
     },
     {
-      "at": 9.8,
-      "until": 11.341,
+      "at": 14.14,
+      "until": 16.27,
       "text": "Every change shows up tracked,"
     },
     {
-      "at": 11.261,
-      "until": 12.51,
+      "at": 16.19,
+      "until": 17.91,
       "text": "so you approve it first."
     },
     {
-      "at": 12.43,
-      "until": 14.562,
+      "at": 18.43,
+      "until": 21.015,
       "text": "Why now? People reported AI slop"
     },
     {
-      "at": 14.482,
-      "until": 16.23,
+      "at": 20.935,
+      "until": 23.05,
       "text": "more than a million times,"
     },
     {
-      "at": 16.15,
-      "until": 17.09,
+      "at": 23.29,
+      "until": 24.8,
       "text": "in under three weeks."
     },
     {
-      "at": 17.01,
-      "until": 18.51,
+      "at": 25.32,
+      "until": 27.48,
       "text": "So the signal is pretty clear."
     },
     {
-      "at": 18.43,
-      "until": 19.923,
+      "at": 27.72,
+      "until": 29.496,
       "text": "LinkedIn wants your voice,"
     },
     {
-      "at": 19.843,
-      "until": 21.01,
+      "at": 29.416,
+      "until": 30.8,
       "text": "not a generated one."
     },
     {
-      "at": 20.93,
-      "until": 22.519,
+      "at": 31.32,
+      "until": 33.337,
       "text": "My take: draft it messy,"
     },
     {
-      "at": 22.439,
-      "until": 23.65,
+      "at": 33.257,
+      "until": 34.79,
       "text": "in your own words."
     },
     {
-      "at": 23.57,
-      "until": 24.777,
+      "at": 35.03,
+      "until": 36.639,
       "text": "Then let AI tidy it"
     },
     {
-      "at": 24.697,
-      "until": 26.2,
+      "at": 36.559,
+      "until": 38.57,
       "text": "up, never think for you."
     },
     {
-      "at": 26.12,
-      "until": 27.198,
+      "at": 39.09,
+      "until": 40.344,
       "text": "Follow for more AI and"
     },
     {
-      "at": 27.118,
-      "until": 28.876,
+      "at": 40.264,
+      "until": 42.319,
       "text": "marketing news that actually matters."
     }
   ],
   "voice": {
     "engine": "gemini-3.8-flash-tts",
-    "voice": "voice_3rjyhtlhksw1",
-    "breaths": false,
+    "voice": "Puck",
+    "breaths": true,
     "bed": false
   }
 }

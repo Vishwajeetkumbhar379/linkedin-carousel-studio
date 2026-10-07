@@ -42,7 +42,7 @@
       "avatar": "smirk",
       "avTop": 170,
       "avSide": "right",
-      "at": 0.2,
+      "at": 0.0,
       "until": 2.94,
       "say": "Most bad AI drafts come from a brief it misread.",
       "avSize": 190
@@ -56,8 +56,8 @@
       "avatar": "stressed",
       "avTop": 730,
       "avSide": "left",
-      "at": 2.94,
-      "until": 4.69,
+      "at": 3.26,
+      "until": 5.52,
       "say": "So I stopped letting it write first."
     },
     {
@@ -66,8 +66,8 @@
       "stamp": "BRIEF-BACK",
       "title": "An old agency habit",
       "trans": "click",
-      "at": 4.69,
-      "until": 6.5,
+      "at": 6.12,
+      "until": 8.5,
       "say": "Agencies call this the brief-back."
     },
     {
@@ -76,8 +76,8 @@
       "title": "They tell you *what they heard*",
       "size": "t2",
       "trans": "rise",
-      "at": 6.5,
-      "until": 8.79,
+      "at": 8.82,
+      "until": 11.8,
       "say": "You hand over a brief, they tell you what they heard."
     },
     {
@@ -85,8 +85,8 @@
       "bg": "ivory",
       "prompt": "Before you write anything: tell me what you heard, what's missing, what you're assuming, and how we'll know it worked.",
       "trans": "zoom",
-      "at": 8.79,
-      "until": 10.48,
+      "at": 12.4,
+      "until": 15.2,
       "say": "Paste your brief and ask four things."
     },
     {
@@ -100,8 +100,8 @@
         "Success test"
       ],
       "trans": "pop",
-      "at": 10.48,
-      "until": 14.15,
+      "at": 15.52,
+      "until": 20.96,
       "say": "What did you hear, what's missing, what are you assuming, how will we know it worked?"
     },
     {
@@ -113,8 +113,8 @@
       "avatar": "smirk",
       "avTop": 730,
       "avSide": "right",
-      "at": 14.15,
-      "until": 15.51,
+      "at": 21.56,
+      "until": 23.74,
       "say": "Half the time the gaps are mine."
     },
     {
@@ -123,8 +123,8 @@
       "title": "Fix the brief, *not the draft*",
       "size": "t1",
       "trans": "click",
-      "at": 15.51,
-      "until": 17.1,
+      "at": 24.06,
+      "until": 26.73,
       "say": "So I fix the brief, not the draft."
     },
     {
@@ -132,8 +132,8 @@
       "bg": "ivory",
       "prompt": "Good. Now write it, using only what we agreed above.",
       "trans": "rise",
-      "at": 17.1,
-      "until": 20.25,
+      "at": 27.33,
+      "until": 31.3,
       "say": "Then one line: write it, using only what we agreed."
     },
     {
@@ -145,8 +145,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "left",
-      "at": 20.25,
-      "until": 22.17,
+      "at": 31.62,
+      "until": 34.05,
       "say": "The first draft lands much closer."
     },
     {
@@ -155,8 +155,8 @@
       "title": "Prompt on *Build with Vish*",
       "size": "t3",
       "trans": "whip",
-      "at": 22.17,
-      "until": 23.52,
+      "at": 34.65,
+      "until": 36.23,
       "say": "The full prompt is on my site."
     },
     {
@@ -168,12 +168,12 @@
       "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
-      "at": 23.52,
-      "until": 24.07,
+      "at": 36.55,
+      "until": 37.28,
       "say": "Follow for more."
     }
   ],
-  "duration": 26.87,
+  "duration": 39.28,
   "posters": {
     "b01": 2.06,
     "b02": 4.0,
@@ -191,100 +191,100 @@
   "sfx": true,
   "captions": [
     {
-      "at": 0.2,
-      "until": 1.621,
+      "at": 0.0,
+      "until": 1.519,
       "text": "Most bad AI drafts come"
     },
     {
-      "at": 1.541,
+      "at": 1.439,
       "until": 3.02,
       "text": "from a brief it misread."
     },
     {
-      "at": 2.94,
-      "until": 4.77,
+      "at": 3.26,
+      "until": 5.6,
       "text": "So I stopped letting it write first."
     },
     {
-      "at": 4.69,
-      "until": 6.58,
+      "at": 6.12,
+      "until": 8.58,
       "text": "Agencies call this the brief-back."
     },
     {
-      "at": 6.5,
-      "until": 7.769,
+      "at": 8.82,
+      "until": 10.447,
       "text": "You hand over a brief, they"
     },
     {
-      "at": 7.689,
-      "until": 8.87,
+      "at": 10.367,
+      "until": 11.88,
       "text": "tell you what they heard."
     },
     {
-      "at": 8.79,
-      "until": 10.56,
+      "at": 12.4,
+      "until": 15.28,
       "text": "Paste your brief and ask four things."
     },
     {
-      "at": 10.48,
-      "until": 12.063,
+      "at": 15.52,
+      "until": 17.828,
       "text": "What did you hear, what's missing,"
     },
     {
-      "at": 11.983,
-      "until": 13.434,
+      "at": 17.748,
+      "until": 19.86,
       "text": "what are you assuming, how will"
     },
     {
-      "at": 13.354,
-      "until": 14.23,
+      "at": 19.78,
+      "until": 21.04,
       "text": "we know it worked?"
     },
     {
-      "at": 14.15,
-      "until": 15.59,
+      "at": 21.56,
+      "until": 23.82,
       "text": "Half the time the gaps are mine."
     },
     {
-      "at": 15.51,
-      "until": 16.168,
+      "at": 24.06,
+      "until": 25.111,
       "text": "So I fix the"
     },
     {
-      "at": 16.088,
-      "until": 17.18,
+      "at": 25.031,
+      "until": 26.81,
       "text": "brief, not the draft."
     },
     {
-      "at": 17.1,
-      "until": 18.692,
+      "at": 27.33,
+      "until": 29.316,
       "text": "Then one line: write it,"
     },
     {
-      "at": 18.612,
-      "until": 20.33,
+      "at": 29.236,
+      "until": 31.38,
       "text": "using only what we agreed."
     },
     {
-      "at": 20.25,
-      "until": 22.25,
+      "at": 31.62,
+      "until": 34.13,
       "text": "The first draft lands much closer."
     },
     {
-      "at": 22.17,
-      "until": 23.6,
+      "at": 34.65,
+      "until": 36.31,
       "text": "The full prompt is on my site."
     },
     {
-      "at": 23.52,
-      "until": 24.151,
+      "at": 36.55,
+      "until": 37.365,
       "text": "Follow for more."
     }
   ],
   "voice": {
     "engine": "gemini-3.8-flash-tts",
-    "voice": "voice_3rjyhtlhksw1",
-    "breaths": false,
+    "voice": "Puck",
+    "breaths": true,
     "bed": false
   }
 }
