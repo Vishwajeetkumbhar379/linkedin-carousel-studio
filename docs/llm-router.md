@@ -17,13 +17,13 @@ Check what is live: `bash scripts/router_setup.sh && python scripts/llm.py --che
 | `LLM7_API_KEY` | LLM7 | ~150M | token.llm7.io |
 | `GROQ_API_KEY` | Groq | ~30M | console.groq.com/keys |
 | `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` | Workers AI | ~30M | dash.cloudflare.com > AI > Workers AI > Use REST API |
-| `SAMBANOVA_API_KEY` | SambaNova | ~6M | cloud.sambanova.ai/apis |
+| `SAMBANOVA_API_KEY` | SambaNova | ~6M, **now needs a payment method on file** (checked 7 Oct 2026) | cloud.sambanova.ai/apis |
 | `OPENROUTER_API_KEY` | OpenRouter | ~1M (50 free requests a day) | openrouter.ai/settings/keys |
 | `COHERE_API_KEY` | Cohere | ~0.8M | dashboard.cohere.com/api-keys |
 | `HF_TOKEN` | Hugging Face | ~0.2M | huggingface.co/settings/tokens |
 | `NVIDIA_API_KEY` | NVIDIA NIM | no cap, about 40 requests a minute | build.nvidia.com |
 | `ZAI_API_KEY` | Z.ai GLM Flash | no cap, rate-limited | z.ai API keys |
-| `GITHUB_MODELS_TOKEN` | GitHub Models | rate-limited | fine-grained token with Models: read |
+| `GITHUB_MODELS_TOKEN` (or `GITHUB_API_KEY`) | GitHub Models | rate-limited; in the cloud the GitHub proxy intercepts models.github.ai, so it only works on the Mac | fine-grained token with Models: read |
 | `CEREBRAS_API_KEY` | Cerebras | one-time $5 credit, **needs a card** | cloud.cerebras.ai |
 
 All keys together: about **1.22B documented tokens a month** in the cloud, plus the uncapped tiers.
@@ -38,3 +38,6 @@ All keys together: about **1.22B documented tokens a month** in the cloud, plus 
 ## Rules
 - Free tiers can use prompts for training (Mistral Experiment, Google free). Send public content drafts only, never private data.
 - Two paid upgrades exist and are not needed: Cerebras (card for $5 credit) and an OpenRouter $10 top-up.
+
+## Verified live, 7 Oct 2026
+Mistral (open-mistral-nemo), LLM7, Groq, Cloudflare Workers AI, OpenRouter (:free), NVIDIA (Nemotron 3 Super) and Gemini: about **1.21B documented free tokens a month**. Variable names `GROG_API_KEY` and `CLOUDFARE_API_KEY` are accepted as typed.

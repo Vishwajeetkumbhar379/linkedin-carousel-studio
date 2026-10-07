@@ -53,9 +53,9 @@ PROVIDERS = [
      "signup": "https://cloud.cerebras.ai"},
     {"id": "nvidia", "env": "NVIDIA_API_KEY", "base": "https://integrate.api.nvidia.com/v1", "model": "nvidia/nemotron-3-super-120b-a12b", "alts": ["openai/gpt-oss-20b"], "budget": 0,
      "signup": "https://build.nvidia.com (Get API key)"},
-    {"id": "zai", "env": "ZAI_API_KEY", "base": "https://api.z.ai/api/paas/v4", "model": "glm-4.5-flash", "budget": 0,
+    {"id": "zai", "env": "ZAI_API_KEY", "aliases": ["Z_AI_API_KEY", "ZHIPU_API_KEY", "GLM_API_KEY", "ZAI_KEY"], "base": "https://api.z.ai/api/paas/v4", "model": "glm-4.5-flash", "budget": 0,
      "signup": "https://z.ai/manage-apikey/apikey-list"},
-    {"id": "github", "env": "GITHUB_MODELS_TOKEN", "base": "https://models.github.ai/inference", "model": "openai/gpt-4.1", "budget": 0,
+    {"id": "github", "env": "GITHUB_MODELS_TOKEN", "aliases": ["GITHUB_API_KEY"], "base": "https://models.github.ai/inference", "model": "openai/gpt-4.1", "budget": 0,
      "signup": "https://github.com/settings/personal-access-tokens (fine-grained, Models: read)"},
 ]
 GOOD = re.compile(r"large|70b|120b|405b|glm|deepseek|qwen.*(32|72|235)|gpt-oss|command-a|llama-4|kimi", re.I)
@@ -257,6 +257,8 @@ def check() -> int:
         except Exception as e:  # noqa: BLE001
             blocked = not isinstance(e, urllib.error.HTTPError) or (e.code in (403, 407) and "proxy" in _err(e).lower())
             hint = "blocked: Network access must be Full" if blocked else ""
+            if isinstance(e, urllib.error.HTTPError) and e.code == 402:
+                hint = "provider now asks for a payment method (no free use without a card)"
             rows.append((p["id"], "FAILED", hint or _err(e)[:90]))
     try:
         _gemini(msg, 60)
