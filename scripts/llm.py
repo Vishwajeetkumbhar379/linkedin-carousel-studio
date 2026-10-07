@@ -61,14 +61,23 @@ PROVIDERS = [
 GOOD = re.compile(r"large|70b|120b|405b|glm|deepseek|qwen.*(32|72|235)|gpt-oss|command-a|llama-4|kimi", re.I)
 
 
+UA = {"User-Agent": "Mozilla/5.0 (compatible; buildwithvish-llm/1.0)"}  # Groq's firewall rejects Python's default agent (error 1010)
+
+
 def _post(url: str, body: dict, headers: dict, timeout: int) -> dict:
-    req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST", headers={"Content-Type": "application/json", **headers})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read())
+    for wait in (2, 5, 0):  # free tiers allow about 1 request a second: back off on 429 and try again
+        req = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST", headers={"Content-Type": "application/json", **UA, **headers})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or not wait:
+                raise
+            time.sleep(wait)
 
 
 def _get(url: str, headers: dict, timeout: int = 20) -> dict:
-    with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout) as r:
+    with urllib.request.urlopen(urllib.request.Request(url, headers={**UA, **headers}), timeout=timeout) as r:
         return json.loads(r.read())
 
 
@@ -124,6 +133,7 @@ def _provider(p: dict, messages: list[dict], temperature: float, timeout: int) -
         if e.code not in (400, 403, 404):
             raise
         for alt in p.get("alts", []):  # e.g. a model the free tier does not include (403 tier_not_allowed)
+            time.sleep(1.2)
             try:
                 out = _openai(_base(p), key, alt, messages, temperature, timeout)
                 p["_model"] = alt
