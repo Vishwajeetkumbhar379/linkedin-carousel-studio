@@ -27,8 +27,9 @@ def jpg(src: Path, name: str, width: int = 720) -> str:
     return f"img/{name}"
 
 
-def posts(batch: Path) -> list[Path]:
-    ps = [p for p in batch.iterdir() if (p / "meta.json").exists()]
+def posts(batches) -> list[Path]:
+    batches = batches if isinstance(batches, (list, tuple)) else [batches]
+    ps = [p for b in batches for p in sorted(b.iterdir()) if (p / "meta.json").exists()]
     ps += [ROOT / "out" / s for s in ("2026-10-06-chatgpt-image-ads", "2026-10-06-eu-ai-text-watermark", "2026-10-06-meta-creator-hub")]
     import re
 
@@ -87,12 +88,12 @@ def card(p: Path, day: str, n: int) -> str:
 </article>"""
 
 
-def build(batch: Path) -> Path:
+def build(batches) -> Path:
     OUT.mkdir(parents=True, exist_ok=True)
-    plan = schedule(posts(batch))
+    plan = schedule(posts(batches))
     cards = "".join(card(p, day, i) for i, (p, day) in enumerate(plan, 1))
     nv = sum(1 for p, _ in plan if (p / "video.json").exists())
-    html = f"""<title>Content Batch 01</title>
+    html = f"""<title>Build with Vish Batches</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&family=Newsreader:ital,wght@0,500;1,500&display=swap">
 <style>
 :root{{--bg:#F4F0E8;--paper:#FFFDFA;--ink:#1F1C24;--muted:#6B6572;--line:#E4DDD2;--accent:#4A44C4;--tint:#EEEAFB}}
@@ -120,14 +121,14 @@ pre.small{{font-size:13px;max-height:140px}}
 .copy{{font:600 .7rem 'Geist Mono',monospace;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:4px 10px;cursor:pointer}}
 </style>
 <div class="wrap">
-<header><p class="meta">Build with Vish · content batch 01 · made 6 Oct 2026</p>
-<h1>20 posts, <em>ready to go</em>.</h1>
-<p class="lead">{nv} videos and {len(plan) - nv} carousels or images, in posting order. Each one has a caption to copy, a first comment with sources, and its full article live on Build with Vish. Voice: one natural designed voice. Your avatar reacts in context.</p></header>
+<header><p class="meta">Build with Vish · batches 01 and 02 · updated 7 Oct 2026</p>
+<h1>{len(plan)} posts, <em>ready to go</em>.</h1>
+<p class="lead">{nv} videos and {len(plan) - nv} carousels or images, in posting order. Each one has a caption to copy, a first comment with sources, and its full article live on Build with Vish. Voice: calm, neutral and unhurried (re-voiced 7 Oct). Your avatar reacts in context.</p></header>
 <div class="box"><b>How to post</b><ul>
 <li>One post per weekday, around 08:30 Berlin time. Videos and carousels alternate.</li>
 <li>Upload the video or PDF natively to LinkedIn (no link in the post body). Paste the caption, then add the first comment right after posting.</li>
 <li>Reply to every comment in the first hour. It's the strongest reach signal you control.</li>
-<li>Downloads: the MP4s are in the GitHub repo under <code>out/batch-01/&lt;slug&gt;/video.mp4</code>, carousels as <code>carousel.pdf</code>.</li>
+<li>Downloads: the MP4s are in the GitHub repo under <code>out/batch-0N/&lt;slug&gt;/video.mp4</code>, carousels as <code>carousel.pdf</code>.</li>
 </ul></div>
 {cards}
 </div>
@@ -143,4 +144,4 @@ document.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () =
 
 
 if __name__ == "__main__":
-    print(build(Path(sys.argv[1])))
+    print(build([Path(a) for a in sys.argv[1:]]))
