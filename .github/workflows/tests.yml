@@ -11,3 +11,12 @@ jobs:
       - run: pip install -e ".[dev,ai]"
       - run: python -m playwright install --with-deps chromium
       - run: pytest -q
+      - name: free-llm-helper tests
+        working-directory: free-llm-helper
+        run: pytest -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: free-llm-helper worker tests
+        working-directory: free-llm-helper/worker
+        run: npm test

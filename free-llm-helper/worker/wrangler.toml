@@ -1,0 +1,11 @@
+name = "free-llm-helper"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+# Cloudflare Workers AI is used as one of the free fallbacks (no key needed).
+[ai]
+binding = "AI"
+
+# Secrets (set with `npx wrangler secret put NAME`, never commit them):
+#   MCP_SECRET          long random string; it is part of the connector URL
+#   GROQ_API_KEY, NVIDIA_API_KEY, OPENROUTER_API_KEY, MISTRAL_API_KEY, LLM7_API_KEY   (any subset)

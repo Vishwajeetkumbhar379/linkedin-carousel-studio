@@ -1,0 +1,5 @@
+node_modules/
+.wrangler/
+.dev.vars
+*.egg-info/
+__pycache__/
