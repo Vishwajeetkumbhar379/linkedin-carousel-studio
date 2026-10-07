@@ -222,9 +222,15 @@ Research items:
 {menu}
 
 Return JSON: [{{"slot": "...", "items": [item numbers, 1-3 that back the post], "angle": "one line: the hook idea and the step-by-step payoff"}}] with {len(mix)} entries."""
-    picks = ask_json(prompt)
-    if isinstance(picks, dict):
-        picks = next((v for v in picks.values() if isinstance(v, list)), [])
+    picks = []
+    for _ in range(3):  # models sometimes return one pick, or wrap the list oddly; ask again until we have enough
+        r = ask_json(prompt)
+        if isinstance(r, dict):
+            r = [r] if "slot" in r else next((v for v in r.values() if isinstance(v, list) and v and isinstance(v[0], dict)), [])
+        picks = [x for x in (r if isinstance(r, list) else []) if isinstance(x, dict)]
+        if len(picks) >= len(mix) - 1:
+            break
+        log(f"planner returned {len(picks)} picks; asking again")
     out = []
     for p, slot in zip(picks, mix):
         idx = [i for i in p.get("items", []) if isinstance(i, int) and 0 <= i < len(items)]
