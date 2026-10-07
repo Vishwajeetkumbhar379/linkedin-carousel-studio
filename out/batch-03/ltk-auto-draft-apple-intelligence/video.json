@@ -1,0 +1,112 @@
+{
+  "slug": "ltk-auto-draft-apple-intelligence",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "Can Apple Intelligence write your LTK captions for you?"
+    ],
+    [
+      "First, link your photos inside the LTK Creator app."
+    ],
+    [
+      "Tap the Auto-Draft button to let Apple Intelligence analyse the image."
+    ],
+    [
+      "Review the suggested caption, pick a tone, and edit any wording."
+    ],
+    [
+      "Confirm product tags, then hit schedule or share instantly."
+    ],
+    [
+      "You can also trigger Auto-Draft via Siri or Photos app shortcuts."
+    ],
+    [
+      "Try LTK Auto-Draft today and see if AI fits your workflow."
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "APPLE INTEL",
+      "title": "Can Apple Intelligence write your LTK captions for you?",
+      "avatar": "crossed",
+      "avTop": 170,
+      "avSize": 190,
+      "avSide": "right"
+    },
+    {
+      "look": "text",
+      "bg": "violet",
+      "title": "First, link your photos inside the LTK Creator app.",
+      "size": "t2",
+      "avatar": "thinking",
+      "trans": "whip",
+      "avTop": 730,
+      "avSide": "left"
+    },
+    {
+      "look": "stamp",
+      "bg": "cobalt",
+      "stamp": "AI",
+      "title": "Tap the Auto-Draft button to let Apple Intelligence analyse the image.",
+      "avatar": "focused",
+      "trans": "zoom",
+      "avTop": 740,
+      "avSide": "right"
+    },
+    {
+      "look": "chips",
+      "bg": "peach",
+      "title": "Review the suggested caption, pick a tone, and edit any wording.",
+      "chips": [
+        "Tone",
+        "Edit"
+      ],
+      "avatar": "pleased",
+      "trans": "click",
+      "avTop": 780,
+      "avSide": "left"
+    },
+    {
+      "look": "stat",
+      "bg": "cobalt",
+      "value": "84%",
+      "title": "Product click-outs rise",
+      "src": "Source: Net Influencer, 2026-10-07",
+      "dots": 200,
+      "avatar": "surprised",
+      "trans": "pop",
+      "avTop": 185,
+      "avSide": "right"
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Start a draft post on LTK from a recent photo",
+      "avatar": "wink",
+      "trans": "rise",
+      "avTop": 960,
+      "avSide": "left"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "More *AI x marketing* every week.",
+      "button": "Follow Vish",
+      "avatar": "wave",
+      "trans": "whip",
+      "avTop": 185,
+      "avSide": "right"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

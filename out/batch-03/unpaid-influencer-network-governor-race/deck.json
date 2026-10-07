@@ -1,0 +1,96 @@
+{
+  "slug": "unpaid-influencer-network-governor-race",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "Real workflows and prompts",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-unpaid-influencer-network-governor-race",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Volunteer influencer programme for Nevada governor’s race",
+      "subtitle": "Learn how they organised it.",
+      "chip": "Real workflows",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-hook-sticker",
+      "hero_style": "left:140px;bottom:40px;width:800px",
+      "layers": [
+        {
+          "asset": "surprised",
+          "style": "left:40px;top:700px;width:250px;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
+        },
+        {
+          "html": "Creator Campaign Hook",
+          "class": "tag dark",
+          "style": "right:70px;top:1050px;transform:rotate(-3deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · Volunteer programme",
+      "title": "Creators for Aaron",
+      "body": "Nevada Attorney General Aaron Ford’s gubernatorial campaign built a volunteer influencer programme called “Creators for Aaron”.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · Follower range",
+      "title": "Creator audience size",
+      "body": "The programme enlists content creators with follower counts ranging from the low thousands to the millions."
+    },
+    {
+      "type": "point",
+      "label": "03 · No payment",
+      "title": "Unpaid participation",
+      "body": "None of the participating creators are paid, according to both the Ford campaign and the influencers themselves."
+    },
+    {
+      "type": "point",
+      "label": "04 · Video engagement",
+      "title": "Early video performance",
+      "body": "Fifteen governor’s race videos reviewed had a combined 30,000 likes across Instagram and TikTok.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "05 · Follower totals",
+      "title": "Combined reach",
+      "body": "The six accounts behind those videos have more than 24 million followers between Instagram and TikTok."
+    },
+    {
+      "type": "point",
+      "label": "06 · TikTok launch",
+      "title": "TikTok accounts launched",
+      "body": "Both the Ford and Lombardo campaigns launched TikTok accounts in March."
+    },
+    {
+      "type": "point",
+      "label": "07 · Vish's take",
+      "title": "What I'd do",
+      "body": "Identify creators whose audience matches your target, give them clear non-paid incentives (early access, co-creation credit), and set simple tracking to see what resonates.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "cta",
+      "title": "Want to try this?",
+      "subtitle": "Get the free workflow template on Build with Vish.",
+      "question": "Ready to build your own creator network?",
+      "button": "Get template",
+      "chip": "Free inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 39
+}

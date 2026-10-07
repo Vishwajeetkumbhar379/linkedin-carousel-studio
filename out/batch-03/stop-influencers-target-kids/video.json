@@ -1,0 +1,111 @@
+{
+  "slug": "stop-influencers-target-kids",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "Creator economy",
+  "narration": [
+    [
+      "Stop using influencers to target kids right now"
+    ],
+    [
+      "Denmark just filed a complaint over Red Bull influencer posts"
+    ],
+    [
+      "Danish law bans marketing energy drinks to anyone under 18"
+    ],
+    [
+      "Then ask Claude to check each brief against your market's rules"
+    ],
+    [
+      "Review sponsored posts for hidden minor targeting on feeds"
+    ],
+    [
+      "Manual checks versus automated compliance workflows daily"
+    ],
+    [
+      "Get instant alerts when rules break or thresholds exceeded"
+    ],
+    [
+      "Follow Vish for more AI x marketing tips every week"
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "STOP KIDS",
+      "title": "*Stop using influencers to target kids right now*",
+      "avatar": "surprised",
+      "avTop": 170,
+      "avSize": 190,
+      "avSide": "right"
+    },
+    {
+      "look": "text",
+      "bg": "cobalt",
+      "title": "Denmark files a complaint over *Red Bull* influencer posts",
+      "size": "t2",
+      "trans": "whip",
+      "avatar": "surprised",
+      "avTop": 730,
+      "avSide": "left"
+    },
+    {
+      "look": "stamp",
+      "bg": "peach",
+      "stamp": "UNDER 18",
+      "title": "Energy drink ads to kids: *banned*",
+      "trans": "zoom",
+      "avatar": "stressed",
+      "avTop": 740,
+      "avSide": "right"
+    },
+    {
+      "look": "chat",
+      "bg": "ivory",
+      "prompt": "Ask Claude to verify compliance before any post goes live",
+      "trans": "click"
+    },
+    {
+      "look": "feed",
+      "bg": "peach",
+      "title": "Review sponsored posts for hidden minor targeting on feeds",
+      "avatar": "pleased",
+      "trans": "pop",
+      "avTop": 640,
+      "avSide": "right"
+    },
+    {
+      "look": "versus",
+      "bg": "violet",
+      "title": "Manual checks versus automated compliance workflows daily",
+      "left": "Manual checks",
+      "right": "Automated workflows",
+      "trans": "rise"
+    },
+    {
+      "look": "stamp",
+      "bg": "ink",
+      "stamp": "ALERT",
+      "title": "Get instant alerts when rules break or thresholds exceeded",
+      "avatar": "wink",
+      "trans": "click",
+      "avTop": 740,
+      "avSide": "right"
+    },
+    {
+      "look": "cta",
+      "bg": "violet",
+      "title": "Follow Vish for more AI x marketing tips every week",
+      "button": "Follow Vish",
+      "trans": "pop"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

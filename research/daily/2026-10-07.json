@@ -102,16 +102,6 @@
    "boost": 2
   },
   {
-   "title": "How a France-Based Gaming Agency Is Convincing Lifestyle Brands to Bet on Twitch",
-   "url": "https://www.netinfluencer.com/how-a-france-based-gaming-agency-is-convincing-lifestyle-brands-to-bet-on-twitch/",
-   "date": "2026-10-06",
-   "summary": "When The Node acquired Matchmade in 2024, the plan was to rebuild the creator platform into a tool brands could access directly. Rémy Chapot, the French agency’s founder and CEO, changed course quickly. The Matchmade technology stayed inside the agency, and the door to external access closed. The Node, headquartered in Montpellier, operates in what […]",
-   "source": "Net Influencer",
-   "kind": "news",
-   "fresh": true,
-   "boost": 2
-  },
-  {
    "title": "Our approach to EU text provenance rules",
    "url": "https://openai.com/index/eu-text-provenance",
    "date": "2026-10-05",
@@ -302,8 +292,8 @@
    "boost": 1
   },
   {
-   "title": "IrisGo for Solopreneurs",
-   "url": "https://www.producthunt.com/products/irisgo-public-beta",
+   "title": "DevAlly AI Agent",
+   "url": "https://www.producthunt.com/products/devally",
    "date": "2026-10-05",
    "summary": "",
    "source": "Product Hunt",
@@ -312,8 +302,8 @@
    "boost": 1
   },
   {
-   "title": "DevAlly AI Agent",
-   "url": "https://www.producthunt.com/products/devally",
+   "title": "IrisGo for Solopreneurs",
+   "url": "https://www.producthunt.com/products/irisgo-public-beta",
    "date": "2026-10-05",
    "summary": "",
    "source": "Product Hunt",
@@ -662,6 +652,26 @@
    "boost": 0
   },
   {
+   "title": "Introducing Playground: Create and play custom games",
+   "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/",
+   "date": "2026-10-07",
+   "summary": "Playground is a new experimental gaming platform that lets you create, play, and share custom games.",
+   "source": "Google AI blog",
+   "kind": "news",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "Facebook Tests Reels-First Homescreen in India and Indonesia, Widening Meta’s Short-Video Push",
+   "url": "https://www.netinfluencer.com/facebook-tests-reels-first-homescreen-in-india-and-indonesia-widening-meta-short-video-push/",
+   "date": "2026-10-07",
+   "summary": "Meta has begun testing a new Facebook interface in India that opens directly into a full-screen Reels feed instead of the traditional News Feed, according to a TechCrunch report. A Meta spokesperson confirmed to TechCrunch after publication that the test is also underway in Indonesia. The feature sends included users straight into recommended video content […]",
+   "source": "Net Influencer",
+   "kind": "news",
+   "fresh": true,
+   "boost": 0
+  },
+  {
    "title": "Consumers Are Pushing Back Against Algorithmic ‘Optimization,’ Report Finds",
    "url": "https://www.netinfluencer.com/consumers-are-pushing-back-against-algorithmic-optimization-report-finds/",
    "date": "2026-10-07",
@@ -752,48 +762,8 @@
    "boost": 0
   },
   {
-   "title": "Rhem Labs",
-   "url": "https://www.producthunt.com/products/rhem-labs",
-   "date": "2026-10-06",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
    "title": "Walrus Console",
    "url": "https://www.producthunt.com/products/walrus-console",
-   "date": "2026-10-06",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
-   "title": "Knuff App",
-   "url": "https://www.producthunt.com/products/knuff-app",
-   "date": "2026-10-06",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
-   "title": "Nano Banana 2.1",
-   "url": "https://www.producthunt.com/products/google",
-   "date": "2026-10-06",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
-   "title": "Introducing Video Editor in Manus 2.0",
-   "url": "https://www.producthunt.com/products/manus",
    "date": "2026-10-06",
    "summary": "",
    "source": "Product Hunt",
@@ -812,8 +782,18 @@
    "boost": 0
   },
   {
-   "title": "DailyHub",
-   "url": "https://www.producthunt.com/products/dailyhub-a-quiet-workspace-for-your-day",
+   "title": "Rhem Labs",
+   "url": "https://www.producthunt.com/products/rhem-labs",
+   "date": "2026-10-06",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "Nano Banana 2.1",
+   "url": "https://www.producthunt.com/products/google",
    "date": "2026-10-06",
    "summary": "",
    "source": "Product Hunt",
@@ -832,28 +812,8 @@
    "boost": 0
   },
   {
-   "title": "Reika",
-   "url": "https://www.producthunt.com/products/reika",
-   "date": "2026-10-06",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
-   "title": "StudyQuest",
-   "url": "https://www.producthunt.com/products/studyquest",
-   "date": "2026-10-06",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
-   "title": "Kitbar",
-   "url": "https://www.producthunt.com/products/kitbar",
+   "title": "Basedash Mobile",
+   "url": "https://www.producthunt.com/products/basedash",
    "date": "2026-10-06",
    "summary": "",
    "source": "Product Hunt",
@@ -872,8 +832,38 @@
    "boost": 0
   },
   {
-   "title": "Basedash Mobile",
-   "url": "https://www.producthunt.com/products/basedash",
+   "title": "Knuff App",
+   "url": "https://www.producthunt.com/products/knuff-app",
+   "date": "2026-10-06",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "DailyHub",
+   "url": "https://www.producthunt.com/products/dailyhub-a-quiet-workspace-for-your-day",
+   "date": "2026-10-06",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "Kitbar",
+   "url": "https://www.producthunt.com/products/kitbar",
+   "date": "2026-10-06",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "Reika",
+   "url": "https://www.producthunt.com/products/reika",
    "date": "2026-10-06",
    "summary": "",
    "source": "Product Hunt",
@@ -894,6 +884,26 @@
   {
    "title": "Ownfeed",
    "url": "https://www.producthunt.com/products/ownfeed",
+   "date": "2026-10-06",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "StudyQuest",
+   "url": "https://www.producthunt.com/products/studyquest",
+   "date": "2026-10-06",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "Introducing Video Editor in Manus 2.0",
+   "url": "https://www.producthunt.com/products/manus",
    "date": "2026-10-06",
    "summary": "",
    "source": "Product Hunt",
@@ -992,18 +1002,8 @@
    "boost": 0
   },
   {
-   "title": "Proofsource",
-   "url": "https://www.producthunt.com/products/proofsource",
-   "date": "2026-10-05",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
-   "title": "Albie",
-   "url": "https://www.producthunt.com/products/albie",
+   "title": "Vanoor",
+   "url": "https://www.producthunt.com/products/vanoor-running-pacer-map",
    "date": "2026-10-05",
    "summary": "",
    "source": "Product Hunt",
@@ -1022,8 +1022,18 @@
    "boost": 0
   },
   {
-   "title": "Vanoor",
-   "url": "https://www.producthunt.com/products/vanoor-running-pacer-map",
+   "title": "Proofsource",
+   "url": "https://www.producthunt.com/products/proofsource",
+   "date": "2026-10-05",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "Albie",
+   "url": "https://www.producthunt.com/products/albie",
    "date": "2026-10-05",
    "summary": "",
    "source": "Product Hunt",
@@ -1052,8 +1062,8 @@
    "boost": 0
   },
   {
-   "title": "Extrovert",
-   "url": "https://www.producthunt.com/products/extrovert",
+   "title": "Review",
+   "url": "https://www.producthunt.com/products/review-2",
    "date": "2026-10-05",
    "summary": "",
    "source": "Product Hunt",
@@ -1062,8 +1072,8 @@
    "boost": 0
   },
   {
-   "title": "OrgComputers",
-   "url": "https://www.producthunt.com/products/orgcomputers",
+   "title": "Scumble",
+   "url": "https://www.producthunt.com/products/scumble",
    "date": "2026-10-05",
    "summary": "",
    "source": "Product Hunt",
@@ -1072,8 +1082,8 @@
    "boost": 0
   },
   {
-   "title": "Customer Service AI for Etsy",
-   "url": "https://www.producthunt.com/products/customer-service-ai-for-etsy",
+   "title": "EasyCut",
+   "url": "https://www.producthunt.com/products/easycut-2",
    "date": "2026-10-05",
    "summary": "",
    "source": "Product Hunt",
@@ -1122,8 +1132,8 @@
    "boost": 0
   },
   {
-   "title": "Thalia",
-   "url": "https://www.producthunt.com/products/thalia",
+   "title": "Linda",
+   "url": "https://www.producthunt.com/products/linda",
    "date": "2026-10-03",
    "summary": "",
    "source": "Product Hunt",
@@ -1132,8 +1142,8 @@
    "boost": 0
   },
   {
-   "title": "Linda",
-   "url": "https://www.producthunt.com/products/linda",
+   "title": "Thalia",
+   "url": "https://www.producthunt.com/products/thalia",
    "date": "2026-10-03",
    "summary": "",
    "source": "Product Hunt",
@@ -1202,18 +1212,8 @@
    "boost": 0
   },
   {
-   "title": "ParakeetAI 2.0",
-   "url": "https://www.producthunt.com/products/parakeetai",
-   "date": "2026-10-01",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
-   "title": "Ana by Vertice",
-   "url": "https://www.producthunt.com/products/ana-by-vertice",
+   "title": "Unprompt",
+   "url": "https://www.producthunt.com/products/unprompt-2",
    "date": "2026-10-01",
    "summary": "",
    "source": "Product Hunt",
@@ -1232,8 +1232,18 @@
    "boost": 0
   },
   {
-   "title": "Unprompt",
-   "url": "https://www.producthunt.com/products/unprompt-2",
+   "title": "Ana by Vertice",
+   "url": "https://www.producthunt.com/products/ana-by-vertice",
+   "date": "2026-10-01",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "ParakeetAI 2.0",
+   "url": "https://www.producthunt.com/products/parakeetai",
    "date": "2026-10-01",
    "summary": "",
    "source": "Product Hunt",
@@ -1332,16 +1342,6 @@
    "boost": 0
   },
   {
-   "title": "Flowo",
-   "url": "https://www.producthunt.com/products/flowo-2",
-   "date": "2026-09-29",
-   "summary": "",
-   "source": "Product Hunt",
-   "kind": "tool",
-   "fresh": true,
-   "boost": 0
-  },
-  {
    "title": "Viibeo",
    "url": "https://www.producthunt.com/products/viibeo",
    "date": "2026-09-29",
@@ -1352,8 +1352,8 @@
    "boost": 0
   },
   {
-   "title": "Wabi",
-   "url": "https://www.producthunt.com/products/wabi-2",
+   "title": "ImageFlow",
+   "url": "https://www.producthunt.com/products/imageflow-6",
    "date": "2026-09-29",
    "summary": "",
    "source": "Product Hunt",
@@ -1362,8 +1362,18 @@
    "boost": 0
   },
   {
-   "title": "ImageFlow",
-   "url": "https://www.producthunt.com/products/imageflow-6",
+   "title": "Flowo",
+   "url": "https://www.producthunt.com/products/flowo-2",
+   "date": "2026-09-29",
+   "summary": "",
+   "source": "Product Hunt",
+   "kind": "tool",
+   "fresh": true,
+   "boost": 0
+  },
+  {
+   "title": "Wabi",
+   "url": "https://www.producthunt.com/products/wabi-2",
    "date": "2026-09-29",
    "summary": "",
    "source": "Product Hunt",

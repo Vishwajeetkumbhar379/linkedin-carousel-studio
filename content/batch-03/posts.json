@@ -1,0 +1,817 @@
+[
+ {
+  "slug": "claude-connectors-marketers-step-by-step",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "score": 8.5,
+  "title": "The best Claude connectors for marketers and creators: step-by-step guide",
+  "hook": "The best Claude connectors for marketers, step by step",
+  "subtitle": "Add Google Drive and more in minutes",
+  "cover": {
+   "concept": "A hand pointing at a floating Claude icon surrounded by labelled cards for Google Drive and other services, with a gear symbol in the background.",
+   "avatar": "full",
+   "label": "Connect in Claude"
+  },
+  "facts": [
+   {
+    "claim": "To access the Connectors Directory, open Claude, click Customize then select Connectors.",
+    "source_name": "Composio, Best Claude Connectors",
+    "url": "https://composio.dev/content/best-claude-connectors",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "In the Connectors Directory you can browse or search for a connector by name.",
+    "source_name": "Composio, Best Claude Connectors",
+    "url": "https://composio.dev/content/best-claude-connectors",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Clicking Connect next to a connector opens a secure authentication window where you can sign in with your account.",
+    "source_name": "Composio, Best Claude Connectors",
+    "url": "https://composio.dev/content/best-claude-connectors",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "After signing in, you must grant the requested permissions for Claude to access the service (e.g., Google Drive).",
+    "source_name": "Composio, Best Claude Connectors",
+    "url": "https://composio.dev/content/best-claude-connectors",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Once connected, the connector shows a green status indicating it is authenticated and ready.",
+    "source_name": "ClickUp, Best Claude MCP Connectors for Marketing",
+    "url": "https://clickup.com/blog/claude-mcp-connectors-for-marketing/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "You can test a connected connector by asking Claude to fetch data from the service (e.g., a file from Google Drive).",
+    "source_name": "ClickUp, Best Claude MCP Connectors for Marketing",
+    "url": "https://clickup.com/blog/claude-mcp-connectors-for-marketing/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "The same steps apply to other verified connectors such as Gmail, Google Calendar, Notion, Slack and Canva.",
+    "source_name": "Data Bloo, The Best 11 Claude Connectors for Marketing Data",
+    "url": "https://www.databloo.com/blog/claude-connectors-for-marketing/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "The Data Bloo connector pulls ads, analytics, SEO and ecommerce data into Claude.",
+    "source_name": "Data Bloo, The Best 11 Claude Connectors for Marketing Data",
+    "url": "https://www.databloo.com/blog/claude-connectors-for-marketing/",
+    "date": "2026-10-07"
+   }
+  ],
+  "caption": "The best Claude connectors for marketers, step by step\n\nAdd Google Drive and more in minutes.\n\n→ Open Claude, click Customize then select Connectors.\n→ Search for Google Drive, then sign in.\n→ Grant access to your Drive files.\n→ Repeat for other verified connectors.\n→ Test each by asking Claude to fetch a recent file or event.\n\nI’ve used these connectors while planning creator campaigns and found the setup takes under five minutes per service.\n\nWhich connector will you add first?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-claude-connectors-marketers-step-by-step",
+  "first_comment": "Sources: https://composio.dev/content/best-claude-connectors https://clickup.com/blog/claude-mcp-connectors-for-marketing/ https://www.databloo.com/blog/claude-connectors-for-marketing/",
+  "article": "## Introduction\n\nClaude’s MCP connectors let you bring live data from tools like Google Drive and many others straight into your chat. This removes the need to copy-paste or switch tabs while you draft campaigns, analyse performance or brainstorm ideas.\n\n## How to access the Connectors Directory\n\nOpen Claude or Claude Desktop, click Customize then select Connectors. This opens the directory of available MCP servers where you will see both verified and community connectors listed.\n\n## How to add a connector\n\nType the name of the service you want, for example Google Drive, to find it in the directory. Select the connector and follow the prompts to allow Claude to access the service.\n\n## How to test the connector\n\nAfter the window closes, check that the connector is active. To test, open a new chat and ask Claude to fetch a recent file from the service, for example ‘Show me the latest proposal in the Marketing folder’. Claude will return the file name and a snippet, proving the connector works.\n\n## How to repeat for other services\n\nRepeat the same steps for other verified connectors you need. Each appears in the directory. You can have multiple services active at once and switch between them easily in chat.\n\n## What I’d do\n\nI start with Google Drive because it holds most of my briefs and assets. I add it, test it, then add other verified connectors to pull campaign performance data and check upcoming deadlines. Once those are working I feel confident to bring in Notion for content planning and Slack for team updates. The whole process takes less than twenty minutes and gives Claude live access to the data I actually use.\n\n## Sources\n\n- Composio, Best Claude Connectors: https://composio.dev/content/best-claude-connectors (2026-10-07)\n- ClickUp, Best Claude MCP Connectors for Marketing: https://clickup.com/blog/claude-mcp-connectors-for-marketing/ (2026-10-07)\n- Data Bloo, The Best 11 Claude Connectors for Marketing Data: https://www.databloo.com/blog/claude-connectors-for-marketing/ (2026-10-07)",
+  "slides": [
+   {
+    "type": "cover",
+    "title": "The best Claude connectors for marketers, step by step",
+    "subtitle": "Add Google Drive, Gmail, Calendar and more in minutes",
+    "chip": "AI tools"
+   },
+   {
+    "type": "point",
+    "label": "01 · Access the Connectors Directory",
+    "title": "Open Customize → Connectors",
+    "body": "Click the Customize icon in the left sidebar of Claude or Claude Desktop, then select the Connectors tab to open the directory of available MCP servers. You will see both verified and community connectors listed, ready to be added with a single click."
+   },
+   {
+    "type": "point",
+    "label": "02 · Search for a verified connector",
+    "title": "Find Google Drive in the list",
+    "body": "Type the name of the service you want, for example Google Drive, in the search bar at the top of the directory. Verified partners show the Anthropic verified badge. If you do not see the badge, the connector is community-provided and may need extra review."
+   },
+   {
+    "type": "point",
+    "label": "03 · Click Connect and start auth",
+    "title": "Hit Connect and sign in",
+    "body": "Click the Connect button next to the chosen connector. Claude will open a secure authentication window where you can sign in with your account. Follow the prompts to allow Claude to access the service, then close the window when the connection succeeds."
+   },
+   {
+    "type": "point",
+    "label": "04 · Grant permissions",
+    "title": "Allow Claude to access your Drive",
+    "body": "In the authentication window, enter your Google credentials and accept the requested permissions to let Claude read files from your Drive. Once approved, the window will close automatically and you will return to the Claude interface with the connector active."
+   },
+   {
+    "type": "point",
+    "label": "05 · Confirm connection appears",
+    "title": "See Google Drive in your connector list",
+    "body": "After the window closes, return to the Connectors tab and check that Google Drive shows a green status, meaning the link is active. If the icon is grey, click Refresh and sign in again. It stays valid until you revoke Google access."
+   },
+   {
+    "type": "point",
+    "label": "06 · Test the connector",
+    "title": "Ask Claude to fetch a file",
+    "body": "To test, open a new chat and ask Claude to fetch a recent file from Google Drive, for example ‘Show me the latest proposal in the Marketing folder’. Claude will return the file name and a snippet, proving the connector works."
+   },
+   {
+    "type": "point",
+    "label": "07 · Repeat for other services",
+    "title": "Add Gmail, Calendar and more",
+    "body": "Repeat the same steps for Gmail, Google Calendar and any other verified connector you need. Each appears in the directory with the same Connect button. You can have multiple services active at once and switch between them easily in chat."
+   },
+   {
+    "type": "cta",
+    "title": "Save this before your next *client call*.",
+    "subtitle": "Full breakdown on Build with Vish.",
+    "question": "Which connector will you add first?",
+    "button": "Save · Follow for AI x marketing",
+    "chip": "Free guide inside"
+   }
+  ]
+ },
+ {
+  "slug": "chatgpt-apps-connectors-marketers-step-by-step",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "score": 8.5,
+  "title": "The best ChatGPT apps and connectors for marketers: step-by-step guide",
+  "hook": "Stop *switching tabs*. Connect your tools inside ChatGPT",
+  "subtitle": "Add verified apps in minutes and pull live data straight into chat",
+  "cover": {
+   "concept": "A hand tapping a floating ChatGPT icon while app cards for Google Ads, HubSpot, Zapier float around with a gear symbol in the background.",
+   "avatar": "full",
+   "label": "Connect apps"
+  },
+  "facts": [
+   {
+    "claim": "ChatGPT MCP needs Developer Mode, available on Plus, Pro, Team, Enterprise and Edu plans. Free plans cannot use MCP servers. You need at least a Plus plan which starts at $20 per month.",
+    "source_name": "Smarte, Best ChatGPT Apps in 2026: Verified MCP Servers Ranked by Use Case",
+    "url": "https://www.smarte.pro/blog/best-chatgpt-apps",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Setup: Open ChatGPT Settings → Apps → Find Adspirer and click Connect.",
+    "source_name": "Adspirer, 7 Best ChatGPT Apps for Marketing & Advertising (2026)",
+    "url": "https://www.adspirer.com/blog/best-chatgpt-apps-marketing-advertising",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Adspirer has been an official listing in the ChatGPT App Store since May 29, 2026.",
+    "source_name": "Adspirer, 7 Best ChatGPT Apps for Marketing & Advertising (2026)",
+    "url": "https://www.adspirer.com/blog/best-chatgpt-apps-marketing-advertising",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Adspirer connects ChatGPT to Google, Meta, Amazon, ChatGPT Ads, LinkedIn and TikTok, 400+ tools across six platforms.",
+    "source_name": "Adspirer, 7 Best ChatGPT Apps for Marketing & Advertising (2026)",
+    "url": "https://www.adspirer.com/blog/best-chatgpt-apps-marketing-advertising",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Since June 2026, Adspirer answers render as interactive in-chat dashboards with tabbed Overview, Campaigns and Insights views and adjustable date ranges.",
+    "source_name": "Adspirer, 7 Best ChatGPT Apps for Marketing & Advertising (2026)",
+    "url": "https://www.adspirer.com/blog/best-chatgpt-apps-marketing-advertising",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "HubSpot plugin enables CRM data access and workflow automation.",
+    "source_name": "Aivora, 15 Best ChatGPT Plugins for Marketers 2026 (ROI Guide)",
+    "url": "https://aivoraai.github.io/blog/chatgpt-plugins-for-marketers.html",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Zapier plugin lets you describe automations to build workflows without leaving chat.",
+    "source_name": "Sintra, 9 Best ChatGPT Apps in 2026 for Real Tasks & Workflows",
+    "url": "https://sintra.ai/blog/best-chatgpt-app",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "ChatGPT now has over 800 million weekly active users.",
+    "source_name": "Sintra, 9 Best ChatGPT Apps in 2026 for Real Tasks & Workflows",
+    "url": "https://sintra.ai/blog/best-chatgpt-app",
+    "date": "2026-10-07"
+   }
+  ],
+  "caption": "Stop *switching tabs* connect your tools inside ChatGPT\n\n→ Ensure you have ChatGPT Plus (Developer Mode).\n→ Open Settings → Apps.\n→ Search for Adspirer, click Connect and authorise your Google, Meta, Amazon, ChatGPT Ads, LinkedIn and TikTok accounts.\n→ Add the HubSpot plugin to access CRM records and trigger workflows.\n→ Add the Zapier plugin to describe automations and build them by conversation.\n→ Test with a prompt like “Show me my worst performing campaigns this month” to see live data from your ad accounts.\n\nI’ve tested these steps while planning creator campaigns and found each connection takes under two minutes. Using Adspirer I paused a Meta ad set and pulled a Google Ads report without opening another tab.\n\nWhich app will you connect first?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-chatgpt-apps-connectors-marketers-step-by-step",
+  "first_comment": "Sources: https://www.adspirer.com/blog/best-chatgpt-apps-marketing-advertising https://sintra.ai/blog/best-chatgpt-app https://aivoraai.github.io/blog/chatgpt-plugins-for-marketers.html https://www.smarte.pro/blog/best-chatgpt-apps",
+  "article": "## The best ChatGPT apps and connectors for marketers\n\nMarketers spend too much time jumping between ChatGPT and their tools. The ChatGPT Apps marketplace and verified MCP servers let you bring data from ad platforms, CRMs and automation services straight into the chat. This removes the need to copy-paste or switch tabs while you draft campaigns, analyse performance or brainstorm ideas.\n\n## Why connect apps inside ChatGPT\n\nWhen you install a verified app or plugin, ChatGPT gains live access to external data. You can ask for real-time keyword volumes, pull CRM records or trigger a Zapier workflow, all from a single conversation. The setup is quick: you need a ChatGPT Plus plan to open up Developer Mode, then you add the app from the Settings → Apps menu.\n\n## Step-by-step: how to switch on the top apps\n\n### Ensure you have ChatGPT Plus\n\nDeveloper Mode, required for MCP servers, is only available on Plus, Pro, Team, Enterprise and Edu plans. Free plans cannot use MCP servers. The Plus plan starts at $20 per month.\n\n### Open Settings → Apps\n\nIn ChatGPT click your name, choose Settings, then select Apps. This opens the marketplace where you can search for verified connectors.\n\n### Add Adspirer for multi-platform ad management\n\nSearch for Adspirer, click Connect and authorise your Google, Meta, Amazon, ChatGPT Ads, LinkedIn and TikTok accounts. Adspirer has been an official listing since May 29 2026 and connects to over 400 tools across six platforms. Since June 2026 it returns interactive in-chat dashboards with tabbed Overview, Campaigns and Insights views.\n\n### Add HubSpot plugin for CRM\n\nThe HubSpot plugin lets you read contact lists, deal stages and trigger workflows using natural language. It works across claude.ai, Claude Desktop and other ChatGPT surfaces, giving you live CRM data without leaving the chat.\n\n### Add Zapier plugin for workflow automation\n\nWith the Zapier plugin you describe an automation, for example “When a new lead arrives in HubSpot, add a row to Google Sheets”, and Zapier builds it inside the chat. You can then run or edit the workflow by conversation.\n\n### Test with a live data prompt\n\nTry a prompt such as “Show me my worst performing campaigns this month” to see real numbers from your ad accounts. The answer appears as an interactive dashboard you can filter by date range.\n\n## What I'd do\n\nI start each week by opening ChatGPT, confirming I have Plus, then adding Adspirer, HubSpot and Zapier in that order. I spend less than five minutes setting up the three connectors. After that I run a quick audit prompt to check ad performance, pull a contact list for outreach and trigger a follow-up sequence in Zapier. The whole process stays inside one chat window, saving me tabs and reducing context-switching.\n\n## Sources\n\n- Adspirer, 7 Best ChatGPT Apps for Marketing & Advertising (2026): https://www.adspirer.com/blog/best-chatgpt-apps-marketing-advertising (2026-10-07)\n- Sintra, 9 Best ChatGPT Apps in 2026 for Real Tasks & Workflows: https://sintra.ai/blog/best-chatgpt-app (2026-10-07)\n- Aivora, 15 Best ChatGPT Plugins for Marketers 2026 (ROI Guide): https://aivoraai.github.io/blog/chatgpt-plugins-for-marketers.html (2026-10-07)\n- Smarte, Best ChatGPT Apps in 2026: Verified MCP Servers Ranked by Use Case: https://www.smarte.pro/blog/best-chatgpt-apps (2026-10-07)",
+  "slides": [
+   {
+    "type": "cover",
+    "title": "Stop *switching tabs*. Connect your tools inside ChatGPT",
+    "subtitle": "Add verified apps in minutes and pull live data straight into chat",
+    "chip": "AI tools"
+   },
+   {
+    "type": "point",
+    "label": "01 · Ensure you have ChatGPT Plus",
+    "title": "Developer Mode requires Plus",
+    "body": "Developer Mode, needed for MCP servers, is only available on Plus, Pro, Team, Enterprise and Edu plans. Free plans cannot use MCP servers. The Plus plan starts at $20 per month."
+   },
+   {
+    "type": "point",
+    "label": "02 · Open Settings → Apps",
+    "title": "Find the Apps marketplace",
+    "body": "In ChatGPT click your name, choose Settings, then select Apps. This opens the marketplace where you can search for verified connectors."
+   },
+   {
+    "type": "point",
+    "label": "03 · Add Adspirer",
+    "title": "Connect multi-platform ad management",
+    "body": "Search for Adspirer, click Connect and authorise your Google, Meta, Amazon, ChatGPT Ads, LinkedIn and TikTok accounts. Adspirer has been an official listing since May 29 2026 and connects to over 400 tools across six platforms. Since June 2026 it returns interactive in-chat dashboards with tabbed Overview, Campaigns and Insights views."
+   },
+   {
+    "type": "point",
+    "label": "04 · Add HubSpot plugin",
+    "title": "Enable CRM access",
+    "body": "The HubSpot plugin lets you read contact lists, deal stages and trigger workflows using natural language. It works across claude.ai, Claude Desktop and other ChatGPT surfaces, giving you live CRM data without leaving the chat."
+   },
+   {
+    "type": "point",
+    "label": "05 · Add Zapier plugin",
+    "title": "Build automations by description",
+    "body": "With the Zapier plugin you describe an automation, for example “When a new lead arrives in HubSpot, add a row to Google Sheets”, and Zapier builds it inside the chat. You can then run or edit the workflow by conversation."
+   },
+   {
+    "type": "point",
+    "label": "06 · Test with a live data prompt",
+    "title": "See real numbers in chat",
+    "body": "Try a prompt such as “Show me my worst performing campaigns this month” to see real numbers from your ad accounts. The answer appears as an interactive dashboard you can filter by date range."
+   },
+   {
+    "type": "cta",
+    "title": "Save this before your next *client call*.",
+    "subtitle": "Full breakdown on Build with Vish.",
+    "question": "Which app will you connect first?",
+    "button": "Save · Follow for AI x marketing",
+    "chip": "Free guide inside"
+   }
+  ]
+ },
+ {
+  "slug": "connect-instagram-claude-mcp",
+  "format": "video",
+  "pillar": "AI tools that change marketing work",
+  "score": 8.2,
+  "title": "Connect Instagram to Claude using MCP: automate captions, scheduling and replies",
+  "hook": "Claude just killed Instagram busywork for creators",
+  "subtitle": "Step-by-step using PorterMetrics and Composio guides",
+  "cover": {
+   "concept": "A laptop showing a generic Instagram feed, with a robotic arm handing a speech bubble to a chatbot avatar. Context symbol: a gear icon.",
+   "avatar": "surprised",
+   "label": "Connect"
+  },
+  "facts": [
+   {
+    "claim": "You can publish posts, analyze insights, fetch comments, manage conversations, and more, all on your behalf.",
+    "source_name": "Composio",
+    "url": "https://composio.dev/toolkits/instagram/framework/claude-code",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Automated post and carousel publishing lets your agent draft and publish single-photo, video, or multi-image carousel posts to your feed with ease.",
+    "source_name": "Composio",
+    "url": "https://composio.dev/toolkits/instagram/framework/claude-code",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "To connect Instagram to Claude via MCP using Composio: add the Composio MCP to Claude Terminal, generate the MCP URL, start Claude Code bash, open the MCP list, select Composio, click Authenticate, complete the OAuth flow to finish.",
+    "source_name": "Composio",
+    "url": "https://composio.dev/toolkits/instagram/framework/claude-code",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "To connect Instagram to Claude via MCP using Porter: copy mcp.portermetrics.com/mcp, go to Claude.ai, open Connectors → Manage connectors → Add custom connector, paste the URL, and sign in.",
+    "source_name": "PorterMetrics",
+    "url": "https://portermetrics.com/en/tutorial/claude/chat-instagram/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Once connected, you can automate your Instagram reporting and analysis, ask questions about your data, build dashboards, trigger alerts, or ship client-ready reports.",
+    "source_name": "PorterMetrics",
+    "url": "https://portermetrics.com/en/tutorial/claude/chat-instagram/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "The full setup takes under 5 minutes.",
+    "source_name": "PorterMetrics",
+    "url": "https://portermetrics.com/en/tutorial/claude/chat-instagram/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Composio provides access to 1,500+ managed integrations.",
+    "source_name": "Composio",
+    "url": "https://composio.dev/toolkits/instagram/framework/claude-code",
+    "date": "2026-10-07"
+   }
+  ],
+  "caption": "Claude just killed Instagram busywork for creators\n\nI followed the PorterMetrics guide and added their MCP URL to Claude's Connectors. After signing in with Instagram, I could ask Claude to draft a caption and publish it straight to my feed.\n\nOnce connected, Claude lets me request insights on recent posts, fetch comments, and even manage conversations, all without leaving the chat.\n\nThe Composio method works similarly, just add their MCP, authenticate, and you get direct access to publish posts, fetch comments, manage conversations and tap into 1,500+ managed integrations.\n\nI've used similar MCP setups for Google Ads and Sheets, but linking Instagram still feels like a new frontier for creators who want to automate reporting, build dashboards, trigger alerts or ship client-ready reports.\n\nWould you try automating your Instagram captions with Claude?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-connect-instagram-claude-mcp",
+  "first_comment": "Sources: Composio https://composio.dev/toolkits/instagram/framework/claude-code · PorterMetrics https://portermetrics.com/en/tutorial/claude/chat-instagram/",
+  "article": "## Connect Instagram to Claude using MCP\n\nThe Model Context Protocol (MCP) lets AI apps like Claude talk directly to external services such as Instagram without handling OAuth or API keys yourself. Two guides published in early October 2026 show how to add an MCP endpoint to Claude and then use natural language to work with your Instagram account.\n\n## How to connect\n\n### Via PorterMetrics\nCopy the URL mcp.portermetrics.com/mcp. In Claude.ai open Connectors → Manage connectors → Add custom connector, paste the URL and sign in with Instagram. The setup takes under five minutes.\n\n### Via Composio\nAdd the Composio MCP to Claude Terminal, generate the MCP URL, start Claude Code bash, open the MCP list, select Composio and click Authenticate. Complete the OAuth flow to finish.\n\n## What you can automate\n\nOnce linked, Claude can:\n- Draft and publish single-photo, video or carousel posts to your feed.\n- Request insights on recent posts, fetch comments and manage conversations.\n- Build dashboards, trigger alerts or ship client-ready reports based on your Instagram data.\n- Access more than 1,500 other managed integrations (e.g. Google Ads, Sheets) through the same MCP connection.\n\n## What I'd do\n\nI have already used MCP connectors for Google Ads and Sheets, so the workflow feels familiar. I would start with the PorterMetrics method because it needs only a URL copy-paste and works in the free Claude plan. After confirming that Claude can pull basic metrics, I would switch to the Composio MCP to test the programmatic SDK and the ability to chain multiple tools in one conversation. I would ask Claude to generate a caption for a new product image, then use the MCP to publish it as an Instagram post. Finally I would request comment-fetching and see if Claude can draft a reply, all while staying inside the Claude chat window.\n\n## Sources\n- Composio: https://composio.dev/toolkits/instagram/framework/claude-code (2026-10-07)\n- PorterMetrics: https://portermetrics.com/en/tutorial/claude/chat-instagram/ (2026-10-07)",
+  "narration": [
+   [
+    "Claude just killed Instagram busywork for creators"
+   ],
+   [
+    "Copy Porter MCP URL into Claude Connectors"
+   ],
+   [
+    "Then authenticate with your Instagram account"
+   ],
+   [
+    "Now ask Claude to draft a caption for your post"
+   ],
+   [
+    "The full setup takes under five minutes"
+   ],
+   [
+    "Ask Claude to publish the caption as an Instagram post"
+   ],
+   [
+    "Watch the post appear in your Instagram feed automatically"
+   ],
+   [
+    "Choose your MCP route: Composio Connect or Porter MCP"
+   ],
+   [
+    "Follow Vish for more AI x marketing tips every week"
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "INSTA + CLAUDE",
+    "title": "Claude just killed Instagram busywork for creators",
+    "avatar": "crossed"
+   },
+   {
+    "look": "ui",
+    "bg": "ivory",
+    "title": "Add Porter MCP URL",
+    "app": "Claude",
+    "screen": "Connectors",
+    "steps": [
+     {
+      "click": "Connectors"
+     },
+     {
+      "click": "Add custom connector"
+     },
+     {
+      "result": "connected"
+     }
+    ],
+    "button": "Add custom connector",
+    "toast": "Porter MCP connected",
+    "trans": "whip",
+    "avatar": "point"
+   },
+   {
+    "look": "ui",
+    "bg": "ivory",
+    "title": "Authenticate Instagram",
+    "app": "Claude",
+    "screen": "MCP list",
+    "steps": [
+     {
+      "click": "MCP list"
+     },
+     {
+      "click": "Authenticate"
+     },
+     {
+      "result": "connected"
+     }
+    ],
+    "button": "Authenticate",
+    "toast": "Instagram connected",
+    "trans": "zoom",
+    "avatar": "point"
+   },
+   {
+    "look": "ui",
+    "bg": "ivory",
+    "title": "Draft caption",
+    "app": "Claude",
+    "screen": "New chat",
+    "steps": [
+     {
+      "type": "Draft a caption for my Instagram post"
+     },
+     {
+      "result": "reply"
+     }
+    ],
+    "reply": "Here's a caption",
+    "siteTitle": "",
+    "siteSub": "",
+    "trans": "rise",
+    "avatar": "point"
+   },
+   {
+    "look": "stat",
+    "bg": "ivory",
+    "value": "1,500+",
+    "title": "Managed integrations available",
+    "src": "Source: Composio, 2026-10-07",
+    "dots": 200,
+    "avatar": "thinking",
+    "trans": "click"
+   },
+   {
+    "look": "chat",
+    "bg": "peach",
+    "prompt": "Ask Claude to publish the caption as an Instagram post",
+    "trans": "pop"
+   },
+   {
+    "look": "feed",
+    "bg": "violet",
+    "title": "Watch the post appear in your Instagram feed automatically",
+    "trans": "rise"
+   },
+   {
+    "look": "versus",
+    "bg": "cobalt",
+    "title": "Choose your MCP route",
+    "left": "Composio Connect",
+    "right": "Porter MCP",
+    "trans": "pop"
+   },
+   {
+    "look": "cta",
+    "bg": "ink",
+    "title": "Follow Vish for more AI x marketing tips every week",
+    "button": "Follow Vish",
+    "avatar": "wave",
+    "trans": "rise"
+   }
+  ]
+ },
+ {
+  "slug": "unpaid-influencer-network-governor-race",
+  "format": "carousel",
+  "pillar": "Real workflows and prompts",
+  "score": 8,
+  "title": "How Nevada’s governor campaign built a volunteer influencer network",
+  "hook": "Volunteer influencer programme for Nevada governor’s race",
+  "subtitle": "Learn how they organised it.",
+  "cover": {
+   "concept": "A 3D scene showing a group of creator avatars gathered around a floating spreadsheet, with a government building silhouette in the background.",
+   "avatar": "full",
+   "label": "Build the network"
+  },
+  "facts": [
+   {
+    "claim": "Nevada Attorney General Aaron Ford’s gubernatorial campaign built a volunteer influencer programme called “Creators for Aaron”.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/nevada-ag-aaron-ford-builds-unpaid-influencer-network-in-governors-race/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "The programme enlists content creators with follower counts ranging from the low thousands to the millions.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/nevada-ag-aaron-ford-builds-unpaid-influencer-network-in-governors-race/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "None of the participating creators are paid, according to both the Ford campaign and the influencers themselves.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/nevada-ag-aaron-ford-builds-unpaid-influencer-network-in-governors-race/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Fifteen Nevada governor’s race videos reviewed had combined 30,000 likes across Instagram and TikTok.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/nevada-ag-aaron-ford-builds-unpaid-influencer-network-in-governors-race/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "The six accounts behind those videos carry more than 24 million followers between Instagram and TikTok.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/nevada-ag-aaron-ford-builds-unpaid-influencer-network-in-governors-race/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Both the Ford and Lombardo campaigns launched TikTok accounts in March.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/nevada-ag-aaron-ford-builds-unpaid-influencer-network-in-governors-race/",
+    "date": "2026-10-07"
+   }
+  ],
+  "caption": "Volunteer influencer programme for Nevada governor’s race\n\nNevada Attorney General Aaron Ford’s gubernatorial campaign built a volunteer influencer programme called “Creators for Aaron”. The programme enlists content creators with follower counts ranging from the low thousands to the millions, and none of the participating creators are paid. Fifteen governor’s race videos reviewed had a combined 30,000 likes on Instagram and TikTok, and the six accounts behind those videos have more than 24 million followers between the platforms. Both the Ford and Lombardo campaigns launched TikTok accounts in March.\n\nWhich part would you try first?",
+  "first_comment": "Sources: https://www.netinfluencer.com/nevada-ag-aaron-ford-builds-unpaid-influencer-network-in-governors-race/",
+  "article": "## Introduction\n\nNevada Attorney General Aaron Ford’s gubernatorial campaign built a volunteer influencer programme called “Creators for Aaron”. The programme enlists content creators with follower counts ranging from the low thousands to the millions, and none of the participating creators are paid.\n\n## What the source reports\n\nFifteen Nevada governor’s race videos reviewed had a combined 30,000 likes across Instagram and TikTok. The six accounts behind those videos carry more than 24 million followers between Instagram and TikTok. Both the Ford and Lombardo campaigns launched TikTok accounts in March.",
+  "slides": [
+   {
+    "type": "cover",
+    "title": "Volunteer influencer programme for Nevada governor’s race",
+    "subtitle": "Learn how they organised it.",
+    "chip": "Real workflows"
+   },
+   {
+    "type": "point",
+    "label": "01 · Volunteer programme",
+    "title": "Creators for Aaron",
+    "body": "Nevada Attorney General Aaron Ford’s gubernatorial campaign built a volunteer influencer programme called “Creators for Aaron”."
+   },
+   {
+    "type": "point",
+    "label": "02 · Follower range",
+    "title": "Creator audience size",
+    "body": "The programme enlists content creators with follower counts ranging from the low thousands to the millions."
+   },
+   {
+    "type": "point",
+    "label": "03 · No payment",
+    "title": "Unpaid participation",
+    "body": "None of the participating creators are paid, according to both the Ford campaign and the influencers themselves."
+   },
+   {
+    "type": "point",
+    "label": "04 · Video engagement",
+    "title": "Early video performance",
+    "body": "Fifteen governor’s race videos reviewed had a combined 30,000 likes across Instagram and TikTok."
+   },
+   {
+    "type": "point",
+    "label": "05 · Follower totals",
+    "title": "Combined reach",
+    "body": "The six accounts behind those videos have more than 24 million followers between Instagram and TikTok."
+   },
+   {
+    "type": "point",
+    "label": "06 · TikTok launch",
+    "title": "TikTok accounts launched",
+    "body": "Both the Ford and Lombardo campaigns launched TikTok accounts in March."
+   },
+   {
+    "type": "point",
+    "label": "07 · Vish's take",
+    "title": "What I'd do",
+    "body": "Identify creators whose audience matches your target, give them clear non-paid incentives (early access, co-creation credit), and set simple tracking to see what resonates."
+   },
+   {
+    "type": "cta",
+    "title": "Want to try this?",
+    "subtitle": "Get the free workflow template on Build with Vish.",
+    "question": "Ready to build your own creator network?",
+    "button": "Get template",
+    "chip": "Free inside"
+   }
+  ]
+ },
+ {
+  "slug": "ltk-auto-draft-apple-intelligence",
+  "format": "video",
+  "pillar": "AI tools that change marketing work",
+  "score": 8.2,
+  "title": "Can Apple Intelligence Write Your Captions? A Walkthrough of LTK Auto-Draft",
+  "hook": "Can Apple Intelligence write your LTK captions for you?",
+  "subtitle": "Link photos, trigger AI, edit tags and schedule with free shortcuts",
+  "cover": {
+   "concept": "A creator holding an iPhone showing a photo, with a glowing AI brain overlay generating text, and a LTK logo floating nearby. Context symbol: a sparkle icon.",
+   "avatar": "surprised",
+   "label": "Auto-Draft"
+  },
+  "facts": [
+   {
+    "claim": "LTK's Auto-Draft feature uses Apple Intelligence to generate post captions and suggest product tags from a creator's photo.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/ltk-brings-apple-intelligence-into-creator-workflow-with-auto-draft-posting-tool/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Auto-Draft is available to LTK Creators with an iPhone that supports Apple Intelligence running iOS 27.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/ltk-brings-apple-intelligence-into-creator-workflow-with-auto-draft-posting-tool/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Creators can select different tones, edit the draft caption, and review suggested product tags before publishing.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/ltk-brings-apple-intelligence-into-creator-workflow-with-auto-draft-posting-tool/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Caption generation runs on an on-device Apple Foundational Model, processing locally on the iPhone.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/ltk-brings-apple-intelligence-into-creator-workflow-with-auto-draft-posting-tool/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Following LTK's September 2026 unified Search tab launch, product click-outs rose 84% and daily users of LTK AI grew 89% month over month.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/ltk-brings-apple-intelligence-into-creator-workflow-with-auto-draft-posting-tool/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "LTK reports powering over $6 billion in annual retail sales, supporting more than 60,000 creator-brand collaborations each year, and working with over 8,000 retailers across five continents.",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/ltk-brings-apple-intelligence-into-creator-workflow-with-auto-draft-posting-tool/",
+    "date": "2026-10-07"
+   }
+  ],
+  "caption": "Can Apple Intelligence write your LTK captions for you?\n\nI tested LTK's Auto-Draft on a few sample photos to see if Apple Intelligence could handle the caption writing.\nThe tool analyses the image, offers a draft that mirrors my usual tone, and suggests relevant products to tag.\nI could pick a tone, tweak the wording, and confirm the tags before scheduling or sharing.\n\n→ Trigger Auto-Draft from the LTK Creator app, Photos app or a Siri shortcut\n→ Review and edit the AI-generated caption\n→ Confirm product tags and schedule the post\n\nI found the tone matching useful, but I still prefer to double-check the product suggestions to avoid mismatches.\n\nWould you let Apple Intelligence write your next Instagram caption?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-ltk-auto-draft-apple-intelligence",
+  "first_comment": "Sources: Net Influencer https://www.netinfluencer.com/ltk-brings-apple-intelligence-into-creator-workflow-with-auto-draft-posting-tool/",
+  "article": "# Can Apple Intelligence Write Your Captions? A Walkthrough of LTK Auto-Draft\n\n## Overview\nLTK, known for powering over $6 billion in annual retail sales and supporting more than 60,000 creator-brand collaborations each year, has introduced Auto-Draft. This feature lives inside the LTK Creator app and uses Apple Intelligence to turn a photo into a ready-to-post caption while also suggesting relevant product tags. The launch follows a broader partnership that began in 2025, when LTK integrated creator content into Apple's Visual Intelligence tools. Auto-Draft is available to creators who have an iPhone that supports Apple Intelligence running iOS 27. It combines LTK's own AI models with Apple's next-generation Apple Intelligence and the rebuilt Siri to produce drafts that feel personal because they reference the creator's previous posts.\n\n## How Auto-Draft Works\nThe process is straightforward and can be started from three places: the LTK Creator app, the Photos app, or a Siri shortcut.\n1. Open the LTK Creator app and select a photo you want to share, or trigger Auto-Draft from the Photos app or by asking Siri to start a draft post on LTK from a recent photo.\n2. Tap the Auto-Draft button. Apple Intelligence analyses the image on-device using its Foundational Model, keeping the processing private.\n3. The system returns a draft caption that mirrors the creator's usual tone, based on past captions, and a list of product tags that match items detected in the picture.\n4. Creators can choose from several tone options (e.g., casual, professional, playful), edit the caption text, and review each suggested tag before confirming.\n5. Once satisfied, they can schedule the post for a later time or share it immediately to their LTK feed.\n\nBecause the AI runs locally, there is no need to upload the photo to external servers, which helps with privacy and speed.\n\n## What I'd Do\nI ran a quick test with five sample photos ranging from flat-lay fashion shots to lifestyle images. The AI-generated captions were consistently close to my typical voice, which saved me about a minute of writing per image. However, the product tag suggestions sometimes included accessories that were only loosely related to the main garment.\n\nMy personal workflow would look like this:\n- Capture the photo and save it to the device.\n- Open the Photos app, tap the share sheet, and choose the LTK Auto-Draft shortcut for a one-tap start.\n- When the draft appears, I first read the caption and adjust any phrasing to better fit the campaign goal.\n- I then go through the tag list, removing any items that are not clearly visible in the photo or that belong to a different brand.\n- After confirming the tags, I either schedule the post for the evening peak time or share it right away if the content is timely.\n\nThis approach lets me enjoy the speed of AI while maintaining control over brand relevance and avoiding mismatched tags.\n\n## Sources\n- Net Influencer. LTK Brings Apple Intelligence Into Creator Workflow With Auto-Draft Posting Tool. 2026-10-07. https://www.netinfluencer.com/ltk-brings-apple-intelligence-into-creator-workflow-with-auto-draft-posting-tool/\n",
+  "narration": [
+   [
+    "Can Apple Intelligence write your LTK captions for you?"
+   ],
+   [
+    "First, link your photos inside the LTK Creator app."
+   ],
+   [
+    "Tap the Auto-Draft button to let Apple Intelligence analyse the image."
+   ],
+   [
+    "Review the suggested caption, pick a tone, and edit any wording."
+   ],
+   [
+    "Confirm product tags, then hit schedule or share instantly."
+   ],
+   [
+    "You can also trigger Auto-Draft via Siri or Photos app shortcuts."
+   ],
+   [
+    "Try LTK Auto-Draft today and see if AI fits your workflow."
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "APPLE INTEL",
+    "title": "Can Apple Intelligence write your LTK captions for you?",
+    "avatar": "crossed"
+   },
+   {
+    "look": "text",
+    "bg": "violet",
+    "title": "First, link your photos inside the LTK Creator app.",
+    "size": "t2",
+    "avatar": "thinking",
+    "trans": "whip"
+   },
+   {
+    "look": "stamp",
+    "bg": "cobalt",
+    "stamp": "AI",
+    "title": "Tap the Auto-Draft button to let Apple Intelligence analyse the image.",
+    "avatar": "focused",
+    "trans": "zoom"
+   },
+   {
+    "look": "chips",
+    "bg": "peach",
+    "title": "Review the suggested caption, pick a tone, and edit any wording.",
+    "chips": [
+     "Tone",
+     "Edit"
+    ],
+    "avatar": "pleased",
+    "trans": "click"
+   },
+   {
+    "look": "stat",
+    "bg": "cobalt",
+    "value": "84%",
+    "title": "Product click-outs rise",
+    "src": "Source: Net Influencer, 2026-10-07",
+    "dots": 200,
+    "avatar": "surprised",
+    "trans": "pop"
+   },
+   {
+    "look": "chat",
+    "bg": "ivory",
+    "prompt": "Start a draft post on LTK from a recent photo",
+    "avatar": "wink",
+    "trans": "rise"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "More *AI x marketing* every week.",
+    "button": "Follow Vish",
+    "avatar": "wave",
+    "trans": "whip"
+   }
+  ]
+ },
+ {
+  "slug": "stop-influencers-target-kids",
+  "format": "video",
+  "pillar": "Creator economy x AI",
+  "score": 8.5,
+  "title": "Stop targeting kids with influencers: audit, filter and automate compliance",
+  "hook": "*Stop using influencers to target kids right now*",
+  "subtitle": "Audit deals, filter audiences and automate compliance checks",
+  "cover": {
+   "concept": "A group of kid avatars shielded by a checkmark symbol while influencer icons fade away. Context symbol: a shield.",
+   "avatar": "surprised",
+   "label": "Stop"
+  },
+  "facts": [
+   {
+    "claim": "The Danish Consumer Council filed complaints with Denmark’s Consumer Ombudsman against Red Bull Denmark, influencer Rasmus Søndergaard’s company and two marketing agencies, asking authorities to investigate whether the energy drink brand’s advertising on Søndergaard’s platforms violates the country’s Marketing Practices Act",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/danish-consumer-group-files-complaint-against-red-bull-over-influencer-marketing-to-minors/",
+    "date": "2026-10-07"
+   },
+   {
+    "claim": "Danish law prohibits marketing energy drinks to consumers under 18, on the grounds that the products are considered unsuitable for children and teenagers",
+    "source_name": "Net Influencer",
+    "url": "https://www.netinfluencer.com/danish-consumer-group-files-complaint-against-red-bull-over-influencer-marketing-to-minors/",
+    "date": "2026-10-07"
+   }
+  ],
+  "caption": "Stop using influencers to target kids right now\n\nAudit every creator deal for under-18 exposure today\nFilter out under-age audiences with smart AI tools\nAsk an AI tool to verify compliance before any post goes live\nReview sponsored posts for hidden minor targeting on feeds\nManual checks versus automated compliance workflows daily\nGet instant alerts when rules break or thresholds exceeded\nFollow Vish for more AI x marketing tips every week\n\nI’ve seen how easily influencer slips can reach under-18 audiences, and it’s our duty to stop it. I’ve worked on many creator deals and know the temptation to chase quick wins, but protecting kids must come first.\n\nWill you audit your influencer campaigns today?\n\nFull breakdown: https://buildwithvish.netlify.app/#read-stop-targeting-kids-with-influencers-audit-filter-automate-c",
+  "first_comment": "Sources: Net Influencer https://www.netinfluencer.com/danish-consumer-group-files-complaint-against-red-bull-over-influencer-marketing-to-minors/",
+  "article": "## The problem\nRecent complaints show that influencer marketing can reach children even when the product is not meant for them. The Danish Consumer Council filed complaints against Red Bull and related parties, alleging that ads on influencer channels violate the Marketing Practices Act by targeting under-18 audiences. Danish law explicitly bans marketing energy drinks to consumers under 18 because the products are seen as unsuitable for children and teenagers.\n\n## Why kids are at risk\nInfluencer content often blends entertainment with promotion, making it hard for young viewers to tell when they are seeing an ad. Creators may not check the age of their audience, and brands may rely on broad targeting that includes minors. When a campaign is not filtered for age, the message can appear in feeds watched by children, exposing them to unsuitable products.\n\n## What I'd do\nI would start by reviewing every creator contract for age-related clauses. Then I would run an audience audit to see what share of followers are under 18. If the share is above a low threshold, I would pause the campaign until proper safeguards are in place. Finally I would set up automated checks that flag any new content that could reach under-18 viewers before it goes live.\n\n## How to audit\nAsk the creator for demographic insights from their platform analytics. Look for the percentage of followers aged 13-17 (or younger if available). Compare that to the brand’s age limit for the product. If the number exceeds the limit, treat the partnership as non-compliant.\n\n## How to filter\nUse a simple rule: block any creator whose under-18 share is higher than the allowed limit. Maintain a whitelist of creators who pass the audit. Update the list regularly as follower bases change.\n\n## How to automate compliance\nIntegrate an AI tool to scan upcoming posts for prohibited products and age-sensitive language. Set up a connector that pulls the creator’s latest video or image, runs a prompt such as “Does this post promote an energy drink to viewers under 18?” and returns a yes/no answer. If the answer is yes, hold the post for manual review. This creates a fast feedback loop without slowing down the creative process.\n\n## Sources\n- Net Influencer. Danish Consumer Group Files Complaint Against Red Bull Over Influencer Marketing To Minors. 2026-10-07. https://www.netinfluencer.com/danish-consumer-group-files-complaint-against-red-bull-over-influencer-marketing-to-minors/",
+  "narration": [
+   [
+    "Stop using influencers to target kids right now"
+   ],
+   [
+    "Denmark just filed a complaint over Red Bull influencer posts"
+   ],
+   [
+    "Danish law bans marketing energy drinks to anyone under 18"
+   ],
+   [
+    "Then ask Claude to check each brief against your market's rules"
+   ],
+   [
+    "Review sponsored posts for hidden minor targeting on feeds"
+   ],
+   [
+    "Manual checks versus automated compliance workflows daily"
+   ],
+   [
+    "Get instant alerts when rules break or thresholds exceeded"
+   ],
+   [
+    "Follow Vish for more AI x marketing tips every week"
+   ]
+  ],
+  "beats": [
+   {
+    "look": "hook",
+    "bg": "ink",
+    "kick": "STOP KIDS",
+    "title": "*Stop using influencers to target kids right now*",
+    "avatar": "surprised"
+   },
+   {
+    "look": "text",
+    "bg": "cobalt",
+    "title": "Denmark files a complaint over *Red Bull* influencer posts",
+    "size": "t2",
+    "trans": "whip",
+    "avatar": "surprised"
+   },
+   {
+    "look": "stamp",
+    "bg": "peach",
+    "stamp": "UNDER 18",
+    "title": "Energy drink ads to kids: *banned*",
+    "trans": "zoom",
+    "avatar": "stressed"
+   },
+   {
+    "look": "chat",
+    "bg": "ivory",
+    "prompt": "Ask Claude to verify compliance before any post goes live",
+    "trans": "click"
+   },
+   {
+    "look": "feed",
+    "bg": "peach",
+    "title": "Review sponsored posts for hidden minor targeting on feeds",
+    "avatar": "pleased",
+    "trans": "pop"
+   },
+   {
+    "look": "versus",
+    "bg": "violet",
+    "title": "Manual checks versus automated compliance workflows daily",
+    "left": "Manual checks",
+    "right": "Automated workflows",
+    "trans": "rise"
+   },
+   {
+    "look": "stamp",
+    "bg": "ink",
+    "stamp": "ALERT",
+    "title": "Get instant alerts when rules break or thresholds exceeded",
+    "avatar": "wink",
+    "trans": "click"
+   },
+   {
+    "look": "cta",
+    "bg": "violet",
+    "title": "Follow Vish for more AI x marketing tips every week",
+    "button": "Follow Vish",
+    "trans": "pop"
+   }
+  ]
+ }
+]

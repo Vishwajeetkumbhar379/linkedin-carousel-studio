@@ -451,6 +451,10 @@ def repair(p: dict) -> dict:
                        "question": "Which step would you automate first?", "button": "Save · Follow for AI x marketing", "chip": "Free guide inside"})
         p["slides"] = sl[:10]
     cap = p.get("caption", "")
+    first = cap.strip().split("\n")[0] if cap.strip() else ""
+    if p.get("hook") and len(first.split()) > 14:  # the caption must open on a short hook line, not a paragraph
+        cap = re.sub(r"[*]", "", p["hook"]) + "\n\n" + cap.strip()
+        p["caption"] = cap
     if "?" not in cap:
         q = "\n\nWhich part would you try first?"
         p["caption"] = re.sub(r"(\n*Full breakdown:)", q + r"\1", cap, count=1) if "Full breakdown:" in cap else cap + q
@@ -566,7 +570,7 @@ def covers(out: Path, posts: list[dict]) -> None:
         c.update(hero=hero, hero_style="left:140px;bottom:40px;width:800px", mid_style="justify-content:flex-start;padding-top:56px",
                  layers=[{"asset": pick.get("face") if pick.get("face") in ("surprised", "skeptical") else "surprised",
                           "style": f"left:40px;top:700px;width:250px;{MASK}{SH}"},
-                         {"html": label, "class": "tag dark", "style": "right:60px;top:690px;transform:rotate(3deg)"}])
+                         {"html": label, "class": "tag dark", "style": "right:70px;top:1050px;transform:rotate(-3deg)"}])
         d.write_text(json.dumps(deck, indent=2, ensure_ascii=False))
         run(PY, "scripts/build_post.py", out / p["slug"], check=False)
 

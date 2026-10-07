@@ -1,0 +1,1 @@
+Sources: https://www.adspirer.com/blog/best-chatgpt-apps-marketing-advertising https://sintra.ai/blog/best-chatgpt-app https://aivoraai.github.io/blog/chatgpt-plugins-for-marketers.html https://www.smarte.pro/blog/best-chatgpt-apps

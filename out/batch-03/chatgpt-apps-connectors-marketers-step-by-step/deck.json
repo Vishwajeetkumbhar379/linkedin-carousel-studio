@@ -1,0 +1,88 @@
+{
+  "slug": "chatgpt-apps-connectors-marketers-step-by-step",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-chatgpt-apps-connectors-marketers-step-by-step",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Stop *switching tabs*. Connect your tools inside ChatGPT",
+      "subtitle": "Add verified apps in minutes and pull live data straight into chat",
+      "chip": "AI tools",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "c-click-v6",
+      "hero_style": "left:210px;bottom:30px;width:680px",
+      "layers": [
+        {
+          "asset": "surprised",
+          "style": "left:40px;top:700px;width:250px;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
+        },
+        {
+          "html": "Click to integrate apps",
+          "class": "tag dark",
+          "style": "right:70px;top:1050px;transform:rotate(-3deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · Ensure you have ChatGPT Plus",
+      "title": "Developer Mode requires Plus",
+      "body": "Developer Mode, needed for MCP servers, is only available on Plus, Pro, Team, Enterprise and Edu plans. Free plans cannot use MCP servers. The Plus plan starts at $20 per month.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · Open Settings → Apps",
+      "title": "Find the Apps marketplace",
+      "body": "In ChatGPT click your name, choose Settings, then select Apps. This opens the marketplace where you can search for verified connectors."
+    },
+    {
+      "type": "point",
+      "label": "03 · Add Adspirer",
+      "title": "Connect multi-platform ad management",
+      "body": "Search for Adspirer, click Connect and authorise your Google, Meta, Amazon, ChatGPT Ads, LinkedIn and TikTok accounts. Adspirer has been an official listing since May 29 2026 and connects to over 400 tools across six platforms. Since June 2026 it returns interactive in-chat dashboards with tabbed Overview, Campaigns and Insights views."
+    },
+    {
+      "type": "point",
+      "label": "04 · Add HubSpot plugin",
+      "title": "Enable CRM access",
+      "body": "The HubSpot plugin lets you read contact lists, deal stages and trigger workflows using natural language. It works across claude.ai, Claude Desktop and other ChatGPT surfaces, giving you live CRM data without leaving the chat.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "05 · Add Zapier plugin",
+      "title": "Build automations by description",
+      "body": "With the Zapier plugin you describe an automation, for example “When a new lead arrives in HubSpot, add a row to Google Sheets”, and Zapier builds it inside the chat. You can then run or edit the workflow by conversation."
+    },
+    {
+      "type": "point",
+      "label": "06 · Test with a live data prompt",
+      "title": "See real numbers in chat",
+      "body": "Try a prompt such as “Show me my worst performing campaigns this month” to see real numbers from your ad accounts. The answer appears as an interactive dashboard you can filter by date range."
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *client call*.",
+      "subtitle": "Full breakdown on Build with Vish.",
+      "question": "Which app will you connect first?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 46
+}

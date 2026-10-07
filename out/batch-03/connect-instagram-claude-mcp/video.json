@@ -1,0 +1,166 @@
+{
+  "slug": "connect-instagram-claude-mcp",
+  "direction": "Motion graphics · beat per line · Vish avatar",
+  "format": "video",
+  "template": "video/motion.html",
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "tag": "AI x Marketing",
+  "narration": [
+    [
+      "Claude just killed Instagram busywork for creators"
+    ],
+    [
+      "Copy Porter MCP URL into Claude Connectors"
+    ],
+    [
+      "Then authenticate with your Instagram account"
+    ],
+    [
+      "Now ask Claude to draft a caption for your post"
+    ],
+    [
+      "The full setup takes under five minutes"
+    ],
+    [
+      "Ask Claude to publish the caption as an Instagram post"
+    ],
+    [
+      "Watch the post appear in your Instagram feed automatically"
+    ],
+    [
+      "Choose your MCP route: Composio Connect or Porter MCP"
+    ],
+    [
+      "Follow Vish for more AI x marketing tips every week"
+    ]
+  ],
+  "beats": [
+    {
+      "look": "hook",
+      "bg": "ink",
+      "kick": "INSTA + CLAUDE",
+      "title": "Claude just killed Instagram busywork for creators",
+      "avatar": "crossed",
+      "avTop": 170,
+      "avSize": 190,
+      "avSide": "right"
+    },
+    {
+      "look": "ui",
+      "bg": "ivory",
+      "title": "Add Porter MCP URL",
+      "app": "Claude",
+      "screen": "Connectors",
+      "steps": [
+        {
+          "click": "Connectors"
+        },
+        {
+          "click": "Add custom connector"
+        },
+        {
+          "result": "connected"
+        }
+      ],
+      "button": "Add custom connector",
+      "toast": "Porter MCP connected",
+      "trans": "whip",
+      "avatar": "point",
+      "avTop": 1000,
+      "avSide": "left"
+    },
+    {
+      "look": "ui",
+      "bg": "ivory",
+      "title": "Authenticate Instagram",
+      "app": "Claude",
+      "screen": "MCP list",
+      "steps": [
+        {
+          "click": "MCP list"
+        },
+        {
+          "click": "Authenticate"
+        },
+        {
+          "result": "connected"
+        }
+      ],
+      "button": "Authenticate",
+      "toast": "Instagram connected",
+      "trans": "zoom",
+      "avatar": "point",
+      "avTop": 1000,
+      "avSide": "right"
+    },
+    {
+      "look": "ui",
+      "bg": "ivory",
+      "title": "Draft caption",
+      "app": "Claude",
+      "screen": "New chat",
+      "steps": [
+        {
+          "type": "Draft a caption for my Instagram post"
+        },
+        {
+          "result": "reply"
+        }
+      ],
+      "reply": "Here's a caption",
+      "siteTitle": "",
+      "siteSub": "",
+      "trans": "rise",
+      "avatar": "point",
+      "avTop": 1000,
+      "avSide": "left"
+    },
+    {
+      "look": "stat",
+      "bg": "ivory",
+      "value": "1,500+",
+      "title": "Managed integrations available",
+      "src": "Source: Composio, 2026-10-07",
+      "dots": 200,
+      "avatar": "thinking",
+      "trans": "click",
+      "avTop": 185,
+      "avSide": "right"
+    },
+    {
+      "look": "chat",
+      "bg": "peach",
+      "prompt": "Ask Claude to publish the caption as an Instagram post",
+      "trans": "pop"
+    },
+    {
+      "look": "feed",
+      "bg": "violet",
+      "title": "Watch the post appear in your Instagram feed automatically",
+      "trans": "rise"
+    },
+    {
+      "look": "versus",
+      "bg": "cobalt",
+      "title": "Choose your MCP route",
+      "left": "Composio Connect",
+      "right": "Porter MCP",
+      "trans": "pop"
+    },
+    {
+      "look": "cta",
+      "bg": "ink",
+      "title": "Follow Vish for more AI x marketing tips every week",
+      "button": "Follow Vish",
+      "avatar": "wave",
+      "trans": "rise",
+      "avTop": 185,
+      "avSide": "right"
+    }
+  ],
+  "duration": 36,
+  "posters": {},
+  "sfx": true
+}

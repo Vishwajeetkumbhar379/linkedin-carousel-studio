@@ -1,0 +1,96 @@
+{
+  "slug": "claude-connectors-marketers-step-by-step",
+  "direction": "Aurora Glass · paper",
+  "format": "carousel",
+  "pillar": "AI tools that change marketing work",
+  "author": {
+    "name": "Vish Kumbhar",
+    "handle": "Build with Vish"
+  },
+  "site_label": "buildwithvish.netlify.app",
+  "page_url": "https://buildwithvish.netlify.app/#read-claude-connectors-marketers-step-by-step",
+  "slides": [
+    {
+      "type": "cover",
+      "title": "The best Claude connectors for marketers, step by step",
+      "subtitle": "Add Google Drive, Gmail, Calendar and more in minutes",
+      "chip": "AI tools",
+      "mid_style": "justify-content:flex-start;padding-top:56px",
+      "hero": "cv-url-to-ads",
+      "hero_style": "left:140px;bottom:40px;width:800px",
+      "layers": [
+        {
+          "asset": "surprised",
+          "style": "left:40px;top:700px;width:250px;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
+        },
+        {
+          "html": "Point to Claude",
+          "class": "tag dark",
+          "style": "right:70px;top:1050px;transform:rotate(-3deg)"
+        }
+      ]
+    },
+    {
+      "type": "point",
+      "label": "01 · Access the Connectors Directory",
+      "title": "Open Customize → Connectors",
+      "body": "Click the Customize icon in the left sidebar of Claude or Claude Desktop, then select the Connectors tab to open the directory of available MCP servers. You will see both verified and community connectors listed, ready to be added with a single click.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "02 · Search for a verified connector",
+      "title": "Find Google Drive in the list",
+      "body": "Type the name of the service you want, for example Google Drive, in the search bar at the top of the directory. Verified partners show the Anthropic verified badge. If you do not see the badge, the connector is community-provided and may need extra review."
+    },
+    {
+      "type": "point",
+      "label": "03 · Click Connect and start auth",
+      "title": "Hit Connect and sign in",
+      "body": "Click the Connect button next to the chosen connector. Claude will open a secure authentication window where you can sign in with your account. Follow the prompts to allow Claude to access the service, then close the window when the connection succeeds."
+    },
+    {
+      "type": "point",
+      "label": "04 · Grant permissions",
+      "title": "Allow Claude to access your Drive",
+      "body": "In the authentication window, enter your Google credentials and accept the requested permissions to let Claude read files from your Drive. Once approved, the window will close automatically and you will return to the Claude interface with the connector active.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "point",
+      "label": "05 · Confirm connection appears",
+      "title": "See Google Drive in your connector list",
+      "body": "After the window closes, return to the Connectors tab and check that Google Drive shows a green status, meaning the link is active. If the icon is grey, click Refresh and sign in again. It stays valid until you revoke Google access."
+    },
+    {
+      "type": "point",
+      "label": "06 · Test the connector",
+      "title": "Ask Claude to fetch a file",
+      "body": "To test, open a new chat and ask Claude to fetch a recent file from Google Drive, for example ‘Show me the latest proposal in the Marketing folder’. Claude will return the file name and a snippet, proving the connector works."
+    },
+    {
+      "type": "point",
+      "label": "07 · Repeat for other services",
+      "title": "Add Gmail, Calendar and more",
+      "body": "Repeat the same steps for Gmail, Google Calendar and any other verified connector you need. Each appears in the directory with the same Connect button. You can have multiple services active at once and switch between them easily in chat.",
+      "mascot": "dot-pro-wink-point",
+      "mascot_style": "right:90px;top:250px;width:150px"
+    },
+    {
+      "type": "cta",
+      "title": "Save this before your next *client call*.",
+      "subtitle": "Full breakdown on Build with Vish.",
+      "question": "Which connector will you add first?",
+      "button": "Save · Follow for AI x marketing",
+      "chip": "Free guide inside",
+      "mascot": "vish-badge-laugh",
+      "mascot_style": "left:50%;transform:translateX(-50%);top:118px;width:200px",
+      "mid_style": "padding-top:200px"
+    }
+  ],
+  "system": "aurora",
+  "variant": "paper",
+  "seed": 40
+}
