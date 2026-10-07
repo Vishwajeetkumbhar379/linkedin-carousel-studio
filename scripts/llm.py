@@ -51,7 +51,7 @@ PROVIDERS = [
      "signup": "https://huggingface.co/settings/tokens (read token, Inference Providers on)"},
     {"id": "cerebras", "env": "CEREBRAS_API_KEY", "base": "https://api.cerebras.ai/v1", "model": "gpt-oss-120b", "budget": 0,
      "signup": "https://cloud.cerebras.ai"},
-    {"id": "nvidia", "env": "NVIDIA_API_KEY", "base": "https://integrate.api.nvidia.com/v1", "model": "meta/llama-3.3-70b-instruct", "budget": 0,
+    {"id": "nvidia", "env": "NVIDIA_API_KEY", "base": "https://integrate.api.nvidia.com/v1", "model": "openai/gpt-oss-120b", "alts": ["deepseek-ai/deepseek-v3.1", "qwen/qwen3-235b-a22b"], "budget": 0,
      "signup": "https://build.nvidia.com (Get API key)"},
     {"id": "zai", "env": "ZAI_API_KEY", "base": "https://api.z.ai/api/paas/v4", "model": "glm-4.5-flash", "budget": 0,
      "signup": "https://z.ai/manage-apikey/apikey-list"},
@@ -130,7 +130,7 @@ def _provider(p: dict, messages: list[dict], temperature: float, timeout: int) -
             raise urllib.error.HTTPError(p["base"], 404, "pick", None, None)
         return _openai(_base(p), key, model, messages, temperature, timeout)
     except urllib.error.HTTPError as e:
-        if e.code not in (400, 403, 404, 429):
+        if e.code not in (400, 403, 404, 410, 429):  # 410 = model retired
             raise
         for alt in p.get("alts", []):  # e.g. a model the free tier does not include (403 tier_not_allowed)
             time.sleep(1.2)
