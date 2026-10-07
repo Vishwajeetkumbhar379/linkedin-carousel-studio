@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 SITE = "https://buildwithvish.netlify.app"
 SHORT = {"AI tools that change marketing work": "AI x Marketing", "Creator economy x AI": "Creator economy",
          "Real workflows and prompts": "Workflows", "Career and AI Ops pivot": "AI careers", "Contrarian takes": "Hot take"}
-AV_TOP = {"hook": 180, "text": 730, "stamp": 740, "chips": 780, "stat": 185, "bars": 190, "versus": 960, "chat": 960, "feed": 640, "cta": 185}
+AV_TOP = {"hook": 180, "text": 730, "stamp": 740, "chips": 780, "stat": 185, "bars": 190, "versus": 960, "chat": 960, "feed": 640, "cta": 185, "ui": 1000, "clip": 1000}
 
 
 def load(batch: Path) -> list[dict]:
@@ -46,6 +46,8 @@ def video_spec(t: dict) -> dict:
             b.setdefault("avatar", t.get("cover", {}).get("avatar", "surprised"))
             if b["avatar"] == "full":
                 b["avatar"] = "crossed"
+        if b.get("look") in ("ui", "clip") and b.get("avatar") and b["avatar"] not in ("point", "explaining", "thumbs"):
+            b["avatar"] = "point"  # on screen walkthroughs Vish stands at the side and points; a face badge would cover captions
         av = b.get("avatar")
         if av:
             b["avTop"] = AV_TOP.get(b.get("look", "text"), 600)

@@ -56,3 +56,9 @@ Add "trans": "whip|zoom|click|pop|rise" to every beat except the first. Vary bac
 - {"type":"list","title":"...","items":["4 short items"]}
 - {"type":"compare","title":"...","left":{"label":"...","items":["..."]},"right":{"label":"...","items":["..."]}}
 - {"type":"cta","title":"Save this before your next *client call*.","subtitle":"Full breakdown on Build with Vish.","question":"one easy question","button":"Save · Follow for AI x marketing","chip":"Free guide inside"}
+
+### Added 7 Oct 2026: real-screen B-roll looks
+- {"look":"clip","bg":"ivory","title":"line","clip":{"url":"https://github.com/owner/repo","scrollPx":1600}}   // the real page, recorded and scrolled
+- {"look":"ui","bg":"ivory","title":"line","app":"Claude","screen":"Connectors","steps":[{"click":"Settings"},{"click":"Connectors"},{"click":"Google Drive"},{"result":"connected"}],"button":"Connect","toast":"Google Drive connected"}   // app walkthrough: the cursor clicks each step
+- {"look":"ui","app":"Claude","screen":"New chat","steps":[{"type":"the exact prompt"},{"result":"site"}],"siteTitle":"...","siteSub":"..."}   // prompt typed, website with a 3D hero appears; result can also be "reply" with "reply":"..."
+Use ui beats for every how-to step inside an AI app; only click names the sources describe.

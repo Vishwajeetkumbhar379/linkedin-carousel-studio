@@ -1,0 +1,20 @@
+[
+ {"id": "best-mcp-connectors", "angle": "The best Claude connectors (MCP) for marketers and creators, and exactly how to connect them step by step", "slot": "carousel-tutorial",
+  "queries": ["Claude connectors directory", "best Claude MCP connectors for marketing"]},
+ {"id": "claude-killed-instagram", "angle": "Claude just killed Instagram busywork: connect Instagram to Claude and automate captions, scheduling and replies, step by step (only what the sources confirm)", "slot": "video-tutorial",
+  "queries": ["connect Instagram to Claude MCP", "Instagram Graph API publish posts automation"]},
+ {"id": "tell-claude-build-website", "angle": "Tell Claude to build a website: one prompt to a live page with a 3D hero, step by step", "slot": "video-tutorial",
+  "queries": ["Claude artifacts build website", "Claude publish artifact website"]},
+ {"id": "best-chatgpt-apps", "angle": "The best ChatGPT apps and connectors for marketers right now, and how to switch them on", "slot": "carousel-tutorial",
+  "queries": ["ChatGPT apps directory connectors", "best ChatGPT apps for marketing"]},
+ {"id": "claude-killed-youtube", "angle": "Claude just killed YouTube research: connect YouTube to Claude and turn any video into scripts, hooks and posts, step by step", "slot": "video-tutorial",
+  "queries": ["YouTube MCP server Claude", "Claude YouTube connector transcripts"]},
+ {"id": "phone-number-ai", "angle": "Give your phone number to ChatGPT or Claude: text or call the AI from WhatsApp or SMS, what works today and how to set it up", "slot": "carousel-tutorial",
+  "queries": ["ChatGPT WhatsApp phone number", "text Claude by phone SMS"]},
+ {"id": "best-claude-plugins", "angle": "The best Claude plugins and skills for content creators, installed step by step", "slot": "carousel-tutorial",
+  "queries": ["Claude plugins marketplace", "Claude skills for content creators"]},
+ {"id": "faceless-pipeline-claude", "angle": "Automate a faceless content pipeline with Claude: script, voice, B-roll, motion graphics, sound design, step by step", "slot": "video-tutorial",
+  "queries": ["Claude Code automate video editing ffmpeg", "AI voiceover free TTS open source"]},
+ {"id": "vibe-coded-app-legal", "angle": "Your vibe-coded app can get sued before its first sale: the one prompt that checks privacy, cookies and terms", "slot": "carousel-tutorial",
+  "queries": ["GDPR cookie consent requirements website", "privacy policy requirements small app"]}
+]

@@ -112,6 +112,52 @@ def page_text(url: str, limit: int = 3500) -> str:
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", raw))).strip()[:limit]
 
 
+# ---------- seed topics (Vish's hype list) + free web search ----------
+OFFICIAL = ("claude.com", "anthropic.com", "support.claude.com", "openai.com", "help.openai.com", "developers.facebook.com",
+            "about.instagram.com", "blog.youtube", "developers.google.com", "support.google.com", "github.com", "modelcontextprotocol.io")
+
+
+def search(q: str, n: int = 4) -> list[dict]:
+    """Free web search (DuckDuckGo HTML). Official pages first."""
+    import urllib.parse
+    try:
+        req = urllib.request.Request("https://html.duckduckgo.com/html/", data=urllib.parse.urlencode({"q": q}).encode(), headers=llm.UA)
+        t = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore")
+    except Exception as e:  # noqa: BLE001
+        log("search failed:", e); return []
+    res = []
+    for m in re.finditer(r'class="result__a" href="([^"]+)"[^>]*>(.*?)</a>', t):
+        u = urllib.parse.parse_qs(urllib.parse.urlparse(m.group(1)).query).get("uddg", [m.group(1)])[0]
+        if u.startswith("http") and "duckduckgo" not in u:
+            res.append({"title": html.unescape(re.sub("<[^>]+>", "", m.group(2))), "url": u, "date": TODAY.isoformat(),
+                        "source": urllib.parse.urlparse(u).netloc.replace("www.", "") + f" (page read {TODAY.isoformat()})", "summary": ""})
+    res.sort(key=lambda r: 0 if any(r["url"].split("/")[2].endswith(d) for d in OFFICIAL) else 1)
+    return res[:n]
+
+
+def seed_picks(slots: list[str]) -> list[dict]:
+    """Next unused seed topics for the tutorial slots; their sources come from live search, dated the day they were read."""
+    f, used_f = ROOT / "topics" / "seeds.json", ROOT / "topics" / "seeds_used.json"
+    if not f.exists():
+        return []
+    used = set(json.loads(used_f.read_text())) if used_f.exists() else set()
+    out = []
+    for slot in slots:
+        seed = next((x for x in json.loads(f.read_text()) if x["id"] not in used and x["slot"] == slot), None)
+        if not seed:
+            continue
+        items, seen = [], set()
+        for q in seed["queries"]:
+            for r in search(q):
+                if r["url"] not in seen:
+                    seen.add(r["url"]); items.append(r)
+        if items:
+            used.add(seed["id"])
+            out.append({"slot": slot, "items": items[:4], "angle": seed["angle"], "seed": seed["id"]})
+    used_f.write_text(json.dumps(sorted(used), indent=1))
+    return out
+
+
 # ---------- research + planning ----------
 def research() -> list[dict]:
     run(PY, "scripts/research/fetch.py", check=False)
@@ -132,11 +178,11 @@ def research() -> list[dict]:
     return out
 
 
-def plan(items: list[dict]) -> list[dict]:
+def plan(items: list[dict], mix: list[str] = MIX) -> list[dict]:
     menu = "\n".join(f"{i}. [{it['date'][:10]}] {it.get('source', '')}: {it['title']} :: {(it.get('summary') or '')[:220]}" for i, it in enumerate(items[:120]))
     avoid = "\n".join(f"- {t}" for t in used_titles()[-60:])
-    prompt = f"""Pick 6 LinkedIn post topics from these fresh research items (today is {TODAY}).
-Slots, in this order: {json.dumps(MIX)}.
+    prompt = f"""Pick {len(mix)} LinkedIn post topics from these fresh research items (today is {TODAY}).
+Slots, in this order: {json.dumps(mix)}.
 Style Vish wants: big-claim tool hooks ("Opus 5.5 is crazy", "X just killed Y") ONLY when the item supports it, then a practical
 step-by-step "how to use or automate it" angle (tools, prompts, B-roll, motion graphics, sound design). Free AI resources
 (free tokens, GitHub repos, open-source tools) are great. AI x marketing, creator economy, social platforms, AI careers.
@@ -147,10 +193,10 @@ a before/after, at most ONE "X just killed Y" and at most one "X is crazy"). Nev
 Research items:
 {menu}
 
-Return JSON: [{{"slot": "...", "items": [item numbers, 1-3 that back the post], "angle": "one line: the hook idea and the step-by-step payoff"}}] with 6 entries."""
+Return JSON: [{{"slot": "...", "items": [item numbers, 1-3 that back the post], "angle": "one line: the hook idea and the step-by-step payoff"}}] with {len(mix)} entries."""
     picks = ask_json(prompt)
     out = []
-    for p, slot in zip(picks, MIX):
+    for p, slot in zip(picks, mix):
         idx = [i for i in p.get("items", []) if isinstance(i, int) and 0 <= i < len(items)]
         if idx:
             out.append({"slot": slot, "items": [items[i] for i in idx], "angle": p.get("angle", "")})
@@ -178,6 +224,12 @@ def write_post(pick: dict) -> dict:
              "at least 6 words; exactly one beat per phrase, same order; vary looks (hook first, cta last; also text, stamp, chips, stat, "
              "chat, feed, versus); every beat gets an 'avatar' from surprised, smirk, laugh, stressed, thinking, focused, pleased, wink, "
              "point, explaining, thumbs, crossed (first beat), wave (cta); add 'trans' (whip|zoom|click|pop|rise) to every beat but the first. "
+             "For any how-to step inside an AI app (Claude, ChatGPT, Gemini), use a screen walkthrough beat: {\"look\":\"ui\",\"bg\":\"ivory\","
+             "\"title\":\"short line\",\"app\":\"Claude\",\"screen\":\"Connectors\",\"steps\":[{\"click\":\"Settings\"},{\"click\":\"Connectors\"},"
+             "{\"click\":\"<item to add>\"},{\"result\":\"connected\"}],\"button\":\"Connect\",\"toast\":\"<item> connected\"} or a prompt flow "
+             "{\"look\":\"ui\",\"app\":\"Claude\",\"screen\":\"New chat\",\"steps\":[{\"type\":\"<the exact prompt>\"},{\"result\":\"site\"}],"
+             "\"siteTitle\":\"...\",\"siteSub\":\"...\"} (result can be site, connected or reply with \"reply\":\"...\"). Only click names the source "
+             "actually describes; use 2 to 4 ui beats in a tutorial video. "
              "If a source is a GitHub repo or docs page, add a beat {\"look\":\"clip\",\"bg\":\"ivory\",\"title\":\"...\",\"clip\":{\"url\":\"<that url>\",\"scrollPx\":1600}}."
              if fmt == "video" else
              "CAROUSEL RULES: 8 to 10 slides, cover first, cta last. " + ("TUTORIAL: one step per slide, labels '01 · Step name', with copy-paste prompts or commands in the body." if tutorial else ""))
@@ -311,7 +363,11 @@ def covers(out: Path, posts: list[dict]) -> None:
 
 def main() -> None:
     name = next_batch()
-    picks = plan(research())
+    seeds = seed_picks([m for m in MIX if m.endswith("tutorial")])  # Vish's hype list fills the tutorial slots first
+    rest = list(MIX)
+    for sp in seeds:
+        rest.remove(sp["slot"])
+    picks = seeds + plan(research(), rest)
     posts = write_all(picks)
     cdir = ROOT / "content" / name
     cdir.mkdir(parents=True, exist_ok=True)

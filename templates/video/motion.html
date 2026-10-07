@@ -91,6 +91,29 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#0E0C16;font-fam
 .browser .vp{position:absolute;left:0;right:0;top:62px;bottom:0;overflow:hidden}
 .browser .vp img{width:100%;display:block;will-change:transform}
 .browser .cur{position:absolute;width:84px;z-index:3;filter:drop-shadow(0 10px 14px rgba(20,10,60,.35))}
+
+/* ui: an AI app walkthrough. The cursor clicks the real steps (sidebar item, button), types the prompt, then the result appears */
+.ui{width:100%;max-width:920px;height:880px;border-radius:30px;background:#FBFAFE;box-shadow:0 60px 120px -40px rgba(20,10,60,.55),0 0 0 1px rgba(0,0,0,.06);overflow:hidden;position:relative;text-align:left;color:#1F1C24;display:flex}
+.ui .side{width:230px;background:#F1EEF6;border-right:1px solid #E4E0EC;padding:26px 16px;display:flex;flex-direction:column;gap:8px}
+.ui .app{font:600 24px Geist,sans-serif;display:flex;align-items:center;gap:10px;margin:0 8px 18px}.ui .app i{width:18px;height:18px;border-radius:50%;background:#5B4FE0}
+.ui .nav{font:500 22px Geist,sans-serif;padding:12px 14px;border-radius:14px;color:#4A4458}
+.ui .main{flex:1;position:relative;padding:30px 30px 0;display:flex;flex-direction:column;gap:16px}
+.ui .h{font:600 30px Geist,sans-serif}
+.ui .row{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #E4E0EC;border-radius:18px;padding:18px 20px;font:500 24px Geist,sans-serif;opacity:0}
+.ui .row b{font:600 20px Geist;background:#5B4FE0;color:#fff;border-radius:999px;padding:8px 18px}
+.ui .row.done b{background:#1F9D63}
+.ui .hit{box-shadow:0 0 0 4px rgba(91,79,224,.45)!important;background:#ECEAFB!important}
+.ui .compose{position:absolute;left:30px;right:30px;bottom:28px;min-height:86px;background:#fff;border:1px solid #DCD6F0;border-radius:22px;padding:22px 24px;font:400 26px/1.35 Geist,sans-serif;color:#1F1C24;box-shadow:0 10px 30px -18px rgba(20,10,60,.35)}
+.ui .compose:empty::before{content:"Message";color:#A39DB5}
+.ui .reply{background:#fff;border:1px solid #E4E0EC;border-radius:20px;padding:20px 22px;font:400 25px/1.4 Geist,sans-serif;opacity:0}
+.ui .site{position:absolute;left:30px;right:30px;top:96px;bottom:140px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,#16132A,#3F33C9);opacity:0;color:#fff;padding:34px}
+.ui .site .sn{display:flex;gap:14px;margin-bottom:40px}.ui .site .sn i{width:70px;height:10px;border-radius:6px;background:rgba(255,255,255,.35)}
+.ui .site h4{font:500 46px/1.05 Newsreader,serif;margin:0 0 16px;max-width:60%}.ui .site p{font:400 22px Geist;opacity:.75;max-width:55%;margin:0 0 24px}
+.ui .site .cta{display:inline-block;background:#fff;color:#3F33C9;font:600 20px Geist;border-radius:999px;padding:12px 24px}
+.ui .orb{position:absolute;right:40px;top:120px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0,#C4BCFF 18%,#7F77DD 45%,#2A1F8F 80%);box-shadow:0 40px 80px -20px rgba(0,0,0,.6),inset -20px -30px 60px rgba(0,0,0,.35)}
+.ui .toast{position:absolute;right:30px;top:24px;background:#1F9D63;color:#fff;font:600 22px Geist;border-radius:999px;padding:12px 22px;opacity:0}
+.ui .ucur{position:absolute;width:76px;z-index:5;filter:drop-shadow(0 10px 14px rgba(20,10,60,.35));left:0;top:0}
+.ui .urip{position:absolute;width:80px;height:80px;margin:-40px 0 0 -40px;border-radius:50%;border:4px solid #5B4FE0;z-index:4;opacity:0}
 </style></head><body>
 <div id="cam"></div>
 <div class="top" id="top"><div class="handle"><div class="mark"></div><div>Vish Kumbhar<small>Build with Vish</small></div></div><div class="pill" id="pill"></div></div>
@@ -130,6 +153,16 @@ const LOOK = {
       <div class="card in" data-a="rise" data-d=".5"><div class="pic" style="background:linear-gradient(150deg,#FFD8C4,#E07A5C)"></div><p>${b.right}</p></div></div>`,
   stat: (b) => `<canvas class="dots" width="1080" height="1350" data-dots="${b.dots || 0}"></canvas><div class="big" data-count="${b.value}" style="color:var(--acc)">${b.value}</div><div class="serif t3 words" style="margin-top:20px">${wordSpans(b.title)}</div>${b.src ? `<div class="src in" data-d=".6">${b.src}</div>` : ""}`,
   bars: (b) => `<div class="serif t3 words">${wordSpans(b.title)}</div><div class="bars">${b.bars.map((x, i) => `<div data-a="grow" data-d="${0.3 + i * 0.25}" style="height:${x.h}%;background:${x.c}"><label>${x.label}</label></div>`).join("")}</div>${b.src ? `<div class="src in" data-d=".9" style="margin-top:80px">${b.src}</div>` : ""}`,
+  ui: (b) => { const st = b.steps || [], nav = b.nav || ["New chat", "Projects", "Connectors", "Settings"];
+      const rows = st.filter((x) => x.click && !nav.includes(x.click)).map((x) => x.click);
+      return `${b.title ? `<div class="serif t3 words" style="margin-bottom:22px">${wordSpans(b.title)}</div>` : ""}<div class="ui in" data-a="uiwalk" data-d="0" data-steps='${JSON.stringify(st).replace(/'/g, "&#39;")}'>
+      <div class="side"><div class="app"><i></i>${b.app || "AI assistant"}</div>${nav.map((n) => `<div class="nav" data-k="${n}">${n}</div>`).join("")}</div>
+      <div class="main"><div class="h">${b.screen || ""}</div>${rows.map((r) => `<div class="row" data-k="${r}">${r}<b>${b.button || "Add"}</b></div>`).join("")}
+      ${st.some((x) => x.result === "reply") ? `<div class="reply" data-r="reply">${b.reply || ""}</div>` : ""}
+      ${st.some((x) => x.result === "site") ? `<div class="site" data-r="site"><div class="sn"><i></i><i></i><i></i></div><h4>${b.siteTitle || "Your new site"}</h4><p>${b.siteSub || "Built from one prompt"}</p><span class="cta">${b.siteCta || "Get started"}</span><div class="orb"></div></div>` : ""}
+      <div class="toast" data-r="connected">✓ ${b.toast || "Connected"}</div>
+      <div class="compose" data-k="__compose"></div></div>
+      <img class="ucur" src="/video/sprites/cursor-3d.png"><div class="urip"></div></div>`; },
   cta: (b) => `<div class="serif t2 words">${wordSpans(b.title)}</div><div class="btn in" data-a="pop" data-d=".35" id="btn${b.i}">${b.button}</div>
       <img class="cursor" data-a="cursor" data-d=".5" src="/video/sprites/cursor-3d.png"><div class="ripple" data-a="ripple" data-d="1.05"></div>
       ${b.sprite ? sprite(b.sprite, b.spriteStyle || "left:60px;bottom:250px;width:240px") : ""}${b.badge ? `<img class="badge3d in" data-a="badge" data-d=".1" src="/video/sprites/${b.badge}.png" style="${b.badgeStyle || "left:70px;top:230px;width:220px"}">` : ""}`,
@@ -201,6 +234,34 @@ window.setup = async (spec) => {
   window.READY = true;
 };
 
+
+// ui walkthrough: steps share the beat evenly; the cursor glides to each target, presses, and the screen reacts.
+function uiOffset(node, root) { let x = 0, y = 0; while (node && node !== root) { x += node.offsetLeft; y += node.offsetTop; node = node.offsetParent; } return [x, y]; }
+function uiWalk(root, x, beatDur) {
+  const k0 = ease(clamp(x / 0.6)); root.style.opacity = k0; root.style.transform = `translateY(${(1 - k0) * 100}px)`;
+  const st = JSON.parse(root.dataset.steps || "[]"); if (!st.length) return;
+  const span = Math.max(1.6, beatDur - 0.9), slot = span / st.length, t0 = 0.45;
+  const cur = root.querySelector(".ucur"), rip = root.querySelector(".urip"), comp = root.querySelector(".compose");
+  root.querySelectorAll(".row").forEach((r, i) => { r.style.opacity = clamp((x - 0.3 - i * 0.12) / 0.3); });
+  root.querySelectorAll(".hit").forEach((n) => n.classList.remove("hit"));
+  let px = root.offsetWidth * 0.7, py = root.offsetHeight * 0.85, typed = "";
+  st.forEach((s, i) => {
+    const a = t0 + i * slot, lx = x - a; if (lx < 0) return;
+    const tgt = s.type ? comp : s.click ? root.querySelector(`[data-k="${s.click}"]`) : null;
+    if (tgt) {
+      const [ox, oy] = uiOffset(tgt, root), tx = ox + Math.min(tgt.offsetWidth * 0.6, 160), ty = oy + tgt.offsetHeight * 0.55;
+      const m = ease(clamp(lx / 0.45)); px = px + (tx - px) * m; py = py + (ty - py) * m;
+      if (lx > 0.5) { tgt.classList.add("hit"); if (s.click && tgt.classList.contains("row") && st.some((q) => q.result === "connected")) tgt.classList.add("done"); }
+      const pr = clamp((lx - 0.45) / 0.5); rip.style.left = tx + "px"; rip.style.top = ty + "px"; rip.style.opacity = lx > 0.45 && pr < 1 ? 1 - pr : (rip.style.opacity || 0) * 0; rip.style.transform = `scale(${0.3 + pr * 1.4})`;
+      cur.style.transform = `scale(${1 - 0.16 * clamp(1 - Math.abs(lx - 0.5) / 0.12)})`;
+    }
+    if (s.type) typed = s.type.slice(0, Math.floor(clamp((lx - 0.5) / Math.max(0.8, slot - 0.8)) * s.type.length));
+    if (s.result) { const r = root.querySelector(`[data-r="${s.result}"]`); if (r) { const q = back(clamp(lx / 0.6)); r.style.opacity = clamp(lx / 0.25); r.style.transform = `translateY(${(1 - q) * 40}px) scale(${0.94 + 0.06 * q})`; } }
+  });
+  comp.innerHTML = typed + (typed && Math.floor(x * 2) % 2 ? '<span class="caret"></span>' : "");
+  const orb = root.querySelector(".orb"); if (orb) orb.style.transform = `translateY(${Math.sin(x * 2) * 10}px) rotate(${x * 20}deg)`;
+  cur.style.left = px + "px"; cur.style.top = py + "px"; cur.style.opacity = clamp((x - 0.3) / 0.2);
+}
 function animate(el, lt, beatDur) {
   const d = parseFloat(el.dataset.d || 0), a = el.dataset.a || "fade", x = lt - d;
   if (a === "fade" || el.classList.contains("in") && !el.dataset.a) { const k = ease(clamp(x / 0.5)); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * 30}px)`; return; }
@@ -210,6 +271,7 @@ function animate(el, lt, beatDur) {
   if (a === "float") { const k = back(clamp(x / 0.6)); el.style.opacity = clamp(x / 0.2); el.style.transform = `perspective(900px) translateY(${(1 - k) * 160 + Math.sin(lt * 2.2) * 10}px) rotateY(${Math.sin(lt * 1.1) * 12}deg) rotate(${Math.sin(lt * 1.3) * 2}deg) scale(${0.7 + 0.3 * k})`; return; }
   if (a === "slideR") { const k = back(clamp(x / 0.7)); el.style.opacity = clamp(x / 0.2); el.style.transform = `translateX(${(1 - k) * 520}px) rotate(${(1 - k) * 6 + Math.sin(lt * 1.4) * 1.2}deg)`; return; }
   if (a === "badge") { const k = back(clamp(x / 0.5)); el.style.opacity = clamp(x / 0.15); el.style.transform = `perspective(900px) scale(${0.3 + 0.7 * k}) rotate(${(1 - k) * -25 + Math.sin(lt * 1.6) * 3}deg) rotateY(${Math.sin(lt * 1.2) * 10}deg)`; return; }
+  if (a === "uiwalk") { uiWalk(el, x, beatDur); }
   if (a === "pagescroll") { const k = ease(clamp(x / Math.max(1.2, beatDur - 0.6))); el.style.transform = `translateY(${-k * (+el.dataset.to)}px)`; return; }
   if (a === "cursorwander") { el.style.opacity = clamp(x / 0.2); el.style.left = (520 + Math.sin(lt * 0.9) * 180) + "px"; el.style.top = (380 + Math.cos(lt * 0.7) * 160) + "px"; return; }
   if (a === "scroll") { const k = back(clamp(x / 0.85)); el.style.transform = `translateY(${-k * (+el.dataset.to)}px)`; return; }
