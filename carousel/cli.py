@@ -1,5 +1,5 @@
 """carousel render examples/creator-contract-checks.json --out out/
-carousel draft "topic" --notes notes.txt   (needs ANTHROPIC_API_KEY or MISTRAL_API_KEY)
+carousel draft "topic" --notes notes.txt   (needs ANTHROPIC_API_KEY or any free provider key)
 """
 from __future__ import annotations
 
@@ -22,8 +22,9 @@ def main(argv: list[str] | None = None) -> int:
     d.add_argument("--name", default="Your Name")
     d.add_argument("--handle", default="@yourhandle")
     d.add_argument("--out", type=Path, default=Path("deck.json"))
-    d.add_argument("--provider", choices=["auto", "anthropic", "mistral"], default="auto",
-                   help="auto = Claude if ANTHROPIC_API_KEY is set, else Mistral")
+    d.add_argument("--provider", choices=["auto", "anthropic", "nvidia", "groq", "cloudflare", "llm7", "mistral"],
+                   default="auto", help="auto = Claude if ANTHROPIC_API_KEY is set, else every free provider with a key, "
+                                        "best first, falling back on failure")
     a = ap.parse_args(argv)
     if a.cmd == "render":
         pdf = render(load(a.deck), a.out)

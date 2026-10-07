@@ -56,16 +56,25 @@ carousel draft "What 850 creator deals taught me about briefs" --notes my_notes.
 carousel render deck.json
 ```
 
-### Free option: Mistral
+### Free option: no Anthropic key needed
 
-No Anthropic key? Use Mistral's free tier instead. No extra package needed:
+Without `ANTHROPIC_API_KEY`, `carousel draft` uses every free provider you have a key for, as a fallback chain (best quality first). If one is rate-limited, out of credit, times out, or keeps breaking the style rules, the next one takes over. No extra packages needed.
+
+| Order | Provider | Env var | Default model |
+|---|---|---|---|
+| 1 | NVIDIA (build.nvidia.com) | `NVIDIA_API_KEY` | `moonshotai/kimi-k3` |
+| 2 | Groq | `GROQ_API_KEY` | `openai/gpt-oss-120b` |
+| 3 | Cloudflare Workers AI | `CLOUDFLARE_API_TOKEN` (+ optional `CLOUDFLARE_ACCOUNT_ID`, looked up from the token if missing) | `@cf/meta/llama-3.3-70b-instruct-fp8-fast` |
+| 4 | LLM7 | `LLM7_API_KEY` | `deepseek-v4-pro` |
+| 5 | Mistral | `MISTRAL_API_KEY` | `ministral-14b-latest` |
 
 ```bash
-export MISTRAL_API_KEY=...
-carousel draft "What 850 creator deals taught me about briefs" --notes my_notes.txt --provider mistral
+carousel draft "What 850 creator deals taught me about briefs" --notes my_notes.txt   # auto chain
+carousel draft "..." --notes my_notes.txt --provider groq                            # one provider only
+CAROUSEL_MODEL=z-ai/glm-5.3 carousel draft "..." --notes my_notes.txt --provider nvidia
 ```
 
-`--provider auto` (the default) uses Claude when `ANTHROPIC_API_KEY` is set, otherwise Mistral. The default Mistral model is `ministral-14b-latest`, the strongest model on the free tier; set `CAROUSEL_MODEL` to pick another. Free-tier rate limits (HTTP 429) are retried with backoff.
+The CLI prints which provider wrote the draft. Rate limits (HTTP 429) are retried with backoff before moving on.
 
 Claude returns the deck as **structured JSON through tool use**, along with a caption. The same style validator checks the draft, and if it breaks a rule the errors go back to Claude for one more attempt. The prompt forbids statistics that aren't in your notes, and the code enforces it: any percentage or multiplier (`43%`, `2x`) whose number isn't in your notes goes back to the model as an error, so the post stays true to your experience. You always review the JSON before rendering.
 

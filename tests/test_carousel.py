@@ -5,7 +5,7 @@ from types import SimpleNamespace
 import pytest
 
 from carousel import ai
-from carousel.ai import MistralClient, draft, invented_numbers
+from carousel.ai import FallbackClient, LLMError, OpenAICompatClient, draft, invented_numbers
 from carousel.templates import render_slide, validate
 
 DECK = json.loads((Path(__file__).parent.parent / "examples" / "creator-contract-checks.json").read_text())
@@ -47,7 +47,7 @@ def test_invented_statistics_are_flagged():
     assert invented_numbers(deck, "62% of disputes, approved 2x faster") == ["43%"]
 
 
-def test_mistral_client_returns_anthropic_shaped_tool_use(monkeypatch):
+def test_openai_compat_client_returns_anthropic_shaped_tool_use(monkeypatch):
     good = {k: v for k, v in DECK.items() if k != "author"}
     sent = {}
 
@@ -67,9 +67,25 @@ def test_mistral_client_returns_anthropic_shaped_tool_use(monkeypatch):
         return Resp()
 
     monkeypatch.setattr(ai.urllib.request, "urlopen", fake_urlopen)
-    deck = draft("contracts", "notes", DECK["author"], client=MistralClient(api_key="k"))
+    deck = draft("contracts", "notes", DECK["author"], client=OpenAICompatClient("groq", "https://x/v1", "k", "m"))
     assert validate(deck) == [] and sent["tools"][0]["function"]["name"] == "build_deck"
-    assert sent["messages"][0]["role"] == "system" and sent["model"] == ai.MISTRAL_MODEL
+    assert sent["messages"][0]["role"] == "system" and sent["model"] == "m" and sent["tool_choice"] == "required"
+
+
+def test_fallback_skips_failing_provider():
+    good = {k: v for k, v in DECK.items() if k != "author"}
+
+    def boom(**kw):
+        raise LLMError("429 rate limited")
+
+    broken = SimpleNamespace(name="nvidia", messages=SimpleNamespace(create=boom))
+    ok = SimpleNamespace(name="groq", model="m", messages=SimpleNamespace(
+        create=lambda **kw: SimpleNamespace(content=[SimpleNamespace(type="tool_use", input=good)])))
+    logs = []
+    deck = draft("contracts", "notes", DECK["author"], client=FallbackClient([broken, ok], log=logs.append))
+    assert validate(deck) == [] and any("nvidia failed" in l for l in logs)
+    with pytest.raises(LLMError):
+        FallbackClient([broken], log=logs.append).messages.create(system="", tools=[], messages=[], max_tokens=1)
 
 
 def test_render_produces_pdf(tmp_path):
@@ -83,3 +99,13 @@ def test_render_produces_pdf(tmp_path):
     from pypdf import PdfReader
 
     assert len(PdfReader(str(pdf)).pages) == len(DECK["slides"])
+
+
+def test_rule_breaking_provider_is_swapped_for_the_next():
+    good = {k: v for k, v in DECK.items() if k != "author"}
+    bad = {"slug": "x", "caption": "c", "slides": [{"type": "point", "title": "x"}]}
+    reply = lambda d: SimpleNamespace(content=[SimpleNamespace(type="tool_use", input=d)])
+    sloppy = SimpleNamespace(name="mistral", model="m", messages=SimpleNamespace(create=lambda **kw: reply(bad)))
+    solid = SimpleNamespace(name="nvidia", model="m", messages=SimpleNamespace(create=lambda **kw: reply(good)))
+    deck = draft("contracts", "notes", DECK["author"], client=FallbackClient([sloppy, solid], log=lambda m: None))
+    assert validate(deck) == []

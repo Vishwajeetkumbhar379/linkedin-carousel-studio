@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "linkedin-carousel-studio"
 version = "0.1.0"
-description = "Turn an outline into an on-brand LinkedIn carousel (PNG slides + PDF), with an optional Claude drafting step."
+description = "Turn an outline into an on-brand LinkedIn carousel (PNG slides + PDF), with an optional AI drafting step (Claude or free providers)."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
