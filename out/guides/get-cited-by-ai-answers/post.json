@@ -1,0 +1,255 @@
+{
+  "slug": "get-cited-by-ai-answers",
+  "keyword": "CITED",
+  "title": "Get cited by AI answers",
+  "subtitle": "Seven free-tool workflows with Claude to find out who AI names, and fix your pages.",
+  "hook": "ChatGPT may be recommending your competitor, not you. Check it free.",
+  "caption": "ChatGPT may be recommending your competitor, not you. Check it free. 👇\nThe full guide covers setup step by step, with every prompt.\n\nWhat I'd run:\n\n1/ Track the questions\nClaude turns your offer into 30 buyer questions.\nYou log who gets cited in each assistant.\n\n2/ Find pages that rank but never get quoted\nClaude matches your Search Console and Bing exports.\nPages that already earn clicks are the best first fixes.\n\n3/ Rewrite to be quotable\nClaude audits a page, then rewrites it answer first.\nShort, checkable passages are easier to lift.\n\n4/ Find the questions you're invisible for\nClaude clusters your real queries into themes.\nYou see which answers you don't have yet.\n\n5/ Spot who gets named instead\nClaude compares the cited page with yours.\nLook for the missing fact, not for more words.\n\n6/ Give Claude the data\nExports first, a connector later.\nClaude can't see ChatGPT's answers, so you paste them in.\n\n7/ Get a weekly report\nClaude writes one page every Monday from your files.\nTrends over four weeks beat any single answer.\n\nNobody can promise a citation, and Google says there are no extra requirements beyond normal Search eligibility. So the job is simple: let the crawlers in, state facts people can check, keep pages current.\n\nSetup: Search Console, Bing Webmaster Tools, a spreadsheet and Claude. All free to start.\n\nComment CITED and I'll send you the full guide.",
+  "first_comment": "Sources I checked on 8 Oct 2026:\nGoogle Search Central, AI features and your website (page updated Dec 2025): no extra requirements for AI Overviews or AI Mode. https://developers.google.com/search/docs/appearance/ai-features\nGoogle Search Console Help, Generative AI performance report (Search), live for all sites since 31 Aug 2026: impressions in AI Overviews and AI Mode. https://support.google.com/webmasters/answer/16984139\nOpenAI, crawler overview: OAI-SearchBot controls ChatGPT search, GPTBot is separate. https://platform.openai.com/docs/bots\nMicrosoft Bing, AI Performance in Bing Webmaster Tools (Feb 2026): citations in Copilot and Bing. https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview",
+  "pages": [
+    {
+      "kind": "cover",
+      "kicker": "THE MINI GUIDE · NO FLUFF, JUST STEPS",
+      "title": "Get cited by AI answers",
+      "sub": "Seven free workflows with Claude to see who ChatGPT, Perplexity, Gemini and Google AI Mode name, and fix your pages."
+    },
+    {
+      "kind": "step",
+      "n": 1,
+      "kicker": "STEP 1 · TRACK THE QUESTIONS",
+      "title": "Log who gets cited for real questions",
+      "body": "Ask Claude for 30 questions a buyer would type. Run ten by hand in ChatGPT, Perplexity, Gemini and AI Mode. Log whether you are linked, named only, or absent.",
+      "prompt": "I run [business] in [market] for [customers]. Write 30 questions a real buyer would type into an AI assistant: what is it, how to choose, X versus Y, cost, where to buy. Natural wording, no keywords. Table: ID, Question, Stage.",
+      "ui": {
+        "type": "table",
+        "title": "Citation log (example)",
+        "rows": [
+          [
+            "Question",
+            "Where",
+            "Result"
+          ],
+          [
+            "Q1 best X for Y",
+            "Assistant A",
+            "e.g. Linked"
+          ],
+          [
+            "Q2 X vs Z",
+            "Assistant B",
+            "e.g. Named only"
+          ],
+          [
+            "Q3 cost of X",
+            "Assistant C",
+            "e.g. Absent"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "step",
+      "n": 2,
+      "kicker": "STEP 2 · FIND QUIET PAGES",
+      "title": "Find pages with clicks but no citations",
+      "body": "Export pages from Search Console, Google's generative AI report and Bing AI Performance. Claude matches the URLs and lists pages with clicks but few or no AI impressions or citations.",
+      "prompt": "Match these CSVs by URL, ignoring tracking parameters. List the 15 pages with the most classic clicks and few or no AI impressions or Bing citations. Columns: page, clicks, AI impressions, citations. Mark URLs found in only one file. Invent no numbers.",
+      "ui": {
+        "type": "table",
+        "title": "Page match (example)",
+        "rows": [
+          [
+            "Page",
+            "Clicks",
+            "AI"
+          ],
+          [
+            "/guide-a",
+            "e.g. 420",
+            "e.g. 0"
+          ],
+          [
+            "/guide-b",
+            "e.g. 310",
+            "e.g. 2"
+          ],
+          [
+            "/guide-c",
+            "e.g. 95",
+            "e.g. 14"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "step",
+      "n": 3,
+      "kicker": "STEP 3 · MAKE PAGES QUOTABLE",
+      "title": "Answer first, then add checkable facts",
+      "body": "Audit one page, then rewrite one section at a time. Open with a direct answer, keep one idea per paragraph, and mark every missing fact [ADD FACT] so Claude never invents one.",
+      "prompt": "Rewrite this section so one paragraph can be lifted out and still make sense. Open with a direct answer. Use only facts I give you; write [ADD FACT: what is needed] where one is missing. Never invent numbers, quotes or reviews. Show before and after.",
+      "ui": {
+        "type": "checklist",
+        "title": "Quotable page checks",
+        "rows": [
+          "Direct answer in the first 100 words",
+          "Claims have a source or date",
+          "Headings read like questions",
+          "Last updated date is shown"
+        ]
+      }
+    },
+    {
+      "kind": "step",
+      "n": 4,
+      "kicker": "STEP 4 · FIND MISSING ANSWERS",
+      "title": "List the questions you are invisible for",
+      "body": "Give Claude your Search Console queries, Bing grounding queries and customer questions. It clusters them into themes and shows which themes none of your pages answers.",
+      "prompt": "Pick queries written as full questions or comparisons. Cluster them into themes. For each theme, say if one of my pages answers it, partly, or not at all. Rank the 'not at all' themes by how often they appear. Show the rows you used.",
+      "ui": {
+        "type": "chart",
+        "title": "Gaps by theme (example data)",
+        "rows": [
+          [
+            "Theme",
+            "Questions"
+          ],
+          [
+            "Pricing",
+            "12"
+          ],
+          [
+            "Comparisons",
+            "9"
+          ],
+          [
+            "Setup help",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "step",
+      "n": 5,
+      "kicker": "STEP 5 · SPOT WHO IS NAMED",
+      "title": "See who gets named instead of you",
+      "body": "When a rival is cited where you are absent, open that page. Paste both pages into Claude and ask what theirs states clearly that yours does not. Edit from your own facts.",
+      "prompt": "An AI cited this page instead of mine. Compare both as a reader would. What does theirs state clearly that mine does not: facts, steps, definitions, dates? Give 5 edits as before and after sentences. Do not copy their wording.",
+      "ui": {
+        "type": "chat",
+        "title": "Claude (example chat)",
+        "rows": [
+          "You: Why was Page B cited, not mine?",
+          "Claude: B gives a price range and a date. Yours has neither.",
+          "You: Draft 5 edits in my own words.",
+          "Claude: 1. Add your price range and the date you checked it."
+        ]
+      }
+    },
+    {
+      "kind": "step",
+      "n": 6,
+      "kicker": "STEP 6 · GIVE CLAUDE DATA",
+      "title": "Feed Claude exports, then a connector",
+      "body": "Start with CSV exports uploaded to a Claude Project. Add a Drive connector for your tracker if you like. Claude cannot see ChatGPT's answers, so paste them in yourself.",
+      "prompt": "Using only the uploaded file or connected source, show the 10 pages with the most impressions in the last 28 days. Say which date range you used and where each number came from. Change nothing. If you cannot reach the data, say so.",
+      "ui": {
+        "type": "browser",
+        "title": "Search Console export",
+        "rows": [
+          "Open the Performance report",
+          "Choose the Pages tab",
+          "Press Export",
+          "Upload the file to your Claude Project"
+        ]
+      }
+    },
+    {
+      "kind": "step",
+      "n": 7,
+      "kicker": "STEP 7 · WEEKLY REPORT",
+      "title": "Let Claude write the Monday report",
+      "body": "Every Monday, run your questions, export the files and upload them. Claude writes one page: what changed, what to edit next, and what the data cannot show. Trust trends, not single answers.",
+      "prompt": "Write my weekly AI-visibility report from the files in this Project. One page: three lines on what changed with evidence, a table of question, last week, this week, three actions, and caveats. A missing number means 'no data'.",
+      "ui": {
+        "type": "checklist",
+        "title": "Monday routine",
+        "rows": [
+          "Run 10 questions (20 min)",
+          "Export Search Console and Bing (5 min)",
+          "Upload to the Project (2 min)",
+          "Ask for the report (5 min)"
+        ]
+      }
+    },
+    {
+      "kind": "cta",
+      "title": "Get the full guide",
+      "sub": "Setup step by step, all 11 prompts and the honest limits.",
+      "keyword": "CITED"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "what": "Google: no additional requirements for AI Overviews or AI Mode; page must be indexed and snippet-eligible; AI traffic sits in the Search Console Web search type (page updated 2025-12-10)",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/16984139",
+      "what": "Search Console Help: Generative AI performance report (Search) shows impressions in AI Overviews and AI Mode by page, country, device and date, with export",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports",
+      "what": "Google Search Central blog, 3 Jun 2026: launch of the generative AI performance reports, worldwide for all sites since 31 Aug 2026",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/16908024",
+      "what": "Search Console Help: Search generative AI control (Settings), include or exclude your site",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://platform.openai.com/docs/bots",
+      "what": "OpenAI: OAI-SearchBot (ChatGPT search), GPTBot (training), ChatGPT-User; robots.txt changes take about 24 hours",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+      "what": "Perplexity: PerplexityBot and Perplexity-User, robots.txt behaviour and WAF allow rules",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview",
+      "what": "Microsoft Bing: AI Performance report (total citations, cited pages, grounding queries) for Copilot, Bing AI summaries and select partners",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://blogs.bing.com/search/2026/6/New-AI-Visibility-Insights-in-Bing-Webmaster-Tools-Intents-Topics-Citation-Share-Compare/",
+      "what": "Microsoft Bing, Jun 2026: Intents, Topics, Citation Share and Compare in preview",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/8241126-uploading-files-to-claude",
+      "what": "Anthropic: supported file types and Project file limits",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/9517075-what-are-projects",
+      "what": "Anthropic: Projects are available on Free plans (up to five projects)",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities",
+      "what": "Anthropic: how connectors work, permissions and Google Drive example",
+      "checked": "2026-10-08"
+    },
+    {
+      "url": "https://support.google.com/gemini/answer/14143489",
+      "what": "Gemini Apps Help: Sources button appears when links are available",
+      "checked": "2026-10-08"
+    }
+  ]
+}

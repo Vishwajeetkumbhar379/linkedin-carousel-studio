@@ -18,7 +18,8 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 GH = "https://github.com/vishwajeetkumbhar379/linkedin-carousel-studio/blob/claude/content-engine-test-gate/"
 ORDER = [
-    "flagship/claude-instagram", "flagship/manus-video-editor", "flagship/claude-skills",
+    "flagship/claude-instagram", "guides/get-cited-by-ai-answers", "flagship/manus-video-editor",
+    "guides/creator-campaign-hq-in-claude", "flagship/claude-skills", "guides/youtube-research-with-claude",
     "batch-03/ltk-auto-draft-apple-intelligence", "batch-03/claude-connectors-marketers-step-by-step",
     "batch-03/stop-influencers-target-kids", "batch-03/chatgpt-apps-connectors-marketers-step-by-step",
     "batch-02/free-llm-token-repos", "batch-02/claude-startups-free-year",
@@ -101,12 +102,15 @@ def collect(out: Path) -> list[dict]:
             slides = sorted((d / "slides").glob("slide-*.png"))
             if not slides and (d / "image.png").exists():
                 slides = [d / "image.png"]
-            it["fmt"] = "Carousel" if len(slides) > 1 else "Image"
+            gpost = (d / "post.json").exists()  # comment-gated guide post: the preview image first, then the guide pages
+            if gpost and (d / "preview.png").exists():
+                slides = [d / "preview.png"] + slides
+            it["fmt"] = "Guide post" if gpost else "Carousel" if len(slides) > 1 else "Image"
             for s in slides:
                 name = f"{slug}-{s.stem}.jpg"
                 jpg(s, out / "img" / name, 720)
                 it["slides"].append(f"img/{name}")
-            f = "carousel.pdf" if (d / "carousel.pdf").exists() else "image.png"
+            f = "preview.png" if gpost else "carousel.pdf" if (d / "carousel.pdf").exists() else "image.png"
             it["dl"] = GH + f"out/{key}/{f}?raw=true"
             it["dlname"] = "PDF" if f.endswith(".pdf") else "PNG"
             if (d / "slides.zip").exists():
