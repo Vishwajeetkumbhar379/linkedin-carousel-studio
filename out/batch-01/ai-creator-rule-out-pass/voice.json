@@ -1,100 +1,100 @@
 {
  "voice": "Puck",
- "duration": 38.137,
+ "duration": 38.61,
  "scenes": [
   {
    "start": 0.0,
-   "end": 5.8,
+   "end": 5.58,
    "phrases": [
     {
-     "text": "Everyone asks AI to find creators.",
      "start": 0.0,
-     "end": 2.9
+     "end": 2.91,
+     "text": "Everyone asks AI to find creators."
     },
     {
-     "text": "I use it to rule them out.",
-     "start": 3.22,
-     "end": 5.8
+     "start": 3.33,
+     "end": 5.58,
+     "text": "I use it to rule them out."
     }
    ]
   },
   {
-   "start": 6.4,
-   "end": 10.73,
+   "start": 6.28,
+   "end": 10.95,
    "phrases": [
     {
-     "text": "The hard filters I do myself.",
-     "start": 6.4,
-     "end": 8.36
+     "start": 6.28,
+     "end": 8.2,
+     "text": "The hard filters I do myself."
     },
     {
-     "text": "Country, language, budget.",
-     "start": 8.68,
-     "end": 10.73
+     "start": 8.62,
+     "end": 10.95,
+     "text": "Country, language, budget."
     }
    ]
   },
   {
-   "start": 11.33,
-   "end": 18.8,
+   "start": 11.65,
+   "end": 18.49,
    "phrases": [
     {
-     "text": "Then I paste their recent captions and some comments.",
-     "start": 11.33,
-     "end": 14.59
+     "start": 11.65,
+     "end": 14.98,
+     "text": "Then I paste their recent captions and some comments."
     },
     {
-     "text": "And ask: what makes this a bad fit for my brief?",
-     "start": 14.91,
-     "end": 18.8
+     "start": 15.4,
+     "end": 18.49,
+     "text": "And ask: what makes this a bad fit for my brief?"
     }
    ]
   },
   {
-   "start": 19.4,
-   "end": 25.65,
+   "start": 19.19,
+   "end": 25.35,
    "phrases": [
     {
-     "text": "It flags tone clashes and competitor deals fast.",
-     "start": 19.4,
-     "end": 22.93
+     "start": 19.19,
+     "end": 22.31,
+     "text": "It flags tone clashes and competitor deals fast."
     },
     {
-     "text": "I still check every flag myself.",
-     "start": 23.25,
-     "end": 25.65
+     "start": 22.73,
+     "end": 25.35,
+     "text": "I still check every flag myself."
     }
    ]
   },
   {
-   "start": 26.25,
-   "end": 33.24,
+   "start": 26.05,
+   "end": 32.91,
    "phrases": [
     {
-     "text": "Whoever survives gets a first line about one real post.",
-     "start": 26.25,
-     "end": 30.5
+     "start": 26.05,
+     "end": 30.28,
+     "text": "Whoever survives gets a first line about one real post."
     },
     {
-     "text": "AI drafts it, I rewrite it.",
-     "start": 30.82,
-     "end": 33.24
+     "start": 30.7,
+     "end": 32.91,
+     "text": "AI drafts it, I rewrite it."
     }
    ]
   },
   {
-   "start": 33.84,
-   "end": 36.737,
+   "start": 33.61,
+   "end": 37.11,
    "phrases": [
     {
-     "text": "Both prompts are on my site.",
-     "start": 33.84,
-     "end": 35.5
+     "start": 33.61,
+     "end": 35.56,
+     "text": "Both prompts are on my site."
     },
     {
-     "text": "Follow for more.",
-     "start": 35.82,
-     "end": 36.737
+     "start": 35.98,
+     "end": 37.11,
+     "text": "Follow for more."
     }
    ]
   }

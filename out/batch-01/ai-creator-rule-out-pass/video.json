@@ -43,7 +43,7 @@
       "avTop": 170,
       "avSide": "right",
       "at": 0.0,
-      "until": 2.9,
+      "until": 2.91,
       "say": "Everyone asks AI to find creators.",
       "avSize": 190
     },
@@ -57,8 +57,8 @@
       "avatar": "smirk",
       "avTop": 960,
       "avSide": "left",
-      "at": 3.22,
-      "until": 5.8,
+      "at": 3.33,
+      "until": 5.58,
       "say": "I use it to rule them out."
     },
     {
@@ -71,8 +71,8 @@
         "Budget"
       ],
       "trans": "pop",
-      "at": 6.4,
-      "until": 8.36,
+      "at": 6.28,
+      "until": 8.2,
       "say": "The hard filters I do myself."
     },
     {
@@ -80,8 +80,8 @@
       "bg": "peach",
       "title": "Copy recent captions and comments",
       "trans": "rise",
-      "at": 8.68,
-      "until": 10.73,
+      "at": 8.62,
+      "until": 10.95,
       "say": "Country, language, budget."
     },
     {
@@ -89,8 +89,8 @@
       "bg": "ivory",
       "prompt": "Here's my brief and this creator's last 12 captions. What would make them a bad fit? Quote the evidence.",
       "trans": "zoom",
-      "at": 11.33,
-      "until": 14.59,
+      "at": 11.65,
+      "until": 14.98,
       "say": "Then I paste their recent captions and some comments."
     },
     {
@@ -103,8 +103,8 @@
         "Off-topic audience"
       ],
       "trans": "click",
-      "at": 14.91,
-      "until": 18.8,
+      "at": 15.4,
+      "until": 18.49,
       "say": "And ask: what makes this a bad fit for my brief?"
     },
     {
@@ -116,8 +116,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "right",
-      "at": 19.4,
-      "until": 22.93,
+      "at": 19.19,
+      "until": 22.31,
       "say": "It flags tone clashes and competitor deals fast."
     },
     {
@@ -126,8 +126,8 @@
       "title": "Survivors get *one real line*",
       "size": "t2",
       "trans": "rise",
-      "at": 23.25,
-      "until": 25.65,
+      "at": 22.73,
+      "until": 25.35,
       "say": "I still check every flag myself."
     },
     {
@@ -135,8 +135,8 @@
       "bg": "ivory",
       "prompt": "Write one opening line about their post on [topic]. Specific, under 20 words, no flattery.",
       "trans": "zoom",
-      "at": 26.25,
-      "until": 30.5,
+      "at": 26.05,
+      "until": 30.28,
       "say": "Whoever survives gets a first line about one real post."
     },
     {
@@ -148,8 +148,8 @@
       "avatar": "thinking",
       "avTop": 730,
       "avSide": "left",
-      "at": 30.82,
-      "until": 33.24,
+      "at": 30.7,
+      "until": 32.91,
       "say": "AI drafts it, I rewrite it."
     },
     {
@@ -158,8 +158,8 @@
       "title": "Both prompts on *Build with Vish*",
       "size": "t3",
       "trans": "whip",
-      "at": 33.84,
-      "until": 35.5,
+      "at": 33.61,
+      "until": 35.56,
       "say": "Both prompts are on my site."
     },
     {
@@ -171,111 +171,111 @@
       "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
-      "at": 35.82,
-      "until": 36.74,
+      "at": 35.98,
+      "until": 37.11,
       "say": "Follow for more."
     }
   ],
-  "duration": 39.54,
+  "duration": 39.91,
   "posters": {
-    "b01": 2.24,
-    "b02": 5.43,
-    "b03": 7.89,
-    "b04": 10.46,
-    "b05": 13.86,
-    "b06": 18.17,
-    "b07": 22.14,
-    "b08": 25.31,
-    "b09": 29.57,
-    "b10": 32.9,
-    "b11": 35.09,
-    "b12": 38.8
+    "b01": 2.33,
+    "b02": 5.35,
+    "b03": 7.82,
+    "b04": 10.71,
+    "b05": 14.31,
+    "b06": 18.1,
+    "b07": 21.69,
+    "b08": 25.05,
+    "b09": 29.43,
+    "b10": 32.69,
+    "b11": 35.17,
+    "b12": 39.12
   },
   "sfx": true,
   "captions": [
     {
       "at": 0.0,
-      "until": 2.98,
+      "until": 2.99,
       "text": "Everyone asks AI to find creators."
     },
     {
-      "at": 3.22,
-      "until": 5.88,
+      "at": 3.33,
+      "until": 5.66,
       "text": "I use it to rule them out."
     },
     {
-      "at": 6.4,
-      "until": 8.44,
+      "at": 6.28,
+      "until": 8.28,
       "text": "The hard filters I do myself."
     },
     {
-      "at": 8.68,
-      "until": 10.81,
+      "at": 8.62,
+      "until": 11.03,
       "text": "Country, language, budget."
     },
     {
-      "at": 11.33,
-      "until": 12.977,
+      "at": 11.65,
+      "until": 13.331,
       "text": "Then I paste their recent"
     },
     {
-      "at": 12.897,
-      "until": 14.67,
+      "at": 13.251,
+      "until": 15.06,
       "text": "captions and some comments."
     },
     {
-      "at": 14.91,
-      "until": 17.142,
+      "at": 15.4,
+      "until": 17.189,
       "text": "And ask: what makes this a"
     },
     {
-      "at": 17.062,
-      "until": 18.88,
+      "at": 17.109,
+      "until": 18.57,
       "text": "bad fit for my brief?"
     },
     {
-      "at": 19.4,
-      "until": 21.057,
+      "at": 19.19,
+      "until": 20.664,
       "text": "It flags tone clashes"
     },
     {
-      "at": 20.977,
-      "until": 23.01,
+      "at": 20.584,
+      "until": 22.39,
       "text": "and competitor deals fast."
     },
     {
-      "at": 23.25,
-      "until": 25.73,
+      "at": 22.73,
+      "until": 25.43,
       "text": "I still check every flag myself."
     },
     {
-      "at": 26.25,
-      "until": 28.612,
+      "at": 26.05,
+      "until": 28.402,
       "text": "Whoever survives gets a first"
     },
     {
-      "at": 28.532,
-      "until": 30.58,
+      "at": 28.322,
+      "until": 30.36,
       "text": "line about one real post."
     },
     {
-      "at": 30.82,
-      "until": 33.32,
+      "at": 30.7,
+      "until": 32.99,
       "text": "AI drafts it, I rewrite it."
     },
     {
-      "at": 33.84,
-      "until": 35.58,
+      "at": 33.61,
+      "until": 35.64,
       "text": "Both prompts are on my site."
     },
     {
-      "at": 35.82,
-      "until": 36.817,
+      "at": 35.98,
+      "until": 37.19,
       "text": "Follow for more."
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
+    "engine": "chatterbox-clone-of-video-25",
     "voice": "Puck",
     "breaths": true,
     "bed": false
