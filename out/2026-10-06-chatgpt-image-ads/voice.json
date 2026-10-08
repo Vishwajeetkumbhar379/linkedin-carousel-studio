@@ -1,110 +1,110 @@
 {
  "voice": "Puck",
- "duration": 41.349999999999994,
+ "duration": 40.702999999999996,
  "scenes": [
   {
    "start": 0.0,
-   "end": 5.6,
+   "end": 5.3,
    "phrases": [
     {
+     "text": "So. ChatGPT is about to put ads",
      "start": 0.0,
-     "end": 3.29,
-     "text": "So. ChatGPT is about to put ads"
+     "end": 2.312
     },
     {
-     "start": 3.71,
-     "end": 5.6,
-     "text": "right next to the images you make."
+     "text": "right next to the images you make.",
+     "start": 2.632,
+     "end": 5.3
     }
    ]
   },
   {
-   "start": 6.3,
-   "end": 11.05,
+   "start": 5.9,
+   "end": 10.22,
    "phrases": [
     {
-     "start": 6.3,
-     "end": 7.47,
-     "text": "It's a test for now."
+     "text": "It's a test for now.",
+     "start": 5.9,
+     "end": 7.204
     },
     {
-     "start": 7.89,
-     "end": 11.05,
-     "text": "US only, with a handful of advertisers."
+     "text": "US only, with a handful of advertisers.",
+     "start": 7.524,
+     "end": 10.22
     }
    ]
   },
   {
-   "start": 11.75,
-   "end": 17.12,
+   "start": 10.82,
+   "end": 16.14,
    "phrases": [
     {
-     "start": 11.75,
-     "end": 13.45,
-     "text": "The ads are labelled."
+     "text": "The ads are labelled.",
+     "start": 10.82,
+     "end": 12.301
     },
     {
-     "start": 13.87,
-     "end": 17.12,
-     "text": "And they sit beside your picture. Not inside it."
+     "text": "And they sit beside your picture. Not inside it.",
+     "start": 12.621,
+     "end": 16.14
     }
    ]
   },
   {
-   "start": 17.82,
-   "end": 22.64,
+   "start": 16.74,
+   "end": 22.14,
    "phrases": [
     {
-     "start": 17.82,
-     "end": 19.07,
-     "text": "Why should you care?"
+     "text": "Why should you care?",
+     "start": 16.74,
+     "end": 18.52
     },
     {
-     "start": 19.49,
-     "end": 22.64,
-     "text": "Over a billion people use ChatGPT every week."
+     "text": "Over a billion people use ChatGPT every week.",
+     "start": 18.84,
+     "end": 22.14
     }
    ]
   },
   {
-   "start": 23.34,
-   "end": 32.34,
+   "start": 22.74,
+   "end": 31.82,
    "phrases": [
     {
-     "start": 23.34,
-     "end": 24.66,
-     "text": "And the early numbers?"
+     "text": "And the early numbers?",
+     "start": 22.74,
+     "end": 24.18
     },
     {
-     "start": 25.08,
-     "end": 28.74,
-     "text": "One brand got cheaper conversions than on paid search."
+     "text": "One brand got cheaper conversions than on paid search.",
+     "start": 24.5,
+     "end": 28.1
     },
     {
-     "start": 29.16,
-     "end": 32.34,
-     "text": "One brand, though. So, a signal. Not proof."
+     "text": "One brand, though. So, a signal. Not proof.",
+     "start": 28.42,
+     "end": 31.82
     }
    ]
   },
   {
-   "start": 33.04,
-   "end": 39.85,
+   "start": 32.42,
+   "end": 39.303,
    "phrases": [
     {
-     "start": 33.04,
-     "end": 33.95,
-     "text": "Here's my take."
+     "text": "Here's my take.",
+     "start": 32.42,
+     "end": 33.38
     },
     {
-     "start": 34.37,
-     "end": 38.3,
-     "text": "The next ad slot is the moment someone pictures your product."
+     "text": "The next ad slot is the moment someone pictures your product.",
+     "start": 33.7,
+     "end": 37.5
     },
     {
-     "start": 38.72,
-     "end": 39.85,
-     "text": "Follow for more."
+     "text": "Follow for more.",
+     "start": 37.82,
+     "end": 39.303
     }
    ]
   }
