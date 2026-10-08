@@ -1,81 +1,81 @@
 {
  "voice": "Puck",
- "duration": 34.07,
+ "duration": 32.531708333333334,
  "scenes": [
   {
    "start": 0.0,
-   "end": 4.02,
+   "end": 3.48,
    "phrases": [
     {
+     "text": "Can Apple Intelligence write your LTK captions for you?",
      "start": 0.0,
-     "end": 4.02,
-     "text": "Can Apple Intelligence write your LTK captions for you?"
+     "end": 3.48
     }
    ]
   },
   {
-   "start": 4.72,
-   "end": 8.43,
+   "start": 4.08,
+   "end": 7.38,
    "phrases": [
     {
-     "start": 4.72,
-     "end": 8.43,
-     "text": "First, link your photos inside the LTK Creator app."
+     "text": "First, link your photos inside the LTK Creator app.",
+     "start": 4.08,
+     "end": 7.38
     }
    ]
   },
   {
-   "start": 9.13,
-   "end": 13.4,
+   "start": 7.98,
+   "end": 11.94,
    "phrases": [
     {
-     "start": 9.13,
-     "end": 13.4,
-     "text": "Tap the Auto-Draft button to let Apple Intelligence analyse the image."
+     "text": "Tap the Auto-Draft button to let Apple Intelligence analyse the image.",
+     "start": 7.98,
+     "end": 11.94
     }
    ]
   },
   {
-   "start": 14.1,
-   "end": 18.13,
+   "start": 12.54,
+   "end": 17.08,
    "phrases": [
     {
-     "start": 14.1,
-     "end": 18.13,
-     "text": "Review the suggested caption, pick a tone, and edit any wording."
+     "text": "Review the suggested caption, pick a tone, and edit any wording.",
+     "start": 12.54,
+     "end": 17.08
     }
    ]
   },
   {
-   "start": 18.83,
-   "end": 22.6,
+   "start": 17.68,
+   "end": 22.16,
    "phrases": [
     {
-     "start": 18.83,
-     "end": 22.6,
-     "text": "Confirm product tags, then hit schedule or share instantly."
+     "text": "Confirm product tags, then hit schedule or share instantly.",
+     "start": 17.68,
+     "end": 22.16
     }
    ]
   },
   {
-   "start": 23.3,
-   "end": 27.82,
+   "start": 22.76,
+   "end": 27.22,
    "phrases": [
     {
-     "start": 23.3,
-     "end": 27.82,
-     "text": "You can also trigger Auto-Draft via Siri or Photos app shortcuts."
+     "text": "You can also trigger Auto-Draft via Siri or Photos app shortcuts.",
+     "start": 22.76,
+     "end": 27.22
     }
    ]
   },
   {
-   "start": 28.52,
-   "end": 32.57,
+   "start": 27.82,
+   "end": 31.132,
    "phrases": [
     {
-     "start": 28.52,
-     "end": 32.57,
-     "text": "Try LTK Auto-Draft today and see if AI fits your workflow."
+     "text": "Try LTK Auto-Draft today and see if AI fits your workflow.",
+     "start": 27.82,
+     "end": 31.132
     }
    ]
   }

@@ -41,7 +41,7 @@
       "avSize": 190,
       "avSide": "right",
       "at": 0.0,
-      "until": 4.02,
+      "until": 3.48,
       "say": "Can Apple Intelligence write your LTK captions for you?"
     },
     {
@@ -53,8 +53,8 @@
       "trans": "whip",
       "avTop": 730,
       "avSide": "left",
-      "at": 4.72,
-      "until": 8.43,
+      "at": 4.08,
+      "until": 7.38,
       "say": "First, link your photos inside the LTK Creator app."
     },
     {
@@ -66,8 +66,8 @@
       "trans": "zoom",
       "avTop": 740,
       "avSide": "right",
-      "at": 9.13,
-      "until": 13.4,
+      "at": 7.98,
+      "until": 11.94,
       "say": "Tap the Auto-Draft button to let Apple Intelligence analyse the image."
     },
     {
@@ -82,8 +82,8 @@
       "trans": "click",
       "avTop": 780,
       "avSide": "left",
-      "at": 14.1,
-      "until": 18.13,
+      "at": 12.54,
+      "until": 17.08,
       "say": "Review the suggested caption, pick a tone, and edit any wording."
     },
     {
@@ -97,8 +97,8 @@
       "trans": "pop",
       "avTop": 185,
       "avSide": "right",
-      "at": 18.83,
-      "until": 22.6,
+      "at": 17.68,
+      "until": 22.16,
       "say": "Confirm product tags, then hit schedule or share instantly."
     },
     {
@@ -109,8 +109,8 @@
       "trans": "rise",
       "avTop": 960,
       "avSide": "left",
-      "at": 23.3,
-      "until": 27.82,
+      "at": 22.76,
+      "until": 27.22,
       "say": "You can also trigger Auto-Draft via Siri or Photos app shortcuts."
     },
     {
@@ -122,12 +122,12 @@
       "trans": "whip",
       "avTop": 185,
       "avSide": "right",
-      "at": 28.52,
-      "until": 32.57,
+      "at": 27.82,
+      "until": 31.13,
       "say": "Try LTK Auto-Draft today and see if AI fits your workflow."
     }
   ],
-  "duration": 35.37,
+  "duration": 33.13,
   "posters": {
     "b01": 3.44,
     "b02": 7.91,
@@ -141,79 +141,80 @@
   "captions": [
     {
       "at": 0.0,
-      "until": 2.537,
+      "until": 2.207,
       "text": "Can Apple Intelligence write your"
     },
     {
-      "at": 2.457,
-      "until": 4.1,
+      "at": 2.127,
+      "until": 3.56,
       "text": "LTK captions for you?"
     },
     {
-      "at": 4.72,
-      "until": 7.026,
+      "at": 4.08,
+      "until": 6.14,
       "text": "First, link your photos inside"
     },
     {
-      "at": 6.946,
-      "until": 8.51,
+      "at": 6.06,
+      "until": 7.46,
       "text": "the LTK Creator app."
     },
     {
-      "at": 9.13,
-      "until": 11.19,
+      "at": 7.98,
+      "until": 9.897,
       "text": "Tap the Auto-Draft button to let"
     },
     {
-      "at": 11.11,
-      "until": 13.48,
+      "at": 9.817,
+      "until": 12.02,
       "text": "Apple Intelligence analyse the image."
     },
     {
-      "at": 14.1,
-      "until": 16.483,
+      "at": 12.54,
+      "until": 15.214,
       "text": "Review the suggested caption, pick a"
     },
     {
-      "at": 16.403,
-      "until": 18.21,
+      "at": 15.134,
+      "until": 17.16,
       "text": "tone, and edit any wording."
     },
     {
-      "at": 18.83,
-      "until": 20.86,
+      "at": 17.68,
+      "until": 20.077,
       "text": "Confirm product tags, then hit"
     },
     {
-      "at": 20.78,
-      "until": 22.68,
+      "at": 19.997,
+      "until": 22.24,
       "text": "schedule or share instantly."
     },
     {
-      "at": 23.3,
-      "until": 25.852,
+      "at": 22.76,
+      "until": 25.279,
       "text": "You can also trigger Auto-Draft via"
     },
     {
-      "at": 25.772,
-      "until": 27.9,
+      "at": 25.199,
+      "until": 27.3,
       "text": "Siri or Photos app shortcuts."
     },
     {
-      "at": 28.52,
-      "until": 30.874,
+      "at": 27.82,
+      "until": 29.759,
       "text": "Try LTK Auto-Draft today and see"
     },
     {
-      "at": 30.794,
-      "until": 32.65,
+      "at": 29.679,
+      "until": 31.212,
       "text": "if AI fits your workflow."
     }
   ],
   "voice": {
-    "engine": "chatterbox-clone-of-video-25",
+    "engine": "gemini-3.8-flash-lite-tts",
     "voice": "Puck",
     "breaths": true,
-    "bed": false
+    "bed": false,
+    "recipe": "video-25"
   }
 }
