@@ -44,7 +44,7 @@
       "avSize": 190,
       "avSide": "right",
       "at": 0.0,
-      "until": 3.46,
+      "until": 4.28,
       "say": "Mistral just shipped a one trillion parameter model."
     },
     {
@@ -57,8 +57,8 @@
       "avatar": "laugh",
       "avTop": 740,
       "avSide": "left",
-      "at": 4.16,
-      "until": 8.11,
+      "at": 4.88,
+      "until": 8.36,
       "say": "It's called Large 4, and the nickname is Le Chonk."
     },
     {
@@ -72,8 +72,8 @@
       "avatar": "surprised",
       "avTop": 185,
       "avSide": "right",
-      "at": 8.81,
-      "until": 12.44,
+      "at": 8.96,
+      "until": 12.34,
       "say": "Mistral trained it on its own GPUs, inside Europe."
     },
     {
@@ -89,8 +89,8 @@
       "avatar": "pleased",
       "avTop": 780,
       "avSide": "left",
-      "at": 13.14,
-      "until": 17.81,
+      "at": 12.94,
+      "until": 17.94,
       "say": "Its training data spans over 160 languages, every EU one included."
     },
     {
@@ -103,8 +103,8 @@
       "avatar": "thinking",
       "avTop": 730,
       "avSide": "right",
-      "at": 18.51,
-      "until": 21.96,
+      "at": 18.54,
+      "until": 22.34,
       "say": "Mistral says it handles spreadsheets, slides and PDFs too."
     },
     {
@@ -117,8 +117,8 @@
       "avatar": "smirk",
       "avTop": 740,
       "avSide": "left",
-      "at": 22.66,
-      "until": 26.08,
+      "at": 22.94,
+      "until": 26.34,
       "say": "The catch: the weights aren't out yet, only a preview."
     },
     {
@@ -129,8 +129,8 @@
       "avatar": "focused",
       "avTop": 960,
       "avSide": "right",
-      "at": 26.78,
-      "until": 30.86,
+      "at": 26.94,
+      "until": 30.22,
       "say": "Try the preview with one real brief in two languages."
     },
     {
@@ -142,12 +142,12 @@
       "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
-      "at": 31.56,
-      "until": 34.85,
+      "at": 30.82,
+      "until": 33.49,
       "say": "Follow for AI news that matters to marketers."
     }
   ],
-  "duration": 37.65,
+  "duration": 35.49,
   "posters": {
     "b01": 2.99,
     "b02": 7.54,
@@ -162,89 +162,90 @@
   "captions": [
     {
       "at": 0.0,
-      "until": 1.573,
+      "until": 1.926,
       "text": "Mistral just shipped a"
     },
     {
-      "at": 1.493,
-      "until": 3.54,
+      "at": 1.846,
+      "until": 4.36,
       "text": "one trillion parameter model."
     },
     {
-      "at": 4.16,
-      "until": 6.175,
+      "at": 4.88,
+      "until": 6.664,
       "text": "It's called Large 4, and"
     },
     {
-      "at": 6.095,
-      "until": 8.19,
+      "at": 6.584,
+      "until": 8.44,
       "text": "the nickname is Le Chonk."
     },
     {
-      "at": 8.81,
-      "until": 10.742,
+      "at": 8.96,
+      "until": 10.764,
       "text": "Mistral trained it on its"
     },
     {
-      "at": 10.662,
-      "until": 12.52,
+      "at": 10.684,
+      "until": 12.42,
       "text": "own GPUs, inside Europe."
     },
     {
-      "at": 13.14,
-      "until": 15.519,
+      "at": 12.94,
+      "until": 15.482,
       "text": "Its training data spans over 160"
     },
     {
-      "at": 15.439,
-      "until": 17.89,
+      "at": 15.402,
+      "until": 18.02,
       "text": "languages, every EU one included."
     },
     {
-      "at": 18.51,
-      "until": 20.829,
+      "at": 18.54,
+      "until": 21.087,
       "text": "Mistral says it handles spreadsheets,"
     },
     {
-      "at": 20.749,
-      "until": 22.04,
+      "at": 21.007,
+      "until": 22.42,
       "text": "slides and PDFs too."
     },
     {
-      "at": 22.66,
-      "until": 24.611,
+      "at": 22.94,
+      "until": 24.88,
       "text": "The catch: the weights aren't"
     },
     {
-      "at": 24.531,
-      "until": 26.16,
+      "at": 24.8,
+      "until": 26.42,
       "text": "out yet, only a preview."
     },
     {
-      "at": 26.78,
-      "until": 28.743,
+      "at": 26.94,
+      "until": 28.534,
       "text": "Try the preview with one"
     },
     {
-      "at": 28.663,
-      "until": 30.94,
+      "at": 28.454,
+      "until": 30.3,
       "text": "real brief in two languages."
     },
     {
-      "at": 31.56,
-      "until": 32.986,
+      "at": 30.82,
+      "until": 31.991,
       "text": "Follow for AI news"
     },
     {
-      "at": 32.906,
-      "until": 34.93,
+      "at": 31.911,
+      "until": 33.566,
       "text": "that matters to marketers."
     }
   ],
   "voice": {
-    "engine": "chatterbox-clone-of-video-25",
+    "engine": "gemini-3.8-flash-lite-tts",
     "voice": "Puck",
     "breaths": true,
-    "bed": false
+    "bed": false,
+    "recipe": "video-25"
   }
 }

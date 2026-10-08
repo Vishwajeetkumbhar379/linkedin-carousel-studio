@@ -1,92 +1,92 @@
 {
  "voice": "Puck",
- "duration": 36.349999999999994,
+ "duration": 34.885999999999996,
  "scenes": [
   {
    "start": 0.0,
-   "end": 3.46,
+   "end": 4.28,
    "phrases": [
     {
+     "text": "Mistral just shipped a one trillion parameter model.",
      "start": 0.0,
-     "end": 3.46,
-     "text": "Mistral just shipped a one trillion parameter model."
+     "end": 4.28
     }
    ]
   },
   {
-   "start": 4.16,
-   "end": 8.11,
+   "start": 4.88,
+   "end": 8.36,
    "phrases": [
     {
-     "start": 4.16,
-     "end": 8.11,
-     "text": "It's called Large 4, and the nickname is Le Chonk."
+     "text": "It's called Large 4, and the nickname is Le Chonk.",
+     "start": 4.88,
+     "end": 8.36
     }
    ]
   },
   {
-   "start": 8.81,
-   "end": 12.44,
+   "start": 8.96,
+   "end": 12.34,
    "phrases": [
     {
-     "start": 8.81,
-     "end": 12.44,
-     "text": "Mistral trained it on its own GPUs, inside Europe."
+     "text": "Mistral trained it on its own GPUs, inside Europe.",
+     "start": 8.96,
+     "end": 12.34
     }
    ]
   },
   {
-   "start": 13.14,
-   "end": 17.81,
+   "start": 12.94,
+   "end": 17.94,
    "phrases": [
     {
-     "start": 13.14,
-     "end": 17.81,
-     "text": "Its training data spans over 160 languages, every EU one included."
+     "text": "Its training data spans over 160 languages, every EU one included.",
+     "start": 12.94,
+     "end": 17.94
     }
    ]
   },
   {
-   "start": 18.51,
-   "end": 21.96,
+   "start": 18.54,
+   "end": 22.34,
    "phrases": [
     {
-     "start": 18.51,
-     "end": 21.96,
-     "text": "Mistral says it handles spreadsheets, slides and PDFs too."
+     "text": "Mistral says it handles spreadsheets, slides and PDFs too.",
+     "start": 18.54,
+     "end": 22.34
     }
    ]
   },
   {
-   "start": 22.66,
-   "end": 26.08,
+   "start": 22.94,
+   "end": 26.34,
    "phrases": [
     {
-     "start": 22.66,
-     "end": 26.08,
-     "text": "The catch: the weights aren't out yet, only a preview."
+     "text": "The catch: the weights aren't out yet, only a preview.",
+     "start": 22.94,
+     "end": 26.34
     }
    ]
   },
   {
-   "start": 26.78,
-   "end": 30.86,
+   "start": 26.94,
+   "end": 30.22,
    "phrases": [
     {
-     "start": 26.78,
-     "end": 30.86,
-     "text": "Try the preview with one real brief in two languages."
+     "text": "Try the preview with one real brief in two languages.",
+     "start": 26.94,
+     "end": 30.22
     }
    ]
   },
   {
-   "start": 31.56,
-   "end": 34.85,
+   "start": 30.82,
+   "end": 33.486,
    "phrases": [
     {
-     "start": 31.56,
-     "end": 34.85,
-     "text": "Follow for AI news that matters to marketers."
+     "text": "Follow for AI news that matters to marketers.",
+     "start": 30.82,
+     "end": 33.486
     }
    ]
   }
