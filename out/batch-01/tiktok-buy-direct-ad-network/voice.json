@@ -1,106 +1,106 @@
 {
- "voice": "voice_3rjyhtlhksw1",
- "duration": 28.52325,
+ "voice": "Puck",
+ "duration": 44.9,
  "scenes": [
   {
-   "start": 0.2,
-   "end": 5.34,
+   "start": 0.0,
+   "end": 6.59,
    "phrases": [
     {
-     "text": "TikTok just showed its plan to close the sale inside the app.",
-     "start": 0.2,
-     "end": 3.44
+     "start": 0.0,
+     "end": 3.86,
+     "text": "TikTok just showed its plan to close the sale inside the app."
     },
     {
-     "text": "This was at Advertising Week in New York.",
-     "start": 3.44,
-     "end": 5.34
+     "start": 4.28,
+     "end": 6.59,
+     "text": "This was at Advertising Week in New York."
     }
    ]
   },
   {
-   "start": 5.34,
-   "end": 8.72,
+   "start": 7.29,
+   "end": 12.7,
    "phrases": [
     {
-     "text": "Buy Direct lets people purchase from the For You feed",
-     "start": 5.34,
-     "end": 7.52
+     "start": 7.29,
+     "end": 10.66,
+     "text": "Buy Direct lets people purchase from the For You feed"
     },
     {
-     "text": "in a single click.",
-     "start": 7.52,
-     "end": 8.72
+     "start": 11.08,
+     "end": 12.7,
+     "text": "in a single click."
     }
    ]
   },
   {
-   "start": 8.72,
-   "end": 11.94,
+   "start": 13.4,
+   "end": 17.87,
    "phrases": [
     {
-     "text": "A Shopping Assistant answers questions on sizing, shipping and stock.",
-     "start": 8.72,
-     "end": 11.94
+     "start": 13.4,
+     "end": 17.87,
+     "text": "A Shopping Assistant answers questions on sizing, shipping and stock."
     }
    ]
   },
   {
-   "start": 11.94,
-   "end": 16.41,
+   "start": 18.57,
+   "end": 24.91,
    "phrases": [
     {
-     "text": "Lead agents are coming to DMs too,",
-     "start": 11.94,
-     "end": 13.72
+     "start": 18.57,
+     "end": 21.03,
+     "text": "Lead agents are coming to DMs too,"
     },
     {
-     "text": "and TikTok's ads tools now plug into assistants like Claude.",
-     "start": 13.72,
-     "end": 16.41
+     "start": 21.45,
+     "end": 24.91,
+     "text": "and TikTok's ads tools now plug into assistants like Claude."
     }
    ]
   },
   {
-   "start": 16.41,
-   "end": 21.03,
+   "start": 25.61,
+   "end": 32.52,
    "phrases": [
     {
-     "text": "For US advertisers, ads can now run",
-     "start": 16.41,
-     "end": 18.61
+     "start": 25.61,
+     "end": 28.9,
+     "text": "For US advertisers, ads can now run"
     },
     {
-     "text": "across nearly four hundred thousand outside apps.",
-     "start": 18.61,
-     "end": 21.03
+     "start": 29.32,
+     "end": 32.52,
+     "text": "across nearly four hundred thousand outside apps."
     }
    ]
   },
   {
-   "start": 21.03,
-   "end": 25.91,
+   "start": 33.22,
+   "end": 39.82,
    "phrases": [
     {
-     "text": "The catch: most of this has no launch date yet.",
-     "start": 21.03,
-     "end": 23.43
+     "start": 33.22,
+     "end": 36.05,
+     "text": "The catch: most of this has no launch date yet."
     },
     {
-     "text": "So plan for it, but don't bet the quarter on it.",
-     "start": 23.43,
-     "end": 25.91
+     "start": 36.47,
+     "end": 39.82,
+     "text": "So plan for it, but don't bet the quarter on it."
     }
    ]
   },
   {
-   "start": 25.91,
-   "end": 27.723,
+   "start": 40.52,
+   "end": 43.4,
    "phrases": [
     {
-     "text": "Follow for more AI and marketing news.",
-     "start": 25.91,
-     "end": 27.723
+     "start": 40.52,
+     "end": 43.4,
+     "text": "Follow for more AI and marketing news."
     }
    ]
   }

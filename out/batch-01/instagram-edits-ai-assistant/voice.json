@@ -1,106 +1,106 @@
 {
  "voice": "Puck",
- "duration": 37.211,
+ "duration": 42.8,
  "scenes": [
   {
    "start": 0.0,
-   "end": 6.6,
+   "end": 7.41,
    "phrases": [
     {
-     "text": "Instagram just gave creators an AI that reads their own numbers.",
      "start": 0.0,
-     "end": 3.91
+     "end": 3.8,
+     "text": "Instagram just gave creators an AI that reads their own numbers."
     },
     {
-     "text": "It lives inside Edits, their video app.",
-     "start": 4.23,
-     "end": 6.6
+     "start": 4.22,
+     "end": 7.41,
+     "text": "It lives inside Edits, their video app."
     }
    ]
   },
   {
-   "start": 7.2,
-   "end": 12.73,
+   "start": 8.11,
+   "end": 15.14,
    "phrases": [
     {
-     "text": "It looks at your views, retention, likes and shares,",
-     "start": 7.2,
-     "end": 10.34
+     "start": 8.11,
+     "end": 11.8,
+     "text": "It looks at your views, retention, likes and shares,"
     },
     {
-     "text": "plus your comments and what's trending.",
-     "start": 10.66,
-     "end": 12.73
+     "start": 12.22,
+     "end": 15.14,
+     "text": "plus your comments and what's trending."
     }
    ]
   },
   {
-   "start": 13.33,
-   "end": 15.98,
+   "start": 15.84,
+   "end": 18.82,
    "phrases": [
     {
-     "text": "Then it suggests what you should make next.",
-     "start": 13.33,
-     "end": 15.98
+     "start": 15.84,
+     "end": 18.82,
+     "text": "Then it suggests what you should make next."
     }
    ]
   },
   {
-   "start": 16.58,
-   "end": 21.45,
+   "start": 19.52,
+   "end": 24.54,
    "phrases": [
     {
-     "text": "Instagram's pitch: it does the digging,",
-     "start": 16.58,
-     "end": 18.85
+     "start": 19.52,
+     "end": 21.77,
+     "text": "Instagram's pitch: it does the digging,"
     },
     {
-     "text": "the creative calls stay yours.",
-     "start": 19.17,
-     "end": 21.45
+     "start": 22.19,
+     "end": 24.54,
+     "text": "the creative calls stay yours."
     }
    ]
   },
   {
-   "start": 22.05,
-   "end": 27.54,
+   "start": 25.24,
+   "end": 31.56,
    "phrases": [
     {
-     "text": "The catch? Free use is capped.",
-     "start": 22.05,
-     "end": 24.4
+     "start": 25.24,
+     "end": 27.9,
+     "text": "The catch? Free use is capped."
     },
     {
-     "text": "More usage sits behind a Meta One subscription.",
-     "start": 24.72,
-     "end": 27.54
+     "start": 28.32,
+     "end": 31.56,
+     "text": "More usage sits behind a Meta One subscription."
     }
    ]
   },
   {
-   "start": 28.14,
-   "end": 32.95,
+   "start": 32.26,
+   "end": 37.84,
    "phrases": [
     {
-     "text": "For brands, this matters.",
-     "start": 28.14,
-     "end": 30.19
+     "start": 32.26,
+     "end": 34.24,
+     "text": "For brands, this matters."
     },
     {
-     "text": "Creators will pitch with much sharper data.",
-     "start": 30.51,
-     "end": 32.95
+     "start": 34.66,
+     "end": 37.84,
+     "text": "Creators will pitch with much sharper data."
     }
    ]
   },
   {
-   "start": 33.55,
-   "end": 35.811,
+   "start": 38.54,
+   "end": 41.3,
    "phrases": [
     {
-     "text": "Follow for more AI and creator news.",
-     "start": 33.55,
-     "end": 35.811
+     "start": 38.54,
+     "end": 41.3,
+     "text": "Follow for more AI and creator news."
     }
    ]
   }

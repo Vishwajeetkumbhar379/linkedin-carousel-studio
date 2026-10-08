@@ -44,8 +44,8 @@
       "avatar": "surprised",
       "avTop": 170,
       "avSide": "right",
-      "at": 0.2,
-      "until": 3.44,
+      "at": 0.0,
+      "until": 3.86,
       "say": "TikTok just showed its plan to close the sale inside the app.",
       "avSize": 190
     },
@@ -55,8 +55,8 @@
       "title": "Announced at *Advertising Week*",
       "size": "t2",
       "trans": "whip",
-      "at": 3.44,
-      "until": 5.34,
+      "at": 4.28,
+      "until": 6.59,
       "say": "This was at Advertising Week in New York."
     },
     {
@@ -64,8 +64,8 @@
       "bg": "peach",
       "title": "Buy Direct: *one click*",
       "trans": "rise",
-      "at": 5.34,
-      "until": 7.52,
+      "at": 7.29,
+      "until": 10.66,
       "say": "Buy Direct lets people purchase from the For You feed"
     },
     {
@@ -74,8 +74,8 @@
       "stamp": "1 CLICK",
       "title": "No leaving the app",
       "trans": "pop",
-      "at": 7.52,
-      "until": 8.72,
+      "at": 11.08,
+      "until": 12.7,
       "say": "in a single click."
     },
     {
@@ -88,8 +88,8 @@
         "Stock"
       ],
       "trans": "click",
-      "at": 8.72,
-      "until": 11.94,
+      "at": 13.4,
+      "until": 17.87,
       "say": "A Shopping Assistant answers questions on sizing, shipping and stock."
     },
     {
@@ -98,8 +98,8 @@
       "title": "Lead agents in *DMs*",
       "size": "t1",
       "trans": "whip",
-      "at": 11.94,
-      "until": 13.72,
+      "at": 18.57,
+      "until": 21.03,
       "say": "Lead agents are coming to DMs too,"
     },
     {
@@ -110,8 +110,8 @@
       "avatar": "point",
       "avTop": 960,
       "avSide": "right",
-      "at": 13.72,
-      "until": 16.41,
+      "at": 21.45,
+      "until": 24.91,
       "say": "and TikTok's ads tools now plug into assistants like Claude."
     },
     {
@@ -120,8 +120,8 @@
       "title": "For *US* advertisers",
       "size": "t1",
       "trans": "rise",
-      "at": 16.41,
-      "until": 18.61,
+      "at": 25.61,
+      "until": 28.9,
       "say": "For US advertisers, ads can now run"
     },
     {
@@ -135,8 +135,8 @@
       "avatar": "surprised",
       "avTop": 185,
       "avSide": "right",
-      "at": 18.61,
-      "until": 21.03,
+      "at": 29.32,
+      "until": 32.52,
       "say": "across nearly four hundred thousand outside apps."
     },
     {
@@ -148,8 +148,8 @@
       "avatar": "smirk",
       "avTop": 740,
       "avSide": "left",
-      "at": 21.03,
-      "until": 23.43,
+      "at": 33.22,
+      "until": 36.05,
       "say": "The catch: most of this has no launch date yet."
     },
     {
@@ -158,8 +158,8 @@
       "title": "Plan for it. *Don't bet on it.*",
       "size": "t2",
       "trans": "whip",
-      "at": 23.43,
-      "until": 25.91,
+      "at": 36.47,
+      "until": 39.82,
       "say": "So plan for it, but don't bet the quarter on it."
     },
     {
@@ -168,130 +168,130 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "at": 25.91,
-      "until": 27.72,
+      "at": 40.52,
+      "until": 43.4,
       "say": "Follow for more AI and marketing news.",
       "avatar": "wave",
       "avSide": "right"
     }
   ],
-  "duration": 30.52,
+  "duration": 46.2,
   "posters": {
-    "b01": 2.46,
-    "b02": 4.62,
-    "b03": 6.75,
-    "b04": 8.14,
-    "b05": 10.96,
-    "b06": 13.03,
-    "b07": 15.54,
-    "b08": 17.83,
-    "b09": 20.21,
-    "b10": 22.61,
-    "b11": 25.08,
-    "b12": 29.6
+    "b01": 3.09,
+    "b02": 6.35,
+    "b03": 9.99,
+    "b04": 12.6,
+    "b05": 17.2,
+    "b06": 20.54,
+    "b07": 24.44,
+    "b08": 28.24,
+    "b09": 32.1,
+    "b10": 35.48,
+    "b11": 39.37,
+    "b12": 45.06
   },
   "sfx": true,
   "captions": [
     {
-      "at": 0.2,
-      "until": 1.9,
+      "at": 0.0,
+      "until": 2.01,
       "text": "TikTok just showed its plan to"
     },
     {
-      "at": 1.82,
-      "until": 3.52,
+      "at": 1.93,
+      "until": 3.94,
       "text": "close the sale inside the app."
     },
     {
-      "at": 3.44,
-      "until": 4.612,
+      "at": 4.28,
+      "until": 5.688,
       "text": "This was at Advertising"
     },
     {
-      "at": 4.532,
-      "until": 5.42,
+      "at": 5.608,
+      "until": 6.67,
       "text": "Week in New York."
     },
     {
-      "at": 5.34,
-      "until": 6.72,
+      "at": 7.29,
+      "until": 9.379,
       "text": "Buy Direct lets people purchase"
     },
     {
-      "at": 6.64,
-      "until": 7.6,
+      "at": 9.299,
+      "until": 10.74,
       "text": "from the For You feed"
     },
     {
-      "at": 7.52,
-      "until": 8.8,
+      "at": 11.08,
+      "until": 12.78,
       "text": "in a single click."
     },
     {
-      "at": 8.72,
-      "until": 10.599,
+      "at": 13.4,
+      "until": 15.978,
       "text": "A Shopping Assistant answers questions"
     },
     {
-      "at": 10.519,
-      "until": 12.02,
+      "at": 15.898,
+      "until": 17.95,
       "text": "on sizing, shipping and stock."
     },
     {
-      "at": 11.94,
-      "until": 13.8,
+      "at": 18.57,
+      "until": 21.11,
       "text": "Lead agents are coming to DMs too,"
     },
     {
-      "at": 13.72,
-      "until": 14.985,
+      "at": 21.45,
+      "until": 23.055,
       "text": "and TikTok's ads tools now"
     },
     {
-      "at": 14.905,
-      "until": 16.49,
+      "at": 22.975,
+      "until": 24.99,
       "text": "plug into assistants like Claude."
     },
     {
-      "at": 16.41,
-      "until": 18.69,
+      "at": 25.61,
+      "until": 28.98,
       "text": "For US advertisers, ads can now run"
     },
     {
-      "at": 18.61,
-      "until": 21.11,
+      "at": 29.32,
+      "until": 32.6,
       "text": "across nearly four hundred thousand outside apps."
     },
     {
-      "at": 21.03,
-      "until": 22.31,
+      "at": 33.22,
+      "until": 34.715,
       "text": "The catch: most of this"
     },
     {
-      "at": 22.23,
-      "until": 23.51,
+      "at": 34.635,
+      "until": 36.13,
       "text": "has no launch date yet."
     },
     {
-      "at": 23.43,
-      "until": 24.829,
+      "at": 36.47,
+      "until": 38.332,
       "text": "So plan for it, but don't"
     },
     {
-      "at": 24.749,
-      "until": 25.99,
+      "at": 38.252,
+      "until": 39.9,
       "text": "bet the quarter on it."
     },
     {
-      "at": 25.91,
-      "until": 27.803,
+      "at": 40.52,
+      "until": 43.48,
       "text": "Follow for more AI and marketing news."
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
-    "voice": "voice_3rjyhtlhksw1",
-    "breaths": false,
+    "engine": "chatterbox-clone-of-video-25",
+    "voice": "Puck",
+    "breaths": true,
     "bed": false
   }
 }

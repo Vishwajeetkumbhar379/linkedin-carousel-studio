@@ -43,8 +43,8 @@
       "avatar": "crossed",
       "avTop": 180,
       "avSide": "right",
-      "at": 0.2,
-      "until": 2.45,
+      "at": 0.0,
+      "until": 3.22,
       "say": "850 plus creator deals taught me this."
     },
     {
@@ -56,8 +56,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "left",
-      "at": 2.45,
-      "until": 4.92,
+      "at": 3.64,
+      "until": 6.18,
       "say": "Read the first reply before the media kit."
     },
     {
@@ -67,8 +67,8 @@
       "left": "Here's my rate",
       "right": "Who's it for?",
       "trans": "zoom",
-      "at": 4.92,
-      "until": 7.12,
+      "at": 6.88,
+      "until": 9.43,
       "say": "Good partners ask questions before they quote."
     },
     {
@@ -81,8 +81,8 @@
         "What can't I say?"
       ],
       "trans": "pop",
-      "at": 7.12,
-      "until": 9.19,
+      "at": 9.85,
+      "until": 13.02,
       "say": "Who's it for, what's the goal, what can't I say?"
     },
     {
@@ -91,8 +91,8 @@
       "stamp": "PUSHBACK",
       "title": "They challenge the brief",
       "trans": "click",
-      "at": 9.19,
-      "until": 10.39,
+      "at": 13.72,
+      "until": 15.32,
       "say": "They push back on the brief."
     },
     {
@@ -104,8 +104,8 @@
       "avatar": "thinking",
       "avTop": 730,
       "avSide": "left",
-      "at": 10.39,
-      "until": 12.7,
+      "at": 15.74,
+      "until": 19.0,
       "say": "Usually because they know their audience better than we do."
     },
     {
@@ -114,8 +114,8 @@
       "title": "They tell you *what flopped*",
       "size": "t1",
       "trans": "whip",
-      "at": 12.7,
-      "until": 14.32,
+      "at": 19.7,
+      "until": 22.01,
       "say": "They tell you what flopped for them before."
     },
     {
@@ -127,8 +127,8 @@
       "avatar": "smirk",
       "avTop": 740,
       "avSide": "left",
-      "at": 14.32,
-      "until": 16.34,
+      "at": 22.71,
+      "until": 25.24,
       "say": "And they turn down products that don't fit."
     },
     {
@@ -137,8 +137,8 @@
       "title": "That no is why people *trust their yes*",
       "size": "t2",
       "trans": "rise",
-      "at": 16.34,
-      "until": 18.63,
+      "at": 25.66,
+      "until": 29.0,
       "say": "That no is why people trust their yes."
     },
     {
@@ -147,8 +147,8 @@
       "title": "Fit and follow-through *beat follower count*",
       "size": "t2",
       "trans": "zoom",
-      "at": 18.63,
-      "until": 20.68,
+      "at": 29.7,
+      "until": 33.26,
       "say": "Fit and follow-through beat follower count."
     },
     {
@@ -157,8 +157,8 @@
       "title": "What do *you* look for first?",
       "size": "t2",
       "trans": "click",
-      "at": 20.68,
-      "until": 21.75,
+      "at": 33.68,
+      "until": 35.14,
       "say": "What do you look for first?"
     },
     {
@@ -167,8 +167,8 @@
       "title": "More on *Build with Vish*",
       "size": "t3",
       "trans": "whip",
-      "at": 21.75,
-      "until": 22.82,
+      "at": 35.56,
+      "until": 38.0,
       "say": "More on Build with Vish."
     },
     {
@@ -180,129 +180,129 @@
       "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
-      "at": 22.82,
-      "until": 23.34,
+      "at": 38.42,
+      "until": 39.55,
       "say": "Follow for more."
     }
   ],
-  "duration": 26.14,
+  "duration": 42.35,
   "posters": {
-    "b01": 1.66,
-    "b02": 4.09,
-    "b03": 6.34,
-    "b04": 8.44,
-    "b05": 9.81,
-    "b06": 11.9,
-    "b07": 13.66,
-    "b08": 15.6,
-    "b09": 17.84,
-    "b10": 19.93,
-    "b11": 21.2,
-    "b12": 22.27,
-    "b13": 25.48
+    "b01": 2.58,
+    "b02": 5.9,
+    "b03": 8.92,
+    "b04": 12.61,
+    "b05": 15.0,
+    "b06": 18.57,
+    "b07": 21.77,
+    "b08": 24.73,
+    "b09": 28.56,
+    "b10": 32.55,
+    "b11": 34.85,
+    "b12": 37.51,
+    "b13": 41.56
   },
   "sfx": true,
   "captions": [
     {
-      "at": 0.2,
-      "until": 2.53,
+      "at": 0.0,
+      "until": 3.3,
       "text": "850 plus creator deals taught me this."
     },
     {
-      "at": 2.45,
-      "until": 3.735,
+      "at": 3.64,
+      "until": 4.959,
       "text": "Read the first reply"
     },
     {
-      "at": 3.655,
-      "until": 5.0,
+      "at": 4.879,
+      "until": 6.26,
       "text": "before the media kit."
     },
     {
-      "at": 4.92,
-      "until": 7.2,
+      "at": 6.88,
+      "until": 9.51,
       "text": "Good partners ask questions before they quote."
     },
     {
-      "at": 7.12,
-      "until": 8.257,
+      "at": 9.85,
+      "until": 11.549,
       "text": "Who's it for, what's the"
     },
     {
-      "at": 8.177,
-      "until": 9.27,
+      "at": 11.469,
+      "until": 13.1,
       "text": "goal, what can't I say?"
     },
     {
-      "at": 9.19,
-      "until": 10.47,
+      "at": 13.72,
+      "until": 15.4,
       "text": "They push back on the brief."
     },
     {
-      "at": 10.39,
-      "until": 11.705,
+      "at": 15.74,
+      "until": 17.562,
       "text": "Usually because they know their"
     },
     {
-      "at": 11.625,
-      "until": 12.78,
+      "at": 17.482,
+      "until": 19.08,
       "text": "audience better than we do."
     },
     {
-      "at": 12.7,
-      "until": 13.474,
+      "at": 19.7,
+      "until": 20.77,
       "text": "They tell you what"
     },
     {
-      "at": 13.394,
-      "until": 14.4,
+      "at": 20.69,
+      "until": 22.09,
       "text": "flopped for them before."
     },
     {
-      "at": 14.32,
-      "until": 15.266,
+      "at": 22.71,
+      "until": 23.874,
       "text": "And they turn down"
     },
     {
-      "at": 15.186,
-      "until": 16.42,
+      "at": 23.794,
+      "until": 25.32,
       "text": "products that don't fit."
     },
     {
-      "at": 16.34,
-      "until": 17.286,
+      "at": 25.66,
+      "until": 27.004,
       "text": "That no is why"
     },
     {
-      "at": 17.206,
-      "until": 18.71,
+      "at": 26.924,
+      "until": 29.08,
       "text": "people trust their yes."
     },
     {
-      "at": 18.63,
-      "until": 20.76,
+      "at": 29.7,
+      "until": 33.34,
       "text": "Fit and follow-through beat follower count."
     },
     {
-      "at": 20.68,
-      "until": 21.83,
+      "at": 33.68,
+      "until": 35.22,
       "text": "What do you look for first?"
     },
     {
-      "at": 21.75,
-      "until": 22.9,
+      "at": 35.56,
+      "until": 38.08,
       "text": "More on Build with Vish."
     },
     {
-      "at": 22.82,
-      "until": 23.419,
+      "at": 38.42,
+      "until": 39.63,
       "text": "Follow for more."
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
-    "voice": "voice_3rjyhtlhksw1",
-    "breaths": false,
+    "engine": "chatterbox-clone-of-video-25",
+    "voice": "Puck",
+    "breaths": true,
     "bed": false
   }
 }

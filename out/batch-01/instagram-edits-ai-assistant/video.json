@@ -45,7 +45,7 @@
       "avTop": 170,
       "avSide": "right",
       "at": 0.0,
-      "until": 3.91,
+      "until": 3.8,
       "say": "Instagram just gave creators an AI that reads their own numbers.",
       "avSize": 190
     },
@@ -55,8 +55,8 @@
       "title": "Inside the *Edits* app",
       "size": "t1",
       "trans": "whip",
-      "at": 4.23,
-      "until": 6.6,
+      "at": 4.22,
+      "until": 7.41,
       "say": "It lives inside Edits, their video app."
     },
     {
@@ -70,8 +70,8 @@
         "Shares"
       ],
       "trans": "rise",
-      "at": 7.2,
-      "until": 10.34,
+      "at": 8.11,
+      "until": 11.8,
       "say": "It looks at your views, retention, likes and shares,"
     },
     {
@@ -80,8 +80,8 @@
       "title": "Plus comments and *trends*",
       "size": "t2",
       "trans": "click",
-      "at": 10.66,
-      "until": 12.73,
+      "at": 12.22,
+      "until": 15.14,
       "say": "plus your comments and what's trending."
     },
     {
@@ -94,8 +94,8 @@
       "avatar": "point",
       "avTop": 740,
       "avSide": "right",
-      "at": 13.33,
-      "until": 15.98,
+      "at": 15.84,
+      "until": 18.82,
       "say": "Then it suggests what you should make next."
     },
     {
@@ -104,8 +104,8 @@
       "title": "AI does the *digging*",
       "size": "t1",
       "trans": "whip",
-      "at": 16.58,
-      "until": 18.85,
+      "at": 19.52,
+      "until": 21.77,
       "say": "Instagram's pitch: it does the digging,"
     },
     {
@@ -114,8 +114,8 @@
       "title": "You make the *calls*",
       "size": "t1",
       "trans": "zoom",
-      "at": 19.17,
-      "until": 21.45,
+      "at": 22.19,
+      "until": 24.54,
       "say": "the creative calls stay yours."
     },
     {
@@ -127,8 +127,8 @@
       "avatar": "smirk",
       "avTop": 740,
       "avSide": "left",
-      "at": 22.05,
-      "until": 24.4,
+      "at": 25.24,
+      "until": 27.9,
       "say": "The catch? Free use is capped."
     },
     {
@@ -138,8 +138,8 @@
       "size": "t2",
       "sub": "Paid subscription",
       "trans": "rise",
-      "at": 24.72,
-      "until": 27.54,
+      "at": 28.32,
+      "until": 31.56,
       "say": "More usage sits behind a Meta One subscription."
     },
     {
@@ -151,8 +151,8 @@
       "avatar": "thinking",
       "avTop": 730,
       "avSide": "left",
-      "at": 28.14,
-      "until": 30.19,
+      "at": 32.26,
+      "until": 34.24,
       "say": "For brands, this matters."
     },
     {
@@ -160,8 +160,8 @@
       "bg": "peach",
       "title": "Pitches backed by *real data*",
       "trans": "whip",
-      "at": 30.51,
-      "until": 32.95,
+      "at": 34.66,
+      "until": 37.84,
       "say": "Creators will pitch with much sharper data."
     },
     {
@@ -170,113 +170,113 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "at": 33.55,
-      "until": 35.81,
+      "at": 38.54,
+      "until": 41.3,
       "say": "Follow for more AI and creator news.",
       "avatar": "wave",
       "avSide": "right"
     }
   ],
-  "duration": 38.61,
+  "duration": 44.1,
   "posters": {
-    "b01": 3.05,
-    "b02": 6.27,
-    "b03": 9.63,
-    "b04": 12.46,
-    "b05": 15.59,
-    "b06": 18.32,
-    "b07": 21.14,
-    "b08": 23.85,
-    "b09": 27.12,
-    "b10": 29.7,
-    "b11": 32.61,
-    "b12": 37.6
+    "b01": 3.04,
+    "b02": 7.0,
+    "b03": 11.06,
+    "b04": 14.78,
+    "b05": 18.45,
+    "b06": 21.32,
+    "b07": 24.29,
+    "b08": 27.37,
+    "b09": 31.14,
+    "b10": 33.84,
+    "b11": 37.43,
+    "b12": 42.99
   },
   "sfx": true,
   "captions": [
     {
       "at": 0.0,
-      "until": 2.19,
+      "until": 2.131,
       "text": "Instagram just gave creators an AI"
     },
     {
-      "at": 2.11,
-      "until": 3.99,
+      "at": 2.051,
+      "until": 3.88,
       "text": "that reads their own numbers."
     },
     {
-      "at": 4.23,
-      "until": 6.68,
+      "at": 4.22,
+      "until": 7.49,
       "text": "It lives inside Edits, their video app."
     },
     {
-      "at": 7.2,
-      "until": 8.696,
+      "at": 8.11,
+      "until": 9.854,
       "text": "It looks at your views,"
     },
     {
-      "at": 8.616,
-      "until": 10.42,
+      "at": 9.774,
+      "until": 11.88,
       "text": "retention, likes and shares,"
     },
     {
-      "at": 10.66,
-      "until": 12.81,
+      "at": 12.22,
+      "until": 15.22,
       "text": "plus your comments and what's trending."
     },
     {
-      "at": 13.33,
-      "until": 14.735,
+      "at": 15.84,
+      "until": 17.41,
       "text": "Then it suggests what"
     },
     {
-      "at": 14.655,
-      "until": 16.06,
+      "at": 17.33,
+      "until": 18.9,
       "text": "you should make next."
     },
     {
-      "at": 16.58,
-      "until": 18.93,
+      "at": 19.52,
+      "until": 21.85,
       "text": "Instagram's pitch: it does the digging,"
     },
     {
-      "at": 19.17,
-      "until": 21.53,
+      "at": 22.19,
+      "until": 24.62,
       "text": "the creative calls stay yours."
     },
     {
-      "at": 22.05,
-      "until": 24.48,
+      "at": 25.24,
+      "until": 27.98,
       "text": "The catch? Free use is capped."
     },
     {
-      "at": 24.72,
-      "until": 26.149,
+      "at": 28.32,
+      "until": 29.95,
       "text": "More usage sits behind"
     },
     {
-      "at": 26.069,
-      "until": 27.62,
+      "at": 29.87,
+      "until": 31.64,
       "text": "a Meta One subscription."
     },
     {
-      "at": 28.14,
-      "until": 30.27,
+      "at": 32.26,
+      "until": 34.32,
       "text": "For brands, this matters."
     },
     {
-      "at": 30.51,
-      "until": 33.03,
+      "at": 34.66,
+      "until": 37.92,
       "text": "Creators will pitch with much sharper data."
     },
     {
-      "at": 33.55,
-      "until": 35.891,
+      "at": 38.54,
+      "until": 41.38,
       "text": "Follow for more AI and creator news."
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
+    "engine": "chatterbox-clone-of-video-25",
     "voice": "Puck",
     "breaths": true,
     "bed": false

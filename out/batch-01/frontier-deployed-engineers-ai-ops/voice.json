@@ -1,100 +1,100 @@
 {
  "voice": "Puck",
- "duration": 43.51470833333333,
+ "duration": 43.76,
  "scenes": [
   {
    "start": 0.0,
-   "end": 7.7,
+   "end": 7.39,
    "phrases": [
     {
-     "text": "Anthropic just committed 100 million dollars to train one kind of person.",
      "start": 0.0,
-     "end": 4.8
+     "end": 4.67,
+     "text": "Anthropic just committed 100 million dollars to train one kind of person."
     },
     {
-     "text": "Frontier Deployed Engineers.",
-     "start": 5.12,
-     "end": 7.7
+     "start": 5.09,
+     "end": 7.39,
+     "text": "Frontier Deployed Engineers."
     }
    ]
   },
   {
-   "start": 8.3,
-   "end": 11.0,
+   "start": 8.09,
+   "end": 11.09,
    "phrases": [
     {
-     "text": "Ten thousand of them by the end of 2027.",
-     "start": 8.3,
-     "end": 11.0
+     "start": 8.09,
+     "end": 11.09,
+     "text": "Ten thousand of them by the end of 2027."
     }
    ]
   },
   {
-   "start": 11.6,
-   "end": 21.49,
+   "start": 11.79,
+   "end": 20.99,
    "phrases": [
     {
-     "text": "They practise a full rollout: pick the use case, pass security review, hand it over.",
-     "start": 11.6,
-     "end": 17.14
+     "start": 11.79,
+     "end": 16.9,
+     "text": "They practise a full rollout: pick the use case, pass security review, hand it over."
     },
     {
-     "text": "Then twelve weeks leading a real project at their own company.",
-     "start": 17.46,
-     "end": 21.49
+     "start": 17.32,
+     "end": 20.99,
+     "text": "Then twelve weeks leading a real project at their own company."
     }
    ]
   },
   {
-   "start": 22.09,
-   "end": 27.27,
+   "start": 21.69,
+   "end": 26.99,
    "phrases": [
     {
-     "text": "It's for engineers, by nomination.",
-     "start": 22.09,
-     "end": 24.57
+     "start": 21.69,
+     "end": 24.33,
+     "text": "It's for engineers, by nomination."
     },
     {
-     "text": "I'm not one, and I won't pretend to be.",
-     "start": 24.89,
-     "end": 27.27
+     "start": 24.75,
+     "end": 26.99,
+     "text": "I'm not one, and I won't pretend to be."
     }
    ]
   },
   {
-   "start": 27.87,
-   "end": 34.5,
+   "start": 27.69,
+   "end": 33.93,
    "phrases": [
     {
-     "text": "But look at the shape of the job.",
-     "start": 27.87,
-     "end": 30.22
+     "start": 27.69,
+     "end": 29.42,
+     "text": "But look at the shape of the job."
     },
     {
-     "text": "Right problem, safe rollout, people actually using it.",
-     "start": 30.54,
-     "end": 34.5
+     "start": 29.84,
+     "end": 33.93,
+     "text": "Right problem, safe rollout, people actually using it."
     }
    ]
   },
   {
-   "start": 35.1,
-   "end": 42.115,
+   "start": 34.63,
+   "end": 42.26,
    "phrases": [
     {
-     "text": "That's AI Ops, and marketers already do half of it.",
-     "start": 35.1,
-     "end": 38.43
+     "start": 34.63,
+     "end": 38.07,
+     "text": "That's AI Ops, and marketers already do half of it."
     },
     {
-     "text": "My plan is on Build with Vish.",
-     "start": 38.75,
-     "end": 40.9
+     "start": 38.49,
+     "end": 40.71,
+     "text": "My plan is on Build with Vish."
     },
     {
-     "text": "Follow for more.",
-     "start": 41.22,
-     "end": 42.115
+     "start": 41.13,
+     "end": 42.26,
+     "text": "Follow for more."
     }
    ]
   }

@@ -1,105 +1,105 @@
 {
- "voice": "voice_3rjyhtlhksw1",
- "duration": 24.138708333333334,
+ "voice": "Puck",
+ "duration": 41.05,
  "scenes": [
   {
-   "start": 0.2,
-   "end": 4.92,
+   "start": 0.0,
+   "end": 6.18,
    "phrases": [
     {
-     "text": "850 plus creator deals taught me this.",
-     "start": 0.2,
-     "end": 2.45
+     "start": 0.0,
+     "end": 3.22,
+     "text": "850 plus creator deals taught me this."
     },
     {
-     "text": "Read the first reply before the media kit.",
-     "start": 2.45,
-     "end": 4.92
+     "start": 3.64,
+     "end": 6.18,
+     "text": "Read the first reply before the media kit."
     }
    ]
   },
   {
-   "start": 4.92,
-   "end": 9.19,
+   "start": 6.88,
+   "end": 13.02,
    "phrases": [
     {
-     "text": "Good partners ask questions before they quote.",
-     "start": 4.92,
-     "end": 7.12
+     "start": 6.88,
+     "end": 9.43,
+     "text": "Good partners ask questions before they quote."
     },
     {
-     "text": "Who's it for, what's the goal, what can't I say?",
-     "start": 7.12,
-     "end": 9.19
+     "start": 9.85,
+     "end": 13.02,
+     "text": "Who's it for, what's the goal, what can't I say?"
     }
    ]
   },
   {
-   "start": 9.19,
-   "end": 12.7,
+   "start": 13.72,
+   "end": 19.0,
    "phrases": [
     {
-     "text": "They push back on the brief.",
-     "start": 9.19,
-     "end": 10.39
+     "start": 13.72,
+     "end": 15.32,
+     "text": "They push back on the brief."
     },
     {
-     "text": "Usually because they know their audience better than we do.",
-     "start": 10.39,
-     "end": 12.7
+     "start": 15.74,
+     "end": 19.0,
+     "text": "Usually because they know their audience better than we do."
     }
    ]
   },
   {
-   "start": 12.7,
-   "end": 14.32,
+   "start": 19.7,
+   "end": 22.01,
    "phrases": [
     {
-     "text": "They tell you what flopped for them before.",
-     "start": 12.7,
-     "end": 14.32
+     "start": 19.7,
+     "end": 22.01,
+     "text": "They tell you what flopped for them before."
     }
    ]
   },
   {
-   "start": 14.32,
-   "end": 18.63,
+   "start": 22.71,
+   "end": 29.0,
    "phrases": [
     {
-     "text": "And they turn down products that don't fit.",
-     "start": 14.32,
-     "end": 16.34
+     "start": 22.71,
+     "end": 25.24,
+     "text": "And they turn down products that don't fit."
     },
     {
-     "text": "That no is why people trust their yes.",
-     "start": 16.34,
-     "end": 18.63
+     "start": 25.66,
+     "end": 29.0,
+     "text": "That no is why people trust their yes."
     }
    ]
   },
   {
-   "start": 18.63,
-   "end": 23.339,
+   "start": 29.7,
+   "end": 39.55,
    "phrases": [
     {
-     "text": "Fit and follow-through beat follower count.",
-     "start": 18.63,
-     "end": 20.68
+     "start": 29.7,
+     "end": 33.26,
+     "text": "Fit and follow-through beat follower count."
     },
     {
-     "text": "What do you look for first?",
-     "start": 20.68,
-     "end": 21.75
+     "start": 33.68,
+     "end": 35.14,
+     "text": "What do you look for first?"
     },
     {
-     "text": "More on Build with Vish.",
-     "start": 21.75,
-     "end": 22.82
+     "start": 35.56,
+     "end": 38.0,
+     "text": "More on Build with Vish."
     },
     {
-     "text": "Follow for more.",
-     "start": 22.82,
-     "end": 23.339
+     "start": 38.42,
+     "end": 39.55,
+     "text": "Follow for more."
     }
    ]
   }

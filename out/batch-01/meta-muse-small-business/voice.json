@@ -1,106 +1,106 @@
 {
- "voice": "voice_3rjyhtlhksw1",
- "duration": 27.801333333333336,
+ "voice": "Puck",
+ "duration": 43.129999999999995,
  "scenes": [
   {
-   "start": 0.2,
-   "end": 2.95,
+   "start": 0.0,
+   "end": 3.06,
    "phrases": [
     {
-     "text": "Meta just took its Muse agent to small businesses.",
-     "start": 0.2,
-     "end": 2.95
+     "start": 0.0,
+     "end": 3.06,
+     "text": "Meta just took its Muse agent to small businesses."
     }
    ]
   },
   {
-   "start": 2.95,
-   "end": 8.37,
+   "start": 3.76,
+   "end": 11.11,
    "phrases": [
     {
-     "text": "It connects to Shopify, Stripe, Canva and QuickBooks,",
-     "start": 2.95,
-     "end": 5.8
+     "start": 3.76,
+     "end": 7.56,
+     "text": "It connects to Shopify, Stripe, Canva and QuickBooks,"
     },
     {
-     "text": "and it can read your Instagram and Facebook page stats.",
-     "start": 5.8,
-     "end": 8.37
+     "start": 7.98,
+     "end": 11.11,
+     "text": "and it can read your Instagram and Facebook page stats."
     }
    ]
   },
   {
-   "start": 8.37,
-   "end": 12.23,
+   "start": 11.81,
+   "end": 17.66,
    "phrases": [
     {
-     "text": "Ask it to look at sales and campaigns,",
-     "start": 8.37,
-     "end": 10.45
+     "start": 11.81,
+     "end": 14.14,
+     "text": "Ask it to look at sales and campaigns,"
     },
     {
-     "text": "and it can plan growth and draft new ads.",
-     "start": 10.45,
-     "end": 12.23
+     "start": 14.56,
+     "end": 17.66,
+     "text": "and it can plan growth and draft new ads."
     }
    ]
   },
   {
-   "start": 12.23,
-   "end": 16.86,
+   "start": 18.36,
+   "end": 24.84,
    "phrases": [
     {
-     "text": "One rule matters most.",
-     "start": 12.23,
-     "end": 13.73
+     "start": 18.36,
+     "end": 20.25,
+     "text": "One rule matters most."
     },
     {
-     "text": "It won't post, send or buy anything without your approval.",
-     "start": 13.73,
-     "end": 16.86
+     "start": 20.67,
+     "end": 24.84,
+     "text": "It won't post, send or buy anything without your approval."
     }
    ]
   },
   {
-   "start": 16.86,
-   "end": 21.41,
+   "start": 25.54,
+   "end": 31.73,
    "phrases": [
     {
-     "text": "Meta says about one in three early users",
-     "start": 16.86,
-     "end": 19.53
+     "start": 25.54,
+     "end": 28.51,
+     "text": "Meta says about one in three early users"
     },
     {
-     "text": "had already connected it to a business account.",
-     "start": 19.53,
-     "end": 21.41
+     "start": 28.93,
+     "end": 31.73,
+     "text": "had already connected it to a business account."
     }
    ]
   },
   {
-   "start": 21.41,
-   "end": 25.13,
+   "start": 32.43,
+   "end": 38.05,
    "phrases": [
     {
-     "text": "My take: the agent is free, your brand voice isn't.",
-     "start": 21.41,
-     "end": 23.67
+     "start": 32.43,
+     "end": 35.92,
+     "text": "My take: the agent is free, your brand voice isn't."
     },
     {
-     "text": "Give it a proper brief first.",
-     "start": 23.67,
-     "end": 25.13
+     "start": 36.34,
+     "end": 38.05,
+     "text": "Give it a proper brief first."
     }
    ]
   },
   {
-   "start": 25.13,
-   "end": 27.001,
+   "start": 38.75,
+   "end": 41.63,
    "phrases": [
     {
-     "text": "Follow for more AI and marketing news.",
-     "start": 25.13,
-     "end": 27.001
+     "start": 38.75,
+     "end": 41.63,
+     "text": "Follow for more AI and marketing news."
     }
    ]
   }

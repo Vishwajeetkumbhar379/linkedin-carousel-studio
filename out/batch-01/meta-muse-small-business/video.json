@@ -44,8 +44,8 @@
       "avatar": "surprised",
       "avTop": 180,
       "avSide": "right",
-      "at": 0.2,
-      "until": 2.95,
+      "at": 0.0,
+      "until": 3.06,
       "say": "Meta just took its Muse agent to small businesses."
     },
     {
@@ -59,8 +59,8 @@
         "QuickBooks"
       ],
       "trans": "whip",
-      "at": 2.95,
-      "until": 5.8,
+      "at": 3.76,
+      "until": 7.56,
       "say": "It connects to Shopify, Stripe, Canva and QuickBooks,"
     },
     {
@@ -69,8 +69,8 @@
       "title": "Reads your *Instagram* and *Page* stats",
       "size": "t2",
       "trans": "rise",
-      "at": 5.8,
-      "until": 8.37,
+      "at": 7.98,
+      "until": 11.11,
       "say": "and it can read your Instagram and Facebook page stats."
     },
     {
@@ -79,8 +79,8 @@
       "title": "Sales and campaigns, *analysed*",
       "size": "t2",
       "trans": "click",
-      "at": 8.37,
-      "until": 10.45,
+      "at": 11.81,
+      "until": 14.14,
       "say": "Ask it to look at sales and campaigns,"
     },
     {
@@ -88,8 +88,8 @@
       "bg": "peach",
       "title": "Drafts *new ads* for you",
       "trans": "zoom",
-      "at": 10.45,
-      "until": 12.23,
+      "at": 14.56,
+      "until": 17.66,
       "say": "and it can plan growth and draft new ads."
     },
     {
@@ -101,8 +101,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "left",
-      "at": 12.23,
-      "until": 13.73,
+      "at": 18.36,
+      "until": 20.25,
       "say": "One rule matters most."
     },
     {
@@ -111,8 +111,8 @@
       "stamp": "APPROVAL",
       "title": "No post, send or buy without you",
       "trans": "pop",
-      "at": 13.73,
-      "until": 16.86,
+      "at": 20.67,
+      "until": 24.84,
       "say": "It won't post, send or buy anything without your approval."
     },
     {
@@ -126,8 +126,8 @@
       "avatar": "surprised",
       "avTop": 185,
       "avSide": "right",
-      "at": 16.86,
-      "until": 19.53,
+      "at": 25.54,
+      "until": 28.51,
       "say": "Meta says about one in three early users"
     },
     {
@@ -136,8 +136,8 @@
       "title": "They were *already* doing it",
       "size": "t2",
       "trans": "rise",
-      "at": 19.53,
-      "until": 21.41,
+      "at": 28.93,
+      "until": 31.73,
       "say": "had already connected it to a business account."
     },
     {
@@ -150,8 +150,8 @@
       "avatar": "smirk",
       "avTop": 960,
       "avSide": "left",
-      "at": 21.41,
-      "until": 23.67,
+      "at": 32.43,
+      "until": 35.92,
       "say": "My take: the agent is free, your brand voice isn't."
     },
     {
@@ -159,8 +159,8 @@
       "bg": "ivory",
       "prompt": "Here's our brand brief: who we sell to, our tone, words we never use. Draft 3 ads.",
       "trans": "whip",
-      "at": 23.67,
-      "until": 25.13,
+      "at": 36.34,
+      "until": 38.05,
       "say": "Give it a proper brief first."
     },
     {
@@ -169,137 +169,137 @@
       "title": "More *AI x marketing* every week.",
       "button": "Follow Vish",
       "trans": "pop",
-      "at": 25.13,
-      "until": 27.0,
+      "at": 38.75,
+      "until": 41.63,
       "say": "Follow for more AI and marketing news."
     }
   ],
-  "duration": 29.8,
+  "duration": 44.43,
   "posters": {
-    "b01": 2.06,
-    "b02": 4.89,
-    "b03": 7.52,
-    "b04": 9.7,
-    "b05": 11.54,
-    "b06": 13.09,
-    "b07": 15.9,
-    "b08": 18.66,
-    "b09": 20.7,
-    "b10": 22.88,
-    "b11": 24.5,
-    "b12": 28.87
+    "b01": 2.67,
+    "b02": 6.8,
+    "b03": 10.71,
+    "b04": 13.67,
+    "b05": 17.26,
+    "b06": 19.87,
+    "b07": 24.23,
+    "b08": 27.92,
+    "b09": 31.39,
+    "b10": 35.22,
+    "b11": 37.93,
+    "b12": 43.29
   },
   "sfx": true,
   "captions": [
     {
-      "at": 0.2,
-      "until": 1.571,
+      "at": 0.0,
+      "until": 1.516,
       "text": "Meta just took its Muse"
     },
     {
-      "at": 1.491,
-      "until": 3.03,
+      "at": 1.436,
+      "until": 3.14,
       "text": "agent to small businesses."
     },
     {
-      "at": 2.95,
-      "until": 4.291,
+      "at": 3.76,
+      "until": 5.521,
       "text": "It connects to Shopify,"
     },
     {
-      "at": 4.211,
-      "until": 5.88,
+      "at": 5.441,
+      "until": 7.64,
       "text": "Stripe, Canva and QuickBooks,"
     },
     {
-      "at": 5.8,
-      "until": 6.832,
+      "at": 7.98,
+      "until": 9.219,
       "text": "and it can read your"
     },
     {
-      "at": 6.752,
-      "until": 8.45,
+      "at": 9.139,
+      "until": 11.19,
       "text": "Instagram and Facebook page stats."
     },
     {
-      "at": 8.37,
-      "until": 9.237,
+      "at": 11.81,
+      "until": 12.772,
       "text": "Ask it to look"
     },
     {
-      "at": 9.157,
-      "until": 10.53,
+      "at": 12.692,
+      "until": 14.22,
       "text": "at sales and campaigns,"
     },
     {
-      "at": 10.45,
-      "until": 11.509,
+      "at": 14.56,
+      "until": 16.345,
       "text": "and it can plan growth"
     },
     {
-      "at": 11.429,
-      "until": 12.31,
+      "at": 16.265,
+      "until": 17.74,
       "text": "and draft new ads."
     },
     {
-      "at": 12.23,
-      "until": 13.81,
+      "at": 18.36,
+      "until": 20.33,
       "text": "One rule matters most."
     },
     {
-      "at": 13.73,
-      "until": 15.018,
+      "at": 20.67,
+      "until": 22.359,
       "text": "It won't post, send or"
     },
     {
-      "at": 14.938,
-      "until": 16.94,
+      "at": 22.279,
+      "until": 24.92,
       "text": "buy anything without your approval."
     },
     {
-      "at": 16.86,
-      "until": 18.241,
+      "at": 25.54,
+      "until": 27.067,
       "text": "Meta says about one"
     },
     {
-      "at": 18.161,
-      "until": 19.61,
+      "at": 26.987,
+      "until": 28.59,
       "text": "in three early users"
     },
     {
-      "at": 19.53,
-      "until": 20.591,
+      "at": 28.93,
+      "until": 30.471,
       "text": "had already connected it"
     },
     {
-      "at": 20.511,
-      "until": 21.49,
+      "at": 30.391,
+      "until": 31.81,
       "text": "to a business account."
     },
     {
-      "at": 21.41,
-      "until": 22.439,
+      "at": 32.43,
+      "until": 33.976,
       "text": "My take: the agent is"
     },
     {
-      "at": 22.359,
-      "until": 23.75,
+      "at": 33.896,
+      "until": 36.0,
       "text": "free, your brand voice isn't."
     },
     {
-      "at": 23.67,
-      "until": 25.21,
+      "at": 36.34,
+      "until": 38.13,
       "text": "Give it a proper brief first."
     },
     {
-      "at": 25.13,
-      "until": 27.081,
+      "at": 38.75,
+      "until": 41.71,
       "text": "Follow for more AI and marketing news."
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
-    "voice": "voice_3rjyhtlhksw1",
+    "engine": "chatterbox-clone-of-video-25",
+    "voice": "Puck",
     "breaths": true,
     "bed": false
   }
