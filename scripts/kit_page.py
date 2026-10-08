@@ -105,6 +105,8 @@ def collect(out: Path) -> list[dict]:
             f = "carousel.pdf" if (d / "carousel.pdf").exists() else "image.png"
             it["dl"] = GH + f"out/{key}/{f}?raw=true"
             it["dlname"] = "PDF" if f.endswith(".pdf") else "PNG"
+            if (d / "slides.zip").exists():
+                it["zip"] = GH + f"out/{key}/slides.zip?raw=true"
         items.append(it)
     return items
 
@@ -120,10 +122,13 @@ def page(items: list[dict]) -> str:
             else:
                 media = (f'<div class="pending"><img src="{it.get("poster", "")}" alt="" loading="lazy"><span>Voice in progress</span></div>'
                          if it.get("poster") else '<div class="pending"><span>Voice in progress</span></div>')
-            dl = f'<a href="{it["dl"]}" target="_blank" rel="noopener">Download MP4</a>' if it["ready"] else ""
+            dl = (f'<a href="{it["dl"]}" target="_blank" rel="noopener">LinkedIn MP4 (4:5)</a>'
+                  f'<a href="{it["dl"].replace("video.mp4", "video-9x16.mp4")}" target="_blank" rel="noopener">Reel / Short MP4 (9:16)</a>') if it["ready"] else ""
         else:
             media = '<div class="deck" tabindex="0">' + "".join(f'<img src="{s}" alt="Slide {k + 1}" loading="lazy">' for k, s in enumerate(it["slides"])) + "</div>"
-            dl = f'<a href="{it["dl"]}" target="_blank" rel="noopener">Download {it["dlname"]}</a>'
+            dl = f'<a href="{it["dl"]}" target="_blank" rel="noopener">LinkedIn {it["dlname"]}</a>'
+            if it.get("zip"):
+                dl += f'<a href="{it["zip"]}" target="_blank" rel="noopener">Instagram slides (ZIP)</a>'
         guide = (f'<details><summary>Guide to send when people comment</summary><div class="copy"><div class="ch"><span>Guide</span>'
                  f'<button type="button" data-copy="g{n}">Copy</button></div><pre id="g{n}">{e(it["guide"])}</pre></div></details>') if it["guide"] else ""
         state = '<span class="st ok">Ready</span>' if it["ready"] else '<span class="st wait">Voice in progress</span>'
@@ -174,13 +179,13 @@ details summary{{cursor:pointer;font:500 14px var(--body);color:var(--accent);ma
 button{{font:500 13px var(--body);color:var(--accent);background:var(--soft);border:0;border-radius:999px;padding:5px 12px;cursor:pointer}}
 button:focus-visible,a:focus-visible,summary:focus-visible{{outline:2px solid var(--accent);outline-offset:2px}}
 a{{color:var(--accent);font-weight:500}}
-.dl{{display:flex;gap:16px;font-size:14px}}
+.dl{{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px}}
 </style>
 <main class="wrap">
 <header>
   <div class="eyebrow">Posting kit · {len(items)} posts · {ready} ready now</div>
   <h1>Everything to post, <em>in order.</em></h1>
-  <p class="lead">One post per weekday from Thursday 8 October. Newest news first, evergreen tutorials later. Copy the caption, post the media natively, then add the first comment with the sources. Videos marked "voice in progress" get the #25 voice and appear here as they finish.</p>
+  <p class="lead">One post per weekday from Thursday 8 October. Newest news first, evergreen tutorials later. Copy the caption, post the media natively, then add the first comment with the sources. LinkedIn gets the 4:5 video or PDF; Instagram Reels and YouTube Shorts get the 9:16 video; Instagram carousels get the slides ZIP. Videos marked "voice in progress" get the #25 voice and appear here as they finish.</p>
 </header>
 {"".join(cards)}
 </main>
