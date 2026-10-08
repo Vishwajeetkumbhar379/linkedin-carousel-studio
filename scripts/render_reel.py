@@ -39,7 +39,7 @@ def spec_for(d: Path) -> dict:
     v = json.loads((d / "voice.json").read_text())
     L = v["lines"]
     words = {}
-    for key in ("publish", "comments", "scraping"):
+    for key in ("publish", "comments", "scraping", "overnight"):
         for ln in L:
             t = word_time(ln, key)
             if t is not None:

@@ -18,7 +18,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 GH = "https://github.com/vishwajeetkumbhar379/linkedin-carousel-studio/blob/claude/content-engine-test-gate/"
 ORDER = [
-    "flagship/claude-instagram", "flagship/claude-skills",
+    "flagship/claude-instagram", "flagship/manus-video-editor", "flagship/claude-skills",
     "batch-03/ltk-auto-draft-apple-intelligence", "batch-03/claude-connectors-marketers-step-by-step",
     "batch-03/stop-influencers-target-kids", "batch-03/chatgpt-apps-connectors-marketers-step-by-step",
     "batch-02/free-llm-token-repos", "batch-02/claude-startups-free-year",

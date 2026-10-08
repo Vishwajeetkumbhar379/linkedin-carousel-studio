@@ -1,0 +1,89 @@
+{
+ "reference": "video #25 ai-creators-cheap-trust-isnt",
+ "engine": "chatterbox clone",
+ "avg_similarity": 0.908,
+ "duration": 35.27,
+ "lines": [
+  {
+   "text": "This launch film hit 1.7 million views. Manus made it overnight.",
+   "start": 0.0,
+   "end": 4.46,
+   "similarity": 0.922,
+   "take": "seed 37",
+   "raw_longest_pause": 0.58,
+   "wps": 2.6
+  },
+  {
+   "text": "Manus 2.0 just added a video editor.",
+   "start": 5.06,
+   "end": 8.19,
+   "similarity": 0.933,
+   "take": "seed 23",
+   "raw_longest_pause": 0.34,
+   "wps": 2.41
+  },
+  {
+   "text": "Most AI video tools give you one flat clip.",
+   "start": 8.69,
+   "end": 12.17,
+   "similarity": 0.907,
+   "take": "seed 11",
+   "raw_longest_pause": 0.17,
+   "wps": 2.72
+  },
+  {
+   "text": "Change one caption, and you often regenerate everything.",
+   "start": 12.67,
+   "end": 16.21,
+   "similarity": 0.91,
+   "take": "seed 53",
+   "raw_longest_pause": 0.39,
+   "wps": 2.42
+  },
+  {
+   "text": "Manus puts every piece on its own track.",
+   "start": 16.71,
+   "end": 19.42,
+   "similarity": 0.911,
+   "take": "seed 11",
+   "raw_longest_pause": 0.13,
+   "wps": 3.1
+  },
+  {
+   "text": "But how is it useful to you?",
+   "start": 20.12,
+   "end": 22.29,
+   "similarity": 0.856,
+   "take": "seed 37",
+   "raw_longest_pause": 0.27,
+   "wps": 3.61
+  },
+  {
+   "text": "No creator budget? Test an AI UGC ad first.",
+   "start": 22.89,
+   "end": 27.42,
+   "similarity": 0.935,
+   "take": "seed 11",
+   "raw_longest_pause": 0.57,
+   "wps": 2.28
+  },
+  {
+   "text": "Then pay a real creator for the angle that wins.",
+   "start": 27.92,
+   "end": 31.47,
+   "similarity": 0.897,
+   "take": "seed 11",
+   "raw_longest_pause": 0.2,
+   "wps": 2.99
+  },
+  {
+   "text": "Comment MANUS for the prompts I'd start with.",
+   "start": 31.97,
+   "end": 34.77,
+   "similarity": 0.902,
+   "take": "seed 53",
+   "raw_longest_pause": 0.13,
+   "wps": 3.14
+  }
+ ]
+}

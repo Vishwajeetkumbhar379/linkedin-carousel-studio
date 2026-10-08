@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/fonts.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+/* One world: warm grid paper, dark app windows, mono UI type, teal = keep, coral = problem, violet = the turn.
+   A single pipe runs down the world; the camera travels down it, one stop per spoken line. */
+:root{--paper:#F1EFEA;--grid:rgba(23,20,28,.07);--ink:#17141C;--win:#1B1A21;--win2:#24222C;--line:#34313D;--soft:#ECEAF2;--muted:#9A94A3;
+--teal:#2FB59A;--tealon:#6FE0D2;--coral:#E07A5C;--coralon:#F09A75;--violet:#7F77DD;--vink:#4A44C4}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:var(--paper);font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#root{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--paper)}
+#cam{position:absolute;inset:0;transform-origin:540px 600px;will-change:transform}
+#world{position:absolute;left:0;top:0;width:1080px;height:12150px;will-change:transform;
+  background-image:linear-gradient(var(--grid) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--grid) 1.5px,transparent 1.5px);background-size:54px 54px}
+.stop{position:absolute;left:0;width:1080px;height:1350px}
+.abs{position:absolute}
+.mono{font-family:'Geist Mono',monospace}
+.win{position:absolute;background:var(--win);border-radius:26px;box-shadow:0 40px 80px -36px rgba(20,15,40,.55);overflow:hidden;color:var(--soft)}
+.win .bar{height:54px;display:flex;align-items:center;gap:10px;padding:0 22px}
+.win .bar i{width:13px;height:13px;border-radius:50%;background:#4A4754}
+.win .bar span{margin-left:14px;font:500 19px 'Geist Mono',monospace;color:var(--muted);letter-spacing:.04em}
+.chip{position:absolute;font:500 21px 'Geist Mono',monospace;letter-spacing:.05em;padding:10px 18px;border-radius:999px;background:var(--win);color:var(--soft)}
+.serif{font-family:Newsreader,Georgia,serif;font-weight:500;letter-spacing:-.025em;line-height:1}
+.node{position:absolute;width:150px;height:150px;border-radius:30px;background:var(--win);display:grid;place-items:center;box-shadow:0 30px 60px -30px rgba(20,15,40,.6)}
+.node b{font:600 26px 'Geist Mono',monospace;letter-spacing:.18em;color:var(--soft)}
+.lane{position:absolute;left:150px;right:30px;height:46px;border-radius:10px;background:#2B2933}
+.lab{position:absolute;left:24px;width:118px;font:500 18px 'Geist Mono',monospace;color:var(--muted);line-height:46px}
+.blk{position:absolute;top:6px;height:34px;border-radius:7px}
+.phone{position:absolute;width:210px;height:374px;border-radius:30px;background:var(--win);padding:10px;box-shadow:0 30px 60px -30px rgba(20,15,40,.55)}
+.phone .scr{position:absolute;inset:10px;border-radius:22px;overflow:hidden}
+.phone p{position:absolute;left:0;right:0;bottom:-56px;text-align:center;font:500 20px 'Geist Mono',monospace;color:var(--ink)}
+.mark{position:absolute;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font:700 40px Geist;color:#fff}
+.cursor{position:absolute;width:44px;height:44px;z-index:30}
+.ripple{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;border:4px solid var(--violet);opacity:0;z-index:29}
+#cap{position:absolute;left:60px;right:60px;top:1172px;height:100px;display:flex;align-items:center;justify-content:center;z-index:50}
+.cl{position:absolute;max-width:960px;text-align:center;font:600 38px/1.25 Geist,sans-serif;color:#F5F5F7;background:rgba(23,20,28,.9);padding:14px 26px;border-radius:20px;opacity:0;visibility:hidden}
+.cl span{display:inline-block;margin:0 .13em}
+#prog{position:absolute;left:0;top:0;height:7px;width:1080px;background:var(--violet);transform-origin:0 50%;z-index:60}
+#brand{position:absolute;left:56px;top:38px;font:500 19px 'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);opacity:.55;z-index:60}
+.av{position:absolute;width:260px;z-index:40;filter:drop-shadow(0 26px 30px rgba(20,10,60,.3));-webkit-mask-image:linear-gradient(#000 80%,transparent 99%);mask-image:linear-gradient(#000 80%,transparent 99%);opacity:0}
+</style></head>
+<body><div id="root">
+<div id="cam"><div id="world">
+  <svg class="abs" id="pipes" style="left:0;top:0" width="1080" height="12150"></svg>
+
+  <!-- 1 proof -->
+  <div class="stop" style="top:0">
+    <div class="win" id="p1win" style="left:150px;top:200px;width:780px;height:520px">
+      <div class="bar"><i></i><i></i><i></i><span>launch-film.mp4</span></div>
+      <div class="abs" id="p1vid" style="left:28px;right:28px;top:66px;bottom:28px;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#2FB59A 0%,#2FB59A 48%,#E07A5C 48%,#E07A5C 100%)">
+        <div class="abs mono" style="left:40px;top:40px;font-size:30px;font-weight:600;letter-spacing:.3em;color:#17141C">LAUNCH FILM</div>
+        <div class="abs" style="left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:rgba(23,20,28,.85);display:grid;place-items:center"><svg width="44" height="44" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#F1EFEA"/></svg></div>
+      </div>
+    </div>
+    <div class="abs" id="p1stat" style="left:150px;top:760px;display:flex;align-items:baseline;gap:22px">
+      <span class="serif" id="p1num" style="font-size:150px;color:var(--ink)">0</span><span class="mono" style="font-size:30px;color:var(--ink)">views on X</span></div>
+    <div class="chip" id="p1night" style="left:150px;top:960px;background:var(--ink)">9 PM brief → film by launch</div>
+    <div class="chip" id="p1src" style="left:150px;top:1040px;background:transparent;color:#5F5967;padding-left:0">source: manus.im, 1 Oct 2026</div>
+  </div>
+
+  <!-- 2 title -->
+  <div class="stop" style="top:1350px">
+    <div class="abs" id="t2" style="left:90px;top:250px;width:900px;height:640px;border-radius:30px;overflow:hidden;display:flex">
+      <div id="t2a" style="flex:1;background:repeating-linear-gradient(90deg,#2FB59A 0 60px,#5CCBB3 60px 90px,#2FB59A 90px 140px,#8EDCCB 140px 160px)"></div>
+      <div id="t2b" style="width:14px;background:#F6D2C4"></div>
+      <div id="t2c" style="flex:1;background:var(--coral)"></div>
+    </div>
+    <div class="abs mono" id="t2txt" style="left:90px;top:250px;width:900px;height:640px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:var(--ink)">
+      <div id="t2l1" style="font-size:96px;font-weight:600;letter-spacing:.32em">MANUS 2.0</div>
+      <div id="t2l2" style="font-size:40px;font-weight:500;letter-spacing:.42em;background:var(--paper);padding:10px 26px;border-radius:12px">VIDEO EDITOR</div>
+    </div>
+  </div>
+
+  <!-- 3 + 4 flat clip -->
+  <div class="stop" style="top:2700px">
+    <div class="win" id="w3" style="left:110px;top:150px;width:860px;height:900px">
+      <div class="bar"><i></i><i></i><i></i><span>typical AI video tool</span></div>
+      <div class="abs" style="left:34px;right:34px;top:80px;height:84px;border-radius:16px;background:var(--win2);font:500 26px 'Geist Mono',monospace;color:var(--soft);display:flex;align-items:center;padding:0 24px"><span id="w3q"></span></div>
+      <div class="abs mono" style="left:34px;top:200px;font-size:20px;color:var(--muted)">OUTPUT</div>
+      <div class="abs" id="w3clip" style="left:34px;right:34px;top:240px;height:300px;border-radius:16px;overflow:hidden;display:flex">
+        <div class="f" style="flex:1;background:#3A6F66"></div><div class="f" style="flex:1;background:#7A5A4F"></div><div class="f" style="flex:1;background:#4D4A6B"></div><div class="f" style="flex:1;background:#6B6A3E"></div><div class="f" style="flex:1;background:#3E5A6B"></div>
+        <div class="abs" style="left:0;right:0;bottom:22px;text-align:center;font:600 30px Geist;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5)" id="w3cap">Coffee, folded flat.</div>
+      </div>
+      <div class="abs mono" id="w3file" style="left:34px;top:560px;font-size:22px;color:var(--soft)">final.mp4 · one flattened file</div>
+      <div class="abs" id="w3regen" style="left:34px;right:34px;top:640px;height:200px;border-radius:16px;background:var(--win2);padding:26px;opacity:0">
+        <div class="mono" style="font-size:24px;color:var(--coralon)">Regenerating entire video…</div>
+        <div class="abs" style="left:26px;right:26px;top:90px;height:16px;border-radius:999px;background:#3A3742"><div id="w3bar" style="height:100%;width:100%;border-radius:999px;background:var(--coral);transform-origin:0 50%"></div></div>
+        <div class="abs mono" id="w3lost" style="left:26px;top:130px;font-size:21px;color:var(--muted);opacity:0">shots changed · music changed · the parts you liked, gone</div>
+      </div>
+    </div>
+    <div class="ripple" id="r3"></div>
+    <svg class="cursor" id="c3" viewBox="0 0 24 24"><path d="M4 2l16 9.5-7 1.6 4 7.4-3 1.5-4-7.4-5 4.9z" fill="#F1EFEA" stroke="#17141C" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- 5 tracks -->
+  <div class="stop" style="top:5400px">
+    <div class="abs" style="left:0;top:0;width:1080px;height:1350px;perspective:1800px">
+      <div class="win" id="w5" style="left:70px;top:170px;width:940px;height:860px">
+        <div class="bar"><i></i><i></i><i></i><span>Manus Studio · Video Editor</span></div>
+        <div id="lanes"></div>
+        <div class="abs" id="w5head" style="left:470px;top:70px;bottom:20px;width:3px;background:var(--violet)"></div>
+      </div>
+    </div>
+    <div class="chip" id="w5tag" style="left:70px;top:1060px;background:var(--ink)">every piece on its own track</div>
+  </div>
+
+  <!-- 6 turn -->
+  <div class="stop" style="top:6750px">
+    <div class="abs" id="turn" style="left:0;right:0;top:380px;text-align:center;color:var(--ink)">
+      <div id="tw1" class="serif" style="font-size:64px;font-style:italic;margin-left:300px">but</div>
+      <div id="tw2" class="serif" style="font-size:72px;margin:-6px 0 0 -200px">how is it</div>
+      <div id="tw3" class="serif" style="font-size:200px;font-style:italic;color:var(--violet);line-height:.95">useful</div>
+      <div id="tw4" class="serif" style="font-size:72px;margin-left:260px">to you?</div>
+    </div>
+  </div>
+
+  <!-- 7 test angles -->
+  <div class="stop" style="top:8100px">
+    <div class="chip" id="s7brand" style="left:330px;top:120px;background:var(--ink);font-size:24px">small brand · no creator budget</div>
+    <div class="node" id="s7node" style="left:465px;top:250px"><b>MANUS</b></div>
+    <div id="s7phones"></div>
+    <div class="chip" id="s7test" style="left:420px;top:1010px;background:var(--ink)">post · watch reactions</div>
+  </div>
+
+  <!-- 8 real creator -->
+  <div class="stop" style="top:9450px">
+    <div class="phone" id="s8win" style="left:150px;top:300px"><div class="scr" style="background:linear-gradient(160deg,#2FB59A,#1E7F6C)"></div><p>winning angle</p></div>
+    <div class="win" id="s8brief" style="left:470px;top:220px;width:470px;height:300px">
+      <div class="bar"><i></i><i></i><i></i><span>brief.md</span></div>
+      <div class="abs mono" style="left:28px;top:76px;right:28px;font-size:22px;line-height:1.6;color:var(--soft)">angle: the one that won<br>hook: same first line<br>creator: real person, real audience</div>
+    </div>
+    <div class="abs" id="s8creator" style="left:470px;top:600px;width:470px;height:220px;border-radius:26px;background:#fff;box-shadow:0 30px 60px -30px rgba(20,15,40,.4);display:flex;align-items:center;gap:26px;padding:0 30px">
+      <div style="width:120px;height:120px;border-radius:50%;background:linear-gradient(160deg,#AFA9EC,#7F77DD)"></div>
+      <div><div style="font:600 30px Geist;color:var(--ink)">Real creator</div><div class="mono" style="font-size:20px;color:#5F5967;margin-top:8px">trusted by their audience</div></div>
+    </div>
+    <div class="abs mono" id="s8stamp" style="left:520px;top:880px;font-size:30px;font-weight:600;letter-spacing:.12em;color:var(--teal);border:5px solid var(--teal);border-radius:18px;padding:12px 24px;transform:rotate(-3deg)">PAID PARTNERSHIP</div>
+  </div>
+
+  <!-- 9 CTA -->
+  <div class="stop" style="top:10800px">
+    <div class="abs serif" id="s9h" style="left:90px;top:170px;font-size:120px;color:var(--ink)">Comment</div>
+    <div class="abs" id="s9key" style="left:90px;top:320px;height:150px;padding:0 44px;border-radius:28px;background:var(--win);color:var(--soft);display:flex;align-items:center;font:600 100px 'Geist Mono',monospace;letter-spacing:.14em"><span id="s9k"></span><span id="s9caret" style="width:8px;height:92px;background:var(--tealon);margin-left:10px"></span></div>
+    <div class="win" id="s9guide" style="left:90px;top:540px;width:560px;height:300px">
+      <div class="bar"><i></i><i></i><i></i><span>free guide</span></div>
+      <div class="abs" style="left:28px;top:80px;right:28px;font:600 34px/1.25 Geist;color:var(--soft)">AI UGC ad test: the prompts I'd start with</div>
+      <div class="abs mono" style="left:28px;bottom:26px;font-size:20px;color:var(--tealon)">sent to everyone who comments</div>
+    </div>
+    <div class="abs mono" id="s9end" style="left:90px;top:1090px;font-size:22px;color:#5F5967">Build with Vish · buildwithvish.netlify.app</div>
+  </div>
+</div></div>
+<img class="av" id="av" src="/video/reels/assets/03_wave_center.png">
+<div id="cap"></div>
+<div id="prog"></div>
+<div id="brand">Build with Vish</div>
+</div>
+<script>
+window.STAGE_LOADED = true;
+const $ = s => document.querySelector(s);
+const SFX = [];
+let TL;
+const H = 1350;
+function typer(tl, el, text, at, dur) {
+  const o = {p: 0};
+  tl.fromTo(o, {p: 0}, {p: 1, duration: dur, ease: "none", onUpdate() { el.textContent = text.slice(0, Math.round(o.p * text.length)); }}, at);
+  for (let k = 0; k < Math.min(text.length, 12); k++) SFX.push({t: at + dur * k / Math.min(text.length, 12), s: "key"});
+}
+function pipe(svg, d, id) { const p = document.createElementNS("http://www.w3.org/2000/svg", "path"); p.setAttribute("d", d); p.setAttribute("id", id);
+  p.setAttribute("fill", "none"); p.setAttribute("stroke", "#2FB59A"); p.setAttribute("stroke-width", "10"); p.setAttribute("stroke-linecap", "round"); svg.appendChild(p); return p; }
+
+window.setup = function (spec) {
+  const L = spec.lines, D = spec.duration;
+  const st = i => Math.max(0, L[i].start - 0.2);
+  const tl = gsap.timeline({paused: true});
+  tl.fromTo("#prog", {scaleX: 0}, {scaleX: 1, duration: D, ease: "none"}, 0);
+  // camera: one stop per line; lines 3 and 4 share a stop
+  const STOP = [0, 1, 2, 2, 4, 5, 6, 7, 8];
+  const camY = i => -STOP[i] * H;
+  tl.set("#world", {y: 0}, 0);
+  for (let i = 1; i < L.length; i++) {
+    if (STOP[i] === STOP[i - 1]) continue;
+    const t = st(i) - 0.35;
+    tl.to("#world", {y: camY(i), duration: 0.8, ease: "power3.inOut"}, t);
+    tl.to("#cam", {keyframes: {scale: [1, 0.94, 1]}, duration: 0.8, ease: "power1.inOut"}, t);
+    SFX.push({t: t + 0.05, s: "whip"});
+  }
+  // the pipe that runs through the world, drawn as the camera arrives
+  const svg = $("#pipes");
+  const P = [
+    pipe(svg, "M 540 1120 L 540 1600", "pp1"), pipe(svg, "M 540 2240 L 540 2850", "pp2"), pipe(svg, "M 540 3750 L 540 5570", "pp3"),
+    pipe(svg, "M 540 6430 L 540 7100", "pp4"), pipe(svg, "M 540 7620 L 540 8350", "pp5"), pipe(svg, "M 540 9170 L 540 9600 L 255 9600 L 255 9750", "pp6"),
+    pipe(svg, "M 255 10180 L 255 10450 L 540 10450 L 540 10930", "pp7")];
+  [[0, 1], [1, 2], [2, 4], [4, 5], [5, 6], [6, 7], [7, 8]].forEach(([a, b], k) => {
+    const p = P[k], n = p.getTotalLength(); p.style.strokeDasharray = n;
+    tl.set(p, {opacity: 0}, 0); tl.set(p, {opacity: 1}, st(b) - 0.6);
+    tl.fromTo(p, {strokeDashoffset: n}, {strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut"}, st(b) - 0.6);
+  });
+
+  // ---- 1 proof ----
+  { const a = st(0);
+    tl.fromTo("#p1win", {y: 60, opacity: 0, rotation: -2}, {y: 0, opacity: 1, rotation: 0, duration: 0.6, ease: "expo.out"}, a);
+    const o = {v: 0}; tl.fromTo(o, {v: 0}, {v: 1.7, duration: 1.2, ease: "power3.out", onUpdate() { $("#p1num").textContent = o.v.toFixed(1) + "M"; }}, a + 0.4);
+    tl.fromTo("#p1stat", {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.4}, a + 0.35);
+    SFX.push({t: a + 0.02, s: "thump"});
+    const ov = (spec.words || {}).overnight ?? L[0].start + 2.6;
+    tl.fromTo("#p1night", {opacity: 0, scale: 0.7}, {opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.4)"}, ov - 0.1);
+    SFX.push({t: ov - 0.05, s: "pop"});
+    tl.fromTo("#p1src", {opacity: 0}, {opacity: 1, duration: 0.3}, a + 1.0);
+    tl.fromTo("#p1vid", {scale: 1}, {scale: 1.04, duration: 3, ease: "sine.inOut"}, a);
+  }
+  // ---- 2 title ----
+  { const a = st(1);
+    tl.fromTo("#t2a", {xPercent: -100}, {xPercent: 0, duration: 0.6, ease: "expo.out"}, a);
+    tl.fromTo("#t2c", {xPercent: 100}, {xPercent: 0, duration: 0.6, ease: "expo.out"}, a);
+    tl.fromTo("#t2l1", {letterSpacing: "0.9em", opacity: 0}, {letterSpacing: "0.32em", opacity: 1, duration: 0.7, ease: "expo.out"}, a + 0.25);
+    tl.fromTo("#t2l2", {y: 30, opacity: 0}, {y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)"}, a + 0.65);
+    SFX.push({t: a + 0.3, s: "zoom"});
+  }
+  // ---- 3 + 4 flat clip, then regenerate ----
+  { const a = st(2), b = st(3);
+    tl.fromTo("#w3", {y: 80, opacity: 0}, {y: 0, opacity: 1, duration: 0.5, ease: "expo.out"}, a);
+    typer(tl, $("#w3q"), "30-second ad for my coffee cup", a + 0.3, 0.8);
+    tl.fromTo("#w3clip", {opacity: 0, scaleX: 0.2}, {opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out"}, a + 1.2);
+    tl.fromTo("#w3file", {opacity: 0}, {opacity: 1, duration: 0.3}, a + 1.5);
+    // cursor clicks the caption
+    const cx = 110 + 430, cy = 150 + 240 + 270;
+    tl.fromTo("#c3", {x: 820, y: 1150, opacity: 0}, {x: cx, y: cy, opacity: 1, duration: 0.6, ease: "power3.inOut"}, b - 0.1);
+    tl.to("#c3", {scale: 0.82, duration: 0.07}, b + 0.5).to("#c3", {scale: 1, duration: 0.16, ease: "back.out(3)"}, b + 0.57);
+    tl.set("#r3", {left: cx + 6, top: cy + 4}, b + 0.5);
+    tl.fromTo("#r3", {scale: 0.2, opacity: 0.9}, {scale: 1.6, opacity: 0, duration: 0.5}, b + 0.5);
+    SFX.push({t: b + 0.5, s: "click"});
+    tl.fromTo("#w3cap", {opacity: 1}, {opacity: 0.25, duration: 0.2}, b + 0.6);
+    tl.fromTo("#w3regen", {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.35, ease: "expo.out"}, b + 0.75);
+    tl.fromTo("#w3bar", {scaleX: 0}, {scaleX: 1, duration: 1.3, ease: "power1.inOut"}, b + 0.85);
+    const fr = document.querySelectorAll("#w3clip .f"), newc = ["#6B3F3A", "#3F6B4D", "#6B5E3F", "#3F466B", "#6B3F62"];
+    fr.forEach((f, k) => tl.to(f, {backgroundColor: newc[k], duration: 0.15}, b + 1.4 + k * 0.08));
+    tl.fromTo("#w3lost", {opacity: 0}, {opacity: 1, duration: 0.3}, b + 1.9);
+    tl.fromTo("#w3", {x: 0}, {keyframes: {x: [0, -10, 9, -6, 0]}, duration: 0.4, ease: "none"}, b + 1.9);
+    SFX.push({t: b + 1.9, s: "thump"});
+    tl.to("#c3", {opacity: 0, duration: 0.2}, b + 1.6);
+  }
+  // ---- 5 tracks ----
+  { const a = st(4);
+    const lanes = [["shots", "#4F9C8C", [[0, 30], [32, 22], [56, 40]]], ["images", "#7A6FB8", [[10, 18], [60, 20]]], ["captions", "#E9E5FF", [[2, 16], [20, 14], [38, 18], [60, 16], [80, 14]]],
+                   ["motion", "#2FB59A", [[14, 24], [52, 30]]], ["voice", "#AFA9EC", [[0, 46], [50, 44]]], ["music", "#E07A5C", [[0, 96]]], ["sfx", "#F3C584", [[8, 4], [31, 4], [55, 4], [77, 4]]]];
+    const box = $("#lanes"), W = 940 - 150 - 30;
+    lanes.forEach(([name, col, blocks], k) => {
+      const lane = document.createElement("div"); lane.className = "lane"; lane.style.top = (90 + k * 100) + "px";
+      const lab = document.createElement("div"); lab.className = "lab"; lab.style.top = (90 + k * 100) + "px"; lab.textContent = name;
+      box.appendChild(lab); box.appendChild(lane);
+      blocks.forEach(([x, w], j) => { const b = document.createElement("div"); b.className = "blk"; b.style.left = (x / 100 * W) + "px"; b.style.width = (w / 100 * W - 6) + "px"; b.style.background = col;
+        if (name === "captions" && j === 2) b.id = "capblk"; lane.appendChild(b); });
+      tl.fromTo([lab, lane], {opacity: 0, y: -(k * 100) + 260, scaleY: 0.4}, {opacity: 1, y: 0, scaleY: 1, duration: 0.55, ease: "expo.out"}, a + 0.2 + k * 0.07);
+    });
+    tl.fromTo("#w5", {opacity: 0, rotationX: 14, y: 60}, {opacity: 1, rotationX: 6, y: 0, duration: 0.6, ease: "expo.out"}, a);
+    SFX.push({t: a + 0.25, s: "zoom"});
+    tl.fromTo("#capblk", {backgroundColor: "#E9E5FF", scale: 1}, {backgroundColor: "#7F77DD", scale: 1.12, duration: 0.25, ease: "back.out(3)"}, a + 1.5);
+    tl.to("#capblk", {x: 46, duration: 0.5, ease: "power3.inOut"}, a + 1.8);
+    SFX.push({t: a + 1.5, s: "pop"});
+    tl.fromTo("#w5head", {x: -320}, {x: 330, duration: Math.max(2, (st(5) - a) - 0.4), ease: "none"}, a + 0.5);
+    tl.fromTo("#w5tag", {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.35}, a + 1.1);
+  }
+  // ---- 6 turn ----
+  { const a = st(5);
+    ["#tw1", "#tw2", "#tw3", "#tw4"].forEach((id, k) => tl.fromTo(id, {opacity: 0, y: 50, scale: k === 2 ? 1.25 : 1}, {opacity: 1, y: 0, scale: 1, duration: 0.45, ease: k === 2 ? "back.out(1.8)" : "expo.out"}, a + 0.1 + k * 0.22));
+    SFX.push({t: a + 0.55, s: "thump"});
+  }
+  // ---- 7 test three angles ----
+  { const a = st(6), stopTop = 8100;
+    tl.fromTo("#s7brand", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 0.35}, a);
+    tl.fromTo("#s7node", {scale: 0, rotation: -20}, {scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2.2)"}, a + 0.3);
+    const svg = $("#pipes"); const box = $("#s7phones");
+    const ang = [["problem", "linear-gradient(160deg,#E07A5C,#B4502A)", false], ["unboxing", "linear-gradient(160deg,#2FB59A,#1E7F6C)", true], ["before / after", "linear-gradient(160deg,#7F77DD,#4A44C4)", false]];
+    ang.forEach(([name, bg, win], k) => {
+      const x = 105 + k * 330, y = 560;
+      const p = pipe(svg, `M 540 ${stopTop + 400} C 540 ${stopTop + 470}, ${x + 105} ${stopTop + 470}, ${x + 105} ${stopTop + y}`, "a" + k); const n = p.getTotalLength(); p.style.strokeDasharray = n;
+      tl.set(p, {opacity: 0}, 0); tl.set(p, {opacity: 1}, a + 0.6 + k * 0.12);
+      tl.fromTo(p, {strokeDashoffset: n}, {strokeDashoffset: 0, duration: 0.45, ease: "power2.out"}, a + 0.6 + k * 0.12);
+      const ph = document.createElement("div"); ph.className = "phone"; ph.style.left = x + "px"; ph.style.top = y + "px";
+      ph.innerHTML = `<div class="scr" style="background:${bg}"><div style="position:absolute;left:16px;right:16px;bottom:18px;height:10px;border-radius:9px;background:rgba(255,255,255,.7)"></div><div style="position:absolute;left:16px;width:60%;bottom:36px;height:10px;border-radius:9px;background:rgba(255,255,255,.5)"></div></div><p>angle: ${name}</p>`;
+      box.appendChild(ph);
+      tl.fromTo(ph, {opacity: 0, y: -120, scale: 0.8}, {opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)"}, a + 0.9 + k * 0.15);
+      SFX.push({t: a + 0.95 + k * 0.15, s: "pop"});
+      const m = document.createElement("div"); m.className = "mark"; m.style.left = (x + 67) + "px"; m.style.top = (y + 150) + "px";
+      m.style.background = win ? "#2FB59A" : "#E07A5C"; m.textContent = win ? "✓" : "✕"; box.appendChild(m);
+      tl.fromTo(m, {scale: 0, opacity: 0}, {scale: 1, opacity: 1, duration: 0.35, ease: "back.out(3)"}, a + 2.1 + (win ? 0.35 : k * 0.1));
+      if (!win) tl.to(ph, {opacity: 0.35, duration: 0.3}, a + 2.3);
+    });
+    SFX.push({t: a + 2.45, s: "pop"});
+    tl.fromTo("#s7test", {opacity: 0}, {opacity: 1, duration: 0.3}, a + 1.6);
+  }
+  // ---- 8 real creator ----
+  { const a = st(7);
+    tl.fromTo("#s8win", {opacity: 0, y: -80}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, a);
+    tl.fromTo("#s8brief", {opacity: 0, x: 80}, {opacity: 1, x: 0, duration: 0.5, ease: "expo.out"}, a + 0.4);
+    tl.fromTo("#s8creator", {opacity: 0, y: 60}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, a + 0.9);
+    tl.fromTo("#s8stamp", {opacity: 0, scale: 2.2}, {opacity: 1, scale: 1, duration: 0.3, ease: "power4.in"}, a + 1.6);
+    SFX.push({t: a + 1.9, s: "thump"});
+  }
+  // ---- 9 CTA ----
+  { const a = st(8);
+    tl.fromTo("#s9h", {opacity: 0, y: 50}, {opacity: 1, y: 0, duration: 0.45, ease: "expo.out"}, a);
+    tl.fromTo("#s9key", {opacity: 0, scale: 0.6}, {opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2.4)"}, a + 0.25);
+    typer(tl, $("#s9k"), "MANUS", a + 0.45, 0.5);
+    tl.fromTo("#s9caret", {opacity: 1}, {opacity: 0, duration: 0.3, repeat: 9, yoyo: true, ease: "steps(1)"}, a + 1);
+    tl.fromTo("#s9guide", {opacity: 0, y: 60}, {opacity: 1, y: 0, duration: 0.5, ease: "expo.out"}, a + 0.9);
+    tl.fromTo("#s9end", {opacity: 0}, {opacity: 1, duration: 0.4}, a + 1.6);
+    tl.set("#av", {left: 780, top: 700}, a);
+    tl.fromTo("#av", {opacity: 0, y: 60}, {opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)"}, a + 0.6);
+  }
+  // ---- captions ----
+  const cap = $("#cap");
+  L.forEach((ln, i) => {
+    const box = document.createElement("div"); box.className = "cl";
+    const words = ln.text.split(/\s+/), tot = words.reduce((s, w) => s + w.length + 1, 0);
+    let acc = 0; const dur = ln.end - ln.start;
+    words.forEach(w => { const sp = document.createElement("span"); sp.textContent = w; box.appendChild(sp);
+      const ws = ln.start + dur * (acc / tot); acc += w.length + 1;
+      tl.fromTo(sp, {color: "#F5F5F7"}, {color: "#6FE0D2", duration: 0.08}, ws); });
+    cap.appendChild(box);
+    const end = i + 1 < L.length ? L[i + 1].start - 0.05 : D;
+    tl.set(box, {visibility: "visible"}, ln.start - 0.1);
+    tl.fromTo(box, {opacity: 0, y: 14}, {opacity: 1, y: 0, duration: 0.16}, ln.start - 0.1);
+    tl.to(box, {opacity: 0, duration: 0.1}, end - 0.1);
+    tl.set(box, {visibility: "hidden"}, end);
+  });
+  TL = tl;
+  window.SFX = SFX.filter(e => e.t >= 0 && e.t < D).sort((p, q) => p.t - q.t);
+  tl.seek(0);
+  document.fonts.ready.then(() => Promise.all([...document.images].map(im => im.complete ? 1 : new Promise(r => { im.onload = im.onerror = r; }))).then(() => { window.READY = true; }));
+};
+window.frame = function (t) { TL.seek(t, false); };
+</script>
+</body></html>
