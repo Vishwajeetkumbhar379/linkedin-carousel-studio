@@ -152,7 +152,8 @@ def gemini_tts(text: str, voice: str, style: str) -> np.ndarray:
     import urllib.error
 
     models = [GEMINI_MODEL]  # never switch models silently: a different model is a different voice
-    for attempt in range(8):  # free tier: 3 requests a minute, 10 a day per model
+    waited = 0.0
+    for attempt in range(60):  # free tier: 3 requests a minute, 10 a day per model; 503 "high demand" spikes can last a while
         body["model"] = models[0]
         req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), method="POST",
                                      headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
@@ -164,10 +165,20 @@ def gemini_tts(text: str, voice: str, style: str) -> np.ndarray:
             msg = e.read().decode()
             if e.code == 429 and "per day" in msg:
                 raise DailyCap(f"{models[0]}: {msg[:240]}") from None
-            if e.code not in (429, 500, 502, 503) or attempt == 7:
+            if e.code not in (429, 500, 502, 503, 504) or waited > 2400:
                 raise RuntimeError(f"{e.code}: {msg[:300]}") from None
             m = re.search(r"retry in (\d+)", msg)
-            time.sleep(int(m.group(1)) + 2 if m else 25)
+            pause = int(m.group(1)) + 2 if m else min(30 + 15 * attempt, 120)
+            print(f"  TTS {e.code}, retrying in {pause}s", flush=True)
+            time.sleep(pause)
+            waited += pause
+        except (urllib.error.URLError, TimeoutError) as e:
+            if waited > 2400:
+                raise RuntimeError(str(e)) from None
+            time.sleep(30)
+            waited += 30
+    else:
+        raise RuntimeError("TTS retries exhausted")
     b64 = _find_audio(resp)
     if not b64:
         raise RuntimeError(f"no audio in response: {str(resp)[:300]}")

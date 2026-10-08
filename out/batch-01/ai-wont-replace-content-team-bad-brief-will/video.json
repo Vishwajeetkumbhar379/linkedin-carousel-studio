@@ -43,7 +43,7 @@
       "avTop": 170,
       "avSide": "right",
       "at": 0.0,
-      "until": 3.5,
+      "until": 3.64,
       "say": "Everyone's worried AI will replace the content team.",
       "avSize": 190
     },
@@ -56,8 +56,8 @@
       "avatar": "smirk",
       "avTop": 730,
       "avSide": "left",
-      "at": 3.82,
-      "until": 5.92,
+      "at": 4.06,
+      "until": 6.52,
       "say": "I'm more worried about the brief."
     },
     {
@@ -66,8 +66,8 @@
       "title": "Vague brief → *average work*",
       "size": "t2",
       "trans": "rise",
-      "at": 6.52,
-      "until": 10.26,
+      "at": 7.22,
+      "until": 10.64,
       "say": "Give a great writer a vague brief, you get average work."
     },
     {
@@ -76,8 +76,8 @@
       "title": "Same brief to AI → average, *faster*",
       "size": "t2",
       "trans": "zoom",
-      "at": 10.58,
-      "until": 14.49,
+      "at": 11.06,
+      "until": 14.8,
       "say": "Give AI the same brief, you get average work faster."
     },
     {
@@ -89,8 +89,8 @@
       "avatar": "stressed",
       "avTop": 730,
       "avSide": "right",
-      "at": 15.09,
-      "until": 18.4,
+      "at": 15.5,
+      "until": 18.61,
       "say": "Then someone sees a pile of average drafts."
     },
     {
@@ -99,8 +99,8 @@
       "stamp": "WRONG CALL",
       "title": "Blaming the team",
       "trans": "click",
-      "at": 18.72,
-      "until": 21.18,
+      "at": 19.03,
+      "until": 21.92,
       "say": "And decides the team was the problem."
     },
     {
@@ -109,8 +109,8 @@
       "title": "It was never *the writing*",
       "size": "t1",
       "trans": "whip",
-      "at": 21.78,
-      "until": 23.31,
+      "at": 22.62,
+      "until": 23.84,
       "say": "It wasn't the writing."
     },
     {
@@ -126,8 +126,8 @@
       "avatar": "point",
       "avTop": 780,
       "avSide": "left",
-      "at": 23.63,
-      "until": 27.66,
+      "at": 24.26,
+      "until": 28.47,
       "say": "Nobody decided the goal, the audience, or the one thing to say."
     },
     {
@@ -136,8 +136,8 @@
       "title": "Good briefs get *more* from AI",
       "size": "t2",
       "trans": "rise",
-      "at": 28.26,
-      "until": 32.16,
+      "at": 29.17,
+      "until": 33.86,
       "say": "Teams that brief well get more out of AI, not less work."
     },
     {
@@ -146,8 +146,8 @@
       "stamp": "BRIEF FIRST",
       "title": "Then the tools",
       "trans": "zoom",
-      "at": 32.48,
-      "until": 34.07,
+      "at": 34.28,
+      "until": 35.7,
       "say": "Fix the brief first."
     },
     {
@@ -156,8 +156,8 @@
       "title": "Template on *Build with Vish*",
       "size": "t3",
       "trans": "click",
-      "at": 34.39,
-      "until": 36.63,
+      "at": 36.12,
+      "until": 39.47,
       "say": "My template is on Build with Vish."
     },
     {
@@ -169,121 +169,121 @@
       "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
-      "at": 37.23,
-      "until": 38.08,
+      "at": 40.17,
+      "until": 41.3,
       "say": "Follow for more."
     }
   ],
-  "duration": 40.88,
+  "duration": 44.1,
   "posters": {
-    "b01": 2.72,
-    "b02": 5.64,
-    "b03": 9.43,
-    "b04": 13.85,
-    "b05": 17.66,
-    "b06": 20.83,
-    "b07": 22.92,
-    "b08": 27.0,
-    "b09": 31.3,
-    "b10": 33.67,
-    "b11": 36.33,
-    "b12": 40.15
+    "b01": 2.91,
+    "b02": 6.25,
+    "b03": 9.96,
+    "b04": 14.28,
+    "b05": 17.99,
+    "b06": 21.57,
+    "b07": 23.6,
+    "b08": 27.85,
+    "b09": 32.92,
+    "b10": 35.42,
+    "b11": 39.02,
+    "b12": 43.31
   },
   "sfx": true,
   "captions": [
     {
       "at": 0.0,
-      "until": 1.864,
+      "until": 1.936,
       "text": "Everyone's worried AI will"
     },
     {
-      "at": 1.784,
-      "until": 3.58,
+      "at": 1.856,
+      "until": 3.72,
       "text": "replace the content team."
     },
     {
-      "at": 3.82,
-      "until": 6.0,
+      "at": 4.06,
+      "until": 6.6,
       "text": "I'm more worried about the brief."
     },
     {
-      "at": 6.52,
-      "until": 8.436,
+      "at": 7.22,
+      "until": 8.979,
       "text": "Give a great writer a vague"
     },
     {
-      "at": 8.356,
-      "until": 10.34,
+      "at": 8.899,
+      "until": 10.72,
       "text": "brief, you get average work."
     },
     {
-      "at": 10.58,
-      "until": 12.423,
+      "at": 11.06,
+      "until": 12.827,
       "text": "Give AI the same brief,"
     },
     {
-      "at": 12.343,
-      "until": 14.57,
+      "at": 12.747,
+      "until": 14.88,
       "text": "you get average work faster."
     },
     {
-      "at": 15.09,
-      "until": 16.667,
+      "at": 15.5,
+      "until": 16.987,
       "text": "Then someone sees a"
     },
     {
-      "at": 16.587,
-      "until": 18.48,
+      "at": 16.907,
+      "until": 18.69,
       "text": "pile of average drafts."
     },
     {
-      "at": 18.72,
-      "until": 21.26,
+      "at": 19.03,
+      "until": 22.0,
       "text": "And decides the team was the problem."
     },
     {
-      "at": 21.78,
-      "until": 23.39,
+      "at": 22.62,
+      "until": 23.92,
       "text": "It wasn't the writing."
     },
     {
-      "at": 23.63,
-      "until": 26.18,
+      "at": 24.26,
+      "until": 26.92,
       "text": "Nobody decided the goal, the audience,"
     },
     {
-      "at": 26.1,
-      "until": 27.74,
+      "at": 26.84,
+      "until": 28.55,
       "text": "or the one thing to say."
     },
     {
-      "at": 28.26,
-      "until": 30.467,
+      "at": 29.17,
+      "until": 31.808,
       "text": "Teams that brief well get more"
     },
     {
-      "at": 30.387,
-      "until": 32.24,
+      "at": 31.728,
+      "until": 33.94,
       "text": "out of AI, not less work."
     },
     {
-      "at": 32.48,
-      "until": 34.15,
+      "at": 34.28,
+      "until": 35.78,
       "text": "Fix the brief first."
     },
     {
-      "at": 34.39,
-      "until": 36.71,
+      "at": 36.12,
+      "until": 39.55,
       "text": "My template is on Build with Vish."
     },
     {
-      "at": 37.23,
-      "until": 38.16,
+      "at": 40.17,
+      "until": 41.38,
       "text": "Follow for more."
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
+    "engine": "chatterbox-clone-of-video-25",
     "voice": "Puck",
     "breaths": true,
     "bed": false

@@ -18,3 +18,8 @@ voice.old.wav
 .takes/
 out/flagship/*/frames/
 out/flagship/*/*.wav
+
+# voice25 working files (raw takes stay local; video.mp4 carries the voice)
+**/voice25-take.wav
+**/.v25/
+**/video-silent.mp4

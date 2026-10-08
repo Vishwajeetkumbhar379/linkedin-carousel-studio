@@ -1,100 +1,100 @@
 {
  "voice": "Puck",
- "duration": 39.48,
+ "duration": 42.8,
  "scenes": [
   {
    "start": 0.0,
-   "end": 5.92,
+   "end": 6.52,
    "phrases": [
     {
-     "text": "Everyone's worried AI will replace the content team.",
      "start": 0.0,
-     "end": 3.5
+     "end": 3.64,
+     "text": "Everyone's worried AI will replace the content team."
     },
     {
-     "text": "I'm more worried about the brief.",
-     "start": 3.82,
-     "end": 5.92
+     "start": 4.06,
+     "end": 6.52,
+     "text": "I'm more worried about the brief."
     }
    ]
   },
   {
-   "start": 6.52,
-   "end": 14.49,
+   "start": 7.22,
+   "end": 14.8,
    "phrases": [
     {
-     "text": "Give a great writer a vague brief, you get average work.",
-     "start": 6.52,
-     "end": 10.26
+     "start": 7.22,
+     "end": 10.64,
+     "text": "Give a great writer a vague brief, you get average work."
     },
     {
-     "text": "Give AI the same brief, you get average work faster.",
-     "start": 10.58,
-     "end": 14.49
+     "start": 11.06,
+     "end": 14.8,
+     "text": "Give AI the same brief, you get average work faster."
     }
    ]
   },
   {
-   "start": 15.09,
-   "end": 21.18,
+   "start": 15.5,
+   "end": 21.92,
    "phrases": [
     {
-     "text": "Then someone sees a pile of average drafts.",
-     "start": 15.09,
-     "end": 18.4
+     "start": 15.5,
+     "end": 18.61,
+     "text": "Then someone sees a pile of average drafts."
     },
     {
-     "text": "And decides the team was the problem.",
-     "start": 18.72,
-     "end": 21.18
+     "start": 19.03,
+     "end": 21.92,
+     "text": "And decides the team was the problem."
     }
    ]
   },
   {
-   "start": 21.78,
-   "end": 27.66,
+   "start": 22.62,
+   "end": 28.47,
    "phrases": [
     {
-     "text": "It wasn't the writing.",
-     "start": 21.78,
-     "end": 23.31
+     "start": 22.62,
+     "end": 23.84,
+     "text": "It wasn't the writing."
     },
     {
-     "text": "Nobody decided the goal, the audience, or the one thing to say.",
-     "start": 23.63,
-     "end": 27.66
+     "start": 24.26,
+     "end": 28.47,
+     "text": "Nobody decided the goal, the audience, or the one thing to say."
     }
    ]
   },
   {
-   "start": 28.26,
-   "end": 36.63,
+   "start": 29.17,
+   "end": 39.47,
    "phrases": [
     {
-     "text": "Teams that brief well get more out of AI, not less work.",
-     "start": 28.26,
-     "end": 32.16
+     "start": 29.17,
+     "end": 33.86,
+     "text": "Teams that brief well get more out of AI, not less work."
     },
     {
-     "text": "Fix the brief first.",
-     "start": 32.48,
-     "end": 34.07
+     "start": 34.28,
+     "end": 35.7,
+     "text": "Fix the brief first."
     },
     {
-     "text": "My template is on Build with Vish.",
-     "start": 34.39,
-     "end": 36.63
+     "start": 36.12,
+     "end": 39.47,
+     "text": "My template is on Build with Vish."
     }
    ]
   },
   {
-   "start": 37.23,
-   "end": 38.08,
+   "start": 40.17,
+   "end": 41.3,
    "phrases": [
     {
-     "text": "Follow for more.",
-     "start": 37.23,
-     "end": 38.08
+     "start": 40.17,
+     "end": 41.3,
+     "text": "Follow for more."
     }
    ]
   }
