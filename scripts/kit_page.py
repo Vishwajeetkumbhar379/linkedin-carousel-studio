@@ -64,7 +64,9 @@ def voiced_ok(d: Path) -> bool:
             v, src = json.loads((d / "video.json").read_text()).get("voice") or {}, d / "voice.json"
     except Exception:  # noqa: BLE001
         return False
-    return v.get("recipe") == "video-25" and mp4.exists() and mp4.stat().st_mtime >= src.stat().st_mtime
+    v916 = d / "video-9x16.mp4"  # written last, after the render finishes: a half-written video.mp4 never counts
+    return (v.get("recipe") == "video-25" and mp4.exists() and v916.exists()
+            and v916.stat().st_mtime >= mp4.stat().st_mtime >= src.stat().st_mtime)
 
 
 def collect(out: Path) -> list[dict]:
