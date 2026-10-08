@@ -8,7 +8,7 @@
 Who does what:
   research   scripts/research/fetch.py (RSS and pages, no LLM)
   writing    scripts/llm.py free providers (Groq gpt-oss-120b first, then NVIDIA, OpenRouter, Mistral, Cloudflare, LLM7)
-  voice      Gemini TTS free tier (scripts/voiceover.py), one request per video
+  voice      video #25's voice (scripts/voice25.py: Gemini Flash-Lite TTS, Puck, one request per video, 10 a day free)
   graphics   Three.js props in headless Chromium, screen recordings via scripts/screen_record.py
   video      motion template + ffmpeg (scripts/render_ready.py), SFX via scripts/sfx.py
 Claude only reviews the summary this prints and commits. Facts are restricted to the fetched research items:
@@ -630,8 +630,10 @@ def main() -> None:
     if "--no-voice" not in sys.argv:
         for p in posts:
             if p["format"] == "video":
-                r = run(PY, "scripts/voiceover.py", out / p["slug"] / "video.json", "--engine", "clone", "--no-bed", check=False)
+                r = run(PY, "scripts/voice25.py", out / p["slug"], check=False)
                 (voiced if r.returncode == 0 else []).append(p["slug"])
+                if r.returncode == 3:  # free-tier daily cap: the rest waits for tomorrow (00:00 UTC)
+                    break
                 time.sleep(25)
         run(PY, "scripts/render_ready.py", out, "--jobs=3", check=False)
     qa = {}

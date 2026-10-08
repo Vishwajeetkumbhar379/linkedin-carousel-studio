@@ -304,9 +304,11 @@
     }
   ],
   "voice": {
-    "engine": "gemini-3.8-flash-tts",
+    "engine": "gemini-3.8-flash-lite-tts",
     "voice": "Puck",
     "breaths": true,
-    "bed": false
+    "bed": false,
+    "recipe": "video-25",
+    "note": "revoice.log: flash-tts daily cap, read by flash-lite-tts, one-shot, Puck (7 Oct 2026)"
   }
 }

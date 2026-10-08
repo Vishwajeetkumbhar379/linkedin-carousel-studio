@@ -1,11 +1,21 @@
-{"lines": [
- "This launch film hit 1.7 million views. Manus made it overnight.",
- "Manus 2.0 just added a video editor.",
- "Most AI video tools give you one flat clip.",
- "Change one caption, and you often regenerate everything.",
- "Manus puts every piece on its own track.",
- "But how is it useful to you?",
- "No creator budget? Test an AI UGC ad first.",
- "Then pay a real creator for the angle that wins.",
- "Comment MANUS for the prompts I'd start with."
-], "pause": 0.5, "pause_after": {"0": 0.6, "4": 0.7, "5": 0.6}}
+{
+ "lines": [
+  "This launch film hit 1.7 million views. Manus made it overnight.",
+  "Manus 2.0 just added a video editor.",
+  "Most AI video tools give you one flat clip.",
+  "Change one caption, and you often regenerate everything.",
+  "Manus puts every piece on its own track.",
+  "But how is it useful to you?",
+  "No creator budget? Test an AI UGC ad first.",
+  "Then pay a real creator for the angle that wins.",
+  "Comment MANUS for the prompts I'd start with."
+ ],
+ "pause": 0.5,
+ "pause_after": {
+  "0": 0.6,
+  "1": 0.6,
+  "3": 0.6,
+  "4": 0.7,
+  "5": 0.6
+ }
+}

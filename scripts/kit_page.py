@@ -55,14 +55,16 @@ def jpg(src: Path, dst: Path, w: int) -> None:
 
 
 def voiced_ok(d: Path) -> bool:
-    """A video counts as ready only when its voice is the locked #25 voice (or #25 itself)."""
-    if d.name == "ai-creators-cheap-trust-isnt" or d.parent.name == "flagship":
-        return (d / "video.mp4").exists()
+    """A video counts as ready only when its voice is video #25's recipe (scripts/voice25.py) and it is rendered after it."""
+    mp4 = d / "video.mp4"
     try:
-        v = json.loads((d / "video.json").read_text()).get("voice") or {}
+        if (d / "lines.json").exists():  # bespoke reel
+            v, src = json.loads((d / "voice.json").read_text()), d / "voice.json"
+        else:
+            v, src = json.loads((d / "video.json").read_text()).get("voice") or {}, d / "voice.json"
     except Exception:  # noqa: BLE001
         return False
-    return v.get("engine", "").startswith("chatterbox-clone") and (d / "video.mp4").exists()
+    return v.get("recipe") == "video-25" and mp4.exists() and mp4.stat().st_mtime >= src.stat().st_mtime
 
 
 def collect(out: Path) -> list[dict]:

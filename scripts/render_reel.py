@@ -2,7 +2,7 @@
 
     python scripts/render_reel.py out/flagship/claude-instagram claude-instagram [--stills]
 
-Reads <dir>/voice.json (line timings from scripts/voice_clone.py) and <dir>/voice.wav.
+Reads <dir>/voice.json (line timings from scripts/voice25.py, the #25 voice) and <dir>/voice.wav.
 The page exposes setup(spec) / frame(t) and publishes window.SFX = [{t, s}] for the sound design.
 Writes <dir>/frames/*.png (QA stills), <dir>/video.mp4.
 """

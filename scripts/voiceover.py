@@ -7,12 +7,15 @@ Reads `narration` from video.json: a list of scenes, each a list of phrases. Wri
   out/<post>/voice.json     phrase and scene timings (seconds), used by the video renderer
 and rewrites each scene's `at`/`until` in video.json to match the audio, so pictures follow the voice.
 
-Engines (pick with --engine, default: gemini when GEMINI_API_KEY is set, else kokoro):
-  clone   THE DEFAULT FOR ALL VIDEOS (Vish, 7 Oct 2026): Chatterbox zero-shot clone of video #25's voice
-          (scripts/voice_clone.py, venv /home/user/venvs/chatterbox). Best of 3 takes per line by speaker similarity.
-  gemini  Gemini 3.8 Flash TTS (natural prosody, real breaths, style prompts). Needs GEMINI_API_KEY
-          as an environment variable (set it in the cloud environment settings, never in the repo).
-          One request per scene so intonation flows across a whole thought.
+THE LOCKED VOICE (Vish, 8 Oct 2026: "I only like post 25 VO") is video #25's exact recipe, run by
+scripts/voice25.py: gemini-3.8-flash-lite-tts, prebuilt Puck, tokens style, engine gemini-oneshot (whole
+script in one request), lines aligned by transcription, then tokens pause_s between lines and scenes.
+
+Engines (pick with --engine, default: gemini-oneshot):
+  gemini-oneshot  the #25 recipe above. The key is the environment credential (GEMINI_API_KEY or the proxy
+          header x-goog-api-key), never in the repo. Free tier: 10 requests a day, resets 00:00 UTC.
+  gemini  one request per scene (older recipe, not the locked voice).
+  clone   Chatterbox zero-shot clone of #25 (scripts/voice_clone.py). Rejected by Vish on 8 Oct; kept for reference.
   kokoro  Kokoro-82M via kokoro-onnx (model Apache-2.0, code MIT), runs on CPU.
 Model files live in $KOKORO_DIR (default /home/user/models/kokoro), downloaded from
 github.com/thewh1teagle/kokoro-onnx releases. For Vish's own voice, see docs/voice.md.
@@ -101,10 +104,14 @@ def synth(narration: list[list[str]], voice: str, breaths: bool, base_speed: flo
 
 
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
-GEMINI_MODEL = os.environ.get("GEMINI_TTS_MODEL", "gemini-3.8-flash-tts")
+GEMINI_MODEL = os.environ.get("GEMINI_TTS_MODEL", "gemini-3.8-flash-lite-tts")  # video #25's model: the locked voice
 _T = json.loads((Path(__file__).resolve().parent.parent / "brand" / "tokens.json").read_text())["voice"]["voiceover"]
 GEMINI_STYLE = _T.get("style", "young male creator talking to a friend, warm and energetic, natural breaths")
 GEMINI_VOICE = _T.get("gemini_voice_id", "Puck")
+
+
+class DailyCap(RuntimeError):
+    """The free-tier daily request cap for the TTS model is used up (resets 00:00 UTC)."""
 
 
 def _find_audio(obj):
@@ -144,8 +151,8 @@ def gemini_tts(text: str, voice: str, style: str) -> np.ndarray:
     import time
     import urllib.error
 
-    models = [GEMINI_MODEL, "gemini-3.8-flash-lite-tts"]
-    for attempt in range(8):  # free tier: 3 requests a minute, 10 a day per model; fall back to Flash-Lite TTS
+    models = [GEMINI_MODEL]  # never switch models silently: a different model is a different voice
+    for attempt in range(8):  # free tier: 3 requests a minute, 10 a day per model
         body["model"] = models[0]
         req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), method="POST",
                                      headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
@@ -155,10 +162,8 @@ def gemini_tts(text: str, voice: str, style: str) -> np.ndarray:
             break
         except urllib.error.HTTPError as e:
             msg = e.read().decode()
-            if e.code == 429 and "per day" in msg and len(models) > 1:
-                print(f"{models[0]} daily cap reached, switching to {models[1]}", flush=True)
-                models.pop(0)
-                continue
+            if e.code == 429 and "per day" in msg:
+                raise DailyCap(f"{models[0]}: {msg[:240]}") from None
             if e.code not in (429, 500, 502, 503) or attempt == 7:
                 raise RuntimeError(f"{e.code}: {msg[:300]}") from None
             m = re.search(r"retry in (\d+)", msg)
@@ -312,20 +317,29 @@ def _stt_words(audio: np.ndarray) -> list[tuple[str, float, float]] | None:
         b = base64.b64encode(m.read_bytes()).decode()
     key = os.environ.get("GEMINI_API_KEY")
     prompt = "Transcribe this audio. For every sentence output one line: start_seconds|end_seconds|text, with times to 0.01 s. Nothing else."
-    for attempt in range(6):
-        body = {"model": "gemini-3.8-flash", "input": [{"type": "user_input", "content": [{"type": "audio", "data": b, "mime_type": "audio/mp3"}, {"type": "text", "text": prompt}]}]}
-        req = urllib.request.Request(GEMINI_URL, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
-        try:
-            resp = json.loads(urllib.request.urlopen(req, timeout=180).read())
+    # Interactions API first; if it is down (502s on 8 Oct 2026), the generateContent API of an older Flash
+    routes = [(GEMINI_URL, {"model": "gemini-3.8-flash", "input": [{"type": "user_input", "content": [
+                  {"type": "audio", "data": b, "mime_type": "audio/mp3"}, {"type": "text", "text": prompt}]}]})]
+    for m in ("gemini-3.8-flash", "gemini-3.5-flash"):
+        routes.append((f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
+                       {"contents": [{"parts": [{"inline_data": {"mime_type": "audio/mp3", "data": b}}, {"text": prompt}]}]}))
+    resp = None
+    for url, body in routes:
+        for attempt in range(2):
+            req = urllib.request.Request(url, data=json.dumps(body).encode(), headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
+            try:
+                resp = json.loads(urllib.request.urlopen(req, timeout=180).read())
+                break
+            except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError):
+                time.sleep(6 * (attempt + 1))
+        if resp is not None:
             break
-        except urllib.error.HTTPError:
-            time.sleep(8 * (attempt + 1))
-    else:
+    if resp is None:
         return None
 
     def texts(o):
         if isinstance(o, dict):
-            if o.get("type") == "text" and isinstance(o.get("text"), str):
+            if (o.get("type") == "text" or "thoughtSignature" in o or set(o) == {"text"}) and isinstance(o.get("text"), str):
                 yield o["text"]
             for v in o.values():
                 yield from texts(v)
@@ -487,14 +501,9 @@ def chunk_caption(p: dict, max_words: int = 7) -> list[dict]:
 def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1.0, engine: str = "kokoro", style: str = GEMINI_STYLE) -> None:
     spec = json.loads(spec_path.read_text())
     narration = spec["narration"]
-    if engine == "auto":
-        try:
-            audio, timings = synth_gemini_per_scene(narration, "Puck" if ":" in voice or "_" in voice else voice, style)
-            engine = "gemini"
-        except Exception as e:  # noqa: BLE001  (no credential or no network: fall back to the offline voice)
-            print(f"Gemini TTS unavailable ({e}); using Kokoro")
-            engine = "kokoro"
-            audio, timings = synth(narration, voice if "_" in voice else "am_puck:0.6,am_fenrir:0.4", breaths, speed)
+    if engine in ("auto", "gemini-oneshot"):  # the locked #25 recipe
+        audio, timings = synth_gemini(narration, voice, style)
+        engine = "gemini-oneshot"
     elif engine == "gemini":  # one request per scene: exact scene timing, natural flow within each thought
         audio, timings = synth_gemini_per_scene(narration, voice, style)
     elif engine == "gemini-duo":  # spec["duo"] = {"voices": {"A": "Puck", "B": "Sadachbia"}, "who": ["A","B",...], "styles": {...}}
@@ -505,12 +514,16 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
     elif engine.startswith("take:"):
         audio, timings = synth_from_take(narration, engine[5:])
         engine = "gemini"
-    elif engine == "clone":  # the locked voice (video #25), same voice in every video
+    elif engine == "clone":  # Chatterbox clone of #25 (rejected by Vish on 8 Oct, kept for reference)
         audio, timings = synth_clone(narration, spec_path.parent)
-    elif engine == "gemini-oneshot":
-        audio, timings = synth_gemini(narration, voice, style)
     else:
         audio, timings = synth(narration, voice, breaths, speed)
+    finish(spec_path, spec, audio, timings, engine, voice, breaths, bed)
+
+
+def finish(spec_path: Path, spec: dict, audio: np.ndarray, timings: list[dict], engine: str, voice: str, breaths: bool, bed: bool) -> None:
+    """Pauses, loudness, voice.wav/voice.json, and beat/scene/caption timings in the spec."""
+    narration = spec["narration"]
     pz = _T.get("pause_s", {})
     if pz and engine.startswith("gemini"):
         audio, timings = spread(audio, timings, pz.get("line", 0.3), pz.get("scene", 0.55))
@@ -537,7 +550,8 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
         scene["at"], scene["until"] = round(tm["start"] - 0.15, 2), round(tm["end"] + 0.1, 2)
     spec["duration"] = round(dur + 0.6, 2)
     spec["captions"] = [c for tm in timings for p in tm["phrases"] for c in chunk_caption(p)]
-    spec["voice"] = {"engine": "chatterbox-clone-of-video-25" if engine == "clone" else GEMINI_MODEL if engine.startswith("gemini") else "kokoro-82m", "voice": voice, "breaths": breaths, "bed": bed}
+    spec["voice"] = {"engine": "chatterbox-clone-of-video-25" if engine == "clone" else GEMINI_MODEL if engine.startswith("gemini") else "kokoro-82m",
+                     "voice": voice, "breaths": breaths, "bed": bed, **({"recipe": "video-25"} if engine == "gemini-oneshot" and GEMINI_MODEL.endswith("flash-lite-tts") and voice == "Puck" else {})}
     spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False))
     (post / "voice.json").write_text(json.dumps({"voice": voice, "duration": dur, "scenes": timings}, indent=1))
     print(f"voice.wav {dur:.1f}s, {sum(len(s) for s in narration)} phrases, voice {voice}")
@@ -545,7 +559,7 @@ def main(spec_path: Path, voice: str, breaths: bool, bed: bool, speed: float = 1
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    eng = a[a.index("--engine") + 1] if "--engine" in a else "auto"
+    eng = a[a.index("--engine") + 1] if "--engine" in a else "gemini-oneshot"
     v = a[a.index("--voice") + 1] if "--voice" in a else ("am_puck:0.6,am_fenrir:0.4" if eng == "kokoro" else GEMINI_VOICE)
     sp = float(a[a.index("--speed") + 1]) if "--speed" in a else 1.0
     st = a[a.index("--style") + 1] if "--style" in a else GEMINI_STYLE
