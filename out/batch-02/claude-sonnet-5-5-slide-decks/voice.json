@@ -1,92 +1,92 @@
 {
  "voice": "Puck",
- "duration": 36.87,
+ "duration": 35.602999999999994,
  "scenes": [
   {
    "start": 0.0,
-   "end": 4.42,
+   "end": 3.34,
    "phrases": [
     {
+     "text": "Claude Sonnet 5.5 can build decks from your own template.",
      "start": 0.0,
-     "end": 4.42,
-     "text": "Claude Sonnet 5.5 can build decks from your own template."
+     "end": 3.34
     }
    ]
   },
   {
-   "start": 5.12,
-   "end": 9.4,
+   "start": 3.94,
+   "end": 8.84,
    "phrases": [
     {
-     "start": 5.12,
-     "end": 9.4,
-     "text": "In Anthropic's test, experts called its first draft ready to send."
+     "text": "In Anthropic's test, experts called its first draft ready to send.",
+     "start": 3.94,
+     "end": 8.84
     }
    ]
   },
   {
-   "start": 10.1,
-   "end": 14.26,
+   "start": 9.44,
+   "end": 14.54,
    "phrases": [
     {
-     "start": 10.1,
-     "end": 14.26,
-     "text": "It's also over thirty percent faster, at the same token price."
+     "text": "It's also over thirty percent faster, at the same token price.",
+     "start": 9.44,
+     "end": 14.54
     }
    ]
   },
   {
-   "start": 14.96,
-   "end": 18.56,
+   "start": 15.14,
+   "end": 18.14,
    "phrases": [
     {
-     "start": 14.96,
-     "end": 18.56,
-     "text": "Step one: pick Sonnet 5.5 in the model menu."
+     "text": "Step one: pick Sonnet 5.5 in the model menu.",
+     "start": 15.14,
+     "end": 18.14
     }
    ]
   },
   {
-   "start": 19.26,
-   "end": 22.71,
+   "start": 18.74,
+   "end": 21.74,
    "phrases": [
     {
-     "start": 19.26,
-     "end": 22.71,
-     "text": "Step two: upload your slide template and your source notes."
+     "text": "Step two: upload your slide template and your source notes.",
+     "start": 18.74,
+     "end": 21.74
     }
    ]
   },
   {
-   "start": 23.41,
-   "end": 27.31,
+   "start": 22.34,
+   "end": 26.14,
    "phrases": [
     {
-     "start": 23.41,
-     "end": 27.31,
-     "text": "Step three: ask for ten slides, each number sourced."
+     "text": "Step three: ask for ten slides, each number sourced.",
+     "start": 22.34,
+     "end": 26.14
     }
    ]
   },
   {
-   "start": 28.01,
-   "end": 31.45,
+   "start": 26.74,
+   "end": 30.94,
    "phrases": [
     {
-     "start": 28.01,
-     "end": 31.45,
-     "text": "Step four: check every number before a client sees it."
+     "text": "Step four: check every number before a client sees it.",
+     "start": 26.74,
+     "end": 30.94
     }
    ]
   },
   {
-   "start": 32.15,
-   "end": 35.37,
+   "start": 31.54,
+   "end": 34.203,
    "phrases": [
     {
-     "start": 32.15,
-     "end": 35.37,
-     "text": "Follow for more AI workflows you can copy."
+     "text": "Follow for more AI workflows you can copy.",
+     "start": 31.54,
+     "end": 34.203
     }
    ]
   }

@@ -44,7 +44,7 @@
       "avSize": 190,
       "avSide": "right",
       "at": 0.0,
-      "until": 4.42,
+      "until": 3.34,
       "say": "Claude Sonnet 5.5 can build decks from your own template."
     },
     {
@@ -57,8 +57,8 @@
       "avatar": "surprised",
       "avTop": 740,
       "avSide": "left",
-      "at": 5.12,
-      "until": 9.4,
+      "at": 3.94,
+      "until": 8.84,
       "say": "In Anthropic's test, experts called its first draft ready to send."
     },
     {
@@ -72,8 +72,8 @@
       "avatar": "pleased",
       "avTop": 185,
       "avSide": "right",
-      "at": 10.1,
-      "until": 14.26,
+      "at": 9.44,
+      "until": 14.54,
       "say": "It's also over thirty percent faster, at the same token price."
     },
     {
@@ -86,8 +86,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "left",
-      "at": 14.96,
-      "until": 18.56,
+      "at": 15.14,
+      "until": 18.14,
       "say": "Step one: pick Sonnet 5.5 in the model menu."
     },
     {
@@ -102,8 +102,8 @@
       "avatar": "explaining",
       "avTop": 780,
       "avSide": "right",
-      "at": 19.26,
-      "until": 22.71,
+      "at": 18.74,
+      "until": 21.74,
       "say": "Step two: upload your slide template and your source notes."
     },
     {
@@ -114,8 +114,8 @@
       "avatar": "focused",
       "avTop": 960,
       "avSide": "left",
-      "at": 23.41,
-      "until": 27.31,
+      "at": 22.34,
+      "until": 26.14,
       "say": "Step three: ask for ten slides, each number sourced."
     },
     {
@@ -128,8 +128,8 @@
       "avatar": "stressed",
       "avTop": 740,
       "avSide": "right",
-      "at": 28.01,
-      "until": 31.45,
+      "at": 26.74,
+      "until": 30.94,
       "say": "Step four: check every number before a client sees it."
     },
     {
@@ -141,12 +141,12 @@
       "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
-      "at": 32.15,
-      "until": 35.37,
+      "at": 31.54,
+      "until": 34.2,
       "say": "Follow for more AI workflows you can copy."
     }
   ],
-  "duration": 38.17,
+  "duration": 36.2,
   "posters": {
     "b01": 3.76,
     "b02": 8.77,
@@ -161,89 +161,90 @@
   "captions": [
     {
       "at": 0.0,
-      "until": 2.211,
+      "until": 1.69,
       "text": "Claude Sonnet 5.5 can build"
     },
     {
-      "at": 2.131,
-      "until": 4.5,
+      "at": 1.61,
+      "until": 3.42,
       "text": "decks from your own template."
     },
     {
-      "at": 5.12,
-      "until": 7.768,
+      "at": 3.94,
+      "until": 6.96,
       "text": "In Anthropic's test, experts called its"
     },
     {
-      "at": 7.688,
-      "until": 9.48,
+      "at": 6.88,
+      "until": 8.92,
       "text": "first draft ready to send."
     },
     {
-      "at": 10.1,
-      "until": 12.703,
+      "at": 9.44,
+      "until": 12.613,
       "text": "It's also over thirty percent faster,"
     },
     {
-      "at": 12.623,
-      "until": 14.34,
+      "at": 12.533,
+      "until": 14.62,
       "text": "at the same token price."
     },
     {
-      "at": 14.96,
-      "until": 17.133,
+      "at": 15.14,
+      "until": 16.964,
       "text": "Step one: pick Sonnet 5.5"
     },
     {
-      "at": 17.053,
-      "until": 18.64,
+      "at": 16.884,
+      "until": 18.22,
       "text": "in the model menu."
     },
     {
-      "at": 19.26,
-      "until": 20.946,
+      "at": 18.74,
+      "until": 20.217,
       "text": "Step two: upload your slide"
     },
     {
-      "at": 20.866,
-      "until": 22.79,
+      "at": 20.137,
+      "until": 21.82,
       "text": "template and your source notes."
     },
     {
-      "at": 23.41,
-      "until": 25.249,
+      "at": 22.34,
+      "until": 24.134,
       "text": "Step three: ask for ten"
     },
     {
-      "at": 25.169,
-      "until": 27.39,
+      "at": 24.054,
+      "until": 26.22,
       "text": "slides, each number sourced."
     },
     {
-      "at": 28.01,
-      "until": 29.972,
+      "at": 26.74,
+      "until": 29.118,
       "text": "Step four: check every number"
     },
     {
-      "at": 29.892,
-      "until": 31.53,
+      "at": 29.038,
+      "until": 31.02,
       "text": "before a client sees it."
     },
     {
-      "at": 32.15,
-      "until": 33.644,
+      "at": 31.54,
+      "until": 32.789,
       "text": "Follow for more AI"
     },
     {
-      "at": 33.564,
-      "until": 35.45,
+      "at": 32.709,
+      "until": 34.283,
       "text": "workflows you can copy."
     }
   ],
   "voice": {
-    "engine": "chatterbox-clone-of-video-25",
+    "engine": "gemini-3.8-flash-lite-tts",
     "voice": "Puck",
     "breaths": true,
-    "bed": false
+    "bed": false,
+    "recipe": "video-25"
   }
 }
