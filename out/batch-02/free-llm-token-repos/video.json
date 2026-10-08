@@ -44,7 +44,7 @@
       "avSize": 190,
       "avSide": "right",
       "at": 0.0,
-      "until": 3.99,
+      "until": 5.39,
       "say": "Two GitHub repos promise billions of free AI tokens."
     },
     {
@@ -60,8 +60,8 @@
       "avatar": "surprised",
       "avTop": 600,
       "avSide": "left",
-      "at": 4.69,
-      "until": 10.54,
+      "at": 5.99,
+      "until": 10.84,
       "say": "FreeLLMAPI says 7.4 billion a month, across 34 providers."
     },
     {
@@ -77,8 +77,8 @@
       "avatar": "thinking",
       "avTop": 600,
       "avSide": "right",
-      "at": 11.24,
-      "until": 15.99,
+      "at": 11.44,
+      "until": 16.45,
       "say": "OmniRoute says 1.62 billion, counting each shared pool once."
     },
     {
@@ -94,8 +94,8 @@
       "avatar": "explaining",
       "avTop": 780,
       "avSide": "left",
-      "at": 16.69,
-      "until": 20.39,
+      "at": 17.05,
+      "until": 20.31,
       "say": "Both give you one endpoint that switches when limits hit."
     },
     {
@@ -108,8 +108,8 @@
       "avatar": "smirk",
       "avTop": 740,
       "avSide": "right",
-      "at": 21.09,
-      "until": 25.8,
+      "at": 20.91,
+      "until": 25.7,
       "say": "The catch: no frontier models, no uptime promise, daily caps."
     },
     {
@@ -122,8 +122,8 @@
       "avatar": "thinking",
       "avTop": 960,
       "avSide": "left",
-      "at": 26.5,
-      "until": 30.17,
+      "at": 26.3,
+      "until": 30.62,
       "say": "I'd use it for drafts and research, not client data."
     },
     {
@@ -136,8 +136,8 @@
       "avatar": "point",
       "avTop": 730,
       "avSide": "right",
-      "at": 30.87,
-      "until": 34.37,
+      "at": 31.22,
+      "until": 34.18,
       "say": "Setup is one command, then you add your free keys."
     },
     {
@@ -149,12 +149,12 @@
       "avatar": "wave",
       "avTop": 185,
       "avSide": "right",
-      "at": 35.07,
-      "until": 38.59,
+      "at": 34.78,
+      "until": 36.99,
       "say": "Follow for more free AI tools that actually work."
     }
   ],
-  "duration": 41.39,
+  "duration": 38.99,
   "posters": {
     "b01": 3.42,
     "b02": 9.59,
@@ -169,89 +169,90 @@
   "captions": [
     {
       "at": 0.0,
-      "until": 2.662,
+      "until": 3.566,
       "text": "Two GitHub repos promise billions"
     },
     {
-      "at": 2.582,
-      "until": 4.07,
+      "at": 3.486,
+      "until": 5.468,
       "text": "of free AI tokens."
     },
     {
-      "at": 4.69,
-      "until": 7.799,
+      "at": 5.988,
+      "until": 8.581,
       "text": "FreeLLMAPI says 7.4 billion a"
     },
     {
-      "at": 7.719,
-      "until": 10.62,
+      "at": 8.501,
+      "until": 10.92,
       "text": "month, across 34 providers."
     },
     {
-      "at": 11.24,
-      "until": 14.299,
+      "at": 11.44,
+      "until": 14.662,
       "text": "OmniRoute says 1.62 billion, counting"
     },
     {
-      "at": 14.219,
-      "until": 16.07,
+      "at": 14.582,
+      "until": 16.53,
       "text": "each shared pool once."
     },
     {
-      "at": 16.69,
-      "until": 18.488,
+      "at": 17.05,
+      "until": 18.644,
       "text": "Both give you one endpoint"
     },
     {
-      "at": 18.408,
-      "until": 20.47,
+      "at": 18.564,
+      "until": 20.39,
       "text": "that switches when limits hit."
     },
     {
-      "at": 21.09,
-      "until": 23.525,
+      "at": 20.91,
+      "until": 23.385,
       "text": "The catch: no frontier models,"
     },
     {
-      "at": 23.445,
-      "until": 25.88,
+      "at": 23.305,
+      "until": 25.78,
       "text": "no uptime promise, daily caps."
     },
     {
-      "at": 26.5,
-      "until": 28.091,
+      "at": 26.3,
+      "until": 28.157,
       "text": "I'd use it for drafts"
     },
     {
-      "at": 28.011,
-      "until": 30.25,
+      "at": 28.077,
+      "until": 30.696,
       "text": "and research, not client data."
     },
     {
-      "at": 30.87,
-      "until": 32.807,
+      "at": 31.216,
+      "until": 32.869,
       "text": "Setup is one command, then"
     },
     {
-      "at": 32.727,
-      "until": 34.45,
+      "at": 32.789,
+      "until": 34.26,
       "text": "you add your free keys."
     },
     {
-      "at": 35.07,
-      "until": 36.837,
+      "at": 34.78,
+      "until": 35.921,
       "text": "Follow for more free AI"
     },
     {
-      "at": 36.757,
-      "until": 38.67,
+      "at": 35.841,
+      "until": 37.074,
       "text": "tools that actually work."
     }
   ],
   "voice": {
-    "engine": "chatterbox-clone-of-video-25",
+    "engine": "gemini-3.8-flash-lite-tts",
     "voice": "Puck",
     "breaths": true,
-    "bed": false
+    "bed": false,
+    "recipe": "video-25"
   }
 }
