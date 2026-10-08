@@ -1,0 +1,221 @@
+{
+ "slug": "youtube-research-with-claude",
+ "keyword": "YOUTUBE",
+ "title": "YouTube research with Claude",
+ "subtitle": "Find what works in your niche, why it works, and what to make next.",
+ "hook": "Claude can do your YouTube research. Here's the honest setup.",
+ "caption": "Claude can do your YouTube research. Here's the honest setup. 👇\nThe full guide covers it step by step, from collecting transcripts to a monthly routine.\n\nWhat I'd run:\n\n1/ Gather the material\nCopy transcripts from YouTube's Show transcript panel, plus your Studio export.\nClaude can only analyse what you give it.\n\n2/ Break down the hooks\nCompare the first 30 seconds of the top videos in your niche.\nYou see which opening moves your niche actually uses.\n\n3/ Find topic gaps\nSort topics into covered well, thin and missing.\nCheck demand in YouTube's Trends tab before you commit.\n\n4/ Mine the comments\nGroup public comments into questions and objections.\nObjections show which proof to put on screen.\n\n5/ Compare titles and thumbnail text\nDescribe the wording patterns across a set of videos.\nDescribe only. Never judge anyone's looks.\n\n6/ Write the outline\nTurn the research into a hook and sections.\nLeave placeholders for your own examples.\n\n7/ Repeat it monthly\nKeep everything in one Claude Project.\nLast month's brief stays there to compare against.\n\nClaude doesn't need to watch the videos. This works from text you collect: transcripts, titles, comments and your Studio export. It sorts, compares and spots patterns in that text. That is the slow part of research.\n\nUse other people's videos for private research only. Never republish a transcript.\n\nSetup: one Claude Project, 8 to 12 videos and about 2 to 3 hours for the first run.\n\nComment YOUTUBE and I'll send you the full guide.",
+ "first_comment": "Sources I checked on 8 October 2026:\n\nYouTube Help, View video transcripts (the Show transcript panel, for videos that have captions): https://support.google.com/youtube/answer/15930243\n\nYouTube Help, Advanced mode and Export current view in YouTube Studio: https://support.google.com/youtube/answer/9717005\n\nYouTube Help, the Trends tab and content gaps: https://support.google.com/youtube/answer/11962757\n\nClaude Help, web search and reading pages you link (no mention of video): https://support.claude.com/en/articles/10684626-enable-and-use-web-search",
+ "pages": [
+  {
+   "kind": "cover",
+   "kicker": "THE MINI GUIDE · NO FLUFF, JUST STEPS",
+   "title": "YouTube research with Claude",
+   "sub": "Find what works in your niche, why it works, and what to make next."
+  },
+  {
+   "kind": "step",
+   "n": 1,
+   "kicker": "STEP 1 · GATHER THE MATERIAL",
+   "title": "Collect text Claude can actually read",
+   "body": "Give Claude text, not links. Copy transcripts with Show transcript, note titles and views, export your own Studio data, and keep it all in one Claude Project.",
+   "prompt": "Here is a YouTube link: [link]. Tell me what you can read from it: title, description, transcript, comments, thumbnail. Answer \"can read\", \"cannot read\" or \"not sure\" for each. Do not guess. If you cannot read the transcript, tell me what to paste instead.",
+   "ui": {
+    "type": "checklist",
+    "title": "Research folder",
+    "rows": [
+     "Transcripts for 8 to 12 videos",
+     "Title table with views and dates",
+     "Studio export as CSV",
+     "Public comments, names removed"
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 2,
+   "kicker": "STEP 2 · BREAK DOWN HOOKS",
+   "title": "Compare how top videos open",
+   "body": "Paste the first 30 seconds of each transcript. Claude tags the opening move, the promise and the proof offered. You see what your niche does most, and what nobody tries.",
+   "prompt": "Use the first 30 seconds of each transcript. Make a table: video label, opening move, promise, proof offered, open question. Paraphrase and quote five words at most. List the 3 most common moves. Say if the sample is too small to show a pattern.",
+   "ui": {
+    "type": "table",
+    "title": "Hook breakdown (example)",
+    "rows": [
+     [
+      "Video",
+      "Opening move",
+      "Proof?"
+     ],
+     [
+      "Channel A",
+      "Result first",
+      "Yes"
+     ],
+     [
+      "Channel B",
+      "Question",
+      "No"
+     ],
+     [
+      "Channel C",
+      "Story",
+      "Partly"
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 3,
+   "kicker": "STEP 3 · FIND TOPIC GAPS",
+   "title": "Spot what is missing in your niche",
+   "body": "Sort topics into covered well, covered thinly and not covered. Then check demand in the Trends tab in YouTube Studio. A gap can mean nobody wants it, so verify before you film.",
+   "prompt": "Sort these topics into covered well, covered thinly and not covered. Name the videos behind each claim. Suggest 8 ideas for [audience] and mark each \"evidence\" or \"my guess\". Do not invent search volumes. Tell me what to check on YouTube first.",
+   "ui": {
+    "type": "chart",
+    "title": "Coverage by topic (example)",
+    "rows": [
+     [
+      "Topic",
+      "Videos"
+     ],
+     [
+      "Topic A",
+      "Many"
+     ],
+     [
+      "Topic B",
+      "Few"
+     ],
+     [
+      "Topic C",
+      "None"
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 4,
+   "kicker": "STEP 4 · MINE THE COMMENTS",
+   "title": "Turn comments into video ideas",
+   "body": "Copy 50 to 150 public comments and remove names and handles. Claude groups them into questions, objections and requests. Objections show you which proof to put on screen.",
+   "prompt": "Group these comments into themes. For each: label, type (question, objection, request, confusion, praise), rough count using \"about\", one paraphrase. Flag themes under three comments as weak. List the 5 questions to answer in a video. Do not guess who commenters are.",
+   "ui": {
+    "type": "chat",
+    "title": "Claude · comment themes",
+    "rows": [
+     "You: Group these comments into themes.",
+     "Claude: Which tool to start with (question).",
+     "Claude: Too fast to follow (confusion).",
+     "Claude: Doubts the results (objection, weak)."
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 5,
+   "kicker": "STEP 5 · TITLES AND THUMBNAILS",
+   "title": "Describe the patterns, never the faces",
+   "body": "List titles with views and dates, and add the words on each thumbnail. Claude describes wording, length and promise types. Describe only. Never ask it to judge anyone's looks.",
+   "prompt": "Describe patterns in these titles: length, numbers, questions, brackets, promise type. Group by pattern with view counts. Say which comparisons are unfair because of channel size or age. For thumbnails, describe only visible words and layout.",
+   "ui": {
+    "type": "table",
+    "title": "Title patterns (example)",
+    "rows": [
+     [
+      "Pattern",
+      "Videos",
+      "Note"
+     ],
+     [
+      "Number + result",
+      "A, C",
+      "Short"
+     ],
+     [
+      "Question",
+      "B",
+      "Longer"
+     ],
+     [
+      "How-to",
+      "D",
+      "Common"
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 6,
+   "kicker": "STEP 6 · WRITE THE OUTLINE",
+   "title": "Turn research into a script outline",
+   "body": "Ask for 3 title options, a 20-second hook and 4 to 6 sections, each with proof and what is on screen. Leave placeholders for your own examples. Your experience is what makes the video yours.",
+   "prompt": "Using this project's research, outline one video on [topic] for [audience]: 3 titles, a 20-second hook, 4 to 6 sections with proof and visuals, and a closing step. Use your own words. Put [YOUR EXAMPLE] where my experience belongs. Ask me first if the research is thin.",
+   "ui": {
+    "type": "checklist",
+    "title": "Outline checklist",
+    "rows": [
+     "3 title options",
+     "Hook for the first 20 seconds",
+     "4 to 6 sections with proof",
+     "Comment questions answered",
+     "Your own example in each section"
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 7,
+   "kicker": "STEP 7 · MONTHLY ROUTINE",
+   "title": "Make it a monthly routine",
+   "body": "Keep everything in one Claude Project with standing rules. Each month, add new videos and a fresh Studio export, then compare against last month's brief and pick the next two or three ideas.",
+   "prompt": "You are my YouTube research assistant for [niche]. Use only this project's material and what I paste. Never claim you watched a video. Paraphrase and quote five words at most. Mark each insight \"evidence\" or \"guess\". Describe thumbnails neutrally. Ask when my request is unclear.",
+   "ui": {
+    "type": "browser",
+    "title": "Claude Project · YouTube research",
+    "rows": [
+     "Project knowledge: transcripts",
+     "Project knowledge: title table",
+     "Studio export, this month",
+     "Last month's one-page brief"
+    ]
+   }
+  },
+  {
+   "kind": "cta",
+   "title": "Want the full guide?",
+   "sub": "Seven steps, ten copy-paste prompts and the monthly routine, with the setup written out.",
+   "keyword": "YOUTUBE"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://support.google.com/youtube/answer/15930243",
+   "what": "YouTube Help: any video with captions has a transcript you can open with Show transcript in the description.",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.google.com/youtube/answer/9717005",
+   "what": "YouTube Help: YouTube Studio Advanced mode, Export current view, 500-row download limit.",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.google.com/youtube/answer/11962757",
+   "what": "YouTube Help: Trends tab in Studio Analytics, top searches and content gaps.",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.claude.com/en/articles/10684626-enable-and-use-web-search",
+   "what": "Claude Help: with web search on, Claude reads pages you link; the article does not mention video or YouTube.",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
+   "what": "Claude docs: web fetch handles text, HTML and PDF and does not support JavaScript-rendered pages.",
+   "checked": "2026-10-08"
+  }
+ ]
+}

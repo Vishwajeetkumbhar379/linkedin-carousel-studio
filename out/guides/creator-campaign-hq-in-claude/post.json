@@ -1,0 +1,243 @@
+{
+ "slug": "creator-campaign-hq-in-claude",
+ "keyword": "CREATOR",
+ "title": "The Creator Campaign HQ in Claude",
+ "subtitle": "Seven prompts to shortlist, brief, check and report on creators from one Claude Project.",
+ "hook": "Run your whole creator campaign from one Claude Project",
+ "caption": "Run your whole creator campaign from one Claude Project 👇\n\nThe full guide covers the setup step by step, with every prompt.\n\nWhat I'd run:\n\n1/ Set up the HQ\nBrief, brand rules and past results go in as files.\nEvery chat starts already knowing the campaign.\n\n2/ Shortlist from the brief\nClaude ranks your exported list and quotes the evidence.\nYou choose on fit, not follower count.\n\n3/ Vet the comments\nPublic comments become evidence, concerns and questions.\nNever looks, never sensitive traits. Only the work.\n\n4/ Draft outreach\nIt writes around one real line you wrote per creator.\nYou read every message and send it yourself.\n\n5/ Write the one-page brief\nBuilt from your master brief, with gaps marked.\nCreators get one screen they will actually read.\n\n6/ Check drafts and labels\nEach draft is checked against the brief and your ad-label rules.\nYou catch the missing must-say before it goes live.\n\n7/ Weekly report\nExport your numbers and get a one-page report with the maths shown.\nCheck two figures by hand, then send.\n\nI've worked on 850+ creator deals on the brand side.\nIn creator campaigns, most problems start with a vague brief.\nSo the brief is the first file in the HQ.\n\nSetup takes about an hour, and a free Claude account is enough to start.\n\nComment CREATOR and I'll send you the full guide.",
+ "first_comment": "Sources I checked on 8 October 2026:\n\nAnthropic, how to create and manage Projects (instructions, files, free-plan limit): https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects\n\nAnthropic, Google Workspace connectors (Gmail drafts, Drive files in Projects): https://support.claude.com/en/articles/10166901-use-google-workspace-connectors\n\nASA, influencers' guide to making clear that ads are ads (UK): https://www.asa.org.uk/advice-online/influencers-guide.html\n\nEuropean Commission, Influencer Legal Hub (EU): https://commission.europa.eu/live-work-travel-eu/consumer-rights-and-complaints/influencer-legal-hub_en\n\nGeneral information, not legal advice.",
+ "pages": [
+  {
+   "kind": "cover",
+   "kicker": "THE MINI GUIDE · NO FLUFF, JUST STEPS",
+   "title": "Your creator campaign HQ in Claude",
+   "sub": "Seven steps, seven prompts, one Project."
+  },
+  {
+   "kind": "step",
+   "n": 1,
+   "kicker": "STEP 1 · SET UP THE HQ",
+   "title": "Put the brief at the centre",
+   "body": "Create one Project per campaign. Upload five short files: brief, brand rules, past results, creator list, ad-label rules. Add standing instructions so every chat starts informed.",
+   "prompt": "You are the HQ assistant for [campaign]. Use only the Project files and what I paste. If something is missing, say \"not in the files\". Never infer sensitive traits or rate looks. Quote your evidence. Draft only: I decide and I send.",
+   "ui": {
+    "type": "checklist",
+    "title": "Project files",
+    "rows": [
+     "01 Campaign brief",
+     "02 Brand rules",
+     "03 Past results",
+     "04 Creator longlist",
+     "05 Ad-label rules"
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 2,
+   "kicker": "STEP 2 · SHORTLIST FROM THE BRIEF",
+   "title": "Rank creators on fit, not followers",
+   "body": "Export your longlist as a CSV with a notes column. Claude scores each creator against the brief and quotes the row it used. You check two or three figures yourself.",
+   "prompt": "Using file 01 and file 04, shortlist the best [8] creators. Score 1 to 5 on brief fit, content, engagement health, cost and brand safety. Table: Creator | Score | Why (quote the row) | Risk | Question to ask. Say \"not in the files\" for missing data.",
+   "ui": {
+    "type": "table",
+    "title": "Shortlist (example)",
+    "rows": [
+     [
+      "Creator",
+      "Fit",
+      "Risk"
+     ],
+     [
+      "Creator A",
+      "High",
+      "No sponsor data"
+     ],
+     [
+      "Creator B",
+      "Medium",
+      "Over budget"
+     ],
+     [
+      "Creator C",
+      "High",
+      "Check comments"
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 3,
+   "kicker": "STEP 3 · VET THE COMMENTS",
+   "title": "Turn a hunch into questions",
+   "body": "Paste five captions and 20 to 30 public comments. Claude lists evidence, concerns and questions to ask. Flags are questions, not verdicts, and it never guesses sensitive traits.",
+   "prompt": "Vet [Creator A] using the pasted captions and comments plus files 01 and 02. Check fit, generic versus specific comments, and competing sponsors. Never infer sensitive traits or comment on appearance. Answer: Evidence, Concerns with quotes, Questions to ask.",
+   "ui": {
+    "type": "chat",
+    "title": "Vetting chat (example)",
+    "rows": [
+     "You: Vet Creator A for this campaign",
+     "Claude: Evidence: comments ask about the product",
+     "Claude: Concern: many comments are emoji only",
+     "Claude: Ask: can you share audience insights?"
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 4,
+   "kicker": "STEP 4 · DRAFT OUTREACH",
+   "title": "One real line makes it personal",
+   "body": "Write one line per creator about a post you liked. Claude drafts a short message around it. You read every message and send it from your own account.",
+   "prompt": "Draft a first message for each creator below, using file 01 and my note. Under 90 words. Open with my note, say it is a paid collaboration, make one clear ask, offer the one-page brief. No flattery I did not supply. Table: Creator | Subject | Message.",
+   "ui": {
+    "type": "browser",
+    "title": "Email draft (example)",
+    "rows": [
+     "To: Creator A, business email",
+     "Subject: Paid collaboration, one video",
+     "Hi Creator A, your video on [topic] ...",
+     "May I send a one-page brief?"
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 5,
+   "kicker": "STEP 5 · ONE-PAGE BRIEF",
+   "title": "Give creators one screen to read",
+   "body": "Claude builds the brief from your master file: the one thing, must-say, must-not-say, dates and label line. Gaps are marked [TO CONFIRM]. Payment and rights stay in the contract.",
+   "prompt": "Turn files 01 and 02 into a creator brief under 250 words: the one thing, audience, must-say, must-not-say, deliverables and dates, measurement, ad label line, approvals. Leave out payment and rights. Mark gaps as [TO CONFIRM].",
+   "ui": {
+    "type": "checklist",
+    "title": "Brief checklist",
+    "rows": [
+     "The one thing",
+     "Must-say lines",
+     "Must-not-say lines",
+     "Dates and deliverables",
+     "Ad label line"
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 6,
+   "kicker": "STEP 6 · CHECK DRAFTS AND LABELS",
+   "title": "Check every draft before it posts",
+   "body": "Claude checks each draft against the brief and your label rules, quotes the line, and marks Pass, Fix or Unclear. Then you check the live post on your phone.",
+   "prompt": "Check the draft below against files 01, 02 and 05. Table: Check | Pass, Fix or Unclear | Quote | Fix. Cover the one thing, must-say lines, claims, label wording and position, format. If you cannot see it, mark Unclear, never Pass.",
+   "ui": {
+    "type": "table",
+    "title": "Draft check (example)",
+    "rows": [
+     [
+      "Check",
+      "Result"
+     ],
+     [
+      "Must-say line",
+      "Pass"
+     ],
+     [
+      "Product claim",
+      "Fix"
+     ],
+     [
+      "Ad label",
+      "Unclear"
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "step",
+   "n": 7,
+   "kicker": "STEP 7 · WEEKLY REPORT",
+   "title": "Report from numbers you exported",
+   "body": "Export the figures into one CSV each week. Claude drafts a one-page report with formulas shown and gaps flagged. Check two numbers by hand, then save it back into the Project.",
+   "prompt": "Write this week's report from the attached CSV: headline sentence, table by creator, what worked, what did not, next action per creator (keep, adjust, stop). Use only CSV numbers, show every formula, flag mixed definitions, mark gaps \"not in the data\".",
+   "ui": {
+    "type": "chart",
+    "title": "Weekly views (example)",
+    "rows": [
+     [
+      "Creator",
+      "Views index"
+     ],
+     [
+      "Creator A",
+      "80"
+     ],
+     [
+      "Creator B",
+      "55"
+     ],
+     [
+      "Creator C",
+      "30"
+     ]
+    ]
+   }
+  },
+  {
+   "kind": "cta",
+   "title": "Want the full guide?",
+   "sub": "Setup, every prompt and the checks, step by step.",
+   "keyword": "CREATOR"
+  }
+ ],
+ "sources": [
+  {
+   "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+   "what": "Anthropic: creating Projects, project instructions and knowledge, free-plan limit of five Projects, per-Project memory, sharing on Team and Enterprise",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.claude.com/en/articles/8241126-uploading-files-to-claude",
+   "what": "Anthropic: Project file limits (30 MB per file), supported types including CSV, text-only reading of Project files",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects",
+   "what": "Anthropic: search mode on large Projects on paid plans, descriptive filenames",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities",
+   "what": "Anthropic: adding connectors under Customize, Connectors; Team and Enterprise owner controls",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.claude.com/en/articles/10166901-use-google-workspace-connectors",
+   "what": "Anthropic: Gmail search, read and draft, approval before sending; Drive files in private Projects; no training on connector data",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.claude.com/en/articles/12512198-how-to-create-custom-skills",
+   "what": "Anthropic: creating Skills under Customize, Skills; name and description limits; code execution required",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+   "what": "Anthropic: memory, separate project memory, how to view or turn it off",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings",
+   "what": "Anthropic: model improvement privacy setting (seen in search results, page not fetched)",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://www.asa.org.uk/advice-online/influencers-guide.html",
+   "what": "ASA: influencers' guide to making clear that ads are ads (UK); recognise an ad without clicking (seen in search results, page not fetched)",
+   "checked": "2026-10-08"
+  },
+  {
+   "url": "https://commission.europa.eu/live-work-travel-eu/consumer-rights-and-complaints/influencer-legal-hub_en",
+   "what": "European Commission: Influencer Legal Hub, EU consumer law for influencers and brands (seen in search results, page not fetched)",
+   "checked": "2026-10-08"
+  }
+ ]
+}

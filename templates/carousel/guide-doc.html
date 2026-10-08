@@ -27,7 +27,9 @@ body{background:#ccc;font-family:Geist,system-ui,sans-serif;-webkit-font-smoothi
 .step .hdr{position:absolute;left:72px;right:72px;top:56px;display:flex;justify-content:space-between;align-items:center;font:500 22px 'Geist Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .step .hdr b{display:flex;align-items:center;gap:14px;color:var(--ink);font-weight:500}
 .step .hdr b i{width:32px;height:32px;border-radius:9px;background:var(--a);display:inline-block}
-.step .col{position:absolute;left:72px;right:72px;top:140px;bottom:120px;display:flex;flex-direction:column;gap:30px}
+.step .col{position:absolute;left:72px;right:72px;top:140px;bottom:120px}
+.step .inner{display:flex;flex-direction:column;gap:30px;transform-origin:0 0}
+.step .inner>*{flex-shrink:0}
 .step .top{display:flex;gap:26px;align-items:flex-start}
 .step .badge{flex:none;width:84px;height:84px;border-radius:22px;background:var(--a);color:#fff;display:grid;place-items:center;font:600 46px Geist;box-shadow:0 18px 30px -16px var(--a)}
 .step .kick{font:600 22px 'Geist Mono',monospace;letter-spacing:.12em;color:var(--a);margin:4px 0 12px}
@@ -90,7 +92,7 @@ td:first-child{font-weight:600}
 .main .pg{width:740px;height:925px;overflow:hidden;border-radius:6px;margin-bottom:22px;box-shadow:0 30px 60px -30px #000}
 .main .pg>div{transform:scale(.685);transform-origin:0 0}
 .banner{position:absolute;left:0;right:0;bottom:0;height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
-.banner p{font:600 64px Geist;color:#fff;letter-spacing:-.01em}
+.banner p{font:600 64px Geist;color:#fff;letter-spacing:-.01em;white-space:nowrap}
 .banner p b{color:var(--a2)}
 .banner span{font:400 25px 'Geist Mono',monospace;color:#8E879A}
 </style></head>
@@ -118,7 +120,11 @@ function ui(u, T) {
     const [h, ...rest] = rows;
     inner = `<table><thead><tr>${h.map(c => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${rest.map(r => `<tr>${r.map((c, i) => `<td>${i === r.length - 1 && r.length > 2 ? `<span class="pill">${esc(c)}</span>` : esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
   } else if (u.type === "chat") {
-    inner = `<div class="chat">${rows.map((r, i) => { const who = r.length > 1 ? String(r[0]).toLowerCase() : (i % 2 ? "claude" : "you"); const t = r.length > 1 ? r.slice(1).join(" ") : r[0]; return `<div class="msg ${/claude|ai|assistant/.test(who) ? "c" : "u"}">${esc(t)}</div>`; }).join("")}</div>`;
+    inner = `<div class="chat">${rows.map((r, i) => {
+      let who = r.length > 1 ? String(r[0]).toLowerCase() : (i % 2 ? "claude" : "you"), t = r.length > 1 ? r.slice(1).join(" ") : String(r[0]);
+      const m = r.length === 1 && t.match(/^\s*(you|me|user|claude|ai|assistant)\s*:\s*/i);
+      if (m) { who = m[1].toLowerCase(); t = t.slice(m[0].length); }
+      return `<div class="msg ${/claude|ai|assistant/.test(who) ? "c" : "u"}">${esc(t)}</div>`; }).join("")}</div>`;
   } else if (u.type === "checklist") {
     inner = `<div class="check">${rows.map((r, i) => `<div><i class="${i < Math.ceil(rows.length / 2) ? "on" : ""}"></i><span>${esc(r.join(" · "))}</span></div>`).join("")}</div>`;
   } else if (u.type === "chart") {
@@ -143,33 +149,42 @@ function pages(post, T) {
     if (p.kind === "cover") return `<div class="slide cover"><div class="glow" style="width:700px;height:700px;left:-260px;top:-240px;background:${T.glowA}"></div><div class="glow" style="width:620px;height:620px;right:-240px;bottom:-200px;background:${T.glowB}"></div>
       <div class="brand"><i></i>Build with Vish</div><div class="pages">${N} pages</div>${motif(T.motif, T)}
       <div class="stack"><div class="kick">${esc(p.kicker)}</div><h1 class="serif">${lastWordsEm(p.title)}</h1><div class="sub">${esc(p.sub)}</div></div>
-      <div class="meta">${esc(post.subtitle || "")}</div><div class="bar"><span>Vish Kumbhar · AI x marketing</span><span>Comment ${esc(post.keyword)}</span></div></div>`;
+      <div class="meta">${post.subtitle && post.subtitle !== p.sub ? esc(post.subtitle) : ""}</div><div class="bar"><span>Vish Kumbhar · AI x marketing</span><span>Comment ${esc(post.keyword)}</span></div></div>`;
     if (p.kind === "cta") return `<div class="slide cta"><div class="glow" style="position:absolute;border-radius:50%;filter:blur(120px);opacity:.5;width:760px;height:760px;right:-260px;top:-200px;background:${T.glowA}"></div>
       <h2 class="serif">${lastWordsEm(p.title)}</h2><div class="sub">${esc(p.sub)}</div><div class="kw">Comment <b>${esc(p.keyword || post.keyword)}</b></div>
       <div class="url">${esc(url)}</div><div class="who">Vish Kumbhar · 850+ creator deals · AI x marketing</div></div>`;
     return `<div class="slide step"><div class="hdr"><b><i></i>Build with Vish</b><span>Step ${p.n} / 7</span></div>
-      <div class="col"><div class="top"><div class="badge">${p.n}</div><div><div class="kick">${esc(p.kicker)}</div><h2 class="serif">${lastWordsEm(p.title)}</h2></div></div>
+      <div class="col"><div class="inner"><div class="top"><div class="badge">${p.n}</div><div><div class="kick">${esc(p.kicker)}</div><h2 class="serif">${lastWordsEm(p.title)}</h2></div></div>
       <div class="body">${esc(p.body)}</div>${ui(p.ui, T)}
-      ${p.prompt ? `<div class="prompt"><div class="pl">COPY THIS PROMPT<span>Claude</span></div><p>${esc(p.prompt)}</p></div>` : ""}</div>
+      ${p.prompt ? `<div class="prompt"><div class="pl">COPY THIS PROMPT<span>Claude</span></div><p>${esc(p.prompt)}</p></div>` : ""}</div></div>
       <div class="foot"><span>${String(i + 1).padStart(2, "0")} / ${String(N).padStart(2, "0")}</span><span>Full guide: comment <b>${esc(post.keyword)}</b></span></div></div>`;
   }).join("");
 }
-function fit(el) {  // shrink a step's text until the column fits its box
+function fit(el) {  // scale a step's content down until it fits above the footer; short pages keep the window at the bottom
   const col = el.querySelector(".col");
   if (!col) return;
-  let s = 1;
-  while (col.scrollHeight > col.clientHeight + 1 && s > 0.62) {
-    s -= 0.03;
-    col.style.zoom = s;
-  }
+  const inner = col.firstElementChild, H = col.clientHeight;
+  inner.style.minHeight = "0px";
+  const h = inner.scrollHeight;
+  const s = h > H ? Math.max(0.6, H / h) : 1;
+  inner.style.transform = `scale(${s})`;
+  inner.style.width = `${100 / s}%`;
+  inner.style.minHeight = `${H / s}px`;
 }
-window.setup = post => {
+function fitBanner(pv) {
+  const b = pv.querySelector(".banner p");
+  let f = 64;
+  while (b.scrollWidth > 1010 && f > 36) { f -= 2; b.style.fontSize = f + "px"; }
+}
+window.setup = async post => {
   const T = THEMES[post.keyword] || THEMES.DEFAULT;
   const r = document.documentElement.style;
   r.setProperty("--a", T.a); r.setProperty("--a2", T.a2); r.setProperty("--soft", T.soft);
   const deck = document.getElementById("deck");
   deck.innerHTML = pages(post, T);
   const slides = [...deck.querySelectorAll(".slide")];
+  await document.fonts.ready;  // fonts load only once text uses them: measure after, or real text overflows
+  await new Promise(r => setTimeout(r, 300));
   slides.forEach(fit);
   // the LinkedIn image: the guide open in a document viewer, page thumbnails down the side, comment banner
   const pv = document.createElement("div");
@@ -178,6 +193,7 @@ window.setup = post => {
     <div class="main"><div class="pg"><div>${slides[0].outerHTML}</div></div><div class="pg"><div>${slides[1].outerHTML}</div></div></div></div>
     <div class="banner"><p>Comment "<b>${esc(post.keyword)}</b>" to get the guide</p><span>${esc(post.pages.length)}-page mini guide · free · Build with Vish</span></div>`;
   deck.appendChild(pv);
+  fitBanner(pv);
   window.READY = true;
 };
 window.STAGE_LOADED = true;
