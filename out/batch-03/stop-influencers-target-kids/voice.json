@@ -1,92 +1,92 @@
 {
  "voice": "Puck",
- "duration": 38.419999999999995,
+ "duration": 36.26575,
  "scenes": [
   {
    "start": 0.0,
-   "end": 3.9,
+   "end": 3.84,
    "phrases": [
     {
+     "text": "Stop using influencers to target kids right now",
      "start": 0.0,
-     "end": 3.9,
-     "text": "Stop using influencers to target kids right now"
+     "end": 3.84
     }
    ]
   },
   {
-   "start": 4.6,
-   "end": 8.56,
+   "start": 4.44,
+   "end": 8.04,
    "phrases": [
     {
-     "start": 4.6,
-     "end": 8.56,
-     "text": "Denmark just filed a complaint over Red Bull influencer posts"
+     "text": "Denmark just filed a complaint over Red Bull influencer posts",
+     "start": 4.44,
+     "end": 8.04
     }
    ]
   },
   {
-   "start": 9.26,
-   "end": 13.73,
+   "start": 8.64,
+   "end": 14.14,
    "phrases": [
     {
-     "start": 9.26,
-     "end": 13.73,
-     "text": "Danish law bans marketing energy drinks to anyone under 18"
+     "text": "Danish law bans marketing energy drinks to anyone under 18",
+     "start": 8.64,
+     "end": 14.14
     }
    ]
   },
   {
-   "start": 14.43,
-   "end": 18.49,
+   "start": 14.74,
+   "end": 18.24,
    "phrases": [
     {
-     "start": 14.43,
-     "end": 18.49,
-     "text": "Then ask Claude to check each brief against your market's rules"
+     "text": "Then ask Claude to check each brief against your market's rules",
+     "start": 14.74,
+     "end": 18.24
     }
    ]
   },
   {
-   "start": 19.19,
-   "end": 22.54,
+   "start": 18.84,
+   "end": 22.84,
    "phrases": [
     {
-     "start": 19.19,
-     "end": 22.54,
-     "text": "Review sponsored posts for hidden minor targeting on feeds"
+     "text": "Review sponsored posts for hidden minor targeting on feeds",
+     "start": 18.84,
+     "end": 22.84
     }
    ]
   },
   {
-   "start": 23.24,
-   "end": 27.84,
+   "start": 23.44,
+   "end": 26.94,
    "phrases": [
     {
-     "start": 23.24,
-     "end": 27.84,
-     "text": "Manual checks versus automated compliance workflows daily"
+     "text": "Manual checks versus automated compliance workflows daily",
+     "start": 23.44,
+     "end": 26.94
     }
    ]
   },
   {
-   "start": 28.54,
-   "end": 32.47,
+   "start": 27.54,
+   "end": 31.04,
    "phrases": [
     {
-     "start": 28.54,
-     "end": 32.47,
-     "text": "Get instant alerts when rules break or thresholds exceeded"
+     "text": "Get instant alerts when rules break or thresholds exceeded",
+     "start": 27.54,
+     "end": 31.04
     }
    ]
   },
   {
-   "start": 33.17,
-   "end": 36.92,
+   "start": 31.64,
+   "end": 34.866,
    "phrases": [
     {
-     "start": 33.17,
-     "end": 36.92,
-     "text": "Follow Vish for more AI x marketing tips every week"
+     "text": "Follow Vish for more AI x marketing tips every week",
+     "start": 31.64,
+     "end": 34.866
     }
    ]
   }
