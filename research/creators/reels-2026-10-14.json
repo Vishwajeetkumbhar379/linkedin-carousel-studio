@@ -1,0 +1,316 @@
+{
+ "DeUUFJQu8cw": {
+  "creator": "justyn.ai",
+  "url": "https://www.instagram.com/reel/DeUUFJQu8cw/",
+  "analysis": {
+   "duration_s": 53,
+   "hook": {
+    "first_3s_words": "I didn't edit a single second of this video. Claude did.",
+    "first_3s_visual": "Speaker holds glasses while bold, oversized kinetic text overlays the frame.",
+    "hook_type": "Pattern interrupt / Bold claim"
+   },
+   "structure": [
+    {
+     "t": "00:00-00:07",
+     "purpose": "Hook",
+     "words_summary": "Claims video was edited entirely by Claude with one prompt.",
+     "visual": "Close-up talking head with giant serif typography."
+    },
+    {
+     "t": "00:07-00:15",
+     "purpose": "Demonstration 1",
+     "words_summary": "Prompts Claude for aesthetic warm look and magazine titles.",
+     "visual": "Color shift to warm tones, floating video cards, magazine text overlay."
+    },
+    {
+     "t": "00:15-00:22",
+     "purpose": "Process Explanation",
+     "words_summary": "Explains dropping raw footage with mistakes to get final output.",
+     "visual": "Squatting wide shot, timeline UI and raw file graphics."
+    },
+    {
+     "t": "00:22-00:28",
+     "purpose": "Demonstration 2",
+     "words_summary": "Prompts moody dark style with massive captions.",
+     "visual": "Desk shot, lighting darkens instantly, giant text popup."
+    },
+    {
+     "t": "00:28-00:39",
+     "purpose": "Unique Value Prop",
+     "words_summary": "Highlights storyboard generation before final video rendering.",
+     "visual": "Close-up with code/storyboard GUI overlay and prompt box."
+    },
+    {
+     "t": "00:39-00:43",
+     "purpose": "Summary of Ease",
+     "words_summary": "Shows quick edits take just one extra sentence.",
+     "visual": "Wide angle from room corner, massive text overlay."
+    },
+    {
+     "t": "00:43-00:53",
+     "purpose": "Call to Action",
+     "words_summary": "Directs viewers to comment EDIT for full walkthrough.",
+     "visual": "Wide room shot, comment notification animation, close-up follow CTA."
+    }
+   ],
+   "camera": {
+    "framing": "Dynamic mix of close-up, medium desk shot, wide squat, and room corner angle.",
+    "setting": "Modern home office with olive green walls, frame art, and accent lamp.",
+    "lighting": "Warm ambient lamp with soft direct key light.",
+    "eye_contact": "Direct and engaging with camera throughout.",
+    "outfit_style": "Patterned fleece jacket, green cap, white tee.",
+    "mic_visible": true
+   },
+   "editing": {
+    "avg_shot_len_s": 2.5,
+    "jump_cuts": "Frequent rapid jump cuts on speech pauses.",
+    "punch_in_zooms": [
+     {
+      "t": "00:07",
+      "why": "Emphasize prompt execution."
+     },
+     {
+      "t": "00:28",
+      "why": "Highlight key differentiator."
+     },
+     {
+      "t": "00:50",
+      "why": "Maximize CTA impact."
+     }
+    ],
+    "cutouts_or_greenscreen": "Magazine overlay elements composited over speaker.",
+    "broll": [
+     {
+      "t": "00:11",
+      "what": "Floating video cards."
+     },
+     {
+      "t": "00:27",
+      "what": "Grid of other creators' reels."
+     }
+    ],
+    "screen_recordings": "Video editing timeline and Claude storyboard interface.",
+    "graphics_and_motion": [
+     {
+      "t": "00:00",
+      "what": "Kinetic typography."
+     },
+     {
+      "t": "00:13",
+      "what": "Magazine cover aesthetic frame."
+     },
+     {
+      "t": "00:20",
+      "what": "Digital timer popup."
+     },
+     {
+      "t": "00:47",
+      "what": "Interactive comment notification popup."
+     }
+    ],
+    "transitions": "Hard cuts accompanied by real-time color grading transitions."
+   },
+   "text_on_screen": {
+    "captions_style": "Large serif and sans-serif fonts, gold and white colors, centered lower-third placement.",
+    "titles": [
+     {
+      "t": "00:00",
+      "text": "I DIDN'T EDIT"
+     },
+     {
+      "t": "00:13",
+      "text": "CLAUDE"
+     },
+     {
+      "t": "00:40",
+      "text": "BIGGER captions."
+     }
+    ]
+   },
+   "audio": {
+    "music": "Low-fi background beat at low volume under dialogue.",
+    "sfx": [
+     {
+      "t": "00:05",
+      "type": "UI pop / click"
+     },
+     {
+      "t": "00:12",
+      "type": "Swoosh effect"
+     }
+    ],
+    "voice": "Approx 160 wpm, high energy, conversational and persuasive tone."
+   },
+   "cta": {
+    "t": "00:43-00:53",
+    "words": "Comment EDIT and I'll send you the walkthrough.",
+    "mechanism": "Automated DM trigger via comment keyword."
+   },
+   "why_it_works": [
+    "High-curiosity hook challenges standard editing workflows.",
+    "Real-time visual transformations (color shift, fonts) demonstrate proof instantly.",
+    "Showcasing the storyboard feature addresses key pain points in AI video editing.",
+    "Frictionless comment-based CTA drives high algorithmic engagement."
+   ]
+  }
+ },
+ "DdEPZQSOsx2": {
+  "creator": "kallawaymarketing",
+  "url": "https://www.instagram.com/reel/DdEPZQSOsx2/",
+  "analysis": {
+   "duration_s": 90.5,
+   "hook": {
+    "first_3s_words": "There's a new type of content that is starting to crush on social media.",
+    "first_3s_visual": "Speaker talking at bottom with grid of high-view content examples above.",
+    "hook_type": "New trend reveal / Curiosity"
+   },
+   "structure": [
+    {
+     "t": "00:00-00:05",
+     "purpose": "Hook introducing 'Application Content'.",
+     "words_summary": "New viral content format called Application Content.",
+     "visual": "Grid of viral videos with view counts above speaker."
+    },
+    {
+     "t": "00:05-00:15",
+     "purpose": "Historical timeline baseline (2021-2024).",
+     "words_summary": "Social media previously split between Entertainment and Educational.",
+     "visual": "Horizontal timeline graphic showing two main categories."
+    },
+    {
+     "t": "00:15-00:31",
+     "purpose": "Introduce 3rd historical category: Storytelling.",
+     "words_summary": "Storytelling merged entertainment and education, but hard to scale.",
+     "visual": "Timeline adds Storytelling with video example."
+    },
+    {
+     "t": "00:31-00:50",
+     "purpose": "Explain AI impact and 'Eduslop'.",
+     "words_summary": "AI split education into Application, Tactical Edu, and Eduslop.",
+     "visual": "Updated timeline showing new sub-categories and Eduslop video sample."
+    },
+    {
+     "t": "00:50-00:59",
+     "purpose": "Define Tactical Education.",
+     "words_summary": "Step-by-step tutorials that require novelty to perform.",
+     "visual": "Graphic displaying Tactical Edu examples."
+    },
+    {
+     "t": "00:59-01:15",
+     "purpose": "Define Application Content.",
+     "words_summary": "Demonstrating real expertise via case studies, scenarios, and live builds.",
+     "visual": "Graphic listing Application formats with example videos."
+    },
+    {
+     "t": "01:15-01:24",
+     "purpose": "Strategic recommendation.",
+     "words_summary": "Focus on Storytelling, Application, and Tactical Edu.",
+     "visual": "Timeline highlighting the three recommended buckets."
+    },
+    {
+     "t": "01:24-01:30",
+     "purpose": "Call to action.",
+     "words_summary": "Comment 'Format' to receive doc breakdown.",
+     "visual": "Document thumbnails grid above speaker."
+    }
+   ],
+   "camera": {
+    "framing": "Medium close-up at bottom third of vertical frame",
+    "setting": "Indoor studio setup with dark background",
+    "lighting": "Warm key lighting with subtle background accent lights",
+    "eye_contact": "Direct to camera",
+    "outfit_style": "Black long-sleeve sweater and dark baseball cap",
+    "mic_visible": true
+   },
+   "editing": {
+    "avg_shot_len_s": 2.5,
+    "jump_cuts": true,
+    "punch_in_zooms": [
+     {
+      "t": "00:03",
+      "why": "Emphasize key statement"
+     },
+     {
+      "t": "00:11",
+      "why": "Re-engage viewer attention"
+     },
+     {
+      "t": "00:30",
+      "why": "Highlight transition to AI era"
+     },
+     {
+      "t": "00:56",
+      "why": "Emphasize core tactical advice"
+     }
+    ],
+    "cutouts_or_greenscreen": "Speaker layered at bottom of screen with dynamic graphic cards displayed overhead",
+    "broll": [],
+    "screen_recordings": true,
+    "graphics_and_motion": [
+     {
+      "t": "00:00",
+      "what": "Grid overlay showing video examples with animated view counters"
+     },
+     {
+      "t": "00:05",
+      "what": "Animated horizontal timeline with key node points"
+     },
+     {
+      "t": "00:36",
+      "what": "Branching diagram overlay categorizing content types"
+     }
+    ],
+    "transitions": "Fast slide and push transitions between timeline slides"
+   },
+   "text_on_screen": {
+    "captions_style": "Centred dynamic subtitles, white sans-serif font, lower-third placement, word-by-word highlights",
+    "titles": [
+     {
+      "t": "00:00",
+      "text": "This New Type Of Content Is Going Crazy Viral Right Now"
+     },
+     {
+      "t": "00:05",
+      "text": "This Is How Social Media Used To Look Like Before"
+     },
+     {
+      "t": "00:32",
+      "text": "This Is How AI Changed Social Media Forever"
+     },
+     {
+      "t": "01:19",
+      "text": "These Formats Will Change Social Media Forever"
+     },
+     {
+      "t": "01:25",
+      "text": "Comment \"Format\" To Get The Doc"
+     }
+    ]
+   },
+   "audio": {
+    "music": "Low ambient synth beat, quiet under vocal track",
+    "sfx": [
+     {
+      "t": "00:05",
+      "type": "Whoosh transition"
+     },
+     {
+      "t": "00:36",
+      "type": "Pop sound effect on graphic reveal"
+     }
+    ],
+    "voice": "Fast pace (~170 wpm), confident, clear instructional tone"
+   },
+   "cta": {
+    "t": "01:24-01:30",
+    "words": "Comment \"Format\" to get the doc",
+    "mechanism": "Comment trigger automation"
+   },
+   "why_it_works": [
+    "High visual variety using overhead animated diagrams keeps retention high.",
+    "Categorizes complex industry trends into clear, simple mental models.",
+    "Direct value offer creates strong incentive for comment-driven engagement."
+   ]
+  }
+ }
+}
