@@ -1,0 +1,439 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>edit reel</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+@font-face{font-family:'Geist';font-weight:400;src:url(/templates/node_modules/@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-weight:600;src:url(/templates/node_modules/@fontsource/geist-sans/files/geist-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-weight:700;src:url(/templates/node_modules/@fontsource/geist-sans/files/geist-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist Mono';font-weight:500;src:url(/templates/node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-weight:500;font-style:italic;src:url(/templates/node_modules/@fontsource/newsreader/files/newsreader-latin-500-italic.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:800;src:url(/templates/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Barlow Condensed';font-weight:900;src:url(/templates/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-900-normal.woff2) format('woff2')}
+:root{--night:#14161B;--lamp:#E7A15A;--accent:#3049E0;--accent2:#7086FF;--paper:#F4F5F7;--mute:#9AA0AE;--card:#1C1F27;--line:rgba(244,245,247,.10);--red:#FF5B4F}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow:hidden;background:var(--night);color:var(--paper);font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#root{position:relative;overflow:hidden;background:var(--night)}
+.abs{position:absolute;left:0;top:0}
+#studio{position:absolute;inset:0;background:
+  radial-gradient(ellipse 60% 45% at var(--gx,72%) var(--gy,58%),rgba(231,161,90,.30),rgba(231,161,90,0) 70%),
+  radial-gradient(ellipse 80% 60% at 30% 20%,rgba(48,73,224,.10),rgba(48,73,224,0) 70%),
+  linear-gradient(180deg,#171A20 0%,#121419 100%)}
+#studio::after{content:"";position:absolute;inset:0;opacity:.10;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+#roomblur{position:absolute;inset:-40px;background-size:cover;background-position:center;filter:blur(36px) brightness(.45);display:none}
+#room,#cut{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;will-change:transform}
+#cut{filter:drop-shadow(0 0 1px rgba(231,161,90,.28)) drop-shadow(0 0 46px rgba(231,161,90,.14))}
+#roomcard{position:absolute;overflow:hidden;border-radius:28px;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+#roomcard #room{position:absolute}
+.scan{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lamp),transparent);box-shadow:0 0 24px var(--lamp);opacity:0}
+
+/* graphics stage: each scene is designed at its own base size and scaled into the layout's zone */
+.scene{position:absolute;left:0;top:0;transform-origin:0 0;opacity:0}
+.mono{font:500 30px 'Geist Mono',monospace;letter-spacing:.04em;color:var(--mute);text-transform:uppercase}
+.big{font:900 150px/0.86 'Barlow Condensed',sans-serif;letter-spacing:-.01em;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.lamp{color:var(--lamp)} .blue{color:var(--accent2)} .red{color:var(--red)}
+.chip{display:inline-flex;align-items:center;gap:14px;padding:14px 26px;border-radius:999px;background:#232733;border:1px solid var(--line);font:600 38px Geist;white-space:nowrap}
+.strike{position:relative;--k:0}
+.strike::after{content:"";position:absolute;left:-4px;right:-4px;top:52%;height:4px;background:var(--red);border-radius:2px;transform:scaleX(var(--k,0));transform-origin:0 50%}
+
+/* captions: one look for the whole reel */
+#cap{position:absolute;left:0;top:0;transform:translate(-50%,-50%);display:flex;gap:16px;white-space:nowrap;z-index:20}
+#cap .box{font:800 var(--cs,96px)/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.005em;padding:.12em .28em .1em;border-radius:16px;
+  background:rgba(14,16,21,.86);border:2px solid rgba(244,245,247,.22);color:var(--paper);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#cap .box.key{background:var(--accent);border-color:rgba(255,255,255,.38)}
+#cap.ring .box{outline:5px solid var(--lamp);outline-offset:8px}
+#focus{position:absolute;z-index:15;opacity:0;pointer-events:none}
+#focus i{position:absolute;width:70px;height:70px;border:6px solid var(--paper)}
+#focus i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:14px 0 0 0}
+#focus i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 14px 0 0}
+#focus i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 14px}
+#focus i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 14px 0}
+#focus b{position:absolute;left:50%;top:-64px;transform:translateX(-50%);font:500 26px 'Geist Mono';color:var(--paper);background:rgba(14,16,21,.8);padding:6px 14px;border-radius:10px;white-space:nowrap}
+
+/* scene specifics */
+.phone{position:absolute;width:340px;height:640px;border-radius:48px;background:#000;padding:12px;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 2px #2A2E38}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden}
+.phone img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover}
+.rec{position:absolute;left:18px;top:18px;font:500 24px 'Geist Mono';background:rgba(0,0,0,.55);padding:6px 10px;border-radius:8px}
+.rec i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);margin-right:8px;vertical-align:1px}
+.track{position:absolute;height:18px;border-radius:9px;background:#2A2E38}
+.track .fill{position:absolute;left:0;top:0;bottom:0;border-radius:7px;background:var(--paper);opacity:.35}
+.track .head{position:absolute;top:-9px;width:6px;height:32px;border-radius:3px;background:var(--paper);margin-left:-3px}
+.track .mk{position:absolute;top:-22px;width:6px;height:58px;border-radius:3px;background:var(--red);margin-left:-3px;transform:scaleY(0)}
+.win{position:absolute}
+.win .bar{height:76px;display:flex;align-items:center;gap:12px;padding:0 26px;border-bottom:1px solid var(--line);font:600 34px Geist}
+.win .bar i{width:18px;height:18px;border-radius:50%;background:#3A3F4C}
+.tile{position:absolute;width:390px;height:330px;border-radius:22px;background:#262A35;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.tile .th{position:absolute;left:14px;right:14px;top:14px;bottom:104px;border-radius:10px;overflow:hidden;background:#000}
+.tile .th img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.tile b{font:600 34px Geist} .tile small{font:500 24px 'Geist Mono';color:var(--mute)}
+.slot{position:absolute;width:390px;height:330px;border-radius:22px;border:2px dashed #343947}
+.cursor{position:absolute;width:60px;height:60px}
+.agent{position:absolute;padding:28px 30px;font:500 32px/1.6 'Geist Mono';color:#C9CED9}
+.agent .ttl{font:700 42px Geist;color:var(--paper);margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.agent .ttl i{width:14px;height:14px;border-radius:50%;background:var(--lamp);box-shadow:0 0 12px var(--lamp)}
+.agent div.ln{opacity:0}
+.mug{position:absolute}
+.wave{position:absolute;display:flex;align-items:center;gap:0}
+.wave i{display:block;flex:0 0 auto;border-radius:3px;background:var(--paper);margin-right:1.6px}
+.plane{position:absolute;width:600px;height:340px;border-radius:22px;border:2px solid rgba(244,245,247,.35);background:rgba(28,31,39,.55);overflow:hidden}
+.plane img{position:absolute;height:600px;left:50%;top:-145px;transform:translateX(-50%)}
+.lbl{position:absolute;font:600 42px Geist;white-space:nowrap;display:flex;align-items:center;gap:14px}
+.lbl em{font:500 30px 'Geist Mono';font-style:normal;color:var(--night);background:var(--lamp);border-radius:8px;padding:2px 10px}
+.frame{position:absolute;border-radius:18px;border:3px dashed rgba(244,245,247,.35);overflow:hidden}
+.frame .fill{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse 70% 55% at 70% 60%,rgba(231,161,90,.35),transparent 70%),#15181E}
+.frame img{position:absolute;opacity:0}
+.frame .tag{position:absolute;left:14px;top:14px;font:600 30px Geist;background:rgba(14,16,21,.85);border:1px solid var(--line);padding:6px 12px;border-radius:10px;opacity:0;white-space:nowrap}
+.tool{position:absolute;left:0;width:960px;height:112px;display:flex;align-items:center;gap:22px;padding:0 28px}
+.tool b{font:700 44px Geist;white-space:nowrap} .tool span{font:500 26px 'Geist Mono';color:var(--mute);text-transform:uppercase;white-space:nowrap}
+.tool .os{margin-left:auto;font:600 24px 'Geist Mono';color:#9FE6B8;border:1px solid rgba(159,230,184,.4);padding:6px 12px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
+.serif{font:500 italic 190px/0.9 Newsreader,serif;letter-spacing:-.02em}
+.composer{position:absolute;display:flex;align-items:center;gap:20px;padding:22px 24px}
+.composer .av{width:100px;height:100px;border-radius:50%;background:linear-gradient(160deg,var(--accent2),var(--accent));flex:0 0 auto}
+.composer .in{flex:1;height:116px;border-radius:58px;background:#0F1116;border:1px solid var(--line);display:flex;align-items:center;padding:0 36px;font:800 88px 'Barlow Condensed';letter-spacing:.02em}
+.composer .in .ph{color:#596070;font:500 40px Geist}
+.composer .send{width:110px;height:110px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.caret{display:inline-block;width:5px;height:80px;background:var(--paper);margin-left:4px;vertical-align:-6px}
+.guide{position:absolute;padding:26px 32px}
+.guide h3{font:900 96px/0.95 'Barlow Condensed';text-transform:uppercase;margin-bottom:12px}
+.guide p{font:500 38px/1.5 Geist;color:#C9CED9}
+.guide p b{color:var(--lamp);font-family:'Geist Mono';margin-right:12px}
+</style></head>
+<body>
+<div id="root">
+  <div id="studio"></div>
+  <div id="roomblur"></div>
+  <img id="cut" class="live-cut" alt="">
+  <div id="roomcard"><img id="room" class="live-room" alt=""></div>
+  <div class="scan" id="scan"></div>
+  <div id="stage"></div>
+  <div id="focus"><i></i><i></i><i></i><i></i><b>ZOOM 1.5×</b></div>
+  <div id="cap"></div>
+</div>
+<script>
+const LAYOUT = new URLSearchParams(location.search).get('layout') || '9x16';
+const SIZE = {'9x16':[1080,1920],'4x5':[1080,1350],'16x9':[1920,1080]}[LAYOUT];
+const [W,H] = SIZE;
+const root = document.getElementById('root');
+root.style.width = W+'px'; root.style.height = H+'px';
+document.body.style.width = W+'px'; document.body.style.height = H+'px';
+
+// Where things go in each layout. Person: s = scale of the 1080x1920 source, cx = x of the body centre, top = y of the head top (face for punch).
+const L = {
+  '9x16': {room:{card:null, s:1, y:0}, split:{s:.78, cx:540, top:950}, punch:{s:1.22, cx:540, face:780},
+           zone:[60,160,960,700], band:[60,110,960,430], pband:[60,70,960,380],
+           cap:{room:[540,1400], wide:[540,1400], split:[540,880], punch:[540,1500]}, cs:96, glow:['50%','62%']},
+  '4x5':  {room:{card:null, s:1, headAt:330}, split:{s:.60, cx:540, top:690}, punch:{s:.92, cx:540, face:610},
+           zone:[50,50,980,560], band:[50,30,980,290], pband:[50,24,980,300],
+           cap:{room:[540,1150], wide:[540,1150], split:[540,632], punch:[540,1170]}, cs:76, glow:['50%','66%']},
+  '16x9': {room:{card:[1230,60,540,960]}, split:{s:.66, cx:1480, top:170}, punch:{s:1.0, cx:1300, face:470},
+           zone:[90,120,1050,760], band:[90,120,1050,760], pband:[90,120,1050,760],
+           cap:{room:[615,965], wide:[615,965], split:[615,965], punch:[1300,940]}, cs:80, glow:['77%','60%']},
+}[LAYOUT];
+document.getElementById('studio').style.setProperty('--gx', L.glow[0]);
+document.getElementById('studio').style.setProperty('--gy', L.glow[1]);
+
+let S, P, T = {}, SH = [], SC = [], tl, SFX = [];
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+const norm = s => s.toLowerCase().replace(/[^a-z0-9']/g,'');
+function W_(p, after=0){ const w = S.words.find(w => w.t >= after - 1e-3 && norm(w.x).startsWith(p)); if(!w) throw new Error('cue word not found: '+p+' after '+after); return w.t; }
+function snap(t){ let best = t, d = .45; for(const k of S.keeps){ if(Math.abs(k - t) < d){ d = Math.abs(k - t); best = k; } } return best; }
+const ease = x => 1 - Math.pow(1 - x, 3);
+const fmt = s => { s = Math.round(s); return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); };
+
+function scene(id, base, mode, html){
+  const el = document.createElement('div');
+  el.className = 'scene'; el.id = 's-'+id; el.style.width = base[0]+'px'; el.style.height = base[1]+'px';
+  el.innerHTML = html; $('#stage').appendChild(el);
+  SC.push({el, base, mode}); return el;
+}
+function place(sc, mode){
+  const z = mode === 'band' ? L.band : mode === 'pband' ? L.pband : L.zone;
+  const k = Math.min(z[2]/sc.base[0], z[3]/sc.base[1]);
+  const x = z[0] + (z[2] - sc.base[0]*k)/2, y = z[1] + (z[3] - sc.base[1]*k)/2;
+  sc.el.style.transform = `translate(${x}px,${y}px) scale(${k})`;
+}
+
+function build(){
+  const R = S.raw_s;
+  const pct = s => (100 * s / R).toFixed(2) + '%';
+  // 1 hook: proof first
+  scene('hook', [960,430], 'band', `
+    <div class="mono" style="position:absolute;left:0;top:0"><span class="red">●</span> raw clip · one take · phone</div>
+    <div class="big" style="position:absolute;left:0;top:56px;font-size:178px;white-space:nowrap"><span class="h-a">${fmt(R)}</span> <span class="h-arrow" style="display:inline-block;color:var(--mute);font-size:120px;vertical-align:16px">→</span> <span class="h-b lamp" style="display:inline-block">${fmt(S.final_s)}</span></div>
+    <div style="position:absolute;left:0;top:300px;font:600 46px Geist" class="h-c">edited by <span class="lamp">Claude</span>. not me.</div>`);
+  // 2 phone + scrubber
+  const mk = [...S.wave.retakes.map(r=>r[0]), ...S.wave.fillers.map(f=>f.src[0])];
+  scene('phone', [960,700], 'zone', `
+    <div class="phone" style="left:0;top:0"><div class="scr"><img class="live-room" alt=""><div class="rec"><i></i><span class="rt">00:00</span></div></div></div>
+    <div style="position:absolute;left:390px;top:10px">
+      <div class="mono">the raw file</div>
+      <div class="big" style="font-size:230px;margin-top:10px">One<br>take</div>
+      <div class="ms" style="margin-top:22px;font:600 36px/1.3 Geist;color:var(--red);opacity:0">${S.wave.retakes.length} retakes<br>${S.wave.fillers.length} fillers<br>${Math.round(S.cut_s - S.retake_s)} s of pauses</div>
+    </div>
+    <div class="track" style="left:0;top:672px;width:960px"><div class="fill"></div>${mk.map(t=>`<div class="mk" style="left:${pct(t)}"></div>`).join('')}<div class="head"></div></div>`);
+  // 3 folder -> Claude
+  scene('folder', [960,700], 'zone', `
+    <div class="win card" style="left:0;top:0;width:900px;height:470px">
+      <div class="bar"><i></i><i></i><i></i><span style="margin-left:16px">Raw videos</span><span class="mono" style="margin-left:auto;font-size:24px">shared folder</span></div>
+      <div class="slot" style="left:34px;top:110px"></div><div class="slot" style="left:456px;top:110px"></div>
+      <div class="tile ftile" style="left:34px;top:110px"><div class="th"><img class="live-room" alt=""></div><b>First Video.mov</b><small>34.3 MB · 1:32</small></div>
+    </div>
+    <svg class="cursor" viewBox="0 0 24 24" style="left:0;top:0"><path d="M4 2l16 9.5-7 1.6-3.8 6.4z" fill="#F4F5F7" stroke="#14161B" stroke-width="1.4"/></svg>
+    <div class="agent card" style="left:430px;top:180px;width:530px;height:520px">
+      <div class="ttl"><i></i>Claude</div>
+      <div class="ln">› transcribe</div><div class="ln">› cut retakes</div><div class="ln">› cut pauses</div><div class="ln">› captions</div><div class="ln">› graphics</div><div class="ln lamp">› 3 versions</div>
+    </div>`);
+  // 3b coffee (punch-in)
+  scene('coffee', [960,380], 'pband', `
+    <svg class="mug" viewBox="0 0 120 120" style="left:700px;top:20px;width:260px;height:260px">
+      <g fill="none" stroke="#F4F5F7" stroke-width="6" stroke-linecap="round"><path class="st" d="M44 40c-8-9 8-14 0-24"/><path class="st" d="M62 40c-8-9 8-14 0-24"/><path class="st" d="M80 40c-8-9 8-14 0-24"/></g>
+      <path d="M28 50h64v34a20 20 0 0 1-20 20H48a20 20 0 0 1-20-20z" fill="#E7A15A"/><path d="M92 58h6a12 12 0 0 1 0 24h-6" fill="none" stroke="#E7A15A" stroke-width="7"/></svg>
+    <div class="mono" style="position:absolute;left:700px;top:300px;width:260px;text-align:center;color:var(--paper)">meanwhile</div>`);
+  // 4 waveform: pauses collapse, fillers and retakes struck
+  const pauseS = Math.round(S.cut_s - S.retake_s);
+  const nb = S.wave.bars.length, bw = (960/nb - 1.6);
+  const kept = S.wave.bars.map((b,i)=>{const t=i*S.wave.bar_s+S.wave.bar_s/2; return S.wave.kept.some(k=>t>=k[0]-.1&&t<=k[1]+.1);});
+  const nk = kept.filter(Boolean).length;
+  window.WAVE_KW = (960/nk - 1.6);
+  scene('wave', [960,700], 'zone', `
+    <div class="mono" style="position:absolute;left:0;top:0">raw audio · ${fmt(R)}</div>
+    <div class="wcount" style="position:absolute;right:0;top:-6px;font:900 64px 'Barlow Condensed';color:var(--lamp);opacity:0">−${pauseS} s</div>
+    <div class="wave" style="left:0;top:70px;height:220px;width:960px">${S.wave.bars.map((b,i)=>`<i class="${kept[i]?'k':'p'}" style="width:${bw.toFixed(2)}px;height:${Math.max(8,b*210).toFixed(0)}px"></i>`).join('')}</div>
+    <div class="fills" style="position:absolute;left:0;top:330px;display:flex;gap:16px;flex-wrap:wrap;width:960px">${S.wave.fillers.map(f=>`<span class="chip strike" style="opacity:0">“${f.words.replace(/[.]/g,'').toLowerCase()}”</span>`).join('')}</div>
+    <div class="rts" style="position:absolute;left:0;top:445px">${S.wave.retakeText.map((r,i)=>`<div class="chip" style="opacity:0;position:absolute;left:0;top:${i*124}px;font-size:32px;max-width:960px"><span class="strike" style="overflow:hidden;text-overflow:ellipsis">“${r.length>34?'…'+r.slice(-32):r}”</span><span class="mono" style="font-size:22px;color:#9FE6B8">kept take 2</span></div>`).join('')}</div>`);
+  // 5 captions
+  scene('capt', [960,700], 'zone', `
+    <div class="mono" style="position:absolute;left:0;top:40px">written from the transcript</div>
+    <div class="big" style="position:absolute;left:0;top:100px;font-size:250px">Captions</div>
+    <svg viewBox="0 0 100 200" style="position:absolute;left:430px;top:400px;width:110px;height:300px"><path class="ar" d="M50 8v170M18 146l32 36 32-36" fill="none" stroke="#E7A15A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>`);
+  // 6 layers (exploded)
+  scene('layers', [960,700], 'zone', `
+    <div style="position:absolute;left:-20px;top:0;width:640px;height:700px;perspective:1600px">
+      <div style="position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(56deg) rotateZ(-34deg) translate(-40px,80px)">
+        <div class="plane p3" style="left:20px;top:150px"><div class="chip" style="position:absolute;left:150px;top:210px;font:800 54px 'Barlow Condensed';background:var(--accent)">CAPTIONS</div></div>
+        <div class="plane p2" style="left:20px;top:150px"><div class="card" style="position:absolute;left:40px;top:34px;width:320px;height:160px"></div><div class="chip" style="position:absolute;left:390px;top:70px">→</div></div>
+        <div class="plane p1" style="left:20px;top:150px;background:rgba(21,24,30,.92)"><img class="live-cut" alt=""></div>
+      </div></div>
+    <div class="lbl l1" style="left:600px;top:470px"><em>1</em>you, cut out</div>
+    <div class="lbl l2" style="left:600px;top:320px"><em>2</em>graphics</div>
+    <div class="lbl l3" style="left:600px;top:170px"><em>3</em>captions</div>`);
+  // 7 three versions
+  scene('versions', [960,700], 'zone', `
+    <div class="frame f1" style="left:0;top:20px;width:372px;height:662px"><div class="fill"></div><img class="live-cut" alt=""><div class="tag">9:16 Reels</div></div>
+    <div class="frame f2" style="left:396px;top:20px;width:564px;height:317px"><div class="fill"></div><img class="live-cut" alt=""><div class="tag">16:9 YouTube</div></div>
+    <div class="frame f3" style="left:396px;top:361px;width:257px;height:321px"><div class="fill"></div><img class="live-cut" alt=""><div class="tag" style="font-size:24px">4:5 LinkedIn</div></div>
+    <div class="big vnum" style="position:absolute;left:690px;top:400px;font-size:250px;opacity:0">×3</div>`);
+  // 8 tools
+  const tools = [['Whisper','speech to text'],['FFmpeg','cuts + sound'],['Robust Video Matting','cut-out'],['herk-edit-kit','edit rules']];
+  scene('tools', [960,700], 'zone', `
+    <div class="big" style="position:absolute;left:0;top:0;font-size:132px;white-space:nowrap">Free <span class="lamp">+</span> open source</div>
+    ${tools.map((t,i)=>`<div class="tool card" style="top:${160+i*134}px;opacity:0"><b>${t[0]}</b><span>${t[1]}</span><span class="os">free</span></div>`).join('')}`);
+  // 9 film me
+  scene('film', [960,430], 'band', `
+    <div class="f-a" style="position:absolute;left:0;top:20px;font:600 46px Geist;opacity:0">the only thing it can't do</div>
+    <div class="serif lamp f-b" style="position:absolute;left:-6px;top:100px;font-size:240px;opacity:0">film me.</div>`);
+  // 10 CTA
+  scene('cta', [960,380], 'pband', `
+    <div class="composer card" style="left:0;top:20px;width:960px">
+      <div class="av"></div><div class="in"><span class="ph">Add a comment…</span><span class="typed"></span><span class="caret" style="opacity:0"></span></div>
+      <div class="send"><svg viewBox="0 0 24 24" width="52" height="52"><path d="M3 11.5L21 3l-6.5 18-3-7.5z" fill="#fff"/></svg></div></div>
+    <div class="c-sub" style="position:absolute;left:0;top:220px;font:600 46px Geist;opacity:0">→ I'll send you the setup</div>
+    <div class="guide card" style="left:0;top:0;width:960px;opacity:0">
+      <h3>The exact <span class="lamp">setup</span></h3>
+      <p><b>01</b>film on your phone, one take</p><p><b>02</b>drop it in a folder</p><p><b>03</b>Claude edits with free tools</p></div>`);
+}
+
+function timeline(){
+  const w = W_; T = {};
+  T.video = w('video'); T.l2 = snap(w('filmed') - .3); T.mistakes = w('mistakes');
+  T.l3 = snap(w('then')); T.drop = w('dropped'); T.claude1 = w('claude', T.drop); T.and = snap(w('and', T.claude1)); T.coffee = w('coffee');
+  T.l4 = snap(w('claude', T.coffee)); T.pause = w('pause'); T.um = w('um'); T.line = w('line'); T.twice = w('twice');
+  T.l5 = snap(w('it', T.twice)); T.capt = w('these'); T.picked = snap(w('picked')); T.zoom = w('zoom');
+  T.built = snap(w('and', T.zoom)); T.every = w('every', T.built); T.graphic = w('graphic'); T.seeing = w('seeing');
+  T.l6 = snap(w('it', T.seeing)); T.three = w('three', T.l6); T.reels = w('reels'); T.yt = w('youtube'); T.li = w('linkedin');
+  T.l7 = snap(w('the', T.li)); T.tools = w('tools'); T.free = w('free'); T.open = w('open'); T.source = w('source');
+  T.l8 = snap(w('the', T.source + .2)); T.film = w('film');
+  T.l9 = snap(w('comment')); T.edit2 = w('edit', T.l9); T.exact = w('exact'); T.end = S.duration;
+  // shots (hard cuts)
+  SH = [[0,'room'],[T.video+.02,'wide'],[T.l2,'split'],[T.and,'punch'],[T.l4,'split'],[T.picked,'split'],[T.zoom-.05,'zoom'],[T.built,'split'],
+        [T.l6,'split'],[T.l7,'split'],[T.l8,'room'],[T.l9,'punch']];
+  const sc = id => SC.find(s => s.el.id === 's-'+id);
+  tl = gsap.timeline({paused:true});
+  const show = (id, a, b) => { const s = sc(id); tl.set(s.el, {opacity:1}, a); tl.set(s.el, {opacity:0}, b); };
+  const fx = (t, s) => SFX.push({t: +t.toFixed(3), s});
+
+  // hook
+  show('hook', 0, T.l2);
+  tl.from('#s-hook .big', {y:40, opacity:0, duration:.35, ease:'power3.out'}, .05);
+  tl.from('#s-hook .h-b', {opacity:0, x:-30, duration:.3, ease:'power3.out'}, Math.max(.6, w('single') - .1)); fx(Math.max(.6, w('single') - .1), 'tap');
+  tl.from('#s-hook .mono', {opacity:0, duration:.25}, .2);
+  tl.from('#s-hook .h-c', {opacity:0, y:20, duration:.3}, Math.max(.9, w('single') + .2));
+  tl.to('#scan', {opacity:1, duration:.05}, T.video); tl.to('#scan', {opacity:0, duration:.1}, T.video + .42); fx(T.video - .05, 'whoosh');
+  // phone
+  show('phone', T.l2, T.l3);
+  tl.from('#s-phone .phone', {y:60, opacity:0, duration:.35, ease:'power3.out'}, T.l2);
+  tl.from('#s-phone .big', {x:40, opacity:0, duration:.35, ease:'power3.out'}, T.l2 + .12);
+  $$('#s-phone .mk').forEach((m,i) => { tl.to(m, {scaleY:1, duration:.2, ease:'back.out(3)'}, T.mistakes + i*.12); if(i<3) fx(T.mistakes + i*.12, i%2?'click2':'click'); });
+  tl.to('#s-phone .ms', {opacity:1, duration:.25}, T.mistakes + .3);
+  // folder
+  show('folder', T.l3, T.and);
+  tl.from('#s-folder .win', {y:50, opacity:0, duration:.35, ease:'power3.out'}, T.l3);
+  tl.fromTo('#s-folder .ftile', {x:560, y:330, rotation:8, opacity:0}, {x:560, y:330, opacity:1, duration:.15}, T.drop - .45);
+  tl.fromTo('#s-folder .cursor', {x:760, y:560}, {x:760, y:560, duration:.01}, T.l3);
+  tl.to('#s-folder .ftile', {x:0, y:0, rotation:0, duration:.45, ease:'power2.inOut'}, T.drop - .25);
+  tl.to('#s-folder .cursor', {x:200, y:230, duration:.45, ease:'power2.inOut'}, T.drop - .25); fx(T.drop + .2, 'tap');
+  tl.from('#s-folder .agent', {x:80, opacity:0, duration:.35, ease:'power3.out'}, T.claude1 - .15); fx(T.claude1 - .15, 'click');
+  tl.to('#s-folder .ftile', {x:520, y:260, scale:.35, opacity:0, duration:.4, ease:'power2.in'}, T.claude1);
+  tl.to('#s-folder .cursor', {opacity:0, duration:.2}, T.claude1);
+  $$('#s-folder .agent .ln').forEach((l,i) => tl.to(l, {opacity:1, duration:.05}, T.claude1 + .25 + i*.09));
+  show('coffee', T.and, T.l4);
+  tl.from('#s-coffee .mug', {scale:.3, opacity:0, transformOrigin:'50% 80%', duration:.35, ease:'back.out(2.2)'}, T.coffee - .05); fx(T.coffee - .05, 'pop');
+  tl.from('#s-coffee .mono', {opacity:0, duration:.2}, T.coffee + .1);
+  $$('#s-coffee .st').forEach((p,i) => tl.fromTo(p, {y:6, opacity:0}, {y:-6, opacity:1, duration:.6, repeat:1, yoyo:true}, T.coffee + .1 + i*.12));
+  // waveform
+  show('wave', T.l4, T.l5);
+  tl.from('#s-wave .wave i', {scaleY:0, duration:.3, stagger:.002, ease:'power2.out'}, T.l4);
+  tl.to('#s-wave .wave i.p', {background:'#E7A15A', duration:.15}, T.pause - .25);
+  tl.to('#s-wave .wave i.p', {width:0, marginRight:0, opacity:0, duration:.55, ease:'power2.inOut'}, T.pause + .15);
+  tl.to('#s-wave .wave i.k', {width:()=>window.WAVE_KW, duration:.55, ease:'power2.inOut'}, T.pause + .15); fx(T.pause + .15, 'whoosh');
+  tl.to('#s-wave .wcount', {opacity:1, duration:.2}, T.pause + .2);
+  $$('#s-wave .fills .chip').forEach((c,i) => { tl.to(c, {opacity:1, duration:.12}, T.um - .1 + i*.12); tl.to(c, {'--k':1, duration:.18}, T.um + .25 + i*.12); fx(T.um - .1 + i*.12, i%2?'click':'click2'); });
+  $$('#s-wave .rts .chip').forEach((c,i) => { tl.fromTo(c, {opacity:0, x:-30}, {opacity:1, x:0, duration:.25}, T.line - .1 + i*.25); fx(T.line - .1 + i*.25, 'click'); tl.to($('.strike', c), {'--k':1, duration:.25}, T.twice - .05 + i*.15); if(i===0) fx(T.twice, 'tap'); });
+  // captions
+  show('capt', T.l5, T.picked);
+  tl.from('#s-capt .big', {y:50, opacity:0, duration:.35, ease:'power3.out'}, T.capt - .15);
+  tl.from('#s-capt .mono', {opacity:0, duration:.25}, T.l5);
+  tl.to('#s-capt .ar', {strokeDashoffset:0, duration:.35}, T.capt); fx(T.capt, 'click');
+  // zoom brackets
+  tl.fromTo('#focus', {opacity:0, scale:1.25}, {opacity:1, scale:1, duration:.25, ease:'power3.out'}, T.zoom); fx(T.zoom - .05, 'zoom');
+  tl.to('#focus', {opacity:0, duration:.2}, T.built - .1);
+  // layers
+  show('layers', T.built, T.l6);
+  tl.from('#s-layers .p1', {opacity:0, z:-60, duration:.3}, T.built);
+  tl.fromTo('#s-layers .p2', {opacity:0, z:0}, {opacity:1, z:120, duration:.35, ease:'power3.out'}, T.every);
+  tl.fromTo('#s-layers .p3', {opacity:0, z:0}, {opacity:1, z:240, duration:.35, ease:'power3.out'}, T.graphic - .1);
+  [['.l1',T.built],['.l2',T.every],['.l3',T.graphic - .1]].forEach(([c,t],i) => { tl.from('#s-layers '+c, {opacity:0, x:30, duration:.25}, t + .1); fx(t + .1, ['click','click2','tap'][i]); });
+  // versions
+  show('versions', T.l6, T.l7);
+  tl.from('#s-versions .frame', {opacity:0, scale:.9, duration:.3, stagger:.06, ease:'power3.out'}, T.three - .15);
+  tl.to('#s-versions .vnum', {opacity:1, duration:.2}, T.li + .35);
+  [['.f1',T.reels],['.f2',T.yt],['.f3',T.li]].forEach(([c,t],i) => {
+    tl.to(`#s-versions ${c}`, {borderStyle:'solid', borderColor:'rgba(244,245,247,.85)', duration:.01}, t - .05);
+    tl.to(`#s-versions ${c} .fill, #s-versions ${c} img, #s-versions ${c} .tag`, {opacity:1, duration:.2}, t - .05);
+    fx(t - .05, ['pop','tap','click'][i]); });
+  // tools
+  show('tools', T.l7, T.l8);
+  tl.from('#s-tools .big', {y:40, opacity:0, duration:.3, ease:'power3.out'}, T.l7);
+  $$('#s-tools .tool').forEach((t,i) => { const at = [T.tools, T.free, T.open, T.source][i]; tl.fromTo(t, {opacity:0, x:-40}, {opacity:1, x:0, duration:.25, ease:'power3.out'}, at - .05); fx(at - .05, i%2?'click2':'click'); });
+  // film me
+  show('film', T.l8, T.l9);
+  tl.to('#s-film .f-a', {opacity:1, duration:.3}, T.l8 + .1);
+  tl.fromTo('#s-film .f-b', {opacity:0, y:30}, {opacity:1, y:0, duration:.45, ease:'power3.out'}, T.film - .05);
+  // CTA
+  show('cta', T.l9, T.end + 1);
+  tl.from('#s-cta .composer', {y:40, opacity:0, duration:.3, ease:'power3.out'}, T.l9);
+  tl.set('#s-cta .ph', {display:'none'}, T.edit2 - .15); tl.set('#s-cta .caret', {opacity:1}, T.edit2 - .15);
+  tl.to('#s-cta .send', {scale:.85, duration:.08, yoyo:true, repeat:1}, T.edit2 + .3); fx(T.edit2 + .3, 'pop');
+  tl.to('#s-cta .c-sub', {opacity:1, duration:.2}, T.edit2 + .45);
+  tl.to('#s-cta .composer, #s-cta .c-sub', {opacity:0, y:-30, duration:.25}, T.exact - .35);
+  tl.fromTo('#s-cta .guide', {opacity:0, y:40}, {opacity:1, y:0, duration:.35, ease:'power3.out'}, T.exact - .25); fx(T.exact - .25, 'tap');
+}
+
+function shotAt(t){ let s = SH[0]; for(const x of SH) if(t >= x[0]) s = x; return s; }
+function personXf(kind, t, t0){
+  const P0 = S.person;
+  const push = 1 + Math.min(.05, .014 * Math.max(0, t - t0));
+  if(kind === 'wide' || kind === 'room'){
+    if(L.room.card){ const [x,y,w,h] = L.room.card; const s = w/1080; return {s, x, y}; }
+    const y = L.room.headAt ? L.room.headAt - P0.top : 0;
+    return {s:1, x:0, y};
+  }
+  let c = kind === 'punch' ? L.punch : L.split;
+  if(kind === 'zoom'){
+    const k = ease(Math.min(1, (t - T.zoom + .05) / .32));
+    const a = xf(L.split, P0, 1), b = xf(L.punch, P0, 1);
+    return {s:a.s + (b.s - a.s)*k, x:a.x + (b.x - a.x)*k, y:a.y + (b.y - a.y)*k};
+  }
+  return xf(c, P0, push);
+}
+function xf(c, P0, push){
+  const s = c.s * push;
+  const x = c.cx - s * P0.cx;
+  const y = c.face !== undefined ? c.face - s * P0.face : c.top - s * P0.top - (push - 1) * 300;
+  return {s, x, y};
+}
+
+window.setup = async (spec) => {
+  S = spec; build(); timeline(); window.SFX = SFX.sort((a,b)=>a.t-b.t);
+  await document.fonts.ready;
+  window.READY = true;
+};
+
+window.frame = async (i) => {
+  const t = i / S.fps;
+  const pad = n => String(n).padStart(5,'0');
+  const imgs = [];
+  for(const im of $$('.live-room')){ const u = `${S.base}/frames/f_${pad(i)}.jpg`; if(!im.src.endsWith(u)){ im.src = u; imgs.push(im); } }
+  for(const im of $$('.live-cut')){ const u = `${S.base}/cut/c_${pad(i)}.webp`; if(!im.src.endsWith(u)){ im.src = u; imgs.push(im); } }
+  const [t0, kind] = shotAt(t);
+  // room vs cut-out
+  const room = $('#room'), cut = $('#cut'), card = $('#roomcard'), blur = $('#roomblur');
+  const pf = personXf(kind, t, t0);
+  cut.style.transform = `translate(${pf.x}px,${pf.y}px) scale(${pf.s})`;
+  const roomOn = kind === 'room' || (kind === 'wide' && t < T.video + .45);
+  card.style.display = roomOn ? 'block' : 'none';
+  if(L.room.card){
+    const [x,y,w,h] = L.room.card;
+    Object.assign(card.style, {left:x+'px', top:y+'px', width:w+'px', height:h+'px'});
+    room.style.transform = `scale(${w/1080})`;
+    blur.style.display = roomOn ? 'block' : 'none';
+    blur.style.backgroundImage = `url(${S.base}/frames/f_${pad(i)}.jpg)`;
+  } else {
+    Object.assign(card.style, {left:'0px', top:'0px', width:W+'px', height:H+'px', borderRadius:'0px', boxShadow:'none'});
+    room.style.transform = `translate(0px,${pf.y}px)`;
+  }
+  // room -> studio wipe after "video"
+  let wipe = 0;
+  if(kind === 'wide') wipe = Math.min(1, Math.max(0, (t - T.video) / .42));
+  card.style.clipPath = wipe > 0 ? `inset(${(wipe*100).toFixed(2)}% 0 0 0)` : 'none';
+  blur.style.clipPath = card.style.clipPath;
+  const cy = (L.room.card ? L.room.card[1] : 0) + wipe * (L.room.card ? L.room.card[3] : H);
+  $('#scan').style.top = cy + 'px';
+  if(L.room.card){ $('#scan').style.left = L.room.card[0] + 'px'; $('#scan').style.right = (W - L.room.card[0] - L.room.card[2]) + 'px'; }
+  cut.style.display = (kind === 'room') ? 'none' : 'block';
+  // graphics placement depends on the shot
+  for(const sc of SC) place(sc, sc.mode);
+  $('#stage').style.display = 'block';
+  // focus brackets around the face during the zoom
+  if(kind === 'zoom' || (t >= T.zoom && t < T.built)){
+    const b = xf(L.punch, S.person, 1), fw = 480*b.s/1.22, fh = 560*b.s/1.22;
+    const fx_ = b.x + b.s*S.person.cx, fy = b.y + b.s*S.person.face;
+    Object.assign($('#focus').style, {left:(fx_ - fw/2)+'px', top:(fy - fh/2 - 20)+'px', width:fw+'px', height:fh+'px'});
+  }
+  // phone timer + scrubber follow the real source time
+  const st = S.src[Math.min(i, S.src.length-1)];
+  const rt = $('#s-phone .rt'); if(rt) rt.textContent = fmt(st);
+  const hd = $('#s-phone .head'), fl = $('#s-phone .fill');
+  if(hd){ hd.style.left = (100*st/S.raw_s)+'%'; fl.style.width = (100*st/S.raw_s)+'%'; }
+  // CTA typing
+  const typed = $('#s-cta .typed'); if(typed){ const n = Math.max(0, Math.min(4, Math.floor((t - (T.edit2 - .1)) / .07) + 1)); typed.textContent = t >= T.edit2 - .1 ? 'EDIT'.slice(0, n) : ''; }
+  // version frames: mini layouts of the same layers
+  const fr = [['.f1',372,662,.34,186],['.f2',564,317,.19,420],['.f3',257,321,.21,128]];
+  for(const [c,w,h,s,cx] of fr){ const im = $(`#s-versions ${c} img`); if(!im) continue;
+    Object.assign(im.style, {width:'1080px', height:'1920px', transformOrigin:'0 0', transform:`translate(${cx - s*S.person.cx}px,${h*.30 - s*S.person.top}px) scale(${s})`}); }
+  // captions
+  const cap = $('#cap');
+  const c = S.captions.find(c => t >= c.t0 && t < c.t1);
+  const capKind = kind === 'zoom' ? 'punch' : kind;
+  const [x,y] = L.cap[capKind]; cap.style.left = x+'px'; cap.style.top = y+'px'; cap.style.setProperty('--cs', L.cs+'px');
+  const key = c ? c.text + c.key : '';
+  if(cap.dataset.k !== key){ cap.dataset.k = key; cap.innerHTML = c ? `<span class="box${c.key?' key':''}">${c.text}</span>` : ''; }
+  cap.classList.toggle('ring', t >= T.capt && t < T.picked);
+  tl.seek(t, false);
+  await Promise.all(imgs.map(im => im.decode().catch(()=>{})));
+};
+window.STAGE_LOADED = true;
+</script>
+</body></html>

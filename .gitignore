@@ -29,3 +29,6 @@ video-projects/**/raw*
 video-projects/**/*.mp4
 video-projects/**/*.mov
 video-projects/**/*.wav
+video-projects/**/work*/
+video-projects/**/out/
+video-projects/**/mascot/
