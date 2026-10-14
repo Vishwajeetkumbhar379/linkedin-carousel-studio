@@ -49,3 +49,10 @@ You produce LinkedIn content for Vishwajeet "Vish" Kumbhar (AI x marketing, 850+
 9. Commit and push this repo to the working branch.
 
 Never post to LinkedIn, email or DM anyone on Vish's behalf. He posts natively from the batch page.
+
+## Personal brand reset, 14 Oct 2026 (overrides every section above)
+- Read `brand-profile.md`, `voice.md` and `content-pillars.md` first. They hold Vish's picks: positioning, pillars, series, formats (Format A split explainer like @kallawaymarketing, Format B tool demo like @justyn.ai), the night-studio look and 3 videos a week.
+- Video is now Vish on camera, filmed on his phone. No AI voice, no avatar, no generated visuals pretending to be real. The synthetic-voice template videos above are retired.
+- One edit, three layouts from layers (cut-out Vish, graphics, captions): 9:16, 4:5, 16:9. Never crop one into another.
+- Weekly loop: Vish uploads raw clips to Drive; the pipeline edits them; he approves the week once; approved posts are scheduled. Posting is allowed only after that weekly approval (this replaces "never post on Vish's behalf" for approved items only). Never DM, comment or like on other people's posts automatically (LinkedIn User Agreement 8.2 and Instagram terms forbid it); prepare an engagement queue with drafted comments for Vish to post himself.
+- Keep Claude usage low: Python scripts do the work, Claude reviews and fixes. Install only skills the pipeline uses (each one costs tokens every message).
