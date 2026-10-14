@@ -150,36 +150,85 @@ def build_spec(proj: Path, work: str = "work") -> dict:
         t = t.strip().rstrip(".")
         return t[0].upper() + t[1:]
     spec["wave"]["retakeText"] = [clean(c["words"]) for c in edl["cut"] if c["why"].startswith("retake")]
+    # B-roll (broll_prep.py), real page captures, the real pipeline log and this page's own source for the "graphics" line
+    bi = proj / "work" / "broll" / "index.json"
+    if bi.exists():
+        spec["broll"] = json.loads(bi.read_text())
+        spec["brollBase"] = f"/video-projects/{proj.name}/work/broll"
+    bc = proj / "broll.json"
+    if bc.exists():
+        spec["pages"] = {k: "/" + v for k, v in json.loads(bc.read_text()).get("pages", {}).items()}
+    tr = json.loads((proj / "work" / "transcript.json").read_text())
+    fill = [c for c in edl["cut"] if not c["why"].startswith("retake")]
+    spec["term"] = [f"$ python scripts/reel_edit/make.py video-projects/{proj.name}",
+                    f"› transcribe (local Whisper): {len(tr['words'])} words, {edl['raw_duration']:.1f} s",
+                    f"› retakes: {len(spec['wave']['retakes'])} · fillers: {len(fill)} · pauses: {round(spec['cut_s'] - spec['retake_s'])} s",
+                    f"› cut: {edl['raw_duration']:.1f} s → {dur:.1f} s",
+                    f"› cut-out: {n:,} frames",
+                    "› render 9:16 + 4:5",
+                    "✓ done"]
     (proj / "out").mkdir(exist_ok=True)
     (proj / "out" / f"spec-{work}.json").write_text(json.dumps(spec))
     return spec
+
+
+SFX_DIR = ROOT / ".claude" / "skills" / "media-use" / "audio" / "assets" / "sfx"  # Pixabay licence, see CREDITS.md
+SFX_GAIN = {"whoosh-short": .35, "whoosh": .3, "whoosh-cinematic": .3, "pop": .35, "click": .3, "click-soft": .35, "key-press": .25,
+            "typing": .18, "impact-bass-1": .45, "impact-bass-2": .45, "riser": .25, "ping": .25, "chime": .25, "sparkle": .25, "notification": .25}
+
+
+def load_audio(path: Path, sr: int) -> np.ndarray:
+    r = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"], capture_output=True, check=True)
+    return np.frombuffer(r.stdout, np.float32).copy()
 
 
 def mix(proj: Path, spec: dict, events: list[dict]) -> Path:
     v, sr = sf.read(proj / spec["work"] / "voice.wav", dtype="float32")
     assert sr == sfx.SR
     n = len(v)
+    vr = np.sqrt(np.mean(v[np.abs(v) > 1e-4] ** 2))
     fx = np.zeros(n, np.float32)
+    real = [e for e in events if (SFX_DIR / f"{e['s']}.mp3").exists()]
+    events = [e for e in events if e not in real]
+    cache: dict[str, np.ndarray] = {}
+    for e in real:
+        if e["s"] not in cache:
+            y = load_audio(SFX_DIR / f"{e['s']}.mp3", sr)
+            cache[e["s"]] = y / (np.abs(y).max() + 1e-9)
+        y = cache[e["s"]] * SFX_GAIN.get(e["s"], .3) * e.get("g", 1.0) * vr / 0.1
+        s = int(e["t"] * sr)
+        m = max(0, min(len(y), n - s))
+        fx[s:s + m] += y[:m]
     lib = {"whoosh": lambda: sfx.whoosh(0.45, 4) * 0.22, "zoom": lambda: (sfx.whoosh(0.35, 7) * 0.16 + np.pad(sfx.thump(0.3), (0, int(0.05 * sr)))[:int(0.35 * sr)] * 0.25),
            "click": lambda: sfx.click(3) * 0.12, "click2": lambda: sfx.click(11) * 0.10, "pop": lambda: sfx.pop() * 0.16,
            "tap": lambda: sfx.thump(0.18) * 0.22}
     for e in events:
-        y = lib.get(e["s"], lib["click"])().astype(np.float32)
+        y = lib.get(e["s"], lib["click"])().astype(np.float32) * (vr / 0.1) * 0.6
         s = int(e["t"] * sr)
         m = max(0, min(len(y), n - s))
         fx[s:s + m] += y[:m]
-    bed = sfx.bed(n / sr + 0.1, bpm=84)[:n].astype(np.float32)
-    bed = np.pad(bed, (0, max(0, n - len(bed))))
+    bc = proj / "broll.json"
+    mus = json.loads(bc.read_text()).get("music") if bc.exists() else None
+    if mus and (proj / mus["src"]).exists():
+        bed = load_audio(proj / mus["src"], sr)[int(mus.get("in", 0) * sr):]
+        bed = np.tile(bed, int(np.ceil(n / len(bed))))[:n]
+        f = int(0.4 * sr)
+        bed[:f] *= np.linspace(0, 1, f)
+        bed[-int(1.2 * sr):] *= np.linspace(1, 0, int(1.2 * sr))
+        bed_db, duck_k = -8, 0.7  # references: music only ~4 to 6 dB under the voice
+    else:
+        bed = sfx.bed(n / sr + 0.1, bpm=84)[:n].astype(np.float32)
+        bed = np.pad(bed, (0, max(0, n - len(bed))))
+        bed_db, duck_k = -17, 0.55
     # duck the bed under speech
     env = np.abs(v)
     k = int(0.25 * sr)
     sm = np.convolve(env, np.ones(k) / k, mode="same")
-    duck = np.where(sm > 0.01, 0.55, 1.0).astype(np.float32)
+    duck = np.where(sm > 0.01, duck_k, 1.0).astype(np.float32)
     duck = np.convolve(duck, np.ones(k) / k, mode="same")
-    vr = np.sqrt(np.mean(v[v != 0] ** 2))
     br = np.sqrt(np.mean(bed ** 2)) + 1e-9
-    bed = bed / br * vr * 10 ** (-17 / 20) * duck
-    out = v + fx * (vr / 0.1) * 0.6 + bed
+    bed = bed / br * vr * 10 ** (bed_db / 20) * duck
+    out = v + fx + bed
     st = np.stack([out, out], 1)
     raw = proj / "out" / f"mix_raw-{spec['work']}.wav"
     sf.write(raw, st, sr)
@@ -244,6 +293,19 @@ if __name__ == "__main__":
     args = dict(a[2:].split("=", 1) for a in sys.argv[2:] if a.startswith("--") and "=" in a)
     page = args.get("page", "edit-reel")
     spec = build_spec(proj, args.get("work", "work"))
+    spec["keyWords"] = ["claude", "coffee", "twice", "captions", "zoom", "graphic", "versions", "free", "film", "setup", "um"]
+    spec["pageName"] = f"templates/video/talking/{page}.html"
+    import html as _h
+    src = (ROOT / spec["pageName"]).read_text().splitlines()
+    a = next((i for i, l in enumerate(src) if "function timeline()" in l), 0)
+    code = []
+    for l in src[a:a + 70]:
+        l = _h.escape(l[:92])
+        l = re.sub(r"(&#x27;[^&]*?&#x27;|&quot;.*?&quot;)", r"<u>\1</u>", l)
+        l = re.sub(r"\b(const|function|return|if|for|let)\b", r"<i>\1</i>", l)
+        l = re.sub(r"\b(T\.[a-z0-9]+)\b", r"<b>\1</b>", l)
+        code.append(l)
+    spec["code"] = "\n".join(code)
     stills = [float(x) for x in args["stills"].split(",")] if "stills" in args else None
     if "mix-only" in sys.argv:
         _, ev = render(proj, spec, page, "9x16", [])

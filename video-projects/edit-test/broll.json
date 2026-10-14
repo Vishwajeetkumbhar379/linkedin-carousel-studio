@@ -1,0 +1,17 @@
+{
+ "_note": "B-roll cues for the edit. src: a file in broll/ (stock), 'raw' (Vish's own take, src times), or a still image. Frames are extracted to work/broll/<name>/.",
+ "clips": [
+  {"name": "latte",     "src": "broll/mixkit-3581.mp4", "in": 1.0, "dur": 2.0, "w": 1280},
+  {"name": "editor",    "src": "broll/mixkit-50605.mp4", "in": 2.0, "dur": 2.0, "w": 1280},
+  {"name": "latenight", "src": "broll/mixkit-44071.mp4", "in": 4.0, "dur": 2.0, "w": 1280},
+  {"name": "take1",     "src": "raw", "in": 52.45, "dur": 1.9, "w": 720},
+  {"name": "take2",     "src": "raw", "in": 57.62, "dur": 2.3, "w": 720}
+ ],
+ "pages": {
+  "whisper": "templates/video/broll/github-com-systran-faster-whisper.png",
+  "ffmpeg": "templates/video/broll/github-com-ffmpeg-ffmpeg.png",
+  "rvm": "templates/video/broll/github-com-peterl1n-robustvideomatting.png",
+  "herk": "templates/video/broll/github-com-nateherkai-herk-edit-kit.png"
+ },
+ "music": {"src": "music/m301.mp3", "title": "Hip Hop 03", "licence": "Mixkit Stock Music Free License", "in": 0}
+}
