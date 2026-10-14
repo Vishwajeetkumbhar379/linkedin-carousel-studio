@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     proj = Path(sys.argv[1])
     out = proj / "out"
-    files = {l: out / f"{proj.name}-{l}.mp4" for l in ("9x16", "4x5", "16x9")}
+    files = {l: out / f"{proj.name}-{l}.mp4" for l in ("9x16", "4x5")}
     ok = True
     for l, f in files.items():
         if not f.exists():

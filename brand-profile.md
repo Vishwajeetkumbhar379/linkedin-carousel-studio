@@ -20,7 +20,7 @@ Hire This AI · Brand-Side · New Drop · Steal My Workflow · Ship Log.
 ## Formats (studied from @kallawaymarketing, @justyn.ai, @leadgenman; analyses in research/creators/)
 - Format A, split explainer (Kallaway): Vish cut out in the lower half; animated cards, diagrams and real examples above; headline on top; word-by-word captions; a cut every 2 to 3 s; punch-in (~115%) on the key line of each beat; whoosh on card changes, pop on reveals, quiet ambient bed; named framework + step count + one surprising comparison; re-hook every 15 to 20 s; comment keyword early and at the end.
 - Format B, tool demo (Justyn): proof first in 2 s; real screen recordings of the tool; Vish in a cut-out bubble; 2 to 3 giant words on punchlines; at most two camera spots.
-- One edit, three layouts from layers (never crops): 9:16 (Reels, TikTok, Shorts, X), 4:5 (LinkedIn, IG feed), 16:9 (YouTube, LinkedIn desktop).
+- One edit, two vertical layouts from layers (never crops): 9:16 (Reels, YouTube Shorts, TikTok) and 4:5 (LinkedIn, IG feed). No 16:9 or long-form for now.
 
 ## Look
 Night studio: dark wall, one warm lamp beside Vish. Tokens: night #14161B, lamp #E7A15A, accent #3049E0 (current caption word, highlights), paper #F4F5F7. Captions in a heavy condensed sans, uppercase for punch words.

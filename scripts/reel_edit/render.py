@@ -1,6 +1,6 @@
-"""Render a talking-head reel (Vish on camera) in three layouts from the same layers.
+"""Render a talking-head reel (Vish on camera) in two vertical layouts from the same layers (16:9 still available).
 
-    python scripts/reel_edit/render.py video-projects/<slug> [--page=edit-reel] [--layouts=9x16,4x5,16x9] [--stills=12.0,20.5]
+    python scripts/reel_edit/render.py video-projects/<slug> [--page=edit-reel] [--layouts=9x16,4x5] [--stills=12.0,20.5]
 
 Layers: the real shot (work/frames), the cut-out (work/cut, prep.py), graphics and captions
 (templates/video/talking/<page>.html). Each layout is laid out from the layers, never cropped from another.
@@ -249,7 +249,7 @@ if __name__ == "__main__":
         _, ev = render(proj, spec, page, "9x16", [])
         print("mixed", mix(proj, spec, ev))
         sys.exit(0)
-    for lay in args.get("layouts", "9x16,4x5,16x9").split(","):
+    for lay in args.get("layouts", "9x16,4x5").split(","):
         vid, events = render(proj, spec, page, lay, stills)
         if stills is None:
             wav = proj / "out" / ("mix.wav" if spec["work"] == "work" else f"mix-{spec['work']}.wav")
