@@ -23,3 +23,9 @@ out/flagship/*/*.wav
 **/voice25-take.wav
 **/.v25/
 **/video-silent.mp4
+
+# Vish raw footage and renders stay out of git (Drive holds the originals)
+video-projects/**/raw*
+video-projects/**/*.mp4
+video-projects/**/*.mov
+video-projects/**/*.wav
