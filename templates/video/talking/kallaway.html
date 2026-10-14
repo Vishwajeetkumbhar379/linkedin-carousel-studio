@@ -198,7 +198,7 @@ function timeline(){
   const on = (id, a, b) => { tl.set(G[id], {opacity:1}, a); tl.set(G[id], {opacity:0}, b); };
   const pop = (sel, t, s='pop') => { tl.fromTo(sel, {scale:.6, opacity:0}, {scale:1, opacity:1, duration:.3, ease:'back.out(1.8)'}, t); if(s) fx(t, s); };
   // hook: giant words land, then a whip to the B-roll
-  fx(0, 'impact-bass-1', .8);
+  fx(T.inthis - .5, 'impact-bass-1', .5);  // after the first words, never on them
   tl.fromTo('#giant', {scale:1.25, opacity:0}, {scale:1, opacity:1, duration:.35, ease:'power3.out'}, 0);
   fx(T.inthis - .08, 'whoosh-short');
   // take
