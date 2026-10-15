@@ -3,7 +3,7 @@
 Someone comments a keyword (CITED, EDIT, ...) on Vish's post or Reel, and within seconds they get one private DM
 with the free guide, plus a short public reply ("Sent! Check your DMs"). Built 15 Oct 2026.
 
-- Code: `buildwithvish` repo: `lib/ig-autodm/core.mjs` + `functions/api/ig-webhook.js` (runs free on Cloudflare Pages Functions since 15 Oct; Netlify ran out of credits).
+- Code: `buildwithvish` repo: `lib/ig-autodm/core.mjs` + `functions/api/ig-webhook.js` (runs free on Cloudflare Workers since 15 Oct via `worker/index.js`; Netlify ran out of credits).
 - Keywords and guide links: `lib/ig-autodm/config.json` (url `null` = guide not written yet, comment skipped).
 - Webhook URL: `https://buildwithvvish.com/api/ig-webhook`
 - Privacy policy: `https://buildwithvvish.com/privacy.html` · Data deletion: `https://buildwithvvish.com/data-deletion.html`
