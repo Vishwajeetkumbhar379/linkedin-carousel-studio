@@ -64,8 +64,9 @@ specific asset behind a one-word comment, and a "takes 3 minutes" effort cap.
 - The guide format that works (@aiwithanushka's REA guide): 1 What you are building, 2 Before you start (table: you need,
   why, where), 3 Setup in 3 steps, 4 Prompt templates, 5 What it can do (table), 6 Troubleshooting (table),
   7 Read this twice (limits, legal), 8 Next steps + follow line. Use it for every `guide.md`.
-- Delivery: DMs to everyone who comments. Instagram's official API allows a private reply to each comment on your own
-  posts, so this can be automated for free (to build next). LinkedIn: Vish sends the link himself or pins it.
+- Delivery: built 15 Oct (`docs/instagram-autodm.md`): every keyword comment on Vish's Instagram posts gets one private DM
+  with the guide within seconds, free. LinkedIn: Vish sends the link himself or pins it.
+- Logos: allowed (Vish, 15 Oct). Use the real tool marks on covers and in the edit for tool topics.
 
 ## Format mix that matches the data
 

@@ -4,7 +4,7 @@
 /* Reel covers, two looks from research/viral/attention-playbook-2026-10-15.md:
    punch = giant hook + key word in a colour box + Vish's real face + two tiles acting out the metaphor + offer badge
    minimal = one or two giant words on a dark grid with an italic serif accent.
-   Key content stays inside the centre 1080x1440 (the profile grid crop). No real logos. */
+   Key content stays inside the centre 1080x1440 (the profile grid crop). Real logos allowed for tool topics (Vish, 15 Oct). */
 @font-face{font-family:'Geist';font-weight:900;src:url(/templates/node_modules/@fontsource/geist-sans/files/geist-sans-latin-900-normal.woff2) format('woff2')}
 @font-face{font-family:'Geist';font-weight:600;src:url(/templates/node_modules/@fontsource/geist-sans/files/geist-sans-latin-600-normal.woff2) format('woff2')}
 @font-face{font-family:'Geist Mono';font-weight:500;src:url(/templates/node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2) format('woff2')}
@@ -50,9 +50,13 @@ window.render = async spec => {
     const h = spec.hook.replace(/\[(.+?)\]/g, `<span class="k${spec.keyColor === 'lamp' ? ' lamp' : ''}">$1</span>`);
     r.innerHTML = `<div class="hook">${h}</div>
       ${spec.face ? `<img class="face" src="${spec.face}">` : ''}
-      ${(spec.tiles||[]).map((t,i)=>`<div class="tile ${t.state||''}" style="left:${i ? 800 : 70}px;top:${L.tileY + (i ? -40 : 30)}px;transform:rotate(${i ? 6 : -6}deg)">${ICON[t.icon]||''}<b>${t.label}</b></div>`).join('')}
+      ${(spec.tiles||[]).map((t,i)=>`<div class="tile ${t.state||''}" style="left:${i ? 800 : 70}px;top:${L.tileY + (i ? -40 : 30)}px;transform:rotate(${i ? 6 : -6}deg)">${t.img ? `<img src="${t.img}" style="width:120px;height:120px">` : (ICON[t.icon]||'')}<b>${t.label}</b></div>`).join('')}
       ${spec.badge ? `<div class="badge">${spec.badge}</div>` : ''}`;
-    if(spec.face){ const im = r.querySelector('.face'); await im.decode(); const s = spec.faceScale; im.style.transform = `translate(${540 - s*spec.cx}px,${spec.faceTop - s*spec.top}px) scale(${s})`; }
+    await document.fonts.ready;
+    // keep the hook above the head: shrink the type until it ends before the head starts
+    const hk = r.querySelector('.hook'); let size = L.hookSize;
+    while(hk.getBoundingClientRect().bottom > spec.faceTop - 20 && size > 80){ size *= .94; hk.style.fontSize = size + 'px'; }
+    if(spec.face){ const im = r.querySelector('.face'); await im.decode(); const s = spec.faceScale; const top = Math.max(spec.faceTop, hk.getBoundingClientRect().bottom + 20); im.style.transform = `translate(${540 - s*spec.cx}px,${top - s*spec.top}px) scale(${s})`; }
   }
   await document.fonts.ready; window.DONE = true;
 };
