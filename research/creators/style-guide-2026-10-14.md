@@ -76,3 +76,21 @@ thumbnails, speaker box at the bottom.
   UI, impact on big numbers), real recorded SFX from `.claude/skills/media-use/audio/assets/sfx` (Pixabay licence).
 - Delivery: aim for 190 to 210 wpm on camera; the edit tightens gaps to ~0.15 s but never speeds the voice.
 - Shoot sheets add a B-roll shot list (3 to 5 clips, 3 to 5 s each, filmed on the same phone) and one alternate angle.
+
+## Mixed edit + retention plan (Vish, 15 Oct: "mix of both", "upbeat music", "keep attention all the time")
+
+Use both test edits in one video: v1 (cut-out on the night studio, big bold titles, data graphics, punch-ins) and v2
+(speaker box + canvas, full-frame talk, full-screen B-roll, one-word captions, type-on titles, text-behind hook).
+
+1. **First second:** voice on frame 0, something moves on frame 0, and the hook is on screen as text (text behind Vish or a title).
+2. **Something changes every 1.5 to 3 s:** rotate shot types (cut-out + graphic, speaker box split, full-frame talk,
+   full-screen B-roll, punch-in). Never the same layout twice in a row, never 3 s without movement.
+3. **Open loops:** say or show early what's coming ("3 steps, the last one nobody uses"); show a step counter (2/4);
+   show all items blurred up front, then reveal them one by one.
+4. **Every line acts itself out:** real B-roll first, then animated UI, then kinetic type. No decoration that doesn't match the words.
+5. **Upbeat sound:** a 100 to 125 bpm track, its drop timed to the end of the hook, a hit on every visible move (whoosh, pop,
+   click, impact), a riser into the CTA, the music cut for half a second before the punchline.
+6. **Delivery:** Vish at 190 to 210 wpm, gaps cut to about 0.15 s, punch-ins on stress words, a second angle for hook and CTA.
+7. **Payoff before the ask:** the CTA shows the resource (thumbnail card) with the keyword; the video ends on the last word,
+   and the last frame matches the first so the replay loops.
+8. **30 to 45 s.** Read each post's retention graph in Instagram insights and note where viewers drop; fix that spot in the next edit.
