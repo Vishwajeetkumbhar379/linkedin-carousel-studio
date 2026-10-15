@@ -16,10 +16,10 @@ with `wrangler dev` (pages, deep links, security headers, webhook handshake and 
 1. **Create the Worker.** dash.cloudflare.com > Workers & Pages > Create > Import a repository > `buildwithvish`.
    Project name `buildwithvish`, build command empty, deploy command `npx wrangler deploy`, preview command as given >
    Deploy. You get a `buildwithvish.<your-subdomain>.workers.dev` address in a minute or two.
-2. **Copy the newsletter secrets.** In Netlify (app.netlify.com > buildwithvish > Site configuration > Environment
-   variables) reveal `MAILERLITE_API_TOKEN` and `MAILERLITE_GROUP_ID`. In Cloudflare (Workers & Pages > buildwithvish >
-   Settings > Variables and Secrets > Add) add both with type **Secret** (a plain Text variable is wiped by the next
-   deploy). Saving deploys them straight away.
+2. **Newsletter key (one secret).** The group ID ("Build Notes") is already in `wrangler.toml`. Make a fresh MailerLite
+   key: MailerLite > Integrations > MailerLite API > Use > Generate new token (name it Cloudflare), copy it. Then
+   Cloudflare > Workers & Pages > buildwithvish > Settings > Variables and Secrets > Add: type **Secret**, name
+   `MAILERLITE_API_TOKEN`, paste the key > Deploy. (A plain Text variable is wiped by the next deploy.)
 3. **Move the domain.** Cloudflare > buildwithvvish.com > DNS > Records: delete the records that point to Netlify (the
    A records for `buildwithvvish.com`, 75.2.60.5 and 99.83.231.61, and the CNAME `www` to buildwithvish.netlify.app).
    Leave MX and TXT records alone. Then straight away: Workers & Pages > buildwithvish > Settings > Domains & Routes >
