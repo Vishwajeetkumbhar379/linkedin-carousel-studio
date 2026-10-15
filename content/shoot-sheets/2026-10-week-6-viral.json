@@ -1,0 +1,292 @@
+{
+ "legend": {
+  "/": "short breath, about 0.3 s",
+  "//": "full stop, about 0.8 s, let it land",
+  "*word*": "stress this word",
+  "(up)": "lift energy",
+  "(down)": "slower and lower",
+  "[lens]": "lean in slightly, eyes on the lens",
+  "[point]": "point up at the graphic (Format A) or at the screen side (Format B)",
+  "[count]": "count on your fingers",
+  "[smile]": "small genuine smile",
+  "broll": "B-roll to film after the take (3 to 5 s each, no talking)"
+ },
+ "defaults": {
+  "pace": "aim for 190 to 210 words a minute inside a sentence (Kallaway runs 210 to 240); keep a short beat between lines, never a long one",
+  "energy": "7 out of 10: awake and warm, not a hype voice",
+  "framing": "chest up, a hand's width of space above your head, eyes on the lens",
+  "retake": "If you fluff a line, pause, then say the whole line again. The edit keeps the last take.",
+  "broll": "After the talking take, film the B-roll list on the same phone: 3 to 5 s each, steady, no talking, good light. Film your hands and screens more than your face. The edit cuts to one every few lines (research/creators/style-guide-2026-10-14.md).",
+  "angle": "Film the hook and the CTA a second time from a different angle (wide, standing, or side) so the edit can cut between angles like @justyn.ai."
+ },
+ "sheets": [
+  {
+   "week": 6,
+   "key": "LOOP",
+   "series": "Steal My Workflow",
+   "format": "A split",
+   "length": "40 to 45 s",
+   "title_card": "94,000 COMMENTS. NOT LUCK.",
+   "hook": "One reel got *94,000* comments. // It wasn't luck.",
+   "hook_alts": [
+    "This reel has more comments than most accounts have followers.",
+    "Why do some reels get 90,000 comments? // Three things."
+   ],
+   "lines": [
+    {
+     "say": "Every one of these reels / ends the same way. // Comment one word, / get something free.",
+     "see": "Comment counter racing to 94,325 while comment bubbles flood in (recreated, no creator name)",
+     "how": "(up)"
+    },
+    {
+     "say": "But the word isn't the trick. / The *gift* is.",
+     "see": "Two cards: 'my guide' crossed out, 'the GitHub link and the full PDF' ticked"
+    },
+    {
+     "say": "One. / It's *specific*. / Not 'my guide'. / The exact file you get.",
+     "see": "Big numeral 1 + the exact-file card",
+     "how": "[count]"
+    },
+    {
+     "say": "Two. / It's *free*, / and it takes three minutes.",
+     "see": "Badge: FREE · 3 MIN",
+     "how": "[count]"
+    },
+    {
+     "say": "Three. / You say the word twice. / Once early, / once at the end.",
+     "see": "A reel timeline with two keyword markers",
+     "how": "[count]"
+    },
+    {
+     "say": "Comments are a signal the app reads. // More signal, / more people see it.",
+     "see": "One phone fanning out into many feeds",
+     "how": "(down)"
+    },
+    {
+     "say": "Comment *LOOP* / and I'll send you my teardown / of twelve reels that did this.",
+     "see": "Comment bubble: LOOP",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Counts are public numbers read on 15 Oct 2026 (research/viral/attention-playbook-2026-10-15.md). Don't name or show the other creators; the edit recreates the counter.",
+   "broll": [
+    "Thumb scrolling Reels, stopping on one",
+    "Typing a one-word comment on your phone",
+    "Phone notifications stacking up on the desk",
+    "You opening a DM with a link"
+   ]
+  },
+  {
+   "week": 6,
+   "key": "HUMAN",
+   "series": "New Drop",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "3 AI TELLS",
+   "hook": "People can tell / AI wrote your post. // Here are the *three* tells.",
+   "hook_alts": [
+    "This is why your AI posts sound like everyone else's.",
+    "I ran an AI draft through a free detector. // It failed."
+   ],
+   "lines": [
+    {
+     "say": "Tell one. / The long dash. // AI puts it everywhere.",
+     "see": "A draft with every long dash glowing red",
+     "how": "[count]"
+    },
+    {
+     "say": "Tell two. / 'It's not just this, / it's that.' // Every AI post has one.",
+     "see": "The phrase struck through",
+     "how": "[count]"
+    },
+    {
+     "say": "Tell three. / Words nobody says out loud. / *Delve*. / *Landscape*.",
+     "see": "The words pop up and get crossed out",
+     "how": "[count] then [smile]"
+    },
+    {
+     "say": "There's a free Claude skill / that strips all three / and scores the draft / before you post it.",
+     "see": "Terminal: the li-human score panel (real run)"
+    },
+    {
+     "say": "Same draft. / Watch the score.",
+     "see": "Score bar from FLAGGED (red) to pass (green), real numbers from the run",
+     "how": "[point]"
+    },
+    {
+     "say": "It runs on your laptop. / No sign-up, / no API key.",
+     "see": "Chips: free · open source · offline"
+    },
+    {
+     "say": "Comment *HUMAN* / and I'll send you the setup.",
+     "see": "Comment bubble: HUMAN",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Tool: li-human from github.com/avi691/linkedin-agent-skill (MIT, checked 15 Oct 2026). The edit shows the real before and after score from detect.py, never a made-up one. The quoted slop words are examples, on purpose.",
+   "broll": [
+    "Typing a prompt into ChatGPT on the laptop",
+    "Screen close-up of a long AI draft",
+    "Deleting text with backspace (hands)",
+    "Phone showing the posted LinkedIn draft"
+   ]
+  },
+  {
+   "week": 6,
+   "key": "TRENDS",
+   "series": "New Drop",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "STOP GUESSING WHAT TO POST",
+   "hook": "I stopped guessing what to post. // This free tool reads *Reddit* for me.",
+   "hook_alts": [
+    "Your next viral topic is already on Reddit. // Here's how to find it.",
+    "Before I post, / I check what people argued about this month."
+   ],
+   "lines": [
+    {
+     "say": "It's called *last30days*. / A free Claude skill.",
+     "see": "The real GitHub page as a card"
+    },
+    {
+     "say": "You give it a topic. / It reads Reddit, / YouTube / and Hacker News / from the last thirty days.",
+     "see": "Three source chips light up one by one",
+     "how": "[count]"
+    },
+    {
+     "say": "Then it ranks what people *actually* talked about. / With the upvotes / and the comments.",
+     "see": "Ranked list from a real run, points visible"
+    },
+    {
+     "say": "I asked it about free Claude tools. / The top post this month / had almost *nine hundred* upvotes.",
+     "see": "Result card: 895 points, 'a free Claude skill to de-AI your writing'",
+     "how": "(up)"
+    },
+    {
+     "say": "A skill that makes AI writing / sound human. // So that's my next video.",
+     "see": "Cut to the HUMAN title card",
+     "how": "[smile]"
+    },
+    {
+     "say": "Those sources need no API key. / It runs from your laptop.",
+     "see": "Chips: free · MIT · no key"
+    },
+    {
+     "say": "Comment *TRENDS* / and I'll send you the setup.",
+     "see": "Comment bubble: TRENDS",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Tool: github.com/mvanhorn/last30days-skill (MIT). Reddit, YouTube and Hacker News work without keys; X needs a login, so don't claim X. The 895-point post: r/claudeskills, 24 Sep 2026, from a run on 15 Oct 2026; re-run before filming and use the new top result.",
+   "broll": [
+    "Scrolling Reddit on the phone",
+    "Terminal running the research (screen)",
+    "Notebook: writing the topic down",
+    "You nodding at the screen"
+   ]
+  },
+  {
+   "week": 6,
+   "key": "SKILLS",
+   "series": "Hire This AI",
+   "format": "B demo",
+   "length": "45 to 50 s",
+   "title_card": "11 FREE LINKEDIN SKILLS, TESTED",
+   "hook": "Everyone's sharing eleven free LinkedIn skills for Claude. // I *tested* them.",
+   "hook_alts": [
+    "Claude can now run your LinkedIn drafts. // Here's what's worth installing.",
+    "Eleven free LinkedIn skills. // Three are worth your time."
+   ],
+   "lines": [
+    {
+     "say": "It's free, / it's open source, / and nothing gets posted / until you say yes.",
+     "see": "README lines highlighted (real page)"
+    },
+    {
+     "say": "Skill one. / It writes posts / from twenty-one hook formulas, / in *your* voice.",
+     "see": "Three hook options appear",
+     "how": "[count]"
+    },
+    {
+     "say": "Skill two. / It scores your profile out of a hundred / and rewrites what lost points.",
+     "see": "Score ring with your real score",
+     "how": "[count]"
+    },
+    {
+     "say": "Skill three. / The humanizer. / It strips the AI tells / before you see the draft.",
+     "see": "Before and after of one draft",
+     "how": "[count]"
+    },
+    {
+     "say": "The one I'd skip: / comments on other people's posts. // Those should sound like *you*.",
+     "see": "Comment draft crossed out",
+     "how": "(down)"
+    },
+    {
+     "say": "Comment *SKILLS* / and I'll send you the setup / and my voice file.",
+     "see": "Comment bubble: SKILLS",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Pack: github.com/avi691/linkedin-agent-skill (MIT, 11 skills, checked 15 Oct 2026), installed in this repo as li-*. Before filming, run li-profile on your profile and li-post on one idea; use your real score in line 3.",
+   "broll": [
+    "LinkedIn feed scrolling on the laptop",
+    "Your profile page on screen",
+    "Typing one idea into Claude",
+    "Copying a finished post (hands)"
+   ]
+  },
+  {
+   "week": 6,
+   "key": "FREE",
+   "series": "Ship Log",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "EDITED FOR £0",
+   "hook": "This video was edited for free. // Every tool is free, / *except one*.",
+   "hook_alts": [
+    "My video editor costs zero pounds. // Here's the whole stack.",
+    "Cut, captioned and mixed by free tools. // Here they are."
+   ],
+   "lines": [
+    {
+     "say": "Whisper writes the captions. / Free, / and it runs on my laptop.",
+     "see": "faster-whisper GitHub page card"
+    },
+    {
+     "say": "FFmpeg cuts every pause / and every retake.",
+     "see": "Waveform with the gaps collapsing"
+    },
+    {
+     "say": "A free matting model / cuts me out of the background.",
+     "see": "Matte reveal: room, mask, cut-out"
+    },
+    {
+     "say": "The music and sound effects / come from free libraries / you can use in videos.",
+     "see": "Chips: free music · free SFX · no credit needed"
+    },
+    {
+     "say": "And Claude runs the whole thing / from one command.",
+     "see": "Terminal: make.py running"
+    },
+    {
+     "say": "So the one I pay for? // *Claude* itself.",
+     "see": "Price tag on the Claude card only",
+     "how": "[smile]"
+    },
+    {
+     "say": "Comment *FREE* / and I'll send you the full list / with links.",
+     "see": "Comment bubble: FREE",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Stack used for the EDIT video (14 Oct 2026): faster-whisper (MIT), FFmpeg (LGPL/GPL), RVM matting model (GPL-3.0), herk-edit-kit (MIT), Mixkit music and Pixabay SFX (free licences). Don't name a price for Claude unless you check your plan that day.",
+   "broll": [
+    "Phone on a tripod, pressing record",
+    "Laptop terminal scrolling",
+    "Headphones on the desk while music plays",
+    "The finished reel playing on your phone"
+   ]
+  }
+ ]
+}

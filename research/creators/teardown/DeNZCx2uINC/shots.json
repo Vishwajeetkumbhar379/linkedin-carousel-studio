@@ -1,0 +1,27 @@
+{
+ "stats": {
+  "duration": 56.47,
+  "shots": 3,
+  "median_shot": 2.97,
+  "mean_shot": 18.82,
+  "longest_shot": 53.47,
+  "first_cut": 0.033,
+  "wpm": 204,
+  "sfx_hits": 32,
+  "first_word": 0.0
+ },
+ "shots": [
+  {
+   "t": 0.0,
+   "len": 0.03
+  },
+  {
+   "t": 0.033,
+   "len": 53.47
+  },
+  {
+   "t": 53.5,
+   "len": 2.97
+  }
+ ]
+}

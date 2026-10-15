@@ -18,3 +18,9 @@ Each folder keeps its upstream LICENSE where one exists.
 | LinkedIn | linkedin-post-writer, linkedin-hook-extractor, linkedin-humanizer, linkedin-content-planner | github.com/sergebulaev/linkedin-skills (MIT) | 20 hook formulas from 400 viral posts, de-AI pass |
 
 Telemetry is off via `.claude/settings.json` (`HYPERFRAMES_NO_TELEMETRY=1`, `DO_NOT_TRACK=1`).
+| LinkedIn agent | li-post, li-comment, li-reply, li-profile, li-plan, li-human, li-audit, li-carousel, li-dm, li-inbox, li-repurpose | github.com/avi691/linkedin-agent-skill (MIT, Jake Schincariol) | the pack from @avigrondin's reel (44k comments): 21 hook formulas, humanizer with offline detector, profile score, weekly plan. Writes only, Vish posts. |
+| Trend research | last30days | github.com/mvanhorn/last30days-skill (MIT) | what people discussed in the last 30 days on Reddit, YouTube, HN, arXiv, Techmeme with engagement counts; no keys for those (X needs login). Run with `LAST30DAYS_ALLOW_ENGINE_PLAN=1 ... --auto-resolve` in scripts. Demo media removed. |
+| Psychology + copy | mkt-marketing-psychology, mkt-copywriting, mkt-social, mkt-lead-magnets, mkt-video | github.com/coreyhaines31/marketingskills (MIT), 5 of 50 | mental models for hooks, copy without AI tells, social/video scripts, lead magnets |
+| Instagram | ig-hook-extractor, ig-caption-writer, ig-carousel-planner | github.com/sergebulaev/instagram-skills (MIT), 3 of 9 | reverse-engineer a viral hook, caption with hook in the first 125 chars, carousel plan. Publishing parts need Publora: don't use. |
+| Hooks + lead magnets | viral-hook-creator, lead-magnet-generator | github.com/ognjengt/founder-skills (MIT), 2 of 15 | hook patterns + trigger words, comment-for-asset posts |
+| YouTube / Shorts | claude-youtube | github.com/AgriciDaniel/claude-youtube (MIT) | Shorts playbook, retention scripting, thumbnail CTR guide |
