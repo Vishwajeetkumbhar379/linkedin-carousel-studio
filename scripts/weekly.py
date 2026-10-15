@@ -51,7 +51,7 @@ HEROES = {  # rendered 3D story props in out/_samples/3d (generic, no logos)
 SH = "filter:drop-shadow(0 24px 30px rgba(40,20,90,.28))"
 MASK = "-webkit-mask-image:linear-gradient(#000 70%,transparent 98%);mask-image:linear-gradient(#000 70%,transparent 98%);"
 SYSTEM = ("You write LinkedIn content for Vishwajeet 'Vish' Kumbhar: MBA (IBC, Hochschule Offenburg, Germany), 850+ creator deals in "
-          "influencer marketing, works on AI x marketing, pivoting to AI Ops. Hub: Build with Vish (https://buildwithvish.netlify.app). "
+          "influencer marketing, works on AI x marketing, pivoting to AI Ops. Hub: Build with Vish (https://buildwithvvish.com). "
           "British English. No em dashes or en dashes. Plain, punchy, human, short sentences, admits limits. Never invent numbers, quotes, "
           "results or clients. You return only valid JSON, no commentary.")
 
@@ -275,7 +275,7 @@ Angle: {pick['angle']}
 {"This is a step-by-step tutorial." if tutorial else ""}
 {rules}
 FACTS: use ONLY the sources below. Every number or claim goes in "facts" with the source's exact URL and date. If a source does not say it, do not write it.
-Hook max 12 words. Caption 700 to 1300 characters ending with one easy question, then 'Full breakdown: https://buildwithvish.netlify.app/#read-<slug>'.
+Hook max 12 words. Caption 700 to 1300 characters ending with one easy question, then 'Full breakdown: https://buildwithvvish.com/#read-<slug>'.
 Article 450 to 750 words in Markdown with H2s, a 'What I'd do' section and a 'Sources' list. No em or en dashes anywhere.
 
 BRIEF:

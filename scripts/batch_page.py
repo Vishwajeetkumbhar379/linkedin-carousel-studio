@@ -15,7 +15,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "out" / "_batch"
-SITE = "https://buildwithvish.netlify.app"
+SITE = "https://buildwithvvish.com"
 
 
 def jpg(src: Path, name: str, width: int = 720) -> str:

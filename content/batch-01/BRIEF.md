@@ -1,6 +1,6 @@
 # Batch 01 writing brief (shared by research agents)
 
-Author: Vishwajeet "Vish" Kumbhar. MBA (IBC, Hochschule Offenburg, Germany), 850+ creator deals in influencer marketing, works at the intersection of AI and marketing, pivoting to AI Ops. Hub: Build with Vish (https://buildwithvish.netlify.app). Today is 2026-10-06.
+Author: Vishwajeet "Vish" Kumbhar. MBA (IBC, Hochschule Offenburg, Germany), 850+ creator deals in influencer marketing, works at the intersection of AI and marketing, pivoting to AI Ops. Hub: Build with Vish (https://buildwithvvish.com). Today is 2026-10-06.
 
 ## Goal
 LinkedIn posts that make people stop, learn something useful, comment, and click through to the Build with Vish article. Mostly short videos (30-40 s), some carousels.
@@ -26,7 +26,7 @@ Each object:
  "subtitle": "one short line under the hook",
  "cover": {"concept": "a 3D scene that literally acts out the headline (one hero group + one context symbol)", "avatar": "surprised|smirk|laugh|full", "label": "short pointer label text"},
  "facts": [{"claim": "...", "source_name": "...", "url": "https://...", "date": "YYYY-MM-DD"}],
- "caption": "LinkedIn caption, 700-1300 characters: hook line, blank line, short paragraphs or → arrow lists, one honest personal angle, one easy closing question, then 'Full breakdown: https://buildwithvish.netlify.app/#read-<slug>'",
+ "caption": "LinkedIn caption, 700-1300 characters: hook line, blank line, short paragraphs or → arrow lists, one honest personal angle, one easy closing question, then 'Full breakdown: https://buildwithvvish.com/#read-<slug>'",
  "first_comment": "one line with the source links",
  "article": "the website article in Markdown, 450-750 words, with H2 subheads, a 'What I'd do' section, and a 'Sources' list linking every fact",
  // video only:

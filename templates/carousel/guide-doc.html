@@ -144,7 +144,7 @@ function lastWordsEm(t) {  // italic violet emphasis on the last two words, the 
   return esc(w.slice(0, -2).join(" ")) + " <em>" + esc(w.slice(-2).join(" ")) + "</em>";
 }
 function pages(post, T) {
-  const N = post.pages.length, url = `buildwithvish.netlify.app/#read-${post.slug}`;
+  const N = post.pages.length, url = `buildwithvvish.com/#read-${post.slug}`;
   return post.pages.map((p, i) => {
     if (p.kind === "cover") return `<div class="slide cover"><div class="glow" style="width:700px;height:700px;left:-260px;top:-240px;background:${T.glowA}"></div><div class="glow" style="width:620px;height:620px;right:-240px;bottom:-200px;background:${T.glowB}"></div>
       <div class="brand"><i></i>Build with Vish</div><div class="pages">${N} pages</div>${motif(T.motif, T)}

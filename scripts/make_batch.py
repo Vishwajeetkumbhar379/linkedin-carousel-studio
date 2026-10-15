@@ -18,7 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
-SITE = "https://buildwithvish.netlify.app"
+SITE = "https://buildwithvvish.com"
 SHORT = {"AI tools that change marketing work": "AI x Marketing", "Creator economy x AI": "Creator economy",
          "Real workflows and prompts": "Workflows", "Career and AI Ops pivot": "AI careers", "Contrarian takes": "Hot take"}
 AV_TOP = {"hook": 180, "text": 730, "stamp": 740, "chips": 780, "stat": 185, "bars": 190, "versus": 960, "chat": 960, "feed": 640, "cta": 185, "ui": 1000, "clip": 1000}
@@ -93,7 +93,7 @@ def deck_spec(t: dict) -> dict:
         if s.get("type") == "point" and not s.get("mascot") and slides.index(s) % 3 == 1:
             s["mascot"], s["mascot_style"] = "dot-pro-wink-point", "right:90px;top:250px;width:150px"
     return {"slug": t["slug"], "direction": "Aurora Glass · paper", "format": "carousel", "pillar": t.get("pillar"),
-            "author": {"name": "Vish Kumbhar", "handle": "Build with Vish"}, "site_label": "buildwithvish.netlify.app",
+            "author": {"name": "Vish Kumbhar", "handle": "Build with Vish"}, "site_label": "buildwithvvish.com",
             "page_url": f"{SITE}/#read-{t['slug']}", "slides": slides, "system": "aurora", "variant": "paper", "seed": len(t["slug"])}
 
 

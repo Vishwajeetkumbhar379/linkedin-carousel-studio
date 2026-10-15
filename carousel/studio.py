@@ -175,7 +175,7 @@ def render_slide(s: dict, i: int, n: int, deck: dict, assets: dict) -> str:
         counter = escape(deck.get("tag", ""))
         foot = f'<div class="foot"><span class="swipe" style="color:{t["muted"]}">{escape(deck.get("site_label", ""))}</span></div>'
     if kind == "cta":
-        foot = f'<div class="foot"><span class="swipe" style="color:{t["muted"]}">{escape(deck.get("site_label", "buildwithvish.netlify.app"))}</span></div>'
+        foot = f'<div class="foot"><span class="swipe" style="color:{t["muted"]}">{escape(deck.get("site_label", "buildwithvvish.com"))}</span></div>'
     return (f"<!doctype html><html><head><meta charset='utf-8'><style>{font_css()}{css(t)}</style></head><body>"
             f'<div class="bgwash"></div>{hero}'
             f'<div class="slide"><div class="top"><div class="handle"><div class="avatar">{initials}</div>'

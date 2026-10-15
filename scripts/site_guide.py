@@ -39,7 +39,7 @@ def add(slug: str) -> str:
     entry = (f'\n\n{{ slug: {q(slug)}, type: {q(typ)}, tools: {q(TOOLS.get(slug, ["claude"]))}, level: "Intermediate", mins: 15, rank: {max(ranks) + 1},\n'
              f'  title: {q(meta["title"])},\n  excerpt: {q(meta["excerpt"])},\n  body: `<p>{meta["excerpt"].replace("`", "")}</p>` }},')
     f.write_text(js[:end].rstrip().rstrip(",") + "," + entry.rstrip(",") + js[end:])
-    return f"{slug}: added -> https://buildwithvish.netlify.app/#read-{slug}"
+    return f"{slug}: added -> https://buildwithvvish.com/#read-{slug}"
 
 
 if __name__ == "__main__":

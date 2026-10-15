@@ -8,7 +8,7 @@ Audience: marketers, founders and creators who work with creators or want brand 
 ## Proof (the only facts about Vish we may use)
 - Years of brand-side influencer marketing and brand management; 850+ creator deals; led teams. No brand or employer names.
 - Moved to Germany; doing an MBA; job-hunting in Germany with an AI job-search agent he built.
-- Builds AI tools and workflows as a non-engineer (Claude Projects, Skills, connectors; this content engine; buildwithvish.netlify.app).
+- Builds AI tools and workflows as a non-engineer (Claude Projects, Skills, connectors; this content engine; buildwithvvish.com).
 - Never invent results, numbers, quotes or client stories.
 
 ## Pillars (mix)

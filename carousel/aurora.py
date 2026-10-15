@@ -188,7 +188,7 @@ def render_slide(s: dict, i: int, n: int, deck: dict, assets: dict) -> str:
     a = deck["author"]
     counter = escape(deck.get("tag", "")) if deck.get("single") else f"{i} / {n}"
     right = "" if kind == "cta" or deck.get("single") else f"<b>Swipe for more {ARROW}</b>"
-    foot = f'<div class="foot"><span>{escape(deck.get("site_label", "buildwithvish.netlify.app"))}</span>{right}</div>'
+    foot = f'<div class="foot"><span>{escape(deck.get("site_label", "buildwithvvish.com"))}</span>{right}</div>'
     return (f"<!doctype html><html><head><meta charset='utf-8'><style>{font_css()}{css(v)}</style></head><body>"
             f'{_bg(lights, i, v, s.get("ghost", ""))}{heroes}'
             f'<div class="slide"><div class="top"><div class="handle"><div class="mark"></div>'

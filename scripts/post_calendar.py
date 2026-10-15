@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from batch_page import posts, schedule  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://buildwithvish.netlify.app"
+SITE = "https://buildwithvvish.com"
 
 
 def main(batch: Path) -> None:
