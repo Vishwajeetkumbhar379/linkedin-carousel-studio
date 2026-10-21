@@ -1,0 +1,100 @@
+{
+ "legend": {
+  "/": "short breath, about 0.3 s",
+  "//": "full stop, about 0.8 s, let it land",
+  "*word*": "stress this word",
+  "(up)": "lift energy",
+  "(down)": "slower and lower",
+  "[lens]": "lean in slightly, eyes on the lens",
+  "[point]": "point up at the graphic (Format A) or at the screen side (Format B)",
+  "[count]": "count on your fingers",
+  "[smile]": "small genuine smile",
+  "broll": "B-roll to film after the take (3 to 5 s each, no talking)"
+ },
+ "defaults": {
+  "pace": "aim for 190 to 210 words a minute inside a sentence (Kallaway runs 210 to 240); keep a short beat between lines, never a long one",
+  "energy": "7 out of 10: awake and warm, not a hype voice",
+  "framing": "chest up, a hand's width of space above your head, eyes on the lens",
+  "retake": "If you fluff a line, pause, then say the whole line again. The edit keeps the last take.",
+  "broll": "After the talking take, film the B-roll list on the same phone: 3 to 5 s each, steady, no talking, good light. Film your hands and screens more than your face. The edit cuts to one every few lines (research/creators/style-guide-2026-10-14.md).",
+  "angle": "Film the hook and the CTA a second time from a different angle (wide, standing, or side) so the edit can cut between angles like @justyn.ai."
+ },
+ "sheets": [
+  {
+   "week": "Day 1",
+   "key": "DAY1",
+   "cta": "Ask: where are you starting from?",
+   "series": "Day N (documentary)",
+   "format": "Intro, loud + soft",
+   "length": "about 42 s",
+   "title_card": "NO GERMAN. NO JOB OFFERS.",
+   "hook": "No German. / No job offers. // And I just *booked a flight*.",
+   "hook_alts": [
+    "For years I wanted to do this. / I never had the confidence.",
+    "I moved to a country / where I don't speak the language.",
+    "My life is all over the place, / and this is Day 1.",
+    "I'm Vish, 27, / and I never had the confidence to post this."
+   ],
+   "lines": [
+    {
+     "say": "For years I wanted to do this. / I'd start, *doubt* myself, and stop.",
+     "see": "Paper world, words typed in lowercase, red pen circles 'doubt'; three quick clips of you hitting record and putting the phone down",
+     "how": "(down) softer"
+    },
+    {
+     "say": "A year ago I moved to Germany. / I overthought it. / I doubted *everything*.",
+     "see": "Your clips: walking alone, train window, staring at the laptop; small 1 YEAR AGO stamp"
+    },
+    {
+     "say": "No friends here. / No family. / Every application comes back // \"*unfortunately*.\"",
+     "see": "Table for one, then your real rejection emails (names blurred), red UNFORTUNATELY stamps and a counter"
+    },
+    {
+     "say": "And this week, / a two-and-a-half-year relationship ended.",
+     "see": "One shot only: the door closing. No text, no lingering",
+     "how": "quick and quiet, move straight on"
+    },
+    {
+     "say": "I'm Vish. 27. / Five years in influencer marketing. / I've taught yoga.",
+     "see": "Childhood photo snaps to you now; pixel icons orbit your head; stickers 5 YEARS · 850+ CREATOR DEALS · TAUGHT YOGA",
+     "how": "[smile]"
+    },
+    {
+     "say": "My life is all over the place. // But I know *one* thing.",
+     "see": "Chaos collage with a riser, then a black frame and half a second of silence",
+     "how": "(down) [lens] on 'one thing'"
+    },
+    {
+     "say": "I want to work remotely / while *travelling the world*.",
+     "see": "The music drops: ocean jump, bike riding, travel clips",
+     "how": "(up)"
+    },
+    {
+     "say": "Before my thesis ends in *February*, / my laptop has to pay me.",
+     "see": "Thesis over your shoulder, calendar flips to FEB 2027, a euro counter at 0"
+    },
+    {
+     "say": "I don't know how yet. // This is *Day 1*.",
+     "see": "Back in your room, same framing as the hook; red DAY 1 stamp",
+     "how": "[lens] deadpan"
+    },
+    {
+     "say": "If this found you, *tag along*. / We'll learn stuff, / and have fun.",
+     "see": "Hard cut to the two dancing cats with 'me' / 'you' arrows, then the end card: where are you starting from?",
+     "how": "[smile]"
+    }
+   ],
+   "notes": "Facts from Vish (21 to 22 Oct 2026): 27; moved to Germany a year ago; no German, no friends or family here; job hunting with many rejections; 2.5-year relationship ended this week (one quiet line only); 5 years in influencer marketing, 850+ creator deals; taught yoga; thesis on AI in marketing ends Feb 2027; goal: earn remotely while travelling (made it = EUR 3,000 to 5,000 a month); flight booked, destination revealed in Day 2. Film all 5 hooks, every line 3 ways (deadpan, slower, long pauses), then lines 1 to 8 again as a close-mic voiceover. Lookbook: https://claude.ai/artifact/SK2dN2bbZzosbRMobG6eWw",
+   "broll": [
+    "Phone with the booking screen pushed fast at the lens (3 takes)",
+    "Hitting record, hesitating, putting the phone down (3 takes, 2 s)",
+    "Side profile against a plain wall, looking down (10 s)",
+    "The door closing from inside; you on the bed edge, back to camera",
+    "Staring at the laptop; hands typing; thesis over the shoulder",
+    "One yoga pose",
+    "Outside: walking away from camera, table for one from above, train or tram window",
+    "10 s of room tone"
+   ]
+  }
+ ]
+}

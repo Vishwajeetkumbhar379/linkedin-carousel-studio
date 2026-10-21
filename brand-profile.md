@@ -10,6 +10,15 @@ Audience: marketers, founders and creators who work with creators or want brand 
 - Moved to Germany; doing an MBA; job-hunting in Germany with an AI job-search agent he built.
 - Builds AI tools and workflows as a non-engineer (Claude Projects, Skills, connectors; this content engine; buildwithvvish.com).
 - Never invent results, numbers, quotes or client stories.
+- Added by Vish, 21 to 22 Oct 2026, for the Instagram "Day 1" relaunch:
+  - Age 27. Moved to Germany about a year ago; doesn't speak German; no friends or family there.
+  - 5 years in social media and influencer marketing. Had a good job and quit it to do the master's.
+  - Has taught yoga. Thesis on AI in marketing, due February 2027.
+  - Job hunting in Germany, with many rejections (exact number to come from Vish).
+  - A 2.5-year relationship ended in October 2026. Mention lightly, at most one line, never her name or details (Vish, 22 Oct).
+  - Wanted to start content for years but lacked confidence and kept stopping; overthought the move and doubted it.
+  - Travelled a lot before Germany. Goal: work remotely while travelling; "made it" = EUR 3,000 to 5,000 a month. Booked a flight to Sri Lanka (Oct 2026).
+- Instagram @buildwith.vish is now a documentary ("Day N" since Day 1): the remote-income journey, travel vlogs, fun, and useful AI and marketing posts (Vish, 22 Oct 2026).
 
 ## Pillars (mix)
 P1 New AI drops, shown working (30%, Format B demo) · P2 AI employees for marketing (25%) · P3 Brand-side secrets (20%, Format A split) · P4 Content frameworks with AI (15%, Format A) · P5 Build in public (10%).
