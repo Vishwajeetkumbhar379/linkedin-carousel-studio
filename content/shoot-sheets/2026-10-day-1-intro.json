@@ -26,7 +26,7 @@
    "cta": "Ask: where are you starting from?",
    "series": "Day N (documentary)",
    "format": "Intro, loud + soft",
-   "length": "about 42 s",
+   "length": "about 45 s",
    "title_card": "NO GERMAN. NO JOB OFFERS.",
    "hook": "No German. / No job offers. // And I just *booked a flight*.",
    "hook_alts": [
@@ -36,6 +36,11 @@
     "I'm Vish, 27, / and I never had the confidence to post this."
    ],
    "lines": [
+    {
+     "say": "I'm Vish, I'm 27, / and this is my *first video*.",
+     "see": "Hard cut to you, plain, no effects, no music; small tag 'vish, 27 · video 001'",
+     "how": "[lens] plain, calm"
+    },
     {
      "say": "For years I wanted to do this. / I'd start, *doubt* myself, and stop.",
      "see": "Paper world, words typed in lowercase, red pen circles 'doubt'; three quick clips of you hitting record and putting the phone down",
@@ -55,7 +60,7 @@
      "how": "quick and quiet, move straight on"
     },
     {
-     "say": "I'm Vish. 27. / Five years in influencer marketing. / I've taught yoga.",
+     "say": "On paper: / five years in influencer marketing, / and I've taught yoga.",
      "see": "Childhood photo snaps to you now; pixel icons orbit your head; stickers 5 YEARS · 850+ CREATOR DEALS · TAUGHT YOGA",
      "how": "[smile]"
     },
@@ -79,19 +84,25 @@
      "how": "[lens] deadpan"
     },
     {
-     "say": "If this found you, *tag along*. / We'll learn stuff, / and have fun.",
+     "say": "I'll film all of it: / the work, / the travel, / the *fails*.",
+     "see": "Three 0.5 s flashes: laptop, plane window, you losing balance in a yoga pose",
+     "how": "[count] [smile] on 'fails'"
+    },
+    {
+     "say": "If this found you, *tag along*.",
      "see": "Hard cut to the two dancing cats with 'me' / 'you' arrows, then the end card: where are you starting from?",
      "how": "[smile]"
     }
    ],
-   "notes": "Facts from Vish (21 to 22 Oct 2026): 27; moved to Germany a year ago; no German, no friends or family here; job hunting with many rejections; 2.5-year relationship ended this week (one quiet line only); 5 years in influencer marketing, 850+ creator deals; taught yoga; thesis on AI in marketing ends Feb 2027; goal: earn remotely while travelling (made it = EUR 3,000 to 5,000 a month); flight booked, destination revealed in Day 2. Film all 5 hooks, every line 3 ways (deadpan, slower, long pauses), then lines 1 to 8 again as a close-mic voiceover. Lookbook: https://claude.ai/artifact/SK2dN2bbZzosbRMobG6eWw",
+   "notes": "Facts from Vish (21 to 22 Oct 2026): 27; moved to Germany a year ago; no German, no friends or family here; job hunting with many rejections; 2.5-year relationship ended this week (one quiet line only); 5 years in influencer marketing, 850+ creator deals; taught yoga; thesis on AI in marketing ends Feb 2027; goal: earn remotely while travelling (made it = EUR 3,000 to 5,000 a month); flight booked, destination revealed in Day 2. Film all 5 hooks, then the full script start to finish 3 ways (deadpan, slower, long pauses), then lines 1 to 8 again as a close-mic voiceover. Lookbook: https://claude.ai/artifact/SK2dN2bbZzosbRMobG6eWw One clean full take also becomes a raw edit for TikTok.",
    "broll": [
     "Phone with the booking screen pushed fast at the lens (3 takes)",
     "Hitting record, hesitating, putting the phone down (3 takes, 2 s)",
+    "Squinting at a German letter, then the translate app over it (3 s)",
     "Side profile against a plain wall, looking down (10 s)",
     "The door closing from inside; you on the bed edge, back to camera",
     "Staring at the laptop; hands typing; thesis over the shoulder",
-    "One yoga pose",
+    "One yoga pose, plus one take losing your balance",
     "Outside: walking away from camera, table for one from above, train or tram window",
     "10 s of room tone"
    ]
