@@ -1,0 +1,78 @@
+# The v9 edit recipe (Week 1 intro, 22 Oct 2026)
+
+Vish, on v9: "I love this version… everything is so good, so perfect." This is the baseline for every talking-head reel from now on. Start from it; improve on it, never below it.
+
+Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame prep, sound map, mix) and `edit/comp.html` (compositor). Commands:
+- `python edit/week1.py prep`
+- `python edit/week1.py stills t,t`
+- `python edit/week1.py render --jobs=3`
+- `python edit/week1.py mix`
+
+## How the edit is built
+- **Transcript first.** faster-whisper word times; every line is cut on word boundaries snapped to the audio onsets.
+- **His takes stay whole.**
+  - No chopping inside a take ("join" continues the take); takes change only at a full sentence.
+  - One steady speed for everything (1.1×), never ramps.
+  - Natural asides stay ("that one hurt").
+  - Pauses where he looks away get no hold, and a line gets a short LAND beat only where it should land.
+- **Locked camera.** A dead-zone head lock, no drifting reframes; static punch-ins only.
+- **Film grade, not saturation.** `scripts/reel_edit/film.py`: LUT, light pool, halation, mist. It should look like an expensive camera, not a filter.
+- **Type.**
+  - Instrument Serif (emotional lines, italic accents) + Inter Tight (facts) + Geist Mono (small labels).
+  - One amber accent (#E7A15A) on ink or cream.
+- **Layouts.**
+  - Full-screen cut-out for the hook, with words tucked behind his head.
+  - A 4:5 framed speaker box for most of it.
+  - A split (graphics on top, him below) for lists and stats.
+  - Full screen for the montage.
+  - Layouts change with a 0.6 s eased morph.
+
+## What made v9 land (from his reference reels)
+- **Freeze-frame intro** (@sakchham_films).
+  - On "Hey, I'm Vish" the frame freezes: camera shutter, white flash.
+  - The room dims, and he becomes a sticker: RVM matte with a 9 px white outline (`freeze_cut()`).
+  - White labels and 3D-icon stickers spring on around him, each with a pop that climbs in pitch.
+- **Hard silences** (@ayyitsjamie). The music cuts to true silence (12 ms edges) at the emotional beats: the question, the childhood moment, "that one hurt", "but one thing is sure". Clicks are the only sound inside a silence.
+- **Real archive.** His passport photos (pulled out of a phone pan with OpenCV) land on a cream page one by one, kid to now, each with a click: "27 years in passport photos".
+- **Literal visuals** (@elijahsnider_). Every claim gets the matching picture: the city for "moved to a country", a plane plus boarding pass for "booked a flight", the handstand kick-up for "trials", the topple onto his back for "fails". If no footage exists, animate it rather than show something unrelated: friends' clips over "so many things to achieve" was wrong.
+- **Animated ideas with 3D icons** (Microsoft Fluent Emoji 3D, MIT, `assets/emoji`).
+  - 40K as an odometer.
+  - "Life is all over the place": the stat card scatters, the words land at odd angles, and icons orbit.
+  - A 3D juggler for interests and hobbies.
+  - A to-do card with nothing ticked.
+  - A debt counter at 0% paid.
+- **3D captions** (@milindrao_, @speedy_devv). Words flip up into place, and an amber selection box with corner handles slides to the spoken word. It doubles as the "edited by AI" signature.
+- **Strobe title** (@the.artexpo, @omgadrian). Week 1 flashes black and white four times, with a click on each, then settles.
+- **The AI line.** A sticker on "this is my first video": "Edited 100% by AI. Every cut, sound and graphic: Claude". Plus a stats row and the end credit.
+
+## Sound
+- **Voice is king.**
+  - Chain: highpass, light denoise, -3 dB at 250 Hz, +3 dB presence, de-ess, gentle compression.
+  - Integrated level: voice −22.5, music −29, effects −31 LUFS before the final loudnorm to −14.
+- **Music** (Vish's pick).
+  - Held at one steady level under his voice; the level never pumps.
+  - Low-passed under the hard part, opening at the turn.
+  - The chorus lands on the payoff line, rises only for the montage, and the montage cuts on the song's beat.
+- **A sound for every visual event, planned with the picture** (`S()` in `plan()`): pops, clicks, ticks, whooshes peaking on the cut, a sub boom on big hits, a thud for the fall. Short, bright and under the voice. Sources: synthesised in `_syn()`, Kenney CC0 (`assets/kenney`), `assets/sfx`.
+- **The B-roll keeps its own natural sound**, low.
+
+## Vish's no-list (all from his feedback)
+- No abrupt or jump cuts.
+- No random speed-ups.
+- No camera wandering.
+- No cheap saturation.
+- No fonts that look like templates.
+- No sad music he didn't pick.
+- No pauses where he looks away.
+- No B-roll that doesn't match the words.
+- No overprocessed voice.
+
+## Tools (`scripts/setup_tools.sh`)
+- **Installed:** FFmpeg, faster-whisper, OpenAI Whisper, yt-dlp, OpenCV contrib (CSRT), Puppeteer (on `/opt/pw-browsers/chromium`) and HyperFrames 0.8.186 (skills synced from the repo).
+- **Source clones:** `/home/user/tools`.
+- **yt-dlp** downloads reference reels that the embed fetcher can't get.
+- **ElevenLabs** (Vish's subscription, 22 Oct) can add:
+  - custom sound effects from a text prompt;
+  - voice isolation for noisy takes.
+
+  Its key lives in `.env.local` (gitignored) or the environment secrets; never in chat or code.

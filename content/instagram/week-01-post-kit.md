@@ -38,17 +38,23 @@ Post it with the original audio. If Instagram ever mutes it for a music match, r
 3D icons: Microsoft Fluent Emoji (MIT). Extra sounds: Kenney (CC0) and synthesised in the editor.
 
 ## Cover
-Use `out/week1-cover.jpg`, the "I just broke up." frame. It stays legible in the 3:4 grid crop.
+Use `video-projects/week-01-intro/out/week1-cover-v9.jpg` (1080x1920; everything sits inside the 3:4 grid crop).
+It's the v9 look: Vish as a white-outlined sticker with eye contact, "I just broke up." above him, and the stickers 40K in debt / Booked a flight / No job.
 
 ## Caption
+Broke up. 40K in debt. No job. And I just booked a flight to Sri Lanka.
+
 Week 1 of 52.
-Broke up. 40k in debt. No job. And I booked a flight.
-I don't know how yet, but I'm going to build a remote income and travel the world, and I'll show you everything:
-the trials, the fails, the work, the travel.
-PS: this whole video was edited by AI (Claude).
+
+I'm 27, finishing my master's in Germany, and I'm going to build a remote income so I can travel the world. I don't know how yet. But every week I'll show you everything: the trials, the fails, the work, the travel.
+
+PS: I didn't edit this video. AI did. Every cut, sound and graphic was made by Claude.
+
 Where are you starting from? 👇
 
-#week1 #startingover #remotework #digitalnomad #buildinpublic
+#startingover #digitalnomad #remotework #buildinpublic #aiediting
+
+Five hashtags: Instagram now caps a post at five, and relevant ones beat big generic ones.
 
 ## After posting
 - Reply to the first comments within the hour, in your own words.
