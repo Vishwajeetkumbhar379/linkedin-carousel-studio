@@ -137,15 +137,15 @@ def snap(clip: str, A: float, B: float) -> tuple[float, float, list]:
 
 
 # ---------------------------------------------------------------- timeline
-# Pace (Vish, 22 Oct): "speed it up a bit, not too fast, everything still lands". Each take is re-timed, never cut:
-# speech plays at SPEED (pitch kept), dead air tightens to a natural length, and the lines that need to land keep a
-# real beat after them (LAND, seconds of pause on screen after the line's last word).
-SPEED = 1.13
-PAUSE = 0.32        # a normal pause between sentences, on screen
-MAXRATE = 2.4       # never fast-forward a pause harder than this (it would show)
-LAND = {"h4": .32, "h5": .3, "h6": .45, "n1": .4, "c1": .45, "g2": .35, "g3": .6, "r2": .6, "r3": .75, "r4": .5,
-        "s1": .3, "l1": .35, "l1b": .45, "l2": .6, "m1": 1.0, "m1b": .35, "m2": .5, "w1": .8, "w2": .35,
-        "w3": .22, "w4": .22, "w5": .22, "w6": .22, "w7": .45}
+# Pace (Vish, 22 Oct, after v4): one steady speed for everything (no ramps), and dead air or looking-away pauses cut
+# out like a pro edit: a line gets a beat to land (LAND, seconds on screen), then the cut goes to LEAD before his next
+# word. Every jump cut is either under B-roll or gets a static punch-in.
+SPEED = 1.1
+PAUSE = 0.25        # the beat after an ordinary sentence
+INLINE = 0.18       # the beat at a pause inside a sentence
+LEAD = 0.10         # on screen before the next word after a cut
+LAND = {"h4": .3, "h5": .3, "h6": .45, "n1": .35, "c1": .4, "g3": .55, "r2": .5, "r3": .6, "r4": .45,
+        "l1b": .35, "l2": .55, "m2": .45, "w1": .7, "w7": .4}
 
 
 def build() -> dict:
@@ -203,33 +203,24 @@ def build() -> dict:
                 isl[-1][3] = w["line"]
             else:
                 isl.append([w["s0"], w["s1"], w["line"], w["line"]])
-        cuts = [sh["a"]]
-        rates = []
-        prev_end = sh["a"]
-        for k, (s0, s1, first, lid) in enumerate(isl):
-            s0, s1 = max(sh["a"], s0 - 0.05), min(sh["b"], s1 + 0.08)
-            if s0 > prev_end + 1e-3:  # the pause before this island
-                g = s0 - prev_end
-                before = isl[k - 1][3] if k else None
-                land = LAND.get(before, PAUSE) if (before and before != first) else PAUSE  # only between lines
-                target = g / SPEED
-                if target > PAUSE:
-                    target = max(PAUSE, min(target, land))
-                target = max(target, g / MAXRATE)
-                cuts.append(s0)
-                rates.append(g / target)
-            if s1 > max(s0, cuts[-1]) + 1e-3:
-                cuts.append(s1)
-                rates.append(SPEED)
-            prev_end = max(prev_end, s1)
-        if sh["b"] > cuts[-1] + 1e-3:  # the tail of the last word
-            cuts.append(sh["b"])
+        keep, cur = [], sh["a"]
+        for k in range(len(isl) - 1):
+            end, nxt = isl[k][1] + 0.06, isl[k + 1][0]
+            boundary = isl[k][3] != isl[k + 1][2]
+            land = LAND.get(isl[k][3], PAUSE) if boundary else INLINE
+            if nxt - end > (land + LEAD) * SPEED + 0.12:  # dead air: let it land, then cut to just before his next word
+                keep.append([cur, min(nxt, end + land * SPEED)])
+                cur = max(keep[-1][1], nxt - LEAD * SPEED)
+        keep.append([cur, sh["b"]])
+        cuts, rates = [], []
+        for k0, k1 in keep:
+            cuts.append((k0, k1))
             rates.append(SPEED)
         if sh["hold"] > 0:
-            cuts.append(sh["b"] + sh["hold"])
+            cuts.append((sh["b"], sh["b"] + sh["hold"]))
             rates.append(1.0)
         segs, o = [], 0.0
-        for c0, c1, r in zip(cuts, cuts[1:], rates):
+        for (c0, c1), r in zip(cuts, rates):
             segs.append([round(c0 - sh["a"], 4), round(c1 - sh["a"], 4), round(o, 4), round(r, 4)])
             o += (c1 - c0) / r
         dur = round(o * FPS) / FPS
@@ -290,12 +281,14 @@ def extract(src: Path, a: float, n: int, look: str | None, size: str, name: str,
 
 
 def retime(segs: list) -> str:
-    """setpts expression: the take's time map (source -> screen), piecewise linear, continued past the end."""
+    """select + setpts: keep only the kept stretches of the take (cuts), lay them end to end at their speed; the last
+    one runs on past the end for the dissolve tail."""
+    sel = "+".join(f"between(t\\,{s0 - 0.001:.4f}\\,{(s1 if i < len(segs) - 1 else s1 + 2.0):.4f})" for i, (s0, s1, o0, r) in enumerate(segs))
     e = None
     for s0, s1, o0, r in reversed(segs):
         term = f"({o0:.5f}+(T-{s0:.5f})/{r:.5f})"
         e = term if e is None else f"if(lt(T\\,{s1:.5f})\\,{term}\\,{e})"
-    return f"setpts='({e})/TB'"
+    return f"select='{sel}',setpts='({e})/TB'"
 
 
 def count(d: Path) -> int:
@@ -444,9 +437,11 @@ def plan(tl: dict) -> dict:
         key = hashlib.md5(json.dumps(sh["segs"]).encode()).hexdigest()[:6]
         d = extract(RAW / "intro" / f"{sh['clip']}.MOV", sh["a"], n, sh["look"], "1920:1080", f"s_{sh['clip']}_{sh['a']:.3f}_{n}_{key}",
                     matte=True, cut=sh["cut"], segs=sh["segs"])
+        cuts_out = [round(sh["t0"] + o0, 4) for (s0, s1, o0, rr), prev in zip(sh["segs"][1:], sh["segs"]) if abs(s0 - prev[1]) > 1e-3]
+        zc = [[t, 1.08 if k % 2 == 0 else 1.0] for k, t in enumerate(cuts_out)]
         for ri in sh["runs"]:
             r = tl["runs"][ri]
-            items.append({"t0": round(r["t0"], 4), "t1": round(r["t1"] + r["hold"], 4), "dir": str(d), "n": n,
+            items.append({"zc": [] if sh["cut"] else zc, "t0": round(r["t0"], 4), "t1": round(r["t1"] + r["hold"], 4), "dir": str(d), "n": n,
                           "off": round((r["t0"] - sh["t0"]) * FPS), "kind": "cut" if r["lay"] == "cut" else "talk",
                           "geom": {"cut": "full", "full": "full", "45": "f45", "split": "split"}[r["lay"]], "track": None, "z": 1.0,
                           "shot": d.name})
@@ -760,14 +755,14 @@ def mix() -> Path:
         speech_rms = []
         for s0, s1, o0, r in sh["segs"]:
             x = a[int((sh["a"] + s0) * SR): int((sh["a"] + s1) * SR)].copy()
-            sp = abs(r - SPEED) < 1e-3
+            sp = True
             if sp:
                 speech_rms.append(x)
             jobs.append([x, r, sp, sh["t0"] + o0, (s1 - s0) / r, sh])
         sh["gain"] = min(4.0, 0.085 / (np.sqrt(np.mean(np.concatenate(speech_rms) ** 2)) + 1e-6)) if speech_rms else 1.0
     with ThreadPoolExecutor(4) as ex:
         outs = list(ex.map(lambda j: stretch(j[0], j[1], j[2]), jobs))
-    fade = int(0.006 * SR)
+    fade = int(0.012 * SR)
     for (x, r, sp, t0, dur, sh), y in zip(jobs, outs):
         m = int(round(dur * SR))
         y = np.pad(y, (0, max(0, m - len(y))))[:m] * sh["gain"]
@@ -836,7 +831,7 @@ def mux(picture: Path, wav: Path) -> Path:
     OUT.mkdir(exist_ok=True)
     out = OUT / "week1-intro-9x16.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(picture), "-i", str(wav), "-filter_complex",
-                    "[1:a]alimiter=limit=0.8:attack=4:release=60:level=disabled,loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000[a]", "-map", "0:v", "-map", "[a]", "-c:v", "copy",
+                    "[1:a]alimiter=limit=0.8:attack=4:release=60:level=disabled,loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000,alimiter=limit=0.84:attack=2:release=50:level=disabled[a]", "-map", "0:v", "-map", "[a]", "-c:v", "copy",
                     "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)], check=True)
     return out
 

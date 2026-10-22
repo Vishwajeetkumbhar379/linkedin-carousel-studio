@@ -193,8 +193,10 @@ function geoAt(t) {
   return g;
 }
 function zAt(it, t) {
-  if (!it.zk) return it.z || 1;
-  const [[a, z0], [b, z1]] = it.zk; return z0 + (z1 - z0) * eio(prog(t, a, Math.max(.01, b - a)));
+  let z = it.z || 1;
+  if (it.zk) { const [[a, z0], [b, z1]] = it.zk; z = z0 + (z1 - z0) * eio(prog(t, a, Math.max(.01, b - a))); }
+  if (it.zc) { let p = 1; for (const [tc, zz] of it.zc) if (tc <= t + 1e-4) p = zz; z *= p; }  // a static punch-in on each jump cut
+  return z;
 }
 function frameIdx(it, t) { return clamp((it.off || 0) + Math.floor((t - it.t0) * TL.fps + 1e-4), 0, it.n - 1); }
 function dissolveFor(inc, out) {
