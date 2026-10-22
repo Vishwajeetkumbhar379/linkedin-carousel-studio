@@ -75,4 +75,8 @@ Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame pr
   - custom sound effects from a text prompt;
   - voice isolation for noisy takes.
 
-  Its key lives in `.env.local` (gitignored) or the environment secrets; never in chat or code.
+  Its key lives in `.env.local` (gitignored) or the environment secrets; never in chat or code. Verify with `npx -y @elevenlabs/cli@latest onboard check --env-path .env.local`.
+- **ElevenLabs credits (Vish, 22 Oct).**
+  - Check the remaining credits (GET `/v1/user/subscription`: `character_count` vs `character_limit`) before and after every batch of generations, and report what was used.
+  - Tell Vish the moment they run low (under about 10% left) or out. He has a second student account with roughly 80,000 to 90,000 credits and will swap in its key.
+  - Never switch keys or accounts yourself.
