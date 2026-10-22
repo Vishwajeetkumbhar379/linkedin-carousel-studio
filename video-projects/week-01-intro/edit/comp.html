@@ -48,7 +48,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
 <div id="grain" class="L"></div>
 <script>
 const GEO = {full: {x: 0, y: 0, w: 1080, h: 1920, r: 0}, f45: {x: 40, y: 360, w: 1000, h: 1250, r: 28},
-             split: {x: 0, y: 960, w: 1080, h: 960, r: 0}, none: {x: 540, y: 1180, w: 0, h: 0, r: 0}};
+             split: {x: 0, y: 960, w: 1080, h: 960, r: 0}, none: {x: 400, y: 720, w: 280, h: 350, r: 40}};
 const CAPY = {full: 1500, f45: 1440, split: 1560, none: 1500};
 const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
 const eo = u => 1 - Math.pow(1 - u, 3);
@@ -154,7 +154,7 @@ const K = {
     make(c) { return el(`<div style="width:56px;height:3px;background:#E7A15A;margin-bottom:16px"></div><div style="font:700 74px/1 IT;letter-spacing:-.04em;color:#F7F1E6">${c.text}</div>`, 'sh', 'left:96px;top:1390px'); },
     upd(d, c, t) { enter(d, t, c.t0, .3, 14, 4); fadeOut(d, t, c.t1, .15); } },
   cats: {
-    make(c) { return el(`<img class="ci" style="position:absolute;left:-177px;top:-361px;width:1476px">
+    make(c) { return el(`<div class="paperbg" style="position:absolute;inset:0"></div><img class="ci" style="position:absolute;left:-177px;top:-361px;width:1476px">
       <div class="lb" style="position:absolute;left:150px;top:300px;font:400 italic 140px/1 IS;color:#1D1C1A">me</div>
       <div class="lb" style="position:absolute;right:140px;top:300px;font:400 italic 140px/1 IS;color:#1D1C1A">you</div>
       <svg style="position:absolute;left:0;top:0" width="1080" height="1920"><g fill="none" stroke="#E7A15A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
@@ -165,7 +165,9 @@ const K = {
       <div class="mono" style="position:absolute;left:0;right:0;top:1515px;text-align:center;font-size:16px;letter-spacing:.14em;color:#8a857b">cats: @meowtakeover</div>`, '', 'inset:0'); },
     upd(d, c, t) { const i = clamp(Math.floor((t - c.t0) * TL.fps), 0, c.n - 1);
       pending.push(setImg(d.querySelector('.ci'), `${c.dir}/${pad(i + 1)}.webp`));
-      d.style.opacity = eo(prog(t, c.t0, .25));
+      const um = eio(prog(t, c.t0, c.morph || .25)); d.style.opacity = um;
+      const ci = d.querySelector('.ci'); ci.style.transform = `scale(${1.25 - .25 * um})`; ci.style.transformOrigin = '717px 1261px';
+      ci.style.filter = um < 1 ? `blur(${(1 - um) * 14}px)` : 'none';
       d.querySelectorAll('.lb').forEach((l, j) => enter(l, t, c.t0 + .2 + j * .15, .4, 14, 6));
       ['a1', 'a2', 'a3', 'a4'].forEach((a, j) => d.querySelector('.' + a).setAttribute('stroke-dashoffset', 1 - eo(prog(t, c.t0 + .35 + (j % 2) * .2 + (j > 1 ? .15 : 0), .35))));
       enter(d.querySelector('.q'), t, c.t0 + .7, .5, 18, 6); } },
@@ -187,7 +189,7 @@ function geoAt(t) {
   for (const [tk, name, d] of TL.geoms) { if (tk <= t) { prev = cur; cur = name; t0 = tk; dur = d; } }
   const u = dur > 0 ? eio(prog(t, t0, dur)) : 1, A = GEO[prev], B = GEO[cur], g = {name: cur, u};
   for (const k of ['x', 'y', 'w', 'h', 'r']) g[k] = A[k] + (B[k] - A[k]) * u;
-  if (cur === 'none' || (prev === 'none' && u < 1)) g.hide = true;
+  if (cur === 'none') { g.fade = 1 - u; g.hide = u >= 1; }
   return g;
 }
 function zAt(it, t) {
@@ -214,7 +216,7 @@ function place(img, it, idx, t, g) {
     sc = g.w / cw; ox = -(cx - cw / 2) * sc; oy = -(cy - ch / 2) * sc;
   } else {
     const kz = it.kb ? it.kb[0] + (it.kb[1] - it.kb[0]) * prog(t, it.t0, it.t1 - it.t0) : 1;
-    sc = Math.max(g.w / iw, g.h / ih) * kz; ox = (g.w - iw * sc) / 2; oy = (g.h - ih * sc) / 2;
+    sc = Math.max(g.w / iw, g.h / ih) * kz; ox = (g.w - iw * sc) / 2; oy = (g.h - ih * sc) * (it.fy ?? .5);
   }
   img.style.width = iw + 'px'; img.style.height = ih + 'px'; img.style.transform = `translate(${ox}px,${oy}px) scale(${sc})`;
 }
@@ -243,7 +245,7 @@ async function render(t) {
     const jobs = [setImg(FA, `${it.dir}/${pad(idx + 1)}.jpg`)];
     if (out) jobs.push(setImg(FB, `${out.dir}/${pad(frameIdx(out, t) + 1)}.jpg`));
     await Promise.all(jobs);
-    F.style.display = 'block';
+    F.style.display = 'block'; F.style.opacity = g.fade ?? 1; F.style.filter = g.fade !== undefined ? `blur(${(1 - g.fade) * 10}px)` : 'none';
     Object.assign(F.style, {left: g.x + 'px', top: g.y + 'px', width: g.w + 'px', height: g.h + 'px', borderRadius: g.r + 'px',
       boxShadow: g.name === 'full' ? 'none' : (bg === 'paper' ? '0 30px 70px rgba(40,30,20,.24)' : '0 0 0 1px rgba(247,241,230,.08)')});
     place(FA, it, idx, t, g);

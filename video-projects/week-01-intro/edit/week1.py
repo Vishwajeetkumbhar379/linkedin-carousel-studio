@@ -11,6 +11,7 @@ Raw footage, frames and renders stay in raw/ and work/ (gitignored). Comp page: 
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import subprocess
@@ -30,6 +31,8 @@ from grade import probe  # noqa: E402
 import film  # noqa: E402
 
 WORDS = json.loads((W / "intro_words.json").read_text())
+DUR = {p.stem: float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(p)],
+                                   capture_output=True, text=True).stdout or 0) for p in (P / "raw" / "intro").glob("IMG_*.MOV")}
 MUSIC = P / "assets" / "music" / "a-new-life.mp3"
 DROP, BEAT = 24.60, 0.46440  # music: the drop's onset (s into the track) and the beat period (129 bpm)
 
@@ -75,7 +78,7 @@ LINES = [
     ("e1", "IMG_1594", [(0.0, 2.8)], {}, "45", "night", {"until": 7.2}),  # the same take runs on into his dance
 ]
 CATS = (4.0, 3.6)  # cats clip in, seconds (two cats on screen from 3.5 s)
-TAIL = 12          # extra frames on every shot, for dissolves into the next one
+TAIL = 18          # extra frames on every shot, for dissolves into the next one
 
 
 # ---------------------------------------------------------------- audio helpers
@@ -134,12 +137,22 @@ def snap(clip: str, A: float, B: float) -> tuple[float, float, list]:
 
 
 # ---------------------------------------------------------------- timeline
+# Pace (Vish, 22 Oct): "speed it up a bit, not too fast, everything still lands". Each take is re-timed, never cut:
+# speech plays at SPEED (pitch kept), dead air tightens to a natural length, and the lines that need to land keep a
+# real beat after them (LAND, seconds of pause on screen after the line's last word).
+SPEED = 1.13
+PAUSE = 0.32        # a normal pause between sentences, on screen
+MAXRATE = 2.4       # never fast-forward a pause harder than this (it would show)
+LAND = {"h4": .32, "h5": .3, "h6": .45, "n1": .4, "c1": .45, "g2": .35, "g3": .6, "r2": .6, "r3": .75, "r4": .5,
+        "s1": .3, "l1": .35, "l1b": .45, "l2": .6, "m1": 1.0, "m1b": .35, "m2": .5, "w1": .8, "w2": .35,
+        "w3": .22, "w4": .22, "w5": .22, "w6": .22, "w7": .45}
+
+
 def build() -> dict:
-    t = 0.0
-    runs, words, lines = [], [], {}
+    # pass 1: what is kept, in source time
+    runs, srcw, order = [], [], []
     last = None
-    for lid, clip, rr, fix, lay, look, fl in LINES:
-        L = {"t0": t, "runs": []}
+    for li, (lid, clip, rr, fix, lay, look, fl) in enumerate(LINES):
         prev_b = -1.0
         for k, (A, B) in enumerate(rr):
             a, b, sel = snap(clip, A, B)
@@ -150,26 +163,110 @@ def build() -> dict:
                 a = prev_b
                 b = a + max(1, round((b - a) * FPS)) / FPS
             prev_b = b
-            d = b - a
-            runs.append({"line": lid, "clip": clip, "a": a, "b": b, "t0": t, "t1": t + d, "lay": lay, "look": look, "k": k, "hold": 0.0})
+            runs.append({"line": lid, "clip": clip, "a": a, "b": b, "lay": lay, "look": look, "k": k, "hold": 0.0})
             for w in sel:
                 x = fix.get(w["x"], w["x"])
                 if x:
-                    words.append({"line": lid, "x": x, "t0": t + max(0, w["t"] - a), "t1": t + min(d, w["e"] - a)})
-            L["runs"].append((t, t + d))
-            t += d
-        L["t1"] = t
-        lines[lid] = L
+                    srcw.append({"line": lid, "x": x, "s0": max(a, w["t"]), "s1": min(b, w["e"]), "clip": clip})
+        order.append(lid)
         gap = fl.get("gap", 0.0)
         if "until" in fl:
             gap = round(max(0.0, fl["until"] - runs[-1]["b"]) * FPS) / FPS
-        runs[-1]["hold"] = gap  # the picture (and the take) keeps running through the pause
+        nxt = LINES[li + 1] if li + 1 < len(LINES) else None
+        if not gap and lid in LAND and not (nxt and nxt[6].get("join") and nxt[1] == clip):
+            # the take ends on a line that should land: let it run on a beat (never into his next word)
+            later = [w["t"] for w in WORDS[clip] if w["t"] > runs[-1]["b"]]
+            room = (later[0] - runs[-1]["b"] - 0.05) if later else 9.0
+            src_end = DUR.get(clip, 99) - runs[-1]["b"] - 0.05
+            gap = round(max(0.0, min(LAND[lid], room, src_end)) * FPS) / FPS
+        runs[-1]["hold"] = gap  # the picture (and the take) keeps running, at normal speed
         last = (clip, runs[-1]["b"]) if gap == 0 else None
-        t += gap
-    dance = (lines["e1"]["t1"], lines["e1"]["t1"] + runs[-1]["hold"])
+    # pass 2: shots (continuous stretches of a take) and their time maps
+    shots = []
+    for r in runs:
+        sh = shots[-1] if shots else None
+        if sh and sh["clip"] == r["clip"] and sh["open"] and abs(sh["b"] - r["a"]) < 1e-3:
+            sh["runs"].append(r)
+        else:
+            sh = {"clip": r["clip"], "a": r["a"], "runs": [r]}
+            shots.append(sh)
+        sh["b"] = r["b"]
+        sh["hold"] = r["hold"]
+        sh["open"] = r["hold"] == 0
+    t = 0.0
+    for sh in shots:
+        ws = [w for w in srcw if w["clip"] == sh["clip"] and sh["a"] - 1e-3 <= w["s0"] < sh["b"] + 1e-3]
+        isl = []  # spoken islands (words closer than 0.22 s belong together): [start, end, first line, last line]
+        for w in ws:
+            if isl and w["s0"] - isl[-1][1] < 0.22:
+                isl[-1][1] = max(isl[-1][1], w["s1"])
+                isl[-1][3] = w["line"]
+            else:
+                isl.append([w["s0"], w["s1"], w["line"], w["line"]])
+        cuts = [sh["a"]]
+        rates = []
+        prev_end = sh["a"]
+        for k, (s0, s1, first, lid) in enumerate(isl):
+            s0, s1 = max(sh["a"], s0 - 0.05), min(sh["b"], s1 + 0.08)
+            if s0 > prev_end + 1e-3:  # the pause before this island
+                g = s0 - prev_end
+                before = isl[k - 1][3] if k else None
+                land = LAND.get(before, PAUSE) if (before and before != first) else PAUSE  # only between lines
+                target = g / SPEED
+                if target > PAUSE:
+                    target = max(PAUSE, min(target, land))
+                target = max(target, g / MAXRATE)
+                cuts.append(s0)
+                rates.append(g / target)
+            if s1 > max(s0, cuts[-1]) + 1e-3:
+                cuts.append(s1)
+                rates.append(SPEED)
+            prev_end = max(prev_end, s1)
+        if sh["b"] > cuts[-1] + 1e-3:  # the tail of the last word
+            cuts.append(sh["b"])
+            rates.append(SPEED)
+        if sh["hold"] > 0:
+            cuts.append(sh["b"] + sh["hold"])
+            rates.append(1.0)
+        segs, o = [], 0.0
+        for c0, c1, r in zip(cuts, cuts[1:], rates):
+            segs.append([round(c0 - sh["a"], 4), round(c1 - sh["a"], 4), round(o, 4), round(r, 4)])
+            o += (c1 - c0) / r
+        dur = round(o * FPS) / FPS
+        sh.update(t0=t, dur=dur, segs=segs)
+        t += dur
+
+    def omap(sh, s):  # source time (absolute) -> output time
+        x = s - sh["a"]
+        for s0, s1, o0, r in sh["segs"]:
+            if x <= s1 + 1e-6:
+                return sh["t0"] + o0 + max(0.0, x - s0) / r
+        s0, s1, o0, r = sh["segs"][-1]
+        return sh["t0"] + o0 + (x - s0) / r
+
+    words, lines = [], {}
+    for sh in shots:
+        for r in sh["runs"]:
+            r["t0"], r["t1"] = omap(sh, r["a"]), omap(sh, r["b"])
+            if r["hold"]:
+                r["hold"] = sh["t0"] + sh["dur"] - r["t1"]
+            L = lines.setdefault(r["line"], {"t0": r["t0"], "runs": []})
+            L["runs"].append((r["t0"], r["t1"]))
+            L["t1"] = r["t1"]
+        for w in srcw:
+            if w["clip"] == sh["clip"] and sh["a"] - 1e-3 <= w["s0"] < sh["b"] + 1e-3:
+                words.append({"line": w["line"], "x": w["x"], "t0": omap(sh, w["s0"]), "t1": omap(sh, w["s1"])})
+    words.sort(key=lambda w: w["t0"])
+    lines = {k: lines[k] for k in order}
+    e1 = lines["e1"]
+    dance = (e1["t1"], e1["t1"] + runs[-1]["hold"])
     cats_t0 = t
     t += CATS[1]
-    return {"runs": runs, "words": words, "lines": lines, "dance": dance, "cats": (cats_t0, t), "dur": round(t * FPS) / FPS}
+    shots_out = [{"clip": sh["clip"], "a": sh["a"], "b": sh["b"] + sh["hold"], "t0": sh["t0"], "dur": sh["dur"], "segs": sh["segs"],
+                  "look": sh["runs"][0]["look"], "cut": any(r["lay"] == "cut" for r in sh["runs"]),
+                  "runs": [runs.index(r) for r in sh["runs"]]} for sh in shots]
+    return {"runs": runs, "shots": shots_out, "words": words, "lines": lines, "dance": dance, "cats": (cats_t0, t),
+            "dur": round(t * FPS) / FPS}
 
 
 def wt(tl: dict, lid: str, sub: str, end: bool = False, nth: int = 0) -> float:
@@ -185,11 +282,20 @@ LUTS = W / "luts"
 
 
 def extract(src: Path, a: float, n: int, look: str | None, size: str, name: str, speed: float = 1.0,
-            matte: bool = False, cut: bool = False) -> Path:
+            matte: bool = False, cut: bool = False, segs: list | None = None) -> Path:
     d = FR / name
     if not (d / "finished").exists() and not any(j["d"] == str(d) for j in JOBS):
-        JOBS.append(dict(src=str(src), a=a, n=n, look=look, size=size, d=str(d), speed=speed, matte=matte, cut=cut))
+        JOBS.append(dict(src=str(src), a=a, n=n, look=look, size=size, d=str(d), speed=speed, matte=matte, cut=cut, segs=segs))
     return d
+
+
+def retime(segs: list) -> str:
+    """setpts expression: the take's time map (source -> screen), piecewise linear, continued past the end."""
+    e = None
+    for s0, s1, o0, r in reversed(segs):
+        term = f"({o0:.5f}+(T-{s0:.5f})/{r:.5f})"
+        e = term if e is None else f"if(lt(T\\,{s1:.5f})\\,{term}\\,{e})"
+    return f"setpts='({e})/TB'"
 
 
 def count(d: Path) -> int:
@@ -202,7 +308,7 @@ def run_job(j: dict) -> str:
     d, src, look = Path(j["d"]), Path(j["src"]), j["look"]
     d.mkdir(parents=True, exist_ok=True)
     if not (d / "done").exists():
-        pts = f"setpts=PTS/{j['speed']}," if j["speed"] != 1 else ""
+        pts = retime(j["segs"]) + "," if j.get("segs") else (f"setpts=PTS/{j['speed']}," if j["speed"] != 1 else "")
         grade = film.chain(src, look, LUTS) + "," if look else ""
         vf = f"{pts}fps={FPS},{grade}scale={j['size']}:flags=lanczos,format=yuvj420p"
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-threads", "2", "-ss", f"{j['a']:.3f}", "-i", str(src), "-vf", vf,
@@ -318,7 +424,7 @@ def plan(tl: dict) -> dict:
     items, cues, geoms, bgs, nocap = [], [], [], [], []
     T = lambda lid, s, **k: wt(tl, lid, s, **k)  # noqa: E731
 
-    def B(t0, t1, rel, src_in, geom, look="day", kb=(1.0, 1.08), speed=1.0, size=None, name=None):
+    def B(t0, t1, rel, src_in, geom, look="day", kb=(1.0, 1.08), speed=1.0, size=None, name=None, fy=0.5):
         src = RAW / rel
         n = max(1, round((t1 - t0) * FPS)) + TAIL
         pr = probe(src)
@@ -330,28 +436,20 @@ def plan(tl: dict) -> dict:
         size = size or ("1080:-2" if h > w else "-2:1080")
         nm = name or f"b_{Path(rel).stem}_{src_in:.2f}_{n}_{speed}"
         d = extract(src, src_in, n, look, size, nm, speed)
-        items.append({"t0": round(t0, 4), "t1": round(t1, 4), "dir": str(d), "n": n, "kind": "broll", "geom": geom, "kb": kb})
+        items.append({"t0": round(t0, 4), "t1": round(t1, 4), "dir": str(d), "n": n, "kind": "broll", "geom": geom, "kb": kb, "fy": fy})
 
-    # talking: one shot per continuous stretch of a take (graded, matted and framed as one), items index into it
-    shots = []
-    for r in tl["runs"]:
-        sh = shots[-1] if shots else None
-        if sh and sh["clip"] == r["clip"] and sh["open"] and abs(sh["b"] - r["a"]) < 1e-3:
-            sh["runs"].append(r)
-        else:
-            sh = {"clip": r["clip"], "a": r["a"], "runs": [r], "look": r["look"], "cut": False}
-            shots.append(sh)
-        sh["b"] = r["b"] + r["hold"]
-        sh["open"] = r["hold"] == 0
-        sh["cut"] = sh["cut"] or r["lay"] == "cut"
-    for sh in shots:
-        n = round((sh["b"] - sh["a"]) * FPS) + TAIL
-        d = extract(RAW / "intro" / f"{sh['clip']}.MOV", sh["a"], n, sh["look"], "1920:1080", f"s_{sh['clip']}_{sh['a']:.3f}_{n}",
-                    matte=True, cut=sh["cut"])
-        for r in sh["runs"]:
-            items.append({"t0": round(r["t0"], 4), "t1": round(r["t1"] + r["hold"], 4), "dir": str(d), "n": n, "off": round((r["a"] - sh["a"]) * FPS),
-                          "kind": "cut" if r["lay"] == "cut" else "talk", "geom": {"cut": "full", "full": "full", "45": "f45", "split": "split"}[r["lay"]],
-                          "track": None, "z": 1.0, "shot": d.name})
+    # talking: one shot per continuous stretch of a take (graded, matted, framed and re-timed as one)
+    for sh in tl["shots"]:
+        n = round(sh["dur"] * FPS) + TAIL
+        key = hashlib.md5(json.dumps(sh["segs"]).encode()).hexdigest()[:6]
+        d = extract(RAW / "intro" / f"{sh['clip']}.MOV", sh["a"], n, sh["look"], "1920:1080", f"s_{sh['clip']}_{sh['a']:.3f}_{n}_{key}",
+                    matte=True, cut=sh["cut"], segs=sh["segs"])
+        for ri in sh["runs"]:
+            r = tl["runs"][ri]
+            items.append({"t0": round(r["t0"], 4), "t1": round(r["t1"] + r["hold"], 4), "dir": str(d), "n": n,
+                          "off": round((r["t0"] - sh["t0"]) * FPS), "kind": "cut" if r["lay"] == "cut" else "talk",
+                          "geom": {"cut": "full", "full": "full", "45": "f45", "split": "split"}[r["lay"]], "track": None, "z": 1.0,
+                          "shot": d.name})
 
     def run_items(lid):
         return [i for i in items if i["kind"] in ("talk", "cut") and L[lid]["t0"] - 1e-3 <= i["t0"] < L[lid]["t1"] - 1e-3]
@@ -497,12 +595,15 @@ def plan(tl: dict) -> dict:
     nocap += [[L["w1"]["t0"], L["w1"]["t1"] + 0.6]]
     title(L["w2"]["t0"], L["w7"]["t1"], seq("w2", "Every week, / ^everything.^"), font="sans", size=96, band=True)
     nocap += [[L["w2"]["t0"], L["w7"]["t1"]]]
-    flashes = [("w3", "The trials.", "travel/mountains/IMG_2099.MOV", 7.0), ("w4", "The fails.", None, 0),
-               ("w5", "The work.", "travel/cafes/IMG_3995.MOV", 1.4), ("w6", "The travel.", "travel/planes/IMG_3569.MOV", 14.0)]
-    for lid, lab, rel, s in flashes:
+    # fresh footage for the promise (nothing seen earlier in the reel), Vish 22 Oct
+    flashes = [("w3", "The trials.", "travel/bike/IMG_4167.MOV", 3.3, 1.0, (1.03, 1.0), 0.5),
+               ("w4", "The fails.", "travel/mountains/IMG_1452.MOV", 6.0, 1.6, (1.45, 1.52), 0.9),  # the flop onto the grass
+               ("w5", "The work.", "travel/cafes/IMG_7358.MOV", 3.0, 1.0, (1.03, 1.0), 0.5),
+               ("w6", "The travel.", "travel/planes/IMG_6726.MOV", 2.1, 1.0, (1.03, 1.0), 0.5)]
+    for lid, lab, rel, s, sp, kb, fy in flashes:
         t0, t1 = L[lid]["t0"] - 0.02, L[lid]["t1"]
         if rel:
-            B(t0, t1, rel, s, "f45", kb=(1.03, 1.0))
+            B(t0, t1, rel, s, "f45", kb=kb, speed=sp, fy=fy)
             items[-1]["dx"] = 0.16
         else:
             cues.append({"type": "mail", "t0": t0, "t1": t1, "z": 38})
@@ -514,9 +615,14 @@ def plan(tl: dict) -> dict:
     nocap += [[L["e1"]["t0"], tl["dur"]]]
     c0, c1 = tl["cats"]
     cd = key_cats(round(CATS[1] * FPS))
-    cues.append({"type": "cats", "t0": c0, "t1": c1 + 1, "dir": str(cd / "cut"), "n": round(CATS[1] * FPS), "z": 30})
-    bgs.append([c0, c1 + 1, "paper"])
-    geoms.append([c0, "none", 0.0])
+    # the morph: his dancing frame shrinks into the middle and dissolves as the cats come into focus there
+    M = 0.7
+    for it in items:
+        if it["kind"] == "talk" and abs(it["t1"] - c0) < 0.05:
+            it["t1"] = round(c0 + M, 4)
+    cues.append({"type": "cats", "t0": c0 - 0.1, "t1": c1 + 1, "dir": str(cd / "cut"), "n": round(CATS[1] * FPS), "z": 30, "morph": M})
+    bgs.append([c0 + M, c1 + 1, "paper"])
+    geoms.append([c0 - 0.1, "none", M])
     return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap}
 
 
@@ -557,6 +663,7 @@ def prep() -> dict:
     pl["lines"] = {k: [round(v["t0"], 3), round(v["t1"], 3)] for k, v in tl["lines"].items()}
     pl["words"] = tl["words"]
     pl["runs"] = tl["runs"]
+    pl["shots"] = tl["shots"]
     pl["dance"], pl["cats"] = tl["dance"], tl["cats"]
     (W / "timeline.json").write_text(json.dumps(pl))
     print(f"timeline: {tl['dur']:.2f} s, {len(pl['items'])} picture items, {len(pl['cues'])} graphics, {len(pl['caps'])} captions")
@@ -623,35 +730,52 @@ def sfx(name: str) -> np.ndarray:
     return audio(P / "assets" / "sfx" / f"{name}.mp3")
 
 
+def stretch(x: np.ndarray, rate: float, speech: bool) -> np.ndarray:
+    """Time-stretch a mono chunk, pitch kept: rubberband for his voice, atempo for pauses (room tone)."""
+    if abs(rate - 1.0) < 1e-3 or len(x) < 256:
+        return x
+    import tempfile
+    import soundfile as sf
+    with tempfile.TemporaryDirectory() as td:
+        src, dst = Path(td) / "a.wav", Path(td) / "b.wav"
+        sf.write(src, x, SR, subtype="FLOAT")
+        af = f"rubberband=tempo={rate:.5f}:transients=mixed:formant=preserved" if speech else f"atempo={rate:.5f}"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-af", af, "-ar", str(SR), "-ac", "1", "-c:a", "pcm_f32le", str(dst)],
+                       check=True)
+        y, _ = sf.read(dst, dtype="float32")
+    return y
+
+
 def mix() -> Path:
+    """His voice re-timed on the same map as the picture, plus sound design. No music in the file: the trending song
+    is added in Instagram (licensed there, and the reel joins the song's audio page); see out/post-kit.md."""
+    from concurrent.futures import ThreadPoolExecutor
     tl = json.loads((W / "timeline.json").read_text())
     L = tl["lines"]
     n = int(tl["dur"] * SR) + SR
     voice = np.zeros(n, np.float32)
-    speech = np.zeros(n, np.float32)
-    fade = int(0.03 * SR)
-    # one continuous piece of sound per stretch of a take (joined lines play through with their pauses), and the
-    # room sound runs on under picture holds such as the dance
-    pieces = []
-    for r in tl["runs"]:
-        p0 = pieces[-1] if pieces else None
-        if p0 and p0["clip"] == r["clip"] and abs(p0["b"] - r["a"]) < 1e-3 and p0["open"]:
-            p0["b"] = r["b"] + r["hold"]
-        else:
-            pieces.append({"clip": r["clip"], "a": r["a"], "b": r["b"] + r["hold"], "t0": r["t0"]})
-        pieces[-1]["open"] = r["hold"] == 0
-        i = int(r["t0"] * SR)
-        speech[i:i + int((r["b"] - r["a"]) * SR)] = 1
-    for pc in pieces:
-        a = audio(RAW / "intro" / f"{pc['clip']}.MOV")
-        seg = a[int(pc["a"] * SR): int(pc["a"] * SR) + int(round((pc["b"] - pc["a"]) * SR))].copy()
-        sp = speech[int(pc["t0"] * SR): int(pc["t0"] * SR) + len(seg)] > 0
-        rms = np.sqrt(np.mean(seg[sp[:len(seg)]] ** 2)) + 1e-6 if sp.any() else 0.085
-        seg *= min(4.0, 0.085 / rms)  # even out the takes (measured on his speech, not the pauses)
-        seg[:fade] *= np.linspace(0, 1, fade)
-        seg[-fade:] *= np.linspace(1, 0, fade)
-        i = int(pc["t0"] * SR)
-        voice[i:i + len(seg)] += seg[: max(0, min(len(seg), n - i))]
+    jobs = []
+    for sh in tl["shots"]:
+        a = audio(RAW / "intro" / f"{sh['clip']}.MOV")
+        speech_rms = []
+        for s0, s1, o0, r in sh["segs"]:
+            x = a[int((sh["a"] + s0) * SR): int((sh["a"] + s1) * SR)].copy()
+            sp = abs(r - SPEED) < 1e-3
+            if sp:
+                speech_rms.append(x)
+            jobs.append([x, r, sp, sh["t0"] + o0, (s1 - s0) / r, sh])
+        sh["gain"] = min(4.0, 0.085 / (np.sqrt(np.mean(np.concatenate(speech_rms) ** 2)) + 1e-6)) if speech_rms else 1.0
+    with ThreadPoolExecutor(4) as ex:
+        outs = list(ex.map(lambda j: stretch(j[0], j[1], j[2]), jobs))
+    fade = int(0.006 * SR)
+    for (x, r, sp, t0, dur, sh), y in zip(jobs, outs):
+        m = int(round(dur * SR))
+        y = np.pad(y, (0, max(0, m - len(y))))[:m] * sh["gain"]
+        if len(y) > 2 * fade:
+            y[:fade] *= np.linspace(0, 1, fade)
+            y[-fade:] *= np.linspace(1, 0, fade)
+        i = int(round(t0 * SR))
+        voice[i:i + len(y)] += y[: max(0, n - i)]
     def at(t):
         return int(t * SR)
     words = tl["words"]
@@ -667,52 +791,41 @@ def mix() -> Path:
         i = at(max(0, t))
         e = min(n, i + len(s))
         fx[i:e] += g * s[: e - i]
-    # hook
-    # restrained, like a documentary: air and texture under the cuts, nothing that shouts over him
-    put("whoosh-fast", T("h3", "moved") - 0.2, 0.12)
+    # sound design that sits under a song: soft clicks as words and cards land, air on picture changes, a few textures
+    for c in tl["cues"]:
+        if c["type"] == "title" and c["t0"] > 0.2:
+            put("type-soft", c["t0"] + 0.02, 0.22)
+    for it in tl["items"]:
+        if it["kind"] == "broll" and it.get("dx", 0.32) != 0.0:
+            put("whoosh-fast", it["t0"] - 0.18, 0.07)
     put("airport-ding", T("h5", "booked") - 0.05, 0.12, 1.8)
-    put("jet-whoosh", T("h5", "to") - 0.4, 0.22, 2.4)
-    put("riser-drama", L["h6"][0] - 0.8, 0.10, 1.9)
-    put("paper-slide", L["c1"][0] - 0.05, 0.25)
-    put("pencil-scribble", T("c1", "confidence"), 0.12)
-    put("whoosh-fast", T("g1", "moved") - 0.2, 0.10)
+    put("jet-whoosh", T("h5", "to") - 0.4, 0.18, 2.4)
+    put("shutter-old", T("n1", "first"), 0.22)
+    put("paper-slide", L["c1"][0] - 0.05, 0.22)
+    put("pencil-scribble", T("c1", "confidence"), 0.10)
     for k in range(4):
-        put("paper-slide", T("r1", "220") + k * 0.22, 0.18)
+        put("paper-slide", T("r1", "220") + k * 0.22, 0.16)
+    put("type-hit", T("r1", "rejections") + 0.2, 0.12)
     for lid, s in (("s2", "social"), ("s3", "influencer"), ("s4", "yoga"), ("s5", "master")):
-        put("pop-light", T(lid, s) + 0.1, 0.10)
+        put("pop-light", T(lid, s) + 0.1, 0.12)
     s5e = L["s5"][1]
     for k in range(3):
-        put("pop-light", s5e + 0.1 + k * 0.35, 0.08)
+        put("pop-light", s5e + 0.1 + k * 0.35, 0.10)
     drop = T("l3", "travel") - 0.02
-    put("water-jump", drop + 0.3, 0.35)
-    for k in range(4):
-        put("pop-light", T("m1", "max") + 0.6 + k * 0.75, 0.09)
-    put("type-bell", T("w1", "week") + 0.2, 0.12)
+    put("whoosh-rocket", drop - 0.45, 0.10, 0.9)
+    put("water-jump", drop + 0.3, 0.30)
+    for c in tl["cues"]:
+        if c["type"] == "chips":
+            for k in range(len(c["items"])):
+                put("pop-light", c["t0"] + k * c["step"], 0.10)
+    put("riser-drama", T("w1", "week") - 1.0, 0.06, 1.1)
+    put("type-bell", T("w1", "week") + 0.15, 0.14)
     for lid in ("w3", "w4", "w5", "w6"):
-        put("whoosh-fast", L[lid][0] - 0.15, 0.08)
-    put("whoosh-fast", tl["cats"][0] - 0.15, 0.15)
-    # music: the drop lands on "travel"
-    m = audio(MUSIC)
-    start = drop - DROP
-    mus = np.zeros(n, np.float32)
-    i0 = at(start)
-    seg = m[max(0, -i0):]
-    mus[max(0, i0): max(0, i0) + len(seg)] = seg[: n - max(0, i0)]
-    # duck under speech (smoothed): about 15 dB under the voice while he talks, up for the montage; silence for the turn
-    from scipy.ndimage import uniform_filter1d
-    sp = uniform_filter1d(speech, int(0.12 * SR))
-    g = 0.7 - 0.52 * sp
-    turn0, turn1 = at(L["l2"][0] - 0.15), at(drop - 0.01)
-    g[turn0:turn1] = 0.0
-    ramp = int(0.25 * SR)
-    g[turn0 - ramp:turn0] *= np.linspace(1, 0, ramp)
-    g = uniform_filter1d(g, int(0.03 * SR))
-    mus *= g
-    # the cats: music keeps going, end with a short fade so the loop back to frame 1 feels intended
+        put("type-soft", L[lid][0], 0.25)
+    put("whoosh-fast", tl["cats"][0] - 0.25, 0.18)
+    put("pop-light", tl["cats"][0] + 0.55, 0.12)
     end = at(tl["dur"])
-    mus[end - int(0.35 * SR):end] *= np.linspace(1, 0.2, int(0.35 * SR))
-    out = voice + 0.75 * fx + mus
-    out = out[: end]
+    out = (voice + 0.75 * fx)[: end]
     import soundfile as sf
     wav = W / "mix.wav"
     sf.write(wav, np.stack([out, out], 1), SR, subtype="FLOAT")
