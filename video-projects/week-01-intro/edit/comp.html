@@ -1,0 +1,288 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>week 1 comp</title>
+<style>
+@font-face{font-family:BC;font-weight:900;font-style:italic;src:url(/home/user/linkedin-carousel-studio/templates/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-900-italic.woff2)}
+@font-face{font-family:BC;font-weight:800;font-style:normal;src:url(/home/user/linkedin-carousel-studio/templates/node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-800-normal.woff2)}
+@font-face{font-family:NR;font-weight:400;font-style:italic;src:url(/home/user/linkedin-carousel-studio/templates/node_modules/@fontsource/newsreader/files/newsreader-latin-400-italic.woff2)}
+@font-face{font-family:GS;font-weight:500;src:url(/home/user/linkedin-carousel-studio/templates/node_modules/@fontsource/geist-sans/files/geist-sans-latin-500-normal.woff2)}
+@font-face{font-family:GS;font-weight:700;src:url(/home/user/linkedin-carousel-studio/templates/node_modules/@fontsource/geist-sans/files/geist-sans-latin-700-normal.woff2)}
+@font-face{font-family:GM;font-weight:500;src:url(/home/user/linkedin-carousel-studio/templates/node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2)}
+:root{--ink:#0B0B0D;--red:#E8231C;--bone:#F5F3EE;--graphite:#1D1C1A}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink)}
+.L{position:absolute;inset:0}
+#bg>div{position:absolute;inset:0;display:none}
+#bg .hook{background:radial-gradient(circle at 50% 40%,#560909 0%,#1e0506 40%,#0B0B0D 74%)}
+#bg .ink{background:radial-gradient(ellipse 80% 38% at 50% 0%,#221a14 0%,#0B0B0D 72%)}
+#bg .paper,.paperbg{background:radial-gradient(ellipse 80% 60% at 50% 45%,#F2F0EA 0%,#E6E3DB 70%,#D9D5CB 100%)}
+#bg .black{background:#050505}
+#frame{position:absolute;overflow:hidden;background:#000;z-index:10}
+#frame img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none}
+#cut{position:absolute;left:0;top:0;transform-origin:0 0;z-index:30;max-width:none;filter:drop-shadow(0 0 26px rgba(232,35,28,.5))}
+.cue{position:absolute;display:none}
+.r{color:var(--red)}
+.stamp{font:900 italic 1em BC;color:var(--red);border:.07em solid var(--red);padding:.02em .18em .06em;border-radius:.08em;line-height:.95;display:inline-block;
+ -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='.06' numOctaves='4' seed='7'/><feComponentTransfer><feFuncA type='discrete' tableValues='1 1 1 1 1 1 0 1 1 1'/></feComponentTransfer></filter><rect width='400' height='200' filter='url(%23d)'/></svg>");-webkit-mask-size:cover}
+.band{left:50px;right:50px;bottom:1580px;text-align:center;color:var(--bone)}
+.band.bc{font:900 italic 96px/.9 BC}
+.band.serif{font:400 italic 84px/1.02 NR}
+.band.mono{font:500 46px/1.2 GM;letter-spacing:.08em}
+.band.wide{font:800 76px/1 BC;letter-spacing:.3em;padding-left:.3em}
+.band.dark{color:var(--graphite)}
+.strike{position:absolute;left:8%;right:8%;top:48%;height:14px;background:var(--red);transform-origin:0 50%}
+#cap{position:absolute;left:90px;right:90px;z-index:50;text-align:center;font:800 84px/1.02 BC;color:var(--bone);text-transform:uppercase;
+ -webkit-text-stroke:13px #000;paint-order:stroke fill;letter-spacing:.01em}
+#cap span{display:inline-block;padding:0 .08em;margin:0 .05em;border-radius:.08em}
+#cap span.on{color:#fff;background:var(--red);-webkit-text-stroke:0;box-shadow:0 0 0 6px #000}
+#grain{z-index:70;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='256' height='256' filter='url(%23n)'/></svg>")}
+.mono{font-family:GM;font-weight:500;letter-spacing:.1em}
+</style></head><body>
+<div id="bg" class="L"><div class="hook"></div><div class="ink"></div><div class="paper"></div><div class="black"></div></div>
+<div id="frame"><img id="fimg"></div>
+<img id="cut">
+<div id="cues"></div>
+<div id="cap"></div>
+<div id="grain" class="L"></div>
+<script>
+const GEO = {full: {x: 0, y: 0, w: 1080, h: 1920, r: 0}, f45: {x: 40, y: 360, w: 1000, h: 1250, r: 36},
+             split: {x: 0, y: 960, w: 1080, h: 960, r: 0}, none: {x: 540, y: 1180, w: 0, h: 0, r: 0}};
+const CAPY = {full: 1330, f45: 1420, split: 1500, none: 1500};
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const eo = u => 1 - Math.pow(1 - u, 3);
+const eio = u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+const back = u => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(u - 1, 3) + c1 * Math.pow(u - 1, 2); };
+const prog = (t, t0, d) => clamp((t - t0) / d, 0, 1);
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const pad = n => String(n).padStart(5, '0');
+const $ = s => document.querySelector(s);
+let TL, CUES = [];
+
+function setImg(el, src) {
+  if (el.dataset.s === src) return Promise.resolve();
+  el.dataset.s = src; el.src = src;
+  return el.decode().catch(() => {});
+}
+function el(html, cls, css) { const d = document.createElement('div'); d.className = 'cue ' + (cls || ''); d.innerHTML = html || ''; if (css) d.style.cssText += css; $('#cues').appendChild(d); return d; }
+function slamT(t, t0, from = 1.25, d = .14) { const u = prog(t, t0, d); return from - (from - 1) * back(u); }
+function shake(t, t0, amp = 10, d = .3) { const a = amp * Math.max(0, 1 - (t - t0 - .1) / d); return [a * Math.sin(t * 97), a * Math.cos(t * 83)]; }
+
+// ---------------------------------------------------------------- cue types
+const K = {
+  speed: {
+    make(c) { const d = el('<canvas width=1080 height=1920></canvas>', '', 'inset:0'); return d; },
+    upd(d, c, t, x) { const cv = d.firstChild, g = cv.getContext('2d'); g.clearRect(0, 0, 1080, 1920);
+      const R = rng(x.k * 7 + 3), cx = 540, cy = c.light ? 900 : 760;
+      for (let i = 0; i < (c.light ? 120 : 200); i++) { const a = R() * Math.PI * 2, w = .003 + R() * .011, r0 = (c.light ? 520 : 380) + R() * 260;
+        g.fillStyle = c.light ? `rgba(255,255,255,${.25 + R() * .45})` : `rgba(245,243,238,${.25 + R() * .5})`; g.beginPath();
+        g.moveTo(cx + Math.cos(a) * r0, cy + Math.sin(a) * r0);
+        g.lineTo(cx + Math.cos(a - w) * 2400, cy + Math.sin(a - w) * 2400); g.lineTo(cx + Math.cos(a + w) * 2400, cy + Math.sin(a + w) * 2400); g.fill(); } } },
+  big: {
+    make(c) { const sh = c.shadow ? `text-shadow:${c.size * .035}px ${c.size * .035}px 0 #E8231C,${c.size * .07}px ${c.size * .07}px 0 #000;` : '';
+      return el(`<div style="font:900 italic ${c.size}px/.84 BC;color:${c.color};letter-spacing:-.01em;${sh}">${c.html}</div>`, '', `left:0;right:0;top:${c.y}px;text-align:center`); },
+    upd(d, c, t) { const s = slamT(t, c.t0), [dx, dy] = shake(t, c.t0, 9);
+      d.style.transform = `translate(${dx}px,${dy}px) rotate(${c.rot || 0}deg) scale(${s})`; d.style.opacity = prog(t, c.t0, .04); } },
+  stamp: {
+    make(c) { return el(`<span class="stamp">${c.text}</span>`, '', `left:0;right:0;top:${c.y}px;text-align:center;font-size:${c.size}px`); },
+    upd(d, c, t) { const s = slamT(t, c.t0, 1.9, .11), [dx, dy] = shake(t, c.t0, 12);
+      d.style.transform = `translate(${dx}px,${dy}px) rotate(${c.rot}deg) scale(${s})`; d.style.opacity = prog(t, c.t0, .03); } },
+  tag: {
+    make(c) { return el(c.text, 'mono', `left:0;right:0;top:${c.y}px;text-align:center;font-size:30px;color:#F5F3EE;opacity:.85;letter-spacing:.18em`); },
+    upd() {} },
+  week: {
+    make(c) { return el(`<div class="wk mono" style="font-size:28px;letter-spacing:.2em">WEEK 01 <span style="opacity:.6">OF 52</span></div>
+      <div style="width:320px;height:6px;margin:12px auto 0;background:rgba(128,128,128,.35);border-radius:3px;overflow:hidden"><i style="display:block;height:100%;width:1.92%;background:#E8231C"></i></div>`, '',
+      'left:0;right:0;top:92px;text-align:center;color:#E8231C'); },
+    upd(d, c, t, x) { const hid = (c.hide || []).some(([a, b]) => a <= t && t < b); d.style.display = (x.geo.name === 'f45' && x.geo.u >= 1 && !hid) ? 'block' : 'none'; } },
+  band: {
+    make(c) { let html = c.html;
+      if (c.steps) html = c.html.split('|').map((p, i) => `<span class="st" data-i="${i}">${p}</span>`).join(' &nbsp; ');
+      const d = el(`<div class="bi" style="position:relative;display:inline-block">${html}${c.strike ? '<div class="strike"></div>' : ''}</div>`, 'band ' + c.style);
+      return d; },
+    upd(d, c, t, x) { d.classList.toggle('dark', x.bg === 'paper'); const bi = d.firstChild;
+      if (c.style === 'serif') { const u = eo(prog(t, c.t0, .3)); bi.style.opacity = u; bi.style.transform = `translateY(${(1 - u) * 24}px)`; }
+      else if (c.steps) { d.querySelectorAll('.st').forEach((s, i) => { const u = prog(t, c.steps[i], .12); s.style.opacity = u; s.style.display = 'inline-block'; s.style.transform = `scale(${1.3 - .3 * u})`; }); }
+      else { const u = eo(prog(t, c.t0, .22)); bi.style.clipPath = `inset(-20% ${100 - u * 100}% -20% -5%)`; }
+      if (c.strike) d.querySelector('.strike').style.transform = `scaleX(${eo(prog(t, c.strike + .1, .16))})`;
+      if (c.jitter) { const R = rng(x.k * 13); bi.style.transform = `rotate(${(R() - .5) * 7}deg) translate(${(R() - .5) * 18}px,${(R() - .5) * 10}px)`; } } },
+  typer: {
+    make(c) { return el(c.lines.map(l => `<div class="tl" style="position:relative;white-space:nowrap">${l.html.replace('<span class=circ>', '<span class=circ style="position:relative;display:inline-block">').replace('</span>', '<svg viewBox="0 0 400 110" preserveAspectRatio="none" style="position:absolute;left:-9%;top:-22%;width:118%;height:150%;overflow:visible"><path pathLength="1" d="M14 58 C 16 12, 386 2, 392 48 C 398 92, 60 108, 18 76 C 2 62, 24 30, 80 22" fill="none" stroke="#D9372B" stroke-width="7" stroke-linecap="round" stroke-dasharray="1" stroke-dashoffset="1"/></svg></span>')}</div>`).join(''),
+        '', 'left:80px;right:60px;bottom:1585px;font:500 60px/1.22 GS;color:#1D1C1A;letter-spacing:-.01em'); },
+    upd(d, c, t) { d.querySelectorAll('.tl').forEach((l, i) => { const L = c.lines[i], n = l.textContent.length;
+        const p = Math.floor(prog(t, L.t0, Math.max(.25, L.t1 - L.t0)) * n) / n; l.style.clipPath = `inset(-40% ${100 - p * 100}% -40% -2%)`;
+        const path = l.querySelector('path'); if (path) path.setAttribute('stroke-dashoffset', 1 - eo(prog(t, L.circ, .38))); }); } },
+  pass: {
+    make(c) { return el(`<div style="width:900px;background:#F5F3EE;border-radius:34px;padding:34px 44px 30px;box-shadow:0 30px 70px rgba(0,0,0,.45);color:#1D1C1A;position:relative;overflow:hidden">
+      <div class="mono" style="display:flex;justify-content:space-between;font-size:26px;color:#6B675F"><span>BOARDING PASS</span><span>WEEK 01</span></div>
+      <div style="display:flex;gap:60px;margin-top:22px"><div><div class="mono" style="font-size:22px;color:#8a857b">PASSENGER</div><div style="font:900 italic 70px/1 BC">VISH</div></div>
+      <div><div class="mono" style="font-size:22px;color:#8a857b">STATUS</div><div style="font:900 italic 70px/1 BC">BOOKED</div></div></div>
+      <div class="mono" style="font-size:22px;color:#8a857b;margin-top:22px">TO</div><div style="font:900 italic 150px/.9 BC;color:#E8231C">SRI LANKA &#9992;</div>
+      <div style="height:70px;margin-top:22px;background:repeating-linear-gradient(90deg,#1D1C1A 0 4px,transparent 4px 9px,#1D1C1A 9px 15px,transparent 15px 18px,#1D1C1A 18px 20px,transparent 20px 27px)"></div>
+      <div class="ps" style="position:absolute;right:40px;top:120px;font-size:96px;transform:rotate(-12deg)"><span class="stamp">GO.</span></div></div>`, '', 'left:90px;top:1060px'); },
+    upd(d, c, t) { const u = eo(prog(t, c.t0, .3)); d.style.transform = `translateY(${(1 - u) * 900}px) rotate(${-3 + (1 - u) * 6}deg)`;
+      const ps = d.querySelector('.ps'); ps.style.opacity = prog(t, c.stamp_t, .03); ps.style.transform = `rotate(-12deg) scale(${slamT(t, c.stamp_t, 2, .12)})`; } },
+  plane: {
+    make(c) { return el(`<div class="trail" style="position:absolute;left:0;top:44px;height:0;border-top:6px dashed rgba(255,255,255,.9)"></div>
+      <svg class="pl" width="120" height="90" viewBox="0 0 24 18" style="position:absolute;top:0"><path fill="#fff" d="M23 8.2c0-.9-.7-1.4-1.6-1.4h-6L10 0H7.6l3 6.8H4.8L3 4.6H1l1.2 4.4L1 13.4h2l1.8-2.2h5.8L7.6 18H10l5.4-6.8h6c.9 0 1.6-.5 1.6-1.4z"/></svg>`, '', 'left:0;top:560px;width:1080px;height:100px'); },
+    upd(d, c, t) { const u = eio(prog(t, c.t0, c.t1 - c.t0)), x = -160 + u * 1360;
+      d.querySelector('.pl').style.left = x + 'px'; d.querySelector('.trail').style.width = Math.max(0, x + 20) + 'px'; } },
+  age: {
+    make(c) { return el(`<div class="mono" style="font-size:28px;color:#F5F3EE">AGE</div><div class="n" style="font:900 italic 190px/.85 BC;color:#F5F3EE;text-shadow:6px 6px 0 #E8231C"></div>`, '', 'left:90px;top:1300px'); },
+    upd(d, c, t) { d.querySelector('.n').textContent = String(Math.round(1 + 26 * eio(prog(t, c.t0, (c.t1 - c.t0) * .9)))).padStart(2, '0'); } },
+  rec: {
+    make(c) { return el(`<span class="dot" style="display:inline-block;width:26px;height:26px;border-radius:50%;background:#E8231C;margin-right:14px;vertical-align:-3px"></span>REC &nbsp;VIDEO 001`, 'mono', 'left:86px;top:396px;font-size:30px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)'); },
+    upd(d, c, t) { d.querySelector('.dot').style.opacity = (Math.floor(t * 2.5) % 2) ? .25 : 1; } },
+  wall: {
+    make(c) { const ph = [[40, 520, -9], [500, 560, 7], [150, 700, 3], [450, 760, -5]].map(([x, y, r], i) =>
+        `<img class="ph" src="../assets/rejections/img_864${4 + i}.jpg" style="position:absolute;left:${x}px;top:${y}px;width:560px;border-radius:40px;border:12px solid #111;box-shadow:0 30px 60px rgba(0,0,0,.35);transform:rotate(${r}deg)" data-r="${r}">`).join('');
+      return el(`<div class="paperbg" style="position:absolute;inset:0"></div>${ph}
+        <div style="position:absolute;left:0;right:0;top:130px;text-align:center"><div class="cnt" style="font:900 italic 330px/.85 BC;color:#E8231C;text-shadow:10px 10px 0 #1D1C1A"></div>
+        <div class="mono" style="font-size:40px;color:#1D1C1A;margin-top:6px">JOB REJECTIONS</div></div>
+        <div class="us" style="position:absolute;left:0;right:0;top:1330px;text-align:center;font-size:150px"><span class="stamp" style="background:rgba(242,240,234,.86)">UNFORTUNATELY</span></div>`, '', 'inset:0'); },
+    upd(d, c, t) { d.querySelector('.cnt').textContent = Math.round(220 * eo(prog(t, c.count_t, c.count_d)));
+      d.querySelectorAll('.ph').forEach((p, i) => { const t0 = c.count_t + i * .17, u = prog(t, t0, .02); p.style.opacity = u;
+        p.style.transform = `rotate(${p.dataset.r}deg) scale(${slamT(t, t0, 1.35, .12)})`; });
+      const us = d.querySelector('.us'); us.style.opacity = prog(t, c.stamp_t, .03); const [dx, dy] = shake(t, c.stamp_t, 14);
+      us.style.transform = `translate(${dx}px,${dy}px) rotate(-9deg) scale(${slamT(t, c.stamp_t, 1.9, .11)})`; } },
+  stats: {
+    make(c) { const rows = c.fills.map(([n, v, note], i) => `<div class="row" data-i="${i}" style="${v <= 1 ? 'color:#E8231C' : ''}">
+        <div style="display:flex;justify-content:space-between;font:500 27px GM;letter-spacing:.06em"><span>${n}</span><span class="val" style="opacity:.75">${note || v + '/10'}</span></div>
+        <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-top:7px">${Array.from({length: 10}, () => '<i style="height:17px;background:#2A2A2E;display:block"></i>').join('')}</div></div>`).join('');
+      return el(`<div style="border:6px solid #F5F3EE;background:#141417;padding:26px 34px 30px;box-shadow:12px 12px 0 #E8231C;color:#F5F3EE">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end"><div><div class="mono" style="font-size:26px;color:#9C978E">PLAYER</div>
+        <div style="font:900 italic 112px/.88 BC">VISH</div></div><div class="mono" style="font-size:28px;color:#E8231C;text-align:right">LVL 27<br>WEEK 01</div></div>
+        <div style="display:grid;gap:12px;margin-top:20px">${rows}</div>
+        <div class="mono" style="font-size:24px;color:#9C978E;margin-top:18px">MAIN QUEST: <span style="color:#F5F3EE">WORK REMOTELY + TRAVEL THE WORLD</span></div></div>`, '', 'left:56px;right:66px;top:118px'); },
+    upd(d, c, t) { const u0 = eo(prog(t, c.t0, .3)); d.style.transform = `translateY(${(1 - u0) * -60}px)`; d.style.opacity = u0;
+      d.querySelectorAll('.row').forEach((r, i) => { const [n, v, note, ft] = c.fills[i], weak = v <= 1;
+        if (weak) { const u = prog(t, ft, .12); r.style.opacity = u; r.style.transform = `translateX(${(1 - eo(u)) * 60}px)`; }
+        const lit = Math.round(v * eo(prog(t, ft, .35))), cells = r.querySelectorAll('i');
+        cells.forEach((q, j) => q.style.background = j < lit ? (weak ? '#E8231C' : '#F5F3EE') : '#2A2A2E');
+        r.querySelector('.val').style.opacity = t >= ft ? 1 : .35; }); } },
+  glitch: {
+    make(c) { return el(Array.from({length: 7}, () => '<i style="position:absolute;display:block;mix-blend-mode:screen"></i>').join(''), '', 'inset:0'); },
+    upd(d, c, t, x) { const R = rng(x.k * 31 + 5), g = x.geo;
+      d.querySelectorAll('i').forEach(q => { const on = R() < .55; q.style.display = on ? 'block' : 'none';
+        q.style.left = (g.x + R() * g.w * .3 - 40) + 'px'; q.style.top = (g.y + R() * g.h) + 'px'; q.style.width = (g.w * (.5 + R() * .7)) + 'px';
+        q.style.height = (6 + R() * 50) + 'px'; q.style.background = R() < .5 ? 'rgba(232,35,28,.55)' : 'rgba(0,220,255,.4)'; }); } },
+  serif: {
+    make(c) { return el(c.html, '', `left:0;right:0;top:${c.y}px;text-align:center;font:400 italic ${c.size}px/.95 NR;color:#FFF8EA;text-shadow:0 6px 40px rgba(0,0,0,.55)`); },
+    upd(d, c, t) { const u = eo(prog(t, c.t0 + .05, .35)), o = 1 - prog(t, c.t1 - .3, .3); d.style.opacity = u * o;
+      d.style.transform = `translateY(${(1 - u) * 40}px) scale(${1 + .04 * prog(t, c.t0, c.t1 - c.t0)})`; d.style.letterSpacing = `${(1 - u) * .06}em`; } },
+  flash: {
+    make(c) { return el('', '', 'inset:0;background:#fff'); },
+    upd(d, c, t) { d.style.opacity = 1 - prog(t, c.t0, c.t1 - c.t0); } },
+  plus: {
+    make(c) { return el(['+1 CONFIDENCE', '+1 DISCIPLINE', '+1 GERMAN', '+1 COURAGE', '+1 FOCUS'].map((s, i) =>
+      `<div class="p" style="position:absolute;white-space:nowrap;font:900 italic 64px/1 BC;color:#F5F3EE;background:#E8231C;padding:4px 16px 8px;transform-origin:0 50%">${s}</div>`).join(''), '', 'inset:0'); },
+    upd(d, c, t) { d.querySelectorAll('.p').forEach((p, i) => { const t0 = c.t0 + .3 + i * .42, u = prog(t, t0, .8);
+      p.style.display = (t >= t0 && u < 1) ? 'block' : 'none'; p.style.left = (i % 2 ? 520 : 110) + 'px'; p.style.top = (1180 - i * 40 - eo(u) * 160) + 'px';
+      p.style.opacity = 1 - prog(t, t0 + .55, .25); p.style.transform = `rotate(${i % 2 ? 4 : -4}deg) scale(${slamT(t, t0, 1.5, .12)})`; }); } },
+  weekstamp: {
+    make(c) { return el(`<div style="position:absolute;inset:0;background:rgba(5,5,5,.42)"></div>
+      <div class="ws" style="position:absolute;left:0;right:0;top:640px;text-align:center;font-size:270px"><span class="stamp">WEEK 1</span></div>
+      <div class="of mono" style="position:absolute;left:0;right:0;top:1000px;text-align:center;font-size:46px;color:#F5F3EE">OF 52</div>
+      <div class="bar" style="position:absolute;left:72px;right:72px;top:1090px;display:grid;grid-template-columns:repeat(52,1fr);gap:4px">${Array.from({length: 52}, (_, i) => `<i style="height:30px;display:block;border:2px solid rgba(245,243,238,.5)"></i>`).join('')}</div>`, '', 'inset:0'); },
+    upd(d, c, t) { const ws = d.querySelector('.ws'), [dx, dy] = shake(t, c.t0, 16); ws.style.transform = `translate(${dx}px,${dy}px) rotate(-8deg) scale(${slamT(t, c.t0, 2.1, .12)})`;
+      d.querySelector('.of').style.opacity = prog(t, c.t0 + .2, .1); const b = d.querySelector('.bar'); b.style.opacity = prog(t, c.t0 + .25, .1);
+      b.firstChild.style.background = prog(t, c.t0 + .45, .1) > .5 ? '#E8231C' : 'transparent'; b.firstChild.style.borderColor = '#E8231C'; } },
+  mail: {
+    make(c) { return el(`<img src="../assets/rejections/img_8646.jpg" style="width:560px;border-radius:40px;border:12px solid #111;box-shadow:0 30px 60px rgba(0,0,0,.5)">`, '', 'left:260px;top:430px'); },
+    upd(d, c, t) { d.style.transform = `rotate(-5deg) scale(${slamT(t, c.t0, 1.3, .1)})`; } },
+  label: {
+    make(c) { return el(c.text, '', 'left:70px;top:1440px;font:800 92px/1 BC;color:#F5F3EE;background:#E8231C;padding:8px 26px 12px;box-shadow:8px 8px 0 #000'); },
+    upd(d, c, t) { const u = eo(prog(t, c.t0, .12)); d.style.transform = `translateX(${(1 - u) * -500}px) rotate(-3deg)`; } },
+  cats: {
+    make(c) { return el(`<img class="ci" style="position:absolute;left:-177px;top:-361px;width:1476px">
+      <div style="position:absolute;left:150px;top:300px;font:400 italic 150px/1 NR;color:#D9372B">me</div>
+      <div style="position:absolute;right:140px;top:300px;font:400 italic 150px/1 NR;color:#D9372B">you</div>
+      <svg style="position:absolute;left:0;top:0" width="1080" height="1920"><g fill="none" stroke="#D9372B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+        <path class="a1" pathLength="1" stroke-dasharray="1" d="M245 470 C 236 530, 262 585, 318 625"/><path class="a2" pathLength="1" stroke-dasharray="1" d="M282 600 L 320 627 L 326 584"/>
+        <path class="a3" pathLength="1" stroke-dasharray="1" d="M845 470 C 856 530, 826 588, 770 628"/><path class="a4" pathLength="1" stroke-dasharray="1" d="M764 584 L 768 630 L 812 618"/></g></svg>
+      <div class="q" style="position:absolute;left:0;right:0;top:1250px;text-align:center;font:700 70px/1.15 GS;color:#1D1C1A">where are you<br><span style="background:#E8231C;color:#fff;padding:0 14px">starting from?</span></div>
+      <div class="mono" style="position:absolute;left:0;right:0;top:1460px;text-align:center;font-size:30px;color:#6B675F">WEEK 01 OF 52 &middot; @BUILDWITH.VISH</div>
+      <div class="mono" style="position:absolute;left:0;right:0;top:1515px;text-align:center;font-size:22px;color:#8a857b">cats: @meowtakeover</div>`, '', 'inset:0'); },
+    upd(d, c, t) { const i = clamp(Math.floor((t - c.t0) * TL.fps), 0, c.n - 1);
+      x_pending.push(setImg(d.querySelector('.ci'), `${c.dir}/${pad(i + 1)}.webp`));
+      ['a1', 'a2', 'a3', 'a4'].forEach((a, j) => d.querySelector('.' + a).setAttribute('stroke-dashoffset', 1 - eo(prog(t, c.t0 + .15 + (j % 2) * .18 + (j > 1 ? .12 : 0), .2))));
+      const q = d.querySelector('.q'), u = eo(prog(t, c.t0 + .5, .3)); q.style.opacity = u; q.style.transform = `translateY(${(1 - u) * 30}px)`; } },
+};
+
+let x_pending = [];
+
+function init(tl) {
+  TL = tl;
+  TL.geoms.sort((a, b) => a[0] - b[0]);
+  TL.cues.forEach(c => { const d = K[c.type].make(c); d.style.zIndex = c.z || 40; CUES.push([c, d]); });
+  return true;
+}
+
+function geoAt(t) {
+  let prev = 'full', cur = 'full', t0 = -1, dur = 0;
+  for (const [tk, name, d] of TL.geoms) { if (tk <= t) { prev = cur; cur = name; t0 = tk; dur = d; } }
+  const u = dur > 0 ? eio(prog(t, t0, dur)) : 1, A = GEO[prev], B = GEO[cur], g = {name: cur, u};
+  for (const k of ['x', 'y', 'w', 'h', 'r']) g[k] = A[k] + (B[k] - A[k]) * u;
+  if (cur === 'none' || (prev === 'none' && u < 1)) g.hide = true;
+  return g;
+}
+
+function zAt(it, t) {
+  if (!it.zk) return it.z || 1;
+  const [[a, z0], [b, z1]] = it.zk; return z0 + (z1 - z0) * eio(prog(t, a, Math.max(.01, b - a)));
+}
+
+async function render(t) {
+  x_pending = [];
+  const k = Math.round(t * TL.fps), x = {k, t};
+  // background
+  let bg = 'ink'; for (const [a, b, kind] of TL.bgs) if (a <= t && t < b) bg = kind;
+  x.bg = bg; document.querySelectorAll('#bg>div').forEach(d => d.style.display = d.className === bg ? 'block' : 'none');
+  // picture
+  const g = geoAt(t); x.geo = g;
+  let it = null; for (const i of TL.items) if (i.t0 <= t + 1e-6 && t < i.t1 - 1e-6) it = i;
+  const F = $('#frame'), FI = $('#fimg'), C = $('#cut');
+  F.style.display = 'none'; C.style.display = 'none';
+  if (it) {
+    const idx = clamp(Math.floor((t - it.t0) * TL.fps + 1e-4), 0, it.n - 1), z = zAt(it, t);
+    if (it.kind === 'cut') {
+      const [hx, hy] = it.track[Math.min(idx, it.track.length - 1)], S = 1.5 * z;
+      await setImg(C, `${it.dir}/cut/${pad(idx + 1)}.webp`);
+      C.style.display = 'block'; C.style.width = 1920 * S + 'px'; C.style.height = 1080 * S + 'px';
+      const top = Math.max(820 - hy * S, 1920 - 1080 * S + 10);
+      C.style.transform = `translate(${540 - hx * S}px,${top}px)`;
+    } else if (!g.hide && g.w > 2) {
+      await setImg(FI, `${it.dir}/${pad(idx + 1)}.jpg`);
+      F.style.display = 'block';
+      Object.assign(F.style, {left: g.x + 'px', top: g.y + 'px', width: g.w + 'px', height: g.h + 'px', borderRadius: g.r + 'px',
+        boxShadow: g.name === 'full' ? 'none' : (bg === 'paper' ? '0 24px 60px rgba(40,30,20,.28)' : '0 0 0 2px rgba(245,243,238,.10)')});
+      const iw = FI.naturalWidth || 1920, ih = FI.naturalHeight || 1080;
+      let sc, ox, oy;
+      if (it.kind === 'talk') {
+        const [hx, hy] = it.track[Math.min(idx, it.track.length - 1)];
+        let ch = ih / z, cw = ch * g.w / g.h; if (cw > iw) { cw = iw; ch = cw * g.h / g.w; }
+        const cx = clamp(hx, cw / 2, iw - cw / 2), cy = clamp(hy + ch * (.5 - .36), ch / 2, ih - ch / 2);
+        sc = g.w / cw; ox = -(cx - cw / 2) * sc; oy = -(cy - ch / 2) * sc;
+      } else {
+        const kz = it.kb ? it.kb[0] + (it.kb[1] - it.kb[0]) * prog(t, it.t0, it.t1 - it.t0) : 1;
+        sc = Math.max(g.w / iw, g.h / ih) * kz; ox = (g.w - iw * sc) / 2; oy = (g.h - ih * sc) / 2;
+      }
+      FI.style.width = iw + 'px'; FI.style.height = ih + 'px'; FI.style.transform = `translate(${ox}px,${oy}px) scale(${sc})`;
+    }
+  }
+  // graphics
+  for (const [c, d] of CUES) { const on = c.t0 <= t && t < c.t1; d.style.display = on ? 'block' : 'none'; if (on) K[c.type].upd(d, c, t, x); }
+  // captions
+  const cap = $('#cap'); let cc = null; for (const c of TL.caps) if (c.t0 <= t && t < c.t1) cc = c;
+  if (cc) { cap.style.display = 'block'; cap.style.top = (CAPY[g.name] || 1420) + 'px';
+    cap.innerHTML = cc.w.map(([w, a, b]) => `<span class="${a <= t && t < Math.max(b, a + .12) ? 'on' : ''}">${w}</span>`).join(' ');
+    const u = prog(t, cc.t0, .08); cap.style.transform = `scale(${1.08 - .08 * u})`; }
+  else cap.style.display = 'none';
+  // grain moves every frame
+  const R = rng(k + 99); $('#grain').style.backgroundPosition = `${Math.floor(R() * 256)}px ${Math.floor(R() * 256)}px`;
+  $('#grain').style.mixBlendMode = bg === 'paper' ? 'multiply' : 'overlay';
+  await Promise.all(x_pending);
+  return true;
+}
+</script>
+</body></html>

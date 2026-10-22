@@ -36,3 +36,5 @@ research/creators/teardown/**/*.jpg
 video-projects/**/broll/
 video-projects/**/music/
 research/creators/teardown/**/transcript.json
+# per-project media (music, SFX, private screenshots) stays local
+video-projects/**/assets/
