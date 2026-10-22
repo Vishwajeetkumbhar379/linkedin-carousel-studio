@@ -12,7 +12,6 @@ Raw footage, frames and renders stay in raw/ and work/ (gitignored). Comp page: 
 from __future__ import annotations
 
 import json
-import re
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -26,7 +25,8 @@ FR = W / "fr"
 FPS, SR = 30, 48000
 REPO = P.parents[1]
 sys.path.insert(0, str(REPO / "scripts" / "reel_edit"))
-from grade import LOOKS, HDR_TO_SDR, probe  # noqa: E402
+from grade import probe  # noqa: E402
+import film  # noqa: E402
 
 WORDS = json.loads((W / "intro_words.json").read_text())
 MUSIC = P / "assets" / "music" / "a-new-life.mp3"
@@ -162,24 +162,18 @@ def wt(tl: dict, lid: str, sub: str, end: bool = False, nth: int = 0) -> float:
     return m[nth]["t1" if end else "t0"]
 
 
-# ---------------------------------------------------------------- frame extraction
-def vf_chain(src: Path, look: str | None) -> str:
-    tr = probe(src).get("color_transfer", "")
-    pre = HDR_TO_SDR + "," if tr in ("arib-std-b67", "smpte2084") else ""
-    lk = re.sub(r",?noise=[^,]*", "", LOOKS[look]) + "," if look else ""
-    return pre + lk
+# ---------------------------------------------------------------- frame extraction + film grade
+# extract() only registers a job; run_jobs() does them in parallel: ffmpeg cut + film LUT, then per frame the matte
+# (speaker shots), the head track, and film.finish() (light pool, lens defocus, halation, diffusion).
+JOBS: list[dict] = []
+LUTS = W / "luts"
 
 
-def extract(src: Path, a: float, n: int, look: str | None, size: str, name: str, speed: float = 1.0) -> Path:
+def extract(src: Path, a: float, n: int, look: str | None, size: str, name: str, speed: float = 1.0,
+            matte: bool = False, cut: bool = False) -> Path:
     d = FR / name
-    if (d / "done").exists():
-        return d
-    d.mkdir(parents=True, exist_ok=True)
-    pts = f"setpts=PTS/{speed}," if speed != 1 else ""
-    vf = f"{pts}fps={FPS},{vf_chain(src, look)}scale={size}:flags=lanczos,format=yuvj420p"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{a:.3f}", "-i", str(src), "-vf", vf, "-frames:v", str(n),
-                    "-q:v", "3", str(d / "%05d.jpg")], check=True)
-    (d / "done").write_text(str(len(list(d.glob("*.jpg")))))
+    if not (d / "finished").exists() and not any(j["d"] == str(d) for j in JOBS):
+        JOBS.append(dict(src=str(src), a=a, n=n, look=look, size=size, d=str(d), speed=speed, matte=matte, cut=cut))
     return d
 
 
@@ -187,62 +181,90 @@ def count(d: Path) -> int:
     return len(list(d.glob("*.jpg")))
 
 
-def matte_track(d: Path, n: int, cut: bool) -> list:
-    """Robust Video Matting over the run's frames: head position per frame (+ RGBA cut-outs when asked)."""
-    tj = d / "track.json"
-    if tj.exists() and (not cut or (d / "cut").exists()):
-        return json.loads(tj.read_text())
+def run_job(j: dict) -> str:
     import cv2
-    import onnxruntime as ort
-    sess = ort.InferenceSession("/home/user/models/rvm_mobilenetv3_fp32.onnx", providers=["CPUExecutionProvider"])
-    rec = [np.zeros([1, 1, 1, 1], np.float32)] * 4
-    dr = np.array([0.4], np.float32)
-    if cut:
-        (d / "cut").mkdir(exist_ok=True)
-    out = []
-    files = sorted(d.glob("*.jpg"))[:n]
-    for i, f in enumerate([files[0], files[0]] + files):
-        bgr = cv2.imread(str(f))
-        h, w = bgr.shape[:2]
-        small = cv2.resize(bgr, (w // 2, h // 2), interpolation=cv2.INTER_AREA)
-        x = (small[:, :, ::-1].transpose(2, 0, 1)[None] / 255).astype(np.float32)
-        _, pha, *rec = sess.run(None, {"src": x, "r1i": rec[0], "r2i": rec[1], "r3i": rec[2], "r4i": rec[3], "downsample_ratio": dr})
-        if i < 2:
-            continue  # warm-up passes settle the recurrent state
-        al = pha[0, 0]
-        m = (al > 0.5).astype(np.uint8)
-        cnt, lab, st, _ = cv2.connectedComponentsWithStats(m)
-        if cnt > 1:
-            big = 1 + int(np.argmax(st[1:, cv2.CC_STAT_AREA]))
-            m = (lab == big)
-            ys = np.nonzero(m.any(1))[0]
-            top = ys[0]
-            hh = int(0.15 * m.shape[0])
-            band = m[top:top + hh]
-            yy, xx = np.nonzero(band)
-            out.append([float(xx.mean() * 2), float((top + min(hh, yy.max() + 1) / 2) * 2)])
-        else:
-            out.append(None)
-        if cut:
-            a = cv2.resize(np.clip(al, 0, 1), (w, h), interpolation=cv2.INTER_CUBIC)
-            a = cv2.GaussianBlur(cv2.erode(a, np.ones((5, 5), np.uint8)), (5, 5), 0)  # pull the edge in: no light halo from the wall
-            cv2.imwrite(str(d / "cut" / (f.stem + ".webp")), np.dstack([bgr, (a * 255).astype(np.uint8)]),
-                        [cv2.IMWRITE_WEBP_QUALITY, 86])
-    # fill gaps, smooth
-    xs = np.array([p[0] if p else np.nan for p in out])
-    ys = np.array([p[1] if p else np.nan for p in out])
-    for arr, dflt in ((xs, 960.0), (ys, 300.0)):
-        ok = ~np.isnan(arr)
-        if not ok.any():
-            arr[:] = dflt
-        else:
-            arr[~ok] = np.interp(np.nonzero(~ok)[0], np.nonzero(ok)[0], arr[ok])
     from scipy.ndimage import gaussian_filter1d
-    sig = 5 if cut else 9
-    xs, ys = gaussian_filter1d(xs, sig, mode="nearest"), gaussian_filter1d(ys, sig, mode="nearest")
-    tr = [[round(float(a), 1), round(float(b), 1)] for a, b in zip(xs, ys)]
-    tj.write_text(json.dumps(tr))
-    return tr
+    d, src, look = Path(j["d"]), Path(j["src"]), j["look"]
+    d.mkdir(parents=True, exist_ok=True)
+    if not (d / "done").exists():
+        pts = f"setpts=PTS/{j['speed']}," if j["speed"] != 1 else ""
+        grade = film.chain(src, look, LUTS) + "," if look else ""
+        vf = f"{pts}fps={FPS},{grade}scale={j['size']}:flags=lanczos,format=yuvj420p"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-threads", "2", "-ss", f"{j['a']:.3f}", "-i", str(src), "-vf", vf,
+                        "-frames:v", str(j["n"]), "-q:v", "2", str(d / "%05d.jpg")], check=True)
+        (d / "done").write_text("1")
+    files = sorted(d.glob("*.jpg"))
+    if look is None:
+        (d / "finished").write_text("1")
+        return str(d)
+    alphas, centers, track = [None] * len(files), [None] * len(files), []
+    if j["matte"]:
+        mt = film.Matte(threads=1)
+        first = cv2.imread(str(files[0]))
+        mt(first), mt(first)  # settle the recurrent state on the first frame
+        for i, f in enumerate(files):
+            al = mt(cv2.imread(str(f)))
+            alphas[i] = al.astype(np.float16)
+            centers[i] = film.pool_center(cv2.resize(al, (al.shape[1] // 2, al.shape[0] // 2)))
+            m = (al > 0.5).astype(np.uint8)
+            cnt, lab, st, _ = cv2.connectedComponentsWithStats(m)
+            if cnt > 1:
+                m = lab == 1 + int(np.argmax(st[1:, cv2.CC_STAT_AREA]))
+                top = np.nonzero(m.any(1))[0][0]
+                hh = int(0.15 * m.shape[0])
+                yy, xx = np.nonzero(m[top:top + hh])
+                track.append([float(xx.mean() * 2), float((top + min(hh, yy.max() + 1) / 2) * 2)])
+            else:
+                track.append(None)
+        # smooth the head track and the light pool over the shot (no breathing)
+        xs = np.array([p[0] if p else np.nan for p in track])
+        ys = np.array([p[1] if p else np.nan for p in track])
+        for arr, dflt in ((xs, 960.0), (ys, 300.0)):
+            ok = ~np.isnan(arr)
+            arr[~ok] = np.interp(np.nonzero(~ok)[0], np.nonzero(ok)[0], arr[ok]) if ok.any() else dflt
+        sig = 5 if j["cut"] else 9
+        xs, ys = gaussian_filter1d(xs, sig, mode="nearest"), gaussian_filter1d(ys, sig, mode="nearest")
+        (d / "track.json").write_text(json.dumps([[round(float(a), 1), round(float(b), 1)] for a, b in zip(xs, ys)]))
+        cs = gaussian_filter1d(np.array(centers, np.float64), 12, axis=0, mode="nearest")
+        centers = [tuple(c) for c in cs]
+    if j["cut"]:
+        (d / "cut").mkdir(exist_ok=True)
+    for i, f in enumerate(files):
+        bgr = cv2.imread(str(f))
+        al = alphas[i].astype(np.float32) if alphas[i] is not None else None
+        out = film.finish(bgr, look, al, centers[i])
+        cv2.imwrite(str(f), out, [cv2.IMWRITE_JPEG_QUALITY, 93])
+        if j["cut"]:  # the cut-out comes from the graded frame before any glow, with the wall's colour cleaned off the edge
+            h, w = bgr.shape[:2]
+            a = cv2.resize(np.clip(al, 0, 1), (w, h), interpolation=cv2.INTER_CUBIC)
+            a = np.clip((a - 0.1) / 0.9, 0, 1)  # drop the matte's faint tail
+            a = cv2.GaussianBlur(cv2.erode(a, np.ones((5, 5), np.uint8)), (5, 5), 0)
+            core = (a > 0.97).astype(np.float32)
+            fb = bgr.astype(np.float32)
+            wsum = cv2.GaussianBlur(core, (0, 0), 10)
+            fg = cv2.GaussianBlur(fb * core[..., None], (0, 0), 10) / np.maximum(wsum, 1e-4)[..., None]
+            fg = np.where((core[..., None] > 0) | (wsum[..., None] < 0.02), fb, fg)
+            cv2.imwrite(str(d / "cut" / (f.stem + ".webp")), np.dstack([np.clip(fg, 0, 255).astype(np.uint8), (a * 255).astype(np.uint8)]),
+                        [cv2.IMWRITE_WEBP_QUALITY, 88])
+    (d / "finished").write_text("1")
+    return str(d)
+
+
+def run_jobs(workers: int = 4) -> None:
+    import shutil
+    from concurrent.futures import ProcessPoolExecutor
+    if not JOBS:
+        return
+    if LUTS.exists():
+        shutil.rmtree(LUTS)
+    for look in film.LOOKS:
+        film.write_lut(look, LUTS / f"film-{look}.cube")
+    jobs = sorted(JOBS, key=lambda j: -j["n"] * (3 if j["matte"] else 1))
+    print(f"grading {len(jobs)} shots ({sum(j['n'] for j in jobs)} frames) on {workers} workers", flush=True)
+    with ProcessPoolExecutor(workers) as ex:
+        for k, d in enumerate(ex.map(run_job, jobs), 1):
+            print(f"  {k}/{len(jobs)} {Path(d).name}", flush=True)
+    JOBS.clear()
 
 
 def key_cats(n: int) -> Path:
@@ -250,7 +272,9 @@ def key_cats(n: int) -> Path:
     if (d / "cut").exists() and len(list((d / "cut").glob("*.webp"))) >= n:
         return d
     import cv2
-    src = extract(RAW / "intro" / "cats_snapgram.mp4", CATS[0], n, None, "720:1280", "cats")
+    src = FR / "cats"
+    run_job(dict(src=str(RAW / "intro" / "cats_snapgram.mp4"), a=CATS[0], n=n, look=None, size="720:1280", d=str(src), speed=1.0,
+                 matte=False, cut=False))
     (d / "cut").mkdir(exist_ok=True)
     for f in sorted(src.glob("*.jpg"))[:n]:
         bgr = cv2.imread(str(f))
@@ -282,14 +306,14 @@ def plan(tl: dict) -> dict:
         size = size or ("1080:-2" if h > w else "-2:1080")
         nm = name or f"b_{Path(rel).stem}_{src_in:.2f}_{n}_{speed}"
         d = extract(src, src_in, n, look, size, nm, speed)
-        items.append({"t0": round(t0, 4), "t1": round(t1, 4), "dir": str(d), "n": count(d), "kind": "broll", "geom": geom, "kb": kb})
+        items.append({"t0": round(t0, 4), "t1": round(t1, 4), "dir": str(d), "n": n, "kind": "broll", "geom": geom, "kb": kb})
 
     # talking runs
     for r in tl["runs"]:
         n = round((r["b"] - r["a"] + r["hold"]) * FPS)  # the picture holds through a designed pause
-        d = extract(RAW / "intro" / f"{r['clip']}.MOV", r["a"], n, r["look"], "1920:1080", f"t_{r['clip']}_{r['a']:.3f}_{n}")
-        n = count(d)
-        tr = matte_track(d, n, cut=r["lay"] == "cut")
+        d = extract(RAW / "intro" / f"{r['clip']}.MOV", r["a"], n, r["look"], "1920:1080", f"t_{r['clip']}_{r['a']:.3f}_{n}",
+                    matte=True, cut=r["lay"] == "cut")
+        tr = None  # filled in after the grade jobs run
         z = 1.0 if r["k"] % 2 == 0 else 1.13  # alternate framing on jump cuts
         items.append({"t0": round(r["t0"], 4), "t1": round(r["t1"] + r["hold"], 4), "dir": str(d), "n": n, "kind": "cut" if r["lay"] == "cut" else "talk",
                       "geom": {"cut": "full", "full": "full", "45": "f45", "split": "split"}[r["lay"]], "track": tr, "z": z})
@@ -442,9 +466,8 @@ def plan(tl: dict) -> dict:
     # come with me + the dance + the cats
     band(T("e1", "come"), L["e1"]["t1"], "COME<br><span class=r>WITH ME.</span>", style="bc")
     d0, d1 = tl["dance"]
-    dd = extract(RAW / "intro" / f"{DANCE[0]}.MOV", DANCE[1], round(DANCE[2] * FPS), "night", "1920:1080", "dance")
-    items.append({"t0": d0, "t1": d1, "dir": str(dd), "n": count(dd), "kind": "talk", "geom": "f45",
-                  "track": matte_track(dd, count(dd), False), "z": 1.0})
+    dd = extract(RAW / "intro" / f"{DANCE[0]}.MOV", DANCE[1], round(DANCE[2] * FPS), "night", "1920:1080", "dance", matte=True)
+    items.append({"t0": d0, "t1": d1, "dir": str(dd), "n": round(DANCE[2] * FPS), "kind": "talk", "geom": "f45", "track": None, "z": 1.0})
     band(d0, d1, "me, trying to<br><span class=r>max out dancing:</span>", style="bc")
     nocap += [[d0, tl["dur"]]]
     c0, c1 = tl["cats"]
@@ -477,6 +500,11 @@ def captions(tl: dict, nocap: list) -> list:
 def prep() -> dict:
     tl = build()
     pl = plan(tl)
+    run_jobs()
+    for it in pl["items"]:  # real frame counts and head tracks, now that the shots are graded
+        it["n"] = count(Path(it["dir"]))
+        if it["kind"] in ("talk", "cut"):
+            it["track"] = json.loads((Path(it["dir"]) / "track.json").read_text())
     pl["caps"] = captions(tl, pl["nocap"])
     pl["dur"] = tl["dur"]
     pl["fps"] = FPS

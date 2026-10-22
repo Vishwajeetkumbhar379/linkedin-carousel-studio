@@ -1,4 +1,7 @@
-"""Cinematic colour grade for Vish's iPhone footage (free, ffmpeg only).
+"""Quick colour looks for Vish's iPhone footage (free, ffmpeg only).
+
+For finished edits use film.py instead (film-print LUT, protected skin, one-lamp light falloff, lens defocus,
+halation, diffusion): these quick looks lean on saturation and warmth and read as phone footage (Vish, 22 Oct).
 
     python scripts/reel_edit/grade.py <in.mov> <out.mp4> [--look=night|day|soft] [--preview=out.jpg --at=10,40,70]
 
