@@ -13,6 +13,8 @@ Audience: marketers, founders and creators who work with creators or want brand 
 - Added by Vish, 21 to 22 Oct 2026, for the Instagram "Day 1" relaunch:
   - Age 27. Moved to Germany about a year ago; doesn't speak German; no friends or family there.
   - 5 years in social media and influencer marketing. Had a good job and quit it to do the master's.
+  - Roles: social media manager and influencer marketing manager; has made content before. The master's is not finished yet: say "finishing my master's", never "I have a master's" (until the thesis is in).
+  - Series premise (Vish, 22 Oct): "max out every stat and try everything possible" to work remotely while travelling. The breakup can be called "a good distraction", lightly.
   - Has taught yoga. Thesis on AI in marketing, due February 2027.
   - Job hunting in Germany, with many rejections (exact number to come from Vish).
   - A 2.5-year relationship ended in October 2026. Mention lightly, at most one line, never her name or details (Vish, 22 Oct).
