@@ -141,6 +141,7 @@ def snap(clip: str, A: float, B: float) -> tuple[float, float, list]:
 # out like a pro edit: a line gets a beat to land (LAND, seconds on screen), then the cut goes to LEAD before his next
 # word. Every jump cut is either under B-roll or gets a static punch-in.
 SPEED = 1.1
+CUT_DEAD_AIR = False  # Vish, 22 Oct: no cuts inside his takes; one steady speed, his own pauses
 PAUSE = 0.25        # the beat after an ordinary sentence
 INLINE = 0.18       # the beat at a pause inside a sentence
 LEAD = 0.10         # on screen before the next word after a cut
@@ -208,7 +209,7 @@ def build() -> dict:
             end, nxt = isl[k][1] + 0.06, isl[k + 1][0]
             boundary = isl[k][3] != isl[k + 1][2]
             land = LAND.get(isl[k][3], PAUSE) if boundary else INLINE
-            if nxt - end > (land + LEAD) * SPEED + 0.12:  # dead air: let it land, then cut to just before his next word
+            if CUT_DEAD_AIR and nxt - end > (land + LEAD) * SPEED + 0.12:  # dead air: land, then cut before his next word
                 keep.append([cur, min(nxt, end + land * SPEED)])
                 cur = max(keep[-1][1], nxt - LEAD * SPEED)
         keep.append([cur, sh["b"]])
@@ -777,50 +778,57 @@ def mix() -> Path:
     def T(lid, s, end=False):
         m = [w for w in words if w["line"] == lid and s.lower() in w["x"].lower()]
         return m[0]["t1" if end else "t0"]
+    # his voice: noise reduction, de-mud, presence, de-ess, gentle compression (one pass over the whole track)
+    import soundfile as sf
+    vin, vout = W / "voice_raw.wav", W / "voice_clean.wav"
+    sf.write(vin, voice, SR, subtype="FLOAT")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(vin), "-af",
+                    "highpass=f=75,arnndn=m=/home/user/models/rnnoise/sh.rnnn:mix=0.85,equalizer=f=220:t=q:w=1.0:g=-2.5,"
+                    "equalizer=f=3200:t=q:w=1.4:g=2.2,equalizer=f=110:t=q:w=0.9:g=1.2,deesser=i=0.35:m=0.5:f=0.5,"
+                    "acompressor=threshold=0.1:ratio=3:attack=8:release=140:makeup=1.6:knee=4,highshelf=f=10000:g=1.2",
+                    "-ar", str(SR), "-ac", "1", "-c:a", "pcm_f32le", str(vout)], check=True)
+    voice, _ = sf.read(vout, dtype="float32")
+    voice = np.pad(voice, (0, max(0, n - len(voice))))[:n]
+    # sound design: few, soft, faded in, made to sit under music
     fx = np.zeros(n, np.float32)
     def put(name, t, g, cut=None):
-        s = sfx(name)
+        s = sfx(name).copy()
         if cut:
-            s = s[: int(cut * SR)].copy()
-            s[-int(0.05 * SR):] *= np.linspace(1, 0, int(0.05 * SR))
+            s = s[: int(cut * SR)]
+            s[-int(0.08 * SR):] *= np.linspace(1, 0, int(0.08 * SR))
+        fi = int(0.03 * SR)
+        s[:fi] *= np.linspace(0, 1, fi)
         i = at(max(0, t))
         e = min(n, i + len(s))
         fx[i:e] += g * s[: e - i]
-    # sound design that sits under a song: soft clicks as words and cards land, air on picture changes, a few textures
-    for c in tl["cues"]:
-        if c["type"] == "title" and c["t0"] > 0.2:
-            put("type-soft", c["t0"] + 0.02, 0.22)
-    for it in tl["items"]:
-        if it["kind"] == "broll" and it.get("dx", 0.32) != 0.0:
-            put("whoosh-fast", it["t0"] - 0.18, 0.07)
-    put("airport-ding", T("h5", "booked") - 0.05, 0.12, 1.8)
-    put("jet-whoosh", T("h5", "to") - 0.4, 0.18, 2.4)
-    put("shutter-old", T("n1", "first"), 0.22)
-    put("paper-slide", L["c1"][0] - 0.05, 0.22)
-    put("pencil-scribble", T("c1", "confidence"), 0.10)
+    put("airport-ding", T("h5", "booked") - 0.05, 0.08, 1.8)
+    put("jet-whoosh", T("h5", "to") - 0.5, 0.12, 2.4)
     for k in range(4):
-        put("paper-slide", T("r1", "220") + k * 0.22, 0.16)
-    put("type-hit", T("r1", "rejections") + 0.2, 0.12)
-    for lid, s in (("s2", "social"), ("s3", "influencer"), ("s4", "yoga"), ("s5", "master")):
-        put("pop-light", T(lid, s) + 0.1, 0.12)
-    s5e = L["s5"][1]
-    for k in range(3):
-        put("pop-light", s5e + 0.1 + k * 0.35, 0.10)
+        put("paper-slide", T("r1", "220") + k * 0.22, 0.10)
+    for lid, s_ in (("s2", "social"), ("s3", "influencer"), ("s4", "yoga"), ("s5", "master")):
+        put("pop-light", T(lid, s_) + 0.1, 0.06)
     drop = T("l3", "travel") - 0.02
-    put("whoosh-rocket", drop - 0.45, 0.10, 0.9)
-    put("water-jump", drop + 0.3, 0.30)
-    for c in tl["cues"]:
-        if c["type"] == "chips":
-            for k in range(len(c["items"])):
-                put("pop-light", c["t0"] + k * c["step"], 0.10)
-    put("riser-drama", T("w1", "week") - 1.0, 0.06, 1.1)
-    put("type-bell", T("w1", "week") + 0.15, 0.14)
-    for lid in ("w3", "w4", "w5", "w6"):
-        put("type-soft", L[lid][0], 0.25)
-    put("whoosh-fast", tl["cats"][0] - 0.25, 0.18)
-    put("pop-light", tl["cats"][0] + 0.55, 0.12)
+    put("whoosh-rocket", drop - 0.5, 0.06, 0.9)
+    put("water-jump", drop + 0.3, 0.18)
+    put("type-bell", T("w1", "week") + 0.15, 0.08)
+    put("whoosh-fast", tl["cats"][0] - 0.3, 0.10)
+    # a quiet, serious bed under the hard part (Mixkit "Silent Descent", free licence), out at "But here's what I've got";
+    # the trending song and the cat song are laid in Instagram from there (out/post-kit timings)
+    bed = audio(P / "assets" / "music" / "silent-descent.mp3")
+    music = np.zeros(n, np.float32)
+    s1 = L["s1"][0]
+    m = min(len(bed), at(s1 + 1.5))
+    b = bed[:m].copy() * 0.9
+    k = int(0.8 * SR); b[:k] *= np.linspace(0, 1, k)
+    k = int(2.5 * SR); b[m - k:] *= np.linspace(1, 0, k)
+    music[:m] += b
+    from scipy.ndimage import uniform_filter1d
+    env = uniform_filter1d(np.abs(voice), int(0.05 * SR))
+    talk = uniform_filter1d((env > 0.01).astype(np.float32), int(0.35 * SR))
+    g = uniform_filter1d(1.0 - 0.6 * np.clip(talk * 1.6, 0, 1), int(0.12 * SR))
+    music *= g * 0.8
     end = at(tl["dur"])
-    out = (voice + 0.75 * fx)[: end]
+    out = (voice + fx + music)[: end]
     import soundfile as sf
     wav = W / "mix.wav"
     sf.write(wav, np.stack([out, out], 1), SR, subtype="FLOAT")
