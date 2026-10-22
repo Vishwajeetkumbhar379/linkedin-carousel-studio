@@ -494,6 +494,9 @@ def captions(tl: dict, nocap: list) -> list:
     for i, c in enumerate(caps):  # hold until the next chunk (max 0.4 s past the last word)
         nxt = caps[i + 1]["t0"] if i + 1 < len(caps) else c["t1"] + 0.4
         c["t1"] = round(min(nxt, c["t1"] + 0.4), 3)
+        for a, b in nocap:  # never hang over a full-screen graphic or a label
+            if c["t0"] < a < c["t1"]:
+                c["t1"] = round(a, 3)
     return caps
 
 
