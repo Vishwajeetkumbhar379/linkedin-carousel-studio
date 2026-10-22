@@ -16,7 +16,9 @@ Audience: marketers, founders and creators who work with creators or want brand 
   - Roles: social media manager and influencer marketing manager; has made content before. The master's is not finished yet: say "finishing my master's", never "I have a master's" (until the thesis is in).
   - Series premise (Vish, 22 Oct): "max out every stat and try everything possible" to work remotely while travelling. The breakup can be called "a good distraction", lightly.
   - Has taught yoga. Thesis on AI in marketing, due February 2027.
-  - Job hunting in Germany, with many rejections (exact number to come from Vish).
+  - Job hunting in Germany: 220 job rejections (Vish, 22 Oct 2026).
+  - 40k in debt (Vish, 22 Oct 2026; currency to confirm before showing it on screen).
+  - Gear: iPhone 13 Pro Max, iPad Air (2025/26).
   - A 2.5-year relationship ended in October 2026. Mention lightly, at most one line, never her name or details (Vish, 22 Oct).
   - Wanted to start content for years but lacked confidence and kept stopping; overthought the move and doubted it.
   - Travelled a lot before Germany. Goal: work remotely while travelling; "made it" = EUR 3,000 to 5,000 a month. Booked a flight to Sri Lanka (Oct 2026).

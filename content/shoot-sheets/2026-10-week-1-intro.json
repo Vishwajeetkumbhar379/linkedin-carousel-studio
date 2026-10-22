@@ -27,13 +27,13 @@
    "series": "Day N (documentary)",
    "format": "Intro, loud + soft",
    "length": "about 60 s (cut from what you say)",
-   "title_card": "NO GERMAN. NO JOB.",
-   "hook": "No German, / no job, // and I just *booked a flight*.",
+   "title_card": "BROKE UP. 40K IN DEBT. NO JOB.",
+   "hook": "Broke up. / 40k in debt. / No job. // And I booked a *flight*.",
    "hook_alts": [
-    "No German. No job offers. And I just booked a flight.",
-    "I always wanted to do this. I never had the confidence.",
-    "I moved to a country where I don't speak the language.",
-    "I'm Vish, 27, and I never had the confidence to post this."
+    "Just went through a breakup, I'm 40k in debt, and I booked a flight.",
+    "40k in debt, no job, and I just booked a flight.",
+    "New country, can't speak the language, no job, and I booked a flight.",
+    "Hi, I'm Vish. I'm 27, single, 40k in debt, and this is my first video."
    ],
    "lines": [
     {
@@ -47,17 +47,17 @@
      "how": "(down) softer"
     },
     {
-     "say": "A year ago I quit my job / and moved to Germany. // Honestly, / I doubted my *whole life*.",
-     "see": "Your clips: walking alone, train window, staring at the laptop; small 1 YEAR AGO stamp"
+     "say": "A year ago I quit my job / and moved to Germany. / I don't even speak the language. // Honestly, / I doubted my *whole life*.",
+     "see": "Your clips: walking alone, train window, a German letter with the translate app; small 1 YEAR AGO stamp"
     },
     {
-     "say": "No friends here, / no family, / and every job I apply for says // \"*unfortunately*.\"",
-     "see": "Table for one, then your real rejection emails (names blurred), red UNFORTUNATELY stamps and a counter"
+     "say": "No friends here, / no family, / and *220* job rejections.",
+     "see": "Table for one, then your real rejection emails scrolling (names blurred), red UNFORTUNATELY stamps and a counter climbing to 220"
     },
     {
-     "say": "Oh, and my two-and-a-half-year relationship / just ended. // So yeah, / this is also a good *distraction*.",
-     "see": "One shot: the door closing. On 'distraction' a tiny smile, cut",
-     "how": "quick, understated, small smile at the end"
+     "say": "The breakup? // Honestly, / this is a good *distraction*.",
+     "see": "One shot: the door closing. On 'distraction' a small smile, cut",
+     "how": "light, small smile"
     },
     {
      "say": "But here's what I've got. / I've been a social media manager, / an influencer marketing manager, / I've made content, / I've taught yoga, / and I'm finishing my *master's*.",
@@ -95,7 +95,7 @@
      "how": "[smile]"
     }
    ],
-   "notes": "Facts from Vish (21 to 22 Oct 2026): social media manager, influencer marketing manager, made content before, master's (MBA) to finish with the thesis; 27; moved to Germany a year ago; no German, no friends or family here; job hunting with many rejections; 2.5-year relationship ended this week (one quiet line only); 5 years in influencer marketing, 850+ creator deals; taught yoga; thesis on AI in marketing ends Feb 2027; goal: earn remotely while travelling (made it = EUR 3,000 to 5,000 a month); flight booked, destination revealed in Week 1 part 2 (raw, 2 to 3 days later). Film all 5 hooks, then the full script start to finish 3 ways (deadpan, slower, long pauses), then lines 1 to 8 again as a close-mic voiceover. Lookbook: https://claude.ai/artifact/SK2dN2bbZzosbRMobG6eWw One clean full take also becomes a raw edit for TikTok. Weekly series: Week 1 of 52. Talk while packing your backpack (retention by action). Camera: Blackmagic Camera app or HDR off, 4K, 25 fps, 1/50, fixed white balance, ceiling light off, one lamp at 45 degrees. Say it your way: these are your own words from your voice notes. Change anything that doesn't sound like you; I cut the edit from what you actually say.",
+   "notes": "Facts from Vish (21 to 22 Oct 2026): social media manager, influencer marketing manager, made content before, master's (MBA) to finish with the thesis; 27; moved to Germany a year ago; no German, no friends or family here; job hunting with many rejections; 2.5-year relationship ended this week (one quiet line only); 5 years in influencer marketing, 850+ creator deals; taught yoga; thesis on AI in marketing ends Feb 2027; goal: earn remotely while travelling (made it = EUR 3,000 to 5,000 a month); flight booked, destination revealed in Week 1 part 2 (raw, 2 to 3 days later). Film all 5 hooks, then the full script start to finish 3 ways (deadpan, slower, long pauses), then lines 1 to 8 again as a close-mic voiceover. Lookbook: https://claude.ai/artifact/SK2dN2bbZzosbRMobG6eWw One clean full take also becomes a raw edit for TikTok. Weekly series: Week 1 of 52. Talk while packing your backpack (retention by action). Camera: Blackmagic Camera app or HDR off, 4K, 25 fps, 1/50, fixed white balance, ceiling light off, one lamp at 45 degrees. Say it your way: these are your own words from your voice notes. Change anything that doesn't sound like you; I cut the edit from what you actually say. Hook widened (Vish, 22 Oct) so anyone relates, not just people in Germany. 220 job rejections (Vish, 22 Oct). 40k debt: currency to confirm before it goes on screen. Camera: iPhone 13 Pro Max rear camera, 4K 25 fps, HDR off; iPad Air as teleprompter or wide second angle.",
    "broll": [
     "The walk: tripod at chest height on a street or park path, walk straight away for 8 to 10 s, don't look back (3 takes)",
     "Phone with the booking screen pushed fast at the lens (3 takes)",
