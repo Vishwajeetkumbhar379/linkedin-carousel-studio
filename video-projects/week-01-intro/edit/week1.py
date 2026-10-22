@@ -60,7 +60,7 @@ LINES = [
     ("s2", "IMG_1585", [(1.7, 3.0)], {}, "split", "night", {"join": 1}),
     ("s3", "IMG_1585", [(3.4, 4.9)], {}, "split", "night", {"join": 1}),
     ("s4", "IMG_1585", [(5.8, 7.2)], {}, "split", "night", {"join": 1}),
-    ("s5", "IMG_1585", [(7.6, 9.3)], {}, "split", "night", {"join": 1, "gap": 1.2}),
+    ("s5", "IMG_1585", [(7.6, 9.3)], {}, "split", "night", {"join": 1, "gap": 0.3}),
     ("l1", "IMG_1586", [(0.0, 2.0)], {}, "45", "night", {}),
     ("l1b", "IMG_1586", [(2.4, 9.3)], {}, "45", "night", {"join": 1}),
     ("l2", "IMG_1586", [(10.1, 11.3)], {}, "45", "night", {"join": 1}),
@@ -75,9 +75,11 @@ LINES = [
     ("w5", "IMG_1593", [(10.3, 10.4)], {}, "45", "night", {"join": 1}),
     ("w6", "IMG_1593", [(11.3, 11.4)], {}, "45", "night", {"join": 1}),
     ("w7", "IMG_1593", [(12.6, 12.7)], {}, "45", "night", {"join": 1}),
-    ("e1", "IMG_1594", [(0.0, 2.8)], {}, "45", "night", {"until": 7.2}),  # the same take runs on into his dance
+    ("e1", "IMG_1594", [(0.0, 2.8)], {}, "45", "night", {}),
 ]
-CATS = (4.0, 3.6)  # cats clip in, seconds (two cats on screen from 3.5 s)
+DANCE = ("IMG_1594", 4.5, 6.5)  # his dance, arms out (he starts at 4.4 s and slows to a stop at 6.6 s)
+DANCE_IN = 1.0                   # seconds of him dancing before he shrinks into the cats
+CATS = (3.5, 3.6)                # cats clip in, seconds (two cats from 3.5 s); the cat song plays from DANCE start
 TAIL = 18          # extra frames on every shot, for dissolves into the next one
 
 
@@ -146,7 +148,7 @@ PAUSE = 0.25        # the beat after an ordinary sentence
 INLINE = 0.18       # the beat at a pause inside a sentence
 LEAD = 0.10         # on screen before the next word after a cut
 LAND = {"h4": .3, "h5": .3, "h6": .45, "n1": .35, "c1": .4, "g3": .55, "r2": .5, "r3": .6, "r4": .45,
-        "l1b": .35, "l2": .55, "m2": .45, "w1": .7, "w7": .4}
+        "l1b": .35, "l2": .55, "m2": .45, "w1": .7, "w7": .4, "e1": .35}
 
 
 def build() -> dict:
@@ -182,6 +184,7 @@ def build() -> dict:
             gap = round(max(0.0, min(LAND[lid], room, src_end)) * FPS) / FPS
         runs[-1]["hold"] = gap  # the picture (and the take) keeps running, at normal speed
         last = (clip, runs[-1]["b"]) if gap == 0 else None
+    runs.append({"line": "dance", "clip": DANCE[0], "a": DANCE[1], "b": DANCE[2], "lay": "45", "look": "night", "k": 0, "hold": 0.0})
     # pass 2: shots (continuous stretches of a take) and their time maps
     shots = []
     for r in runs:
@@ -242,6 +245,8 @@ def build() -> dict:
             r["t0"], r["t1"] = omap(sh, r["a"]), omap(sh, r["b"])
             if r["hold"]:
                 r["hold"] = sh["t0"] + sh["dur"] - r["t1"]
+            if r["line"] == "dance":
+                continue
             L = lines.setdefault(r["line"], {"t0": r["t0"], "runs": []})
             L["runs"].append((r["t0"], r["t1"]))
             L["t1"] = r["t1"]
@@ -250,10 +255,10 @@ def build() -> dict:
                 words.append({"line": w["line"], "x": w["x"], "t0": omap(sh, w["s0"]), "t1": omap(sh, w["s1"])})
     words.sort(key=lambda w: w["t0"])
     lines = {k: lines[k] for k in order}
-    e1 = lines["e1"]
-    dance = (e1["t1"], e1["t1"] + runs[-1]["hold"])
-    cats_t0 = t
-    t += CATS[1]
+    dr = runs[-1]
+    cats_t0 = dr["t0"] + DANCE_IN
+    dance = (dr["t0"], cats_t0)
+    t = cats_t0 + CATS[1]
     shots_out = [{"clip": sh["clip"], "a": sh["a"], "b": sh["b"] + sh["hold"], "t0": sh["t0"], "dur": sh["dur"], "segs": sh["segs"],
                   "look": sh["runs"][0]["look"], "cut": any(r["lay"] == "cut" for r in sh["runs"]),
                   "runs": [runs.index(r) for r in sh["runs"]]} for sh in shots]
@@ -430,7 +435,8 @@ def plan(tl: dict) -> dict:
         size = size or ("1080:-2" if h > w else "-2:1080")
         nm = name or f"b_{Path(rel).stem}_{src_in:.2f}_{n}_{speed}"
         d = extract(src, src_in, n, look, size, nm, speed)
-        items.append({"t0": round(t0, 4), "t1": round(t1, 4), "dir": str(d), "n": n, "kind": "broll", "geom": geom, "kb": kb, "fy": fy})
+        items.append({"t0": round(t0, 4), "t1": round(t1, 4), "dir": str(d), "n": n, "kind": "broll", "geom": geom, "kb": kb, "fy": fy,
+                      "src": str(src), "src_in": src_in, "speed": speed})
 
     # talking: one shot per continuous stretch of a take (graded, matted, framed and re-timed as one)
     for sh in tl["shots"]:
@@ -539,7 +545,8 @@ def plan(tl: dict) -> dict:
     cues.append({"type": "stats", "t0": L["s1"]["t0"] + 0.2, "t1": L["l1"]["t0"] + 0.1, "z": 40, "fills": [
         ["Social media", 8, "", T("s2", "social")], ["Influencer marketing", 9, "", T("s3", "influencer")],
         ["Yoga", 7, "", T("s4", "yoga")], ["Master's", 9, "thesis · Feb", T("s5", "master")],
-        ["German", 1, "1 / 10", s5e + 0.1], ["Job offers", 0, "0 of 220", s5e + 0.45], ["Remote income", 0, "0", s5e + 0.8]]})
+        ["German", 1, "1 / 10", T("s5", "master") + 0.25], ["Job offers", 0, "0 of 220", T("s5", "master") + 0.45],
+        ["Remote income", 0, "0", T("s5", "master") + 0.65]]})
     B(T("s4", "taught") - 0.03, L["s4"]["t1"], "travel/yoga/IMG_2362.MOV", 22.6, "split", kb=(1.0, 1.03))
     geoms.append([L["l1"]["t0"] - 0.1, "f45", 0.6])
 
@@ -607,7 +614,7 @@ def plan(tl: dict) -> dict:
     # come with me, the dance, the cats
     title(L["e1"]["t0"], L["e1"]["t1"] + 0.2, seq("e1", "So come with me / and join my *journey.*"), size=88, band=True)
     d0, d1 = tl["dance"]
-    title(d0 + 0.3, d1, html="<i>me, trying to max out<br>my dance stat:</i>", size=80, band=True)
+    title(d0 + 0.05, d1 + 0.3, html="<i>me, trying to max out<br>my dance stat:</i>", size=80, band=True)
     nocap += [[L["e1"]["t0"], tl["dur"]]]
     c0, c1 = tl["cats"]
     cd = key_cats(round(CATS[1] * FPS))
@@ -778,91 +785,114 @@ def mix() -> Path:
     def T(lid, s, end=False):
         m = [w for w in words if w["line"] == lid and s.lower() in w["x"].lower()]
         return m[0]["t1" if end else "t0"]
-    # his voice: noise reduction, de-mud, presence, de-ess, gentle compression (one pass over the whole track)
+    # his voice, clear and close: rumble out, light spectral denoise, less boxiness, presence and air, de-ess, even level
     import soundfile as sf
+    from scipy.ndimage import uniform_filter1d
     vin, vout = W / "voice_raw.wav", W / "voice_clean.wav"
     sf.write(vin, voice, SR, subtype="FLOAT")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(vin), "-af",
-                    "highpass=f=70,afftdn=nr=6:nf=-50,equalizer=f=230:t=q:w=1.0:g=-1.5,equalizer=f=3200:t=q:w=1.4:g=1.2,"
-                    "acompressor=threshold=0.12:ratio=2.2:attack=12:release=160:makeup=1.2:knee=6",
+                    "highpass=f=80,afftdn=nr=10:nf=-48:tn=1,equalizer=f=250:t=q:w=1.1:g=-3,equalizer=f=120:t=q:w=0.8:g=1.5,"
+                    "equalizer=f=3500:t=q:w=1.3:g=3,highshelf=f=9000:g=2,deesser=i=0.4:m=0.5:f=0.5,"
+                    "acompressor=threshold=0.08:ratio=3:attack=6:release=120:makeup=2:knee=4,alimiter=limit=0.9:level=disabled",
                     "-ar", str(SR), "-ac", "1", "-c:a", "pcm_f32le", str(vout)], check=True)
     voice, _ = sf.read(vout, dtype="float32")
     voice = np.pad(voice, (0, max(0, n - len(voice))))[:n]
-    # sound design: few, soft, faded in, made to sit under music
-    fx = np.zeros(n, np.float32)
-    def put(name, t, g, cut=None):
-        s = sfx(name).copy()
-        if cut:
-            s = s[: int(cut * SR)]
-            s[-int(0.08 * SR):] *= np.linspace(1, 0, int(0.08 * SR))
-        fi = int(0.03 * SR)
-        s[:fi] *= np.linspace(0, 1, fi)
-        i = at(max(0, t))
-        e = min(n, i + len(s))
-        fx[i:e] += g * s[: e - i]
-    put("airport-ding", T("h5", "booked") - 0.05, 0.08, 1.8)
-    put("jet-whoosh", T("h5", "to") - 0.5, 0.12, 2.4)
-    for k in range(4):
-        put("paper-slide", T("r1", "220") + k * 0.22, 0.10)
-    for lid, s_ in (("s2", "social"), ("s3", "influencer"), ("s4", "yoga"), ("s5", "master")):
-        put("pop-light", T(lid, s_) + 0.1, 0.06)
     drop = T("l3", "travel") - 0.02
-    put("whoosh-rocket", drop - 0.5, 0.06, 0.9)
-    put("water-jump", drop + 0.3, 0.18)
-    put("type-bell", T("w1", "week") + 0.15, 0.08)
-    put("whoosh-fast", tl["cats"][0] - 0.3, 0.10)
-    # music, Vish's pick (22 Oct): "Loser" (Tame Impala) from the start, low and muffled under the hard part, opening up
-    # at "But here's what I've got", its chorus landing on "travel the world"; then the cat song from his dance into the cats
-    SONG = P / "assets" / "music"
-    loser, cat = audio(SONG / "loser.wav"), audio(RAW / "intro" / "cats_snapgram.mp4")
+    mont1 = L["m1"][0]
+    dance0, cats0 = tl["dance"]
+
+    def ramp(points):  # piecewise-linear level curve from (time, value) points
+        xs, ys = zip(*points)
+        return np.interp(np.arange(n) / SR, xs, ys).astype(np.float32)
+
+    # music: "Loser" (Vish's pick) from the first frame, its chorus on "travel the world"; low-passed under the hard part
+    # and opening at "But here's what I've got"; held at ONE steady level under his voice (no pumping), up only for the
+    # travel montage; then the cat song from the moment he starts dancing, into the cats
+    loser, cat = audio(P / "assets" / "music" / "loser.wav"), audio(RAW / "intro" / "cats_snapgram.mp4")
     beat, b0, chorus = 0.71985, 0.222, 11.0
     bar = 4 * beat
     ch0 = b0 + round((chorus - b0) / beat) * beat
-    verse = loser[at(b0):at(b0 + 4 * bar)]
-    body = loser[at(b0):]
-    loop = loser[at(ch0):at(ch0 + 4 * bar)]
+    verse, body, loop = loser[at(b0):at(b0 + 4 * bar)], loser[at(b0):], loser[at(ch0):at(ch0 + 4 * bar)]
     xf = int(0.04 * SR)
     def join(a, b):
         a = a.copy()
         a[-xf:] = a[-xf:] * np.linspace(1, 0, xf) + b[:xf] * np.linspace(0, 1, xf)
         return np.concatenate([a, b[xf:]])
-    drop = T("l3", "travel") - 0.02
-    t = drop - (ch0 - b0)  # the clip starts here so its chorus hits "travel"
+    t = drop - (ch0 - b0)
     track = body
-    while t > 0:  # bars of verse before it, back to the first frame
+    while t > 0:
         t -= 4 * bar
         track = join(verse, track)
-    dance0 = tl["dance"][0]
     while t + len(track) / SR < dance0 + 1.0:
         track = join(track, loop)
-    music = np.zeros(n, np.float32)
+    song = np.zeros(n, np.float32)
     i0 = at(t)
     x = track[max(0, -i0):]
     i0 = max(0, i0)
-    m = min(len(x), n - i0, at(dance0 + 0.4) - i0)
-    music[i0:i0 + m] = x[:m]
-    music[at(dance0 - 0.2):at(dance0 + 0.4)] *= np.linspace(1, 0, at(dance0 + 0.4) - at(dance0 - 0.2))
-    # muffled (low-passed) and quieter until "But here's what I've got", then it opens over two seconds
+    m = min(len(x), n - i0)
+    song[i0:i0 + m] = x[:m]
     from scipy.signal import butter, sosfiltfilt
     s1 = L["s1"][0]
-    dark = sosfiltfilt(butter(4, 700, "low", fs=SR, output="sos"), music).astype(np.float32)
+    dark = sosfiltfilt(butter(4, 800, "low", fs=SR, output="sos"), song).astype(np.float32)
     w = np.clip((np.arange(n) / SR - (s1 - 1.0)) / 2.0, 0, 1).astype(np.float32)
-    music = dark * (1 - w) * 0.75 + music * w
-    # the cat song, in sync with the cats on screen, already playing while he dances
-    c0 = at(tl["cats"][0] - CATS[0])
-    cs = cat[: n - c0].copy() * 0.6
-    k = int(0.25 * SR); cs[:k] *= np.linspace(0, 1, k)
-    music[c0:c0 + len(cs)] += cs
-    from scipy.ndimage import uniform_filter1d
-    env = uniform_filter1d(np.abs(voice), int(0.05 * SR))
-    talk = uniform_filter1d((env > 0.01).astype(np.float32), int(0.35 * SR))
-    g = 1.0 - 0.7 * np.clip(talk * 1.6, 0, 1)
-    t0_, t1_ = at(L["l2"][0] - 0.2), at(drop - 0.03)
-    g[t0_:t1_] *= 0.35  # a hush for "But one thing is sure," so the chorus lands
-    g = uniform_filter1d(g, int(0.12 * SR))
-    music *= g * 0.62
+    song = dark * (1 - w) + song * w
+    # level it: a slow loudness follower so the bed stays put, then the target curve
+    env = np.sqrt(uniform_filter1d(song ** 2, int(2.0 * SR))) + 1e-4
+    target = ramp([(0, 0.02), (drop - 0.3, 0.02), (drop + 0.4, 0.10), (mont1 - 0.6, 0.10), (mont1, 0.02),
+                   (dance0 - 0.3, 0.02), (dance0 + 0.05, 0.0), (999, 0.0)])
+    song *= uniform_filter1d(np.clip(target / env, 0, 6), int(1.0 * SR))
+    music = song
+    k = at(CATS[0] - DANCE_IN)  # the cat song, from his first dance step, in sync with the cats when they appear
+    cs = cat[k:k + n - at(dance0)].copy()
+    cs *= 0.11 / (np.sqrt(np.mean(cs ** 2)) + 1e-6)
+    f = int(0.12 * SR); cs[:f] *= np.linspace(0, 1, f)
+    music[at(dance0):at(dance0) + len(cs)] += cs
+
+    # the world's own sound: each B-roll clip's natural audio, low under him, fuller in the montage
+    amb = np.zeros(n, np.float32)
+    for it in tl["items"]:
+        if it["kind"] != "broll" or "childhood" in it.get("src", ""):
+            continue
+        a_ = audio(Path(it["src"]))
+        dur = it["t1"] - it["t0"]
+        x = a_[at(it["src_in"]):at(it["src_in"] + dur * it["speed"])].copy()
+        if it["speed"] != 1.0:
+            x = stretch(x, it["speed"], False)
+        x = x[: at(dur)]
+        if len(x) < 400:
+            continue
+        x *= 0.06 / (np.sqrt(np.mean(x ** 2)) + 1e-6)  # same level for every clip
+        f = min(len(x) // 3, int(0.12 * SR)); x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f)
+        i = at(it["t0"])
+        amb[i:i + len(x)] += x[: max(0, n - i)]
+    amb *= ramp([(0, 0.35), (drop - 0.3, 0.35), (drop + 0.3, 1.0), (mont1 - 0.4, 1.0), (mont1, 0.35), (999, 0.35)])
+
+    # sound design: soft, faded in, on the real transitions only
+    fx = np.zeros(n, np.float32)
+    def put(name, t, g, cut=None, fin=0.04):
+        x = sfx(name).copy()
+        if cut:
+            x = x[: int(cut * SR)]
+            x[-int(0.1 * SR):] *= np.linspace(1, 0, int(0.1 * SR))
+        fi = int(fin * SR); x[:fi] *= np.linspace(0, 1, fi)
+        i = at(max(0, t)); e = min(n, i + len(x))
+        fx[i:e] += g * x[: e - i]
+    for it in tl["items"]:
+        if it["kind"] == "broll" and it.get("dx", 0.32) >= 0.14 and it["t0"] > 1:
+            put("whoosh-fast", it["t0"] - 0.22, 0.05)
+    put("jet-whoosh", T("h5", "to") - 0.5, 0.08, 2.4, fin=0.3)
+    put("airport-ding", T("h5", "booked") - 0.05, 0.05, 1.8)
+    for k_ in range(4):
+        put("paper-slide", T("r1", "220") + k_ * 0.22, 0.07)
+    for lid, s_ in (("s2", "social"), ("s3", "influencer"), ("s4", "yoga"), ("s5", "master")):
+        put("pop-light", T(lid, s_) + 0.1, 0.04)
+    rs = sfx("riser-drama")
+    x = rs[-at(1.6):].copy(); x[:at(0.4)] *= np.linspace(0, 1, at(0.4))
+    i = at(drop - 1.6); fx[i:i + len(x)] += 0.05 * x[: n - i]
+    put("type-bell", T("w1", "week") + 0.15, 0.05)
+    put("whoosh-fast", cats0 - 0.25, 0.07)
     end = at(tl["dur"])
-    out = (voice + fx + music)[: end]
+    out = (voice + fx + music + amb)[: end]
     import soundfile as sf
     wav = W / "mix.wav"
     sf.write(wav, np.stack([out, out], 1), SR, subtype="FLOAT")
