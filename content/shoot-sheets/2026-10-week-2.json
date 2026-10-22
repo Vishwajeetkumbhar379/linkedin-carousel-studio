@@ -1,0 +1,138 @@
+{
+ "legend": {
+  "/": "short breath, about 0.3 s",
+  "//": "full stop, about 0.8 s, let it land",
+  "*word*": "stress this word",
+  "(up)": "lift energy",
+  "(down)": "slower and lower",
+  "[lens]": "lean in slightly, eyes on the lens",
+  "[point]": "point up at the graphic (Format A) or at the screen side (Format B)",
+  "[count]": "count on your fingers",
+  "[smile]": "small genuine smile",
+  "broll": "B-roll to film after the take (3 to 5 s each, no talking)"
+ },
+ "defaults": {
+  "pace": "aim for 190 to 210 words a minute inside a sentence (Kallaway runs 210 to 240); keep a short beat between lines, never a long one",
+  "energy": "7 out of 10: awake and warm, not a hype voice",
+  "framing": "chest up, a hand's width of space above your head, eyes on the lens",
+  "retake": "If you fluff a line, pause, then say the whole line again. The edit keeps the last take.",
+  "broll": "After the talking take, film the B-roll list on the same phone: 3 to 5 s each, steady, no talking, good light. Film your hands and screens more than your face. The edit cuts to one every few lines (research/creators/style-guide-2026-10-14.md).",
+  "angle": "Film the hook and the CTA a second time from a different angle (wide, standing, or side) so the edit can cut between angles like @justyn.ai."
+ },
+ "sheets": [
+  {
+   "week": "Week 2 of 52",
+   "key": "CLAUDE",
+   "series": "Ship Log",
+   "format": "B demo",
+   "length": "35 to 40 s",
+   "title_card": "AI EDITED MY LAST VIDEO",
+   "post": "Post 1 of week 2: within 1 to 4 days of Week 1 (it answers the 'how?' from the Week 1 caption)",
+   "hook": "My last video? / I didn't edit a *single* second. // Claude did.",
+   "hook_alts": [
+    "This reel took nine versions. // I didn't touch the timeline once.",
+    "I filmed it on my phone. // AI did the rest."
+   ],
+   "lines": [
+    {
+     "say": "I filmed it on my phone. / That's the only part I did.",
+     "see": "Your phone on the tripod, pressing record (B-roll)"
+    },
+    {
+     "say": "Whisper wrote down every word / with the exact timings.",
+     "see": "Screen recording: the transcript with word timings scrolling"
+    },
+    {
+     "say": "Then Claude picked my takes, / graded it like film / and cut me out of my room.",
+     "see": "Before / after grade wipe, then the cut-out matte reveal",
+     "how": "[point]"
+    },
+    {
+     "say": "It even did the sound. // Every click, / and every time the music stops.",
+     "see": "Waveform with the sound markers popping on; the silent beat goes flat"
+    },
+    {
+     "say": "I just told it what I didn't like, / in normal words.",
+     "see": "Chat bubbles of your real feedback ('the music goes up and down, fix it')",
+     "how": "(down)"
+    },
+    {
+     "say": "Nine versions later, / I loved it.",
+     "see": "v1 to v9 thumbnails flipping, v9 lands",
+     "how": "[smile]"
+    },
+    {
+     "say": "Comment *CLAUDE* / and I'll send you every free tool I used.",
+     "see": "Comment bubble: CLAUDE",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "All true of the Week 1 edit (22 Oct 2026): v1 to v9, faster-whisper, FFmpeg, OpenCV, an open matting model, Kenney CC0 sounds, Microsoft Fluent 3D emoji (MIT), Claude. Claude is the one paid tool. Before posting: build the CLAUDE guide (8-section format) and add the keyword to lib/ig-autodm/config.json.",
+   "broll": [
+    "Phone on the tripod, pressing record",
+    "Laptop: the edit timeline / terminal running",
+    "Headphones on, nodding to the music",
+    "The Week 1 reel playing on your phone"
+   ]
+  },
+  {
+   "week": "Week 2 of 52",
+   "key": "WEEK2",
+   "cta": "Ask: which bet pays first? 1, 2 or 3",
+   "series": "Day N (documentary)",
+   "format": "A split",
+   "length": "35 to 40 s",
+   "title_card": "WEEK 2 OF 52: THE PLAN",
+   "post": "The main episode of week 2: about 7 days after Week 1",
+   "hook": "Week 2. / Remote income: still *zero*. // So here's my plan.",
+   "hook_alts": [
+    "220 companies said no. // So I'm building my own job.",
+    "I need 3,000 euros a month from anywhere. // Here's the plan."
+   ],
+   "lines": [
+    {
+     "say": "So last week I told you everything. / The debt, / no job, / 220 rejections.",
+     "see": "Week 1 stat cards flip by: 40K · no job · 0 of 220"
+    },
+    {
+     "say": "Honestly, / I'm done waiting / for a company to say *yes*.",
+     "see": "Rejection emails stack up, then slide off screen",
+     "how": "(down)"
+    },
+    {
+     "say": "For me, / making it is 3,000 euros a month, / from anywhere.",
+     "see": "Goal meter: 0 / 3,000 a month, the bar empty"
+    },
+    {
+     "say": "First: / brands. // I've done 850-plus creator deals / on the brand side, / and I can do that work *remotely*.",
+     "see": "Card 1: run creator campaigns for brands, remotely",
+     "how": "[count] one"
+    },
+    {
+     "say": "Second: / AI. // My last video? / Claude edited all of it. / And I can build that for other people.",
+     "see": "Card 2: AI workflows for marketing, with a clip of the Week 1 reel",
+     "how": "[count] two"
+    },
+    {
+     "say": "And third, / honestly, / it's this account. // I'll show you every week / if it's working.",
+     "see": "Card 3: this account, every week",
+     "how": "[count] three, then [lens]"
+    },
+    {
+     "say": "Which one pays first? // Comment *1*, *2* or *3*.",
+     "see": "The three cards numbered; comment bubble",
+     "how": "[smile]"
+    }
+   ],
+   "notes": "Facts only from brand-profile.md: 220 rejections, 850+ creator deals, made it = EUR 3,000 a month, Claude edited Week 1. If something real happened this week (a call, a first client, a no), swap it into line 2: real beats the plan. Currency: EUR is right for the goal; the 40K stays without a currency until you confirm it.",
+   "broll": [
+    "Scrolling the rejection emails on your phone (blur names)",
+    "Writing 3,000 / month on paper or a whiteboard",
+    "Laptop open at a café or your desk, typing",
+    "Walking outside, phone in hand (wide, no audio)",
+    "Yoga or a handstand attempt (the trials go on)"
+   ]
+  }
+ ],
+ "plan": "Week 2 of 52 (one filming session, three videos): 1) CLAUDE, Ship Log, post within 1 to 4 days of Week 1; 2) CHECK, Brand-Side (sheet in 2026-10-weeks-1-5.json), mid-week; 3) WEEK2, the main episode, about 7 days after Week 1."
+}
