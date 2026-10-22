@@ -18,7 +18,7 @@ Audience: marketers, founders and creators who work with creators or want brand 
   - A 2.5-year relationship ended in October 2026. Mention lightly, at most one line, never her name or details (Vish, 22 Oct).
   - Wanted to start content for years but lacked confidence and kept stopping; overthought the move and doubted it.
   - Travelled a lot before Germany. Goal: work remotely while travelling; "made it" = EUR 3,000 to 5,000 a month. Booked a flight to Sri Lanka (Oct 2026).
-- Instagram @buildwith.vish is now a documentary ("Day N" since Day 1): the remote-income journey, travel vlogs, fun, and useful AI and marketing posts (Vish, 22 Oct 2026).
+- Instagram @buildwith.vish is now a weekly documentary ("Week N of 52", one main episode a week; Vish, 22 Oct): the remote-income journey, travel vlogs, fun, and useful AI and marketing posts (Vish, 22 Oct 2026).
 
 ## Pillars (mix)
 P1 New AI drops, shown working (30%, Format B demo) · P2 AI employees for marketing (25%) · P3 Brand-side secrets (20%, Format A split) · P4 Content frameworks with AI (15%, Format A) · P5 Build in public (10%).

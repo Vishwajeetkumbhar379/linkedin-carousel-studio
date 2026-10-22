@@ -21,18 +21,18 @@
  },
  "sheets": [
   {
-   "week": "Day 1",
-   "key": "DAY1",
+   "week": "Week 1",
+   "key": "WEEK1",
    "cta": "Ask: where are you starting from?",
    "series": "Day N (documentary)",
    "format": "Intro, loud + soft",
-   "length": "about 45 s",
+   "length": "about 46 s",
    "title_card": "NO GERMAN. NO JOB OFFERS.",
    "hook": "No German. / No job offers. // And I just *booked a flight*.",
    "hook_alts": [
     "For years I wanted to do this. / I never had the confidence.",
     "I moved to a country / where I don't speak the language.",
-    "My life is all over the place, / and this is Day 1.",
+    "My life is all over the place, / and this is Week 1.",
     "I'm Vish, 27, / and I never had the confidence to post this."
    ],
    "lines": [
@@ -79,13 +79,13 @@
      "see": "Thesis over your shoulder, calendar flips to FEB 2027, a euro counter at 0"
     },
     {
-     "say": "I don't know how yet. // This is *Day 1*.",
-     "see": "Back in your room, same framing as the hook; red DAY 1 stamp",
-     "how": "[lens] deadpan"
+     "say": "I don't know how yet. // This is *Week 1*.",
+     "see": "You walk away from the camera down a street; the frame shrinks into a picture and you walk into it. Red WEEK 1 stamp",
+     "how": "[lens] deadpan (VO over the walk)"
     },
     {
-     "say": "I'll film all of it: / the work, / the travel, / the *fails*.",
-     "see": "Three 0.5 s flashes: laptop, plane window, you losing balance in a yoga pose",
+     "say": "Every week I'll show you / the work, / the travel, / the *fails*. // Steal whatever works.",
+     "see": "Three 0.5 s flashes: laptop, plane window, you losing balance in a yoga pose (keep one real blooper)",
      "how": "[count] [smile] on 'fails'"
     },
     {
@@ -94,8 +94,9 @@
      "how": "[smile]"
     }
    ],
-   "notes": "Facts from Vish (21 to 22 Oct 2026): 27; moved to Germany a year ago; no German, no friends or family here; job hunting with many rejections; 2.5-year relationship ended this week (one quiet line only); 5 years in influencer marketing, 850+ creator deals; taught yoga; thesis on AI in marketing ends Feb 2027; goal: earn remotely while travelling (made it = EUR 3,000 to 5,000 a month); flight booked, destination revealed in Day 2. Film all 5 hooks, then the full script start to finish 3 ways (deadpan, slower, long pauses), then lines 1 to 8 again as a close-mic voiceover. Lookbook: https://claude.ai/artifact/SK2dN2bbZzosbRMobG6eWw One clean full take also becomes a raw edit for TikTok.",
+   "notes": "Facts from Vish (21 to 22 Oct 2026): 27; moved to Germany a year ago; no German, no friends or family here; job hunting with many rejections; 2.5-year relationship ended this week (one quiet line only); 5 years in influencer marketing, 850+ creator deals; taught yoga; thesis on AI in marketing ends Feb 2027; goal: earn remotely while travelling (made it = EUR 3,000 to 5,000 a month); flight booked, destination revealed in Week 1 part 2 (raw, 2 to 3 days later). Film all 5 hooks, then the full script start to finish 3 ways (deadpan, slower, long pauses), then lines 1 to 8 again as a close-mic voiceover. Lookbook: https://claude.ai/artifact/SK2dN2bbZzosbRMobG6eWw One clean full take also becomes a raw edit for TikTok. Weekly series: Week 1 of 52. Talk while packing your backpack (retention by action). Camera: Blackmagic Camera app or HDR off, 4K, 25 fps, 1/50, fixed white balance, ceiling light off, one lamp at 45 degrees.",
    "broll": [
+    "The walk: tripod at chest height on a street or park path, walk straight away for 8 to 10 s, don't look back (3 takes)",
     "Phone with the booking screen pushed fast at the lens (3 takes)",
     "Hitting record, hesitating, putting the phone down (3 takes, 2 s)",
     "Squinting at a German letter, then the translate app over it (3 s)",
