@@ -29,6 +29,8 @@ def frame(v: Path, t: float, w: int = 240) -> Image.Image:
     r = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.3f}", "-i", str(v), "-frames:v", "1", "-vf", f"scale={w}:-2", "-f", "image2pipe", "-c:v", "png", "-"],
                        capture_output=True)
     from io import BytesIO
+    if not r.stdout and t > 0.2:  # past the last decodable frame: step back
+        return frame(v, t - 0.2, w)
     return Image.open(BytesIO(r.stdout)).convert("RGB")
 
 
