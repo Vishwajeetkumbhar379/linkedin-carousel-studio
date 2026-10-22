@@ -783,9 +783,8 @@ def mix() -> Path:
     vin, vout = W / "voice_raw.wav", W / "voice_clean.wav"
     sf.write(vin, voice, SR, subtype="FLOAT")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(vin), "-af",
-                    "highpass=f=75,arnndn=m=/home/user/models/rnnoise/sh.rnnn:mix=0.85,equalizer=f=220:t=q:w=1.0:g=-2.5,"
-                    "equalizer=f=3200:t=q:w=1.4:g=2.2,equalizer=f=110:t=q:w=0.9:g=1.2,deesser=i=0.35:m=0.5:f=0.5,"
-                    "acompressor=threshold=0.1:ratio=3:attack=8:release=140:makeup=1.6:knee=4,highshelf=f=10000:g=1.2",
+                    "highpass=f=70,afftdn=nr=6:nf=-50,equalizer=f=230:t=q:w=1.0:g=-1.5,equalizer=f=3200:t=q:w=1.4:g=1.2,"
+                    "acompressor=threshold=0.12:ratio=2.2:attack=12:release=160:makeup=1.2:knee=6",
                     "-ar", str(SR), "-ac", "1", "-c:a", "pcm_f32le", str(vout)], check=True)
     voice, _ = sf.read(vout, dtype="float32")
     voice = np.pad(voice, (0, max(0, n - len(voice))))[:n]
@@ -812,21 +811,56 @@ def mix() -> Path:
     put("water-jump", drop + 0.3, 0.18)
     put("type-bell", T("w1", "week") + 0.15, 0.08)
     put("whoosh-fast", tl["cats"][0] - 0.3, 0.10)
-    # a quiet, serious bed under the hard part (Mixkit "Silent Descent", free licence), out at "But here's what I've got";
-    # the trending song and the cat song are laid in Instagram from there (out/post-kit timings)
-    bed = audio(P / "assets" / "music" / "silent-descent.mp3")
+    # music, Vish's pick (22 Oct): "Loser" (Tame Impala) from the start, low and muffled under the hard part, opening up
+    # at "But here's what I've got", its chorus landing on "travel the world"; then the cat song from his dance into the cats
+    SONG = P / "assets" / "music"
+    loser, cat = audio(SONG / "loser.wav"), audio(RAW / "intro" / "cats_snapgram.mp4")
+    beat, b0, chorus = 0.71985, 0.222, 11.0
+    bar = 4 * beat
+    ch0 = b0 + round((chorus - b0) / beat) * beat
+    verse = loser[at(b0):at(b0 + 4 * bar)]
+    body = loser[at(b0):]
+    loop = loser[at(ch0):at(ch0 + 4 * bar)]
+    xf = int(0.04 * SR)
+    def join(a, b):
+        a = a.copy()
+        a[-xf:] = a[-xf:] * np.linspace(1, 0, xf) + b[:xf] * np.linspace(0, 1, xf)
+        return np.concatenate([a, b[xf:]])
+    drop = T("l3", "travel") - 0.02
+    t = drop - (ch0 - b0)  # the clip starts here so its chorus hits "travel"
+    track = body
+    while t > 0:  # bars of verse before it, back to the first frame
+        t -= 4 * bar
+        track = join(verse, track)
+    dance0 = tl["dance"][0]
+    while t + len(track) / SR < dance0 + 1.0:
+        track = join(track, loop)
     music = np.zeros(n, np.float32)
+    i0 = at(t)
+    x = track[max(0, -i0):]
+    i0 = max(0, i0)
+    m = min(len(x), n - i0, at(dance0 + 0.4) - i0)
+    music[i0:i0 + m] = x[:m]
+    music[at(dance0 - 0.2):at(dance0 + 0.4)] *= np.linspace(1, 0, at(dance0 + 0.4) - at(dance0 - 0.2))
+    # muffled (low-passed) and quieter until "But here's what I've got", then it opens over two seconds
+    from scipy.signal import butter, sosfiltfilt
     s1 = L["s1"][0]
-    m = min(len(bed), at(s1 + 1.5))
-    b = bed[:m].copy() * 0.9
-    k = int(0.8 * SR); b[:k] *= np.linspace(0, 1, k)
-    k = int(2.5 * SR); b[m - k:] *= np.linspace(1, 0, k)
-    music[:m] += b
+    dark = sosfiltfilt(butter(4, 700, "low", fs=SR, output="sos"), music).astype(np.float32)
+    w = np.clip((np.arange(n) / SR - (s1 - 1.0)) / 2.0, 0, 1).astype(np.float32)
+    music = dark * (1 - w) * 0.75 + music * w
+    # the cat song, in sync with the cats on screen, already playing while he dances
+    c0 = at(tl["cats"][0] - CATS[0])
+    cs = cat[: n - c0].copy() * 0.6
+    k = int(0.25 * SR); cs[:k] *= np.linspace(0, 1, k)
+    music[c0:c0 + len(cs)] += cs
     from scipy.ndimage import uniform_filter1d
     env = uniform_filter1d(np.abs(voice), int(0.05 * SR))
     talk = uniform_filter1d((env > 0.01).astype(np.float32), int(0.35 * SR))
-    g = uniform_filter1d(1.0 - 0.6 * np.clip(talk * 1.6, 0, 1), int(0.12 * SR))
-    music *= g * 0.8
+    g = 1.0 - 0.7 * np.clip(talk * 1.6, 0, 1)
+    t0_, t1_ = at(L["l2"][0] - 0.2), at(drop - 0.03)
+    g[t0_:t1_] *= 0.35  # a hush for "But one thing is sure," so the chorus lands
+    g = uniform_filter1d(g, int(0.12 * SR))
+    music *= g * 0.62
     end = at(tl["dur"])
     out = (voice + fx + music)[: end]
     import soundfile as sf
