@@ -81,4 +81,10 @@ Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame pr
 - **ElevenLabs credits (Vish, 22 Oct).**
   - Check the remaining credits (GET `/v1/user/subscription`: `character_count` vs `character_limit`) before and after every batch of generations, and report what was used.
   - Tell Vish the moment they run low (under about 10% left) or out. He has a second student account with roughly 80,000 to 90,000 credits and will swap in its key.
-  - Never switch keys or accounts yourself.
+  - Two keys, both environment secrets (Vish, 23 Oct):
+    - `ELEVENLABS_API_KEY` is the main account;
+    - `CLAUDEELEVENLABS_API` is the second student account (about 80,000 to 90,000 credits).
+  - Use the main key first. When its credits run low or a call fails for quota, switch to the second key with `ElevenLabs(api_key=os.environ["CLAUDEELEVENLABS_API"])` and tell Vish you switched.
+  - Never print, log or commit either key.
+  - The main key can't read the account (no `user_read` permission), so the credit balance isn't readable. Count the characters each TTS request bills (1 per character on `eleven_multilingual_v2`) and keep a running total.
+  - Used so far: 70 characters (the Week 1 "next week" line, George voice, 23 Oct).
