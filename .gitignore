@@ -40,3 +40,5 @@ research/creators/teardown/**/transcript.json
 video-projects/**/assets/
 # Local secrets written by `elevenlabs onboard`
 /.env.local
+products/
+out/**/slides.zip

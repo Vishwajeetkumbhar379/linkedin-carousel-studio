@@ -20,6 +20,7 @@ Exactly 3 feed posts a week, and they support each other:
 
 - **One theme per week.** The episode lives it, Carousel A teaches it, Carousel B adds the insider angle. Never repeat the same point twice in one week.
 - **Buckets (Kallaway's 3-2-1, adapted):** one broad bucket (the documentary: travel, remote income) and two narrow ones (AI workflows for creators and marketers; brand-side secrets). Re-check the numbers every 2 weeks, and triple down on the bucket that wins.
+- **Now:** the calendar for Weeks 2 to 5 is `content/calendar/2026-weeks-02-05.md`; the week's files and captions are in `content/instagram/week-NN-post-kit.md`; carousels use the series template `templates/carousel/week-series.css`.
 - **Production:** one filming session every 2 weeks (two episodes). Carousels are built from the episode's real work, so there's nothing extra to film. Weekly approval loop: Vish approves the week once.
 
 ## 3. Hooks and scripts

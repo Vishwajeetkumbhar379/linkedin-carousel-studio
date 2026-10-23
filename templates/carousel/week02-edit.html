@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/carousel/week-series.css">
+<!-- Week 2 of 52, Carousel A (Mon): how Claude edited the Week 1 reel. Keyword EDIT -> /resources/ai-edit-stack.
+     Every frame is from the posted Week 1 reel; every code line is from video-projects/week-01-intro. -->
+</head><body><div id="deck"></div>
+<script>
+const N = 10, A = "/carousel/assets/week02/";
+const top_ = (i) => `<div class="top"><span>Build with Vish · Week 02 of 52</span><span>${String(i).padStart(2, "0")} / ${N}</span></div>`;
+const dots = (i) => `<div class="dots">${Array.from({length: N}, (_, k) => `<i class="${k + 1 === i ? "on" : ""}"></i>`).join("")}</div><div class="handle">@buildwith.vish</div>`;
+const phone = (img, x, y, r = 0, w = 400) => `<div class="phone" style="left:${x}px;top:${y}px;width:${w}px;height:${Math.round(w * 16 / 9)}px;transform:rotate(${r}deg)"><img src="${A}${img}"></div>`;
+const S = [
+ // 1. hook
+ (i) => `${top_(i)}
+  <div class="h" style="top:150px;width:900px;font-size:128px">I didn't edit my intro reel. <em>Claude did.</em></div>
+  <div class="p" style="top:470px;width:470px">Every cut, every caption, every sound. Free tools, one script. Here's the stack.</div>
+  ${phone("w1-2.6.jpg", 560, 470, 4, 420)}
+  <div class="sticker amber" style="left:470px;top:1110px;transform:rotate(-5deg)">0 editing apps</div>
+  <div class="sticker" style="left:100px;top:830px;transform:rotate(-3deg)">Week 1 · 1:51</div>
+  <div class="swipe" style="left:72px;top:1140px;right:auto">Swipe →</div>
+  ${dots(i)}`,
+ // 2. what actually happened
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">What actually happened</div>
+  <div class="h" style="top:205px;width:930px;font-size:104px">No timeline. <em>Just code.</em></div>
+  <div class="p" style="top:450px;width:930px">Claude Code wrote the edit as a script. It read my transcript, cut the takes, built every graphic as a small web page, rendered it frame by frame and mixed the sound.</div>
+  <div class="p" style="top:730px;width:930px"><b>My job:</b> film it on my phone, then give feedback in plain words.</div>
+  <div class="rows" style="top:900px;grid-template-columns:1fr 1fr 1fr">
+   <div class="row" style="grid-template-columns:1fr;text-align:center"><b style="font-size:54px">12</b><span class="t">drafts</span></div>
+   <div class="row" style="grid-template-columns:1fr;text-align:center"><b style="font-size:54px">1:51</b><span class="t">final length</span></div>
+   <div class="row" style="grid-template-columns:1fr;text-align:center"><b style="font-size:54px">-14</b><span class="t">LUFS loudness</span></div>
+  </div>
+  ${dots(i)}`,
+ // 3. transcribe
+ (i) => `${top_(i)}<div class="big" style="top:110px">01</div>
+  <div class="label" style="top:150px">Step 1 · Transcribe</div>
+  <div class="h" style="top:205px;width:640px;font-size:100px">Every word gets <em>a time.</em></div>
+  <div class="p" style="top:470px;width:930px;font-size:40px">faster-whisper (free, MIT) turns my clips into text, with a start and end time for every single word.</div>
+  <div class="code" style="top:720px;font-size:29px"><div class="bar"><i></i><i></i><i></i><span>intro_words.json · the real file</span></div>{<span class="k">"t"</span>: 0.00, <span class="k">"e"</span>: 0.22, <span class="k">"x"</span>: <span class="s">"Hey,"</span>}
+{<span class="k">"t"</span>: 0.74, <span class="k">"e"</span>: 0.86, <span class="k">"x"</span>: <span class="s">"I'm"</span>}
+{<span class="k">"t"</span>: 0.86, <span class="k">"e"</span>: 1.18, <span class="k">"x"</span>: <span class="x">"Rish,"</span>}  <span class="d">&lt;- misheard</span>
+{<span class="k">"t"</span>: 1.40, <span class="k">"e"</span>: 1.52, <span class="k">"x"</span>: <span class="s">"I'm"</span>}
+{<span class="k">"t"</span>: 1.52, <span class="k">"e"</span>: 2.00, <span class="k">"x"</span>: <span class="s">"27,"</span>}</div>
+  <div class="p" style="top:1110px;width:930px;font-size:32px">Whisper heard "Rish". One line of feedback, and every caption says <b>Vish</b>.</div>
+  ${dots(i)}`,
+ // 4. cut on words
+ (i) => `${top_(i)}<div class="big" style="top:110px">02</div>
+  <div class="label" style="top:150px">Step 2 · Cut</div>
+  <div class="h" style="top:205px;width:640px;font-size:100px">Cuts land <em>between</em> words.</div>
+  <div class="p" style="top:470px;width:930px;font-size:40px">Claude keeps my best take of each line, drops the restarts and snaps every cut to the edge of a word. One steady speed, no jump cuts.</div>
+  <div class="code" style="top:860px;font-size:25px"><div class="bar"><i></i><i></i><i></i><span>week1.py · the cut list</span></div><span class="d"># line, clip, keep (seconds), fix the transcript</span>
+(<span class="s">"n1"</span>, <span class="s">"IMG_1597"</span>, [(0.0, 1.3)], {<span class="x">"Rish,": "Vish,"</span>})
+(<span class="s">"h2"</span>, <span class="s">"IMG_1578"</span>, [(2.8, 4.1)], {})
+(<span class="s">"h3"</span>, <span class="s">"IMG_1578"</span>, [(4.25, 7.3)], {<span class="x">"to.": "too."</span>})</div>
+  ${dots(i)}`,
+ // 5. one picture per line
+ (i) => `${top_(i)}<div class="big" style="top:110px">03</div>
+  <div class="label" style="top:150px">Step 3 · Storyboard</div>
+  <div class="h" style="top:205px;width:600px;font-size:96px">Every line gets a picture that <em>matches.</em></div>
+  ${phone("w1-11.6.jpg", 60, 600, -4, 300)}${phone("w1-13.4.jpg", 390, 580, 0, 300)}${phone("w1-55.4.jpg", 720, 600, 4, 300)}
+  <div class="cap" style="left:96px;top:1165px">"No job."</div><div class="cap" style="left:430px;top:1165px">"Booked a flight."</div><div class="cap" style="left:760px;top:1165px">"the 40K debt"</div>
+  ${dots(i)}`,
+ // 6. graphics are web pages
+ (i) => `${top_(i)}<div class="big" style="top:110px">04</div>
+  <div class="label" style="top:150px">Step 4 · Graphics</div>
+  <div class="h" style="top:205px;width:560px;font-size:92px">Captions and stickers are <em>web pages.</em></div>
+  <div class="p" style="top:560px;width:500px">Claude writes each graphic in HTML, Playwright renders it frame by frame, FFmpeg lays it over the video.</div>
+  ${phone("w1-42.6.jpg", 620, 250, 3, 370)}
+  <div class="code" style="top:985px;width:936px;font-size:25px"><div class="bar"><i></i><i></i><i></i><span>the 40K counter cue</span></div>{<span class="k">"type"</span>: <span class="s">"counter"</span>,
+ <span class="k">"digits"</span>: <span class="s">"40"</span>, <span class="k">"suffix"</span>: <span class="s">"K"</span>,
+ <span class="k">"roll"</span>: 0.42, <span class="k">"stagger"</span>: 0.12}</div>
+  ${dots(i)}`,
+ // 7. sound
+ (i) => `${top_(i)}<div class="big" style="top:110px">05</div>
+  <div class="label" style="top:150px">Step 5 · Sound</div>
+  <div class="h" style="top:205px;width:620px;font-size:88px">A sound for every visual. <em>Silence</em> for the big lines.</div>
+  <div class="rows" style="top:560px">
+   <div class="row"><span class="n">POP</span><span>Each sticker as it lands</span><span class="t">rising pitch</span></div>
+   <div class="row"><span class="n">TICK</span><span>The 40K odometer rolling</span><span class="t">24 ticks</span></div>
+   <div class="row"><span class="n">THUMP</span><span>When the number slams</span><span class="t">once</span></div>
+   <div class="row"><span class="n">WHOOSH</span><span>Into every new layout</span><span class="t">peaks on the cut</span></div>
+   <div class="row"><span class="n">SILENCE</span><span>Right after "220 job rejections"</span><span class="t">music off</span></div>
+  </div>
+  <div class="cap" style="left:72px;top:1180px">Free sounds: Kenney (CC0) + a few made in Python. Voice always on top.</div>
+  ${dots(i)}`,
+ // 8. feedback loop
+ (i) => `${top_(i)}<div class="big" style="top:110px">06</div>
+  <div class="label" style="top:150px">Step 6 · Feedback</div>
+  <div class="h" style="top:205px;width:640px;font-size:96px">12 drafts of <em>plain English.</em></div>
+  <div class="bubble me" style="top:470px"><small>ME</small>Start with "Hey, I'm Vish", then the 40K debt, then the rest as it is.</div>
+  <div class="bubble ai" style="top:640px"><small>CLAUDE</small>Done. New opening, the sound design is untouched. Here's the review copy.</div>
+  <div class="bubble me" style="top:820px"><small>ME</small>Add more fun travel clips when I say I want to travel the world.</div>
+  <div class="bubble ai" style="top:1000px"><small>CLAUDE</small>A 14-second montage, cut on the beat of the song.</div>
+  ${dots(i)}`,
+ // 9. save this: the stack
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">Save this · the stack</div>
+  <div class="h" style="top:205px;width:900px;font-size:96px">What I used, and <em>what it costs.</em></div>
+  <div class="rows" style="top:440px">
+   <div class="row"><b>faster-whisper</b><span>transcript, word times</span><span class="t free">FREE</span></div>
+   <div class="row"><b>FFmpeg</b><span>cuts, colour, sound, export</span><span class="t free">FREE</span></div>
+   <div class="row"><b>Playwright</b><span>renders the graphics</span><span class="t free">FREE</span></div>
+   <div class="row"><b>RVM</b><span>cuts me out for the sticker</span><span class="t free">FREE</span></div>
+   <div class="row"><b>Kenney sounds</b><span>pops, clicks, whooshes</span><span class="t free">FREE</span></div>
+   <div class="row"><b>Claude Code</b><span>writes and runs the edit</span><span class="t paid">PAID PLAN</span></div>
+   <div class="row"><b>ElevenLabs</b><span>narrator voice, optional</span><span class="t paid">PAID PLAN</span></div>
+  </div>
+  ${dots(i)}`,
+ // 10. CTA
+ (i) => `${top_(i)}
+  <img class="face" src="${A}vish.jpg" style="left:72px;top:150px;width:210px;height:210px;object-position:52% 30%">
+  <div class="h" style="top:180px;left:320px;width:690px;font-size:76px">Want the five prompts I <em>used?</em></div>
+  <div class="cta" style="top:470px">
+   <div class="ex" style="color:#A39A8C">Comment</div>
+   <div class="kw">EDIT</div>
+   <div class="p">and I'll DM you the free guide:</div>
+   <div class="p" style="color:#F3EEE5;margin-top:18px">✓ the setup in 3 steps<br>✓ the 5 prompts, copy and paste<br>✓ the fixes for every error I hit</div>
+  </div>
+  <div class="p" style="top:1110px;width:930px"><b>Follow for Week 2 on Thursday:</b> my plan to make money from anywhere.</div>
+  ${dots(i)}`,
+];
+document.getElementById("deck").innerHTML = S.map((f, k) => `<section class="slide">${f(k + 1)}</section>`).join("");
+Promise.all([...document.images].map((im) => im.decode().catch(() => {}))).then(() => document.fonts.ready).then(() => { window.READY = true; });
+</script></body></html>

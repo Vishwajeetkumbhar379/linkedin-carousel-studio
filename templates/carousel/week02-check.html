@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/carousel/week-series.css">
+<!-- Week 2 of 52, Carousel B (Sat): the brand-side check behind "bet one: brands". Keyword CHECK ->
+     buildwithvvish.com/#read-shortlist-creators-with-ai. The rubric and weights are Vish's (from 850+ deals, brand-profile.md);
+     every number marked EXAMPLE is an illustration, not a real creator. -->
+<style>
+.bar2{display:grid;grid-template-columns:200px 1fr 90px;gap:16px;align-items:center;font:500 27px 'Inter Tight';color:var(--body);margin:12px 0}
+.bar2 i{height:22px;border-radius:11px;background:var(--paper2);position:relative;overflow:hidden}.bar2 i b{position:absolute;inset:0 auto 0 0;background:var(--amber);border-radius:11px}
+.bar2 span{font:600 24px 'Geist Mono';color:var(--muted);text-align:right}
+.grid12{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.grid12 div{aspect-ratio:1;border-radius:14px;background:var(--paper2);display:flex;align-items:center;justify-content:center;font:500 22px 'Geist Mono';color:var(--muted)}
+.grid12 div.on{background:var(--lamp);color:#15130F;font-weight:600}
+.chart{width:100%;height:220px}
+.w{font:600 26px 'Geist Mono',monospace;color:var(--amber)}
+.ccard b{display:block;font:700 34px 'Inter Tight';color:var(--ink)}.ccard span{font:500 26px 'Inter Tight';color:var(--muted)}
+.ccard .v{margin-top:16px;font:600 26px 'Geist Mono';letter-spacing:.06em}
+</style>
+</head><body><div id="deck"></div>
+<script>
+const N = 10, A = "/carousel/assets/week02/";
+const top_ = (i) => `<div class="top"><span>Build with Vish · Week 02 of 52</span><span>${String(i).padStart(2, "0")} / ${N}</span></div>`;
+const dots = (i) => `<div class="dots">${Array.from({length: N}, (_, k) => `<i class="${k + 1 === i ? "on" : ""}"></i>`).join("")}</div><div class="handle">@buildwith.vish</div>`;
+const step = (n, name, weight) => `<div class="big" style="top:110px">${n}</div><div class="label" style="top:150px">Check ${n} · ${name} · <span style="color:var(--ink)">${weight}</span></div>`;
+const S = [
+ // 1. hook
+ (i) => `${top_(i)}
+  <div class="h" style="top:150px;width:930px;font-size:132px">Brands don't pay for <em>followers.</em></div>
+  <div class="p" style="top:470px;width:560px">After 850+ creator deals on the brand side, these 5 checks decide who gets paid.</div>
+  <img class="face" src="${A}vish.jpg" style="left:640px;top:520px;width:370px;height:370px;object-position:52% 30%">
+  <div class="sticker amber" style="left:590px;top:880px;transform:rotate(-4deg)">850+ deals, brand side</div>
+  <div class="rows" style="top:800px;width:500px;gap:10px">
+   <div class="row" style="grid-template-columns:auto 1fr;padding:16px 22px;font-size:28px"><span class="n">1</span><span>Audience fit</span></div>
+   <div class="row" style="grid-template-columns:auto 1fr;padding:16px 22px;font-size:28px"><span class="n">2</span><span>Content fit</span></div>
+   <div class="row" style="grid-template-columns:auto 1fr;padding:16px 22px;font-size:28px"><span class="n">3</span><span>Engagement health</span></div>
+  </div>
+  <div class="swipe" style="top:1190px;left:72px;right:auto">Swipe for all 5 →</div>
+  ${dots(i)}`,
+ // 2. why
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">What I saw on the brand side</div>
+  <div class="h" style="top:205px;width:930px;font-size:100px">The creators who delivered were rarely the <em>biggest.</em></div>
+  <div class="p" style="top:560px;width:930px">Follower count is the easiest number to see, and the least useful one to pick on. They were the best <b>fit</b>.</div>
+  <div class="card ccard" style="left:72px;top:860px;width:445px"><div class="ex">Example A</div><b style="margin-top:10px">120K followers</b><span>Audience mostly outside the brand's market</span><div class="v" style="color:var(--red)">WRONG FIT</div></div>
+  <div class="card ccard" style="left:563px;top:860px;width:445px"><div class="ex">Example B</div><b style="margin-top:10px">18K followers</b><span>Same country, age and interests as the brief</span><div class="v" style="color:var(--green)">GETS THE DEAL</div></div>
+  ${dots(i)}`,
+ // 3. audience fit
+ (i) => `${top_(i)}${step("01", "Audience", "30%")}
+  <div class="h" style="top:205px;width:640px;font-size:96px">Who follows them, not <em>how many.</em></div>
+  <div class="p" style="top:470px;width:930px">Country, age, language and interests of their followers, held up against the brief.</div>
+  <div class="card" style="left:72px;top:680px;width:936px"><div class="ex" style="margin-bottom:10px">Example · the audience screenshot to ask for</div>
+   <div class="bar2">Germany<i><b style="width:58%"></b></i><span>58%</span></div>
+   <div class="bar2">Age 25 to 34<i><b style="width:46%"></b></i><span>46%</span></div>
+   <div class="bar2">German speakers<i><b style="width:64%"></b></i><span>64%</span></div>
+   <div class="bar2">Fitness interest<i><b style="width:71%"></b></i><span>71%</span></div>
+  </div>
+  <div class="cap" style="left:72px;top:1150px">Ask the creator for their own Insights screenshots. Public tools only guess.</div>
+  ${dots(i)}`,
+ // 4. content fit
+ (i) => `${top_(i)}${step("02", "Content", "25%")}
+  <div class="h" style="top:205px;width:640px;font-size:96px">Would your product look <em>natural</em> here?</div>
+  <div class="p" style="top:470px;width:930px">Open their last 12 posts. If your product would feel like an ad break, it will perform like one.</div>
+  <div class="card" style="left:72px;top:680px;width:600px"><div class="ex" style="margin-bottom:14px">Example · their last 12 posts</div>
+   <div class="grid12"><div>gym</div><div>meal</div><div>gym</div><div>run</div><div>meal</div><div class="on">your shoe?</div><div>gym</div><div>travel</div><div>run</div><div>meal</div><div>gym</div><div>run</div></div></div>
+  <div class="p" style="top:760px;left:710px;width:300px;font-size:32px">A running shoe fits this feed. A banking app doesn't.</div>
+  ${dots(i)}`,
+ // 5. engagement health
+ (i) => `${top_(i)}${step("03", "Engagement", "20%")}
+  <div class="h" style="top:205px;width:640px;font-size:96px">Real comments, <em>steady</em> numbers.</div>
+  <div class="p" style="top:470px;width:930px">Read the comments. Look for a steady line of views, not sudden spikes nobody can explain.</div>
+  <div class="card" style="left:72px;top:690px;width:445px"><div class="ex">Example · healthy</div>
+   <svg class="chart" viewBox="0 0 400 220"><polyline fill="none" stroke="#2F6B3F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" points="10,150 50,138 90,146 130,128 170,134 210,120 250,126 290,112 330,118 390,104"/></svg>
+   <div class="v" style="font:600 24px 'Geist Mono';color:var(--green)">STEADY</div></div>
+  <div class="card" style="left:563px;top:690px;width:445px"><div class="ex">Example · ask why</div>
+   <svg class="chart" viewBox="0 0 400 220"><polyline fill="none" stroke="#B3261E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" points="10,170 50,168 90,172 130,166 170,30 210,170 250,168 290,172 330,166 390,170"/></svg>
+   <div class="v" style="font:600 24px 'Geist Mono';color:var(--red)">ONE SPIKE</div></div>
+  <div class="cap" style="left:72px;top:1080px">"Great post 🔥" x 40 from empty accounts is not engagement.</div>
+  ${dots(i)}`,
+ // 6. cost
+ (i) => `${top_(i)}${step("04", "Cost", "15%")}
+  <div class="h" style="top:205px;width:640px;font-size:96px">The rate, against the <em>reach.</em></div>
+  <div class="p" style="top:470px;width:930px">Turn every quote into the cost of reaching 1,000 people. Then compare creators on the same scale.</div>
+  <div class="code" style="top:700px;font-size:30px"><div class="bar"><i></i><i></i><i></i><span>example · cost per 1,000 reached</span></div><span class="k">rate</span> ÷ <span class="k">reach</span> × 1,000 = <span class="x">CPM</span>
+
+€600 ÷ 20,000 × 1,000 = <span class="s">€30</span>
+€600 ÷ 60,000 × 1,000 = <span class="s">€10</span></div>
+  <div class="cap" style="left:72px;top:1120px">Same price, three times the reach. Then check fit again: cheap reach in the wrong audience is still waste.</div>
+  ${dots(i)}`,
+ // 7. brand safety
+ (i) => `${top_(i)}${step("05", "Brand safety", "10%")}
+  <div class="h" style="top:205px;width:640px;font-size:96px">Would you be <em>proud</em> of the tag?</div>
+  <div class="rows" style="top:520px">
+   <div class="row"><span class="n">01</span><span><b>Past controversies.</b> Search their name plus "drama" and read what comes up.</span><span></span></div>
+   <div class="row"><span class="n">02</span><span><b>Competitor deals.</b> A rival's ad last month makes your post look bought.</span><span></span></div>
+   <div class="row"><span class="n">03</span><span><b>Tone.</b> Their jokes, their comments, how they answer criticism.</span><span></span></div>
+  </div>
+  ${dots(i)}`,
+ // 8. the prompt
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">Do it with AI</div>
+  <div class="h" style="top:205px;width:930px;font-size:96px">The prompt I'd <em>use.</em></div>
+  <div class="code" style="top:430px;font-size:25px"><div class="bar"><i></i><i></i><i></i><span>paste into Claude or ChatGPT</span></div>Help me shortlist creators for this brief: <span class="x">[brief]</span>.
+Score each creator 1-10 on audience fit (30%), content fit (25%), engagement health (20%), cost (15%), brand safety (10%).
+Show a weighted total, one sentence of reasoning per score, and a red-flag column.
+Rank them, then tell me which 2 you'd drop first and why.
+Creators: <span class="x">[name, platform, followers, avg views, rate, notes]</span></div>
+  <div class="cap" style="left:72px;top:1080px">What AI can't do: see private audience data or spot bought comments. You still check those.</div>
+  ${dots(i)}`,
+ // 9. save this
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">Save this · the 5 checks</div>
+  <div class="h" style="top:205px;width:930px;font-size:96px">Fit beats <em>size.</em></div>
+  <div class="rows" style="top:420px">
+   <div class="row"><span class="w">30%</span><span><b>Audience fit</b> · country, age, language, interests</span><span></span></div>
+   <div class="row"><span class="w">25%</span><span><b>Content fit</b> · natural in their last 12 posts</span><span></span></div>
+   <div class="row"><span class="w">20%</span><span><b>Engagement health</b> · real comments, steady</span><span></span></div>
+   <div class="row"><span class="w">15%</span><span><b>Cost</b> · rate ÷ reach × 1,000</span><span></span></div>
+   <div class="row"><span class="w">10%</span><span><b>Brand safety</b> · past, rivals, tone</span><span></span></div>
+  </div>
+  <div class="p" style="top:1060px;width:930px;font-size:32px">Creators: make your media kit answer these five, and you'll get the "yes" faster.</div>
+  ${dots(i)}`,
+ // 10. CTA
+ (i) => `${top_(i)}
+  <img class="face" src="${A}vish.jpg" style="left:72px;top:150px;width:210px;height:210px;object-position:52% 30%">
+  <div class="h" style="top:180px;left:320px;width:690px;font-size:76px">Want the full scoring <em>sheet?</em></div>
+  <div class="cta" style="top:470px">
+   <div class="ex" style="color:#A39A8C">Comment</div>
+   <div class="kw">CHECK</div>
+   <div class="p">and I'll DM you the free guide:</div>
+   <div class="p" style="color:#F3EEE5;margin-top:18px">✓ the 5-check rubric with weights<br>✓ the prompt, copy and paste<br>✓ how to build the scoring sheet in Google Sheets</div>
+  </div>
+  <div class="p" style="top:1110px;width:930px"><b>Follow for Week 3:</b> I pitch brands for remote work myself.</div>
+  ${dots(i)}`,
+];
+document.getElementById("deck").innerHTML = S.map((f, k) => `<section class="slide">${f(k + 1)}</section>`).join("");
+Promise.all([...document.images].map((im) => im.decode().catch(() => {}))).then(() => document.fonts.ready).then(() => { window.READY = true; });
+</script></body></html>
