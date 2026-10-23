@@ -24,6 +24,7 @@ Exactly 3 feed posts a week, and they support each other:
 - **Production:** one filming session every 2 weeks (two episodes). Carousels are built from the episode's real work, so there's nothing extra to film. Weekly approval loop: Vish approves the week once.
 
 ## 3. Hooks and scripts
+- **Hook first, every time [changed 23 Oct, after Week 1 reached about 50 views in its first hours]:** the first spoken words are the hook (a number, a loss, tension). "Week N" and "Hey, I'm Vish" appear on screen as labels, never as the opening words: strangers decide in 1 to 2 seconds. The freeze-frame sticker lands on the hook line.
 - **First second:** a face, a number or a visible change. The 9 levers (`research/viral/attention-playbook-2026-10-15.md`): use 3 or more per hook. The templates there are filled with true facts only.
 - **Script shape** (Kallaway's format, matching our shoot sheets):
   1. Hook (12 words or fewer).
@@ -36,7 +37,7 @@ Exactly 3 feed posts a week, and they support each other:
   8. Close.
   9. CTA tied to one lead magnet.
 
-  80 to 100 spoken words for teaching posts. Episodes run longer when the story earns it.
+  80 to 100 spoken words for teaching posts. Episodes run 35 to 45 seconds **[changed 23 Oct: Week 1 ran 1:51]**; longer only when the data shows people finish them.
 - **Retention moves** (peter.visuals, checked against our own edits):
   - show the result before the process;
   - give viewers something to figure out;
@@ -120,6 +121,19 @@ Exactly 3 feed posts a week, and they support each other:
 Research → topic validation → hook → script → storyboard → edit → captions → carousel → publish → comment automation → lead magnet → website → sales → analytics. The master skill names the exact skill and script for each step.
 
 ## 11. Lessons learned (Vish's feedback, never repeat)
+- **Week 1 result (23 Oct):** about 50 views in its first hours. Likely causes, to confirm with Insights:
+  - the first 3 seconds were "Hey, I'm Vish", "I'm 27" and silent photos; the real hook came at about 5 s;
+  - 1:51 is long for a new account;
+  - the account had just gone public, with few followers;
+  - possibly the two songs baked into the audio.
+
+  Fixes from Week 2: hook first, 35 to 45 s, and the distribution routine below. Never promise "viral"; report the real numbers.
+- **Distribution routine for every Reel:**
+  - the same day, also post to YouTube Shorts and LinkedIn;
+  - share it to the Story with a question sticker;
+  - Vish sends it to 5 to 10 people who would genuinely care (sends per reach is one of Instagram's top signals);
+  - Vish replies to every comment in the first hour;
+  - use Trial Reels once the account is eligible (it needs a minimum follower count).
 - **Cuts and speed:**
   - no jump cuts or random speed-ups;
   - no camera wandering;

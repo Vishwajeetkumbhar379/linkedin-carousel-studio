@@ -11,6 +11,7 @@ Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame pr
 - `python edit/week1.py mix`
 
 ## The standard from v12 (Vish, 23 Oct: "I loved everything"): every reel gets all of this
+- **From Week 2 (23 Oct): the freeze lands on the hook line.** The first spoken words are the hook, not "Hey, I'm Vish" (Week 1 reached about 50 views in its first hours; see PLAYBOOK §3 and §11). Episodes run 35 to 45 s.
 - **Open on him, frozen as a sticker.** Week 1 opened with "Hey, I'm Vish" and a wave full screen, settling into the frame. Every episode keeps the move. In the first two seconds the frame freezes on its own with a camera shutter, and he becomes a white-outlined sticker while that week's labels pop on. Then the hook facts.
 - **Keep it clean:** no "Edited by AI" card. The AI story lives in the caption PS, the stats row and the end credit. His past relationship is never mentioned.
 - **Let the music breathe.** When the song is the payoff (the "travel the world" chorus), give it a real montage: about 14 s, four quick cuts on the drop, then two beats a clip, fun and real clips only, never a stranger's close-up.
