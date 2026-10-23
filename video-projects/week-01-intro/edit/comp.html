@@ -223,7 +223,7 @@ const K = {
         <div class="hd" style="position:absolute;left:0;right:0;top:150px;text-align:center"><div class="cnt" style="font:700 300px/.85 IT;letter-spacing:-.06em;color:#1D1C1A"></div>
         <div style="font:400 italic 76px/1 IS;color:#1D1C1A;margin-top:8px">job rejections</div></div>
         <div class="us" style="position:absolute;left:0;right:0;top:1440px;text-align:center"><span style="font:400 italic 110px/1 IS;color:#1D1C1A;background:linear-gradient(transparent 58%,rgba(231,161,90,.75) 58%);padding:0 18px">Unfortunately,</span></div>`, '', 'inset:0'); },
-    upd(d, c, t) { const u0 = eo(prog(t, c.t0, .4)); d.style.opacity = u0 * (1 - prog(t, c.t1 - .45, .45));
+    upd(d, c, t) { const u0 = eo(prog(t, c.t0, .4)), fd = c.fade || .45; d.style.opacity = u0 * (1 - prog(t, c.t1 - fd, fd));
       d.querySelector('.cnt').textContent = Math.round(220 * eo(prog(t, c.count_t, c.count_d)));
       d.querySelectorAll('.ph').forEach((p, i) => { const u = eo(prog(t, c.count_t + i * .22, .5)); p.style.opacity = u;
         p.style.transform = `translateY(${(1 - u) * 60}px) rotate(${p.dataset.r}deg)`; });

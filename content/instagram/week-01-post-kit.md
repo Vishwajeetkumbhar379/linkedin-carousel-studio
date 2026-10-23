@@ -1,22 +1,25 @@
-# Week 1 intro reel: posting kit (v9)
+# Week 1 intro reel: posting kit (v10)
 
-Upload `video-projects/week-01-intro/out/week1-intro-9x16.mp4` (1:44.6, 9:16). The audio is final: Vish's voice (cleaned), the sound design, and the music he picked, mixed in:
-- **Loser** by Tame Impala, from the reel Vish shared, plays from the first frame. It's low-passed and quiet under the hard part, opens up at "But here's what I've got" (0:47), and its chorus lands on "travel the world" (1:08).
+v10 (Vish, 23 Oct): it now opens on "Hey, I'm Vish", and the relationship lines are cut. Everything else is v9.
+
+Upload `video-projects/week-01-intro/out/week1-intro-9x16.mp4` (1:36.2, 9:16). The audio is final: Vish's voice (cleaned), the sound design, and the music he picked, mixed in:
+- **Loser** by Tame Impala, from the reel Vish shared, plays from the first frame. It's low-passed and quiet under the hard part, opens up at "But here's what I've got" (0:38.8), and its chorus lands on "travel the world" (1:01.3).
 - The music cuts to **true silence** four times, like the @ayyitsjamie reel:
-  - on "What am I doing?" (0:09.7);
-  - under the passport photos (0:13.3 to 0:15.7);
-  - on "that one hurt" (0:41.7);
-  - on "But one thing is sure" (1:05.1).
-- **The cat song** ("I got that feeling…") from his first dance step (1:40.0), carrying into the cats (1:41.0).
+  - under the passport photos (0:02.1 to 0:04.5);
+  - on "What am I doing?" (0:14.7);
+  - after "220 job rejections" (0:38.3);
+  - on "But one thing is sure" (0:56.7).
+- **The cat song** ("I got that feeling…") from his first dance step (1:31.6), carrying into the cats (1:32.6).
 
 Post it with the original audio. If Instagram ever mutes it for a music match, re-add the same two songs with Add to mix at those times.
 
-## What's on screen (v9)
-- **Hook:**
+## What's on screen
+- **Opening, "Hey, I'm Vish":** a wave full screen, then the frame settles. Then the freeze-frame sticker, the passport photos and "this is my first video".
+- **Hook facts:**
   - "40K" rolls up like an odometer;
   - "No job." and "Booked a flight" hit;
   - no pause before "What am I doing?".
-- **"Hey, I'm Vish":**
+- **The freeze-frame:**
   - the frame freezes;
   - Vish becomes a sticker with a white outline;
   - labels pop on: this is Vish, social media, yoga, AI, travel, 27.
@@ -38,11 +41,11 @@ Post it with the original audio. If Instagram ever mutes it for a music match, r
 3D icons: Microsoft Fluent Emoji (MIT). Extra sounds: Kenney (CC0) and synthesised in the editor.
 
 ## Cover
-Use `video-projects/week-01-intro/out/week1-cover-v9.jpg` (1080x1920; everything sits inside the 3:4 grid crop).
-It's the v9 look: Vish as a white-outlined sticker with eye contact, "I just broke up." above him, and the stickers 40K in debt / Booked a flight / No job.
+Use `video-projects/week-01-intro/out/week1-cover-v10.jpg` (1080x1920; everything sits inside the 3:4 grid crop).
+Vish as a white-outlined sticker with eye contact, "What am I doing?" above him, and the stickers 40K in debt / Booked a flight / No job.
 
 ## Caption
-Broke up. 40K in debt. No job. And I just booked a flight to Sri Lanka.
+40K in debt. No job. And I just booked a flight to Sri Lanka.
 
 Week 1 of 52.
 

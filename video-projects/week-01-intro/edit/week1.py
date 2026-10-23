@@ -41,22 +41,19 @@ LBEAT = 0.71985  # "Loser": the beat period; its chorus lands on "travel the wor
 # Vish, 22 Oct: no chopping inside his takes. "join" continues the same take from where the last line ended, so every
 # natural pause and aside stays ("that one hurt"); takes only change at a full sentence, under B-roll or a dissolve.
 LINES = [
-    ("h1", "IMG_1578", [(1.1, 2.4)], {}, "cut", "night", {}),
+    # Vish, 23 Oct: the breakup is out, and the reel opens on "Hey, I'm Vish" (then the hook facts, then the question)
+    ("n1", "IMG_1597", [(0.0, 2.4)], {"Rish,": "Vish,"}, "45", "night", {"gap": 2.4, "mute": 1}),
+    ("n1b", "IMG_1597", [(2.9, 4.3)], {}, "45", "night", {}),
     ("h2", "IMG_1578", [(2.8, 4.1)], {}, "cut", "night", {"join": 1}),
     ("h3", "IMG_1578", [(4.25, 7.3)], {"to.": "too."}, "cut", "night", {"join": 1}),
     ("h4", "IMG_1578", [(7.7, 8.3)], {}, "cut", "night", {"join": 1}),
     ("h5", "IMG_1578", [(9.2, 11.3)], {}, "cut", "night", {"join": 1}),
     ("h6", "IMG_1578", [(13.4, 14.3)], {}, "full", "night", {"gap": 0.3}),
-    ("n1", "IMG_1597", [(0.0, 2.4)], {"Rish,": "Vish,"}, "45", "night", {"gap": 2.4, "mute": 1}),
-    ("n1b", "IMG_1597", [(2.9, 4.3)], {}, "45", "night", {}),
     ("c1", "IMG_1581", [(0.0, 7.0)], {"a": "the"}, "45", "soft", {}),
     ("g1", "IMG_1582", [(1.0, 4.0)], {}, "45", "soft", {}),
     ("g2", "IMG_1582", [(4.2, 6.2)], {}, "45", "soft", {"join": 1}),
     ("g3", "IMG_1582", [(7.3, 9.8)], {}, "45", "soft", {"join": 1}),
     ("r1", "IMG_1583", [(1.7, 7.0)], {}, "45", "soft", {}),
-    ("r2", "IMG_1583", [(12.5, 14.3)], {"breaker,": "breakup,"}, "45", "night", {}),
-    ("r3", "IMG_1583", [(16.3, 17.0)], {}, "45", "night", {"join": 1}),
-    ("r4", "IMG_1583", [(18.4, 19.6)], {}, "45", "night", {"join": 1, "gap": 0.5}),
     ("s1", "IMG_1585", [(0.0, 1.0)], {}, "split", "night", {}),
     ("s2", "IMG_1585", [(1.7, 3.0)], {}, "split", "night", {"join": 1}),
     ("s3", "IMG_1585", [(3.4, 4.9)], {}, "split", "night", {"join": 1}),
@@ -149,7 +146,7 @@ CUT_DEAD_AIR = False  # Vish, 22 Oct: no cuts inside his takes; one steady speed
 PAUSE = 0.25        # the beat after an ordinary sentence
 INLINE = 0.18       # the beat at a pause inside a sentence
 LEAD = 0.10         # on screen before the next word after a cut
-LAND = {"h4": .3, "h6": .45, "n1b": .35, "c1": .4, "g3": .55, "r2": .5, "r3": .6, "r4": .45,
+LAND = {"h4": .3, "h6": .45, "n1b": .35, "c1": .4, "g3": .55, "r1": .5,
         "l1b": .35, "l2": .55, "m2": .45, "w1": .7, "w7": .4, "e1": .35}
 
 
@@ -509,13 +506,14 @@ def plan(tl: dict) -> dict:
 
     END = L["e1"]["t1"]
     cues.append({"type": "week", "t0": L["n1"]["t0"] + 0.5, "t1": END, "z": 46,
-                 "hide": [[L["c1"]["t0"], L["c1"]["t1"]], [L["n1"]["t1"], L["n1b"]["t0"]]]})
+                 "hide": [[L["c1"]["t0"], L["c1"]["t1"]], [L["n1"]["t1"], L["n1b"]["t0"]], [L["h2"]["t0"], L["c1"]["t0"]]]})
 
     # ---- HOOK: his real room, softened behind him; the words tuck behind his head as he says them
-    for lid in ("h1", "h2", "h3", "h4", "h5"):  # one slow push across the whole hook take
-        zoom(lid, 1.0, 1.06, L["h1"]["t0"], L["h5"]["t1"])
-    title(-0.6, L["h1"]["t1"], html="I just<br><i>broke up.</i>", size=250, y=170, z=20)  # on screen from frame one
-    S("boom", 0.0, 0.2)
+    for lid in ("h2", "h3", "h4", "h5"):  # one slow push across the whole hook take
+        zoom(lid, 1.0, 1.06, L["h2"]["t0"], L["h5"]["t1"])
+    geoms.append([L["h2"]["t0"], "full", 0.0])
+    geoms.append([L["c1"]["t0"] - 0.1, "f45", 0.6])
+    S("whoosh", L["h2"]["t0"], 0.09)
     h2 = L["h2"]["t0"]  # 40K rolls up like an odometer behind his head, ticking, and slams
     cues.append({"type": "counter", "t0": h2, "t1": L["h2"]["t1"], "digits": "40", "suffix": "K", "size": 430, "y": 130, "z": 20,
                  "roll": 0.42, "stagger": 0.12})
@@ -541,11 +539,11 @@ def plan(tl: dict) -> dict:
     cues.append({"type": "pass", "t0": T("h5", "to"), "t1": L["h5"]["t1"] + 0.05, "z": 40})
     zoom("h6", 1.0, 1.08, L["h6"]["t0"], L["h6"]["t1"] + 0.3)
     title(L["h6"]["t0"], L["h6"]["t1"] + 0.3, seq("h6", "*What* *am* *I* / *doing?*"), size=170, y=1250, z=40)
-    nocap += [[0, L["h6"]["t1"] + 0.3]]
+    nocap += [[L["h2"]["t0"], L["h6"]["t1"] + 0.3]]
 
     # ---- the 4:5 frame from "Hey, I'm Vish"
     geoms.append([L["n1"]["t0"] - 0.1, "f45", 0.6])
-    bgs.append([0, L["n1b"]["t1"], "ink"])
+    bgs.append([0, L["c1"]["t0"], "ink"])
     S("whoosh", L["n1"]["t0"] + 0.2, 0.07)
     # Vish, 22 Oct (v9, refs @sakchham_films, @ayyitsjamie): on "I'm Vish" the frame freezes, he gets a white sticker
     # outline and his labels pop on; after "27" the music stops dead and his passport photos land on a page, kid to now
@@ -576,7 +574,7 @@ def plan(tl: dict) -> dict:
     S("ping", T("n1b", "this") + 0.08, 0.05)
 
     # ---- the soft middle: paper
-    bgs.append([L["c1"]["t0"], L["r2"]["t0"] + 0.5, "paper"])
+    bgs.append([L["c1"]["t0"], L["s1"]["t0"], "paper"])
     S("paper-slide", L["c1"]["t0"] - 0.05, 0.07)
     title(L["c1"]["t0"], L["c1"]["t1"], seq("c1", "I always wanted to start this. / But I never had the *confidence* / or the discipline."),
           size=70, band=True, shadow=0, lh=1.08)
@@ -590,24 +588,17 @@ def plan(tl: dict) -> dict:
     nocap += [[L["g3"]["t0"], L["g3"]["t1"]]]
     zoom("g3", 1.0, 1.04)
     title(L["r1"]["t0"], T("r1", "220") - 0.05, seq("r1", "No friends. / No family."), font="sans", size=88, band=True, shadow=0)
-    wall_end = L["r2"]["t0"] + 0.6  # stays up across the cut into the next take, then fades
+    wall_end = L["s1"]["t0"] + 0.04  # holds while "rejections" lands in silence, then a quick fade into the split
     cues.append({"type": "wall", "t0": T("r1", "220") - 0.1, "t1": wall_end, "z": 42, "count_t": T("r1", "220"),
-                 "count_d": max(0.9, T("r1", "rejections") - T("r1", "220") + 0.3), "stamp_t": T("r1", "rejections") + 0.2})
+                 "count_d": max(0.9, T("r1", "rejections") - T("r1", "220") + 0.3), "stamp_t": T("r1", "rejections") + 0.2, "fade": 0.14})
     nocap += [[T("r1", "220") - 0.1, wall_end]]
     for k_ in range(4):
         S("paper-slide", T("r1", "220") + k_ * 0.22, 0.07)
     S("thump", T("r1", "rejections") + 0.2, 0.14)
-    title(L["r2"]["t0"] + 0.4, L["r3"]["t0"], seq("r2", "And honestly, / the breakup,"), size=88, band=True)
-    title(L["r3"]["t0"], L["r4"]["t0"], seq("r3", "*that* *one* *hurt.*"), size=96, band=True)
-    title(L["r4"]["t0"], L["r4"]["t1"] + 0.5, seq("r4", "But this is a / good ^distraction.^"), size=88, band=True)
-    nocap += [[L["r2"]["t0"], L["r4"]["t1"] + 0.5]]
-    zoom("r2", 1.0, 1.05, L["r2"]["t0"], L["r4"]["t1"])
-    for lid in ("r3", "r4"):
-        zoom(lid, 1.0, 1.05, L["r2"]["t0"], L["r4"]["t1"])
 
     # ---- what I've got: the speaker below, his stats above
     geoms.append([L["s1"]["t0"] - 0.1, "split", 0.6])
-    bgs.append([L["r2"]["t0"] + 0.5, L["l2"]["t0"], "ink"])
+    bgs.append([L["s1"]["t0"], L["l2"]["t0"], "ink"])
     s5e = L["s5"]["t1"]
     fills = [["Social media", 8, "", T("s2", "social")], ["Influencer marketing", 9, "", T("s3", "influencer")],
              ["Yoga", 7, "", T("s4", "yoga")], ["Building with AI", 8, "", T("s4", "yoga") + 0.7],
@@ -742,8 +733,9 @@ def plan(tl: dict) -> dict:
     S("pencil-scribble", c0 + 0.3, 0.05, cut=0.6)
     S("tick", c0 + 0.6, 0.05)
     geoms.append([c0 - 0.1, "none", M])
-    hush = [[L["h6"]["t0"] - 0.03, L["n1"]["t0"] - 0.02], [ph0, L["n1b"]["t0"] - 0.01],
-            [L["r3"]["t0"] - 0.05, L["r4"]["t0"] - 0.05], [L["l2"]["t0"] - 0.02, L["l3"]["t0"] - 0.02]]
+    hush = [[L["h6"]["t0"] - 0.03, L["c1"]["t0"] - 0.02], [ph0, L["n1b"]["t0"] - 0.01],
+            [T("r1", "rejections", end=True) + 0.05, L["s1"]["t0"] - 0.02],  # the stamp lands in silence; the music opens on the turn
+            [L["l2"]["t0"] - 0.02, L["l3"]["t0"] - 0.02]]
     return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "hush": hush}
 
 

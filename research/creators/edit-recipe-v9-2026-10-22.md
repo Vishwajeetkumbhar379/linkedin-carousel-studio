@@ -2,6 +2,8 @@
 
 Vish, on v9: "I love this version… everything is so good, so perfect." This is the baseline for every talking-head reel from now on. Start from it; improve on it, never below it.
 
+v10 (23 Oct): the breakup is cut and the reel opens on "Hey, I'm Vish". He waves full screen, the frame settles, then the freeze-frame sticker intro, then the hook facts. The sound design is unchanged from v9; only the silences moved with the story.
+
 Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame prep, sound map, mix) and `edit/comp.html` (compositor). Commands:
 - `python edit/week1.py prep`
 - `python edit/week1.py stills t,t`
@@ -32,7 +34,7 @@ Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame pr
   - On "Hey, I'm Vish" the frame freezes: camera shutter, white flash.
   - The room dims, and he becomes a sticker: RVM matte with a 9 px white outline (`freeze_cut()`).
   - White labels and 3D-icon stickers spring on around him, each with a pop that climbs in pitch.
-- **Hard silences** (@ayyitsjamie). The music cuts to true silence (12 ms edges) at the emotional beats: the question, the childhood moment, "that one hurt", "but one thing is sure". Clicks are the only sound inside a silence.
+- **Hard silences** (@ayyitsjamie). The music cuts to true silence (12 ms edges) at the emotional beats: the childhood moment, the question, right after "220 job rejections", "but one thing is sure". Clicks are the only sound inside a silence.
 - **Real archive.** His passport photos (pulled out of a phone pan with OpenCV) land on a cream page one by one, kid to now, each with a click: "27 years in passport photos".
 - **Literal visuals** (@elijahsnider_). Every claim gets the matching picture: the city for "moved to a country", a plane plus boarding pass for "booked a flight", the handstand kick-up for "trials", the topple onto his back for "fails". If no footage exists, animate it rather than show something unrelated: friends' clips over "so many things to achieve" was wrong.
 - **Animated ideas with 3D icons** (Microsoft Fluent Emoji 3D, MIT, `assets/emoji`).
