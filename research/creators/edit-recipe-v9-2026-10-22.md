@@ -11,6 +11,7 @@ Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame pr
 - `python edit/week1.py mix`
 
 ## The standard from v12 (Vish, 23 Oct: "I loved everything"): every reel gets all of this
+- **Safe zones before every render (23 Oct).** No text in the top 14%, the bottom 35%, the outer 6% or the button column (right 14%, from 40% down). Titles live in the 14 to 35% band, captions at 58 to 66%. Run `python scripts/reel_edit/safe_zones.py check video-projects/<slug>` (it must PASS) and `preview` for the review copy. The Week 1 week label and its top titles were hidden on Vish's phone.
 - **From Week 2 (23 Oct): the freeze lands on the hook line.** The first spoken words are the hook, not "Hey, I'm Vish" (Week 1 reached about 50 views in its first hours; see PLAYBOOK §3 and §11). Episodes run 35 to 45 s.
 - **Open on him, frozen as a sticker.** Week 1 opened with "Hey, I'm Vish" and a wave full screen, settling into the frame. Every episode keeps the move. In the first two seconds the frame freezes on its own with a camera shutter, and he becomes a white-outlined sticker while that week's labels pop on. Then the hook facts.
 - **Keep it clean:** no "Edited by AI" card. The AI story lives in the caption PS, the stats row and the end credit. His past relationship is never mentioned.

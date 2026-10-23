@@ -65,6 +65,12 @@ Exactly 3 feed posts a week, and they support each other:
   - **Floating framed prints** (photos, screenshots, proof) beside him when he names something.
   - **Tutorial segments** on grid paper with cut-out photos, hand-drawn arrows and handwritten labels, ending with a "Save this" card.
   - **Tool reels:** show the real interface, light up each feature on a timeline as it's named, and close with "this video you just watched?" (riverisbuilding).
+- **Safe zones are a hard gate [Vish, 23 Oct: on his phone the top bar hid "Life is" and the week label of the Week 1 reel]:** all text (titles, labels, stickers, captions, words on cards) stays inside the safe box:
+  - from 14% to 65% of the height;
+  - from 6% to 94% of the width;
+  - left of 86% below 40% height, clear of the buttons.
+
+  Faces and backgrounds may run under the UI. Before every render, `python scripts/reel_edit/safe_zones.py check video-projects/<slug>` must say PASS. The review copy comes with `safe_zones.py preview <video>`, a phone preview with the covered areas shaded. (Week 1 had 196 text items under the UI, including the "Week 01 of 52" label on screen for the whole reel.)
 - **Contrast:** text at least 4.5:1 against what's behind it (WCAG). Use a soft scrim behind captions over busy footage.
 - **Faces pull the eye away from captions** (subtitle eye-tracking research). Keep captions close to the face line, not at the bottom edge.
 
