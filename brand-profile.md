@@ -19,7 +19,7 @@ Audience: marketers, founders and creators who work with creators or want brand 
   - Job hunting in Germany: 220 job rejections (Vish, 22 Oct 2026).
   - 40k in debt (Vish, 22 Oct 2026; currency to confirm before showing it on screen).
   - Gear: iPhone 13 Pro Max, iPad Air (2025/26).
-  - Vish, 23 Oct: leave the breakup out of all content (he had it cut from the Week 1 reel).
+  - Vish, 23 Oct: never mention his past relationship in any content (cut from the Week 1 reel).
   - Wanted to start content for years but lacked confidence and kept stopping; overthought the move and doubted it.
   - Travelled a lot before Germany. Goal: work remotely while travelling; "made it" = EUR 3,000 to 5,000 a month. Booked a flight to Sri Lanka (Oct 2026).
 - Instagram @buildwith.vish is now a weekly documentary ("Week N of 52", one main episode a week; Vish, 22 Oct): the remote-income journey, travel vlogs, fun, and useful AI and marketing posts (Vish, 22 Oct 2026).

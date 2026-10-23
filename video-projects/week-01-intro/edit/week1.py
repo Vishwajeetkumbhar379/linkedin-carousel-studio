@@ -42,8 +42,9 @@ LBEAT = 0.71985  # "Loser": the beat period; its chorus lands on "travel the wor
 # natural pause and aside stays ("that one hurt"); takes only change at a full sentence, under B-roll or a dissolve.
 LINES = [
     # Vish, 23 Oct: the breakup is out, and the reel opens on "Hey, I'm Vish" (then the hook facts, then the question)
-    ("n1", "IMG_1597", [(0.0, 2.4)], {"Rish,": "Vish,"}, "45", "night", {"gap": 2.4, "mute": 1}),
-    ("n1b", "IMG_1597", [(2.9, 4.3)], {}, "45", "night", {}),
+    # Vish, 23 Oct: "Hey, I'm Vish" -> the freeze-frame stickers -> "I'm 27" (+ passport photos) -> the 40K hook
+    ("n1", "IMG_1597", [(0.0, 1.3)], {"Rish,": "Vish,"}, "45", "night", {"gap": 1.6, "mute": 1}),
+    ("n1a", "IMG_1597", [(1.35, 2.4)], {}, "45", "night", {"gap": 2.4, "mute": 1}),
     ("h2", "IMG_1578", [(2.8, 4.1)], {}, "cut", "night", {"join": 1}),
     ("h3", "IMG_1578", [(4.25, 7.3)], {"to.": "too."}, "cut", "night", {"join": 1}),
     ("h4", "IMG_1578", [(7.7, 8.3)], {}, "cut", "night", {"join": 1}),
@@ -146,7 +147,7 @@ CUT_DEAD_AIR = False  # Vish, 22 Oct: no cuts inside his takes; one steady speed
 PAUSE = 0.25        # the beat after an ordinary sentence
 INLINE = 0.18       # the beat at a pause inside a sentence
 LEAD = 0.10         # on screen before the next word after a cut
-LAND = {"h4": .3, "h6": .45, "n1b": .35, "c1": .4, "g3": .55, "r1": .5,
+LAND = {"h4": .3, "h6": .45, "c1": .4, "g3": .55, "r1": .5,
         "l1b": .35, "l2": .55, "m2": .45, "w1": .7, "w7": .4, "e1": .35}
 
 
@@ -506,7 +507,7 @@ def plan(tl: dict) -> dict:
 
     END = L["e1"]["t1"]
     cues.append({"type": "week", "t0": L["n1"]["t0"] + 0.5, "t1": END, "z": 46,
-                 "hide": [[L["c1"]["t0"], L["c1"]["t1"]], [L["n1"]["t1"], L["n1b"]["t0"]], [L["h2"]["t0"], L["c1"]["t0"]]]})
+                 "hide": [[L["c1"]["t0"], L["c1"]["t1"]], [L["n1a"]["t1"], L["h2"]["t0"]], [L["h2"]["t0"], L["c1"]["t0"]]]})
 
     # ---- HOOK: his real room, softened behind him; the words tuck behind his head as he says them
     for lid in ("h2", "h3", "h4", "h5"):  # one slow push across the whole hook take
@@ -547,31 +548,36 @@ def plan(tl: dict) -> dict:
     S("whoosh", L["n1"]["t0"] + 0.2, 0.07)
     # Vish, 22 Oct (v9, refs @sakchham_films, @ayyitsjamie): on "I'm Vish" the frame freezes, he gets a white sticker
     # outline and his labels pop on; after "27" the music stops dead and his passport photos land on a page, kid to now
-    tf0, ph0 = T("n1", "vish") - 0.03, L["n1"]["t1"] + 0.02
+    # Vish, 23 Oct: the freeze holds on its own after "Hey, I'm Vish", then "I'm 27" plays live into the photos
+    tf0, uf, ph0 = T("n1", "vish", end=True) + 0.02, L["n1a"]["t0"], L["n1a"]["t1"] + 0.02
     it_n1 = next(i for i in items if i["kind"] == "talk" and abs(i["t0"] - L["n1"]["t0"]) < 1e-3)
-    it_n1["freeze"] = [round(tf0, 4), round(ph0 + 0.05, 4), it_n1["off"] + int((tf0 - it_n1["t0"]) * FPS)]
+    it_n1["freeze"] = [round(tf0, 4), round(uf, 4), it_n1["off"] + int((tf0 - it_n1["t0"]) * FPS)]
     tags = [[None, "This is Vish", tf0 + 0.03, 80, 420, -4, 58], ["mobile_phone", "Social media", tf0 + 0.2, 560, 560, 5, 40],
             ["person_in_lotus_position", "Yoga", tf0 + 0.33, 60, 930, -6, 40], ["robot", "AI", tf0 + 0.46, 790, 900, 4, 40],
-            ["airplane", "Travel", tf0 + 0.59, 690, 1230, -3, 40], [None, "27", T("n1", "27"), 110, 1190, 6, 96]]
-    cues.append({"type": "tags", "t0": tf0, "t1": ph0 + 0.05, "items": [[a, b, round(c, 3), x, y, r, z_] for a, b, c, x, y, r, z_ in tags], "z": 44})
+            ["airplane", "Travel", tf0 + 0.59, 690, 1230, -3, 40]]
+    cues.append({"type": "tags", "t0": tf0, "t1": uf + 0.04, "items": [[a, b, round(c, 3), x, y, r, z_] for a, b, c, x, y, r, z_ in tags], "z": 44})
     S("shutter-old", tf0, 0.12, cut=0.5)
     S("boom", tf0, 0.12)
     for k_, tg in enumerate(tags):
         S("pop", tg[2], 0.12, f=1.0 + 0.07 * k_)
+    # Vish, 22 Oct (v9): say that he builds with AI and that this video was edited by Claude
+    ai0 = tf0 + 0.8
+    cues.append({"type": "sticker", "t0": ai0, "t1": ph0 + 0.04, "emoji": "robot", "z": 45,
+                 "text": "Edited 100% by AI.", "sub": "every cut, sound + graphic: Claude", "x": 175, "y": 1420, "rot": -3})
+    S("pop", ai0, 0.14, f=0.85)
+    S("ping", ai0 + 0.13, 0.05)
+    t27 = T("n1a", "27") - 0.02
+    cues.append({"type": "tags", "t0": t27, "t1": ph0 + 0.04, "items": [[None, "27", round(t27, 3), 720, 500, 6, 110]], "z": 44})
+    S("pop", t27, 0.13, f=1.4)
     photos = sorted((W / "photos").glob("p*.jpg"))
     ptimes = [round(ph0 + 0.12 + 0.24 * k, 3) for k in range(len(photos))]
-    cues.append({"type": "photos", "t0": ph0, "t1": L["n1b"]["t0"] + 0.02, "files": [str(x) for x in photos], "times": ptimes,
+    cues.append({"type": "photos", "t0": ph0, "t1": L["h2"]["t0"] + 0.02, "files": [str(x) for x in photos], "times": ptimes,
                  "text_t": ptimes[-1] + 0.3, "w": 560, "z": 47})
     for k_, tp in enumerate(ptimes):
         S("click", tp, 0.14, f=0.9 + 0.04 * k_)
         S("thump", tp, 0.05)
     S("thump", ptimes[-1] + 0.3, 0.14)
-    nocap += [[L["n1"]["t0"], L["n1b"]["t0"]]]
-    # Vish, 22 Oct (v9): say that he builds with AI and that this video was edited by Claude
-    cues.append({"type": "sticker", "t0": T("n1b", "this") - 0.05, "t1": L["n1b"]["t1"] + 0.35, "emoji": "robot", "z": 44,
-                 "text": "Edited 100% by AI.", "sub": "every cut, sound + graphic: Claude", "x": 175, "y": 1235, "rot": -3})
-    S("pop", T("n1b", "this") - 0.05, 0.14, f=0.85)
-    S("ping", T("n1b", "this") + 0.08, 0.05)
+    nocap += [[L["n1"]["t0"], L["h2"]["t0"]]]
 
     # ---- the soft middle: paper
     bgs.append([L["c1"]["t0"], L["s1"]["t0"], "paper"])
@@ -733,7 +739,7 @@ def plan(tl: dict) -> dict:
     S("pencil-scribble", c0 + 0.3, 0.05, cut=0.6)
     S("tick", c0 + 0.6, 0.05)
     geoms.append([c0 - 0.1, "none", M])
-    hush = [[L["h6"]["t0"] - 0.03, L["c1"]["t0"] - 0.02], [ph0, L["n1b"]["t0"] - 0.01],
+    hush = [[L["h6"]["t0"] - 0.03, L["c1"]["t0"] - 0.02], [ph0, L["h2"]["t0"] - 0.01],
             [T("r1", "rejections", end=True) + 0.05, L["s1"]["t0"] - 0.02],  # the stamp lands in silence; the music opens on the turn
             [L["l2"]["t0"] - 0.02, L["l3"]["t0"] - 0.02]]
     return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "hush": hush}

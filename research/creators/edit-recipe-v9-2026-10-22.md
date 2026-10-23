@@ -2,7 +2,7 @@
 
 Vish, on v9: "I love this version… everything is so good, so perfect." This is the baseline for every talking-head reel from now on. Start from it; improve on it, never below it.
 
-v10 (23 Oct): the breakup is cut and the reel opens on "Hey, I'm Vish". He waves full screen, the frame settles, then the freeze-frame sticker intro, then the hook facts. The sound design is unchanged from v9; only the silences moved with the story.
+v11 (23 Oct): the reel opens on "Hey, I'm Vish" (a wave full screen, the frame settles), then the freeze-frame sticker edit on its own, then "I'm 27" into the passport photos, then the 40K hook. His past relationship is never mentioned. The sound design is unchanged from v9; only the silences moved with the story.
 
 Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame prep, sound map, mix) and `edit/comp.html` (compositor). Commands:
 - `python edit/week1.py prep`
@@ -15,7 +15,7 @@ Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame pr
 - **His takes stay whole.**
   - No chopping inside a take ("join" continues the take); takes change only at a full sentence.
   - One steady speed for everything (1.1×), never ramps.
-  - Natural asides stay ("that one hurt").
+  - Natural asides stay.
   - Pauses where he looks away get no hold, and a line gets a short LAND beat only where it should land.
 - **Locked camera.** A dead-zone head lock, no drifting reframes; static punch-ins only.
 - **Film grade, not saturation.** `scripts/reel_edit/film.py`: LUT, light pool, halation, mist. It should look like an expensive camera, not a filter.

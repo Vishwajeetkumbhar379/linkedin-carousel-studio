@@ -1,20 +1,20 @@
 # Week 1 intro reel: posting kit (v10)
 
-v10 (Vish, 23 Oct): it now opens on "Hey, I'm Vish", and the relationship lines are cut. Everything else is v9.
+v11 (Vish, 23 Oct): "Hey, I'm Vish" → the freeze-frame sticker edit → "I'm 27" with the passport photos → the 40K hook, then the rest as in v9.
 
-Upload `video-projects/week-01-intro/out/week1-intro-9x16.mp4` (1:36.2, 9:16). The audio is final: Vish's voice (cleaned), the sound design, and the music he picked, mixed in:
-- **Loser** by Tame Impala, from the reel Vish shared, plays from the first frame. It's low-passed and quiet under the hard part, opens up at "But here's what I've got" (0:38.8), and its chorus lands on "travel the world" (1:01.3).
+Upload `video-projects/week-01-intro/out/week1-intro-9x16.mp4` (1:35.9, 9:16). The audio is final: Vish's voice (cleaned), the sound design, and the music he picked, mixed in:
+- **Loser** by Tame Impala, from the reel Vish shared, plays from the first frame. It's low-passed and quiet under the hard part, opens up at "But here's what I've got" (0:38.4), and its chorus lands on "travel the world" (1:01.0).
 - The music cuts to **true silence** four times, like the @ayyitsjamie reel:
-  - under the passport photos (0:02.1 to 0:04.5);
-  - on "What am I doing?" (0:14.7);
-  - after "220 job rejections" (0:38.3);
-  - on "But one thing is sure" (0:56.7).
-- **The cat song** ("I got that feeling…") from his first dance step (1:31.6), carrying into the cats (1:32.6).
+  - under the passport photos (0:03.8 to 0:06.2);
+  - on "What am I doing?" (0:14.4);
+  - after "220 job rejections" (0:38.0);
+  - on "But one thing is sure" (0:56.3).
+- **The cat song** ("I got that feeling…") from his first dance step (1:31.3), carrying into the cats (1:32.3).
 
 Post it with the original audio. If Instagram ever mutes it for a music match, re-add the same two songs with Add to mix at those times.
 
 ## What's on screen
-- **Opening, "Hey, I'm Vish":** a wave full screen, then the frame settles. Then the freeze-frame sticker, the passport photos and "this is my first video".
+- **Opening, "Hey, I'm Vish":** a wave full screen, then the frame settles. The frame freezes on its own, Vish becomes a white-outlined sticker, his labels pop on, and an "Edited 100% by AI" card appears. Then "I'm 27" plays live with a 27 sticker, and the passport photos follow.
 - **Hook facts:**
   - "40K" rolls up like an odometer;
   - "No job." and "Booked a flight" hit;
@@ -24,7 +24,6 @@ Post it with the original audio. If Instagram ever mutes it for a music match, r
   - Vish becomes a sticker with a white outline;
   - labels pop on: this is Vish, social media, yoga, AI, travel, 27.
 - **The passport photos:** after "27", his passport photos land on a page one by one, kid to now, in silence: "27 years in passport photos".
-- **"This is my first video":** a sticker reads "Edited 100% by AI. Every cut, sound and graphic: Claude".
 - **"What I've got":** the stats card has a "Building with AI" row.
 - **"Life is all over the place":**
   - the card flies apart;
