@@ -57,20 +57,39 @@ It's a series template, inspired by @jiannacapri's "$100k in 90 days" covers:
 
 Keep the same template every week (change the number, photo, stickers and line), and alternate red and navy so the grid reads as one series.
 
-## Caption
-40K in debt. No job. And I just booked a flight to Sri Lanka.
+## Caption (v12, SlopMonster clean)
+I'm 27, 40K in debt, no job, and I just booked a flight to Sri Lanka.
 
-Week 1 of 52.
+This is week 1 of 52.
 
-I'm 27, finishing my master's in Germany, and I'm going to build a remote income so I can travel the world. I don't know how yet. But every week I'll show you everything: the trials, the fails, the work, the travel.
+A year ago I quit my job and moved to Germany. I don't speak the language, I've had 220 job rejections, and I'm still finishing my master's.
 
-PS: I didn't edit this video. AI did. Every cut, sound and graphic was made by Claude.
+So I'm done waiting for a yes. For the next 52 weeks I'm building a remote income, so I can work from anywhere and travel the world. Every week, on camera: the trials, the fails, the work, the travel.
 
-Where are you starting from? 👇
+Next week: my plan to make money from anywhere. Follow so you don't miss it.
 
-#startingover #digitalnomad #remotework #buildinpublic #aiediting
+PS: I didn't edit this video. AI did, every cut and every sound.
 
-Five hashtags: Instagram now caps a post at five, and relevant ones beat big generic ones.
+Where are you starting from? Tell me below 👇
+
+#startingover #digitalnomad #remotework #workfromanywhere #buildinpublic
+
+Why it's built this way:
+- **First line (70 characters):** the whole hook shows before "more", so the reel's story is clear in the feed.
+- **Search keywords in plain words:** remote income, work from anywhere, travel the world, Germany, 220 job rejections, master's. Instagram search reads captions, so these help more than hashtags do.
+- **Hashtags:** five, because Instagram caps a post at five. They're relevant, mid-sized tags, not huge generic ones.
+- **What it asks people to do:**
+  - follow for next week (it matches the narrator's ending);
+  - get curious about the AI edit (that sets up the CLAUDE post);
+  - answer one easy question in the comments.
+
+## Settings before you share
+- **Cover:** `week1-cover-v12.jpg` (Edit cover → Add from camera roll).
+- **Location:** tag your city in Germany, for local discovery.
+- **Alt text** (More options → Accessibility): "Vish, 27, on starting over in Germany: 40K in debt, no job, a flight to Sri Lanka, and a 52-week plan to build a remote income and travel the world."
+- **Audio:** rename it to "Week 1 of 52 · Vish".
+- **Threads:** leave "Also share to Threads" on.
+- **Pinned comment:** right after posting, comment and pin "Week 2 drops next Thursday: the plan. Where are you starting from?"
 
 ## After posting
 - Reply to the first comments within the hour, in your own words.
