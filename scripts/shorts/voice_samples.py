@@ -20,6 +20,12 @@ from voice import keys  # noqa: E402
 
 TEXT = ("G. P. T. You'd think all three letters are OpenAI's. One isn't. "
         "G, generative. P, pre-trained. But T? T was invented at Google.")
+# eleven_v3 reads audio tags: breaths and energy like a real presenter, not a newsreader
+TAGGED = ("[excited] G. P. T. [short pause] You'd think all three letters are OpenAI's. [breathes] One isn't. "
+          "G, generative. P, pre-trained. [curious] But T? [dramatic pause] T was invented at Google.")
+# OpenAI's steerable TTS (the family behind ChatGPT's voices), used only if an OpenAI key exists
+OPENAI_STYLE = ("Energetic YouTube Shorts presenter telling a friend a surprising fact. Natural and human: audible breaths, "
+                "small pauses for effect, warm smile in the voice, quick pace, rising curiosity on questions. Never robotic or newsreader-like.")
 NATURAL = {"stability": 0.32, "similarity_boost": 0.8, "style": 0.38, "use_speaker_boost": True, "speed": 1.06}
 
 
@@ -59,7 +65,8 @@ def add(k: str, vo: dict) -> str:
 
 
 def say(k: str, voice_id: str, model: str, path: Path) -> bool:
-    body = {"text": TEXT, "model_id": model, "voice_settings": NATURAL if model != "eleven_v3" else {"stability": 0.5}}
+    v3 = model == "eleven_v3"
+    body = {"text": TAGGED if v3 else TEXT, "model_id": model, "voice_settings": {"stability": 0.0} if v3 else NATURAL}
     r = requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}", params={"output_format": "mp3_44100_128"},
                       headers={"xi-api-key": k}, json=body, timeout=120)
     if not r.ok:
@@ -75,15 +82,34 @@ def main():
     k = key()
     cands = [("George-natural", "JBFqnCBsd6RMkjVDRZzb", "eleven_multilingual_v2", "current voice, looser and warmer settings"),
              ("George-v3", "JBFqnCBsd6RMkjVDRZzb", "eleven_v3", "current voice on the most expressive model")]
-    for vo in library(k):
-        cands.append((vo["name"].split()[0], add(k, vo), "eleven_multilingual_v2",
-                      f"{vo.get('accent', '')} {vo.get('age', '')}, {vo.get('descriptive', '')}, library voice"))
+    for j, vo in enumerate(library(k)):
+        vid = add(k, vo)
+        label = f"{vo.get('accent', '')} {vo.get('age', '')}, {vo.get('descriptive', '')}, library voice"
+        cands.append((vo["name"].split()[0], vid, "eleven_multilingual_v2", label))
+        if j < 2:  # the two most-used library voices also on v3 with breath and energy tags
+            cands.append((vo["name"].split()[0] + "-v3", vid, "eleven_v3", label + ", v3 with breaths"))
     rows, chars = [], 0
     for i, (name, vid, model, note) in enumerate(cands, 1):
         f = out / f"{i}-{name}.mp3"
         if say(k, vid, model, f):
             chars += len(TEXT)
             rows.append({"n": i, "name": name, "voice_id": vid, "model": model, "note": note, "file": str(f)})
+    import os
+    ok = os.environ.get("OPENAI_API_KEY")
+    if ok:
+        for name in ("ash", "ballad", "verse"):
+            n = len(rows) + 1
+            f = out / f"{n}-openai-{name}.mp3"
+            r = requests.post("https://api.openai.com/v1/audio/speech", headers={"Authorization": f"Bearer {ok}"}, timeout=120,
+                              json={"model": "gpt-4o-mini-tts", "voice": name, "input": TEXT, "instructions": OPENAI_STYLE, "response_format": "mp3"})
+            if r.ok:
+                f.write_bytes(r.content)
+                rows.append({"n": n, "name": f"openai-{name}", "voice_id": name, "model": "gpt-4o-mini-tts",
+                             "note": "OpenAI voice (ChatGPT family), steered to presenter energy with breaths", "file": str(f)})
+            else:
+                print(f"openai {name}: HTTP {r.status_code}", file=sys.stderr)
+    else:
+        print("no OPENAI_API_KEY: skipped OpenAI voices", file=sys.stderr)
     (out / "samples.json").write_text(json.dumps(rows, indent=1))
     print(f"{len(rows)} samples, {chars} characters billed, in {out}")
     for r in rows:
