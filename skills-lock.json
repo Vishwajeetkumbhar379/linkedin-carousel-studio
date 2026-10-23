@@ -1,11 +1,119 @@
 {
   "version": 1,
   "skills": {
+    "agent-reach": {
+      "source": "Panniantong/Agent-Reach",
+      "sourceType": "github",
+      "skillPath": "agent_reach/skill/SKILL.md",
+      "computedHash": "5ca4c8c56632404f7e8804133628bac619555da74f920a0bf7399722e6865008"
+    },
+    "ai-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-seo/SKILL.md",
+      "computedHash": "d17bcf49642639b1978e59aee3f13a1a5c80198a56c3c33cb7aee34df7b79359"
+    },
+    "comment-mining": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/comment-mining/SKILL.md",
+      "computedHash": "1ec092a95776fa8296c09a387718131478c3f78609d0d0cc5842a37faeb49fb7"
+    },
+    "competitor-teardown": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/competitor-teardown/SKILL.md",
+      "computedHash": "1f8c1d64994e78ee917430a211c4a133e5a235239aca4ff3cc007bdacfb842ab"
+    },
+    "dm-script-writer": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/dm-script-writer/SKILL.md",
+      "computedHash": "6c9535ae10301f0934f8b2025479b67d62bb03a9b790be88e9e34fc80114437f"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
+    },
+    "huashu-motion": {
+      "source": "alchaincyf/huashu-motion",
+      "sourceType": "github",
+      "skillPath": "skills/huashu-motion/SKILL.md",
+      "computedHash": "8df379df803c7169aadab63516fdb91bca060aef045e5d45cdb6fa83066197b6"
+    },
+    "on-screen-text-writer": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/on-screen-text-writer/SKILL.md",
+      "computedHash": "a59d076a02743f919935eb19e4ec83ee8234d42755e9e8df377a3a23c181a12e"
+    },
     "openfilm": {
       "source": "openfilm/openfilm",
       "sourceType": "github",
       "skillPath": "skills/openfilm/SKILL.md",
       "computedHash": "a30f15632ebb29295dfff7131faf2c212e17f2bae2918a87ef0f716dcca8a157"
+    },
+    "profile-conversion-audit": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/profile-conversion-audit/SKILL.md",
+      "computedHash": "f40e8622940b00bac098c348d12d8183b3d9e1df462ecdc8156c668126f0b1f6"
+    },
+    "reel-analyzer": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/reel-analyzer/SKILL.md",
+      "computedHash": "47b6bfe1e258532a0527c4f9a5864e591c8aa64c9803f7fa551b8d9249c1c881"
+    },
+    "seo-audit": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/seo-audit/SKILL.md",
+      "computedHash": "9a94c66cb3098b03037f072b6f561cca75410c6d8611e50646baf9e8a5dabe8f"
+    },
+    "series-planner": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/series-planner/SKILL.md",
+      "computedHash": "1aa2c898f03ea739e2999490e85f9007afdb79a45ff14c8ca2dd0f7baca6bbc5"
+    },
+    "social-analytics-report": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/social-analytics-report/SKILL.md",
+      "computedHash": "a86d257796d36d6405d78b72c960cc524febbf1cc7abc5a98d77e1ac784b0ced"
+    },
+    "stripe-best-practices": {
+      "source": "stripe/ai",
+      "sourceType": "github",
+      "skillPath": "skills/stripe-best-practices/SKILL.md",
+      "computedHash": "03fdea4421897072ad549d72d1e49202962c0a69ed8554c53c66fb635a8f8387"
+    },
+    "utm-campaign-plan": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/utm-campaign-plan/SKILL.md",
+      "computedHash": "27a8b47e8fc3ddb79e7c2fb9ecd041068095bf991dcf8b8bc93210119b51b598"
+    },
+    "viral-carousel": {
+      "source": "Ootto-AI/claude-content-skills",
+      "sourceType": "github",
+      "skillPath": "skills/viral-carousel/SKILL.md",
+      "computedHash": "7744d9cf12fb7d9d722eb6215bb1b1db3bef82ad266f8908d54e4980d055c437"
+    },
+    "yt-retention": {
+      "source": "Jakeschincariol/youtube-agent-skill",
+      "sourceType": "github",
+      "skillPath": "skills/yt-retention/SKILL.md",
+      "computedHash": "c9707a86bb5fd3f5d9c28967f92f587c0f8d77fe8bb84add4f3bc38f96f88e7c"
+    },
+    "yt-script": {
+      "source": "Jakeschincariol/youtube-agent-skill",
+      "sourceType": "github",
+      "skillPath": "skills/yt-script/SKILL.md",
+      "computedHash": "b062ae430cccaad23eaaa6c61eaa24baf3d8d9d76c054f0a6e42cfe86046c878"
     }
   }
 }
