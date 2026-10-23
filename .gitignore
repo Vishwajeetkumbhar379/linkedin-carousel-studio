@@ -48,3 +48,6 @@ out/shorts/*/stills/
 out/shorts/*/.parts/
 out/shorts/*/video-silent.mp4
 out/shorts/*/mix.wav
+out/shorts/*/voice.wav
+out/shorts/*/voice.json
+out/shorts/*/video.mp4
