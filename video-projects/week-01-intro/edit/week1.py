@@ -63,7 +63,7 @@ LINES = [
     ("l1", "IMG_1586", [(0.0, 2.0)], {}, "45", "night", {}),
     ("l1b", "IMG_1586", [(2.4, 9.3)], {}, "45", "night", {"join": 1}),
     ("l2", "IMG_1586", [(10.1, 11.3)], {}, "45", "night", {"join": 1}),
-    ("l3", "IMG_1586", [(12.2, 15.5)], {}, "45", "night", {"join": 1, "gap": 2.8}),
+    ("l3", "IMG_1586", [(12.2, 15.5)], {}, "45", "night", {"join": 1, "gap": 13.0, "mute": 1}),  # Vish, 23 Oct: a longer travel montage
     ("m1", "IMG_1588", [(0.0, 3.2)], {}, "45", "night", {}),
     ("m1b", "IMG_1588", [(6.1, 9.1)], {}, "45", "night", {"join": 1}),
     ("m2", "IMG_1588", [(9.6, 10.95)], {}, "45", "night", {"join": 1}),
@@ -81,6 +81,13 @@ DANCE = ("IMG_1594", 4.5, 6.5)  # his dance, arms out (he starts at 4.4 s and sl
 DANCE_IN = 1.0                   # seconds of him dancing before he shrinks into the cats
 CATS = (3.5, 3.6)                # cats clip in, seconds (two cats from 3.5 s); the cat song plays from DANCE start
 TAIL = 18          # extra frames on every shot, for dissolves into the next one
+VO = P / "assets" / "vo" / "next_week"  # .mp3 + .json (ElevenLabs, George, with word timings)
+NEXT_LEAD, NEXT_TAIL = 0.35, 0.75     # the card is up this long before the narrator, and holds after him
+
+
+def vo_len() -> float:
+    return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(VO.with_suffix(".mp3"))],
+                                capture_output=True, text=True).stdout)
 
 
 # ---------------------------------------------------------------- audio helpers
@@ -260,11 +267,13 @@ def build() -> dict:
     cats_t0 = dr["t0"] + DANCE_IN
     dance = (dr["t0"], cats_t0)
     t = cats_t0 + CATS[1]
+    nx0 = t  # Vish, 23 Oct: a "next week" card after the cats, said by an ElevenLabs narrator
+    t = nx0 + NEXT_LEAD + vo_len() + NEXT_TAIL
     shots_out = [{"clip": sh["clip"], "a": sh["a"], "b": sh["b"] + sh["hold"], "t0": sh["t0"], "dur": sh["dur"], "segs": sh["segs"],
                   "look": sh["runs"][0]["look"], "cut": any(r["lay"] == "cut" for r in sh["runs"]), "mute": sh["runs"][-1].get("mute", False),
                   "runs": [runs.index(r) for r in sh["runs"]]} for sh in shots]
-    return {"runs": runs, "shots": shots_out, "words": words, "lines": lines, "dance": dance, "cats": (cats_t0, t),
-            "dur": round(t * FPS) / FPS}
+    return {"runs": runs, "shots": shots_out, "words": words, "lines": lines, "dance": dance, "cats": (cats_t0, nx0),
+            "next": (nx0, nx0 + NEXT_LEAD), "dur": round(t * FPS) / FPS}
 
 
 def wt(tl: dict, lid: str, sub: str, end: bool = False, nth: int = 0) -> float:
@@ -560,12 +569,7 @@ def plan(tl: dict) -> dict:
     S("boom", tf0, 0.12)
     for k_, tg in enumerate(tags):
         S("pop", tg[2], 0.12, f=1.0 + 0.07 * k_)
-    # Vish, 22 Oct (v9): say that he builds with AI and that this video was edited by Claude
-    ai0 = tf0 + 0.8
-    cues.append({"type": "sticker", "t0": ai0, "t1": ph0 + 0.04, "emoji": "robot", "z": 45,
-                 "text": "Edited 100% by AI.", "sub": "every cut, sound + graphic: Claude", "x": 175, "y": 1420, "rot": -3})
-    S("pop", ai0, 0.14, f=0.85)
-    S("ping", ai0 + 0.13, 0.05)
+    # Vish, 23 Oct: no "Edited 100% by AI" card
     t27 = T("n1a", "27") - 0.02
     cues.append({"type": "tags", "t0": t27, "t1": ph0 + 0.04, "items": [[None, "27", round(t27, 3), 720, 500, 6, 110]], "z": 44})
     S("pop", t27, 0.13, f=1.4)
@@ -667,13 +671,19 @@ def plan(tl: dict) -> dict:
     # the drop: the frame opens to full screen, the montage cuts on the music's beat
     drop = T("l3", "travel") - 0.02
     geoms.append([drop, "full", 0.5])
-    mont = [("travel/ocean/IMG_5708.MOV", 3.5), ("travel/bike/IMG_1754.MOV", 9.4), ("travel/ocean/IMG_4594.MOV", 4.0),
-            ("travel/friends/IMG_5615.MOV", 7.0), ("travel/ocean/IMG_1503.MOV", 10.5)]
-    end = L["m1"]["t0"]
-    for i, (rel, s) in enumerate(mont):
-        t0, t1 = drop + i * LBEAT, (drop + (i + 1) * LBEAT if i < len(mont) - 1 else end)
-        B(t0, t1, rel, s, "full", kb=(1.0, 1.04))
+    # Vish, 23 Oct: more fun travel so the chorus plays longer. Four quick cuts on the drop, then two beats a clip
+    mont = [("travel/ocean/IMG_5708.MOV", 3.5, 1), ("travel/bike/IMG_1754.MOV", 9.4, 1), ("travel/ocean/IMG_4594.MOV", 4.0, 1),
+            ("travel/friends/IMG_5615.MOV", 7.0, 1), ("travel/ocean/IMG_3547.mov", 3.4, 2), ("travel/friends/IMG_3348.MOV", 6.0, 2),
+            ("travel/mountains/IMG_2099.MOV", 6.2, 2), ("travel/friends/IMG_2783.MOV", 3.9, 2), ("travel/bike/IMG_4167.MOV", 1.2, 2),
+            ("travel/mountains/IMG_1452.MOV", 5.0, 2, dict(speed=1.6, kb=(1.45, 1.52), fy=0.9)), ("travel/ocean/IMG_5676.MOV", 29.0, 2), ("travel/ocean/IMG_1503.MOV", 10.5, 99)]
+    end, t = L["m1"]["t0"], drop
+    for i, (rel, s, beats, *opt) in enumerate(mont):
+        t1 = min(end, t + beats * LBEAT) if beats < 99 else end
+        if t1 - t < 0.2:
+            break
+        B(t, t1, rel, s, "full", **{"kb": (1.0, 1.04), **(opt[0] if opt else {})})
         items[-1].update(dx=0.35) if i == 0 else items[-1].update(dx=0.0, tx="punch", txd=0.22)
+        t = t1
     S("boom", drop, 0.3)
     S("whoosh", drop, 0.12)
     S("riser-drama", drop - 1.6, 0.05, tail=1.6)
@@ -731,8 +741,13 @@ def plan(tl: dict) -> dict:
     for it in items:
         if it["kind"] == "talk" and abs(it["t1"] - c0) < 0.05:
             it["t1"] = round(c0 + M, 4)
-    cues.append({"type": "cats", "t0": c0 - 0.1, "t1": c1 + 1, "dir": str(cd / "cut"), "n": round(CATS[1] * FPS), "z": 30, "morph": M})
-    bgs.append([c0 + M, c1 + 1, "paper"])
+    cues.append({"type": "cats", "t0": c0 - 0.1, "t1": c1 + 0.3, "dir": str(cd / "cut"), "n": round(CATS[1] * FPS), "z": 30, "morph": M})
+    bgs.append([c0 + M, tl["dur"] + 1, "paper"])
+    n0, v0 = tl["next"]
+    vw = json.loads(VO.with_suffix(".json").read_text())["words"]
+    cues.append({"type": "next", "t0": n0, "t1": tl["dur"] + 1, "z": 48, "words": [[w, round(v0 + a, 3), round(v0 + b, 3)] for w, a, b in vw]})
+    S("whoosh", n0 + 0.15, 0.1, d=0.5)
+    S("tick", v0 + vw[-1][2] - 0.1, 0.07)  # week 2's cell fills
     S("whoosh", c0 + 0.1, 0.1, d=0.6)
     S("pop", c0 + 0.1, 0.1)
     S("pop", c0 + 0.25, 0.1, f=1.15)
@@ -812,7 +827,7 @@ def prep() -> dict:
     pl["words"] = tl["words"]
     pl["runs"] = tl["runs"]
     pl["shots"] = tl["shots"]
-    pl["dance"], pl["cats"] = tl["dance"], tl["cats"]
+    pl["dance"], pl["cats"], pl["next"] = tl["dance"], tl["cats"], tl["next"]
     (W / "timeline.json").write_text(json.dumps(pl))
     print(f"timeline: {tl['dur']:.2f} s, {len(pl['items'])} picture items, {len(pl['cues'])} graphics, {len(pl['caps'])} captions")
     return pl
@@ -848,8 +863,21 @@ def render_part(k0: int, k1: int, out: Path) -> None:
     with sync_playwright() as pw:
         b, pg = page(pw)
         for k in range(k0, k1):
-            pg.evaluate("t => render(t)", k / FPS)
-            ff.stdin.write(pg.screenshot(type="jpeg", quality=92))
+            for attempt in range(4):  # headless Chromium can segfault under load: relaunch and redo this frame
+                try:
+                    pg.evaluate("t => render(t)", k / FPS)
+                    shot = pg.screenshot(type="jpeg", quality=92)
+                    break
+                except Exception as e:  # noqa: BLE001
+                    print(f"  {out.name}: frame {k - k0} failed ({str(e)[:60]}), relaunching", flush=True)
+                    try:
+                        b.close()
+                    except Exception:  # noqa: BLE001
+                        pass
+                    b, pg = page(pw)
+            else:
+                raise RuntimeError(f"{out.name}: frame {k} failed 4 times")
+            ff.stdin.write(shot)
             if (k - k0) % 150 == 0:
                 print(f"  {out.name}: frame {k - k0}/{k1 - k0}", flush=True)
         b.close()
@@ -1103,6 +1131,12 @@ def mix() -> Path:
         e = min(n, i + len(x))
         fx[i:e] += g * x[: e - i]
     end = at(tl["dur"])
+    v0 = tl["next"][1]
+    vo = audio(VO.with_suffix(".mp3")).copy()
+    sp = voice[np.abs(voice) > 0.02]
+    vo *= 1.19 * (np.sqrt(np.mean(sp ** 2)) if len(sp) else 0.08) / (np.sqrt(np.mean(vo[np.abs(vo) > 0.02] ** 2)) + 1e-6)  # his level (+1.5 dB: measured 1.3 LU under him)
+    i = at(v0); voice[i:i + len(vo)] += vo[: max(0, n - i)]
+    music *= ramp([(0, 1), (v0 - 0.25, 1), (v0 + 0.05, 0.4), (tl["dur"] - 0.6, 0.4), (tl["dur"], 0.0), (999, 0.0)])
     np.savez(W / "stems.npz", voice=voice[:end], fx=fx[:end], music=music[:end], amb=amb[:end])  # for level checks
     out = (voice + fx + music + amb)[: end]
     import soundfile as sf

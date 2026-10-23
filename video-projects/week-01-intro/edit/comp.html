@@ -85,6 +85,21 @@ function fadeOut(node, t, t1, d = .28) { const v = 1 - prog(t, t1 - d, d); node.
 
 // ---------------------------------------------------------------- cue types
 const K = {
+  next: {  // "Next week, on Build with Vish... the plan to make money from anywhere." Each word lands as the narrator says it
+    make(c) { const W = c.words, w = (i, txt) => `<span class="w" data-i="${i}">${txt ?? W[i][0].replace(/[.,]+$/, '')}</span>`;
+      return el(`<div class="paperbg" style="position:absolute;inset:0"></div>
+        <div style="position:absolute;left:0;right:0;top:470px;text-align:center;color:#1D1C1A">
+          <div style="font:400 170px/.9 IS">${w(0)} ${w(1)}</div>
+          <div class="mono" style="font-size:26px;color:#6B675F;margin-top:26px">${[2, 3, 4, 5].map(i => w(i)).join(' ')}</div>
+          <div style="font:400 250px/.88 IS;margin-top:70px">${w(6, 'The')} ${w(7)}</div>
+          <div style="font:400 italic 88px/1.05 IS;color:#B8742F;margin-top:26px">${[8, 9, 10].map(i => w(i)).join(' ')}<br>${[11, 12].map(i => w(i)).join(' ')}</div>
+          <div class="bar" style="width:760px;margin:70px auto 0;display:grid;grid-template-columns:repeat(52,1fr);gap:4px">${Array.from({length: 52}, (_, k) => `<i style="height:14px;display:block;border-radius:2px;background:${k === 0 ? '#E7A15A' : 'rgba(29,28,26,.14)'}"></i>`).join('')}</div>
+          <div class="mono ft" style="font-size:22px;color:#6B675F;margin-top:30px">Follow for week 2</div></div>`, '', 'inset:0'); },
+    upd(d, c, t) { const u = eio(prog(t, c.t0, .5)), last = c.words[c.words.length - 1][2];
+      d.style.transform = `translateY(${(1 - u) * 1920}px)`;  // a fresh page slides up over the cats
+      d.querySelectorAll('.w').forEach(w => flip(w, t, c.words[+w.dataset.i][1] - .05, .38));
+      d.querySelector('.bar').children[1].style.background = t >= last - .1 ? '#E7A15A' : 'rgba(29,28,26,.14)';
+      enter(d.querySelector('.ft'), t, last + .1, .4, 12, 4); } },
   tags: {  // stickers popping around the freeze-frame: labels and 3D icons
     make(c) { return el(c.items.map(([em, txt, t0, x, y, r, sz]) => `<div class="tg" style="position:absolute;left:${x}px;top:${y}px"><div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:${sz > 40 ? 26 : 18}px;padding:${em ? '8px 24px 8px 10px' : '12px 26px'};box-shadow:0 12px 34px rgba(0,0,0,.4);transform:rotate(${r}deg)">${em ? `<img src="${EM}/${em}.png" style="width:84px;height:84px">` : ''}<span style="font:700 ${sz}px/1 IT;letter-spacing:-.01em;color:#111;text-transform:uppercase;white-space:nowrap">${txt}</span></div></div>`).join(''), '', 'inset:0'); },
     upd(d, c, t) { d.querySelectorAll('.tg').forEach((g, i) => { const t0 = c.items[i][2], u = prog(t, t0, .4);
