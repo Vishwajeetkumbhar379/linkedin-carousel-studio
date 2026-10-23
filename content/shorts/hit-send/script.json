@@ -1,0 +1,96 @@
+{
+  "slug": "hit-send",
+  "series": "Inside AI",
+  "episode": 1,
+  "template": "hit-send",
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+    "name": "George",
+    "model": "eleven_multilingual_v2",
+    "gap": 0.28,
+    "scene_gap": 0.5
+  },
+  "lines": [
+    {
+      "text": "This is what happens the second you hit send on ChatGPT.",
+      "see": "Phone, thumb hits send, flash, token sparks already flying (busy frame 0)"
+    },
+    {
+      "text": "Your message gets chopped into tokens. Tiny chunks of words.",
+      "see": "The message splits into coloured token blocks with a clack each, counter climbs"
+    },
+    {
+      "text": "They race to a data center, into chips that cost as much as a car. Each.",
+      "see": "Tokens streak down a fibre line to an isometric data center, dive into a glowing GPU, $30,000+ price tag stamps",
+      "pause_after": true
+    },
+    {
+      "text": "Here's the weird part. It doesn't know the answer. It guesses.",
+      "see": "Inside the chip: neural lattice lights up, IT DOESN'T KNOW -> IT GUESSES"
+    },
+    {
+      "text": "One token at a time, through billions of numbers, over and over.",
+      "see": "Next-token probability bars, the winner pops into the reply bubble, repeats faster and faster"
+    },
+    {
+      "text": "One reply uses about what a light bulb burns in two minutes.",
+      "see": "LED bulb fades up, a 2:00 timer runs, 0.34 Wh label",
+      "pause_after": true
+    },
+    {
+      "text": "Tiny. Until it's billions of messages a day.",
+      "see": "One bulb multiplies into a wall of thousands, counter races into the billions"
+    },
+    {
+      "text": "That's why Sam Altman said your please and thank you cost OpenAI tens of millions of dollars.",
+      "see": "please / thank you tokens drop into a money counter, quote card: tens of millions of dollars well spent"
+    },
+    {
+      "text": "So be honest. Do you still say please before you hit send?",
+      "see": "Back to the phone: please typed, thumb hovers send, comment bubble. Last frame matches frame 0 (loop)"
+    }
+  ],
+  "facts": [
+    {
+      "claim": "Text is split into tokens, chunks of about three quarters of a word",
+      "source": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+      "date": "accessed 2026-10-23"
+    },
+    {
+      "claim": "Data-center AI chips cost about $30,000 to $40,000 each (Nvidia Blackwell, Jensen Huang)",
+      "source": "https://www.cnbc.com/2024/03/19/nvidias-blackwell-ai-chip-will-cost-more-than-30000-ceo-says.html",
+      "date": "2024-03-19"
+    },
+    {
+      "claim": "An average ChatGPT query uses about 0.34 Wh, what a high-efficiency light bulb uses in a couple of minutes (Sam Altman, The Gentle Singularity)",
+      "source": "https://simonwillison.net/2025/Jun/10/sam-altman/",
+      "date": "2025-06-10"
+    },
+    {
+      "claim": "ChatGPT handles over 2.5 billion prompts a day",
+      "source": "https://gigazine.net/gsc_news/en/20250722-chatgpt-prompts",
+      "date": "2025-07-22"
+    },
+    {
+      "claim": "Altman: people saying please and thank you costs OpenAI 'tens of millions of dollars well spent'",
+      "source": "https://www.techradar.com/computing/artificial-intelligence/chatgpt-spends-tens-of-millions-of-dollars-on-people-playing-please-and-thank-you-but-sam-altman-says-its-worth-it",
+      "date": "2025-04-20"
+    }
+  ],
+  "publish": {
+    "title": "What happens the second you hit send on ChatGPT #shorts",
+    "caption": "The second you hit send, your words get chopped up, shipped to a chip that costs as much as a car, and guessed back one piece at a time.\n\nSo be honest: do you still say please? 👇\n\nInside AI, episode 1. Follow for how the AI you use every day actually works.\n\n#ai #chatgpt #howitworks #tech #artificialintelligence",
+    "pinned_comment": "I say please. If they take over, I want to be on the list 😅 What about you?",
+    "tags": [
+      "ai",
+      "chatgpt",
+      "how ai works",
+      "tokens",
+      "openai",
+      "sam altman",
+      "explained",
+      "animation"
+    ]
+  }
+}
