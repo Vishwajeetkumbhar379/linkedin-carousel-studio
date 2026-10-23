@@ -71,6 +71,11 @@ Exactly 3 feed posts a week, and they support each other:
   - left of 86% below 40% height, clear of the buttons.
 
   Faces and backgrounds may run under the UI. Before every render, `python scripts/reel_edit/safe_zones.py check video-projects/<slug>` must say PASS. The review copy comes with `safe_zones.py preview <video>`, a phone preview with the covered areas shaded. (Week 1 had 196 text items under the UI, including the "Week 01 of 52" label on screen for the whole reel.)
+- **Never on his face [Vish, 23 Oct: "some of the captions were literally on my mouth… disrespectful and bad editing"]:** no caption, title, sticker or graphic is ever drawn over his face (eyes, mouth, chin). The same `safe_zones.py check` finds his face in every frame and fails the edit if anything is drawn on it. Week 1 had 16 moments, mostly captions across his mouth in the split layout at 39 to 56 s.
+- **Depth by default [Vish, 23 Oct]:** big titles, key words, numbers and cut-outs sit **behind him**, with his cut-out (matte) on top. They look 3D and he stays the focus.
+  - In `comp.html`, a cue with `z` below 30 goes under the cut-out layer `#cut`.
+  - In framed shots, switch the cut-out on over the frame, or keep the words off the frame.
+  - Only captions sit in front, always below his chin. In split layouts they go in the gap between the graphic and his box, never across the box.
 - **Contrast:** text at least 4.5:1 against what's behind it (WCAG). Use a soft scrim behind captions over busy footage.
 - **Faces pull the eye away from captions** (subtitle eye-tracking research). Keep captions close to the face line, not at the bottom edge.
 
