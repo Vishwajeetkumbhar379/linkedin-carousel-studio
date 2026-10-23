@@ -1,7 +1,0 @@
-voice.py was NOT run (23 Oct 2026, 16:3x UTC). No ElevenLabs characters billed.
-Reason: the session that holds the ElevenLabs keys runs in auto permission mode, and its safety classifier blocked
-(1) copying .env.local into this worktree ("Credential Exploration") and
-(2) running scripts/shorts/voice.py from this branch with the keys ("Code from External").
-The script itself was read and looks fine (it only calls api.elevenlabs.io and writes out/shorts/<slug>/).
-To unblock, Vish can: approve running `python scripts/shorts/voice.py content/shorts/hit-send` in that session,
-add a Bash permission rule for it, or run it himself where the key is set.
