@@ -10,8 +10,12 @@
     "model": "eleven_multilingual_v2",
     "gap": 0.18,
     "scene_gap": 0.35,
-    "speed": 1.1,
-    "lead": 0.02
+    "speed": 1.06,
+    "lead": 0.02,
+    "natural": true,
+    "stability": 0.32,
+    "similarity": 0.8,
+    "style": 0.38
   },
   "lines": [
     {

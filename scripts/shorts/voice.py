@@ -41,7 +41,7 @@ def keys() -> list[tuple[str, str]]:
 
 def tts(text: str, v: dict) -> tuple[bytes, dict, str]:
     body = {"text": text, "model_id": v.get("model", "eleven_multilingual_v2"),
-            "voice_settings": {"stability": v.get("stability", 0.5), "similarity_boost": 0.75, "style": v.get("style", 0.0),
+            "voice_settings": {"stability": v.get("stability", 0.5), "similarity_boost": v.get("similarity", 0.75), "style": v.get("style", 0.0),
                                "use_speaker_boost": True, "speed": v.get("speed", 1.0)}}
     ks = keys()
     if not ks:
@@ -98,6 +98,19 @@ def voice(src: Path, estimate: bool = False) -> Path:
         raw, _ = sf.read(str(wav), dtype="float32")
     cs, ce = al["character_start_times_seconds"], al["character_end_times_seconds"]
 
+    if v.get("natural"):  # keep the read exactly as spoken (its own breaths and pauses): only trim the lead-in
+        lead = v.get("lead", 0.02)
+        a_first = cs[spans(lines[0]["text"], offs[0])[0][1]]
+        a0 = max(0.0, a_first - 0.03)
+        shift = lead - a0
+        mix = np.concatenate([np.zeros(int(lead * SR), np.float32), raw[int(a0 * SR):].astype(np.float32), np.zeros(int(0.5 * SR), np.float32)])
+        res = []
+        for i, ln in enumerate(lines):
+            ws = spans(ln["text"], offs[i])
+            res.append({"text": ln["text"], "start": round(cs[ws[0][1]] + shift, 3), "end": round(ce[ws[-1][2] - 1] + shift, 3),
+                        "words": [{"w": w, "start": round(cs[a] + shift, 3), "end": round(ce[b - 1] + shift, 3)} for w, a, b in ws]})
+        return finish(spec, out, full, keyname, mix, res)
+
     # cut each line out on its own and re-space them with clean gaps
     lead = v.get("lead", 0.15)
     pieces, res, t = [np.zeros(int(lead * SR), np.float32)], [], lead
@@ -120,6 +133,11 @@ def voice(src: Path, estimate: bool = False) -> Path:
         t += g
     pieces.append(np.zeros(int(0.5 * SR), np.float32))
     mix = np.concatenate(pieces)
+    return finish(spec, out, full, keyname, mix, res)
+
+
+def finish(spec, out, full, keyname, mix, res):
+    v = spec["voice"]
     sf.write(str(out / "voice.wav"), mix, SR)
     (out / "voice.json").write_text(json.dumps({"estimate": False, "voice": v["name"], "lines": res, "duration": round(len(mix) / SR, 3)}, indent=1))
 
