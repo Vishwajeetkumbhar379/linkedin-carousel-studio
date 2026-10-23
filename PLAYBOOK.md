@@ -18,6 +18,7 @@ Exactly 3 feed posts a week, and they support each other:
 | Mon | **Teaching Reel (Kallaway style)** from Week 3 **[changed 23 Oct, Vish asked for this topic, animation and editing style]**: a named framework from the week's theme, filmed in the same session. Week 2 keeps Carousel A | Reach to non-followers, keyword comments, saves | Views, comments, shares, site clicks |
 | Sat | **Carousel B**: brand-side or AI-workflow lesson from Vish's 850+ deals | Credibility, leads | Saves, shares, profile visits |
 
+- **Extras (format tests, outside the series) [Vish, 23 Oct]:** reaction and hot-take reels, such as reacting to a creator's take, then recreating their format to make a point. Respectful, credited, their clips 6 s at most, never their words. Sheets in `content/shoot-sheets/*extra*.json`. Compare each one with the series in the weekly report.
 - **One theme per week.** The episode lives it, Carousel A teaches it, Carousel B adds the insider angle. Never repeat the same point twice in one week.
 - **Buckets (Kallaway's 3-2-1, adapted):** one broad bucket (the documentary: travel, remote income) and two narrow ones (AI workflows for creators and marketers; brand-side secrets). Re-check the numbers every 2 weeks, and triple down on the bucket that wins.
 - **Now:** the calendar for Weeks 2 to 5 is `content/calendar/2026-weeks-02-05.md`; the week's files and captions are in `content/instagram/week-NN-post-kit.md`; carousels use the series template `templates/carousel/week-series.css`.

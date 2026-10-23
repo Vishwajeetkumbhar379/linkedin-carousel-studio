@@ -1,0 +1,129 @@
+{
+ "legend": {
+  "/": "short breath, about 0.3 s",
+  "//": "full stop, about 0.8 s, let it land",
+  "*word*": "stress this word",
+  "(up)": "lift energy",
+  "(down)": "slower and lower",
+  "[lens]": "lean in slightly, eyes on the lens",
+  "[point]": "point up at the graphic (Format A) or at the screen side (Format B)",
+  "[count]": "count on your fingers",
+  "[smile]": "small genuine smile",
+  "broll": "B-roll to film after the take (3 to 5 s each, no talking)"
+ },
+ "defaults": {
+  "pace": "aim for 190 to 210 words a minute inside a sentence (Kallaway runs 210 to 240); keep a short beat between lines, never a long one",
+  "energy": "7 out of 10: awake and warm, not a hype voice",
+  "framing": "chest up, a hand's width of space above your head, eyes on the lens",
+  "retake": "If you fluff a line, pause, then say the whole line again. The edit keeps the last take.",
+  "broll": "After the talking take, film the B-roll list on the same phone: 3 to 5 s each, steady, no talking, good light. Film your hands and screens more than your face. The edit cuts to one every few lines (research/creators/style-guide-2026-10-14.md).",
+  "angle": "Film the hook and the CTA a second time from a different angle (wide, standing, or side) so the edit can cut between angles like @justyn.ai."
+ },
+ "sheets": [
+  {
+   "week": "Extra: hot take",
+   "key": "CALM",
+   "keyword": "CALM",
+   "series": "Extra format test (outside the 52 weeks): reaction + recreate",
+   "format": "Part 1 = our loud v12 style; snap; Part 2 = her calm DNA (desk talk + overhead handwriting + soft piano). The contrast is the point",
+   "length": "45 to 55 s (her clips 6 s at most)",
+   "title_card": "HOT TAKE",
+   "post": "Any free slot after Week 2 is up; not instead of the series",
+   "cta": "Comment CALM (resource: the calm-edit prompt, to build before posting) + question: slop or smart?",
+   "model": "@mariah_mpls Derd9IvoWaj (19,265 likes, 563 comments, 23 Oct). We react with respect and recreate her FORMAT, never her words, set or series title. Credit her on screen and tag her",
+   "hook": "Ouch. // She's describing *my* last video.",
+   "hook_alts": [
+    "AI edits are *slop*? // She has a point.",
+    "A video editor just roasted videos like *mine*."
+   ],
+   "lines": [
+    {
+     "say": "Ouch. // She's describing *my* last video.",
+     "see": "Cold open on you, disappointed. Her paused frame slides in as a framed card with @mariah_mpls; HOT TAKE stamp",
+     "how": "(down), small head shake, [lens]"
+    },
+    {
+     "say": "[HER CLIP 1: 4.72 to 6.40 s, \"The graphics are really overstimulating\" + 10.00 to 11.70 s, \"there's constant sound effects\"]",
+     "see": "Her clip in a white-bordered frame, credit @mariah_mpls on screen"
+    },
+    {
+     "say": "And honestly? / She's *right*.",
+     "see": "Hard punch-in on you",
+     "how": "[lens]"
+    },
+    {
+     "say": "People make these with AI / every day. // I made *one*.",
+     "see": "Your Week 1 graphics fly in as 3D cards: the THIS IS VISH sticker, the 40,000 counter, the Next week card, a pop on each",
+     "how": "[point] at the cards"
+    },
+    {
+     "say": "[HER CLIP 2: about 41.9 to 44.1 s, \"into this slot machine style format\"]",
+     "see": "Her clip again, smaller"
+    },
+    {
+     "say": "But AI isn't the problem. // Watch.",
+     "see": "You raise your hand",
+     "how": "[snap] on \"Watch\""
+    },
+    {
+     "say": "AI doesn't make a video loud. / *We* do.",
+     "see": "SNAP: the whole look changes. Daylight desk, still camera, soft piano, small lowercase captions, a serif title \"less, but *better*\"",
+     "how": "calm, slower, (down)"
+    },
+    {
+     "say": "Slop is a weak story / dressed up in effects.",
+     "see": "Overhead: you write \"weak story + effects = slop\""
+    },
+    {
+     "say": "So start with the story. / Then let AI do the boring part: / the cuts, / the captions, / the clean-up.",
+     "see": "Desk, then overhead: \"1. story first  2. AI does the boring part\""
+    },
+    {
+     "say": "This calm version? // AI edited it too.",
+     "see": "Desk, small smile; overhead page \"edited with AI\" and a tick",
+     "how": "[smile] (up)"
+    },
+    {
+     "say": "Same tool. / Different *taste*.",
+     "see": "Overhead: \"same tool. different taste.\""
+    },
+    {
+     "say": "Comment *CALM* / and I'll send you the prompt for this look. // Slop or smart? / Tell me below.",
+     "see": "Overhead page \"comment CALM\", the pen taps it",
+     "how": "[point]"
+    }
+   ],
+   "film": {
+    "part_1_loud_look": [
+     "Your usual spot and light, phone on the tripod, back camera, 4K 30 fps",
+     "Hook: 3 takes, from mildly hurt to really disappointed",
+     "Lines 3, 4 and 6, twice each",
+     "The finger snap: 3 takes, hand close to the lens, then freeze for a second"
+    ],
+    "part_2_her_dna": [
+     "Daytime, next to a window, a tidy desk: notebook, a mug, a plant or books behind you",
+     "A plain sweater in one colour, a different top from part 1 so the switch is obvious",
+     "Camera still, at desk height, you centred with space around you (a mid shot)",
+     "Lines 7, 9, 10, 11 and 12 at the desk, calm and slower than usual, twice each",
+     "Overhead shot: phone above the desk looking straight down (a tripod arm, or the phone on a shelf or a stack of books)",
+     "Write each page slowly with a thick black pen, big letters, one page each: \"weak story + effects = slop\" / \"1. story first  2. AI does the boring part\" / \"edited with AI ✓\" / \"same tool. different taste.\" / \"comment CALM\"",
+     "Keep your hands in shot; record 5 seconds of the room with no talking"
+    ],
+    "write_down_first": [
+     "The 5 notebook pages above, practised once on scrap paper so the letters are big and neat"
+    ]
+   },
+   "edit_notes": "Part 1 follows the v12 standard (punch-ins, 3D cards, a sound on every event). Part 2 copies her DNA: two alternating shots (desk / overhead hands), cuts every 3 to 4 s, no sound effects except the pen and the room, small white lowercase captions low in the frame, a serif title with one script word. Music: add \"Twins\" by Elia Lo Monaco from Instagram's own music picker when posting, under part 2 only; never bake a song into the file. Her clips: 6 s in total at most, credited on screen, for commentary only (German quotation right, § 51 UrhG: name the source, quote only what the comment needs). If her reel allows Remix, Instagram's Remix is the cleanest route.",
+   "broll": [
+    "Your Week 1 reel frames for the 3D cards (already in the project)",
+    "Optional: a close-up of the pen cap clicking off before the first page"
+   ],
+   "cover": {
+    "title": "HOT TAKE",
+    "line": "AI edits are *slop*?",
+    "note": "Your sceptical face, one eyebrow up; a small framed screenshot of a loud edit on one side and a calm desk shot on the other; no image of her on the cover"
+   },
+   "notes": "Respectful, not a dunk: agree first, then add the nuance. Facts: your Week 1 reel was edited by Claude with a sound on most visual events (true). Tag @mariah_mpls in the caption. Before posting: build the CALM resource (the calm-edit brief as a Claude prompt) and add CALM to lib/ig-autodm/config.json."
+  }
+ ]
+}
