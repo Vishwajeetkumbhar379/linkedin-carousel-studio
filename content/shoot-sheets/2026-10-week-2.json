@@ -124,15 +124,26 @@
      "how": "[smile]"
     }
    ],
-   "notes": "Facts only from brand-profile.md: 220 rejections, 850+ creator deals, made it = EUR 3,000 a month, Claude edited Week 1. If something real happened this week (a call, a first client, a no), swap it into line 2: real beats the plan. Currency: EUR is right for the goal; the 40K stays without a currency until you confirm it.",
+   "notes": "Facts only from brand-profile.md: 220 rejections, 850+ creator deals, made it = EUR 3,000 a month, Claude edited Week 1. If something real happened this week (a call, a first client, a no), swap it into line 2: real beats the plan. Currency: EUR is right for the goal; the 40K stays without a currency until you confirm it. The edit opens with the v12 freeze-frame: on 'still zero' the frame freezes and the stickers €0 · 220 rejections · 0 job offers pop on.",
    "broll": [
     "Scrolling the rejection emails on your phone (blur names)",
     "Writing 3,000 / month on paper or a whiteboard",
     "Laptop open at a café or your desk, typing",
     "Walking outside, phone in hand (wide, no audio)",
     "Yoga or a handstand attempt (the trials go on)"
-   ]
+   ],
+   "cover": {
+    "color": "navy",
+    "title": "Week 2 of 52",
+    "stickers": [
+     "€0 remote income",
+     "220 rejections",
+     "3 bets"
+    ],
+    "line": "So here's my *plan.*"
+   },
+   "next_week": "Next week, on Build with Vish... bet one: Vish pitches brands for remote work."
   }
  ],
- "plan": "Week 2 of 52 (one filming session, three videos): 1) CLAUDE, Ship Log, post within 1 to 4 days of Week 1; 2) CHECK, Brand-Side (sheet in 2026-10-weeks-1-5.json), mid-week; 3) WEEK2, the main episode, about 7 days after Week 1."
+ "plan": "Film Week 2 and Week 3 in one session this weekend, in two different tops. Week 2 of 52 = WEEK2 (the plan, three bets), posted about 7 days after Week 1. Week 3 of 52 = PITCH (bet one, brands), posted a week later. Optional side posts in between: CLAUDE (Ship Log) and CHECK (Brand-Side)."
 }

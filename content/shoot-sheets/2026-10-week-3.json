@@ -1,0 +1,93 @@
+{
+ "legend": {
+  "/": "short breath, about 0.3 s",
+  "//": "full stop, about 0.8 s, let it land",
+  "*word*": "stress this word",
+  "(up)": "lift energy",
+  "(down)": "slower and lower",
+  "[lens]": "lean in slightly, eyes on the lens",
+  "[point]": "point up at the graphic (Format A) or at the screen side (Format B)",
+  "[count]": "count on your fingers",
+  "[smile]": "small genuine smile",
+  "broll": "B-roll to film after the take (3 to 5 s each, no talking)"
+ },
+ "defaults": {
+  "pace": "aim for 190 to 210 words a minute inside a sentence (Kallaway runs 210 to 240); keep a short beat between lines, never a long one",
+  "energy": "7 out of 10: awake and warm, not a hype voice",
+  "framing": "chest up, a hand's width of space above your head, eyes on the lens",
+  "retake": "If you fluff a line, pause, then say the whole line again. The edit keeps the last take.",
+  "broll": "After the talking take, film the B-roll list on the same phone: 3 to 5 s each, steady, no talking, good light. Film your hands and screens more than your face. The edit cuts to one every few lines (research/creators/style-guide-2026-10-14.md).",
+  "angle": "Film the hook and the CTA a second time from a different angle (wide, standing, or side) so the edit can cut between angles like @justyn.ai."
+ },
+ "sheets": [
+  {
+   "week": "Week 3 of 52",
+   "key": "PITCH",
+   "series": "Day N (documentary)",
+   "format": "A split",
+   "length": "40 to 45 s",
+   "title_card": "WEEK 3 OF 52: BET ONE, BRANDS",
+   "post": "The main episode of week 3: about 14 days after Week 1",
+   "hook": "Week 3. / Bet one: / I pitched *20* brands / in one afternoon.",
+   "hook_alts": [
+    "I offered brands my 850 creator deals. // Here's what I sent.",
+    "Can I find remote work in one afternoon? // Let's see."
+   ],
+   "lines": [
+    {
+     "say": "So last week / I told you my three bets. // This week, / bet one: / *brands*.",
+     "see": "The three bet cards from week 2; card 1 lights up amber"
+    },
+    {
+     "say": "I've done 850-plus creator deals / on the brand side. // So I offered to run creator campaigns / for brands, / *remotely*.",
+     "see": "850+ deals counter rolls up, then the card: remote creator campaigns",
+     "how": "(up)"
+    },
+    {
+     "say": "I made a list of brands / that already work with creators, / and I wrote every message *myself*.",
+     "see": "Screen recording: your brand list (names blurred), typing a message",
+     "how": "[point]"
+    },
+    {
+     "say": "20 messages. / One afternoon. // Honestly, / it felt weird / asking for work.",
+     "see": "Sent counter 0 to 20; the outbox filling",
+     "how": "(down) on the second sentence"
+    },
+    {
+     "say": "Here's the exact message / I sent.",
+     "see": "Your pitch on screen (brand name blurred), the key lines highlighted",
+     "how": "[point]"
+    },
+    {
+     "say": "If even *one* brand says yes, / that's my first remote income.",
+     "see": "Income meter: 0, then a question mark",
+     "how": "[lens]"
+    },
+    {
+     "say": "Replies next week. // Comment *PITCH* / and I'll send you my template.",
+     "see": "Comment bubble: PITCH",
+     "how": "[smile]"
+    }
+   ],
+   "notes": "Do bet one for real before you film. Make the list, write and send the pitches, and screen-record yourself writing one. Then say your real number: if you send 15, say 15 (hook and line 4). Change line 4 to how it really felt. Facts used: 850+ creator deals (brand-profile.md). Before posting: build the PITCH guide (your pitch template, 8-section format) and add the keyword to lib/ig-autodm/config.json.",
+   "broll": [
+    "Laptop: your brand list in a spreadsheet (blur names)",
+    "Typing the pitch, close on the keyboard",
+    "Pressing send, then the outbox",
+    "You leaning back after the last send (wide, no audio)",
+    "Phone face-down on the desk, waiting"
+   ],
+   "cover": {
+    "color": "red",
+    "title": "Week 3 of 52",
+    "stickers": [
+     "850+ creator deals",
+     "20 pitches",
+     "1 afternoon"
+    ],
+    "line": "Bet one: *brands.*"
+   },
+   "next_week": "Next week, on Build with Vish... did anyone reply?"
+  }
+ ]
+}
