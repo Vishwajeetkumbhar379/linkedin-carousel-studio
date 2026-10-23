@@ -1,0 +1,12 @@
+[
+ {
+  "slug": "gpt-t",
+  "chars": 591,
+  "key": "ELEVENLABS_API_KEY"
+ },
+ {
+  "slug": "hit-send",
+  "chars": 578,
+  "key": "ELEVENLABS_API_KEY"
+ }
+]

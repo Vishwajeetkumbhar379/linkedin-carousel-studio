@@ -1,0 +1,615 @@
+{
+ "estimate": false,
+ "voice": "George",
+ "lines": [
+  {
+   "text": "This is what happens the second you hit send on ChatGPT.",
+   "start": 0.15,
+   "end": 3.575,
+   "words": [
+    {
+     "w": "This",
+     "start": 0.15,
+     "end": 0.382
+    },
+    {
+     "w": "is",
+     "start": 0.429,
+     "end": 0.51
+    },
+    {
+     "w": "what",
+     "start": 0.545,
+     "end": 0.672
+    },
+    {
+     "w": "happens",
+     "start": 0.73,
+     "end": 1.09
+    },
+    {
+     "w": "the",
+     "start": 1.16,
+     "end": 1.241
+    },
+    {
+     "w": "second",
+     "start": 1.299,
+     "end": 1.601
+    },
+    {
+     "w": "you",
+     "start": 1.659,
+     "end": 1.741
+    },
+    {
+     "w": "hit",
+     "start": 1.81,
+     "end": 1.973
+    },
+    {
+     "w": "send",
+     "start": 2.042,
+     "end": 2.321
+    },
+    {
+     "w": "on",
+     "start": 2.391,
+     "end": 2.472
+    },
+    {
+     "w": "ChatGPT.",
+     "start": 2.53,
+     "end": 3.575
+    }
+   ]
+  },
+  {
+   "text": "Your message gets chopped into tokens. Tiny chunks of words.",
+   "start": 4.035,
+   "end": 8.215,
+   "words": [
+    {
+     "w": "Your",
+     "start": 4.035,
+     "end": 4.221
+    },
+    {
+     "w": "message",
+     "start": 4.267,
+     "end": 4.627
+    },
+    {
+     "w": "gets",
+     "start": 4.674,
+     "end": 4.859
+    },
+    {
+     "w": "chopped",
+     "start": 4.917,
+     "end": 5.208
+    },
+    {
+     "w": "into",
+     "start": 5.243,
+     "end": 5.393
+    },
+    {
+     "w": "tokens.",
+     "start": 5.463,
+     "end": 6.16
+    },
+    {
+     "w": "Tiny",
+     "start": 6.856,
+     "end": 7.205
+    },
+    {
+     "w": "chunks",
+     "start": 7.251,
+     "end": 7.53
+    },
+    {
+     "w": "of",
+     "start": 7.576,
+     "end": 7.634
+    },
+    {
+     "w": "words.",
+     "start": 7.704,
+     "end": 8.215
+    }
+   ]
+  },
+  {
+   "text": "They race to a data centre, into chips that cost as much as a car. Each.",
+   "start": 8.675,
+   "end": 13.435,
+   "words": [
+    {
+     "w": "They",
+     "start": 8.675,
+     "end": 8.849
+    },
+    {
+     "w": "race",
+     "start": 8.919,
+     "end": 9.139
+    },
+    {
+     "w": "to",
+     "start": 9.174,
+     "end": 9.244
+    },
+    {
+     "w": "a",
+     "start": 9.313,
+     "end": 9.337
+    },
+    {
+     "w": "data",
+     "start": 9.383,
+     "end": 9.65
+    },
+    {
+     "w": "centre,",
+     "start": 9.697,
+     "end": 10.173
+    },
+    {
+     "w": "into",
+     "start": 10.219,
+     "end": 10.451
+    },
+    {
+     "w": "chips",
+     "start": 10.521,
+     "end": 10.811
+    },
+    {
+     "w": "that",
+     "start": 10.846,
+     "end": 10.985
+    },
+    {
+     "w": "cost",
+     "start": 11.043,
+     "end": 11.334
+    },
+    {
+     "w": "as",
+     "start": 11.38,
+     "end": 11.461
+    },
+    {
+     "w": "much",
+     "start": 11.543,
+     "end": 11.74
+    },
+    {
+     "w": "as",
+     "start": 11.775,
+     "end": 11.844
+    },
+    {
+     "w": "a",
+     "start": 11.891,
+     "end": 11.914
+    },
+    {
+     "w": "car.",
+     "start": 11.972,
+     "end": 12.495
+    },
+    {
+     "w": "Each.",
+     "start": 12.936,
+     "end": 13.435
+    }
+   ]
+  },
+  {
+   "text": "Here's the weird part. It doesn't know the answer. It guesses.",
+   "start": 14.115,
+   "end": 17.702,
+   "words": [
+    {
+     "w": "Here's",
+     "start": 14.115,
+     "end": 14.359
+    },
+    {
+     "w": "the",
+     "start": 14.394,
+     "end": 14.463
+    },
+    {
+     "w": "weird",
+     "start": 14.51,
+     "end": 14.765
+    },
+    {
+     "w": "part.",
+     "start": 14.812,
+     "end": 15.276
+    },
+    {
+     "w": "It",
+     "start": 15.45,
+     "end": 15.566
+    },
+    {
+     "w": "doesn't",
+     "start": 15.601,
+     "end": 15.833
+    },
+    {
+     "w": "know",
+     "start": 15.868,
+     "end": 15.984
+    },
+    {
+     "w": "the",
+     "start": 16.042,
+     "end": 16.112
+    },
+    {
+     "w": "answer.",
+     "start": 16.181,
+     "end": 16.739
+    },
+    {
+     "w": "It",
+     "start": 16.89,
+     "end": 17.029
+    },
+    {
+     "w": "guesses.",
+     "start": 17.087,
+     "end": 17.702
+    }
+   ]
+  },
+  {
+   "text": "One token at a time, through billions of numbers, over and over.",
+   "start": 18.162,
+   "end": 21.831,
+   "words": [
+    {
+     "w": "One",
+     "start": 18.162,
+     "end": 18.395
+    },
+    {
+     "w": "token",
+     "start": 18.441,
+     "end": 18.743
+    },
+    {
+     "w": "at",
+     "start": 18.789,
+     "end": 18.859
+    },
+    {
+     "w": "a",
+     "start": 18.905,
+     "end": 18.929
+    },
+    {
+     "w": "time,",
+     "start": 18.987,
+     "end": 19.37
+    },
+    {
+     "w": "through",
+     "start": 19.416,
+     "end": 19.66
+    },
+    {
+     "w": "billions",
+     "start": 19.695,
+     "end": 20.055
+    },
+    {
+     "w": "of",
+     "start": 20.09,
+     "end": 20.148
+    },
+    {
+     "w": "numbers,",
+     "start": 20.217,
+     "end": 20.682
+    },
+    {
+     "w": "over",
+     "start": 20.833,
+     "end": 21.123
+    },
+    {
+     "w": "and",
+     "start": 21.181,
+     "end": 21.262
+    },
+    {
+     "w": "over.",
+     "start": 21.32,
+     "end": 21.831
+    }
+   ]
+  },
+  {
+   "text": "One reply uses about what a light bulb burns in two minutes.",
+   "start": 22.291,
+   "end": 25.658,
+   "words": [
+    {
+     "w": "One",
+     "start": 22.291,
+     "end": 22.524
+    },
+    {
+     "w": "reply",
+     "start": 22.558,
+     "end": 22.918
+    },
+    {
+     "w": "uses",
+     "start": 23.034,
+     "end": 23.313
+    },
+    {
+     "w": "about",
+     "start": 23.348,
+     "end": 23.557
+    },
+    {
+     "w": "what",
+     "start": 23.592,
+     "end": 23.731
+    },
+    {
+     "w": "a",
+     "start": 23.777,
+     "end": 23.801
+    },
+    {
+     "w": "light",
+     "start": 23.87,
+     "end": 24.068
+    },
+    {
+     "w": "bulb",
+     "start": 24.114,
+     "end": 24.335
+    },
+    {
+     "w": "burns",
+     "start": 24.393,
+     "end": 24.753
+    },
+    {
+     "w": "in",
+     "start": 24.799,
+     "end": 24.88
+    },
+    {
+     "w": "two",
+     "start": 24.927,
+     "end": 25.078
+    },
+    {
+     "w": "minutes.",
+     "start": 25.136,
+     "end": 25.658
+    }
+   ]
+  },
+  {
+   "text": "Tiny. Until it's billions of messages a day.",
+   "start": 26.338,
+   "end": 29.694,
+   "words": [
+    {
+     "w": "Tiny.",
+     "start": 26.338,
+     "end": 27.012
+    },
+    {
+     "w": "Until",
+     "start": 27.615,
+     "end": 27.883
+    },
+    {
+     "w": "it's",
+     "start": 27.929,
+     "end": 28.045
+    },
+    {
+     "w": "billions",
+     "start": 28.091,
+     "end": 28.463
+    },
+    {
+     "w": "of",
+     "start": 28.498,
+     "end": 28.544
+    },
+    {
+     "w": "messages",
+     "start": 28.614,
+     "end": 29.032
+    },
+    {
+     "w": "a",
+     "start": 29.078,
+     "end": 29.113
+    },
+    {
+     "w": "day.",
+     "start": 29.171,
+     "end": 29.694
+    }
+   ]
+  },
+  {
+   "text": "That's why Sam Altman said your please and thank you cost OpenAI tens of millions of dollars.",
+   "start": 30.154,
+   "end": 35.17,
+   "words": [
+    {
+     "w": "That's",
+     "start": 30.154,
+     "end": 30.41
+    },
+    {
+     "w": "why",
+     "start": 30.445,
+     "end": 30.584
+    },
+    {
+     "w": "Sam",
+     "start": 30.654,
+     "end": 30.874
+    },
+    {
+     "w": "Altman",
+     "start": 30.932,
+     "end": 31.199
+    },
+    {
+     "w": "said",
+     "start": 31.257,
+     "end": 31.443
+    },
+    {
+     "w": "your",
+     "start": 31.501,
+     "end": 31.629
+    },
+    {
+     "w": "please",
+     "start": 31.687,
+     "end": 31.977
+    },
+    {
+     "w": "and",
+     "start": 32.0,
+     "end": 32.081
+    },
+    {
+     "w": "thank",
+     "start": 32.139,
+     "end": 32.383
+    },
+    {
+     "w": "you",
+     "start": 32.441,
+     "end": 32.569
+    },
+    {
+     "w": "cost",
+     "start": 32.813,
+     "end": 33.068
+    },
+    {
+     "w": "OpenAI",
+     "start": 33.138,
+     "end": 33.73
+    },
+    {
+     "w": "tens",
+     "start": 33.8,
+     "end": 34.078
+    },
+    {
+     "w": "of",
+     "start": 34.113,
+     "end": 34.171
+    },
+    {
+     "w": "millions",
+     "start": 34.218,
+     "end": 34.519
+    },
+    {
+     "w": "of",
+     "start": 34.554,
+     "end": 34.601
+    },
+    {
+     "w": "dollars.",
+     "start": 34.647,
+     "end": 35.17
+    }
+   ]
+  },
+  {
+   "text": "So be honest. Do you still say please before you hit send?",
+   "start": 35.63,
+   "end": 38.788,
+   "words": [
+    {
+     "w": "So",
+     "start": 35.63,
+     "end": 35.769
+    },
+    {
+     "w": "be",
+     "start": 35.839,
+     "end": 35.932
+    },
+    {
+     "w": "honest.",
+     "start": 35.978,
+     "end": 36.466
+    },
+    {
+     "w": "Do",
+     "start": 36.64,
+     "end": 36.744
+    },
+    {
+     "w": "you",
+     "start": 36.802,
+     "end": 36.872
+    },
+    {
+     "w": "still",
+     "start": 36.919,
+     "end": 37.127
+    },
+    {
+     "w": "say",
+     "start": 37.186,
+     "end": 37.348
+    },
+    {
+     "w": "please",
+     "start": 37.406,
+     "end": 37.673
+    },
+    {
+     "w": "before",
+     "start": 37.72,
+     "end": 37.998
+    },
+    {
+     "w": "you",
+     "start": 38.033,
+     "end": 38.103
+    },
+    {
+     "w": "hit",
+     "start": 38.149,
+     "end": 38.3
+    },
+    {
+     "w": "send?",
+     "start": 38.358,
+     "end": 38.788
+    }
+   ]
+  }
+ ],
+ "duration": 39.708
+}
