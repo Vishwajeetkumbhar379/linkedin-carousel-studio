@@ -15,7 +15,7 @@ Exactly 3 feed posts a week, and they support each other:
 | Day (Berlin) | Post | Job | Goal metric |
 |---|---|---|---|
 | Thu | **Reel**: Week N of 52 episode | Story, reach to non-followers, follows | Watch time, shares, follows |
-| Mon | **Carousel A**: the skill or tool from the episode, as a how-to | Saves, keyword comments, resource clicks | Saves, comments, site clicks |
+| Mon | **Teaching Reel (Kallaway style)** from Week 3 **[changed 23 Oct, Vish asked for this topic, animation and editing style]**: a named framework from the week's theme, filmed in the same session. Week 2 keeps Carousel A | Reach to non-followers, keyword comments, saves | Views, comments, shares, site clicks |
 | Sat | **Carousel B**: brand-side or AI-workflow lesson from Vish's 850+ deals | Credibility, leads | Saves, shares, profile visits |
 
 - **One theme per week.** The episode lives it, Carousel A teaches it, Carousel B adds the insider angle. Never repeat the same point twice in one week.
@@ -67,6 +67,25 @@ Exactly 3 feed posts a week, and they support each other:
 - **Contrast:** text at least 4.5:1 against what's behind it (WCAG). Use a soft scrim behind captions over busy footage.
 - **Faces pull the eye away from captions** (subtitle eye-tracking research). Keep captions close to the face line, not at the bottom edge.
 
+### Teaching Reels (Kallaway style, from Week 3; study: `research/creators/kallaway-2026-10-23.md`)
+- **Script:**
+  1. a hook with an extreme but true promise;
+  2. "It's called [Named Method]";
+  3. one running example;
+  4. numbered steps (3 to 5);
+  5. a recap;
+  6. "Comment KEYWORD for [a tool]".
+
+  80 to 110 words.
+- **Edit:** a split frame, with the graphics canvas on top and his speaker box below, plus full-frame shots for punchlines.
+  - type-on document cards in sync with his words;
+  - an "old way vs new way" split card;
+  - a framework map (an amber node wired to step pills that light up as he names each step);
+  - a canvas switch from night to paper for the proof or recap;
+  - one-word captions, and a sound on every move.
+
+  Our night-studio palette, with amber in the role of his red. Copy the system, never his wording or footage.
+
 ## 5. Carousels
 - **Size and length:** 1080x1350 (4:5), 7 to 10 slides.
 - **Slide 1:** the hook (12 words or fewer), with one concrete promise (number, tool, outcome).
@@ -100,6 +119,7 @@ Exactly 3 feed posts a week, and they support each other:
 2. **Comment → automation:** a varied public reply, plus one private reply (Instagram's official Private Replies, one per comment, within 7 days).
 3. **Optional follow check:** the DM asks them to tap or reply. That opens a real conversation, which lets the API check whether they follow (`is_user_follow_business`). Non-followers get a friendly nudge and the link anyway. **We never hold a free resource hostage.**
 4. **Link:** a tracked link (`/go/KEY`, UTM tagged), then the resource page on buildwithvvish.com, with email capture (MailerLite "Build Notes") for the PDF version.
+4b. **The free resource is a tool, not tips** **[changed 23 Oct]**: a Claude skill, a template, a prompt pack or a GitHub repo. In the engagement data, tool giveaways drew 19K to 94K comments; advice posts drew a few thousand.
 5. **Value ladder:**
 
    | Tier | What |
@@ -157,6 +177,12 @@ Research → topic validation → hook → script → storyboard → edit → ca
 - **Process:** check that the disk has about 3 GB free before rendering. Full disks crash the browser renderer.
 
 ## 12. Research sources and how reliable they are
+- **"Viral first" rule [Vish, 23 Oct]:** before choosing any topic or format, rank candidate reels by real engagement and model only the winners:
+  1. `python scripts/research/ig_fetch.py <codes> --out=<dir> --meta-only` reads likes and comments from the public embed, no login.
+  2. The thresholds: 50K+ likes, or 20K+ comments, or more than 1 comment per like with 10K+ likes. These usually mean millions of views (an estimate). Where Vish can see real views, prefer 3 to 4 million.
+  3. Take apart the top 3 with `reel_teardown.py`, then fill the pattern with Vish's true facts.
+
+  The ranked table and the patterns are in `research/creators/kallaway-2026-10-23.md`.
 - **Reference reels taken apart on 23 Oct** (frames, transcripts, cuts, sound hits):
   - `DYwset0R5kP`, `Dep0wuhvizo` (riverisbuilding, OpenFilm), `DZWLhE3uEhO`, `DbqEke7oewm`;
   - `DexJ-qWiWdY` (Sky Tan, the caption structure), `Da0hP-vxxL1` (Abigail Daniella, captions);

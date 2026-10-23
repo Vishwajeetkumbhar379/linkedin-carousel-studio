@@ -1,7 +1,9 @@
 """Fetch public Instagram posts and reels for study: caption, author, the video file, every carousel slide, a screenshot.
 
-    python scripts/research/ig_fetch.py <shortcode or URL> [...] --out=/tmp/claude-0/refs
+    python scripts/research/ig_fetch.py <shortcode or URL> [...] --out=/tmp/claude-0/refs [--meta-only]
 
+--meta-only skips the downloads: just author, caption, likes and comments, for ranking many reels fast.
+Views need a login, so rank by likes and comments (the public embed shows both); see PLAYBOOK §12 for the thresholds.
 Uses the public embed page in headless Chromium (no login, no API). For research only: keep other creators'
 media out of the repo and out of posts.
 """
@@ -23,7 +25,15 @@ def code_of(s: str) -> str:
     return m.group(1) if m else s
 
 
-def main(codes: list[str], out: Path) -> dict:
+def count(text: str, word: str) -> int | None:
+    m = re.search(r"(\d[\d.,]*)\s*([KkMm]?)\s+" + word, text)
+    if not m:
+        return None
+    n = float(m.group(1).replace(",", "")) if m.group(2) else float(m.group(1).replace(",", "").replace(".", ""))
+    return int(n * {"k": 1e3, "m": 1e6}.get(m.group(2).lower(), 1))
+
+
+def main(codes: list[str], out: Path, meta_only: bool = False) -> dict:
     out.mkdir(parents=True, exist_ok=True)
     meta_f = out / "embeds.json"
     data = json.loads(meta_f.read_text()) if meta_f.exists() else {}
@@ -63,7 +73,11 @@ def main(codes: list[str], out: Path) -> dict:
             video = v if v and v.startswith("http") else next((u for u in seen if ".mp4" in u), None)
             imgs = list(dict.fromkeys(u for u in seen if re.search(r"(cdninstagram\.com|fbcdn\.net)/.+\.(jpg|webp|heic)", u) and "s150x150" not in u and "profile" not in u))
             pg.screenshot(path=str(out / f"{c}.png"))
-            d = {"user": user.strip(), "caption": cap, "video_url": video, "images": imgs}
+            body = pg.evaluate("() => document.body.innerText")
+            d = {"user": user.strip(), "caption": cap, "likes": count(body, "likes?"), "comments": count(body, "comments?"),
+                 "video_url": video, "images": imgs}
+            if meta_only:
+                video, imgs = None, []
             if video:
                 r = requests.get(video, headers={"User-Agent": UA}, timeout=120)
                 if r.ok and len(r.content) > 50000:
@@ -78,7 +92,9 @@ def main(codes: list[str], out: Path) -> dict:
                     saved.append(f.name)
             d["image_files"] = saved
             data[c] = d
-            print(c, d["user"], "| video:", bool(d.get("video_file")), "| images:", len(saved), "|", cap[:160].replace("\n", " "))
+            meta_f.write_text(json.dumps(data, indent=1, ensure_ascii=False))  # save as we go
+            print(c, d["user"], "| likes:", d["likes"], "| comments:", d["comments"], "| video:", bool(d.get("video_file")),
+                  "| images:", len(saved), "|", cap[:120].replace("\n", " "))
         b.close()
     meta_f.write_text(json.dumps(data, indent=1, ensure_ascii=False))
     return data
@@ -86,4 +102,4 @@ def main(codes: list[str], out: Path) -> dict:
 
 if __name__ == "__main__":
     o = Path(next((a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--out=")), "/tmp/claude-0/refs"))
-    main([code_of(a) for a in sys.argv[1:] if not a.startswith("--")], o)
+    main([code_of(a) for a in sys.argv[1:] if not a.startswith("--")], o, "--meta-only" in sys.argv)

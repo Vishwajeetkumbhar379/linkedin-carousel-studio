@@ -28,10 +28,10 @@
    "length": "40 to 45 s",
    "title_card": "WEEK 3 OF 52: BET ONE, BRANDS",
    "post": "The main episode of week 3: about 14 days after Week 1",
-   "hook": "Week 3. / Bet one: / I pitched *20* brands / in one afternoon.",
+   "hook": "I pitched *20* brands / in one afternoon.",
    "hook_alts": [
-    "I offered brands my 850 creator deals. // Here's what I sent.",
-    "Can I find remote work in one afternoon? // Let's see."
+    "Week 3. / Bet one: / I pitched *20* brands / in one afternoon.",
+    "I offered brands my 850 creator deals. // Here's what I sent."
    ],
    "lines": [
     {
@@ -69,7 +69,7 @@
      "how": "[smile]"
     }
    ],
-   "notes": "Do bet one for real before you film. Make the list, write and send the pitches, and screen-record yourself writing one. Then say your real number: if you send 15, say 15 (hook and line 4). Change line 4 to how it really felt. Facts used: 850+ creator deals (brand-profile.md). Before posting: build the PITCH guide (your pitch template, 8-section format) and add the keyword to lib/ig-autodm/config.json.",
+   "notes": "Do bet one for real before you film. Make the list, write and send the pitches, and screen-record yourself writing one. Then say your real number: if you send 15, say 15 (hook and line 4). Change line 4 to how it really felt. Facts used: 850+ creator deals (brand-profile.md). Before posting: build the PITCH guide (your pitch template, 8-section format) and add the keyword to lib/ig-autodm/config.json. Hook first (23 Oct rule): say the hook as the first words; \"Week 3\" goes on screen as a label.",
    "broll": [
     "Laptop: your brand list in a spreadsheet (blur names)",
     "Typing the pitch, close on the keyboard",
@@ -88,6 +88,75 @@
     "line": "Bet one: *brands.*"
    },
    "next_week": "Next week, on Build with Vish... did anyone reply?"
+  },
+  {
+   "week": "Week 3 of 52",
+   "key": "PITCH HOW-TO",
+   "keyword": "PITCH",
+   "series": "Teaching Reel (Kallaway style)",
+   "format": "A split: graphics canvas on top, speaker box below; full-frame for the punchlines",
+   "length": "40 to 45 s",
+   "title_card": "THE 4-LINE PITCH",
+   "post": "Mon 3 Nov, the how-to slot of week 3 (it teaches what the Thursday episode lives)",
+   "cta": "Comment PITCH",
+   "model": "kallawaymarketing DaiCxAkOpNb (54K likes) and Db-zJhiuXP3: named framework, one running example, numbered steps, a tool as the free resource",
+   "hook": "Here's how to pitch a brand / so they *can't* ignore you.",
+   "hook_alts": [
+    "Most creator pitches get *deleted*. // This one gets a reply.",
+    "850 creator deals on the brand side. // This is the pitch that *works*."
+   ],
+   "lines": [
+    {
+     "say": "It's called / the *4-line* pitch.",
+     "see": "Framework map: amber node \"4-line pitch\" wired to 4 empty pills",
+     "how": "[lens]"
+    },
+    {
+     "say": "Say you make running videos, / and you want a *shoe* brand.",
+     "see": "Type-on card: \"Creator: running videos. Brand: running shoes\" (example)"
+    },
+    {
+     "say": "Line one: / *proof*. // Not your followers. / Who they *are*.",
+     "see": "Pill 1 lights: PROOF. Email card types: \"58% of my viewers are runners in Germany, 25 to 34\" (labelled EXAMPLE)",
+     "how": "[count] one"
+    },
+    {
+     "say": "Line two: / *fit*. // Why your viewers / are already their *customers*.",
+     "see": "Pill 2: FIT. Split card: their customer / your viewers, the same three ticks",
+     "how": "[count] two"
+    },
+    {
+     "say": "Line three: / one *idea*. // A 30-day run streak, / filmed in their shoes.",
+     "see": "Pill 3: IDEA. A mini calendar fills 30 days",
+     "how": "[count] three"
+    },
+    {
+     "say": "Line four: / a *small* ask. // Not \"let's collaborate\". / \"Can I send you the plan?\"",
+     "see": "Pill 4: ASK. \"Let's collaborate\" struck through, the small ask types in",
+     "how": "[count] four, then [smile]"
+    },
+    {
+     "say": "Proof, / fit, / idea, / ask. // Four lines.",
+     "see": "Canvas switches to paper: the whole email, 4 lines highlighted",
+     "how": "(down)"
+    },
+    {
+     "say": "Comment *PITCH* / and I'll send you the template / and the Claude prompt / that researches the brand *for* you.",
+     "see": "CTA card: Comment PITCH, plus the template and prompt cards",
+     "how": "[point]"
+    }
+   ],
+   "notes": "Kallaway skeleton: hook with an extreme but true promise, the name, one running example (the running creator), numbered steps, recap, a tool as the resource. Every number on screen is labelled EXAMPLE. Vish: change any line that doesn't match how you judged pitches on the brand side; say it your way. Before posting: write the PITCH guide (template + brand research prompt, 8-section format) and add PITCH to lib/ig-autodm/config.json.",
+   "broll": [
+    "Close-up typing an email (no names on screen)",
+    "Phone showing a reply notification (fake sender blurred, or skip)",
+    "You at the desk, nodding to camera (for the recap)"
+   ],
+   "cover": {
+    "title": "The 4-line pitch",
+    "line": "Brands *can't* ignore it",
+    "note": "Kallaway-style cover: bold question or promise, one italic serif word, one symbolic image (an email with 4 amber lines)"
+   }
   }
  ]
 }
