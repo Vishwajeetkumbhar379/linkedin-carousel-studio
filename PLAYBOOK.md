@@ -108,7 +108,7 @@ Exactly 3 feed posts a week, and they support each other:
    | €5 to €10 | Bundle: templates, video walkthrough, PDF guide |
 
    No fake "was €99" anchors. The value is shown by what's inside.
-6. **Payments:** see `docs/monetisation.md`. No live charges until Vish approves the products and connects his payment account.
+6. **Payments:** see `docs/monetisation.md`. No live charges, paid brand deals or freelance invoices until Vish has written permission for self-employment (§ 0 there), approves the products and connects his payment account.
 
 ## 9. Analytics (weekly, Monday)
 - **Per post:** reach, non-follower reach %, average watch time and 3-second hold (Reels), saves, shares, comments, keyword comments, follows, profile visits.

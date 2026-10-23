@@ -3,6 +3,8 @@
 Checked 23 Oct 2026. I'm not a lawyer or a tax adviser: this is a researched starting point, so confirm the two legal steps (step 0 and step 1 below) with the offices named there. **No checkout is live.** Product pages show "Coming soon" until Vish approves each product and connects his own account.
 
 ## 0. Before the first euro: two permissions (Vish)
+**Status (23 Oct): not cleared yet.** Products, paid brand deals (gifted products in exchange for posts count too) and freelance work stay off until Vish confirms written permission. Free guides, the newsletter and unpaid content are fine. The application draft went to Vish privately; it's not stored in this repo.
+
 1. **Residence permit.** Selling products counts as self-employment. Many student and job-search permits say "Selbständige Tätigkeit nicht erlaubt", and self-employment alongside them needs a separate permission (§ 21 Abs. 6 AufenthG). Working without it can cost the permit.
    - Check the wording on your permit card.
    - Ask the Ausländerbehörde (Offenburg / Ortenaukreis) for "Erlaubnis zur selbständigen Tätigkeit als Nebentätigkeit".
@@ -70,7 +72,7 @@ The euro figures are estimates. Tax-inclusive pricing assumes German VAT (19%) a
 5. **Counting.** Sales get counted in the weekly report, from the Stripe dashboard (`docs/analytics.md` fields: sales, revenue, refunds).
 
 ## 5. What Vish needs to do (in order)
-1. Ask the Ausländerbehörde about self-employment on his permit.
+1. Send the § 21 Abs. 6 application to the Ausländerbehörde Offenburg and wait for the written decision.
 2. Register the trade and tax (Gewerbeanmeldung, ELSTER questionnaire, Kleinunternehmer).
 3. Fill in `docs/impressum-template.md` (address).
 4. Create a Stripe account, apply for Managed Payments, and add his bank account.
