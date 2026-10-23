@@ -48,8 +48,14 @@ Post it with the original audio. If Instagram ever mutes it for a music match, r
 3D icons: Microsoft Fluent Emoji (MIT). Extra sounds: Kenney (CC0) and synthesised in the editor.
 
 ## Cover
-Use `video-projects/week-01-intro/out/week1-cover-v10.jpg` (1080x1920; everything sits inside the 3:4 grid crop).
-Vish as a white-outlined sticker with eye contact, "What am I doing?" above him, and the stickers 40K in debt / Booked a flight / No job.
+Use `video-projects/week-01-intro/out/week1-cover-v12.jpg` (1080x1920; everything sits inside the 3:4 grid crop).
+It's a series template, inspired by @jiannacapri's "$100k in 90 days" covers:
+- a deep textured red background with "Week 1 of 52" in serif on top;
+- Vish (eye contact, hands together) as a white-bordered print in a glossy plastic sleeve;
+- the stickers 40K in debt / No job / Booked a flight on the print's edges;
+- "What am I doing?" underneath.
+
+Keep the same template every week (change the number, photo, stickers and line), and alternate red and navy so the grid reads as one series.
 
 ## Caption
 40K in debt. No job. And I just booked a flight to Sri Lanka.
