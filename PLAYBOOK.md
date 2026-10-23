@@ -6,6 +6,10 @@ Version 1, 23 Oct 2026. It merges the locked decisions (brand-profile.md, voice.
 - **Vish**, 27, brand-side influencer marketing (850+ creator deals), moved to Germany, finishing his master's, building AI workflows as a non-engineer. Only facts from `brand-profile.md`. Never invent results, numbers, quotes or clients. Never mention his past relationship.
 - **Instagram @buildwith.vish** is a weekly documentary, "Week N of 52": building a remote income (goal EUR 3,000 a month) to travel the world. It also teaches the AI and marketing skills he uses along the way.
 - **Audience:** creators, marketers and early founders who want remote income and want to use AI without being engineers.
+- **Accounts (Vish, 23 Oct):**
+  - **@buildwith.vish** is the main brand account: 0 followers, no Trial Reels yet.
+  - **@explorevishwa.jeet** is his personal account: now public, more followers, Trial Reels available. Week 1 ran there as a Trial Reel: about 100 views. On @buildwith.vish it got about 50.
+  - **Open decision:** move the brand onto the account that has followers (swap the usernames), or grow @buildwith.vish from zero. Never post the same video on both.
 - **Site:** https://buildwithvvish.com (Cloudflare Workers; the brief's "BuildWithWiz.com" is taken to mean this domain).
 - **Writing:** British English, no em or en dashes, no banned words (voice.md), hooks of 12 words or fewer, SlopMonster on every script, caption and reply.
 
