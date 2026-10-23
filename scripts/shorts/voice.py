@@ -58,6 +58,41 @@ def tts(text: str, v: dict) -> tuple[bytes, dict, str]:
     sys.exit(f"ElevenLabs failed on every key. Last: {last}")
 
 
+def tts_v3(text: str, v: dict) -> tuple[bytes, str]:
+    """eleven_v3 (breaths, audio tags like [excited]): plain endpoint, timings come from Whisper instead."""
+    body = {"text": text, "model_id": "eleven_v3", "voice_settings": {"stability": v.get("stability", 0.0)}}
+    last = ""
+    for name, key in keys():
+        r = requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{v['voice_id']}", params={"output_format": "mp3_44100_128"},
+                          headers={"xi-api-key": key, "content-type": "application/json"}, json=body, timeout=240)
+        if r.ok:
+            return r.content, name
+        last = f"{name}: HTTP {r.status_code} {r.text[:200]}"
+    sys.exit(f"ElevenLabs v3 failed on every key. Last: {last}")
+
+
+def whisper_words(wav: Path, script_words: list[str]) -> list[tuple[float, float]]:
+    """Word times for the script's own words: Whisper word timestamps matched in order, gaps interpolated."""
+    from faster_whisper import WhisperModel
+    m = WhisperModel("small", device="cpu", compute_type="int8")
+    segs, _ = m.transcribe(str(wav), language="en", word_timestamps=True, initial_prompt=" ".join(script_words))
+    hw = [(w.word, w.start, w.end) for sg in segs for w in sg.words]
+    n = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
+    out, j = [None] * len(script_words), 0
+    for i, w in enumerate(script_words):
+        for k in range(j, min(j + 6, len(hw))):
+            a, b = n(w), n(hw[k][0])
+            if a and b and (a == b or a.startswith(b) or b.startswith(a)):
+                out[i], j = (hw[k][1], hw[k][2]), k + 1
+                break
+    for i in range(len(out)):  # fill misses between neighbours
+        if out[i] is None:
+            p = next((out[q][1] for q in range(i - 1, -1, -1) if out[q]), 0.0)
+            nx = next((out[q][0] for q in range(i + 1, len(out)) if out[q]), p + 0.4)
+            out[i] = (p, max(p + 0.05, min(nx, p + 0.35)))
+    return out
+
+
 def spans(text: str, start: int) -> list[tuple[str, int, int]]:
     return [(m.group(0), start + m.start(), start + m.end()) for m in re.finditer(r"\S+", text)]
 
@@ -88,6 +123,8 @@ def voice(src: Path, estimate: bool = False) -> Path:
         (out / "voice.json").write_text(json.dumps({"estimate": True, "lines": res, "duration": round(dur, 3)}, indent=1))
         return out
 
+    if v.get("model") == "eleven_v3":
+        return voice_v3(spec, out, lines, v)
     audio, al, keyname = tts(full, v)
     with tempfile.TemporaryDirectory() as td:
         mp3 = Path(td) / "v.mp3"
@@ -134,6 +171,30 @@ def voice(src: Path, estimate: bool = False) -> Path:
     pieces.append(np.zeros(int(0.5 * SR), np.float32))
     mix = np.concatenate(pieces)
     return finish(spec, out, full, keyname, mix, res)
+
+
+def voice_v3(spec, out, lines, v):
+    tagged = "\n".join((ln.get("tag", v.get("tag", "")) + " " + ln["text"]).strip() for ln in lines)
+    audio, keyname = tts_v3(tagged, v)
+    (out / "voice-raw.mp3").write_bytes(audio)
+    with tempfile.TemporaryDirectory() as td:
+        wav = Path(td) / "v.wav"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(out / "voice-raw.mp3"), "-ac", "1", "-ar", str(SR), str(wav)], check=True)
+        raw, _ = sf.read(str(wav), dtype="float32")
+        words = [w for ln in lines for w in ln["text"].split()]
+        times = whisper_words(wav, words)
+    lead = v.get("lead", 0.02)
+    a0 = max(0.0, times[0][0] - 0.05)
+    shift = lead - a0
+    mix = np.concatenate([np.zeros(int(lead * SR), np.float32), raw[int(a0 * SR):].astype(np.float32), np.zeros(int(0.5 * SR), np.float32)])
+    res, k = [], 0
+    for ln in lines:
+        ws = ln["text"].split()
+        tt = times[k:k + len(ws)]
+        k += len(ws)
+        res.append({"text": ln["text"], "start": round(tt[0][0] + shift, 3), "end": round(tt[-1][1] + shift, 3),
+                    "words": [{"w": w, "start": round(a + shift, 3), "end": round(b + shift, 3)} for w, (a, b) in zip(ws, tt)]})
+    return finish(spec, out, tagged, keyname, mix, res)
 
 
 def finish(spec, out, full, keyname, mix, res):
