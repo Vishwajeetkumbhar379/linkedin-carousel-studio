@@ -4,33 +4,111 @@
   "episode": 2,
   "template": "gpt-t",
   "renderer": "3d",
-  "voice": {"provider": "elevenlabs", "voice_id": "JBFqnCBsd6RMkjVDRZzb", "name": "George", "model": "eleven_multilingual_v2", "gap": 0.26, "scene_gap": 0.55},
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+    "name": "George",
+    "model": "eleven_multilingual_v2",
+    "gap": 0.18,
+    "scene_gap": 0.4,
+    "speed": 1.1,
+    "lead": 0.02
+  },
   "hook_type": "letter tease (bait and switch): three letters everyone types, one is not who you think",
   "lines": [
-    {"text": "G. P. T. One of these letters isn't OpenAI's.", "see": "Three huge chrome letters G P T in a dark void, the T flickers wrong"},
-    {"text": "G is for generative. It creates things that never existed.", "see": "G ignites, particles assemble into shapes out of nothing"},
-    {"text": "P, pre-trained. It read a huge chunk of the internet first.", "see": "A storm of glowing pages pours into the P"},
-    {"text": "But T?", "see": "Spotlight snaps onto T, everything else goes dark, low hit", "pause_after": true},
-    {"text": "T was invented at Google.", "see": "T turns, four-colour glow, a Google-style campus block rises behind it"},
-    {"text": "In 2017, eight Google researchers wrote one paper. It invented the Transformer.", "see": "A 3D paper, Attention Is All You Need, eight figures standing on it, the T assembles from its pages"},
-    {"text": "The T. The engine inside ChatGPT, Gemini and Claude.", "see": "T becomes a glowing engine core, three app cubes each with the same core inside"},
-    {"text": "Google patented it. Then let the whole world use it.", "see": "PATENTED stamp slams, then the vault opens and copies of the T fly out across a globe", "pause_after": true},
-    {"text": "And the eight inventors? Every single one has left Google.", "see": "The eight figures walk off the paper one by one, counter 8 to 0"},
-    {"text": "The last one? Google paid 2.7 billion dollars to bring him back. This June, he joined OpenAI.", "see": "Last figure, $2.7B price tag, then he crosses to the OpenAI side"},
-    {"text": "So be honest. Should Google have kept the T a secret?", "see": "Back to G P T, the T hangs between two sides, comment bubble. Loops to frame 0"}
+    {
+      "text": "G. P. T. You'd think all three letters are OpenAI's. One isn't.",
+      "see": "Three huge chrome letters G P T in a dark void, the T flickers wrong"
+    },
+    {
+      "text": "G, generative. It creates things that never existed.",
+      "see": "G ignites, particles assemble into shapes out of nothing"
+    },
+    {
+      "text": "P, pre-trained. It read a huge chunk of the internet.",
+      "see": "A storm of glowing pages pours into the P"
+    },
+    {
+      "text": "But T?",
+      "see": "Spotlight snaps onto T, everything else goes dark, low hit",
+      "pause_after": true
+    },
+    {
+      "text": "T was invented at Google.",
+      "see": "T turns, four-colour glow, a Google-style campus block rises behind it"
+    },
+    {
+      "text": "In 2017, eight Google researchers wrote one paper. It invented the Transformer.",
+      "see": "A 3D paper, Attention Is All You Need, eight figures standing on it, the T assembles from its pages"
+    },
+    {
+      "text": "The T. The engine inside ChatGPT, Gemini and Claude.",
+      "see": "T becomes a glowing engine core, three app cubes each with the same core inside"
+    },
+    {
+      "text": "Google patented it. Then let the whole world use it.",
+      "see": "PATENTED stamp slams, then the vault opens and copies of the T fly out across a globe",
+      "pause_after": true
+    },
+    {
+      "text": "All eight inventors? Every single one has left Google.",
+      "see": "The eight figures walk off the paper one by one, counter 8 to 0"
+    },
+    {
+      "text": "Google paid 2.7 billion dollars to get one back. In June, he joined OpenAI.",
+      "see": "Last figure, $2.7B price tag, then he crosses to the OpenAI side"
+    },
+    {
+      "text": "So should Google have kept the T a secret?",
+      "see": "Back to G P T, the T hangs between two sides, comment bubble. Loops to frame 0"
+    }
   ],
   "facts": [
-    {"claim": "GPT stands for Generative Pre-trained Transformer; OpenAI's 2018 paper 'Improving Language Understanding by Generative Pre-Training'", "source": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf", "date": "2018-06-11"},
-    {"claim": "The Transformer was introduced in 'Attention Is All You Need' (2017) by eight authors at Google Brain / Google Research", "source": "https://arxiv.org/abs/1706.03762", "date": "2017-06-12"},
-    {"claim": "Google holds US patent 10,452,978, 'Attention-based sequence transduction neural networks'", "source": "https://patents.google.com/patent/US10452978B2", "date": "2019-10-22"},
-    {"claim": "All eight co-authors have now left Google", "source": "https://eu.36kr.com/en/p/3872257909068806", "date": "2026-06"},
-    {"claim": "Noam Shazeer, brought back via Google's ~$2.7B Character.AI deal (Aug 2024), left Google for OpenAI in June 2026", "source": "https://www.axios.com/2026/06/18/noam-shazeer-google-openai-characterai", "date": "2026-06-18"},
-    {"claim": "ChatGPT, Gemini and Claude are built on the Transformer architecture", "source": "https://arxiv.org/abs/1706.03762", "date": "general knowledge, architecture papers"}
+    {
+      "claim": "GPT stands for Generative Pre-trained Transformer; OpenAI's 2018 paper 'Improving Language Understanding by Generative Pre-Training'",
+      "source": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "date": "2018-06-11"
+    },
+    {
+      "claim": "The Transformer was introduced in 'Attention Is All You Need' (2017) by eight authors at Google Brain / Google Research",
+      "source": "https://arxiv.org/abs/1706.03762",
+      "date": "2017-06-12"
+    },
+    {
+      "claim": "Google holds US patent 10,452,978, 'Attention-based sequence transduction neural networks'",
+      "source": "https://patents.google.com/patent/US10452978B2",
+      "date": "2019-10-22"
+    },
+    {
+      "claim": "All eight co-authors have now left Google",
+      "source": "https://eu.36kr.com/en/p/3872257909068806",
+      "date": "2026-06"
+    },
+    {
+      "claim": "Noam Shazeer, brought back via Google's ~$2.7B Character.AI deal (Aug 2024), left Google for OpenAI in June 2026",
+      "source": "https://www.axios.com/2026/06/18/noam-shazeer-google-openai-characterai",
+      "date": "2026-06-18"
+    },
+    {
+      "claim": "ChatGPT, Gemini and Claude are built on the Transformer architecture",
+      "source": "https://arxiv.org/abs/1706.03762",
+      "date": "general knowledge, architecture papers"
+    }
   ],
   "publish": {
     "title": "One letter in ChatGPT belongs to Google #shorts",
-    "caption": "G and P are OpenAI's. The T was invented at Google in 2017, patented, then given to the world. Now all eight inventors have left.\n\nShould Google have kept it secret? 👇\n\nInside AI, episode 2.\n\n#ai #chatgpt #google #openai #tech",
+    "caption": "G and P are OpenAI's. The T was invented at Google in 2017, patented, then given to the world. Now all eight inventors have left.\n\nShould Google have kept it secret? 👇\n\nComment PAPER and I'll send you the guide: the paper, the eight people, and where they went.\n\nInside AI, episode 2.\n\n#ai #chatgpt #google #openai #tech",
     "pinned_comment": "Unpopular opinion: if Google had kept it secret, there would be no ChatGPT, and Google would be the only AI company. Agree?",
-    "tags": ["ai", "chatgpt", "gpt meaning", "google", "openai", "transformer", "attention is all you need", "noam shazeer"]
+    "tags": [
+      "ai",
+      "chatgpt",
+      "gpt meaning",
+      "google",
+      "openai",
+      "transformer",
+      "attention is all you need",
+      "noam shazeer"
+    ],
+    "comment_keyword": "PAPER"
   }
 }

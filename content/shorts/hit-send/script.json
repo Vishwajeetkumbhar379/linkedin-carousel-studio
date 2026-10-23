@@ -8,16 +8,18 @@
     "voice_id": "JBFqnCBsd6RMkjVDRZzb",
     "name": "George",
     "model": "eleven_multilingual_v2",
-    "gap": 0.28,
-    "scene_gap": 0.5
+    "gap": 0.18,
+    "scene_gap": 0.35,
+    "speed": 1.1,
+    "lead": 0.02
   },
   "lines": [
     {
-      "text": "This is what happens the second you hit send on ChatGPT.",
+      "text": "When you hit send on ChatGPT, you think it reads your message.",
       "see": "Phone, thumb hits send, flash, token sparks already flying (busy frame 0)"
     },
     {
-      "text": "Your message gets chopped into tokens. Tiny chunks of words.",
+      "text": "It can't. It gets chopped into tokens, tiny scraps of words.",
       "see": "The message splits into coloured token blocks with a clack each, counter climbs"
     },
     {
@@ -26,28 +28,28 @@
       "pause_after": true
     },
     {
-      "text": "Here's the weird part. It doesn't know the answer. It guesses.",
+      "text": "And it doesn't know the answer. It guesses.",
       "see": "Inside the chip: neural lattice lights up, IT DOESN'T KNOW -> IT GUESSES"
     },
     {
-      "text": "One token at a time, through billions of numbers, over and over.",
+      "text": "One token at a time, through billions of numbers.",
       "see": "Next-token probability bars, the winner pops into the reply bubble, repeats faster and faster"
     },
     {
-      "text": "One reply uses about what a light bulb burns in two minutes.",
+      "text": "One reply uses what a light bulb burns in two minutes.",
       "see": "LED bulb fades up, a 2:00 timer runs, 0.34 Wh label",
       "pause_after": true
     },
     {
-      "text": "Tiny. Until it's billions of messages a day.",
+      "text": "Tiny. Until it's two and a half billion messages. Every day.",
       "see": "One bulb multiplies into a wall of thousands, counter races into the billions"
     },
     {
-      "text": "That's why Sam Altman said your please and thank you cost OpenAI tens of millions of dollars.",
+      "text": "Sam Altman says your please and thank you cost OpenAI tens of millions of dollars.",
       "see": "please / thank you tokens drop into a money counter, quote card: tens of millions of dollars well spent"
     },
     {
-      "text": "So be honest. Do you still say please before you hit send?",
+      "text": "So, do you still say please when you hit send?",
       "see": "Back to the phone: please typed, thumb hovers send, comment bubble. Last frame matches frame 0 (loop)"
     }
   ],
@@ -80,7 +82,7 @@
   ],
   "publish": {
     "title": "What happens the second you hit send on ChatGPT #shorts",
-    "caption": "The second you hit send, your words get chopped up, shipped to a chip that costs as much as a car, and guessed back one piece at a time.\n\nSo be honest: do you still say please? 👇\n\nInside AI, episode 1. Follow for how the AI you use every day actually works.\n\n#ai #chatgpt #howitworks #tech #artificialintelligence",
+    "caption": "The second you hit send, your words get chopped into tokens, shipped to a chip that costs as much as a car, and guessed back one piece at a time.\n\nDo you still say please? 👇\n\nComment TOKENS and I'll send you the 1-page guide with every source.\n\nInside AI, episode 1.\n\n#ai #chatgpt #howitworks #tech #artificialintelligence",
     "pinned_comment": "I say please. If they take over, I want to be on the list 😅 What about you?",
     "tags": [
       "ai",
@@ -91,6 +93,7 @@
       "sam altman",
       "explained",
       "animation"
-    ]
+    ],
+    "comment_keyword": "TOKENS"
   }
 }

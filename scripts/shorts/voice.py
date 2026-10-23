@@ -74,7 +74,7 @@ def voice(src: Path, estimate: bool = False) -> Path:
         full += ln["text"] + "\n"
 
     if estimate:  # 2.6 words a second, the George pace measured on the Week 1 card
-        t, res = 0.15, []
+        t, res = v.get("lead", 0.15), []
         for ln in lines:
             ws, wt = [], t
             for w in ln["text"].split():
@@ -99,7 +99,8 @@ def voice(src: Path, estimate: bool = False) -> Path:
     cs, ce = al["character_start_times_seconds"], al["character_end_times_seconds"]
 
     # cut each line out on its own and re-space them with clean gaps
-    pieces, res, t = [np.zeros(int(0.15 * SR), np.float32)], [], 0.15
+    lead = v.get("lead", 0.15)
+    pieces, res, t = [np.zeros(int(lead * SR), np.float32)], [], lead
     for i, ln in enumerate(lines):
         o = offs[i]
         ws = spans(ln["text"], o)
