@@ -1,0 +1,33 @@
+/* Inside AI Shorts: shared look (1080x1920, night studio, one amber accent) */
+@font-face{font-family:'Instrument Serif';font-style:normal;src:url(/fonts-extra/instrument-serif-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Instrument Serif';font-style:italic;src:url(/fonts-extra/instrument-serif-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Inter Tight';font-weight:500;src:url(/fonts-extra/inter-tight-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter Tight';font-weight:600;src:url(/fonts-extra/inter-tight-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter Tight';font-weight:700;src:url(/fonts-extra/inter-tight-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist Mono';font-weight:500;src:url(/node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2) format('woff2')}
+:root{--ink:#0B0A10;--ink2:#15131D;--line:#2A2735;--paper:#F4EFE6;--amber:#E7A15A;--amberhi:#FFC98A;--violet:#9C93F0;--teal:#5FD6C4;--coral:#F08A6A;--muted:#8D8799}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ink);color:var(--paper);font-family:'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:radial-gradient(1200px 1400px at 50% 38%,#1B1826 0%,#0B0A10 62%)}
+#grid{position:absolute;inset:-200px;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:60px 60px;will-change:transform}
+#vig{position:absolute;inset:0;pointer-events:none;z-index:80;background:radial-gradient(1000px 1300px at 50% 40%,transparent 55%,rgba(0,0,0,.55) 100%)}
+#grain{position:absolute;inset:0;z-index:81;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:79;pointer-events:none}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden;transform-origin:540px 760px;will-change:transform,opacity}
+.abs{position:absolute}
+.mono{font-family:'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:.95}
+.serif em{font-style:italic;color:var(--amber)}
+.big{font:700 112px/0.95 'Inter Tight';letter-spacing:-.035em;text-transform:uppercase}
+.glow{filter:drop-shadow(0 0 30px rgba(231,161,90,.55))}
+/* top chrome */
+#tag{position:absolute;left:64px;top:176px;z-index:70;font:500 24px 'Geist Mono';letter-spacing:.16em;color:var(--paper);opacity:.72;display:flex;gap:16px;align-items:center}
+#tag b{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 14px var(--amber)}
+#handle{position:absolute;right:64px;top:176px;z-index:70;font:500 24px 'Geist Mono';letter-spacing:.1em;color:var(--paper);opacity:.5}
+/* captions: 3D word flip + amber word box (speedy_devv / v12 signature) */
+#cap{position:absolute;left:70px;right:70px;top:1300px;height:170px;z-index:75;perspective:900px;display:flex;justify-content:center;align-items:center}
+#capline{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:0 22px;font:700 78px/1.08 'Inter Tight';letter-spacing:-.02em;text-transform:uppercase;text-align:center}
+#capline span{display:inline-block;transform-origin:50% 100%;position:relative;z-index:2;color:#FBF7F0;text-shadow:0 6px 24px rgba(0,0,0,.6)}
+#capline span.on{color:#16110A;text-shadow:none}
+#wbox{position:absolute;z-index:1;background:var(--amber);border-radius:14px;box-shadow:0 10px 30px -8px rgba(231,161,90,.6)}
+#wbox i{position:absolute;width:12px;height:12px;background:#fff;border:2px solid var(--amber);border-radius:2px}

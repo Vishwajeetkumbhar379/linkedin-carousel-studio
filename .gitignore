@@ -42,3 +42,9 @@ video-projects/**/assets/
 /.env.local
 products/
 out/**/slides.zip
+
+# Shorts working files (renders live in out/shorts/<slug>/video.mp4)
+out/shorts/*/stills/
+out/shorts/*/.parts/
+out/shorts/*/video-silent.mp4
+out/shorts/*/mix.wav
