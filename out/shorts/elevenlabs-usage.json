@@ -18,5 +18,10 @@
   "slug": "hit-send",
   "chars": 594,
   "key": "ELEVENLABS_API_KEY"
+ },
+ {
+  "slug": "flight-mode",
+  "chars": 722,
+  "key": "ELEVENLABS_API_KEY"
  }
 ]
