@@ -145,7 +145,7 @@ const avatar = (g: G, x: number, y: number, r: number, name: string) => {
     g.restore();
   }
 };
-const statusBar = (g: G, time: string | null) => {
+export const statusBar = (g: G, time: string | null) => {
   g.fillStyle = '#fff'; g.textBaseline = 'middle';
   if (time) { g.font = `600 17px ${SF}`; g.textAlign = 'center'; g.fillText(time, 52, 24); }
   [4, 6.5, 9, 11.5].forEach((h, i) => { g.beginPath(); g.roundRect(288 + i * 5, 30 - h, 3.2, h, 1); g.fill(); });
@@ -158,7 +158,7 @@ const statusBar = (g: G, time: string | null) => {
   g.fillStyle = '#0c0d18'; g.beginPath(); g.arc(W / 2 + 40, 29, 5.5, 0, 7); g.fill();
   g.fillStyle = '#1b2140'; g.beginPath(); g.arc(W / 2 + 41.5, 27.5, 1.6, 0, 7); g.fill();
 };
-const homeBar = (g: G) => { g.fillStyle = 'rgba(255,255,255,0.92)'; g.beginPath(); g.roundRect((W - 138) / 2, H - 13, 138, 5, 2.5); g.fill(); };
+export const homeBar = (g: G) => { g.fillStyle = 'rgba(255,255,255,0.92)'; g.beginPath(); g.roundRect((W - 138) / 2, H - 13, 138, 5, 2.5); g.fill(); };
 
 const keyboard = (g: G, top: number) => {
   g.fillStyle = '#1f1f21'; g.fillRect(0, top, W, H - top + 400);
@@ -352,7 +352,8 @@ const rrShape = (w: number, h: number, r: number) => {
 // The iPhone. See the header of this file for the state and the coordinate convention.
 // `res`: screen pixels per point (2 is sharp for a phone up to ~800 px wide on screen; use 3 for
 // close-ups). `light`: strength of the light the screen throws (0 = none). `glare`: glass sheen.
-export const Phone3D = ({assets, state, res = 2, light = 1, glare = 0.07}: {assets: PhoneAssets | null; state: PhoneState; res?: number; light?: number; glare?: number}) => {
+// `paint(g)` draws your own screen instead of the thread or lock screen, in screen points (393 x 852).
+export const Phone3D = ({assets, state, res = 2, light = 1, glare = 0.07, paint}: {assets: PhoneAssets | null; state: PhoneState; res?: number; light?: number; glare?: number; paint?: (g: G) => void}) => {
   const parts = useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = W * res; canvas.height = H * res;
@@ -380,13 +381,17 @@ export const Phone3D = ({assets, state, res = 2, light = 1, glare = 0.07}: {asse
       sheen: new THREE.MeshBasicMaterial({map: new THREE.CanvasTexture(gc), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false, fog: false, polygonOffset: true, polygonOffsetFactor: -4, polygonOffsetUnits: -4}),
     };
   }, [res]);
-  if (assets) {
+  if (paint) {
+    const g = parts.canvas.getContext('2d')!;
+    g.save(); g.setTransform(res, 0, 0, res, 0, 0); paint(g); g.restore();
+    parts.tex.needsUpdate = true;
+  } else if (assets) {
     drawPhoneScreen(parts.canvas.getContext('2d')!, state, assets, res);
     parts.tex.needsUpdate = true;
   }
   parts.sheen.opacity = glare;
   const b = state.brightness ?? 1;
-  const lum = b * (state.mode === 'lock' ? 0.55 + 0.45 * (state.notif ?? 0) : 0.35 + 0.45 * Math.max(0, ...(state.messages ?? []).map((m) => (m.photo ? m.appear ?? 1 : 0)), state.compose?.photo ?? 0));
+  const lum = paint ? b * 0.8 : b * (state.mode === 'lock' ? 0.55 + 0.45 * (state.notif ?? 0) : 0.35 + 0.45 * Math.max(0, ...(state.messages ?? []).map((m) => (m.photo ? m.appear ?? 1 : 0)), state.compose?.photo ?? 0));
   const btn = (x: number, y: number, h: number) => (
     <mesh position={[x, y, -TH / 2]} material={parts.frame}>
       <boxGeometry args={[0.014, h, 0.034]} />
