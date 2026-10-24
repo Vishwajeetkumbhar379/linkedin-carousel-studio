@@ -13,6 +13,18 @@
       "skillPath": "skills/ai-seo/SKILL.md",
       "computedHash": "d17bcf49642639b1978e59aee3f13a1a5c80198a56c3c33cb7aee34df7b79359"
     },
+    "animated-video": {
+      "source": "goodnight000/cstack",
+      "sourceType": "github",
+      "skillPath": "skills/animated-video/SKILL.md",
+      "computedHash": "b03f299a685579c6dfa6e04aaddd41c85fd204aef0be647cf8d35d735b8274ba"
+    },
+    "asset-library": {
+      "source": "goodnight000/cstack",
+      "sourceType": "github",
+      "skillPath": "skills/asset-library/SKILL.md",
+      "computedHash": "6f825a0339356b24f10d3b6898632f47e330fd394f9a50970e7bbcc4de9ead44"
+    },
     "comment-mining": {
       "source": "Ootto-AI/claude-content-skills",
       "sourceType": "github",
@@ -96,6 +108,18 @@
       "sourceType": "github",
       "skillPath": "skills/utm-campaign-plan/SKILL.md",
       "computedHash": "27a8b47e8fc3ddb79e7c2fb9ecd041068095bf991dcf8b8bc93210119b51b598"
+    },
+    "video-edit": {
+      "source": "goodnight000/cstack",
+      "sourceType": "github",
+      "skillPath": "skills/video-edit/SKILL.md",
+      "computedHash": "6d12d1e558c3943038e334c3e3ef21cfe261a3b7a08cfd643f0763a62340032b"
+    },
+    "video-script": {
+      "source": "goodnight000/cstack",
+      "sourceType": "github",
+      "skillPath": "skills/video-script/SKILL.md",
+      "computedHash": "8a8fc25e5ddfd889ae56297f07056d5e24c725ab233c80cbb6f343af23c583d3"
     },
     "viral-carousel": {
       "source": "Ootto-AI/claude-content-skills",
