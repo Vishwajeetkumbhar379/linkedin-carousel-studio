@@ -75,7 +75,10 @@ def whisper_words(wav: Path, script_words: list[str]) -> list[tuple[float, float
     """Word times for the script's own words: Whisper word timestamps matched in order, gaps interpolated."""
     from faster_whisper import WhisperModel
     m = WhisperModel("small", device="cpu", compute_type="int8")
-    segs, _ = m.transcribe(str(wav), language="en", word_timestamps=True, initial_prompt=" ".join(script_words))
+    # decode with ffmpeg ourselves: faster-whisper's own decoder breaks on newer PyAV (metadata_errors kwarg)
+    pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(wav), "-ac", "1", "-ar", "16000", "-f", "f32le", "-"],
+                         check=True, capture_output=True).stdout
+    segs, _ = m.transcribe(np.frombuffer(pcm, np.float32), language="en", word_timestamps=True, initial_prompt=" ".join(script_words))
     hw = [(w.word, w.start, w.end) for sg in segs for w in sg.words]
     n = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
     out, j = [None] * len(script_words), 0
@@ -175,8 +178,11 @@ def voice(src: Path, estimate: bool = False) -> Path:
 
 def voice_v3(spec, out, lines, v):
     tagged = "\n".join((ln.get("tag", v.get("tag", "")) + " " + ln["text"]).strip() for ln in lines)
-    audio, keyname = tts_v3(tagged, v)
-    (out / "voice-raw.mp3").write_bytes(audio)
+    if "--reuse" in sys.argv and (out / "voice-raw.mp3").exists():  # re-align a take already paid for
+        keyname = "reused take"
+    else:
+        audio, keyname = tts_v3(tagged, v)
+        (out / "voice-raw.mp3").write_bytes(audio)
     with tempfile.TemporaryDirectory() as td:
         wav = Path(td) / "v.wav"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(out / "voice-raw.mp3"), "-ac", "1", "-ar", str(SR), str(wav)], check=True)

@@ -1,614 +1,584 @@
 {
  "estimate": false,
- "voice": "George",
+ "voice": "Drew",
  "lines": [
   {
-   "text": "G. P. T. One of these letters isn't OpenAI's.",
-   "start": 0.15,
-   "end": 3.505,
+   "text": "G. P. T. You'd think all three letters are OpenAI's. One isn't.",
+   "start": 0.02,
+   "end": 5.5,
    "words": [
     {
      "w": "G.",
-     "start": 0.15,
-     "end": 0.394
+     "start": 0.02,
+     "end": 0.34
     },
     {
      "w": "P.",
-     "start": 0.417,
-     "end": 0.649
+     "start": 0.5,
+     "end": 0.82
     },
     {
      "w": "T.",
-     "start": 0.684,
-     "end": 1.137
+     "start": 1.2,
+     "end": 1.46
     },
     {
-     "w": "One",
-     "start": 1.52,
-     "end": 1.694
+     "w": "You'd",
+     "start": 2.06,
+     "end": 2.26
     },
     {
-     "w": "of",
-     "start": 1.717,
-     "end": 1.764
+     "w": "think",
+     "start": 2.26,
+     "end": 2.56
     },
     {
-     "w": "these",
-     "start": 1.799,
-     "end": 1.961
+     "w": "all",
+     "start": 2.56,
+     "end": 2.84
+    },
+    {
+     "w": "three",
+     "start": 2.84,
+     "end": 3.08
     },
     {
      "w": "letters",
-     "start": 1.996,
-     "end": 2.275
+     "start": 3.08,
+     "end": 3.34
     },
     {
-     "w": "isn't",
-     "start": 2.333,
-     "end": 2.576
+     "w": "are",
+     "start": 3.34,
+     "end": 3.6
     },
     {
      "w": "OpenAI's.",
-     "start": 2.635,
-     "end": 3.505
+     "start": 3.6,
+     "end": 4.42
+    },
+    {
+     "w": "One",
+     "start": 4.72,
+     "end": 4.98
+    },
+    {
+     "w": "isn't.",
+     "start": 4.98,
+     "end": 5.5
     }
    ]
   },
   {
-   "text": "G is for generative. It creates things that never existed.",
-   "start": 3.945,
-   "end": 7.486,
+   "text": "G, generative. It creates things that never existed.",
+   "start": 6.0,
+   "end": 9.88,
    "words": [
     {
-     "w": "G",
-     "start": 3.945,
-     "end": 4.119
-    },
-    {
-     "w": "is",
-     "start": 4.235,
-     "end": 4.316
-    },
-    {
-     "w": "for",
-     "start": 4.363,
-     "end": 4.456
+     "w": "G,",
+     "start": 6.0,
+     "end": 6.4
     },
     {
      "w": "generative.",
-     "start": 4.502,
-     "end": 5.257
+     "start": 6.8,
+     "end": 7.36
     },
     {
      "w": "It",
-     "start": 5.408,
-     "end": 5.547
+     "start": 7.94,
+     "end": 8.02
     },
     {
      "w": "creates",
-     "start": 5.594,
-     "end": 5.942
+     "start": 8.02,
+     "end": 8.34
     },
     {
      "w": "things",
-     "start": 5.988,
-     "end": 6.267
+     "start": 8.34,
+     "end": 8.84
     },
     {
      "w": "that",
-     "start": 6.302,
-     "end": 6.418
+     "start": 8.84,
+     "end": 8.98
     },
     {
      "w": "never",
-     "start": 6.476,
-     "end": 6.685
+     "start": 8.98,
+     "end": 9.38
     },
     {
      "w": "existed.",
-     "start": 6.755,
-     "end": 7.486
+     "start": 9.38,
+     "end": 9.88
     }
    ]
   },
   {
-   "text": "P, pre-trained. It read a huge chunk of the internet first.",
-   "start": 7.926,
-   "end": 11.618,
+   "text": "P, pre-trained. It read a huge chunk of the internet.",
+   "start": 10.58,
+   "end": 14.92,
    "words": [
     {
      "w": "P,",
-     "start": 7.926,
-     "end": 8.309
+     "start": 10.58,
+     "end": 11.0
     },
     {
      "w": "pre-trained.",
-     "start": 8.355,
-     "end": 9.168
+     "start": 11.52,
+     "end": 11.74
     },
     {
      "w": "It",
-     "start": 9.319,
-     "end": 9.447
+     "start": 12.84,
+     "end": 12.98
     },
     {
      "w": "read",
-     "start": 9.493,
-     "end": 9.632
+     "start": 12.98,
+     "end": 13.28
     },
     {
      "w": "a",
-     "start": 9.656,
-     "end": 9.679
+     "start": 13.28,
+     "end": 13.46
     },
     {
      "w": "huge",
-     "start": 9.749,
-     "end": 10.027
+     "start": 13.46,
+     "end": 13.9
     },
     {
      "w": "chunk",
-     "start": 10.074,
-     "end": 10.306
+     "start": 13.9,
+     "end": 14.36
     },
     {
      "w": "of",
-     "start": 10.352,
-     "end": 10.399
+     "start": 14.36,
+     "end": 14.52
     },
     {
      "w": "the",
-     "start": 10.434,
-     "end": 10.503
+     "start": 14.52,
+     "end": 14.6
     },
     {
-     "w": "internet",
-     "start": 10.561,
-     "end": 10.921
-    },
-    {
-     "w": "first.",
-     "start": 10.991,
-     "end": 11.618
+     "w": "internet.",
+     "start": 14.6,
+     "end": 14.92
     }
    ]
   },
   {
    "text": "But T?",
-   "start": 12.058,
-   "end": 12.719,
+   "start": 15.46,
+   "end": 16.2,
    "words": [
     {
      "w": "But",
-     "start": 12.058,
-     "end": 12.22
+     "start": 15.46,
+     "end": 15.8
     },
     {
      "w": "T?",
-     "start": 12.267,
-     "end": 12.719
+     "start": 15.8,
+     "end": 16.2
     }
    ]
   },
   {
    "text": "T was invented at Google.",
-   "start": 13.449,
-   "end": 15.144,
+   "start": 16.9,
+   "end": 18.68,
    "words": [
     {
      "w": "T",
-     "start": 13.449,
-     "end": 13.624
+     "start": 16.9,
+     "end": 17.58
     },
     {
      "w": "was",
-     "start": 13.832,
-     "end": 13.949
+     "start": 17.58,
+     "end": 17.8
     },
     {
      "w": "invented",
-     "start": 14.007,
-     "end": 14.436
+     "start": 17.8,
+     "end": 18.16
     },
     {
      "w": "at",
-     "start": 14.483,
-     "end": 14.541
+     "start": 18.16,
+     "end": 18.36
     },
     {
      "w": "Google.",
-     "start": 14.599,
-     "end": 15.144
+     "start": 18.36,
+     "end": 18.68
     }
    ]
   },
   {
    "text": "In 2017, eight Google researchers wrote one paper. It invented the Transformer.",
-   "start": 15.584,
-   "end": 21.238,
+   "start": 19.54,
+   "end": 25.82,
    "words": [
     {
      "w": "In",
-     "start": 15.584,
-     "end": 15.712
+     "start": 19.54,
+     "end": 19.68
     },
     {
      "w": "2017,",
-     "start": 15.77,
-     "end": 16.804
+     "start": 19.68,
+     "end": 20.4
     },
     {
      "w": "eight",
-     "start": 16.862,
-     "end": 17.071
+     "start": 20.98,
+     "end": 21.22
     },
     {
      "w": "Google",
-     "start": 17.129,
-     "end": 17.43
+     "start": 21.22,
+     "end": 21.52
     },
     {
      "w": "researchers",
-     "start": 17.476,
-     "end": 18.034
+     "start": 21.52,
+     "end": 22.1
     },
     {
      "w": "wrote",
-     "start": 18.092,
-     "end": 18.336
+     "start": 22.1,
+     "end": 22.46
     },
     {
      "w": "one",
-     "start": 18.382,
-     "end": 18.556
+     "start": 22.46,
+     "end": 22.92
     },
     {
      "w": "paper.",
-     "start": 18.603,
-     "end": 19.183
+     "start": 22.92,
+     "end": 23.36
     },
     {
      "w": "It",
-     "start": 19.566,
-     "end": 19.706
+     "start": 23.36,
+     "end": 24.12
     },
     {
      "w": "invented",
-     "start": 19.752,
-     "end": 20.17
+     "start": 24.12,
+     "end": 24.74
     },
     {
      "w": "the",
-     "start": 20.216,
-     "end": 20.286
+     "start": 24.74,
+     "end": 24.96
     },
     {
      "w": "Transformer.",
-     "start": 20.332,
-     "end": 21.238
+     "start": 24.96,
+     "end": 25.82
     }
    ]
   },
   {
    "text": "The T. The engine inside ChatGPT, Gemini and Claude.",
-   "start": 21.678,
-   "end": 26.856,
+   "start": 26.18,
+   "end": 31.74,
    "words": [
     {
      "w": "The",
-     "start": 21.678,
-     "end": 21.794
+     "start": 26.18,
+     "end": 26.58
     },
     {
      "w": "T.",
-     "start": 21.864,
-     "end": 22.363
+     "start": 26.58,
+     "end": 27.24
     },
     {
      "w": "The",
-     "start": 23.06,
-     "end": 23.187
+     "start": 27.68,
+     "end": 28.06
     },
     {
      "w": "engine",
-     "start": 23.28,
-     "end": 23.629
+     "start": 28.06,
+     "end": 28.42
     },
     {
      "w": "inside",
-     "start": 23.664,
-     "end": 24.14
+     "start": 28.42,
+     "end": 28.92
     },
     {
      "w": "ChatGPT,",
-     "start": 24.186,
-     "end": 25.335
+     "start": 28.92,
+     "end": 29.84
     },
     {
      "w": "Gemini",
-     "start": 25.544,
-     "end": 26.032
+     "start": 30.22,
+     "end": 30.74
     },
     {
      "w": "and",
-     "start": 26.113,
-     "end": 26.218
+     "start": 30.74,
+     "end": 31.22
     },
     {
      "w": "Claude.",
-     "start": 26.287,
-     "end": 26.856
+     "start": 31.22,
+     "end": 31.74
     }
    ]
   },
   {
    "text": "Google patented it. Then let the whole world use it.",
-   "start": 27.296,
-   "end": 30.628,
+   "start": 32.22,
+   "end": 36.0,
    "words": [
     {
      "w": "Google",
-     "start": 27.296,
-     "end": 27.668
+     "start": 32.22,
+     "end": 32.58
     },
     {
      "w": "patented",
-     "start": 27.703,
-     "end": 28.156
+     "start": 32.58,
+     "end": 33.16
     },
     {
      "w": "it.",
-     "start": 28.202,
-     "end": 28.481
+     "start": 33.16,
+     "end": 33.4
     },
     {
      "w": "Then",
-     "start": 28.922,
-     "end": 29.096
+     "start": 33.82,
+     "end": 34.18
     },
     {
      "w": "let",
-     "start": 29.166,
-     "end": 29.305
+     "start": 34.18,
+     "end": 34.58
     },
     {
      "w": "the",
-     "start": 29.34,
-     "end": 29.409
+     "start": 34.58,
+     "end": 34.7
     },
     {
      "w": "whole",
-     "start": 29.456,
-     "end": 29.688
+     "start": 34.7,
+     "end": 35.1
     },
     {
      "w": "world",
-     "start": 29.723,
-     "end": 30.025
+     "start": 35.1,
+     "end": 35.5
     },
     {
      "w": "use",
-     "start": 30.094,
-     "end": 30.315
+     "start": 35.5,
+     "end": 35.84
     },
     {
      "w": "it.",
-     "start": 30.361,
-     "end": 30.628
+     "start": 35.84,
+     "end": 36.0
     }
    ]
   },
   {
-   "text": "And the eight inventors? Every single one has left Google.",
-   "start": 31.358,
-   "end": 35.201,
+   "text": "All eight inventors? Every single one has left Google.",
+   "start": 36.56,
+   "end": 40.82,
    "words": [
     {
-     "w": "And",
-     "start": 31.358,
-     "end": 31.509
-    },
-    {
-     "w": "the",
-     "start": 31.556,
-     "end": 31.625
+     "w": "All",
+     "start": 36.56,
+     "end": 36.8
     },
     {
      "w": "eight",
-     "start": 31.695,
-     "end": 31.904
+     "start": 36.8,
+     "end": 37.04
     },
     {
      "w": "inventors?",
-     "start": 31.95,
-     "end": 32.717
-    },
-    {
-     "w": "Every",
-     "start": 33.227,
-     "end": 33.518
-    },
-    {
-     "w": "single",
-     "start": 33.564,
-     "end": 33.878
-    },
-    {
-     "w": "one",
-     "start": 33.936,
-     "end": 34.156
-    },
-    {
-     "w": "has",
-     "start": 34.191,
-     "end": 34.295
-    },
-    {
-     "w": "left",
-     "start": 34.365,
-     "end": 34.586
-    },
-    {
-     "w": "Google.",
-     "start": 34.655,
-     "end": 35.201
-    }
-   ]
-  },
-  {
-   "text": "The last one? Google paid 2.7 billion dollars to bring him back. This June, he joined OpenAI.",
-   "start": 35.641,
-   "end": 42.677,
-   "words": [
-    {
-     "w": "The",
-     "start": 35.641,
-     "end": 35.758
-    },
-    {
-     "w": "last",
-     "start": 35.816,
-     "end": 36.048
-    },
-    {
-     "w": "one?",
-     "start": 36.118,
-     "end": 36.477
-    },
-    {
-     "w": "Google",
-     "start": 36.988,
-     "end": 37.325
-    },
-    {
-     "w": "paid",
-     "start": 37.36,
+     "start": 37.04,
      "end": 37.58
     },
     {
-     "w": "2.7",
-     "start": 37.638,
-     "end": 38.323
+     "w": "Every",
+     "start": 38.28,
+     "end": 38.72
     },
     {
-     "w": "billion",
-     "start": 38.405,
-     "end": 38.73
+     "w": "single",
+     "start": 38.72,
+     "end": 39.22
     },
     {
-     "w": "dollars",
-     "start": 38.788,
-     "end": 39.113
+     "w": "one",
+     "start": 39.22,
+     "end": 39.66
     },
     {
-     "w": "to",
-     "start": 39.159,
-     "end": 39.206
+     "w": "has",
+     "start": 39.66,
+     "end": 40.12
     },
     {
-     "w": "bring",
-     "start": 39.264,
-     "end": 39.415
+     "w": "left",
+     "start": 40.12,
+     "end": 40.42
     },
     {
-     "w": "him",
-     "start": 39.461,
-     "end": 39.554
-    },
-    {
-     "w": "back.",
-     "start": 39.601,
-     "end": 40.077
-    },
-    {
-     "w": "This",
-     "start": 40.46,
-     "end": 40.68
-    },
-    {
-     "w": "June,",
-     "start": 40.762,
-     "end": 41.156
-    },
-    {
-     "w": "he",
-     "start": 41.238,
-     "end": 41.319
-    },
-    {
-     "w": "joined",
-     "start": 41.388,
-     "end": 41.656
-    },
-    {
-     "w": "OpenAI.",
-     "start": 41.737,
-     "end": 42.677
+     "w": "Google.",
+     "start": 40.42,
+     "end": 40.82
     }
    ]
   },
   {
-   "text": "So be honest. Should Google have kept the T a secret?",
-   "start": 43.117,
-   "end": 46.008,
+   "text": "Google paid 2.7 billion dollars to get one back. In June, he joined OpenAI.",
+   "start": 41.5,
+   "end": 47.98,
+   "words": [
+    {
+     "w": "Google",
+     "start": 41.5,
+     "end": 41.88
+    },
+    {
+     "w": "paid",
+     "start": 41.88,
+     "end": 42.22
+    },
+    {
+     "w": "2.7",
+     "start": 42.22,
+     "end": 42.54
+    },
+    {
+     "w": "billion",
+     "start": 43.12,
+     "end": 43.62
+    },
+    {
+     "w": "dollars",
+     "start": 43.62,
+     "end": 44.16
+    },
+    {
+     "w": "to",
+     "start": 44.16,
+     "end": 44.36
+    },
+    {
+     "w": "get",
+     "start": 44.36,
+     "end": 44.52
+    },
+    {
+     "w": "one",
+     "start": 44.52,
+     "end": 44.88
+    },
+    {
+     "w": "back.",
+     "start": 44.88,
+     "end": 45.28
+    },
+    {
+     "w": "In",
+     "start": 45.88,
+     "end": 46.08
+    },
+    {
+     "w": "June,",
+     "start": 46.08,
+     "end": 46.4
+    },
+    {
+     "w": "he",
+     "start": 46.88,
+     "end": 47.02
+    },
+    {
+     "w": "joined",
+     "start": 47.02,
+     "end": 47.4
+    },
+    {
+     "w": "OpenAI.",
+     "start": 47.4,
+     "end": 47.98
+    }
+   ]
+  },
+  {
+   "text": "So should Google have kept the T a secret?",
+   "start": 48.78,
+   "end": 51.14,
    "words": [
     {
      "w": "So",
-     "start": 43.117,
-     "end": 43.279
+     "start": 48.78,
+     "end": 49.08
     },
     {
-     "w": "be",
-     "start": 43.349,
-     "end": 43.43
-    },
-    {
-     "w": "honest.",
-     "start": 43.465,
-     "end": 43.964
-    },
-    {
-     "w": "Should",
-     "start": 44.081,
-     "end": 44.301
+     "w": "should",
+     "start": 49.08,
+     "end": 49.42
     },
     {
      "w": "Google",
-     "start": 44.348,
-     "end": 44.638
+     "start": 49.42,
+     "end": 49.68
     },
     {
      "w": "have",
-     "start": 44.661,
-     "end": 44.754
+     "start": 49.68,
+     "end": 49.9
     },
     {
      "w": "kept",
-     "start": 44.789,
-     "end": 44.975
+     "start": 49.9,
+     "end": 50.08
     },
     {
      "w": "the",
-     "start": 45.009,
-     "end": 45.079
+     "start": 50.08,
+     "end": 50.28
     },
     {
      "w": "T",
-     "start": 45.137,
-     "end": 45.207
+     "start": 50.28,
+     "end": 50.54
     },
     {
      "w": "a",
-     "start": 45.358,
-     "end": 45.392
+     "start": 50.54,
+     "end": 50.8
     },
     {
      "w": "secret?",
-     "start": 45.462,
-     "end": 46.008
+     "start": 50.8,
+     "end": 51.14
     }
    ]
   }
  ],
- "duration": 46.908
+ "duration": 51.88
 }
