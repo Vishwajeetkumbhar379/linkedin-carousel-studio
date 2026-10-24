@@ -1,0 +1,41 @@
+# buildwithvish/site
+
+Host website pages, AI tutorials, privacy policy, and third‑party scripts for interactive visual effects.
+
+- `site/data-deletion.html`: Data deletion · Build with Vish
+- `site/g/ad-performance-copilot.html`: html file
+- `site/g/ai-privacy-settings.html`: html file
+- `site/g/ai-tool-quick-starts.html`: html file
+- `site/g/brief-ai-like-an-agency.html`: html file
+- `site/g/chatgpt-from-zero.html`: html file
+- `site/g/claude-from-zero.html`: html file
+- `site/g/client-health-score.html`: html file
+- `site/g/connectors-and-mcp.html`: html file
+- `site/g/connectors-worth-setting-up.html`: html file
+- `site/g/creator-campaign-hq-in-claude.html`: html file
+- `site/g/creator-fit-scorer.html`: html file
+- `site/g/everyday-life-prompts.html`: html file
+- `site/g/gemini-inside-google.html`: html file
+- `site/g/get-cited-by-ai-answers.html`: html file
+- `site/g/growth-experiment-lab.html`: html file
+- `site/g/hidden-ai-features.html`: html file
+- `site/g/job-search-agent.html`: html file
+- `site/g/marketing-attribution-lab.html`: html file
+- `site/g/one-line-follow-ups.html`: html file
+- `site/g/pick-your-ai-by-job.html`: html file
+- `site/g/projects-in-claude-and-chatgpt.html`: html file
+- `site/g/report-that-writes-itself.html`: html file
+- `site/g/side-project-prompt-chain.html`: html file
+- `site/g/youtube-research-with-claude.html`: html file
+- `site/links.html`: Vish · links
+- `site/privacy.html`: Privacy policy · Build with Vish
+- `site/robots.txt`: Allows all user-agents full access to the site.
+- `site/vendor/CopyShader.js`: Defines Three.js CopyShader to render a texture quad with configurable opacity.
+- `site/vendor/EffectComposer.js`: Implements Three.js EffectComposer managing render passes, buffer swapping, and final screen output.
+- `site/vendor/LuminosityHighPassShader.js`: Defines Three.js LuminosityHighPassShader extracting bright regions via threshold and smooth width.
+- `site/vendor/RenderPass.js`: Three.js RenderPass renders a scene with optional override material and clear color, managing render targets.
+- `site/vendor/ScrollTrigger.min.js`: GSAP ScrollTrigger plugin triggers animations on scroll events, managing scroll positions and callbacks.
+- `site/vendor/ShaderPass.js`: Three.js ShaderPass applies a shader material to a full-screen quad, rendering to buffer or screen.
+- `site/vendor/UnrealBloomPass.js`: Three.js UnrealBloomPass creates bloom effect using mip chain and high-pass filter.
+- `site/vendor/gsap.min.js`: GSAP core animation library provides tweening, timelines, and easing functions.
+- `site/vendor/lenis.min.js`: Lenis smooth scrolling library animates scroll position with easing and resize handling.

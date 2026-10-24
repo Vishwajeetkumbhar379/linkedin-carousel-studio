@@ -1,0 +1,14 @@
+{
+  "preamble": "## Start here (rules that always apply)\n\n- Goal: multi-agent content engine for Vish (AI x marketing). LinkedIn first, then Instagram and YouTube Shorts. Brand and voice are locked: `PLAYBOOK.md` is the single source of truth (23 Oct), then `brand-profile.md`, `voice.md`, `content-pillars.md`. `CLAUDE.md` is a stack of dated overrides: the newest section wins.\n- Tokens: bulk reading, drafting and summarising go to free LLMs via `scripts/llm.py`. Claude directs and judges only.\n- Never print or commit keys. Never post, DM or comment on Vish's behalf without his explicit go-ahead. Vish has no laptop and works from an iPad: cloud only, plain words, one question at a time.\n- Branches: `claude/content-engine-test-gate` = main engine work; `claude/project-thread-k1b03i` = engine + Inside AI Shorts (latest). `main` is only the initial release.\n- Shorts (Inside AI): faceless 9:16 explainers, ElevenLabs voice Drew v3, visual north star = reel De0BAl8B3mY (TEARDOWN.md, 12 three.js/GSAP rules). Ep 3+ = everyday-curiosity shock hooks.\n- Project memory (`/tmp/claude/memory/team/silo`) holds the latest decisions; it is summarised under the `memory` source below.",
+  "sources": [
+    {"name": "engine", "path": ".", "about": "linkedin-carousel-studio: the content engine (scripts, brand, templates, research, content, skills)",
+     "outputs": "out", "deep": ["scripts", "research", "content", "templates", "docs", "brand"],
+     "exclude": ["^style-library/.*\\.html$", "^templates/fonts", "^carousel/fonts", "^\\.github/"]},
+    {"name": "buildwithvish", "path": "../buildwithvish", "about": "website buildwithvvish.com on Cloudflare Workers, guides, Instagram auto-DM webhook", "deep": ["src"], "exclude": ["^src/vendor/"]},
+    {"name": "claude-skills", "path": "../claude-skills", "about": "Vish's public Agent Skills (job search, humanizer, carousel, creator marketing)"},
+    {"name": "profile-pipeline", "path": "../Vishwajeetkumbhar379", "about": "profile repo, branch linkedin-pipeline: older 9-slide carousel builder (linkedin/build.py)"},
+    {"name": "memory", "path": "/tmp/claude/memory/team/silo", "about": "project memory: decisions, state, Vish's feedback"},
+    {"name": "project-files", "path": "/mnt/project-files", "about": "shared deliverables: Shorts finals, research, LinkedIn profile kit",
+     "only_ext": [".md", ".json"], "exclude": ["^uploads/", "frames/"]}
+  ]
+}

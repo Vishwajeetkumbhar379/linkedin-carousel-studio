@@ -1,0 +1,41 @@
+# engine/scripts
+
+Automate content pipeline tasks: batch creation, rendering, voice, QA, publishing, and asset validation.
+
+- `scripts/batch_page.py`: Builds batch page from post directories, generates index.html, resizes images, and schedules posts.
+- `scripts/build-edl-review.mjs`: Builds an HTML review page visualizing EDL cuts and keeps, embedding original and edited videos for scrubbing.
+- `scripts/build_post.py`: Renders deck.json slides to PNGs, merges into PDF carousel, optionally keeps HTML, using Playwright. (uses render.py, studio.py)
+- `scripts/check-kit.mjs`: Validates kit assets, public media, syncs codex skills, checks style registry, reports errors. (uses sync-codex-skills.mjs, registry.json)
+- `scripts/export_vertical.py`: Creates 9:16 Instagram/YouTube video from 4:5 master, zips PNG slides for carousels.
+- `scripts/kit_page.py`: Generates posting kit index with media, captions, comments, and download links for all posts. (uses voice25.py)
+- `scripts/llm.py`: Routes LLM calls to free-token routers, providers, or Gemini, selecting first successful backend. (uses router_setup.sh, llm-router.md)
+- `scripts/make_batch.py`: Transforms batch topic JSONs into post folders, optionally adding voice or render steps. (uses voiceover.py, screen_record.py, BRIEF.md, build_post.py, render_video.py)
+- `scripts/new-video.mjs`: Creates a new video project folder from starter template, copying assets and initializing metadata.
+- `scripts/post_calendar.py`: Generates markdown and ics calendar files for batch posts, schedules weekday 08:30 Berlin, prints table. (uses batch_page.py, calendar.md, calendar.md)
+- `scripts/preflight-all.mjs`: Iterates video-project directories, runs preflight on each, counts failures, exits with code 1 if any fail. (uses preflight.mjs)
+- `scripts/preflight.mjs`: Analyzes HTML preview for shader blocks, timeline usage, missing composition IDs; prints colored results, exits non-zero on errors.
+- `scripts/publish_site.py`: Converts batch posts to site guide entries, appends to content-posts.js, ensures import in build.py, runs site build. (uses content-posts.js, content-extra.js)
+- `scripts/qa.py`: Runs copy, facts, design, links, brand checks on a post folder, writes qa-report.md, exits non-zero on any FAIL. (uses studio.py, build_post.py, tokens.json)
+- `scripts/render3d.py`: Renders 3D scenes from JSON specs via headless Chromium; outputs PNG at 2x supersample. (uses kit.js)
+- `scripts/render_guide.py`: Creates LinkedIn/Instagram guide assets: preview, slides, PDF, zip, and captions from post.json. (uses render3d.py, guide-doc.html)
+- `scripts/render_ready.py`: Renders all voiced videos missing MP4, mixing SFX; runs in parallel threads. (uses make_batch.py)
+- `scripts/render_reel.py`: Renders motion reel from template with voice, SFX, and ducked bed; outputs frames and MP4. (uses render3d.py, sfx.py, voice25.py)
+- `scripts/render_slides.py`: Renders carousel slides to PNG and PDF using Playwright; outputs slide images and PDF. (uses render3d.py)
+- `scripts/render_video.py`: Renders deterministic Three.js video to MP4 via ffmpeg; can output only stills. (uses render3d.py, sfx.py)
+- `scripts/review_page.py`: Builds review page from compressed images, converts markdown, generates HTML with links, and summarizes QA results. (uses backlog.json)
+- `scripts/router_setup.sh`: Starts OmniRoute LLM router, loads provider keys from env, ensures service availability. (uses llm.py, llm-router.md)
+- `scripts/screen_record.py`: Captures full-page screenshot of public web page, resizes, saves as PNG for B-roll templates. (uses make_batch.py)
+- `scripts/setup.mjs`: Node script checks FFmpeg, ffprobe, Node version, creates .env if missing, guides on service setup.
+- `scripts/setup_tools.sh`: Installs video editing stack: ffmpeg, whisper, yt-dlp, opencv, puppeteer, hyperframes, ensuring dependencies.
+- `scripts/sfx.py`: Synthesizes transition sounds and music bed, outputs mix.wav from voice.wav using numpy and soundfile.
+- `scripts/site_guide.py`: Validate guide with check.js, copy HTML/meta, insert entry into GUIDES array, rebuild site, output public link. (uses check.js, content-guides.js)
+- `scripts/skin_tone.py`: Detect skin pixels via HSV range, feather mask, lift brightness and desaturate, save adjusted PNG.
+- `scripts/smoke-media.mjs`: Create synthetic video, run cut-silences and cut-mistakes agents, apply cuts, verify streams and durations. (uses build-edl-review.mjs)
+- `scripts/sync-codex-skills.mjs`: Mirror .claude/skills to .agents/skills, optionally verify sync, copy files, report discrepancies.
+- `scripts/transcribe-elevenlabs.mjs`: Transcribes audio/video to word‑level JSON via ElevenLabs Scribe, outputs <input>.json, supports diarization, optional keep‑audio.
+- `scripts/validate-beat-sync.mjs`: Validates beat sync against transcript.json, ensuring wordStart within -0.2s to 1.8s of beatStart, outputs table or JSON, can suggest fixes. (uses transcript.json)
+- `scripts/video-use-to-hyperframes-transcript.mjs`: Converts video‑use EDL transcripts to HyperFrames transcript.json, re‑maps word timestamps to edited timeline, outputs words array. (uses validate-beat-sync.mjs, transcript.json)
+- `scripts/voice25.py`: Generates locked voice for video #25 with Gemini Flash‑Lite TTS, writes voice.wav/voice.json, aligns lines, supports realign and render, respects quota. (uses voiceover.py, export_vertical.py, tokens.json, voiceover.py, render_reel.py)
+- `scripts/voice_clone.py`: Clones video #25 voice with Chatterbox zero‑shot, selects best take by similarity, caps internal silences, writes voice.wav/voice.json.
+- `scripts/voiceover.py`: Creates voiceover for videos, outputs voice.wav/voice.json, rewrites scene timings, supports gemini, clone, kokoro engines. (uses voice25.py, voice_clone.py, voice.md, tokens.json, voice_clone.py)
+- `scripts/weekly.py`: Orchestrates weekly batch: research, write, voice, graphics, video, QA, site, calendar, page; supports skip‑voice, write‑only, fix. (uses llm.py, fetch.py, llm.py, voice25.py, screen_record.py, render_ready.py)
