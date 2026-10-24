@@ -1,0 +1,151 @@
+{
+  "slug": "flight-mode",
+  "series": "Inside AI",
+  "episode": 3,
+  "template": "flight-mode",
+  "renderer": "3d",
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "q0IMILNRPxOgtBTS4taI",
+    "name": "Drew",
+    "model": "eleven_v3",
+    "stability": 0.0,
+    "lead": 0.02,
+    "note": "Vish's pick (Drew, eleven_v3 with breaths), 24 Oct 2026"
+  },
+  "look": "Reference look (README): one continuous 3D world, navy + amber emissive, camera never stops, loop ending",
+  "hook_type": "shock claim then the real answer (Vish's topic direction, 24 Oct 2026)",
+  "lines": [
+    {
+      "text": "Your phone is about to crash this plane.",
+      "see": "Tight on a phone glowing amber on a seat-back tray inside a dark cabin, slow push",
+      "tag": "[whispers]"
+    },
+    {
+      "text": "At least, that's what the announcement wants you to think.",
+      "see": "Pull back down the aisle: rows of seats, dozens of phones lighting up one by one"
+    },
+    {
+      "text": "Here's what really happens when you forget flight mode.",
+      "see": "Camera slides out through the window, wide shot of the airliner over a night landscape",
+      "pause_after": true,
+      "tag": "[curious]"
+    },
+    {
+      "text": "Up here, your phone isn't near one tower. It's above loads of them.",
+      "see": "Crane down under the plane: a field of cell towers, an amber range ring spreads over many of them"
+    },
+    {
+      "text": "So it keeps hopping between them, calling out to every one.",
+      "see": "Amber pulses shoot from the phone down to tower after tower, each lights as it is hit",
+      "tag": "[excited]"
+    },
+    {
+      "text": "That's the real problem. Not the plane. The network on the ground.",
+      "see": "Dive to ground level among the towers, they flicker and glitch, the plane small overhead",
+      "pause_after": true
+    },
+    {
+      "text": "That's why America banned phones in the air. In 1991.",
+      "see": "Headline 1991 counts up, towers settle back to calm",
+      "tag": "[dramatic pause]"
+    },
+    {
+      "text": "The plane? The FAA says most airliners can tolerate it.",
+      "see": "Crane back up to the plane, an amber shield shimmers around the fuselage and holds"
+    },
+    {
+      "text": "Worst case? Pilots hear a buzz in their headsets, like a mosquito.",
+      "see": "Fly into the cockpit, a pilot headset, an amber waveform buzzing beside it"
+    },
+    {
+      "text": "Europe already said yes. 5G on planes, through a tiny mast on board.",
+      "see": "Pull out to the cabin ceiling, a small mast lights, a beam rises to a satellite",
+      "tag": "[excited]"
+    },
+    {
+      "text": "So is flight mode about safety, or just a rule from 1991?",
+      "see": "Back to the same phone on the tray (loop to frame 0), question headline, comment bubble",
+      "tag": "[playful]"
+    }
+  ],
+  "facts": [
+    {
+      "claim": "The FCC's ban on airborne cell phone use was adopted in 1991 because of the threat of harmful interference to terrestrial (ground) cellular networks",
+      "source": "https://www.transportation.gov/sites/dot.gov/files/docs/Cell%20phone%20ANPRM%20-%20Fed%20Reg.pdf",
+      "date": "2014-02-24"
+    },
+    {
+      "claim": "FCC rule 47 CFR 22.925: when an aircraft leaves the ground, cellular phones on board must be turned off",
+      "source": "https://www.law.cornell.edu/cfr/text/47/22.925",
+      "date": "2026-10-24"
+    },
+    {
+      "claim": "FAA: most commercial airplanes can tolerate radio interference signals from personal electronic devices; phones in airplane mode allowed in all phases of flight; voice calls still barred under FCC rules",
+      "source": "https://apfa.org/wp-content/uploads/2013/10/103113FAA-PED-Release.pdf",
+      "date": "2013-10-31"
+    },
+    {
+      "claim": "An airline pilot (@perchpoint, TikTok) said phones searching for towers can put 'a really annoying buzz' in pilots' headsets, 'like a mosquito in my ear'; a nuisance, not a safety catastrophe",
+      "source": "https://nbcchicago.com/news/local/not-a-conspiracy-pilot-shares-psa-on-the-real-reason-you-should-put-your-phone-on-airplane-mode-while-flying/3622275",
+      "date": "2024-12-11"
+    },
+    {
+      "claim": "The European Commission's decision lets airlines offer 5G on planes through an onboard pico-cell, usually linked to the ground network by satellite",
+      "source": "https://digital-strategy.ec.europa.eu/en/news/5g-planes-wi-fi-road-commission-decision-opens-new-opportunities-innovation",
+      "date": "2022-11-24"
+    },
+    {
+      "claim": "Phones at low altitude switch between towers as the plane moves; the FAA advisory circular cites the need 'to eliminate interference between ground-based cellular stations and airborne cellular devices'",
+      "source": "https://www.afar.com/magazine/what-does-airplane-mode-do-and-why-do-you-need-to-use-it",
+      "date": "2026-08-28"
+    }
+  ],
+  "publish": {
+    "title": "Your phone could crash this plane? #shorts",
+    "caption": "Flight mode was never really about the plane. The 1991 ban was to protect the phone network on the ground, and the FAA says most airliners can tolerate the interference.\n\nSafety rule or just habit? 👇\n\nComment FLIGHT and I'll send you the 1-page guide with every source.\n\nInside AI, episode 3.\n\n#flightmode #airplanemode #aviation #howitworks #tech",
+    "pinned_comment": "Honest question: do you actually switch to flight mode, or just hope nobody checks? 😅",
+    "tags": [
+      "airplane mode",
+      "flight mode",
+      "phones on planes",
+      "aviation",
+      "how it works",
+      "explained",
+      "fcc",
+      "5g on planes"
+    ],
+    "comment_keyword": "FLIGHT"
+  },
+  "cover": {
+    "line": 4,
+    "at": 0.95,
+    "lines": [
+      "Your phone",
+      "can [crash]",
+      "this plane?"
+    ],
+    "kicker": "What flight mode is <b>really</b> for",
+    "circle": {
+      "x": 540,
+      "y": 1080,
+      "rx": 500,
+      "ry": 230
+    },
+    "bgY": 0,
+    "bgScale": 1.0,
+    "cam": {
+      "p": [
+        6,
+        -14,
+        56
+      ],
+      "l": [
+        -4,
+        3,
+        0
+      ],
+      "f": 56
+    }
+  }
+}

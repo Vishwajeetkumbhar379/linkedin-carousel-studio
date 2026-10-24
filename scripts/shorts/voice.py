@@ -120,7 +120,7 @@ def voice(src: Path, estimate: bool = False) -> Path:
                 ws.append({"w": w, "start": round(wt, 3), "end": round(wt + d, 3)})
                 wt += d + 0.03
             res.append({"text": ln["text"], "start": round(t, 3), "end": round(wt, 3), "words": ws})
-            t = wt + (v["scene_gap"] if ln.get("pause_after") else v["gap"])
+            t = wt + (v.get("scene_gap", 0.45) if ln.get("pause_after") else v.get("gap", 0.15))
         dur = t + 0.6
         sf.write(str(out / "voice.wav"), np.zeros(int(dur * SR), dtype=np.float32), SR)
         (out / "voice.json").write_text(json.dumps({"estimate": True, "lines": res, "duration": round(dur, 3)}, indent=1))

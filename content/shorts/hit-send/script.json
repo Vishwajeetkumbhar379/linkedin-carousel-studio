@@ -99,5 +99,23 @@
       "animation"
     ],
     "comment_keyword": "TOKENS"
+  },
+  "cover": {
+    "line": 1,
+    "at": 0.9,
+    "bgY": 560,
+    "bgScale": 1.0,
+    "lines": [
+      "ChatGPT",
+      "[can't] read",
+      "your message"
+    ],
+    "kicker": "So what does it <b>actually</b> do?",
+    "circle": {
+      "x": 540,
+      "y": 1190,
+      "rx": 520,
+      "ry": 270
+    }
   }
 }

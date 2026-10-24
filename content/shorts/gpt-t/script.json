@@ -114,5 +114,23 @@
       "noam shazeer"
     ],
     "comment_keyword": "PAPER"
+  },
+  "cover": {
+    "line": 4,
+    "at": 0.2,
+    "bgY": 150,
+    "bgScale": 1.08,
+    "lines": [
+      "One letter",
+      "in ChatGPT",
+      "isn't [OpenAI's]"
+    ],
+    "kicker": "It was invented at <b>Google</b>",
+    "circle": {
+      "x": 540,
+      "y": 1170,
+      "rx": 400,
+      "ry": 420
+    }
   }
 }
