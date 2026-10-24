@@ -1,6 +1,6 @@
 // The 39 shards as real slabs: his frozen frame on the front, the clip it becomes on the back,
 // edges that catch the light. Rebuilt every frame from the beat's progress `p`.
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import * as THREE from 'three';
 import {random} from 'remotion';
 import {A, PTS, SHARDS, Shard, flight, cracked, squarePts} from './data';
@@ -113,14 +113,20 @@ export const Shards3D: React.FC<{p: number; pane: Pose; phone: Pose; face: HTMLI
     return clips.map((c) => [faceM, look.clip(tex(c)), look.edge]);
   }, [face, clips, look]);
   const live = SHARDS.map((s) => ({s, st: shardAt(s, p, pane, phone)})).filter((x) => x.st);
-  // the biggest pieces in the air carry a light, so they light the phone and the floor as they pass
+  // the biggest pieces in the air carry a light, so they light the phone and the floor as they pass;
+  // always the same number of lights (unused ones at 0), or three.js recompiles every material
   const flyers = live.filter((x) => x.st!.f > 0.02).sort((a, b) => Math.sin(Math.PI * b.st!.f) - Math.sin(Math.PI * a.st!.f)).slice(0, lights);
+  const geos = live.map(({s, st}) => slab(s, st!.pts, look.thick));
+  useEffect(() => () => geos.forEach((g) => g.dispose()), [geos]); // a frame's slabs are freed when the next frame replaces them
   return (
     <group>
-      {live.map(({s, st}) => (
-        <mesh key={s.i} geometry={slab(s, st!.pts, look.thick)} material={mats[s.i]} position={st!.pos} quaternion={st!.quat} castShadow={look.shadows} receiveShadow={look.shadows} />
+      {live.map(({s, st}, k) => (
+        <mesh key={s.i} geometry={geos[k]} material={mats[s.i]} position={st!.pos} quaternion={st!.quat} castShadow={look.shadows} receiveShadow={look.shadows} />
       ))}
-      {flyers.map(({s, st}) => <pointLight key={`l${s.i}`} position={st!.pos.clone().add(new THREE.Vector3(0, 0, 0.12))} color={lightColor} intensity={1.1 * Math.sin(Math.PI * st!.f)} distance={3} decay={2} />)}
+      {Array.from({length: lights}, (_, k) => {
+        const fl = flyers[k];
+        return <pointLight key={`l${k}`} position={fl ? fl.st!.pos.clone().add(new THREE.Vector3(0, 0, 0.12)) : [0, -50, 0]} color={lightColor} intensity={fl ? 1.1 * Math.sin(Math.PI * fl.st!.f) : 0} distance={3} decay={2} />;
+      })}
     </group>
   );
 };
