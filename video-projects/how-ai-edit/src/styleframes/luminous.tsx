@@ -121,7 +121,7 @@ const Air: React.FC<{fr: number}> = ({fr}) => {
 };
 
 // Amber light leaking through the cracks, from the impact outwards; holes go dark.
-const Cracks: React.FC<{p: number; pane: Pose}> = ({p, pane}) => {
+export const Cracks: React.FC<{p: number; pane: Pose}> = ({p, pane}) => {
   const {canvas, tex} = useMemo(() => {
     const canvas = document.createElement('canvas'); canvas.width = 540; canvas.height = 960;
     const tex = new THREE.CanvasTexture(canvas); tex.colorSpace = THREE.SRGBColorSpace;
@@ -146,7 +146,7 @@ const Cracks: React.FC<{p: number; pane: Pose}> = ({p, pane}) => {
 };
 
 // The frozen frame is a screen in the dark: a soft spill of its light around it.
-const Halo: React.FC<{pane: Pose; k: number}> = ({pane, k}) => {
+export const Halo: React.FC<{pane: Pose; k: number}> = ({pane, k}) => {
   const tex = useMemo(() => canvasTex(256, 256, (g) => { const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, 'rgba(255,214,170,0.55)'); gr.addColorStop(0.4, 'rgba(231,161,90,0.18)'); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(0, 0, 256, 256); }), []);
   return (
     <mesh position={pane.pos.clone().add(new THREE.Vector3(0, 0, -0.25).applyQuaternion(pane.quat))} quaternion={pane.quat}>
@@ -156,7 +156,7 @@ const Halo: React.FC<{pane: Pose; k: number}> = ({pane, k}) => {
   );
 };
 
-const look: ShardLook = {
+export const look: ShardLook = {
   // the shards are pieces of a screen: they give light rather than take it
   face: (t) => new THREE.MeshBasicMaterial({map: t, color: new THREE.Color(0.86, 0.84, 0.82), toneMapped: false}),
   clip: (t) => new THREE.MeshBasicMaterial({map: t, color: new THREE.Color(0.9, 0.9, 0.9), toneMapped: false}),
