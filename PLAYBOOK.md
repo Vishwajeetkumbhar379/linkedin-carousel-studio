@@ -51,7 +51,42 @@ Exactly 3 feed posts a week, and they support each other:
   - save the strongest reveal for last.
 - **Shoot sheets** for every topic: delivery marks, an on-screen cue per line, B-roll, cover and the next-week line (`content/shoot-sheets/*.json`, teleprompter page).
 
-## 4. Edit standard (v12, see `research/creators/edit-recipe-v9-2026-10-22.md`)
+## 4. Edit standard
+### The style mix [changed 24 Oct, Vish: "this style 70%, everything else 30%"]
+- **70%: the 3D explainer grammar of @charles.zhengg** (study: `research/creators/charles-zheng-2026-10-24.md`).
+  - **Script:**
+    - open on something the viewer is touching or experiencing right now ("this video", "your phone");
+    - "let's rewind / zoom in and see how it actually works";
+    - a causal ladder, one step per sentence, each new thing named;
+    - scale you can feel;
+    - one named authority;
+    - the self-intro late, as a twist ("…Hi, I'm Vish");
+    - a loop ending back to the opening.
+  - **Picture:**
+    - one continuous 3D world per video (the camera flies; no cuts);
+    - his face as a portal card inside the world, the camera diving in and out;
+    - data as objects;
+    - real imagery only where it's true;
+    - captions of 2 to 4 words with one key word in a lamp-amber pill;
+    - a title card at 0 s: the question, with one word in a pill.
+  - **Tempo words are performed** (shoot-sheet marks `<slow>`, `<fast>`, `<zoom>`, `<rewind>`, `<freeze>`). When the line names a tempo, the picture *and* the sound do it: the music drops out, motion crawls, a clock runs, or the camera reverses.
+  - **Sound** **[changed 24 Oct: was a sound on every visual]**:
+    - a continuous music bed;
+    - a whoosh on camera moves;
+    - dropouts (true silence, or the bass gone) on the key beats;
+    - small UI sounds only on the big reveals.
+  - **Length:** explainers run 60 to 90 s; lengthen only when Insights show people finishing. Episodes stay at 35 to 45 s.
+  - **Build:** `templates/video/world/*.html` (Three.js, rendered by `scripts/reel_edit/render_world.py`). The first proof is `portal-test.html`: the field of video cards, his real clip as a portal card, then "let's slow down time" with the music dropping out and a stopwatch.
+- **30%: everything locked before:**
+  - the v12 freeze-frame sticker and real archive;
+  - Kallaway's named frameworks and split canvas;
+  - the hook first;
+  - the safe zones;
+  - never on his face, and words behind him;
+  - the "Next week" narrator card;
+  - comment keywords that send a tool.
+
+### The v12 base (see `research/creators/edit-recipe-v9-2026-10-22.md`)
 - **Kept from v9 to v12:**
   - natural takes at one steady speed;
   - locked camera and a film grade;

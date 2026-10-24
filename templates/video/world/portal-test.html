@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<!-- First proof of the 3D explainer look (research/creators/charles-zheng-2026-10-24.md), in our palette:
+     one continuous world, Vish as a portal card inside it, a tempo word performed by the edit ("slow down time").
+     Deterministic: init({frames, n}) once, then render(t) per frame (scripts/reel_edit/render_world.py). -->
+<style>
+@font-face{font-family:IT;src:url(../../fonts-extra/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:IS;font-style:italic;src:url(../../fonts-extra/instrument-serif-latin-400-italic.woff2)}
+html,body{margin:0;background:#000;overflow:hidden}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+.ov{position:absolute;left:90px;right:90px;text-align:center;color:#fff;font:700 64px/1.15 IT,sans-serif;letter-spacing:-.01em;
+ text-shadow:0 4px 30px rgba(0,0,0,.55);opacity:0;transform:translateY(20px)}
+.ov b{background:#E7A15A;color:#15130F;border-radius:16px;padding:0 16px;font-weight:700}
+.title{font-size:84px;line-height:1.05}
+.title i{font:400 96px IS,serif;color:#F3D9B8}
+#watch{position:absolute;left:0;right:0;top:300px;text-align:center;color:#fff;opacity:0}
+#watch .n{font:700 150px IT,sans-serif;letter-spacing:-.02em}
+#watch .s{font:700 40px IT,sans-serif;color:#E7A15A;margin-top:-10px}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,transparent 45%,rgba(0,0,0,.55) 100%)}
+</style>
+<script src="../../../../buildwithvish/src/vendor/three.min.js"></script>
+<script src="../../../../buildwithvish/src/vendor/CopyShader.js"></script>
+<script src="../../../../buildwithvish/src/vendor/LuminosityHighPassShader.js"></script>
+<script src="../../../../buildwithvish/src/vendor/EffectComposer.js"></script>
+<script src="../../../../buildwithvish/src/vendor/ShaderPass.js"></script>
+<script src="../../../../buildwithvish/src/vendor/RenderPass.js"></script>
+<script src="../../../../buildwithvish/src/vendor/UnrealBloomPass.js"></script>
+</head><body>
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div id="vig"></div>
+<div class="ov title" id="t0" style="top:300px">How your video<br><i>finds</i> people</div>
+<div class="ov" id="c1" style="top:1150px">Every video <b>lives</b> somewhere.</div>
+<div class="ov" id="c2" style="top:330px">Let's go <b>inside</b> one.</div>
+<div class="ov" id="c3" style="top:330px">Hey, I'm <b>Vish</b>.</div>
+<div class="ov" id="c4" style="top:330px">I'm <b>27</b>.</div>
+<div class="ov" id="c5" style="top:1150px">Let's slow down <b>time</b>.</div>
+<div id="watch"><div class="n" id="wn">0:00</div><div class="s">1 tick = 1 second</div></div>
+<script>
+const W = 1080, H = 1920, FPS = 30;
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x)), lerp = (a, b, u) => a + (b - a) * u;
+const ease = u => (u = clamp(u, 0, 1), u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2);
+const span = (t, a, b) => clamp((t - a) / (b - a), 0, 1);
+let R, S, C, comp, cards, card, path, bead, trail, vtex = [], vmat;
+
+function rng(s) { return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+
+function init(opt) {
+  R = new THREE.WebGLRenderer({canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true});
+  R.setSize(W, H, false); R.toneMapping = THREE.ACESFilmicToneMapping; R.outputEncoding = THREE.sRGBEncoding;
+  S = new THREE.Scene(); S.fog = new THREE.Fog(0x1a1b2e, 18, 120);
+  C = new THREE.PerspectiveCamera(50, W / H, .05, 600);
+  // dusk sky: deep night on top, a lamp-amber band at the horizon
+  const sky = new THREE.Mesh(new THREE.SphereGeometry(400, 32, 16), new THREE.ShaderMaterial({side: THREE.BackSide, depthWrite: false, fog: false,
+    vertexShader: 'varying vec3 p; void main(){ p = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }',
+    fragmentShader: 'varying vec3 p; void main(){ float h = p.y; vec3 top = vec3(.03,.04,.10), mid = vec3(.17,.18,.33), hor = vec3(.91,.63,.36);'
+      + 'vec3 c = mix(mid, top, smoothstep(.05,.55,h)); c = mix(c, hor, exp(-abs(h-.01)*22.)*.85); gl_FragColor = vec4(c,1.); }'}));
+  S.add(sky);
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), new THREE.MeshBasicMaterial({color: 0x07080d}));
+  ground.rotation.x = -Math.PI / 2; S.add(ground);
+  // the field: thousands of video cards standing on the ground, each a small "thumbnail" (8 procedural looks)
+  const grid = new THREE.GridHelper(400, 200, 0x2b2f4c, 0x14172a); grid.position.y = .005; S.add(grid);
+  const r = rng(7), N = 5600, K = 8, looks = [[0x1d2b4f, 0x3f6fb5], [0x2a1c3d, 0x8a5bd1], [0x3b2414, 0xE7A15A], [0x10302c, 0x3fb59e],
+    [0x2b2b31, 0xd9d2c4], [0x371820, 0xd1566b], [0x15233a, 0x7fb2e5], [0x2f2a14, 0xe5d27f]];
+  cards = [];
+  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), col = new THREE.Color();
+  for (let g = 0; g < K; g++) {
+    const cv = document.createElement('canvas'); cv.width = 64; cv.height = 112; const x2 = cv.getContext('2d');
+    const gr = x2.createLinearGradient(0, 0, 0, 112); gr.addColorStop(0, '#' + looks[g][0].toString(16).padStart(6, '0')); gr.addColorStop(1, '#05060a');
+    x2.fillStyle = gr; x2.fillRect(0, 0, 64, 112);
+    x2.fillStyle = '#' + looks[g][1].toString(16).padStart(6, '0'); x2.globalAlpha = .55; x2.beginPath(); x2.ellipse(32, 52, 16, 22, 0, 0, 7); x2.fill();
+    x2.globalAlpha = .8; x2.fillStyle = '#e8e4dc'; x2.fillRect(8, 84, 40, 5); x2.fillRect(8, 93, 26, 4);
+    x2.globalAlpha = 1; x2.strokeStyle = 'rgba(255,255,255,.35)'; x2.lineWidth = 2; x2.strokeRect(1, 1, 62, 110);
+    const tx = new THREE.CanvasTexture(cv); tx.encoding = THREE.sRGBEncoding;
+    const im = new THREE.InstancedMesh(new THREE.PlaneGeometry(.54, .96), new THREE.MeshBasicMaterial({map: tx, side: THREE.DoubleSide}), N / K);
+    for (let k = 0; k < N / K; ) {
+      const a = r() * Math.PI * 2, d = 3 + Math.pow(r(), .7) * 110, x = Math.cos(a) * d, z = Math.sin(a) * d - 10;
+      if (Math.abs(x) < 1.6 && z > -2 && z < 9) continue;  // keep the hero's lane clear
+      e.set(0, r() * .9 - .45 + (x > 0 ? -.3 : .3), 0); q.setFromEuler(e);
+      m.compose(new THREE.Vector3(x, .5 + r() * .06, z), q, new THREE.Vector3(1, 1, 1)); im.setMatrixAt(k, m);
+      col.setScalar(g === 2 && r() < .5 ? 1.5 : .5 + r() * .45); im.setColorAt(k, col); k++;
+    }
+    S.add(im); cards.push(im);
+  }
+  // the amber path that leads to Vish's card
+  path = new THREE.CatmullRomCurve3([[-9, .04, 30], [-5, .04, 20], [3, .04, 13], [1.5, .04, 6], [0, .04, 1.2]].map(p => new THREE.Vector3(...p)));
+  S.add(new THREE.Mesh(new THREE.TubeGeometry(path, 200, .045, 8), new THREE.MeshBasicMaterial({color: new THREE.Color(0xE7A15A).multiplyScalar(.85), toneMapped: false})));
+  bead = new THREE.Mesh(new THREE.SphereGeometry(.06, 24, 16), new THREE.MeshBasicMaterial({color: new THREE.Color(0xFFC98A).multiplyScalar(1.6), toneMapped: false}));
+  S.add(bead);
+  trail = []; for (let i = 0; i < 14; i++) { const s2 = new THREE.Mesh(new THREE.SphereGeometry(.05 * (1 - i / 16), 12, 8),
+    new THREE.MeshBasicMaterial({color: new THREE.Color(0xE7A15A).multiplyScalar(1.6 * (1 - i / 14)), transparent: true, opacity: 1 - i / 14})); trail.push(s2); S.add(s2); }
+  // Vish's portal card: a white frame on a post, his real video as the screen
+  card = new THREE.Group(); card.position.set(0, 1.35, 0);
+  card.add(new THREE.Mesh(new THREE.BoxGeometry(1.2, 2.04, .04), new THREE.MeshBasicMaterial({color: 0xCFC8BA})));
+  const loader = new THREE.TextureLoader();
+  for (let i = 1; i <= opt.n; i++) { const tx = loader.load(`${opt.frames}/f${String(i).padStart(3, '0')}.jpg`); tx.encoding = THREE.sRGBEncoding; vtex.push(tx); }
+  vmat = new THREE.MeshBasicMaterial({map: vtex[0], toneMapped: false});
+  const scr = new THREE.Mesh(new THREE.PlaneGeometry(1.08, 1.92), vmat); scr.position.z = .025; card.add(scr);
+  const post = new THREE.Mesh(new THREE.CylinderGeometry(.025, .025, .6), new THREE.MeshBasicMaterial({color: 0xbfb6a6}));
+  post.position.y = -1.32; card.add(post); S.add(card);
+  comp = new THREE.EffectComposer(R); comp.addPass(new THREE.RenderPass(S, C));
+  comp.addPass(new THREE.UnrealBloomPass(new THREE.Vector2(W, H), .85, .5, .78));
+  return new Promise(res => THREE.DefaultLoadingManager.onLoad = () => res(true));
+}
+
+function show(id, t, a, b) {  // fade in over .25 s, out over .2 s, small rise
+  const el = document.getElementById(id), u = Math.min(span(t, a, a + .25), 1 - span(t, b - .2, b));
+  el.style.opacity = u; el.style.transform = `translateY(${(1 - ease(span(t, a, a + .3))) * 20}px)`;
+}
+
+function speed(t) { return t < 8.2 ? 1 : lerp(1, .03, ease(span(t, 8.2, 9.8))); }
+function beadU(t) {  // integral of speed: fast laps, then almost frozen
+  let u = 0; const dt = 1 / 60; for (let s2 = 0; s2 < t; s2 += dt) u += speed(s2) * dt * .16; return .05 + (u % .9);
+}
+function render(t) {
+  // camera: a slow glide over the field, a dolly into the card (portal), then up to look down the path
+  const P = new THREE.Vector3(), L = new THREE.Vector3(0, 1.35, 0), fill = 2.06;
+  if (t < 4) { const u = ease(t / 4); P.set(lerp(14, 0, u), lerp(9, 1.6, u), lerp(34, 6.5, u)); L.set(0, lerp(.8, 1.35, u), 0); }
+  else if (t < 5.4) { const u = ease(span(t, 4, 5.4)); P.set(0, lerp(1.6, 1.35, u), lerp(6.5, fill, u)); }
+  else if (t < 7.7) P.set(0, 1.35, fill - (t - 5.4) * .015);
+  else { const u = ease(span(t, 7.7, 9.2));  // pull out of the card, then sink behind the bead and follow it
+    const bp = path.getPointAt(beadU(t)), ahead = path.getPointAt(Math.min(.999, beadU(t) + .04));
+    const back = bp.clone().add(bp.clone().sub(ahead).normalize().multiplyScalar(1.6)); back.y = .55;
+    P.set(lerp(0, back.x, u), lerp(1.35, back.y, u), lerp(fill + 1.5 * Math.sin(u * Math.PI), back.z, u)); L.lerpVectors(new THREE.Vector3(0, 1.35, 0), ahead.setY(.2), u); }
+  C.position.copy(P); C.lookAt(L); C.rotation.z += Math.sin(t * .6) * .01;
+  // his video plays on the card from 3 s
+  vmat.map = vtex[clamp(Math.floor((t - 3) * FPS), 0, vtex.length - 1)];
+  // slow down time: the bead races along the path, then crawls
+  const u0 = beadU(t); bead.position.copy(path.getPointAt(u0)); bead.position.y = .2;
+  trail.forEach((s2, i) => { s2.position.copy(path.getPointAt(Math.max(0, u0 - (i + 1) * .004 * speed(t)))); s2.position.y = .2; });
+  // overlays (all inside the safe box; above his head while his face fills the frame)
+  show('t0', t, .2, 2.6); show('c1', t, .5, 2.9); show('c2', t, 3.0, 4.9); show('c3', t, 5.4, 6.7); show('c4', t, 6.8, 7.7); show('c5', t, 8.0, 9.9);
+  const w = document.getElementById('watch'); w.style.opacity = span(t, 9.7, 10);
+  const secs = t < 9.8 ? 0 : Math.floor(Math.pow(t - 9.8, 2.2) * 40);
+  document.getElementById('wn').textContent = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`;
+  comp.render();
+  return true;
+}
+window.READY = false;
+</script></body></html>

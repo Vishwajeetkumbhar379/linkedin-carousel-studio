@@ -1,0 +1,107 @@
+{
+ "legend": {
+  "/": "short breath, about 0.3 s",
+  "//": "full stop, about 0.8 s, let it land",
+  "*word*": "stress this word",
+  "(up)": "lift energy",
+  "(down)": "slower and lower",
+  "[lens]": "lean in slightly, eyes on the lens",
+  "[point]": "point up at the graphic (Format A) or at the screen side (Format B)",
+  "[count]": "count on your fingers",
+  "[smile]": "small genuine smile",
+  "broll": "B-roll to film after the take (3 to 5 s each, no talking)",
+  "<slow>": "tempo word: the edit slows everything (music drops out, motion crawls, a clock or counter shows it)",
+  "<fast>": "tempo word: the edit speeds up (faster camera, a riser, quicker cards)",
+  "<zoom>": "tempo word: push in, step by step, with a scale or label each step",
+  "<rewind>": "tempo word: the camera reverses through the world, with a rewind sound",
+  "<freeze>": "tempo word: the frame stops dead, true silence"
+ },
+ "defaults": {
+  "pace": "aim for 190 to 210 words a minute inside a sentence (Kallaway runs 210 to 240); keep a short beat between lines, never a long one",
+  "energy": "7 out of 10: awake and warm, not a hype voice",
+  "framing": "chest up, a hand's width of space above your head, eyes on the lens",
+  "retake": "If you fluff a line, pause, then say the whole line again. The edit keeps the last take.",
+  "broll": "After the talking take, film the B-roll list on the same phone: 3 to 5 s each, steady, no talking, good light. Film your hands and screens more than your face. The edit cuts to one every few lines (research/creators/style-guide-2026-10-14.md).",
+  "angle": "Film the hook and the CTA a second time from a different angle (wide, standing, or side) so the edit can cut between angles like @justyn.ai."
+ },
+ "sheets": [
+  {
+   "week": "Explainers (3D)",
+   "key": "HOW-AI-EDIT",
+   "keyword": "EDIT",
+   "series": "3D explainer (Charles Zheng grammar, 70% of the new style)",
+   "format": "One continuous 3D world (the field of video cards); your face as a portal card inside it; captions with one amber key-word pill; music bed with dropouts",
+   "length": "60 to 70 s",
+   "title_card": "How AI *edited* this video",
+   "post": "First 3D explainer: any Monday teaching slot once the world template is approved",
+   "cta": "Comment EDIT (the free guide is built: /resources/ai-edit-stack)",
+   "model": "@charles.zhengg De0BAl8B3mY + Der5mJsBmwP: object in your hand, 'let's rewind', causal ladder, scale you can feel, tempo words performed, late self-intro, loop ending",
+   "hook": "Before you saw my face, / this video was *39* clips / on my phone.",
+   "hook_alts": [
+    "No editing app touched this video. // So what *did*?",
+    "This one-minute video / is *1,800* photographs."
+   ],
+   "lines": [
+    {
+     "say": "Before you saw my face, / this video was *39* clips / on my phone.",
+     "see": "A phone floating over the dusk field; 39 clip cards fly out of it and scatter into the field",
+     "how": "[lens], hold the phone up"
+    },
+    {
+     "say": "No editing app touched it. // So let's *rewind* / and see what did.",
+     "see": "<rewind> the camera reverses through the field, rewind sound"
+    },
+    {
+     "say": "First, / AI listened. // Every word I said / got a start time / and an end time.",
+     "see": "A ribbon of your real words rises from the cards: Hey 0.00 to 0.22, I'm 0.74 to 0.86"
+    },
+    {
+     "say": "It even heard my name wrong. // *Rish*. // One line fixed it.",
+     "see": "The 'Rish' card flips to 'Vish'",
+     "how": "[smile]"
+    },
+    {
+     "say": "Then it cut. / Not between sentences: / between *words*.",
+     "see": "The word ribbon splits at the word edges; the gaps collapse"
+    },
+    {
+     "say": "Then it cut *me* out, / every single frame, / so words can sit / *behind* me.",
+     "see": "A frame of you lifts off its background (the matte); a title slides behind you"
+    },
+    {
+     "say": "Every caption, / every sticker / is a tiny web page, / photographed / 30 times a second.",
+     "see": "A page of code flips into a caption; a camera shutter ticks",
+     "how": "<fast>"
+    },
+    {
+     "say": "Let's *slow down* time. // At one frame a second, / a one-minute reel / takes *30 minutes* to watch.",
+     "see": "<slow> music drops out; one frame at a time; a stopwatch runs to 30:00"
+    },
+    {
+     "say": "And the sound? / *Silence*, / exactly where it hurts.",
+     "see": "<freeze> the waveform flattens to a line on 'silence'"
+    },
+    {
+     "say": "It took 12 drafts / of plain English feedback / from me. // Hi, / I'm *Vish*.",
+     "see": "The camera dives into your portal card: full face (late self-intro)",
+     "how": "[lens]"
+    },
+    {
+     "say": "And if you're still here, / the edit / did its *job*. // Comment *EDIT* / for the five prompts.",
+     "see": "Pull back out to the field; the 39 clips settle into one glowing card (loop to the opening)",
+     "how": "[point]"
+    }
+   ],
+   "notes": "Facts, all from the Week 1 project: 39 raw video clips (raw/ folders), word times from faster-whisper (the real values on screen), Whisper heard 'Rish', cuts snapped to word edges, the RVM matte on every frame, every graphic is HTML rendered by Playwright at 30 fps, true silences in the mix, the 12th draft was posted. 60 s x 30 fps = 1,800 frames; at one a second that is 30 minutes. Film: talking lines in your usual light, holding your phone as the prop; the 3D world is built from templates/video/world/.",
+   "broll": [
+    "FILM: lines 1, 2, 10 and 11 to camera, phone in hand (they become the portal card)",
+    "FILM: a close-up of your hand putting the phone down on the desk (5 s)",
+    "No other B-roll: the world is 3D"
+   ],
+   "cover": {
+    "title": "How AI *edited* this video",
+    "line": "39 clips, 0 editing apps"
+   }
+  }
+ ]
+}

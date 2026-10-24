@@ -11,6 +11,7 @@ Code: `video-projects/week-01-intro/edit/week1.py` (edit decision list, frame pr
 - `python edit/week1.py mix`
 
 ## The standard from v12 (Vish, 23 Oct: "I loved everything"): every reel gets all of this
+- **The 70/30 style (24 Oct).** 70% @charles.zhengg's 3D explainer grammar (PLAYBOOK §4, `research/creators/charles-zheng-2026-10-24.md`), 30% this recipe. Sound moves from "a sound on every event" to a music bed, whooshes on camera moves and dropouts on the key beats.
 - **Never on his face; words behind him (23 Oct).**
   - Titles, key words, numbers and stickers go behind him: cue `z` 20, under the `#cut` layer at z 30, so they look 3D.
   - Captions stay in front but below his chin, and in split layouts in the gap above his box, never across it.
