@@ -4,7 +4,7 @@ Read this in 3 minutes and you will know what flight mode is really for, what th
 Sources linked under every point, checked 24 Oct 2026 · @buildwithvish · October 2026
 
 ## 1. The short version
-No documented crash has been blamed on a passenger's phone. The US ban on phones in the air is mainly about the mobile network on the ground, and the FAA says most airliners can tolerate the interference. The worst case pilots describe is an annoying buzz in their headsets.
+The US ban on phones in the air is mainly about the mobile network on the ground, and the FAA says most airliners can tolerate the interference. The worst case pilots describe is an annoying buzz in their headsets.
 
 ## 2. Why your phone misbehaves up there
 On the ground your phone talks to one nearby tower. In the air it can reach many towers at once and keeps switching between them as the plane moves, which can interfere with the ground network.
