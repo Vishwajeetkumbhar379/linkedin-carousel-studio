@@ -100,3 +100,48 @@ We copy the grammar, never his scripts, topics or footage.
 - Ours: Three.js scenes rendered frame by frame (bloom, fog, instanced fields, video textures for Vish's portal card), driven by the same timeline as `comp.html`.
 - The first proof is `templates/video/world/portal-test.html`.
 - Stock or real imagery only where it's true and licensed.
+
+## 5. How he actually makes them (his own reel DeV22xOBnRC, 24 Oct, plus his skills repo)
+In that reel he shows his "photo your mom just sent" video at 9,799,110 views and a 54 s average watch time.
+
+**His workflow:**
+1. He writes the script.
+2. Claude Code (Opus 5.5) plans key frames with his **animated-video** skill.
+3. Claude builds the whole animation in code while he films the voiceover and the talking head.
+4. His **video-edit** skill assembles everything: sound effects, music, visuals, clip picks.
+
+**The skills:** github.com/goodnight000/cstack (MIT). I read them on 24 Oct; no network calls or secrets in the scripts.
+- **animated-video:**
+  - Remotion (React) + three.js (`@react-three/fiber`);
+  - style packs: luminous-3d (his sand/chip look), realistic-3d, motion-graphics, editorial-collage, handmade-2d;
+  - parts: a modelled iPhone, a globe, a motion kit, a realism kit, a finish pass with bloom, grain and vignette.
+- **video-edit:** Resolve or FFmpeg, takes, captions, 60+ sound effects.
+- **video-script:** the hook in 3 s, a second sentence that keeps viewers, proof on screen, retention curves.
+- **asset-library:** a shared library of reusable assets.
+
+**His process for each film:**
+1. **Find the pictures:** one fresh agent brainstorms pictures per line (literal, analogy, impossible, change of scale, personified, a kid's drawing). A second fresh agent picks for clarity with the sound off, surprise ("would someone screenshot it?") and spectacle (scale, many parts moving, light).
+2. **Concepts and a timed beat sheet,** approved by the creator.
+3. **Style frames** of the same beat in different styles; the creator picks one.
+4. **Audio spine:** every cue is derived from the words (`cue("phrase")`), so a new voiceover re-times the film. Sound events come from the same constants that draw the picture.
+5. **A key-frame board** (one still per beat, built in the real scene files), plus an animatic when the meaning lives in motion. Approved before animating.
+6. **Build:**
+   - one canvas;
+   - physical light (`MeshStandardMaterial` / `MeshPhysicalMaterial`, a `PMREMGenerator` environment, rim light);
+   - modelled real objects (bevels, panel lines, ports);
+   - fog depth and soft near-lens particles;
+   - one brightest thing per shot;
+   - a full frame to the edges.
+7. **Review:**
+   - frame strips for motion;
+   - a hunt for holds (a voice explaining over a still picture);
+   - flicker and determinism checks;
+   - fresh judges;
+   - a **mute test** (can a newcomer follow it with the sound off?).
+8. **Presenter composites:** plan the world behind the person before filming, match blacks, grain and light, and test one clip first.
+
+**His bar names our first test's failure exactly:** "glowing shapes on a flat dark field… primitives standing in for objects. The fix is content: a place, the objects in it, and something happening there."
+
+**Status (24 Oct):**
+- Installing cstack and running its Remotion templates needs Vish's explicit OK: this session's safety check blocked installing code from an outside repo.
+- Until then, its documented method guides our own Three.js pipeline.
