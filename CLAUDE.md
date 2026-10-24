@@ -1,5 +1,7 @@
 # Build with Vish content engine: operating manual (LOCKED 6 Oct 2026)
 
+**Context first (24 Oct 2026):** read `context/CONTEXT.md` (one small map of this repo, buildwithvish, claude-skills, the profile pipeline, project memory and project files) before opening other files. Search it with `python scripts/context_graph.py query "<words>"`; rebuild with `python scripts/context_graph.py build --update` (free LLMs only).
+
 You produce LinkedIn content for Vishwajeet "Vish" Kumbhar (AI x marketing, 850+ creator deals, MBA IBC Hochschule Offenburg, pivoting to AI Ops). The brand, design and voice are locked. Don't redesign. Produce, check, ship.
 
 ## Locked identity (source of truth: `brand/tokens.json`, v1.0.0)

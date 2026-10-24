@@ -1,0 +1,152 @@
+# engine/docs/design-library
+
+Provide design tokens and brand guidelines for multiple product design systems.
+
+- `docs/design-library/README-source.md`: Provides overview of DESIGN.md collection, badges, and link to design library repository.
+- `docs/design-library/airbnb/DESIGN.md`: Describes Airbnb-inspired design system: colors, typography, component styles, and brand guidelines.
+- `docs/design-library/airbnb/README.md`: Links to Airbnb design system details, previews, and download options on getdesign.md.
+- `docs/design-library/airtable/DESIGN.md`: Defines Airtable-inspired color palette, typography, and UI component styles for editorial workflow interface.
+- `docs/design-library/airtable/README.md`: Redirects to external Airtable design system documentation and preview resources.
+- `docs/design-library/apple/DESIGN.md`: Specifies Apple-inspired color scheme, typography, and product tile UI for photography-first interface.
+- `docs/design-library/apple/README.md`: Links to external Apple design system documentation and preview resources.
+- `docs/design-library/binance/DESIGN.md`: Defines Binance-inspired colors, typography, and trading UI for financial platform interface.
+- `docs/design-library/binance/README.md`: Points to external Binance design system documentation and preview resources.
+- `docs/design-library/bmw-m/DESIGN.md`: Defines BMW-M design tokens: version, color palette, typography styles for UI rendering.
+- `docs/design-library/bmw-m/README.md`: Points to external BMW-M design documentation URL.
+- `docs/design-library/bmw/DESIGN.md`: Specifies BMW-inspired colors, typography, and card-based model showcase UI.
+- `docs/design-library/bmw/README.md`: Directs to external BMW design system documentation and preview resources.
+- `docs/design-library/bugatti/DESIGN.md`: Defines Bugatti design tokens: version, color palette, typography styles for UI rendering.
+- `docs/design-library/bugatti/README.md`: Points to external Bugatti design documentation URL.
+- `docs/design-library/cal/DESIGN.md`: Defines Cal.com design tokens: version, color palette, typography styles for UI rendering.
+- `docs/design-library/cal/README.md`: Points to external Cal design documentation URL.
+- `docs/design-library/claude/DESIGN.md`: Defines Claude design tokens: version, color palette, typography styles for UI rendering.
+- `docs/design-library/claude/README.md`: Points to external Claude design documentation URL.
+- `docs/design-library/clay/DESIGN.md`: Defines Clay design system colors, typography, and style guidelines for UI components.
+- `docs/design-library/clay/README.md`: Points to external Clay design system documentation and preview resources.
+- `docs/design-library/clickhouse/DESIGN.md`: Specifies ClickHouse design system colors, typography, and UI element styles.
+- `docs/design-library/clickhouse/README.md`: Links to external ClickHouse design system documentation and preview pages.
+- `docs/design-library/cohere/DESIGN.md`: Defines Cohere design system colors, typography, and rounded corner values.
+- `docs/design-library/cohere/README.md`: Directs to external Cohere design system documentation and preview resources.
+- `docs/design-library/coinbase/DESIGN.md`: Specifies Coinbase design system colors, typography, and semantic color usage.
+- `docs/design-library/coinbase/README.md`: Links to external Coinbase design system documentation and preview pages.
+- `docs/design-library/composio/DESIGN.md`: Defines design tokens for Composio brand: colors, typography, spacing, components.
+- `docs/design-library/composio/README.md`: Redirects to external design system docs for Composio brand.
+- `docs/design-library/cursor/DESIGN.md`: Defines design tokens for Cursor brand: colors, typography, spacing, components.
+- `docs/design-library/cursor/README.md`: Redirects to external design system docs for Cursor brand.
+- `docs/design-library/dell-1996/DESIGN.md`: Defines design tokens for Dell 1996 brand: colors, typography, spacing, components.
+- `docs/design-library/dell-1996/README.md`: Redirects to external design system docs for Dell 1996 brand.
+- `docs/design-library/elevenlabs/DESIGN.md`: Defines design tokens for ElevenLabs brand: colors, typography, spacing, components.
+- `docs/design-library/elevenlabs/README.md`: Redirects to external design system docs for ElevenLabs brand.
+- `docs/design-library/expo/DESIGN.md`: defines Expo design tokens: color palette, typography sizes, weights, and spacing for marketing site components
+- `docs/design-library/expo/README.md`: provides link to Expo design system markdown and preview URLs on getdesign.md
+- `docs/design-library/ferrari/DESIGN.md`: defines Ferrari design tokens: colors, typography, spacing ladder, and brand guidelines for luxury automotive site
+- `docs/design-library/ferrari/README.md`: provides link to Ferrari design system markdown and preview pages on getdesign.md
+- `docs/design-library/figma/DESIGN.md`: defines Figma design tokens: monochrome palette, pastel blocks, typography specs, and UI component styles
+- `docs/design-library/figma/README.md`: provides link to Figma design system markdown and preview resources on getdesign.md
+- `docs/design-library/framer/DESIGN.md`: defines Framer design tokens: dark palette, accent blue, gradient colors, typography, and surface styles
+- `docs/design-library/framer/README.md`: provides link to Framer design system markdown and preview examples on getdesign.md
+- `docs/design-library/hashicorp/DESIGN.md`: Defines color palette, typography, and card styles for HashiCorp design system.
+- `docs/design-library/hashicorp/README.md`: Redirects to external HashiCorp design system documentation and preview links.
+- `docs/design-library/hp/DESIGN.md`: Specifies colors, typography, and card styling for HP-inspired enterprise design system.
+- `docs/design-library/hp/README.md`: Links to external HP design system documentation and preview resources.
+- `docs/design-library/ibm/DESIGN.md`: Defines IBM Carbon-inspired colors, typography, and flat card styles for enterprise marketing.
+- `docs/design-library/ibm/README.md`: Points to external IBM design system documentation and preview links.
+- `docs/design-library/intercom/DESIGN.md`: Outlines colors, typography, and card styles for Intercom's Fin Orange CTA design system.
+- `docs/design-library/intercom/README.md`: Links to external Intercom design system documentation and preview resources.
+- `docs/design-library/kraken/DESIGN.md`: Defines Kraken design system colors, typography, and component styles for web UI.
+- `docs/design-library/kraken/README.md`: Points to external Kraken design system documentation and preview resources.
+- `docs/design-library/lamborghini/DESIGN.md`: Specifies Lamborghini design system with black surfaces, gold accents, custom LamboType font, and minimal navigation.
+- `docs/design-library/lamborghini/README.md`: Links to external Lamborghini design system documentation and preview resources.
+- `docs/design-library/linear.app/DESIGN.md`: Defines Linear design system colors, typography, and component styles for dark product UI.
+- `docs/design-library/linear.app/README.md`: Links to external Linear design system documentation and preview resources.
+- `docs/design-library/lovable/DESIGN.md`: Specifies Lovable design system with warm parchment background, Camera Plain font, opacity color model, and pill buttons.
+- `docs/design-library/lovable/README.md`: Links to external Lovable design system documentation and preview resources.
+- `docs/design-library/mastercard/DESIGN.md`: Defines Mastercard UI theme: cream canvas, 40‑99px pill radii, circular portraits with orange arcs, MarkForMC typography.
+- `docs/design-library/mastercard/README.md`: Provides link to full Mastercard design system documentation on getdesign.md.
+- `docs/design-library/meta/DESIGN.md`: Specifies Meta design system: white canvas, cobalt blue accents, 100px pill buttons, Optimistic VF typography hierarchy.
+- `docs/design-library/meta/README.md`: Points to Meta design system details hosted at getdesign.md.
+- `docs/design-library/minimax/DESIGN.md`: Outlines Minimax UI: black‑pill CTAs, gradient product cards, DM Sans fonts, 80px hero, three‑column docs layout.
+- `docs/design-library/minimax/README.md`: Links to Minimax design system page on getdesign.md for previews and downloads.
+- `docs/design-library/mintlify/DESIGN.md`: Defines Mintlify design: sky‑gradient heroes, Inter UI, Geist Mono code, green accent, black‑pill primary, three‑column docs.
+- `docs/design-library/mintlify/README.md`: Provides URL to Mintlify design system on getdesign.md with previews and dark mode examples.
+- `docs/design-library/miro/DESIGN.md`: Specifies Miro brand colors, typography, and layout rules for product pages.
+- `docs/design-library/miro/README.md`: Links to Miro design system documentation and preview resources.
+- `docs/design-library/mistral.ai/DESIGN.md`: Defines Mistral AI brand colors, typography, and page coverage rules.
+- `docs/design-library/mistral.ai/README.md`: Links to Mistral AI design system documentation and preview resources.
+- `docs/design-library/mongodb/DESIGN.md`: Specifies MongoDB brand colors, typography, and product page rules.
+- `docs/design-library/mongodb/README.md`: Links to MongoDB design system documentation and preview resources.
+- `docs/design-library/nike/DESIGN.md`: Defines Nike brand colors, typography, and product card layout rules.
+- `docs/design-library/nike/README.md`: Links to Nike design system documentation and preview resources.
+- `docs/design-library/nintendo-2001/DESIGN.md`: Defines 2001 Nintendo.com design palette, typography, and UI component rules.
+- `docs/design-library/nintendo-2001/README.md`: Links to Nintendo 2001 design system docs, previews, dark mode, and download options.
+- `docs/design-library/notion/DESIGN.md`: Specifies Notion-inspired design system colors, typography, and component guidelines.
+- `docs/design-library/notion/README.md`: Provides link to Notion design system docs, previews, dark mode, and downloads.
+- `docs/design-library/nvidia/DESIGN.md`: Outlines NVIDIA design system colors, typography, and strict angular UI rules.
+- `docs/design-library/nvidia/README.md`: Links to NVIDIA design system docs, previews, dark mode, and download options.
+- `docs/design-library/ollama/DESIGN.md`: Defines Ollama minimal design system with colors, typography, and pill-shaped components.
+- `docs/design-library/ollama/README.md`: Provides link to Ollama design system docs, previews, dark mode, and downloads.
+- `docs/design-library/opencode.ai/DESIGN.md`: Defines terminal-native marketing UI colors, typography, and layout rules for OpenCode design system.
+- `docs/design-library/opencode.ai/README.md`: Redirects to external OpenCode design system documentation and preview links.
+- `docs/design-library/pinterest/DESIGN.md`: Specifies Pinterest-inspired photography discovery UI colors, typography, and masonry grid layout.
+- `docs/design-library/pinterest/README.md`: Links to Pinterest design system documentation and preview resources.
+- `docs/design-library/playstation/DESIGN.md`: Defines PlayStation marketing UI colors, typography, and three-surface layout rules.
+- `docs/design-library/playstation/README.md`: Provides link to PlayStation design system documentation and previews.
+- `docs/design-library/posthog/DESIGN.md`: Specifies PostHog UI colors, typography, and playful mascot illustration rules.
+- `docs/design-library/posthog/README.md`: Links to PostHog design system documentation and preview resources.
+- `docs/design-library/raycast/DESIGN.md`: Defines Raycast marketing design: dark canvas, hairline borders, Inter ss03 typography, white CTA pill, accent colors, hero stripe gradient.
+- `docs/design-library/raycast/README.md`: Provides link to Raycast design system documentation and preview resources on getdesign.md.
+- `docs/design-library/renault/DESIGN.md`: Specifies Renault design: black‑white canvas, Sunlight Yellow accent, NouvelR typeface, diamond logo, tile grids, configurator cards.
+- `docs/design-library/renault/README.md`: Links to Renault design system details, previews, and download options on getdesign.md.
+- `docs/design-library/replicate/DESIGN.md`: Defines Replicate marketing design: cream canvas, hot‑orange accent, rb‑freigeist‑neue large typography, code wells, hand‑drawn diagrams.
+- `docs/design-library/replicate/README.md`: Provides link to Replicate design system, previews, and download options on getdesign.md.
+- `docs/design-library/resend/DESIGN.md`: Specifies Resend design: black canvas, off‑white text, Domaine Display headline, ABC Favorit body, gradient glows, rounded containers.
+- `docs/design-library/resend/README.md`: Links to Resend design system, previews, and download options on getdesign.md.
+- `docs/design-library/revolut/DESIGN.md`: Specifies Revolut brand colors, typography, and UI component styles for marketing surfaces.
+- `docs/design-library/revolut/README.md`: Links to external Revolut design system documentation and preview resources.
+- `docs/design-library/runwayml/DESIGN.md`: Describes Runway's cinematic UI theme, single typeface, dark palette, and visual-first component guidelines.
+- `docs/design-library/runwayml/README.md`: Provides external link to Runway design system documentation and preview examples.
+- `docs/design-library/sanity/DESIGN.md`: Defines Sanity's dark command-center theme, dual typefaces, monochrome palette, and neon accent guidelines.
+- `docs/design-library/sanity/README.md`: Links to Sanity design system documentation and preview resources.
+- `docs/design-library/sentry/DESIGN.md`: Outlines Sentry-inspired dark-purple UI, lime accents, custom display font, and pricing surface rules.
+- `docs/design-library/sentry/README.md`: Provides link to Sentry design system documentation and preview examples.
+- `docs/design-library/shopify/DESIGN.md`: Defines Shopify-inspired design system colors, typography, and canvas rules for marketing and transactional pages.
+- `docs/design-library/shopify/README.md`: Links to external Shopify design system documentation and preview resources.
+- `docs/design-library/slack/DESIGN.md`: Specifies Slack-inspired design system colors, typography, and component styles for messaging UI.
+- `docs/design-library/spacex/DESIGN.md`: Defines SpaceX-inspired design system colors, typography, rounded corners, spacing, and button styles.
+- `docs/design-library/spacex/README.md`: Links to external SpaceX design system documentation and preview resources.
+- `docs/design-library/spotify/DESIGN.md`: Describes Spotify-inspired design system with dark theme, green accent, circular controls, and pill buttons.
+- `docs/design-library/spotify/README.md`: Links to external Spotify design system documentation and preview resources.
+- `docs/design-library/starbucks/DESIGN.md`: Defines Starbucks-inspired design system colors, typography, and rounded geometry for retail UI.
+- `docs/design-library/starbucks/README.md`: Links to Starbucks design system, previews, dark mode, and download options on getdesign.md.
+- `docs/design-library/stripe/DESIGN.md`: Defines Stripe-inspired design system colors, typography, and style guidelines.
+- `docs/design-library/stripe/README.md`: Links to Stripe design system, previews, dark mode, and download options on getdesign.md.
+- `docs/design-library/supabase/DESIGN.md`: Specifies Supabase-inspired design system colors, typography, and UI style rules.
+- `docs/design-library/supabase/README.md`: Links to Supabase design system, previews, dark mode, and download options on getdesign.md.
+- `docs/design-library/superhuman/DESIGN.md`: Defines Superhuman-inspired design system colors, typography, and UI style guidelines.
+- `docs/design-library/superhuman/README.md`: Links to Superhuman design system, previews, dark mode, and download options on getdesign.md.
+- `docs/design-library/tesla/DESIGN.md`: Describes Tesla-inspired design system: minimal UI, single blue CTA, Universal Sans typography.
+- `docs/design-library/tesla/README.md`: Provides link to Tesla design system details, previews, dark mode examples, and download options on getdesign.md.
+- `docs/design-library/theverge/DESIGN.md`: Describes The Verge design system: dark canvas, acid-mint/ultraviolet accents, large Manuka headlines, rounded pill cards, StoryStream timeline.
+- `docs/design-library/theverge/README.md`: Provides link to The Verge design system details, previews, dark mode examples, and download options on getdesign.md.
+- `docs/design-library/together.ai/DESIGN.md`: Defines Together AI design analysis: version, color palette, typography scales, and descriptive metadata for the inspired system.
+- `docs/design-library/together.ai/README.md`: Provides link to Together AI design system details, previews, dark mode examples, and download options on getdesign.md.
+- `docs/design-library/uber/DESIGN.md`: Specifies Uber-inspired design analysis: version, color scheme, typography definitions, and UI element styling guidelines.
+- `docs/design-library/uber/README.md`: Provides link to Uber design system details, previews, dark mode examples, and download options on getdesign.md.
+- `docs/design-library/vercel/DESIGN.md`: Outlines Vercel-inspired design analysis: version, extensive color palette, gradient definitions, and typography settings for the platform.
+- `docs/design-library/vercel/README.md`: Links to Vercel design system docs, previews, dark mode examples, and download options on getdesign.md.
+- `docs/design-library/vodafone/DESIGN.md`: Defines Vodafone-inspired design tokens: colors, typography, and brand guidelines for editorial hero bands and scarlet CTA.
+- `docs/design-library/vodafone/README.md`: Links to Vodafone design system docs, previews, dark mode examples, and download options on getdesign.md.
+- `docs/design-library/voltagent/DESIGN.md`: Defines Voltagent-inspired design tokens: electric-green accents, dark canvas, code-editor mockups, and precise grid layout guidelines.
+- `docs/design-library/voltagent/README.md`: Links to Voltagent design system docs, previews, dark mode examples, and download options on getdesign.md.
+- `docs/design-library/warp/DESIGN.md`: Defines Warp-inspired design tokens: warm charcoal canvas, Inter typography, Instrument Serif italics, and understated CTAs with tight geometry.
+- `docs/design-library/warp/README.md`: Links to Warp design system docs, previews, dark mode examples, and download options on getdesign.md.
+- `docs/design-library/webflow/DESIGN.md`: Defines Webflow-inspired design tokens: deep black primary, five-color accent system, WF Visual Sans typography, and restrained negative tracking.
+- `docs/design-library/webflow/README.md`: Redirects to getdesign.md webflow design system, previews, dark mode, downloads.
+- `docs/design-library/wired/DESIGN.md`: Defines Wired-inspired design system: colors, typography, fonts, and style guidelines.
+- `docs/design-library/wired/README.md`: Redirects to getdesign.md wired design system, previews, dark mode, downloads.
+- `docs/design-library/wise/DESIGN.md`: Specifies Wise-inspired design system: colors, typography, fonts, and visual hierarchy.
+- `docs/design-library/wise/README.md`: Redirects to getdesign.md wise design system, previews, dark mode, downloads.
+- `docs/design-library/x.ai/DESIGN.md`: Describes xAI-inspired design system: colors, typography, fonts, and style guidelines.
+- `docs/design-library/x.ai/README.md`: Redirects to getdesign.md x.ai design system, previews, dark mode, downloads.
+- `docs/design-library/zapier/DESIGN.md`: Defines Zapier-inspired design system: colors, typography, fonts, and brand voice.
+- `docs/design-library/zapier/README.md`: Links to Zapier design system docs, previews, dark mode, download options.

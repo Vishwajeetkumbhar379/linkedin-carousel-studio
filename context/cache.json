@@ -1,0 +1,5411 @@
+{
+"@area:buildwithvish/(root)": {
+"h": "529fe0cbde7ad27d",
+"s": "Configure, build, and deploy the Vish site using Cloudflare Workers and Netlify functions."
+},
+"@area:buildwithvish/emails": {
+"h": "f3e1958c7c2ca28e",
+"s": "Generate and store welcome email templates and metadata for MailerLite automation."
+},
+"@area:buildwithvish/functions": {
+"h": "09489e832ffac209",
+"s": "Handle external API endpoints for Instagram webhook, partner form, and newsletter subscription processing."
+},
+"@area:buildwithvish/lib": {
+"h": "6aadad10f35448fe",
+"s": "Automate Instagram direct messages and comment replies using keyword matching, DM templates, and HMAC verification."
+},
+"@area:buildwithvish/site": {
+"h": "651118659227be57",
+"s": "Host website pages, AI tutorials, privacy policy, and third‑party scripts for interactive visual effects."
+},
+"@area:buildwithvish/src": {
+"h": "0fe5805148bf206b",
+"s": "Provide source code for building assets, managing content, and rendering interactive WebGL scenes for the Vish website."
+},
+"@area:buildwithvish/src/legal": {
+"h": "c9a231943f68ba39",
+"s": "Provide legal pages for data deletion, links, and privacy policy."
+},
+"@area:buildwithvish/src/long": {
+"h": "89bedcb5f7c701c2",
+"s": "Provide long‑form guides and issue articles with metadata for content management."
+},
+"@area:buildwithvish/tools": {
+"h": "f7ec37346d57086a",
+"s": "Generate, lint, merge, and manage long‑form tutorial pages for AI content pipeline."
+},
+"@area:buildwithvish/worker": {
+"h": "324fb6c90b594724",
+"s": "Route API requests to newsletter, partner, and Instagram webhook handlers in a Cloudflare Worker."
+},
+"@area:claude-skills/(root)": {
+"h": "b68f306bc6c67ae5",
+"s": "Provide Claude skill definitions for creator marketing and job search, with descriptions and reference links."
+},
+"@area:claude-skills/skills": {
+"h": "72b0d81092caa73e",
+"s": "Automate job application, contract review, creator outreach, CV tailoring, and LinkedIn carousel creation for recruiters and creators."
+},
+"@area:engine/(root)": {
+"h": "d55f0c9bf4e37029",
+"s": "Define brand assets, content rules, and CLI tools for generating LinkedIn carousel posts."
+},
+"@area:engine/.claude": {
+"h": "d225897d76854303",
+"s": "Configure Claude AI settings, specifying environment, enabled plugins, and additional marketplaces."
+},
+"@area:engine/brand": {
+"h": "00cd17dd4bd448c4",
+"s": "Define brand tokens, colors, layout, and locked carousel visuals for consistent UI styling."
+},
+"@area:engine/brand/avatar": {
+"h": "a5533aa2ce93a158",
+"s": "Create and manage Vish mascot avatars, prompts, and asset manifests for consistent brand representation."
+},
+"@area:engine/brand/mascot": {
+"h": "7c83f28fdf699ff0",
+"s": "Define mascot animation specs for Dot v4, including expressions, camera, items, and rendering rules."
+},
+"@area:engine/carousel": {
+"h": "e287646a69d08b80",
+"s": "Generate, style, and render LinkedIn carousel decks as PNG/PDF using AI and Playwright."
+},
+"@area:engine/content": {
+"h": "269d64e148b73837",
+"s": "Organize LinkedIn posting schedule, mapping file paths, hooks, and article links for automated publishing."
+},
+"@area:engine/content/batch-01": {
+"h": "2785b5f43047561b",
+"s": "Generate LinkedIn posts using brief rules, evergreen topics, and news items."
+},
+"@area:engine/content/batch-01e": {
+"h": "5fda2aeb19f60202",
+"s": "Provide evergreen content items for batch processing, supplying eight predefined JSON entries."
+},
+"@area:engine/content/batch-01n": {
+"h": "254b161bbc5108be",
+"s": "Provide a batch of nine news items for content generation pipelines."
+},
+"@area:engine/content/batch-02": {
+"h": "e9de26748cc4fd54",
+"s": "Store six pre‑generated post objects for batch processing and scheduled publishing."
+},
+"@area:engine/content/batch-03": {
+"h": "abc7212c600bf6a5",
+"s": "Store six pre‑generated blog posts for batch processing and scheduled publishing."
+},
+"@area:engine/content/calendar": {
+"h": "141dcd51d5859143",
+"s": "Schedule weekly content production, allocate resources, track status, and plan filming for weeks 2‑5."
+},
+"@area:engine/content/instagram": {
+"h": "647137acc177c2c3",
+"s": "Organize Instagram content: profile details, weekly post kits, reels, carousels, captions, and scheduling."
+},
+"@area:engine/content/shoot-sheets": {
+"h": "85b6baf4e0103b84",
+"s": "Generate weekly content shoot plans with legends, defaults, and sheet configurations for October 2026."
+},
+"@area:engine/content/shorts": {
+"h": "3e652527cc44a67d",
+"s": "Define, generate, and render animated short scripts with voice, hooks, facts, and publishing metadata."
+},
+"@area:engine/docs": {
+"h": "b0a39f3c580ca5be",
+"s": "Document processes, policies, and configurations for content automation, monetization, hosting, and social media."
+},
+"@area:engine/docs/design-library": {
+"h": "2172b824b6fed815",
+"s": "Provide design tokens and brand guidelines for multiple product design systems."
+},
+"@area:engine/edit-kit-docs": {
+"h": "56b4513e1c4f5e9e",
+"s": "Document editing guidelines, tools, philosophy, design assets, and third‑party notices for Nate’s AI video workflow."
+},
+"@area:engine/examples": {
+"h": "7b770cbe4dda01ea",
+"s": "Demonstrate sample configurations like creator-contract-checks.json for testing slide generation and metadata handling."
+},
+"@area:engine/inspiration": {
+"h": "c93a750a9a3ff262",
+"s": "Collect, document, and analyze external design inspirations to inform style rules and content generation."
+},
+"@area:engine/research": {
+"h": "db4d1a1172ca443c",
+"s": "Analyze competitor LinkedIn posts to identify top reactions and extract recurring content patterns."
+},
+"@area:engine/research/2026-10-06": {
+"h": "3dceed6c544cffd1",
+"s": "Capture daily backlog snapshot for research tasks, storing generated rules and topic metadata."
+},
+"@area:engine/research/creators": {
+"h": "66b993d81685dbcf",
+"s": "Provide style guidelines, edit recipes, reference reels, and teardown data for creators."
+},
+"@area:engine/research/daily": {
+"h": "9b82cf67ff12ffaa",
+"s": "Collects daily research logs with date, items, and errors for tracking and analysis."
+},
+"@area:engine/research/shorts": {
+"h": "ab0af4f31641f771",
+"s": "Define retention rules, hook templates, frame timing, and visual style for faceless animated Shorts series."
+},
+"@area:engine/research/viral": {
+"h": "aeb049865697eeb7",
+"s": "Analyze viral content patterns, hooks, timing, and comment strategies to inform high‑engagement post creation."
+},
+"@area:engine/scripts": {
+"h": "2a62d6b76955f952",
+"s": "Automate content pipeline tasks: batch creation, rendering, voice, QA, publishing, and asset validation."
+},
+"@area:engine/scripts/broll": {
+"h": "3f25338a0e3aec0b",
+"s": "Download Mixkit stock videos, generate metadata, and save clips for project integration."
+},
+"@area:engine/scripts/reel_edit": {
+"h": "b8257d8c96c688fc",
+"s": "Create, edit, and render talking‑head reels from raw footage, applying cuts, grading, and quality checks."
+},
+"@area:engine/scripts/research": {
+"h": "a0e1de97cc41235c",
+"s": "Collect, parse, and analyze external content feeds, social media posts, and video data for research."
+},
+"@area:engine/scripts/shorts": {
+"h": "c81632a9b12e7c17",
+"s": "Create short videos with voice narration and sound effects from templates."
+},
+"@area:engine/style-library": {
+"h": "5fa9abcdcdc3e827",
+"s": "Define, store, and validate visual style specifications, tokens, and registry metadata for content cards."
+},
+"@area:engine/style-templates": {
+"h": "9a3dd454ef7732f6",
+"s": "Provide reusable visual scene templates with design specs, assets, and agent workflow instructions."
+},
+"@area:engine/templates": {
+"h": "82fd1e1e70a735eb",
+"s": "Provide a package.json template for initializing Node projects with predefined scripts, dependencies, and metadata."
+},
+"@area:engine/templates/carousel": {
+"h": "1796e3588d3494a1",
+"s": "Render weekly carousel templates with CSS and HTML for guide, checks, edits, and skill pages."
+},
+"@area:engine/templates/guide": {
+"h": "f0f731964322067a",
+"s": "Provide a structured implementation guide template with sections for promise, source, steps, prompts, outputs, troubleshooting, limits, next steps."
+},
+"@area:engine/templates/three": {
+"h": "9ecc2ecf340ca0d4",
+"s": "Render 3D scenes deterministically using Three.js kit with colors, materials, rounded boxes, and stage template."
+},
+"@area:engine/templates/video": {
+"h": "f0cd78056f0eb0c3",
+"s": "Generate video templates for motion, reels, shorts, and night scenes."
+},
+"@area:engine/tests": {
+"h": "0274c2e9a5d4f9ba",
+"s": "Validate carousel and studio functionalities, ensuring correct rendering, markup, AI draft retries, and brand compliance."
+},
+"@area:engine/topics": {
+"h": "2c9f4b2d3c6adcb2",
+"s": "Manage topic lifecycle: generate, queue, post, track seeds and backlog."
+},
+"@area:engine/video-projects": {
+"h": "de6ab54b27d7e268",
+"s": "Produce, edit, and assemble week‑01 video project files via Python, JSON, and HTML."
+},
+"@area:memory/(root)": {
+"h": "a4a15de07103050f",
+"s": "Define, store, and enforce content creation policies, pipelines, and LLM access rules for automation."
+},
+"@area:profile-pipeline/(root)": {
+"h": "d3b9ddd2e3d9cd01",
+"s": "Showcase personal branding, badge links, and curated AI‑tool repositories while configuring Netlify deployment settings."
+},
+"@area:profile-pipeline/linkedin": {
+"h": "d91ead6c08e75808",
+"s": "Generate LinkedIn carousel PDFs, captions, and assets from JSON content with validation and preview images."
+},
+"@area:profile-pipeline/portfolio": {
+"h": "641f170af2bf09d7",
+"s": "Showcases Vish Kumbhar’s digital marketing, growth, and AI portfolio with SEO-friendly index and robots file."
+},
+"@area:project-files/linkedin-profile": {
+"h": "b1ff84232869d657",
+"s": "Define LinkedIn cover assets, export script, mockups, evidence map, and source verification for profile."
+},
+"@area:project-files/shorts": {
+"h": "00602b4792287b8c",
+"s": "Organize research, transcripts, metadata, and guides to produce data‑driven YouTube Shorts efficiently."
+},
+"buildwithvish:README.md": {
+"h": "54f223dca96b1337",
+"s": "Describes project structure, build process, Netlify deployment, and newsletter submission handling.",
+"t": [
+"build",
+"netlify",
+"deployment",
+"source",
+"scripts"
+]
+},
+"buildwithvish:emails/html/email-1.html": {
+"h": "a0fd92e6a4bece60",
+"s": "You&#x27;re in. Here&#x27;s where to start.",
+"t": [
+"html"
+]
+},
+"buildwithvish:emails/html/email-1.txt": {
+"h": "576659a2d653552e",
+"s": "Welcome email with links to start path, AI setup, brief, and website guide, asks for user goal.",
+"t": [
+"email",
+"welcome",
+"guide",
+"links",
+"userquery"
+]
+},
+"buildwithvish:emails/html/email-2.html": {
+"h": "8384901d3cf88ab2",
+"s": "The follow-up that fixes weak AI answers",
+"t": [
+"html"
+]
+},
+"buildwithvish:emails/html/email-2.txt": {
+"h": "03fbebb9b577b6d7",
+"s": "Email explaining generic answer fix line, links to 12 follow-ups, encourages real use.",
+"t": [
+"email",
+"followup",
+"ai",
+"guidance"
+]
+},
+"buildwithvish:emails/html/email-3.html": {
+"h": "7605f8188bc64b4c",
+"s": "Build one real thing this weekend",
+"t": [
+"html"
+]
+},
+"buildwithvish:emails/html/email-3.txt": {
+"h": "a01dd72734b4787a",
+"s": "Email promoting weekend website project, launch checklist, invites sharing link.",
+"t": [
+"email",
+"project",
+"checklist",
+"share"
+]
+},
+"buildwithvish:emails/html/emails.json": {
+"h": "68a610e391edc414",
+"s": "JSON: list of 3",
+"t": [
+"json"
+]
+},
+"buildwithvish:emails/make_emails.py": {
+"h": "de1cadedfbc1a5c3",
+"s": "Script that builds three welcome emails from source blocks into HTML and plain text for MailerLite.",
+"t": [
+"python",
+"script",
+"emailbuilder",
+"automation"
+]
+},
+"buildwithvish:emails/welcome-series.md": {
+"h": "386f5f4127ced241",
+"s": "Defines MailerLite automation triggers, email subjects, previews, and content for the Build Notes welcome series.",
+"t": [
+"mailerlite",
+"automation",
+"series",
+"triggers"
+]
+},
+"buildwithvish:functions/api/ig-webhook.js": {
+"h": "97e619d7ce17a44b",
+"s": "Cloudflare function forwarding Instagram webhook requests to ig-autodm handler.",
+"t": [
+"cloudflare",
+"webhook",
+"instagram",
+"handler"
+]
+},
+"buildwithvish:functions/api/newsletter.js": {
+"h": "da722a6762cc72cd",
+"s": "Accepts POST, validates email, posts unconfirmed subscriber to MailerLite API, returns 200 OK or appropriate error.",
+"t": [
+"email",
+"api",
+"validation",
+"mailerlite",
+"cloudflare"
+]
+},
+"buildwithvish:functions/api/partner.js": {
+"h": "3d92803053c52b9f",
+"s": "Processes partner form POST, validates name/email/message, sends formatted email via Cloudflare email binding, responds 200 OK or error.",
+"t": [
+"email",
+"form",
+"validation",
+"cloudflare",
+"routing"
+]
+},
+"buildwithvish:lib/ig-autodm/config.json": {
+"h": "1d14a758b64c52fb",
+"s": "JSON: _note, site, public_reply, keywords, dm, public",
+"t": [
+"json"
+]
+},
+"buildwithvish:lib/ig-autodm/core.mjs": {
+"h": "9ec4ff46de303d57",
+"s": "Exports keyword matcher, DM builder, HMAC signature verifier, and Instagram comment change handler for private replies.",
+"t": [
+"instagram",
+"webhook",
+"dm",
+"crypto",
+"keyword"
+]
+},
+"buildwithvish:netlify.toml": {
+"h": "2fbdb97a662e834a",
+"s": "Sets Netlify build publish folder to site and functions directory to netlify/functions.",
+"t": [
+"netlify",
+"config",
+"build",
+"functions"
+]
+},
+"buildwithvish:site/data-deletion.html": {
+"h": "f37be027ea5a1319",
+"s": "Data deletion · Build with Vish",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/ad-performance-copilot.html": {
+"h": "758b5429cb131deb",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/ai-privacy-settings.html": {
+"h": "3eda5616afbf6e96",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/ai-tool-quick-starts.html": {
+"h": "c75a6b87a5484746",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/brief-ai-like-an-agency.html": {
+"h": "1f2e72806387302b",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/chatgpt-from-zero.html": {
+"h": "f20d1c8ac9dabb71",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/claude-from-zero.html": {
+"h": "ff9fe2d63268374f",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/client-health-score.html": {
+"h": "31ee60323da7b3b8",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/connectors-and-mcp.html": {
+"h": "4fc3e93f99bb8673",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/connectors-worth-setting-up.html": {
+"h": "e4bf29ff4ae76bd1",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/creator-campaign-hq-in-claude.html": {
+"h": "935e5e5583a27524",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/creator-fit-scorer.html": {
+"h": "d7b6024aa5696cf7",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/everyday-life-prompts.html": {
+"h": "188be59de96dabad",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/gemini-inside-google.html": {
+"h": "55354288f441e7d1",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/get-cited-by-ai-answers.html": {
+"h": "7d13aed57e74aa52",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/growth-experiment-lab.html": {
+"h": "9bf2782e318f5c70",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/hidden-ai-features.html": {
+"h": "b9c48b98e3086a89",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/job-search-agent.html": {
+"h": "784a2c91e74bbdb3",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/marketing-attribution-lab.html": {
+"h": "3c9ec5aa9becde1e",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/one-line-follow-ups.html": {
+"h": "3ed28cb41aa3dc8c",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/pick-your-ai-by-job.html": {
+"h": "a9af6f6c7a11a9e1",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/projects-in-claude-and-chatgpt.html": {
+"h": "0dc8f67cbd33042c",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/report-that-writes-itself.html": {
+"h": "e05b7d0a17aaa327",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/side-project-prompt-chain.html": {
+"h": "2a95beb83ecba6ca",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/g/youtube-research-with-claude.html": {
+"h": "b54a2783ccf96326",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/links.html": {
+"h": "ebb3e16a10be9ca6",
+"s": "Vish · links",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/privacy.html": {
+"h": "106e940d9067baf4",
+"s": "Privacy policy · Build with Vish",
+"t": [
+"html"
+]
+},
+"buildwithvish:site/robots.txt": {
+"h": "16ceb5ee3e0dc13a",
+"s": "Allows all user-agents full access to the site.",
+"t": [
+"robots",
+"seo",
+"crawl",
+"allow"
+]
+},
+"buildwithvish:site/vendor/CopyShader.js": {
+"h": "6b5da4fe3b410286",
+"s": "Defines Three.js CopyShader to render a texture quad with configurable opacity.",
+"t": [
+"threejs",
+"shader",
+"copy",
+"graphics"
+]
+},
+"buildwithvish:site/vendor/EffectComposer.js": {
+"h": "4fc320fa31858477",
+"s": "Implements Three.js EffectComposer managing render passes, buffer swapping, and final screen output.",
+"t": [
+"threejs",
+"composer",
+"render",
+"passes",
+"graphics"
+]
+},
+"buildwithvish:site/vendor/LuminosityHighPassShader.js": {
+"h": "00ed0682e61ca207",
+"s": "Defines Three.js LuminosityHighPassShader extracting bright regions via threshold and smooth width.",
+"t": [
+"threejs",
+"shader",
+"luminosity",
+"highpass",
+"graphics"
+]
+},
+"buildwithvish:site/vendor/RenderPass.js": {
+"h": "57a549b2d6a947cd",
+"s": "Three.js RenderPass renders a scene with optional override material and clear color, managing render targets.",
+"t": [
+"threejs",
+"renderpass",
+"graphics",
+"pass",
+"scene"
+]
+},
+"buildwithvish:site/vendor/ScrollTrigger.min.js": {
+"h": "ad33c2df9ada8a66",
+"s": "GSAP ScrollTrigger plugin triggers animations on scroll events, managing scroll positions and callbacks.",
+"t": [
+"gsap",
+"scrolltrigger",
+"animation",
+"scroll",
+"plugin"
+]
+},
+"buildwithvish:site/vendor/ShaderPass.js": {
+"h": "2e64890b8e4c4daf",
+"s": "Three.js ShaderPass applies a shader material to a full-screen quad, rendering to buffer or screen.",
+"t": [
+"threejs",
+"shaderpass",
+"graphics",
+"shader",
+"pass"
+]
+},
+"buildwithvish:site/vendor/UnrealBloomPass.js": {
+"h": "1ed342b273e9b077",
+"s": "Three.js UnrealBloomPass creates bloom effect using mip chain and high-pass filter.",
+"t": [
+"threejs",
+"bloom",
+"unrealbloompass",
+"postprocessing",
+"graphics"
+]
+},
+"buildwithvish:site/vendor/gsap.min.js": {
+"h": "28033e449a31ebcc",
+"s": "GSAP core animation library provides tweening, timelines, and easing functions.",
+"t": [
+"gsap",
+"animation",
+"tween",
+"core",
+"library"
+]
+},
+"buildwithvish:site/vendor/lenis.min.js": {
+"h": "b2958f142f832f0d",
+"s": "Lenis smooth scrolling library animates scroll position with easing and resize handling.",
+"t": [
+"lenis",
+"scrolling",
+"smooth",
+"animation",
+"library"
+]
+},
+"buildwithvish:src/app.js": {
+"h": "34d1822a258e7797",
+"s": "App script sets up DOM utilities, constants, and navigation handlers for the site.",
+"t": [
+"app",
+"dom",
+"navigation",
+"utilities",
+"site"
+]
+},
+"buildwithvish:src/build.py": {
+"h": "768778fce4b1d088",
+"s": "Python build script compiles assets, generates site files, and handles local build mode.",
+"t": [
+"build",
+"python",
+"script",
+"site",
+"generator"
+]
+},
+"buildwithvish:src/content-extra.js": {
+"h": "7de0eb3396f0822f",
+"s": "Defines 'built' guide type and lists two built tool guides with metadata and body content.",
+"t": [
+"guide",
+"built",
+"tools",
+"content"
+]
+},
+"buildwithvish:src/content-guides.js": {
+"h": "048b0a52f46ad2bf",
+"s": "Defines tool categories, guide types, and a list of guide entries with metadata and body content.",
+"t": [
+"guide",
+"tools",
+"content",
+"metadata"
+]
+},
+"buildwithvish:src/content-launch.js": {
+"h": "356d2d821a894bf6",
+"s": "Defines AI launch security checklist with 19 items, each having id, title, why, how.",
+"t": [
+"launch",
+"security",
+"checklist",
+"ai"
+]
+},
+"buildwithvish:src/content-more.js": {
+"h": "8bab32e8e9229876",
+"s": "Defines project steps for building a website with AI, including steps, tools, and instructions.",
+"t": [
+"project",
+"steps",
+"website",
+"ai",
+"content"
+]
+},
+"buildwithvish:src/content-portfolio.js": {
+"h": "2435ecffc9fbfc9f",
+"s": "Defines portfolio data: headline, intro, CV link, site link, stats, disciplines, brands, experience.",
+"t": [
+"portfolio",
+"data",
+"resume",
+"content"
+]
+},
+"buildwithvish:src/content-posts.js": {
+"h": "c6dfa0c90eda139c",
+"s": "Defines LinkedIn batch article posts with slug, type, tools, level, mins, rank, fresh, title, excerpt, body.",
+"t": [
+"posts",
+"articles",
+"content",
+"linkedin"
+]
+},
+"buildwithvish:src/legal/data-deletion.html": {
+"h": "f37be027ea5a1319",
+"s": "Data deletion · Build with Vish",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/legal/links.html": {
+"h": "ebb3e16a10be9ca6",
+"s": "Vish · links",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/legal/privacy.html": {
+"h": "106e940d9067baf4",
+"s": "Privacy policy · Build with Vish",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/ad-performance-copilot.html": {
+"h": "758b5429cb131deb",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/ad-performance-copilot.meta.json": {
+"h": "e19e1849594a534b",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/ai-privacy-settings.html": {
+"h": "3eda5616afbf6e96",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/ai-privacy-settings.meta.json": {
+"h": "ce34ab1163e984d9",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/ai-tool-quick-starts.html": {
+"h": "c75a6b87a5484746",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/ai-tool-quick-starts.meta.json": {
+"h": "80134e290bc7d577",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/brief-ai-like-an-agency.html": {
+"h": "1f2e72806387302b",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/brief-ai-like-an-agency.meta.json": {
+"h": "0b530759f460ffef",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/chatgpt-from-zero.html": {
+"h": "f20d1c8ac9dabb71",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/chatgpt-from-zero.meta.json": {
+"h": "a7dab227c6a76abe",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/claude-from-zero.html": {
+"h": "ff9fe2d63268374f",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/claude-from-zero.meta.json": {
+"h": "7a210c0e355b3f13",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/client-health-score.html": {
+"h": "31ee60323da7b3b8",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/client-health-score.meta.json": {
+"h": "f34aba900b0806a5",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/connectors-and-mcp.html": {
+"h": "4fc3e93f99bb8673",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/connectors-and-mcp.meta.json": {
+"h": "5ebe0bd11c238371",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/connectors-worth-setting-up.html": {
+"h": "e4bf29ff4ae76bd1",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/connectors-worth-setting-up.meta.json": {
+"h": "9037aaff83c7e7ba",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/creator-campaign-hq-in-claude.html": {
+"h": "935e5e5583a27524",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/creator-campaign-hq-in-claude.meta.json": {
+"h": "ee286cd928010f93",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/creator-fit-scorer.html": {
+"h": "d7b6024aa5696cf7",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/creator-fit-scorer.meta.json": {
+"h": "57c093d315d2f950",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/everyday-life-prompts.html": {
+"h": "188be59de96dabad",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/everyday-life-prompts.meta.json": {
+"h": "72145be240f2c3e4",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/gemini-inside-google.html": {
+"h": "55354288f441e7d1",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/gemini-inside-google.meta.json": {
+"h": "8f77a4addd0e0df1",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/get-cited-by-ai-answers.html": {
+"h": "7d13aed57e74aa52",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/get-cited-by-ai-answers.meta.json": {
+"h": "3d37157de0f4a71d",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/growth-experiment-lab.html": {
+"h": "9bf2782e318f5c70",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/growth-experiment-lab.meta.json": {
+"h": "97bcd3a7d1daa365",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/hidden-ai-features.html": {
+"h": "b9c48b98e3086a89",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/hidden-ai-features.meta.json": {
+"h": "6d9f637083532845",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/job-search-agent.html": {
+"h": "784a2c91e74bbdb3",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/job-search-agent.meta.json": {
+"h": "b71d504a79d02533",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/marketing-attribution-lab.html": {
+"h": "3c9ec5aa9becde1e",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/marketing-attribution-lab.meta.json": {
+"h": "25a53aea450577dd",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/one-line-follow-ups.html": {
+"h": "3ed28cb41aa3dc8c",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/one-line-follow-ups.meta.json": {
+"h": "e634b9eff5883fd7",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/pick-your-ai-by-job.html": {
+"h": "a9af6f6c7a11a9e1",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/pick-your-ai-by-job.meta.json": {
+"h": "80f982f8c512c8d5",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/projects-in-claude-and-chatgpt.html": {
+"h": "0dc8f67cbd33042c",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/projects-in-claude-and-chatgpt.meta.json": {
+"h": "47bd8c5e49217181",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/report-that-writes-itself.html": {
+"h": "e05b7d0a17aaa327",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/report-that-writes-itself.meta.json": {
+"h": "c6154dd367758ec0",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/side-project-prompt-chain.html": {
+"h": "2a95beb83ecba6ca",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/side-project-prompt-chain.meta.json": {
+"h": "e25dcd3fe16ab8b9",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/guides/youtube-research-with-claude.html": {
+"h": "b54a2783ccf96326",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/guides/youtube-research-with-claude.meta.json": {
+"h": "1e50a23e2faebe27",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/issues/issue-1.html": {
+"h": "e80d69e0e9ec12fd",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/issues/issue-1.meta.json": {
+"h": "9645fba2c5d85452",
+"s": "JSON: title, teaser, items",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/issues/issue-2.html": {
+"h": "e5d00d2b97d0d187",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/issues/issue-2.meta.json": {
+"h": "ca58479816ee6ebf",
+"s": "JSON: title, teaser, items",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/issues/issue-3.html": {
+"h": "a3bcd6f4fa3a276d",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/issues/issue-3.meta.json": {
+"h": "b114052561359561",
+"s": "JSON: title, teaser, items",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/issues/issue-4.html": {
+"h": "bc8d9de93ea9c69e",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/issues/issue-4.meta.json": {
+"h": "9a028946fa16e89b",
+"s": "JSON: title, teaser, items",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/issues/issue-5.html": {
+"h": "9f4726d1cbd09fd5",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/issues/issue-5.meta.json": {
+"h": "b2fd98e24f962306",
+"s": "JSON: title, teaser, items",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/long/issues/issue-6.html": {
+"h": "11913809b0b4ce22",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:src/long/issues/issue-6.meta.json": {
+"h": "63610baeb122f2fd",
+"s": "JSON: title, teaser, items",
+"t": [
+"json"
+]
+},
+"buildwithvish:src/portfolio-scene.js": {
+"h": "5798d3f41f03a9fb",
+"s": "Creates DealScene WebGL component rendering 850 deals orbiting 9 brand clusters with interactive controls.",
+"t": [
+"scene",
+"webgl",
+"threejs",
+"portfolio",
+"deals"
+]
+},
+"buildwithvish:src/scene.js": {
+"h": "703e041fa451c550",
+"s": "Creates Journey WebGL component with interactive cinematic scenes, modes, and visual effects using Three.js.",
+"t": [
+"scene",
+"webgl",
+"threejs",
+"journey",
+"interactive"
+]
+},
+"buildwithvish:src/sound.js": {
+"h": "f7cb665dad3140af",
+"s": "Creates a WebAudio-based ambient sound engine with depth filtering, reverb, and UI note synthesis.",
+"t": [
+"audio",
+"webaudio",
+"soundengine",
+"ambient",
+"javascript"
+]
+},
+"buildwithvish:src/style.css": {
+"h": "6a01e5e3bf51c30e",
+"s": "css file",
+"t": [
+"css"
+]
+},
+"buildwithvish:tools/longform/STYLE.md": {
+"h": "40821e262245c559",
+"s": "Specifies style and hard rules for rewriting long‑form pages into complete AI tutorials.",
+"t": [
+"writing",
+"styleguide",
+"tutorial",
+"markdown",
+"guidelines"
+]
+},
+"buildwithvish:tools/longform/check.js": {
+"h": "d249709e6571c477",
+"s": "Node linter for long‑form pages, enforcing dash, banned words, tag, and length rules.",
+"t": [
+"lint",
+"node",
+"validation",
+"markdown",
+"script"
+]
+},
+"buildwithvish:tools/longform/merge.py": {
+"h": "8b40eab51b054d50",
+"s": "Copies validated long‑form pages from out/ to src/long after linting.",
+"t": [
+"merge",
+"python",
+"automation",
+"filecopy",
+"build"
+]
+},
+"buildwithvish:tools/longform/out/creator-campaign-hq-in-claude.html": {
+"h": "935e5e5583a27524",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:tools/longform/out/creator-campaign-hq-in-claude.meta.json": {
+"h": "ee286cd928010f93",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:tools/longform/out/get-cited-by-ai-answers.html": {
+"h": "7d13aed57e74aa52",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:tools/longform/out/get-cited-by-ai-answers.meta.json": {
+"h": "3d37157de0f4a71d",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:tools/longform/out/youtube-research-with-claude.html": {
+"h": "b54a2783ccf96326",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"buildwithvish:tools/longform/out/youtube-research-with-claude.meta.json": {
+"h": "1e50a23e2faebe27",
+"s": "JSON: title, excerpt",
+"t": [
+"json"
+]
+},
+"buildwithvish:tools/longform/seed/creator-campaign-hq-in-claude.json": {
+"h": "7362786feb594f70",
+"s": "JSON: type",
+"t": [
+"json"
+]
+},
+"buildwithvish:tools/longform/seed/get-cited-by-ai-answers.json": {
+"h": "ec50200359af7919",
+"s": "JSON: type",
+"t": [
+"json"
+]
+},
+"buildwithvish:tools/longform/seed/youtube-research-with-claude.json": {
+"h": "7f96698962b5b4a4",
+"s": "JSON: type",
+"t": [
+"json"
+]
+},
+"buildwithvish:tools/longform/slugs.txt": {
+"h": "493d824bdd58daae",
+"s": "List of long‑form page slugs with types for build pipeline.",
+"t": [
+"slugs",
+"list",
+"metadata",
+"build"
+]
+},
+"buildwithvish:worker/index.js": {
+"h": "0d780112be2a4239",
+"s": "Cloudflare Worker router for /api/*, delegating to newsletter, partner, ig-webhook modules.",
+"t": [
+"worker",
+"cloudflare",
+"routing",
+"api",
+"node"
+]
+},
+"buildwithvish:wrangler.toml": {
+"h": "2542c89afaf17b00",
+"s": "Wrangler config for Cloudflare Worker build, assets, secrets, and deployment settings.",
+"t": [
+"wrangler",
+"cloudflare",
+"config",
+"deployment",
+"toml"
+]
+},
+"claude-skills:README.md": {
+"h": "d263473f3ea2d46b",
+"s": "README listing Claude Skills for creator marketing and job search with descriptions and links.",
+"t": [
+"readme",
+"skills",
+"claude",
+"marketing",
+"jobsearch"
+]
+},
+"claude-skills:skills/application-humanizer/SKILL.md": {
+"h": "8d7651c94f953b31",
+"s": "Edits application texts to sound like a specific person, enforcing hard rules, removing AI cues, preserving facts.",
+"t": [
+"humanize",
+"writing",
+"compliance",
+"ai-detection"
+]
+},
+"claude-skills:skills/application-pack/SKILL.md": {
+"h": "45d59930cd79c3e2",
+"s": "Generates full job application package (CV, cover letter, email, referrals, form answers) after verification, runs humanizer, waits for send.",
+"t": [
+"application",
+"automation",
+"recruitment",
+"packaging"
+]
+},
+"claude-skills:skills/creator-contract-review/SKILL.md": {
+"h": "39f674171517bb36",
+"s": "Extracts contract text, runs contract-check, prioritizes risky clauses, proposes fair wording, drafts 150-word negotiation email.",
+"t": [
+"contract",
+"review",
+"negotiation",
+"legal"
+]
+},
+"claude-skills:skills/creator-shortlist/SKILL.md": {
+"h": "6fa384a19dbdf61e",
+"s": "Collects creator data, scores with creator-fit, flags outliers, outputs shortlist with reasons and outreach drafts.",
+"t": [
+"influencer",
+"shortlist",
+"scoring",
+"outreach"
+]
+},
+"claude-skills:skills/designed-cv-tailor/SKILL.md": {
+"h": "e31511dced1a7ac5",
+"s": "Takes HTML CV and job ad, aligns phrasing, renders 2-page ATS-safe PDF, reports changes and gaps.",
+"t": [
+"cv",
+"design",
+"ats",
+"pdf",
+"tailoring"
+]
+},
+"claude-skills:skills/job-scout/SKILL.md": {
+"h": "c459e388e15ecc72",
+"s": "Queries ATS APIs, verifies live jobs, scores against profile with weighted rubric, outputs ranked table with lane and pay.",
+"t": [
+"jobsearch",
+"scouting",
+"scoring",
+"verification"
+]
+},
+"claude-skills:skills/linkedin-carousel/SKILL.md": {
+"h": "8d05182b7bc136ca",
+"s": "Creates LinkedIn carousel deck JSON, enforces style, writes copy per humanizer rules, renders PNG slides and PDF.",
+"t": [
+"linkedin",
+"carousel",
+"content",
+"design"
+]
+},
+"engine:.claude/settings.json": {
+"h": "544a65bbb8a10c54",
+"s": "JSON: env, enabledPlugins, extraKnownMarketplaces",
+"t": [
+"json"
+]
+},
+"engine:.mcp.json": {
+"h": "380b25c2e35d801f",
+"s": "JSON: mcpServers",
+"t": [
+"json"
+]
+},
+"engine:CLAUDE.md": {
+"h": "d82d65f452970d24",
+"s": "Specifies locked assets (aurora paper carousel, video motion template), voice API key, British English hooks ≤12 words, sourced claims.",
+"t": [
+"branding",
+"video",
+"voice",
+"rules"
+]
+},
+"engine:PLAYBOOK.md": {
+"h": "102193d02a695d8f",
+"s": "Defines 3‑post weekly system (Reel, Carousel A, Carousel B), theme buckets, metric goals, calendar location, updated rules.",
+"t": [
+"schedule",
+"instagram",
+"metrics"
+]
+},
+"engine:README.md": {
+"h": "b758e712e4307860",
+"s": "CLI renders LinkedIn carousel from JSON deck, enforces style rules, outputs PNG slides and PDF; can draft via Claude.",
+"t": [
+"cli",
+"carousel",
+"validation",
+"ai"
+]
+},
+"engine:brand-profile.md": {
+"h": "e68e4ae20d10ede3",
+"s": "Locks Vish brand profile: positioning, proof points, audience, content pillars, prohibits invented stats, personal contacts, past employer names.",
+"t": [
+"profile",
+"positioning",
+"rules"
+]
+},
+"engine:brand/avatar/README.md": {
+"h": "9ea573c5fec83df5",
+"s": "Guides fetching Vish 3D avatar v5, saving as brand/avatar/vish-3d.png, using \"mascot\" or \"hero\" fields, no endorsement misuse.",
+"t": [
+"avatar",
+"assets",
+"usage"
+]
+},
+"engine:brand/avatar/pack/Vish_Mascot_Claude_Guide.md": {
+"h": "041bc71bc0a9b552",
+"s": "Provides Claude prompt detailing mascot appearance, pose/gesture mapping, animation limits, and consistency checks for LinkedIn posts.",
+"t": [
+"mascot",
+"claude",
+"guidelines"
+]
+},
+"engine:brand/avatar/pack/asset_manifest.json": {
+"h": "0c557c983b60a195",
+"s": "JSON: name, version, format, assets, sheets",
+"t": [
+"json"
+]
+},
+"engine:brand/identity.md": {
+"h": "0d8d80b4cd4f1416",
+"s": "Defines token JSON, locked carousel visuals (tinted cards, #7F77DD, borders), fonts, palette merge, regenerated via make tokens.",
+"t": [
+"branding",
+"tokens",
+"style"
+]
+},
+"engine:brand/mascot/README.md": {
+"h": "4591e10dd0ab8110",
+"s": "Specifies Dot v4 mascot design, expression palette, rendering function premiumMascot, usage rules (no logos, secondary placement).",
+"t": [
+"mascot",
+"design",
+"rendering"
+]
+},
+"engine:brand/mascot/specs-v2/dot-glass-focused-cheer.json": {
+"h": "7eaa41c240a93b01",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v2/dot-glass-happy-wave.json": {
+"h": "5423aaf9293b759e",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v2/dot-glass-neutral-idle.json": {
+"h": "e96283b210aea472",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v2/dot-glass-surprised-idle.json": {
+"h": "87b495f847fb73a5",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v2/dot-glass-thinking-hold.json": {
+"h": "be880226d0ea5260",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v2/dot-glass-wink-point.json": {
+"h": "489c22f3a4f8a5f7",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v3/dot-cute-focused-cheer.json": {
+"h": "5ae3dc51a4147526",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v3/dot-cute-happy-wave.json": {
+"h": "06173910c362d020",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v3/dot-cute-neutral-idle.json": {
+"h": "cc6198b369ac6030",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v3/dot-cute-surprised-idle.json": {
+"h": "37fb22c87e4ec0e0",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v3/dot-cute-thinking-idle.json": {
+"h": "062923289fcc6a5a",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v3/dot-cute-wink-point.json": {
+"h": "637e35231eb56a99",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v4/dot-pro-focused-cheer.json": {
+"h": "379cf2f95d0f17a8",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v4/dot-pro-happy-wave.json": {
+"h": "a3caf0060305fb2b",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v4/dot-pro-neutral-idle.json": {
+"h": "8cfa59bde354008e",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v4/dot-pro-surprised-idle.json": {
+"h": "e91f210245307fd5",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v4/dot-pro-thinking-idle.json": {
+"h": "a3410191bfc153ab",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs-v4/dot-pro-wink-point.json": {
+"h": "268b15fc24c6c323",
+"s": "JSON: width, height, exposure, trim, camera, items",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs/dot-focused-cheer.json": {
+"h": "839b8582d630ac24",
+"s": "JSON: width, height, camera, items, trim",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs/dot-happy-wave.json": {
+"h": "3a030bb772169574",
+"s": "JSON: width, height, camera, items, trim",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs/dot-neutral-idle.json": {
+"h": "ba022c1444283b9a",
+"s": "JSON: width, height, camera, items, trim",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs/dot-surprised-idle.json": {
+"h": "1a2c4d541acfeebd",
+"s": "JSON: width, height, camera, items, trim",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs/dot-thinking-hold.json": {
+"h": "db190429bf42b709",
+"s": "JSON: width, height, camera, items, trim",
+"t": [
+"json"
+]
+},
+"engine:brand/mascot/specs/dot-wink-point.json": {
+"h": "03b3147ea39476c3",
+"s": "JSON: width, height, camera, items, trim",
+"t": [
+"json"
+]
+},
+"engine:brand/tokens.json": {
+"h": "2353a49a2579022c",
+"s": "JSON: $schema, version, status, sources, identity, color, type, layout_1080x1350",
+"t": [
+"json"
+]
+},
+"engine:carousel/__init__.py": {
+"h": "e3b0c44298fc1c14",
+"s": "Initializes carousel package, sets up module imports.",
+"t": [
+"package",
+"init",
+"carousel"
+]
+},
+"engine:carousel/ai.py": {
+"h": "9bffe6341e91da18",
+"s": "Generates LinkedIn carousel JSON via Claude using topic, notes, author.",
+"t": [
+"ai",
+"draft",
+"claude",
+"carousel",
+"generator"
+]
+},
+"engine:carousel/aurora.py": {
+"h": "32d18daa511fe111",
+"s": "Defines Aurora Glass theme variants and color palettes for carousel rendering.",
+"t": [
+"theme",
+"aurora",
+"colors",
+"carousel",
+"design"
+]
+},
+"engine:carousel/cli.py": {
+"h": "353249872b00d245",
+"s": "CLI tool for rendering decks to PNG/PDF and drafting decks via Claude.",
+"t": [
+"cli",
+"render",
+"draft",
+"carousel",
+"command"
+]
+},
+"engine:carousel/render.py": {
+"h": "c798ab6e92731b74",
+"s": "Renders carousel deck JSON to PNGs and PDF using Playwright; validates style rules.",
+"t": [
+"render",
+"pdf",
+"png",
+"deck",
+"validation"
+]
+},
+"engine:carousel/studio.py": {
+"h": "1a73b1dd7d7f82d1",
+"s": "Defines carousel studio themes, dimensions, fonts, and constants for rendering.",
+"t": [
+"studio",
+"themes",
+"constants",
+"carousel",
+"design"
+]
+},
+"engine:carousel/templates.py": {
+"h": "d8b8008025c28f4a",
+"s": "Provides slide template rendering functions and CSS for carousel slides.",
+"t": [
+"templates",
+"css",
+"rendering",
+"carousel",
+"design"
+]
+},
+"engine:content-pillars.md": {
+"h": "3df1298cfea19af6",
+"s": "Defines five content pillar series with formats and target topics for LinkedIn posts.",
+"t": [
+"content",
+"pillars",
+"series",
+"linkedin",
+"strategy"
+]
+},
+"engine:content/batch-01/BRIEF.md": {
+"h": "55ff8f6f25f5664a",
+"s": "Contains brief with hard rules, goals, and output format for LinkedIn content.",
+"t": [
+"brief",
+"content",
+"rules",
+"guidelines",
+"linkedin"
+]
+},
+"engine:content/batch-01/evergreen.json": {
+"h": "6f8b56b4ea31187d",
+"s": "JSON: list of 8",
+"t": [
+"json"
+]
+},
+"engine:content/batch-01/news.json": {
+"h": "3e698855f717d77e",
+"s": "JSON: list of 9",
+"t": [
+"json"
+]
+},
+"engine:content/batch-01e/evergreen.json": {
+"h": "6f8b56b4ea31187d",
+"s": "JSON: list of 8",
+"t": [
+"json"
+]
+},
+"engine:content/batch-01n/news.json": {
+"h": "2fb91215d610c085",
+"s": "JSON: list of 9",
+"t": [
+"json"
+]
+},
+"engine:content/batch-02/posts.json": {
+"h": "aa5605d2f43d638a",
+"s": "JSON: list of 6",
+"t": [
+"json"
+]
+},
+"engine:content/batch-03/posts.json": {
+"h": "096f663e768996b5",
+"s": "JSON: list of 6",
+"t": [
+"json"
+]
+},
+"engine:content/calendar.md": {
+"h": "cd77f6c8b55252a7",
+"s": "Lists LinkedIn posting schedule with file paths, hooks, and article links.",
+"t": [
+"posting",
+"linkedin",
+"schedule",
+"contentcalendar"
+]
+},
+"engine:content/calendar/2026-weeks-02-05.md": {
+"h": "291ccedb49bc4bef",
+"s": "Defines weekly posting schedule, resources, status, and filming plan for weeks 2-5.",
+"t": [
+"scheduling",
+"contentcalendar",
+"posting",
+"status",
+"filming"
+]
+},
+"engine:content/instagram/profile.md": {
+"h": "55c6a08c25a0bfab",
+"s": "Specifies Instagram profile name, bios, link, highlights, and pinned posts.",
+"t": [
+"instagram",
+"profile",
+"branding"
+]
+},
+"engine:content/instagram/week-01-post-kit.md": {
+"h": "5b92f3c0bc7f14cf",
+"s": "Describes Week 1 intro reel video, audio, captions, and posting instructions.",
+"t": [
+"instagram",
+"reel",
+"video",
+"postingkit"
+]
+},
+"engine:content/instagram/week-02-post-kit.md": {
+"h": "3cffe27dbf56d393",
+"s": "Defines Week 2 posting kit with carousel A, reel, carousel B, captions, status.",
+"t": [
+"instagram",
+"carousel",
+"reel",
+"postingkit"
+]
+},
+"engine:content/shoot-sheets/2026-10-week-1-intro.json": {
+"h": "cc1dda7b86beef56",
+"s": "JSON: legend, defaults, sheets",
+"t": [
+"json"
+]
+},
+"engine:content/shoot-sheets/2026-10-week-2.json": {
+"h": "5224164e794adcb3",
+"s": "JSON: legend, defaults, sheets, plan",
+"t": [
+"json"
+]
+},
+"engine:content/shoot-sheets/2026-10-week-3.json": {
+"h": "9d6ecfe610f4366b",
+"s": "JSON: legend, defaults, sheets",
+"t": [
+"json"
+]
+},
+"engine:content/shoot-sheets/2026-10-week-6-viral.json": {
+"h": "530cb01cf8225dbc",
+"s": "JSON: legend, defaults, sheets",
+"t": [
+"json"
+]
+},
+"engine:content/shoot-sheets/2026-10-weeks-1-5.json": {
+"h": "4d14459766bb6559",
+"s": "JSON: legend, defaults, sheets",
+"t": [
+"json"
+]
+},
+"engine:content/shorts/README.md": {
+"h": "111c22fd2c81e0e5",
+"s": "Specifies format, voice, sound, and script rules for animated Shorts.",
+"t": [
+"shorts",
+"format",
+"script",
+"voice"
+]
+},
+"engine:content/shorts/gpt-t/guide.md": {
+"h": "b1e7cff269e23d33",
+"s": "Explains GPT's T, paper, authors, patent, and impact.",
+"t": [
+"gpt",
+"transformer",
+"ai",
+"guide"
+]
+},
+"engine:content/shorts/gpt-t/script.json": {
+"h": "cc621dc9baabcfdc",
+"s": "JSON: slug, series, episode, template, renderer, voice, hook_type, lines",
+"t": [
+"json"
+]
+},
+"engine:content/shorts/hit-send/guide.md": {
+"h": "29574d2508866659",
+"s": "Explains ChatGPT request flow, tokens, cost, and usage tips.",
+"t": [
+"chatgpt",
+"tokens",
+"cost",
+"guide"
+]
+},
+"engine:content/shorts/hit-send/script.json": {
+"h": "a6767cd4bf5faa2f",
+"s": "JSON: slug, series, episode, template, voice, lines, facts, publish",
+"t": [
+"json"
+]
+},
+"engine:docs/automation-options.md": {
+"h": "84a7723e2826ae3a",
+"s": "Lists LinkedIn publishing options, approval steps, costs, and recommends Gmail+Todoist for zero-setup posting.",
+"t": [
+"automation",
+"publishing",
+"linkedin",
+"approval",
+"gmail"
+]
+},
+"engine:docs/backfill-plan.md": {
+"h": "ad270b95195e658e",
+"s": "Specifies backfill workflow: verify facts, upgrade pages, draft Netlify preview, redesign carousel, QA, review pack.",
+"t": [
+"backfill",
+"workflow",
+"pages",
+"netlify",
+"qa"
+]
+},
+"engine:docs/capabilities.md": {
+"h": "63e1dc60c8e303e3",
+"s": "Catalogs available API connectors, test status, and pipeline usage for content automation.",
+"t": [
+"connectors",
+"api",
+"inventory",
+"automation",
+"status"
+]
+},
+"engine:docs/cover-psychology.md": {
+"h": "a04e7c4fc14a37d2",
+"s": "Defines cover image rules: hero action, context symbol, face emotion, focal point, curiosity gap.",
+"t": [
+"cover",
+"design",
+"rules",
+"psychology",
+"visuals"
+]
+},
+"engine:docs/design-library/README-source.md": {
+"h": "340d0bbeb4f1d22b",
+"s": "Provides overview of DESIGN.md collection, badges, and link to design library repository.",
+"t": [
+"design",
+"library",
+"readme",
+"overview",
+"badges"
+]
+},
+"engine:docs/design-library/airbnb/DESIGN.md": {
+"h": "add34130d67209ad",
+"s": "Describes Airbnb-inspired design system: colors, typography, component styles, and brand guidelines.",
+"t": [
+"design",
+"system",
+"airbnb",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/airbnb/README.md": {
+"h": "9ecfc8b2441c9d0e",
+"s": "Links to Airbnb design system details, previews, and download options on getdesign.md.",
+"t": [
+"readme",
+"design",
+"airbnb",
+"link",
+"preview"
+]
+},
+"engine:docs/design-library/airtable/DESIGN.md": {
+"h": "1d225e511213044d",
+"s": "Defines Airtable-inspired color palette, typography, and UI component styles for editorial workflow interface.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"airtable"
+]
+},
+"engine:docs/design-library/airtable/README.md": {
+"h": "46e316cd04613860",
+"s": "Redirects to external Airtable design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"documentation",
+"airtable"
+]
+},
+"engine:docs/design-library/apple/DESIGN.md": {
+"h": "83fbc614443a9b3d",
+"s": "Specifies Apple-inspired color scheme, typography, and product tile UI for photography-first interface.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"apple"
+]
+},
+"engine:docs/design-library/apple/README.md": {
+"h": "6fa6a25abaaac3ae",
+"s": "Links to external Apple design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"documentation",
+"apple"
+]
+},
+"engine:docs/design-library/binance/DESIGN.md": {
+"h": "378ff97d568ccbc3",
+"s": "Defines Binance-inspired colors, typography, and trading UI for financial platform interface.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"binance"
+]
+},
+"engine:docs/design-library/binance/README.md": {
+"h": "b0ae7e965dd13aa5",
+"s": "Points to external Binance design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"documentation",
+"binance"
+]
+},
+"engine:docs/design-library/bmw-m/DESIGN.md": {
+"h": "824a1707c0a8d160",
+"s": "Defines BMW-M design tokens: version, color palette, typography styles for UI rendering.",
+"t": [
+"bmw",
+"design",
+"tokens",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/bmw-m/README.md": {
+"h": "47f448fc683a36f9",
+"s": "Points to external BMW-M design documentation URL.",
+"t": [
+"bmw",
+"readme",
+"link",
+"documentation"
+]
+},
+"engine:docs/design-library/bmw/DESIGN.md": {
+"h": "b7268279e7c98e85",
+"s": "Specifies BMW-inspired colors, typography, and card-based model showcase UI.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"bmw"
+]
+},
+"engine:docs/design-library/bmw/README.md": {
+"h": "efeebbadb42e9d50",
+"s": "Directs to external BMW design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"documentation",
+"bmw"
+]
+},
+"engine:docs/design-library/bugatti/DESIGN.md": {
+"h": "375f0a20ada88cde",
+"s": "Defines Bugatti design tokens: version, color palette, typography styles for UI rendering.",
+"t": [
+"bugatti",
+"design",
+"tokens",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/bugatti/README.md": {
+"h": "77787b2c529521eb",
+"s": "Points to external Bugatti design documentation URL.",
+"t": [
+"bugatti",
+"readme",
+"link",
+"documentation"
+]
+},
+"engine:docs/design-library/cal/DESIGN.md": {
+"h": "8cd21b7d67e94c89",
+"s": "Defines Cal.com design tokens: version, color palette, typography styles for UI rendering.",
+"t": [
+"cal",
+"design",
+"tokens",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/cal/README.md": {
+"h": "93eee4273208ac6e",
+"s": "Points to external Cal design documentation URL.",
+"t": [
+"cal",
+"readme",
+"link",
+"documentation"
+]
+},
+"engine:docs/design-library/claude/DESIGN.md": {
+"h": "3d972f34f8d4f33b",
+"s": "Defines Claude design tokens: version, color palette, typography styles for UI rendering.",
+"t": [
+"claude",
+"design",
+"tokens",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/claude/README.md": {
+"h": "74852544fa965def",
+"s": "Points to external Claude design documentation URL.",
+"t": [
+"claude",
+"readme",
+"link",
+"documentation"
+]
+},
+"engine:docs/design-library/clay/DESIGN.md": {
+"h": "1abd803a207fbe95",
+"s": "Defines Clay design system colors, typography, and style guidelines for UI components.",
+"t": [
+"design",
+"clay",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/clay/README.md": {
+"h": "f6e6af4bfb91bc92",
+"s": "Points to external Clay design system documentation and preview resources.",
+"t": [
+"readme",
+"clay",
+"docs"
+]
+},
+"engine:docs/design-library/clickhouse/DESIGN.md": {
+"h": "50987e29b603cc75",
+"s": "Specifies ClickHouse design system colors, typography, and UI element styles.",
+"t": [
+"design",
+"clickhouse",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/clickhouse/README.md": {
+"h": "7867e20def387ee9",
+"s": "Links to external ClickHouse design system documentation and preview pages.",
+"t": [
+"readme",
+"clickhouse",
+"docs"
+]
+},
+"engine:docs/design-library/cohere/DESIGN.md": {
+"h": "1c49a5a5f88d4384",
+"s": "Defines Cohere design system colors, typography, and rounded corner values.",
+"t": [
+"design",
+"cohere",
+"colors",
+"typography",
+"rounded"
+]
+},
+"engine:docs/design-library/cohere/README.md": {
+"h": "94c3761864f3a52a",
+"s": "Directs to external Cohere design system documentation and preview resources.",
+"t": [
+"readme",
+"cohere",
+"docs"
+]
+},
+"engine:docs/design-library/coinbase/DESIGN.md": {
+"h": "c8c67800dd7f58fc",
+"s": "Specifies Coinbase design system colors, typography, and semantic color usage.",
+"t": [
+"design",
+"coinbase",
+"colors",
+"typography",
+"semantic"
+]
+},
+"engine:docs/design-library/coinbase/README.md": {
+"h": "1128abcfa578c532",
+"s": "Links to external Coinbase design system documentation and preview pages.",
+"t": [
+"readme",
+"coinbase",
+"docs"
+]
+},
+"engine:docs/design-library/composio/DESIGN.md": {
+"h": "e7db886dabecca61",
+"s": "Defines design tokens for Composio brand: colors, typography, spacing, components.",
+"t": [
+"design",
+"tokens",
+"colors",
+"typography",
+"components"
+]
+},
+"engine:docs/design-library/composio/README.md": {
+"h": "9094d534cca5b9dc",
+"s": "Redirects to external design system docs for Composio brand.",
+"t": [
+"documentation",
+"link",
+"brand"
+]
+},
+"engine:docs/design-library/cursor/DESIGN.md": {
+"h": "a3db9b3019dc2f51",
+"s": "Defines design tokens for Cursor brand: colors, typography, spacing, components.",
+"t": [
+"design",
+"tokens",
+"colors",
+"typography",
+"components"
+]
+},
+"engine:docs/design-library/cursor/README.md": {
+"h": "0072af696dbfa90e",
+"s": "Redirects to external design system docs for Cursor brand.",
+"t": [
+"documentation",
+"link",
+"brand"
+]
+},
+"engine:docs/design-library/dell-1996/DESIGN.md": {
+"h": "e186c614b1223fe7",
+"s": "Defines design tokens for Dell 1996 brand: colors, typography, spacing, components.",
+"t": [
+"design",
+"tokens",
+"colors",
+"typography",
+"components"
+]
+},
+"engine:docs/design-library/dell-1996/README.md": {
+"h": "ac1d0377c827b71b",
+"s": "Redirects to external design system docs for Dell 1996 brand.",
+"t": [
+"documentation",
+"link",
+"brand"
+]
+},
+"engine:docs/design-library/elevenlabs/DESIGN.md": {
+"h": "3b359acfaafadbb4",
+"s": "Defines design tokens for ElevenLabs brand: colors, typography, spacing, components.",
+"t": [
+"design",
+"tokens",
+"colors",
+"typography",
+"components"
+]
+},
+"engine:docs/design-library/elevenlabs/README.md": {
+"h": "644b6072116877f7",
+"s": "Redirects to external design system docs for ElevenLabs brand.",
+"t": [
+"documentation",
+"link",
+"brand"
+]
+},
+"engine:docs/design-library/expo/DESIGN.md": {
+"h": "1be7e129b6f75afa",
+"s": "defines Expo design tokens: color palette, typography sizes, weights, and spacing for marketing site components",
+"t": [
+"expo",
+"design",
+"tokens",
+"color",
+"typography"
+]
+},
+"engine:docs/design-library/expo/README.md": {
+"h": "0858578221d4e8c6",
+"s": "provides link to Expo design system markdown and preview URLs on getdesign.md",
+"t": [
+"expo",
+"readme",
+"reference",
+"link"
+]
+},
+"engine:docs/design-library/ferrari/DESIGN.md": {
+"h": "1199e2832641cac7",
+"s": "defines Ferrari design tokens: colors, typography, spacing ladder, and brand guidelines for luxury automotive site",
+"t": [
+"ferrari",
+"design",
+"tokens",
+"color",
+"typography"
+]
+},
+"engine:docs/design-library/ferrari/README.md": {
+"h": "c810f3335aa5c550",
+"s": "provides link to Ferrari design system markdown and preview pages on getdesign.md",
+"t": [
+"ferrari",
+"readme",
+"reference",
+"link"
+]
+},
+"engine:docs/design-library/figma/DESIGN.md": {
+"h": "716ce8431f47eb8b",
+"s": "defines Figma design tokens: monochrome palette, pastel blocks, typography specs, and UI component styles",
+"t": [
+"figma",
+"design",
+"tokens",
+"color",
+"typography"
+]
+},
+"engine:docs/design-library/figma/README.md": {
+"h": "77274b0af64b6467",
+"s": "provides link to Figma design system markdown and preview resources on getdesign.md",
+"t": [
+"figma",
+"readme",
+"reference",
+"link"
+]
+},
+"engine:docs/design-library/framer/DESIGN.md": {
+"h": "a5d47dddacf5a045",
+"s": "defines Framer design tokens: dark palette, accent blue, gradient colors, typography, and surface styles",
+"t": [
+"framer",
+"design",
+"tokens",
+"color",
+"typography"
+]
+},
+"engine:docs/design-library/framer/README.md": {
+"h": "830726692635b292",
+"s": "provides link to Framer design system markdown and preview examples on getdesign.md",
+"t": [
+"framer",
+"readme",
+"reference",
+"link"
+]
+},
+"engine:docs/design-library/hashicorp/DESIGN.md": {
+"h": "d2df9be72d867e48",
+"s": "Defines color palette, typography, and card styles for HashiCorp design system.",
+"t": [
+"design",
+"colors",
+"typography",
+"cards",
+"system"
+]
+},
+"engine:docs/design-library/hashicorp/README.md": {
+"h": "877d3ceb30ab3384",
+"s": "Redirects to external HashiCorp design system documentation and preview links.",
+"t": [
+"readme",
+"redirect",
+"docs",
+"external"
+]
+},
+"engine:docs/design-library/hp/DESIGN.md": {
+"h": "4c9a248046684bdd",
+"s": "Specifies colors, typography, and card styling for HP-inspired enterprise design system.",
+"t": [
+"design",
+"colors",
+"typography",
+"cards",
+"hp"
+]
+},
+"engine:docs/design-library/hp/README.md": {
+"h": "c91120418c348e6c",
+"s": "Links to external HP design system documentation and preview resources.",
+"t": [
+"readme",
+"redirect",
+"docs",
+"external",
+"hp"
+]
+},
+"engine:docs/design-library/ibm/DESIGN.md": {
+"h": "46f6fd65b5e7524f",
+"s": "Defines IBM Carbon-inspired colors, typography, and flat card styles for enterprise marketing.",
+"t": [
+"design",
+"colors",
+"typography",
+"cards",
+"ibm"
+]
+},
+"engine:docs/design-library/ibm/README.md": {
+"h": "bca71d91d58dd37c",
+"s": "Points to external IBM design system documentation and preview links.",
+"t": [
+"readme",
+"redirect",
+"docs",
+"external",
+"ibm"
+]
+},
+"engine:docs/design-library/intercom/DESIGN.md": {
+"h": "962be23cd947e87a",
+"s": "Outlines colors, typography, and card styles for Intercom's Fin Orange CTA design system.",
+"t": [
+"design",
+"colors",
+"typography",
+"cards",
+"intercom"
+]
+},
+"engine:docs/design-library/intercom/README.md": {
+"h": "b056a73ebe5fd27f",
+"s": "Links to external Intercom design system documentation and preview resources.",
+"t": [
+"readme",
+"redirect",
+"docs",
+"external",
+"intercom"
+]
+},
+"engine:docs/design-library/kraken/DESIGN.md": {
+"h": "41bcbd5642c926a5",
+"s": "Defines Kraken design system colors, typography, and component styles for web UI.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"kraken"
+]
+},
+"engine:docs/design-library/kraken/README.md": {
+"h": "f36008177d1997d3",
+"s": "Points to external Kraken design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"documentation",
+"kraken"
+]
+},
+"engine:docs/design-library/lamborghini/DESIGN.md": {
+"h": "9aa68c53b481a0be",
+"s": "Specifies Lamborghini design system with black surfaces, gold accents, custom LamboType font, and minimal navigation.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"lamborghini"
+]
+},
+"engine:docs/design-library/lamborghini/README.md": {
+"h": "ef3303c6992ca649",
+"s": "Links to external Lamborghini design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"documentation",
+"lamborghini"
+]
+},
+"engine:docs/design-library/linear.app/DESIGN.md": {
+"h": "30bd30e72c48a16e",
+"s": "Defines Linear design system colors, typography, and component styles for dark product UI.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"linear"
+]
+},
+"engine:docs/design-library/linear.app/README.md": {
+"h": "43fe138442be43a9",
+"s": "Links to external Linear design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"documentation",
+"linear"
+]
+},
+"engine:docs/design-library/lovable/DESIGN.md": {
+"h": "92790895c8331040",
+"s": "Specifies Lovable design system with warm parchment background, Camera Plain font, opacity color model, and pill buttons.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"lovable"
+]
+},
+"engine:docs/design-library/lovable/README.md": {
+"h": "621ddb5b3fe42f53",
+"s": "Links to external Lovable design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"documentation",
+"lovable"
+]
+},
+"engine:docs/design-library/mastercard/DESIGN.md": {
+"h": "e76ceaa187f43bd2",
+"s": "Defines Mastercard UI theme: cream canvas, 40‑99px pill radii, circular portraits with orange arcs, MarkForMC typography.",
+"t": [
+"design",
+"theme",
+"visual",
+"mastercard",
+"ui"
+]
+},
+"engine:docs/design-library/mastercard/README.md": {
+"h": "2492927f56410b83",
+"s": "Provides link to full Mastercard design system documentation on getdesign.md.",
+"t": [
+"reference",
+"link",
+"mastercard",
+"docs"
+]
+},
+"engine:docs/design-library/meta/DESIGN.md": {
+"h": "306dfad97c006d47",
+"s": "Specifies Meta design system: white canvas, cobalt blue accents, 100px pill buttons, Optimistic VF typography hierarchy.",
+"t": [
+"meta",
+"design",
+"colors",
+"typography",
+"ui"
+]
+},
+"engine:docs/design-library/meta/README.md": {
+"h": "2767f68fcae1e4d8",
+"s": "Points to Meta design system details hosted at getdesign.md.",
+"t": [
+"reference",
+"meta",
+"docs",
+"link"
+]
+},
+"engine:docs/design-library/minimax/DESIGN.md": {
+"h": "2658b96488bb6297",
+"s": "Outlines Minimax UI: black‑pill CTAs, gradient product cards, DM Sans fonts, 80px hero, three‑column docs layout.",
+"t": [
+"minimax",
+"design",
+"ui",
+"layout",
+"typography"
+]
+},
+"engine:docs/design-library/minimax/README.md": {
+"h": "9a79fe6c74659152",
+"s": "Links to Minimax design system page on getdesign.md for previews and downloads.",
+"t": [
+"reference",
+"minimax",
+"docs",
+"link"
+]
+},
+"engine:docs/design-library/mintlify/DESIGN.md": {
+"h": "754ffcf35dcd39ef",
+"s": "Defines Mintlify design: sky‑gradient heroes, Inter UI, Geist Mono code, green accent, black‑pill primary, three‑column docs.",
+"t": [
+"mintlify",
+"design",
+"ui",
+"typography",
+"layout"
+]
+},
+"engine:docs/design-library/mintlify/README.md": {
+"h": "c63066c714bc7deb",
+"s": "Provides URL to Mintlify design system on getdesign.md with previews and dark mode examples.",
+"t": [
+"reference",
+"mintlify",
+"docs",
+"link"
+]
+},
+"engine:docs/design-library/miro/DESIGN.md": {
+"h": "87c71f76297277d6",
+"s": "Specifies Miro brand colors, typography, and layout rules for product pages.",
+"t": [
+"miro",
+"design",
+"color",
+"typography",
+"layout"
+]
+},
+"engine:docs/design-library/miro/README.md": {
+"h": "dac0fbe8d79c1133",
+"s": "Links to Miro design system documentation and preview resources.",
+"t": [
+"miro",
+"readme",
+"documentation"
+]
+},
+"engine:docs/design-library/mistral.ai/DESIGN.md": {
+"h": "40e2c692d72c54ba",
+"s": "Defines Mistral AI brand colors, typography, and page coverage rules.",
+"t": [
+"mistral",
+"design",
+"color",
+"typography",
+"coverage"
+]
+},
+"engine:docs/design-library/mistral.ai/README.md": {
+"h": "fc64804451217a6b",
+"s": "Links to Mistral AI design system documentation and preview resources.",
+"t": [
+"mistral",
+"readme",
+"documentation"
+]
+},
+"engine:docs/design-library/mongodb/DESIGN.md": {
+"h": "4523f10efd5ccd46",
+"s": "Specifies MongoDB brand colors, typography, and product page rules.",
+"t": [
+"mongodb",
+"design",
+"color",
+"typography",
+"product"
+]
+},
+"engine:docs/design-library/mongodb/README.md": {
+"h": "a8e5c19e78d4501b",
+"s": "Links to MongoDB design system documentation and preview resources.",
+"t": [
+"mongodb",
+"readme",
+"documentation"
+]
+},
+"engine:docs/design-library/nike/DESIGN.md": {
+"h": "d2a3d363665839e2",
+"s": "Defines Nike brand colors, typography, and product card layout rules.",
+"t": [
+"nike",
+"design",
+"color",
+"typography",
+"layout"
+]
+},
+"engine:docs/design-library/nike/README.md": {
+"h": "2c82c4c9c8826f3e",
+"s": "Links to Nike design system documentation and preview resources.",
+"t": [
+"nike",
+"readme",
+"documentation"
+]
+},
+"engine:docs/design-library/nintendo-2001/DESIGN.md": {
+"h": "9630af17090d5c39",
+"s": "Defines 2001 Nintendo.com design palette, typography, and UI component rules.",
+"t": [
+"design",
+"colors",
+"typography",
+"ui",
+"nintendo"
+]
+},
+"engine:docs/design-library/nintendo-2001/README.md": {
+"h": "3b084834b5996b94",
+"s": "Links to Nintendo 2001 design system docs, previews, dark mode, and download options.",
+"t": [
+"readme",
+"link",
+"design",
+"nintendo",
+"documentation"
+]
+},
+"engine:docs/design-library/notion/DESIGN.md": {
+"h": "fa9d6e78216d8f3e",
+"s": "Specifies Notion-inspired design system colors, typography, and component guidelines.",
+"t": [
+"design",
+"colors",
+"typography",
+"notion",
+"ui"
+]
+},
+"engine:docs/design-library/notion/README.md": {
+"h": "e01d55b42e527327",
+"s": "Provides link to Notion design system docs, previews, dark mode, and downloads.",
+"t": [
+"readme",
+"link",
+"design",
+"notion",
+"documentation"
+]
+},
+"engine:docs/design-library/nvidia/DESIGN.md": {
+"h": "d649be85daf075c9",
+"s": "Outlines NVIDIA design system colors, typography, and strict angular UI rules.",
+"t": [
+"design",
+"colors",
+"typography",
+"nvidia",
+"ui"
+]
+},
+"engine:docs/design-library/nvidia/README.md": {
+"h": "df7b390a846fee31",
+"s": "Links to NVIDIA design system docs, previews, dark mode, and download options.",
+"t": [
+"readme",
+"link",
+"design",
+"nvidia",
+"documentation"
+]
+},
+"engine:docs/design-library/ollama/DESIGN.md": {
+"h": "3f36f897e5aad870",
+"s": "Defines Ollama minimal design system with colors, typography, and pill-shaped components.",
+"t": [
+"design",
+"colors",
+"typography",
+"ollama",
+"ui"
+]
+},
+"engine:docs/design-library/ollama/README.md": {
+"h": "5bb21fbede750dc1",
+"s": "Provides link to Ollama design system docs, previews, dark mode, and downloads.",
+"t": [
+"readme",
+"link",
+"design",
+"ollama",
+"documentation"
+]
+},
+"engine:docs/design-library/opencode.ai/DESIGN.md": {
+"h": "d1a8893c4b8ac90b",
+"s": "Defines terminal-native marketing UI colors, typography, and layout rules for OpenCode design system.",
+"t": [
+"design",
+"terminal",
+"colors",
+"typography",
+"ui"
+]
+},
+"engine:docs/design-library/opencode.ai/README.md": {
+"h": "5f594221749829b6",
+"s": "Redirects to external OpenCode design system documentation and preview links.",
+"t": [
+"readme",
+"redirect",
+"documentation",
+"opencode"
+]
+},
+"engine:docs/design-library/pinterest/DESIGN.md": {
+"h": "26a202fd244e9213",
+"s": "Specifies Pinterest-inspired photography discovery UI colors, typography, and masonry grid layout.",
+"t": [
+"design",
+"pinterest",
+"photography",
+"masonry",
+"ui"
+]
+},
+"engine:docs/design-library/pinterest/README.md": {
+"h": "c992bf9db3153edb",
+"s": "Links to Pinterest design system documentation and preview resources.",
+"t": [
+"readme",
+"redirect",
+"pinterest",
+"documentation"
+]
+},
+"engine:docs/design-library/playstation/DESIGN.md": {
+"h": "2a56c109af6cb847",
+"s": "Defines PlayStation marketing UI colors, typography, and three-surface layout rules.",
+"t": [
+"design",
+"playstation",
+"ui",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/playstation/README.md": {
+"h": "c70c2adbfdeaf044",
+"s": "Provides link to PlayStation design system documentation and previews.",
+"t": [
+"readme",
+"redirect",
+"playstation",
+"documentation"
+]
+},
+"engine:docs/design-library/posthog/DESIGN.md": {
+"h": "01f497f751d56296",
+"s": "Specifies PostHog UI colors, typography, and playful mascot illustration rules.",
+"t": [
+"design",
+"posthog",
+"ui",
+"colors",
+"illustration"
+]
+},
+"engine:docs/design-library/posthog/README.md": {
+"h": "4f9e83198dd71e15",
+"s": "Links to PostHog design system documentation and preview resources.",
+"t": [
+"readme",
+"redirect",
+"posthog",
+"documentation"
+]
+},
+"engine:docs/design-library/raycast/DESIGN.md": {
+"h": "6e2c5137e4d914b7",
+"s": "Defines Raycast marketing design: dark canvas, hairline borders, Inter ss03 typography, white CTA pill, accent colors, hero stripe gradient.",
+"t": [
+"raycast",
+"design",
+"colors",
+"typography",
+"ui"
+]
+},
+"engine:docs/design-library/raycast/README.md": {
+"h": "b1bb03b738376178",
+"s": "Provides link to Raycast design system documentation and preview resources on getdesign.md.",
+"t": [
+"raycast",
+"readme",
+"documentation",
+"link"
+]
+},
+"engine:docs/design-library/renault/DESIGN.md": {
+"h": "b343df9a67e57f24",
+"s": "Specifies Renault design: black‑white canvas, Sunlight Yellow accent, NouvelR typeface, diamond logo, tile grids, configurator cards.",
+"t": [
+"renault",
+"design",
+"colors",
+"typography",
+"branding"
+]
+},
+"engine:docs/design-library/renault/README.md": {
+"h": "1ccc523d63f68134",
+"s": "Links to Renault design system details, previews, and download options on getdesign.md.",
+"t": [
+"renault",
+"readme",
+"documentation",
+"link"
+]
+},
+"engine:docs/design-library/replicate/DESIGN.md": {
+"h": "c22062d7b4174bf9",
+"s": "Defines Replicate marketing design: cream canvas, hot‑orange accent, rb‑freigeist‑neue large typography, code wells, hand‑drawn diagrams.",
+"t": [
+"replicate",
+"design",
+"colors",
+"typography",
+"ui"
+]
+},
+"engine:docs/design-library/replicate/README.md": {
+"h": "aa1ac1f145ae0ab4",
+"s": "Provides link to Replicate design system, previews, and download options on getdesign.md.",
+"t": [
+"replicate",
+"readme",
+"documentation",
+"link"
+]
+},
+"engine:docs/design-library/resend/DESIGN.md": {
+"h": "99536f1b2380511a",
+"s": "Specifies Resend design: black canvas, off‑white text, Domaine Display headline, ABC Favorit body, gradient glows, rounded containers.",
+"t": [
+"resend",
+"design",
+"colors",
+"typography",
+"ui"
+]
+},
+"engine:docs/design-library/resend/README.md": {
+"h": "d0879d5652fe2fb8",
+"s": "Links to Resend design system, previews, and download options on getdesign.md.",
+"t": [
+"resend",
+"readme",
+"documentation",
+"link"
+]
+},
+"engine:docs/design-library/revolut/DESIGN.md": {
+"h": "b7fa8473315541f5",
+"s": "Specifies Revolut brand colors, typography, and UI component styles for marketing surfaces.",
+"t": [
+"design",
+"colors",
+"typography",
+"revolut",
+"ui"
+]
+},
+"engine:docs/design-library/revolut/README.md": {
+"h": "637421087e2cde5d",
+"s": "Links to external Revolut design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"revolut",
+"design"
+]
+},
+"engine:docs/design-library/runwayml/DESIGN.md": {
+"h": "b0e69bf643f89bb5",
+"s": "Describes Runway's cinematic UI theme, single typeface, dark palette, and visual-first component guidelines.",
+"t": [
+"design",
+"runway",
+"typography",
+"dark",
+"visual"
+]
+},
+"engine:docs/design-library/runwayml/README.md": {
+"h": "75d308f08c00cb48",
+"s": "Provides external link to Runway design system documentation and preview examples.",
+"t": [
+"readme",
+"link",
+"runway",
+"design"
+]
+},
+"engine:docs/design-library/sanity/DESIGN.md": {
+"h": "ea1c442de2b23443",
+"s": "Defines Sanity's dark command-center theme, dual typefaces, monochrome palette, and neon accent guidelines.",
+"t": [
+"design",
+"sanity",
+"typography",
+"dark",
+"accent"
+]
+},
+"engine:docs/design-library/sanity/README.md": {
+"h": "f4ebce407039d77c",
+"s": "Links to Sanity design system documentation and preview resources.",
+"t": [
+"readme",
+"link",
+"sanity",
+"design"
+]
+},
+"engine:docs/design-library/sentry/DESIGN.md": {
+"h": "655c91d7d23b5e86",
+"s": "Outlines Sentry-inspired dark-purple UI, lime accents, custom display font, and pricing surface rules.",
+"t": [
+"design",
+"sentry",
+"colors",
+"typography",
+"ui"
+]
+},
+"engine:docs/design-library/sentry/README.md": {
+"h": "67139b87279a26be",
+"s": "Provides link to Sentry design system documentation and preview examples.",
+"t": [
+"readme",
+"link",
+"sentry",
+"design"
+]
+},
+"engine:docs/design-library/shopify/DESIGN.md": {
+"h": "495e89b8d0a1848d",
+"s": "Defines Shopify-inspired design system colors, typography, and canvas rules for marketing and transactional pages.",
+"t": [
+"design",
+"shopify",
+"colors",
+"typography",
+"system"
+]
+},
+"engine:docs/design-library/shopify/README.md": {
+"h": "3fbb0382b19c051f",
+"s": "Links to external Shopify design system documentation and preview resources.",
+"t": [
+"readme",
+"shopify",
+"documentation",
+"link"
+]
+},
+"engine:docs/design-library/slack/DESIGN.md": {
+"h": "03cb243015a2e11d",
+"s": "Specifies Slack-inspired design system colors, typography, and component styles for messaging UI.",
+"t": [
+"design",
+"slack",
+"colors",
+"typography",
+"components"
+]
+},
+"engine:docs/design-library/spacex/DESIGN.md": {
+"h": "495450c79faab54d",
+"s": "Defines SpaceX-inspired design system colors, typography, rounded corners, spacing, and button styles.",
+"t": [
+"design",
+"spacex",
+"colors",
+"typography",
+"components"
+]
+},
+"engine:docs/design-library/spacex/README.md": {
+"h": "f0331465e7fd7fb6",
+"s": "Links to external SpaceX design system documentation and preview resources.",
+"t": [
+"readme",
+"spacex",
+"documentation",
+"link"
+]
+},
+"engine:docs/design-library/spotify/DESIGN.md": {
+"h": "72e964a6cf551d06",
+"s": "Describes Spotify-inspired design system with dark theme, green accent, circular controls, and pill buttons.",
+"t": [
+"design",
+"spotify",
+"colors",
+"typography",
+"components"
+]
+},
+"engine:docs/design-library/spotify/README.md": {
+"h": "f979ce594d38626f",
+"s": "Links to external Spotify design system documentation and preview resources.",
+"t": [
+"readme",
+"spotify",
+"documentation",
+"link"
+]
+},
+"engine:docs/design-library/starbucks/DESIGN.md": {
+"h": "e20338ee10226c63",
+"s": "Defines Starbucks-inspired design system colors, typography, and rounded geometry for retail UI.",
+"t": [
+"design",
+"starbucks",
+"colors",
+"typography",
+"components"
+]
+},
+"engine:docs/design-library/starbucks/README.md": {
+"h": "286bd1fcccdf82a5",
+"s": "Links to Starbucks design system, previews, dark mode, and download options on getdesign.md.",
+"t": [
+"design",
+"starbucks",
+"readme",
+"link"
+]
+},
+"engine:docs/design-library/stripe/DESIGN.md": {
+"h": "5c8806b7dd3e0c25",
+"s": "Defines Stripe-inspired design system colors, typography, and style guidelines.",
+"t": [
+"stripe",
+"design",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/stripe/README.md": {
+"h": "7fa90a535f826982",
+"s": "Links to Stripe design system, previews, dark mode, and download options on getdesign.md.",
+"t": [
+"stripe",
+"readme",
+"link"
+]
+},
+"engine:docs/design-library/supabase/DESIGN.md": {
+"h": "f57287d7f44d59e8",
+"s": "Specifies Supabase-inspired design system colors, typography, and UI style rules.",
+"t": [
+"supabase",
+"design",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/supabase/README.md": {
+"h": "9eb9324b23ab739d",
+"s": "Links to Supabase design system, previews, dark mode, and download options on getdesign.md.",
+"t": [
+"supabase",
+"readme",
+"link"
+]
+},
+"engine:docs/design-library/superhuman/DESIGN.md": {
+"h": "3640298bd2957aee",
+"s": "Defines Superhuman-inspired design system colors, typography, and UI style guidelines.",
+"t": [
+"superhuman",
+"design",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/superhuman/README.md": {
+"h": "61c1deedea1d8429",
+"s": "Links to Superhuman design system, previews, dark mode, and download options on getdesign.md.",
+"t": [
+"superhuman",
+"readme",
+"link"
+]
+},
+"engine:docs/design-library/tesla/DESIGN.md": {
+"h": "19f2f7e6073d708f",
+"s": "Describes Tesla-inspired design system: minimal UI, single blue CTA, Universal Sans typography.",
+"t": [
+"tesla",
+"design",
+"minimal",
+"typography"
+]
+},
+"engine:docs/design-library/tesla/README.md": {
+"h": "837c51fd893ddab0",
+"s": "Provides link to Tesla design system details, previews, dark mode examples, and download options on getdesign.md.",
+"t": [
+"design",
+"tesla",
+"docs"
+]
+},
+"engine:docs/design-library/theverge/DESIGN.md": {
+"h": "5da2c3116e684582",
+"s": "Describes The Verge design system: dark canvas, acid-mint/ultraviolet accents, large Manuka headlines, rounded pill cards, StoryStream timeline.",
+"t": [
+"design",
+"theverge",
+"darkmode"
+]
+},
+"engine:docs/design-library/theverge/README.md": {
+"h": "907a5e98fc02ff64",
+"s": "Provides link to The Verge design system details, previews, dark mode examples, and download options on getdesign.md.",
+"t": [
+"design",
+"theverge",
+"docs"
+]
+},
+"engine:docs/design-library/together.ai/DESIGN.md": {
+"h": "aee472c583f55a2f",
+"s": "Defines Together AI design analysis: version, color palette, typography scales, and descriptive metadata for the inspired system.",
+"t": [
+"design",
+"togetherai",
+"yaml"
+]
+},
+"engine:docs/design-library/together.ai/README.md": {
+"h": "e00791bdd281eeb3",
+"s": "Provides link to Together AI design system details, previews, dark mode examples, and download options on getdesign.md.",
+"t": [
+"design",
+"togetherai",
+"docs"
+]
+},
+"engine:docs/design-library/uber/DESIGN.md": {
+"h": "f30d2257d2d09079",
+"s": "Specifies Uber-inspired design analysis: version, color scheme, typography definitions, and UI element styling guidelines.",
+"t": [
+"design",
+"uber",
+"yaml"
+]
+},
+"engine:docs/design-library/uber/README.md": {
+"h": "bfd1905623561797",
+"s": "Provides link to Uber design system details, previews, dark mode examples, and download options on getdesign.md.",
+"t": [
+"design",
+"uber",
+"docs"
+]
+},
+"engine:docs/design-library/vercel/DESIGN.md": {
+"h": "d0951b93c2b4ce98",
+"s": "Outlines Vercel-inspired design analysis: version, extensive color palette, gradient definitions, and typography settings for the platform.",
+"t": [
+"design",
+"vercel",
+"yaml"
+]
+},
+"engine:docs/design-library/vercel/README.md": {
+"h": "c192b23d127809b7",
+"s": "Links to Vercel design system docs, previews, dark mode examples, and download options on getdesign.md.",
+"t": [
+"design",
+"vercel",
+"readme",
+"docs"
+]
+},
+"engine:docs/design-library/vodafone/DESIGN.md": {
+"h": "293a40951e654283",
+"s": "Defines Vodafone-inspired design tokens: colors, typography, and brand guidelines for editorial hero bands and scarlet CTA.",
+"t": [
+"design",
+"vodafone",
+"tokens",
+"typography",
+"colors"
+]
+},
+"engine:docs/design-library/vodafone/README.md": {
+"h": "e2e2750295b7a169",
+"s": "Links to Vodafone design system docs, previews, dark mode examples, and download options on getdesign.md.",
+"t": [
+"design",
+"vodafone",
+"readme",
+"docs"
+]
+},
+"engine:docs/design-library/voltagent/DESIGN.md": {
+"h": "4457887741ae5e96",
+"s": "Defines Voltagent-inspired design tokens: electric-green accents, dark canvas, code-editor mockups, and precise grid layout guidelines.",
+"t": [
+"design",
+"voltagent",
+"tokens",
+"colors",
+"layout"
+]
+},
+"engine:docs/design-library/voltagent/README.md": {
+"h": "dcf5c68855854ca1",
+"s": "Links to Voltagent design system docs, previews, dark mode examples, and download options on getdesign.md.",
+"t": [
+"design",
+"voltagent",
+"readme",
+"docs"
+]
+},
+"engine:docs/design-library/warp/DESIGN.md": {
+"h": "5b1201f7b1b4e725",
+"s": "Defines Warp-inspired design tokens: warm charcoal canvas, Inter typography, Instrument Serif italics, and understated CTAs with tight geometry.",
+"t": [
+"design",
+"warp",
+"tokens",
+"typography",
+"colors"
+]
+},
+"engine:docs/design-library/warp/README.md": {
+"h": "0ef2929a70c45bd0",
+"s": "Links to Warp design system docs, previews, dark mode examples, and download options on getdesign.md.",
+"t": [
+"design",
+"warp",
+"readme",
+"docs"
+]
+},
+"engine:docs/design-library/webflow/DESIGN.md": {
+"h": "9230c7b3951371fc",
+"s": "Defines Webflow-inspired design tokens: deep black primary, five-color accent system, WF Visual Sans typography, and restrained negative tracking.",
+"t": [
+"design",
+"webflow",
+"tokens",
+"colors",
+"typography"
+]
+},
+"engine:docs/design-library/webflow/README.md": {
+"h": "d308ae50f5e4bb82",
+"s": "Redirects to getdesign.md webflow design system, previews, dark mode, downloads.",
+"t": [
+"webflow",
+"design-system",
+"redirect",
+"preview",
+"darkmode"
+]
+},
+"engine:docs/design-library/wired/DESIGN.md": {
+"h": "eb439dcc573401dc",
+"s": "Defines Wired-inspired design system: colors, typography, fonts, and style guidelines.",
+"t": [
+"wired",
+"design-system",
+"colors",
+"typography",
+"fonts"
+]
+},
+"engine:docs/design-library/wired/README.md": {
+"h": "8652da7868769505",
+"s": "Redirects to getdesign.md wired design system, previews, dark mode, downloads.",
+"t": [
+"wired",
+"design-system",
+"redirect",
+"preview",
+"darkmode"
+]
+},
+"engine:docs/design-library/wise/DESIGN.md": {
+"h": "442df0ad7380efd8",
+"s": "Specifies Wise-inspired design system: colors, typography, fonts, and visual hierarchy.",
+"t": [
+"wise",
+"design-system",
+"colors",
+"typography",
+"hierarchy"
+]
+},
+"engine:docs/design-library/wise/README.md": {
+"h": "59157b28e31e7c13",
+"s": "Redirects to getdesign.md wise design system, previews, dark mode, downloads.",
+"t": [
+"wise",
+"design-system",
+"redirect",
+"preview",
+"darkmode"
+]
+},
+"engine:docs/design-library/x.ai/DESIGN.md": {
+"h": "9c9ef45d8c0c3b9a",
+"s": "Describes xAI-inspired design system: colors, typography, fonts, and style guidelines.",
+"t": [
+"xai",
+"design-system",
+"colors",
+"typography",
+"fonts"
+]
+},
+"engine:docs/design-library/x.ai/README.md": {
+"h": "8560245632010049",
+"s": "Redirects to getdesign.md x.ai design system, previews, dark mode, downloads.",
+"t": [
+"xai",
+"design-system",
+"redirect",
+"preview",
+"darkmode"
+]
+},
+"engine:docs/design-library/zapier/DESIGN.md": {
+"h": "9aee43ba8ece1b4f",
+"s": "Defines Zapier-inspired design system: colors, typography, fonts, and brand voice.",
+"t": [
+"zapier",
+"design-system",
+"colors",
+"typography",
+"brand"
+]
+},
+"engine:docs/design-library/zapier/README.md": {
+"h": "7f1498c4d8a282d7",
+"s": "Links to Zapier design system docs, previews, dark mode, download options.",
+"t": [
+"design",
+"zapier",
+"docs"
+]
+},
+"engine:docs/growth-playbook.md": {
+"h": "7ac6569837fa3e48",
+"s": "Defines LinkedIn posting strategy, timing, hooks, comments, analytics loop, and default formats based on 2026 research.",
+"t": [
+"growth",
+"linkedin",
+"strategy"
+]
+},
+"engine:docs/hosting-cloudflare.md": {
+"h": "b8e131acdaf622d8",
+"s": "Migrates buildwithvish site to Cloudflare Workers, sets up API routes, secrets, and custom domain.",
+"t": [
+"hosting",
+"cloudflare",
+"deployment"
+]
+},
+"engine:docs/impressum-template.md": {
+"h": "f711bd4ac9c15c87",
+"s": "Template for German legal Impressum, requires real address, email, tax info, and contact details.",
+"t": [
+"legal",
+"impressum",
+"germany"
+]
+},
+"engine:docs/instagram-autodm.md": {
+"h": "cdb69caec26bda86",
+"s": "Automates DM replies to Instagram comment keywords, tracks stats, enforces rate limits, and serves resource links.",
+"t": [
+"instagram",
+"automation",
+"dm"
+]
+},
+"engine:docs/llm-router.md": {
+"h": "421adc2a73b790cc",
+"s": "Routes LLM requests through free-token routers, environment keys, and Gemini, checking backend availability and token budgets.",
+"t": [
+"llm",
+"router",
+"tokens"
+]
+},
+"engine:docs/monetisation.md": {
+"h": "838a002622004784",
+"s": "Outlines German e‑commerce rules, Stripe fees, Lemon Squeezy costs, and tax registration steps for digital product sales.",
+"t": [
+"monetisation",
+"germany",
+"stripe"
+]
+},
+"engine:docs/reference-study.md": {
+"h": "b838c47f96edb581",
+"s": "Analyzes Instagram posts Vish likes, listing hooks, formats, structures, and why they perform well.",
+"t": [
+"instagram",
+"study",
+"reference"
+]
+},
+"engine:docs/runbook.md": {
+"h": "",
+"s": "Runbook",
+"t": []
+},
+"engine:docs/skills.md": {
+"h": "",
+"s": "Skills installed for the content engine (7 Oct 2026, approved by Vish)",
+"t": []
+},
+"engine:docs/voice.md": {
+"h": "",
+"s": "Voiceover",
+"t": []
+},
+"engine:edit-kit-docs/DESIGN.ais-example.md": {
+"h": "",
+"s": "AI Automation Society — Visual Identity",
+"t": []
+},
+"engine:edit-kit-docs/EDITING-PLAYBOOK.md": {
+"h": "",
+"s": "Editing playbook: how Nate's videos get edited with AI",
+"t": []
+},
+"engine:edit-kit-docs/MOTION_PHILOSOPHY.md": {
+"h": "",
+"s": "MOTION PHILOSOPHY — The Gold Standard",
+"t": []
+},
+"engine:edit-kit-docs/THIRD_PARTY_NOTICES.md": {
+"h": "",
+"s": "Resource provenance",
+"t": []
+},
+"engine:edit-kit-docs/TOOLS-AND-API-KEYS.md": {
+"h": "",
+"s": "Tools, accounts, and API keys",
+"t": []
+},
+"engine:examples/creator-contract-checks.json": {
+"h": "a7858310d4c2d3b1",
+"s": "JSON: slug, author, caption, slides",
+"t": [
+"json"
+]
+},
+"engine:inspiration/log.md": {
+"h": "c93824c7ac4601f2",
+"s": "Logs source URLs, licenses, learned patterns, and usage decisions for inspiration repositories.",
+"t": [
+"inspiration",
+"licensing",
+"patterns",
+"repo",
+"usage"
+]
+},
+"engine:inspiration/moodboard/README.md": {
+"h": "725ccb9f576b1b13",
+"s": "Describes moodboard workflow, reference sources, and screenshot naming for design inspiration.",
+"t": [
+"moodboard",
+"references",
+"workflow",
+"design",
+"notes"
+]
+},
+"engine:inspiration/style-directions.md": {
+"h": "6e8f33bc1866872b",
+"s": "Defines five carousel style directions, locked rules, sample references, and risk notes.",
+"t": [
+"style",
+"carousel",
+"directions",
+"rules",
+"risk"
+]
+},
+"engine:inspiration/teardowns/instagram-references.md": {
+"h": "6adc073e9cdca128",
+"s": "Lists Instagram post metrics, captions, CTA patterns, and extraction notes for future use.",
+"t": [
+"instagram",
+"metrics",
+"patterns",
+"cta",
+"teardown"
+]
+},
+"engine:inspiration/teardowns/vish-references-2026-10-06.md": {
+"h": "cf75632bac101b05",
+"s": "Analyzes Vish screenshots, extracts premium patterns, and adds new design rules.",
+"t": [
+"vish",
+"screenshots",
+"patterns",
+"rules",
+"design"
+]
+},
+"engine:package.json": {
+"h": "bc008fec6e99280d",
+"s": "JSON: name, version, private, type, description, scripts, engines, devDependencies",
+"t": [
+"json"
+]
+},
+"engine:pyproject.toml": {
+"h": "eff41ee09ae9ddbc",
+"s": "Defines project metadata, dependencies, optional AI dev tools, and CLI entry point 'carousel'.",
+"t": [
+"config",
+"dependencies",
+"cli",
+"python",
+"packaging"
+]
+},
+"engine:research/2026-10-06/backlog-snapshot.json": {
+"h": "c50c4cd1b7de8de5",
+"s": "JSON: generated, rule, topics",
+"t": [
+"json"
+]
+},
+"engine:research/competitors.md": {
+"h": "4cb762110111cf91",
+"s": "Scans LinkedIn posts for AI marketing creators, lists top reactions, and extracts content patterns.",
+"t": [
+"competitors",
+"linkedin",
+"ai",
+"marketing",
+"analysis"
+]
+},
+"engine:research/creators/edit-recipe-v9-2026-10-22.md": {
+"h": "f70d884f22aba14c",
+"s": "Specifies edit recipe v9, commands for prep, stills, render, mix, and standard reel structure.",
+"t": [
+"edit",
+"reel",
+"commands",
+"recipe",
+"video"
+]
+},
+"engine:research/creators/reels-2026-10-14.json": {
+"h": "2d64920c08d8a474",
+"s": "JSON: DeUUFJQu8cw, DdEPZQSOsx2",
+"t": [
+"json"
+]
+},
+"engine:research/creators/references-2026-10-23.md": {
+"h": "6c32443fb51173d7",
+"s": "Lists reference reels, extraction rules for editing, captions, visual style, and storytelling guidelines.",
+"t": [
+"references",
+"editing",
+"captions",
+"style",
+"guidelines"
+]
+},
+"engine:research/creators/style-guide-2026-10-14.md": {
+"h": "9c4e36da15b5ff75",
+"s": "Defines pacing, sound, layout metrics for Kallaway and Justyn reel formats, used for style consistency.",
+"t": [
+"style",
+"metrics",
+"pacing",
+"sound",
+"layout"
+]
+},
+"engine:research/creators/teardown/DY2GRVfN4bZ/sfx.json": {
+"h": "2f36be20422e283a",
+"s": "JSON: list of 16",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DY2GRVfN4bZ/shots.json": {
+"h": "20382cecb0af25da",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/Dac3WJ-Ov3b/sfx.json": {
+"h": "1eb402858cb23433",
+"s": "JSON: list of 31",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/Dac3WJ-Ov3b/shots.json": {
+"h": "af8d61a902d47e1a",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DaiCxAkOpNb/sfx.json": {
+"h": "c9fdc76d3360ed63",
+"s": "JSON: list of 51",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DaiCxAkOpNb/shots.json": {
+"h": "19800c99275eb056",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DauxXTtu2v_/sfx.json": {
+"h": "7845f4e2cedc1a59",
+"s": "JSON: list of 14",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DauxXTtu2v_/shots.json": {
+"h": "068e67405dd73a52",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DdEPZQSOsx2/sfx.json": {
+"h": "9fa45cdea6e58282",
+"s": "JSON: list of 37",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DdEPZQSOsx2/shots.json": {
+"h": "43366e1136f69e6b",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DdttI7oyswS/sfx.json": {
+"h": "79ef065b56460074",
+"s": "JSON: list of 12",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DdttI7oyswS/shots.json": {
+"h": "974cd3adf77b2c95",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DeHfg98vhjh/sfx.json": {
+"h": "02a2cfc9cfdaccb8",
+"s": "JSON: list of 10",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DeHfg98vhjh/shots.json": {
+"h": "17db243404b0938d",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DeMvS0LPeY7/sfx.json": {
+"h": "0815af1c52a11b13",
+"s": "JSON: list of 8",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DeMvS0LPeY7/shots.json": {
+"h": "4a078b3645bb54d6",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DeNZCx2uINC/sfx.json": {
+"h": "80a92b48290f06de",
+"s": "JSON: list of 32",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DeNZCx2uINC/shots.json": {
+"h": "4f59ae9be3a57775",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DeUUFJQu8cw/sfx.json": {
+"h": "f74b4d6a8e17f9c6",
+"s": "JSON: list of 31",
+"t": [
+"json"
+]
+},
+"engine:research/creators/teardown/DeUUFJQu8cw/shots.json": {
+"h": "8b36e489229e2aba",
+"s": "JSON: stats, shots",
+"t": [
+"json"
+]
+},
+"engine:research/daily/2026-10-06.json": {
+"h": "5cb3acc48a111916",
+"s": "JSON: date, items, errors",
+"t": [
+"json"
+]
+},
+"engine:research/daily/2026-10-07.json": {
+"h": "c4177d34652b8e8f",
+"s": "JSON: date, items, errors",
+"t": [
+"json"
+]
+},
+"engine:research/shorts/viral-animated-explainers-2026-10-23.md": {
+"h": "a49034c9d0a492b4",
+"s": "Defines retention rules, hook templates, frame timing, and visual style for faceless animated Shorts series.",
+"t": [
+"shorts",
+"retention",
+"hooks",
+"animation",
+"youtube"
+]
+},
+"engine:research/viral/attention-playbook-2026-10-15.md": {
+"h": "941fab10f6253a09",
+"s": "Provides attention playbook, levers, hook mechanics, and comment‑heavy post patterns for viral engagement.",
+"t": [
+"attention",
+"hooks",
+"comments",
+"viral",
+"playbook"
+]
+},
+"engine:research/viral/day1-intros-2026-10-21.md": {
+"h": "1fce56c2f53ac294",
+"s": "Lists day‑1 intro videos that surpassed 1M views, first‑line patterns, and upload timing insights.",
+"t": [
+"day1",
+"intros",
+"1m",
+"patterns",
+"uploads"
+]
+},
+"engine:research/viral/teardown-2026-10-07.md": {
+"h": "bbc114ff81f016b9",
+"s": "Analyzes top LinkedIn Claude/ChatGPT posts, formats, hook mechanics, and comment‑gate resource patterns.",
+"t": [
+"linkedin",
+"claude",
+"chatgpt",
+"comments",
+"formats"
+]
+},
+"engine:scripts/batch_page.py": {
+"h": "96bc96fc1a7ab6a8",
+"s": "Builds batch page from post directories, generates index.html, resizes images, and schedules posts.",
+"t": [
+"batch",
+"page",
+"schedule",
+"html",
+"images"
+]
+},
+"engine:scripts/broll/stock.py": {
+"h": "44032df9471ff4bb",
+"s": "Downloads Mixkit free stock videos, writes metadata, and stores clips for project use.",
+"t": [
+"stock",
+"broll",
+"mixkit",
+"download",
+"metadata"
+]
+},
+"engine:scripts/build-edl-review.mjs": {
+"h": "0de451d81112a1b5",
+"s": "Builds an HTML review page visualizing EDL cuts and keeps, embedding original and edited videos for scrubbing.",
+"t": [
+"edl",
+"review",
+"video",
+"build"
+]
+},
+"engine:scripts/build_post.py": {
+"h": "6bd77312ffbb2fe8",
+"s": "Renders deck.json slides to PNGs, merges into PDF carousel, optionally keeps HTML, using Playwright.",
+"t": [
+"post",
+"render",
+"slides",
+"pdf",
+"playwright"
+]
+},
+"engine:scripts/check-kit.mjs": {
+"h": "6b2213085a6a7363",
+"s": "Validates kit assets, public media, syncs codex skills, checks style registry, reports errors.",
+"t": [
+"check",
+"kit",
+"assets",
+"registry",
+"validation"
+]
+},
+"engine:scripts/export_vertical.py": {
+"h": "ac8f1c7fcf7f081e",
+"s": "Creates 9:16 Instagram/YouTube video from 4:5 master, zips PNG slides for carousels.",
+"t": [
+"export",
+"vertical",
+"instagram",
+"youtube",
+"video"
+]
+},
+"engine:scripts/kit_page.py": {
+"h": "dcb7655b47142e97",
+"s": "Generates posting kit index with media, captions, comments, and download links for all posts.",
+"t": [
+"kit",
+"index",
+"media",
+"download",
+"posts"
+]
+},
+"engine:scripts/llm.py": {
+"h": "99100c3e1144d42d",
+"s": "Routes LLM calls to free-token routers, providers, or Gemini, selecting first successful backend.",
+"t": [
+"llm",
+"router",
+"free",
+"gemini",
+"backend"
+]
+},
+"engine:scripts/make_batch.py": {
+"h": "3fe36db08ae2563f",
+"s": "Transforms batch topic JSONs into post folders, optionally adding voice or render steps.",
+"t": [
+"batch",
+"post",
+"voice",
+"render",
+"topics"
+]
+},
+"engine:scripts/new-video.mjs": {
+"h": "d9ec24edfddaf203",
+"s": "Creates a new video project folder from starter template, copying assets and initializing metadata.",
+"t": [
+"video",
+"new",
+"project",
+"template",
+"init"
+]
+},
+"engine:scripts/post_calendar.py": {
+"h": "44c6c0d98e3297b1",
+"s": "Generates markdown and ics calendar files for batch posts, schedules weekday 08:30 Berlin, prints table.",
+"t": [
+"calendar",
+"scheduling",
+"markdown",
+"ics"
+]
+},
+"engine:scripts/preflight-all.mjs": {
+"h": "001223f1cb8dd305",
+"s": "Iterates video-project directories, runs preflight on each, counts failures, exits with code 1 if any fail.",
+"t": [
+"batch",
+"preflight",
+"automation",
+"node"
+]
+},
+"engine:scripts/preflight.mjs": {
+"h": "4e5773ebfaa67781",
+"s": "Analyzes HTML preview for shader blocks, timeline usage, missing composition IDs; prints colored results, exits non-zero on errors.",
+"t": [
+"lint",
+"preview",
+"html",
+"shader",
+"node"
+]
+},
+"engine:scripts/publish_site.py": {
+"h": "e1e03a3e6cb2a2a4",
+"s": "Converts batch posts to site guide entries, appends to content-posts.js, ensures import in build.py, runs site build.",
+"t": [
+"publishing",
+"site",
+"markdown",
+"build",
+"python"
+]
+},
+"engine:scripts/qa.py": {
+"h": "99685060e6ebbcc0",
+"s": "Runs copy, facts, design, links, brand checks on a post folder, writes qa-report.md, exits non-zero on any FAIL.",
+"t": [
+"qa",
+"validation",
+"design",
+"brand",
+"python"
+]
+},
+"engine:scripts/reel_edit/aroll.py": {
+"h": "03dbb9fc1dc54047",
+"s": "Creates A-roll MP4 from frames and voice using ffmpeg, optional time slice, outputs file path.",
+"t": [
+"video",
+"ffmpeg",
+"aroll",
+"editing",
+"python"
+]
+},
+"engine:scripts/reel_edit/broll_prep.py": {
+"h": "80ea08c1a7c70ecc",
+"s": "Extracts B-roll clips per broll.json into frame sequences via ffmpeg, writes index.json with frame count and dimensions.",
+"t": [
+"broll",
+"ffmpeg",
+"frames",
+"preparation",
+"python"
+]
+},
+"engine:scripts/reel_edit/coach.py": {
+"h": "33ac6f3472189f5f",
+"s": "Generates delivery report from edl.json and optional shoot sheet, computes pace, gaps, retakes, writes out/delivery.md.",
+"t": [
+"report",
+"editing",
+"analysis",
+"python",
+"metrics"
+]
+},
+"engine:scripts/reel_edit/cover.py": {
+"h": "8ad2d228dcc1f652",
+"s": "Creates reel cover images with punch or minimal style, adding hook, badge, tiles, and face cut‑out.",
+"t": [
+"thumbnail",
+"cover",
+"image",
+"reel",
+"style"
+]
+},
+"engine:scripts/reel_edit/cutplan.py": {
+"h": "b3290bb54948a5c4",
+"s": "Plans cuts for talking‑head clips, removes dead air and fillers, outputs edl.json with keep segments and reasons.",
+"t": [
+"cutplan",
+"audio",
+"transcript",
+"editing",
+"silence"
+]
+},
+"engine:scripts/reel_edit/film.py": {
+"h": "2a8556b80dc84cd5",
+"s": "Applies a film‑grade LUT to phone footage, adjusting tone, color, light, optics, and adding grain.",
+"t": [
+"filmgrade",
+"lut",
+"phone",
+"color",
+"tone"
+]
+},
+"engine:scripts/reel_edit/grade.py": {
+"h": "ad7c988f7d79a4e4",
+"s": "Runs quick ffmpeg‑based color looks on iPhone clips, tone‑maps HDR to SDR and writes preview strips.",
+"t": [
+"grade",
+"ffmpeg",
+"color",
+"preview",
+"iphone"
+]
+},
+"engine:scripts/reel_edit/make.py": {
+"h": "8de7544a06c71c2a",
+"s": "Orchestrates the full reel pipeline: transcribe, cutplan, coach, prep, render, producing 9:16 and 4:5 layouts.",
+"t": [
+"pipeline",
+"make",
+"reel",
+"automation",
+"layout"
+]
+},
+"engine:scripts/reel_edit/prep.py": {
+"h": "b9d8442a9a34b11f",
+"s": "Cuts footage per edl, generates speaker cut‑out, voice audio, and per‑frame images for rendering.",
+"t": [
+"prep",
+"cut",
+"matte",
+"voice",
+"frames"
+]
+},
+"engine:scripts/reel_edit/qa.py": {
+"h": "baa3a1b371e43e67",
+"s": "Quality‑checks rendered reels: re‑transcribes, compares words, verifies loudness, and reports mismatches.",
+"t": [
+"qa",
+"quality",
+"transcription",
+"loudness",
+"diff"
+]
+},
+"engine:scripts/reel_edit/render.py": {
+"h": "c7b3a32c17c52a28",
+"s": "Renders talking‑head reels in 9:16 and 4:5 layouts from layers, outputs video, mix audio, stills, and spec.",
+"t": [
+"render",
+"video",
+"layout",
+"layers",
+"stills"
+]
+},
+"engine:scripts/reel_edit/transcribe.py": {
+"h": "9b95ce7d754ac984",
+"s": "Transcribes video to 16kHz WAV and JSON transcript using faster-whisper; outputs work/audio16k.wav and work/transcript.json.",
+"t": [
+"transcription",
+"whisper",
+"audio",
+"ffmpeg",
+"json"
+]
+},
+"engine:scripts/render3d.py": {
+"h": "ee1a1dbe90c50a4b",
+"s": "Renders 3D scenes from JSON specs via headless Chromium; outputs PNG at 2x supersample.",
+"t": [
+"rendering",
+"threejs",
+"chromium",
+"headless",
+"png"
+]
+},
+"engine:scripts/render_guide.py": {
+"h": "9c9a51daf2ae45dc",
+"s": "Creates LinkedIn/Instagram guide assets: preview, slides, PDF, zip, and captions from post.json.",
+"t": [
+"guide",
+"carousel",
+"playwright",
+"pdf",
+"zip"
+]
+},
+"engine:scripts/render_ready.py": {
+"h": "497b59bd86fc13d3",
+"s": "Renders all voiced videos missing MP4, mixing SFX; runs in parallel threads.",
+"t": [
+"batch",
+"rendering",
+"video",
+"sfx",
+"multiprocessing"
+]
+},
+"engine:scripts/render_reel.py": {
+"h": "a5d455150d800476",
+"s": "Renders motion reel from template with voice, SFX, and ducked bed; outputs frames and MP4.",
+"t": [
+"reel",
+"video",
+"sfx",
+"voice",
+"frames"
+]
+},
+"engine:scripts/render_slides.py": {
+"h": "3c8c5f2ff10a12c1",
+"s": "Renders carousel slides to PNG and PDF using Playwright; outputs slide images and PDF.",
+"t": [
+"slides",
+"carousel",
+"playwright",
+"pdf",
+"png"
+]
+},
+"engine:scripts/render_video.py": {
+"h": "e00d7862440be7a6",
+"s": "Renders deterministic Three.js video to MP4 via ffmpeg; can output only stills.",
+"t": [
+"video",
+"ffmpeg",
+"threejs",
+"playwright",
+"mp4"
+]
+},
+"engine:scripts/research/fetch.py": {
+"h": "2e3c70fea819bcf5",
+"s": "Fetches RSS and Hacker News feeds, parses items, stores daily JSON per date.",
+"t": [
+"research",
+"rss",
+"hn",
+"fetch",
+"json"
+]
+},
+"engine:scripts/research/ig_fetch.py": {
+"h": "d427e4d3e85f3a61",
+"s": "Fetches Instagram posts/reels via headless Chromium, extracts caption, author, media, carousel images, screenshots, saves to output folder.",
+"t": [
+"python",
+"instagram",
+"headless",
+"media"
+]
+},
+"engine:scripts/research/reel_teardown.py": {
+"h": "64499411dc7a5c3b",
+"s": "Analyzes video cuts, transcripts, sound onsets, generates shot metadata, thumbnails, and frame strips using ffmpeg and faster-whisper.",
+"t": [
+"python",
+"video",
+"ffmpeg",
+"whisper",
+"analysis"
+]
+},
+"engine:scripts/research/sources.json": {
+"h": "fb69e1fbe297e02d",
+"s": "JSON: _note, feeds, keywords_boost, keywords_drop",
+"t": [
+"json"
+]
+},
+"engine:scripts/review_page.py": {
+"h": "8e98f1fe0487d7f1",
+"s": "Builds review page from compressed images, converts markdown, generates HTML with links, and summarizes QA results.",
+"t": [
+"python",
+"html",
+"markdown",
+"review"
+]
+},
+"engine:scripts/router_setup.sh": {
+"h": "4bf1538c9730cfc1",
+"s": "Starts OmniRoute LLM router, loads provider keys from env, ensures service availability.",
+"t": [
+"bash",
+"llm",
+"router",
+"env"
+]
+},
+"engine:scripts/screen_record.py": {
+"h": "ed8c92060361225c",
+"s": "Captures full-page screenshot of public web page, resizes, saves as PNG for B-roll templates.",
+"t": [
+"python",
+"screenshot",
+"broll",
+"web"
+]
+},
+"engine:scripts/setup.mjs": {
+"h": "2e7587b3bc4981b9",
+"s": "Node script checks FFmpeg, ffprobe, Node version, creates .env if missing, guides on service setup.",
+"t": [
+"node",
+"setup",
+"ffmpeg",
+"env"
+]
+},
+"engine:scripts/setup_tools.sh": {
+"h": "5f1b6512395a0a4f",
+"s": "Installs video editing stack: ffmpeg, whisper, yt-dlp, opencv, puppeteer, hyperframes, ensuring dependencies.",
+"t": [
+"bash",
+"tools",
+"ffmpeg",
+"whisper",
+"dependencies"
+]
+},
+"engine:scripts/sfx.py": {
+"h": "478d3bb1ebb7f00b",
+"s": "Synthesizes transition sounds and music bed, outputs mix.wav from voice.wav using numpy and soundfile.",
+"t": [
+"python",
+"audio",
+"synthesis",
+"numpy",
+"soundfile"
+]
+},
+"engine:scripts/shorts/render.py": {
+"h": "9f6a64aa701f6ddb",
+"s": "Render short video from HTML template, capture frames in parallel, mix voice/SFX, write stills, video.mp4, cover.png.",
+"t": [
+"video",
+"rendering",
+"ffmpeg",
+"parallel",
+"shorts"
+]
+},
+"engine:scripts/shorts/sound.py": {
+"h": "1c5fdabe07c1c916",
+"s": "Generate synthetic SFX waveforms and mix them with voice and background bed, ducking and normalising audio.",
+"t": [
+"audio",
+"synthesis",
+"sfx",
+"procedural",
+"mixing"
+]
+},
+"engine:scripts/shorts/voice.py": {
+"h": "d1b9f505cb51e62b",
+"s": "Call ElevenLabs TTS API to synthesize full short narration, save voice.wav and alignment JSON, log credit usage.",
+"t": [
+"tts",
+"elevenlabs",
+"api",
+"voice",
+"usage"
+]
+},
+"engine:scripts/shorts/voice_samples.py": {
+"h": "b553d1e64f36d0f1",
+"s": "Generate short sample clips for several ElevenLabs narrator voices using preset text, store in output folder.",
+"t": [
+"tts",
+"samples",
+"voices",
+"elevenlabs",
+"testing"
+]
+},
+"engine:scripts/site_guide.py": {
+"h": "58a5cdddd7a50760",
+"s": "Validate guide with check.js, copy HTML/meta, insert entry into GUIDES array, rebuild site, output public link.",
+"t": [
+"site",
+"guide",
+"deployment",
+"automation",
+"build"
+]
+},
+"engine:scripts/skin_tone.py": {
+"h": "721fee9420737295",
+"s": "Detect skin pixels via HSV range, feather mask, lift brightness and desaturate, save adjusted PNG.",
+"t": [
+"image",
+"processing",
+"skin",
+"color",
+"python"
+]
+},
+"engine:scripts/smoke-media.mjs": {
+"h": "4bd2336887e3d0fc",
+"s": "Create synthetic video, run cut-silences and cut-mistakes agents, apply cuts, verify streams and durations.",
+"t": [
+"node",
+"video",
+"synthesis",
+"automation",
+"testing"
+]
+},
+"engine:scripts/sync-codex-skills.mjs": {
+"h": "b91824a0e589b6d0",
+"s": "Mirror .claude/skills to .agents/skills, optionally verify sync, copy files, report discrepancies.",
+"t": [
+"sync",
+"codex",
+"skills",
+"node",
+"maintenance"
+]
+},
+"engine:scripts/transcribe-elevenlabs.mjs": {
+"h": "741fb6afd22c2e6d",
+"s": "Transcribes audio/video to word‑level JSON via ElevenLabs Scribe, outputs <input>.json, supports diarization, optional keep‑audio.",
+"t": [
+"transcribe",
+"elevenlabs",
+"scribe",
+"audio",
+"json"
+]
+},
+"engine:scripts/validate-beat-sync.mjs": {
+"h": "ed53185330177bce",
+"s": "Validates beat sync against transcript.json, ensuring wordStart within -0.2s to 1.8s of beatStart, outputs table or JSON, can suggest fixes.",
+"t": [
+"validate",
+"beat-sync",
+"transcript",
+"json",
+"timing"
+]
+},
+"engine:scripts/video-use-to-hyperframes-transcript.mjs": {
+"h": "40f4a6d8e2e1e2c9",
+"s": "Converts video‑use EDL transcripts to HyperFrames transcript.json, re‑maps word timestamps to edited timeline, outputs words array.",
+"t": [
+"edl",
+"transcript",
+"hyperframes",
+"timestamp",
+"conversion"
+]
+},
+"engine:scripts/voice25.py": {
+"h": "0d790bf1e9c59d51",
+"s": "Generates locked voice for video #25 with Gemini Flash‑Lite TTS, writes voice.wav/voice.json, aligns lines, supports realign and render, respects quota.",
+"t": [
+"voice",
+"tts",
+"gemini",
+"locked",
+"quota"
+]
+},
+"engine:scripts/voice_clone.py": {
+"h": "9139ee6337b5f16d",
+"s": "Clones video #25 voice with Chatterbox zero‑shot, selects best take by similarity, caps internal silences, writes voice.wav/voice.json.",
+"t": [
+"voice",
+"clone",
+"chatterbox",
+"similarity",
+"silence"
+]
+},
+"engine:scripts/voiceover.py": {
+"h": "708e551a32b28576",
+"s": "Creates voiceover for videos, outputs voice.wav/voice.json, rewrites scene timings, supports gemini, clone, kokoro engines.",
+"t": [
+"voiceover",
+"audio",
+"engine",
+"gemini",
+"clone"
+]
+},
+"engine:scripts/weekly.py": {
+"h": "7de36f2c7f206f88",
+"s": "Orchestrates weekly batch: research, write, voice, graphics, video, QA, site, calendar, page; supports skip‑voice, write‑only, fix.",
+"t": [
+"batch",
+"orchestrate",
+"weekly",
+"voice",
+"fix"
+]
+},
+"engine:skills-lock.json": {
+"h": "7e58d6e8e803518e",
+"s": "JSON: version, skills",
+"t": [
+"json"
+]
+},
+"engine:style-library/01-vox-explainer/DESIGN.md": {
+"h": "531f71e2f5bf2ce3",
+"s": "Specifies Vox Explainer visual style: paper background, blue accents, stop‑motion, serif typography, hand‑drawn arrows, low‑shutter motion.",
+"t": [
+"design",
+"style",
+"vox",
+"typography",
+"motion"
+]
+},
+"engine:style-library/01-vox-explainer/style.json": {
+"h": "6eaf90846083119b",
+"s": "JSON: $schema, id, name, number, status, inspiration, summary, palette",
+"t": [
+"json"
+]
+},
+"engine:style-library/01-vox-explainer/tokens.css": {
+"h": "17b9f45bccee8dd6",
+"s": "css file",
+"t": [
+"css"
+]
+},
+"engine:style-library/02-kallaway/DESIGN.md": {
+"h": "7099621e871f39cc",
+"s": "Defines Kallaway style: dark canvas, aurora bloom, glassmorphism, edge-lit elements, color tokens, typography, motion rules.",
+"t": [
+"style",
+"design",
+"colors",
+"motion",
+"typography"
+]
+},
+"engine:style-library/02-kallaway/style.json": {
+"h": "c40d518240341d9b",
+"s": "JSON: $schema, id, name, number, status, inspiration, summary, palette",
+"t": [
+"json"
+]
+},
+"engine:style-library/02-kallaway/tokens.css": {
+"h": "5d72ed45419b171f",
+"s": "css file",
+"t": [
+"css"
+]
+},
+"engine:style-library/GUIDE.md": {
+"h": "81d80e37e057aafb",
+"s": "Specifies style-library structure, naming scheme, required files, card contract, and registry generation rules.",
+"t": [
+"guide",
+"structure",
+"naming",
+"contract",
+"registry"
+]
+},
+"engine:style-library/_blueprint/DESIGN.md": {
+"h": "e1b98cc1d5aaf9e9",
+"s": "Template for creating a new style: placeholder sections for prompt, colors, typography, motion, card kinds, anti-patterns.",
+"t": [
+"blueprint",
+"template",
+"style",
+"design",
+"scaffold"
+]
+},
+"engine:style-library/_blueprint/style.json": {
+"h": "3b4a75a4b51cc65f",
+"s": "JSON: $schema, id, name, number, status, inspiration, summary, palette",
+"t": [
+"json"
+]
+},
+"engine:style-library/_blueprint/tokens.css": {
+"h": "04a5393722c3f7bd",
+"s": "css file",
+"t": [
+"css"
+]
+},
+"engine:style-library/registry.json": {
+"h": "a4c527033e840c9f",
+"s": "JSON: generated_by, styleCount, cardCount, tiers, styles, warnings",
+"t": [
+"json"
+]
+},
+"engine:style-templates/README.md": {
+"h": "40ecb5458b899bbb",
+"s": "Lists available scene templates, usage steps, asset requirements, and how to replace GSAP CDN with local copy.",
+"t": [
+"templates",
+"assets",
+"gsap",
+"usage",
+"documentation"
+]
+},
+"engine:style-templates/dark-graph-paper-template/AGENTS.md": {
+"h": "68cc83ccdefe72b6",
+"s": "Provides agent workflow: copy template, follow root guide, lint, preview, inspect, require user authorization.",
+"t": [
+"agents",
+"workflow",
+"lint",
+"preview",
+"authorization"
+]
+},
+"engine:style-templates/dark-graph-paper-template/CLAUDE.md": {
+"h": "68cc83ccdefe72b6",
+"s": "Provides Claude agent steps: copy template, follow root guide, lint, preview, inspect, need user authorization.",
+"t": [
+"claude",
+"agents",
+"workflow",
+"lint",
+"preview"
+]
+},
+"engine:style-templates/dark-graph-paper-template/DESIGN.md": {
+"h": "b4eec6702ddf308f",
+"s": "Specifies dark graph paper style: colors, ambient motion, grid visuals, typography guidance, prohibited changes.",
+"t": [
+"design",
+"colors",
+"motion",
+"grid",
+"restrictions"
+]
+},
+"engine:style-templates/dark-graph-paper-template/hyperframes.json": {
+"h": "60430047b7e49e9d",
+"s": "JSON: $schema, registry, paths",
+"t": [
+"json"
+]
+},
+"engine:style-templates/dark-graph-paper-template/index.html": {
+"h": "7a84fc621d8cd4a1",
+"s": "Dark Graph Paper Template",
+"t": [
+"html"
+]
+},
+"engine:style-templates/dark-graph-paper-template/meta.json": {
+"h": "b41dbc74f4b87233",
+"s": "JSON: id, name, createdAt",
+"t": [
+"json"
+]
+},
+"engine:style-templates/dark-graph-paper-template/package.json": {
+"h": "dd2475525a0ca8bc",
+"s": "JSON: name, private, type, scripts",
+"t": [
+"json"
+]
+},
+"engine:style-templates/left-glass-popout/AGENTS.md": {
+"h": "68cc83ccdefe72b6",
+"s": "Agent instructions: copy left-glass-popout template, follow root guide, lint, preview, inspect, obtain user authorization.",
+"t": [
+"agents",
+"workflow",
+"lint",
+"preview",
+"authorization"
+]
+},
+"engine:style-templates/left-glass-popout/CLAUDE.md": {
+"h": "68cc83ccdefe72b6",
+"s": "Copy template to video project, read README, use HyperFrames, lint, preview, inspect frames, publish after user approval.",
+"t": [
+"template",
+"instructions",
+"hyperframes",
+"publishing"
+]
+},
+"engine:style-templates/left-glass-popout/DESIGN.md": {
+"h": "f9c94ef3f976e738",
+"s": "Define glassmorphism style: dark frosted panels, white text, rounded cards, heavy shadow, left panel motion, no face cover.",
+"t": [
+"style",
+"design",
+"glassmorphism",
+"colors",
+"typography"
+]
+},
+"engine:style-templates/left-glass-popout/hyperframes.json": {
+"h": "60430047b7e49e9d",
+"s": "JSON: $schema, registry, paths",
+"t": [
+"json"
+]
+},
+"engine:style-templates/left-glass-popout/index.html": {
+"h": "e9a04d9b9f4a37ba",
+"s": "Left Glass Popout",
+"t": [
+"html"
+]
+},
+"engine:style-templates/left-glass-popout/meta.json": {
+"h": "f1efc644f105c4b6",
+"s": "JSON: id, name, createdAt, width, height, fps",
+"t": [
+"json"
+]
+},
+"engine:templates/carousel/guide-doc.html": {
+"h": "9402c9b036eb1a37",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"engine:templates/carousel/skills7.html": {
+"h": "c83a876494ce4842",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"engine:templates/carousel/week-series.css": {
+"h": "488cad584e68ecbc",
+"s": "css file",
+"t": [
+"css"
+]
+},
+"engine:templates/carousel/week02-check.html": {
+"h": "3f3fa99b55aae45c",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"engine:templates/carousel/week02-edit.html": {
+"h": "fe5a205606e36536",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"engine:templates/guide/implementation-guide.md": {
+"h": "c247100dc07234e0",
+"s": "Template for tool implementation guide: promise, source, steps, prompts, outputs, troubleshooting, limits, next steps.",
+"t": [
+"guide",
+"template",
+"tool",
+"documentation"
+]
+},
+"engine:templates/package.json": {
+"h": "25b4531e0464ee2a",
+"s": "JSON: name, version, description, scripts, license, dependencies, private",
+"t": [
+"json"
+]
+},
+"engine:templates/three/kit.js": {
+"h": "b5090f92e63fee2a",
+"s": "Three.js kit: defines colors, materials, rounded box geometry, provides renderAt for deterministic frame rendering.",
+"t": [
+"threejs",
+"kit",
+"materials",
+"rendering"
+]
+},
+"engine:templates/three/stage.html": {
+"h": "b916ce723d57410e",
+"s": "stage",
+"t": [
+"html"
+]
+},
+"engine:templates/video/fonts.css": {
+"h": "71869c8985f15009",
+"s": "css file",
+"t": [
+"css"
+]
+},
+"engine:templates/video/motion.html": {
+"h": "3096d32dbf2f82f1",
+"s": "motion video",
+"t": [
+"html"
+]
+},
+"engine:templates/video/night.html": {
+"h": "a0c29158ecf00303",
+"s": "night video",
+"t": [
+"html"
+]
+},
+"engine:templates/video/reels/claude-instagram.html": {
+"h": "bfd1906e73746971",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"engine:templates/video/reels/manus-video-editor.html": {
+"h": "937b0f262c343598",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"engine:templates/video/shorts/captions.js": {
+"h": "92af1a13f9bcf3d4",
+"s": "Captions module: builds groups of up to 3 words, animates 3D flip, positions amber box, updates per time t.",
+"t": [
+"captions",
+"animation",
+"shorts",
+"timing"
+]
+},
+"engine:templates/video/shorts/gpt-t.html": {
+"h": "826bac9bc4086a97",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"engine:templates/video/shorts/hit-send.html": {
+"h": "d8188521082d4e77",
+"s": "html file",
+"t": [
+"html"
+]
+},
+"engine:templates/video/shorts/shorts.css": {
+"h": "0ef63f6db98696a7",
+"s": "css file",
+"t": [
+"css"
+]
+},
+"engine:templates/video/talking/cover.html": {
+"h": "09474fd91a8cec15",
+"s": "cover",
+"t": [
+"html"
+]
+},
+"engine:templates/video/talking/edit-reel.html": {
+"h": "38eb9be920a1f155",
+"s": "edit reel",
+"t": [
+"html"
+]
+},
+"engine:templates/video/talking/kallaway.html": {
+"h": "733218fac00992dc",
+"s": "reel",
+"t": [
+"html"
+]
+},
+"engine:tests/test_carousel.py": {
+"h": "e6e43071dbf36ec0",
+"s": "Test suite for carousel: validates deck style, renders slides, checks markup, retries AI draft, renders PDF.",
+"t": [
+"tests",
+"carousel",
+"validation",
+"pdf"
+]
+},
+"engine:tests/test_studio.py": {
+"h": "b92a918abeb06012",
+"s": "Studio tests: render themes, single image mode, CTA rules, brand tokens, QA copy checks, backlog ship logic.",
+"t": [
+"tests",
+"studio",
+"themes",
+"brand",
+"qa"
+]
+},
+"engine:topics/backlog.json": {
+"h": "c50c4cd1b7de8de5",
+"s": "JSON: generated, rule, topics",
+"t": [
+"json"
+]
+},
+"engine:topics/posted.json": {
+"h": "d3ab99d07a05a9a0",
+"s": "JSON: note, posts",
+"t": [
+"json"
+]
+},
+"engine:topics/queue.json": {
+"h": "6925537fbbc5a9e7",
+"s": "JSON: queue, note",
+"t": [
+"json"
+]
+},
+"engine:topics/seeds.json": {
+"h": "f1f16322d43281ef",
+"s": "JSON: list of 9",
+"t": [
+"json"
+]
+},
+"engine:topics/seeds_used.json": {
+"h": "b50ee4be7a0d8dcf",
+"s": "JSON: list of 3",
+"t": [
+"json"
+]
+},
+"engine:video-projects/edit-test/broll.json": {
+"h": "caa67ccffc08b793",
+"s": "JSON: _note, clips, pages, music",
+"t": [
+"json"
+]
+},
+"engine:video-projects/week-01-intro/edit/comp.html": {
+"h": "194c542c3f8001d5",
+"s": "week 1 comp",
+"t": [
+"html"
+]
+},
+"engine:video-projects/week-01-intro/edit/week1.py": {
+"h": "8c0a04c4a6690184",
+"s": "Week 1 intro script: prep cuts, stills, render, mix; uses transcript, audio beats, ffmpeg, Playwright.",
+"t": [
+"script",
+"intro",
+"reel",
+"ffmpeg",
+"playwright"
+]
+},
+"engine:voice.md": {
+"h": "c5d3fe8ab34e5f4c",
+"s": "Defines Vish's voice guidelines, banned words, style, and editing rules for scripts and captions.",
+"t": [
+"voice",
+"style",
+"guidelines",
+"editing",
+"banlist"
+]
+},
+"memory:MEMORY.md": {
+"h": "93476307bc6b1cd7",
+"s": "Defines project goal, LLM usage policy, repo structure, environment, and key constraints.",
+"t": [
+"project",
+"llm",
+"policy",
+"environment"
+]
+},
+"memory:content-engine-state.md": {
+"h": "1710701e8c0ded5c",
+"s": "Tracks content engine branch, free-LLM key location, routine triggers, and key access rules.",
+"t": [
+"state",
+"branch",
+"llm",
+"routine"
+]
+},
+"memory:free-llm-helper.md": {
+"h": "dd881d0293a2c7b7",
+"s": "Details free-llm-helper package location, provider chain, safeguards, and key environment names.",
+"t": [
+"helper",
+"llm",
+"safeguards",
+"env"
+]
+},
+"memory:linkedin-pipeline-state.md": {
+"h": "80923670ff46a30a",
+"s": "Specifies LinkedIn carousel pipeline repo, build script, theme, and posting approval rules.",
+"t": [
+"pipeline",
+"linkedin",
+"carousel",
+"posting"
+]
+},
+"memory:shorts-engine.md": {
+"h": "a84024c60e0fea95",
+"s": "Outlines Shorts animation pipeline, voice usage, environment constraints, and research routine.",
+"t": [
+"shorts",
+"animation",
+"voice",
+"environment"
+]
+},
+"memory:shorts-reference-style.md": {
+"h": "e4ff54c04da55580",
+"s": "Defines target Shorts animation style, key traits, and application guidelines.",
+"t": [
+"reference",
+"animation",
+"style",
+"guidelines"
+]
+},
+"memory:vish-linkedin-content-preferences.md": {
+"h": "70e20d3750904517",
+"s": "Sets LinkedIn post style: relatable stance, visual theme, PDF output, one question.",
+"t": [
+"linkedin",
+"content",
+"style",
+"pdf"
+]
+},
+"profile-pipeline:README.md": {
+"h": "939dd73b0dd22b08",
+"s": "Provides personal branding overview, badge links, and curated list of AI-tool repos with brief descriptions.",
+"t": [
+"profile",
+"readme",
+"branding",
+"repos"
+]
+},
+"profile-pipeline:linkedin/README.md": {
+"h": "702875d50b9318af",
+"s": "Describes LinkedIn carousel pipeline: how to create PDF and caption, build command, approval steps, and posting rules.",
+"t": [
+"readme",
+"pipeline",
+"linkedin",
+"instructions"
+]
+},
+"profile-pipeline:linkedin/build.py": {
+"h": "88597e53bebf166e",
+"s": "Builds LinkedIn carousel: validates JSON, renders HTML, generates PDF via headless Chromium, creates preview PNGs, writes outputs to out/ folder.",
+"t": [
+"build",
+"python",
+"validation",
+"pdf",
+"chromium"
+]
+},
+"profile-pipeline:linkedin/config.json": {
+"h": "79d1ea785b5a84c2",
+"s": "JSON: handle",
+"t": [
+"json"
+]
+},
+"profile-pipeline:linkedin/content/agents-email-your-client.json": {
+"h": "52b5cd87c6080609",
+"s": "JSON: slug, topic, slides, caption",
+"t": [
+"json"
+]
+},
+"profile-pipeline:linkedin/content/llm-judge-bias.json": {
+"h": "ee33c03f6e285ef5",
+"s": "JSON: slug, topic, slides, caption",
+"t": [
+"json"
+]
+},
+"profile-pipeline:linkedin/examples/agents-email-your-client/caption.txt": {
+"h": "f5bec0b0ad403c60",
+"s": "Caption for agent-client carousel: outlines agent roles, client communication guidelines, and a prompt to decide agent email usage.",
+"t": [
+"caption",
+"content",
+"client",
+"email",
+"example"
+]
+},
+"profile-pipeline:linkedin/examples/llm-judge-bias/caption.txt": {
+"h": "d879c1e2e9185b6e",
+"s": "Caption for LLM judge bias carousel: explains ad ranking pitfalls, fixes, and asks which ad was ignored by audience.",
+"t": [
+"caption",
+"content",
+"ai",
+"ad",
+"judge"
+]
+},
+"profile-pipeline:linkedin/fonts/Inter-OFL.txt": {
+"h": "5b9321a4298cfeb6",
+"s": "Inter font license: SIL Open Font License 1.1 text, copyright, and usage permissions.",
+"t": [
+"font",
+"license",
+"inter",
+"open-source"
+]
+},
+"profile-pipeline:linkedin/fonts/Newsreader-OFL.txt": {
+"h": "fdfad38143ec4705",
+"s": "Newsreader font license: SIL Open Font License 1.1 text, copyright, and usage permissions.",
+"t": [
+"font",
+"license",
+"newsreader",
+"open-source"
+]
+},
+"profile-pipeline:linkedin/tests/test_build.py": {
+"h": "620639ac13ee9a6e",
+"s": "Unit tests for build.py: verify content validation, secret blocking, placeholder detection, and HTML rendering correctness.",
+"t": [
+"tests",
+"build",
+"validation",
+"unit"
+]
+},
+"profile-pipeline:linkedin/theme.css": {
+"h": "6c6b17c1c3c87202",
+"s": "css file",
+"t": [
+"css"
+]
+},
+"profile-pipeline:netlify.toml": {
+"h": "e4b2d244ed2ec189",
+"s": "Netlify config: sets publish folder, security headers, and caching policy for JPEG assets.",
+"t": [
+"netlify",
+"config",
+"headers",
+"caching"
+]
+},
+"profile-pipeline:portfolio/index.html": {
+"h": "9a346cea4a4fd401",
+"s": "Vish Kumbhar · Digital Marketing, Growth &amp; AI",
+"t": [
+"html"
+]
+},
+"profile-pipeline:portfolio/robots.txt": {
+"h": "66f145b80b568205",
+"s": "Allow all crawlers, provide sitemap URL.",
+"t": [
+"robots",
+"sitemap",
+"web"
+]
+},
+"project-files:linkedin-profile/README.md": {
+"h": "56361723758318fd",
+"s": "Defines LinkedIn cover assets, export script, mockups, evidence map, and source verification for profile.",
+"t": [
+"linkedin",
+"assets",
+"verification",
+"design"
+]
+},
+"project-files:shorts/guide-PAPER.md": {
+"h": "b1e7cff269e23d33",
+"s": "One-page summary of the Transformer paper, authors, patent, career moves, and $2.7B deal.",
+"t": [
+"gpt",
+"transformer",
+"paper",
+"history"
+]
+},
+"project-files:shorts/guide-TOKENS.md": {
+"h": "29574d2508866659",
+"s": "Explains tokens, AI chip price, energy use, politeness cost, and prompt optimization in three minutes.",
+"t": [
+"tokens",
+"cost",
+"prompting",
+"ai"
+]
+},
+"project-files:shorts/research/SUMMARY.md": {
+"h": "d57e60a07bedd687",
+"s": "Provides measured and third-party stats, methodology, and limits for analyzing top YouTube Shorts.",
+"t": [
+"shorts",
+"analytics",
+"youtube",
+"teardown"
+]
+},
+"project-files:shorts/research/reference-De0BAl8B3mY/TEARDOWN.md": {
+"h": "21e1a3b537a1a0ca",
+"s": "Documents full teardown of 'How we taught sand to think' reel: files, stats, voice, hook, pacing.",
+"t": [
+"reel",
+"teardown",
+"voice",
+"analysis"
+]
+},
+"project-files:shorts/research/reference-De0BAl8B3mY/meta.json": {
+"h": "b8a2dcf93cd1e858",
+"s": "JSON: id, title, description, uploader, uploader_id, channel, like_count, view_count",
+"t": [
+"json"
+]
+},
+"project-files:shorts/research/reference-De0BAl8B3mY/sound-notes-gemini.md": {
+"h": "7053946881295614",
+"s": "Breaks down narrator voice, music, and detailed SFX timeline for the 141-second reel narration.",
+"t": [
+"sound",
+"sfx",
+"music",
+"narration"
+]
+},
+"project-files:shorts/research/reference-De0BAl8B3mY/transcript.json": {
+"h": "92b58da51fe3f621",
+"s": "JSON: language, segments",
+"t": [
+"json"
+]
+},
+"project-files:shorts/research/top-reels.json": {
+"h": "668c9a5deb69b81b",
+"s": "JSON: generated, method, provenance, previous_web_fallback, accounts",
+"t": [
+"json"
+]
+},
+"project-files:shorts/voice-samples/samples.json": {
+"h": "2819ceba178ba87d",
+"s": "JSON: list of 8",
+"t": [
+"json"
+]
+}
+}

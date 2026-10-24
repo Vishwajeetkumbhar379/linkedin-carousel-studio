@@ -1,0 +1,64 @@
+# buildwithvish/src/long
+
+Provide long‑form guides and issue articles with metadata for content management.
+
+- `src/long/guides/ad-performance-copilot.html`: html file
+- `src/long/guides/ad-performance-copilot.meta.json`: JSON: title, excerpt
+- `src/long/guides/ai-privacy-settings.html`: html file
+- `src/long/guides/ai-privacy-settings.meta.json`: JSON: title, excerpt
+- `src/long/guides/ai-tool-quick-starts.html`: html file
+- `src/long/guides/ai-tool-quick-starts.meta.json`: JSON: title, excerpt
+- `src/long/guides/brief-ai-like-an-agency.html`: html file
+- `src/long/guides/brief-ai-like-an-agency.meta.json`: JSON: title, excerpt
+- `src/long/guides/chatgpt-from-zero.html`: html file
+- `src/long/guides/chatgpt-from-zero.meta.json`: JSON: title, excerpt
+- `src/long/guides/claude-from-zero.html`: html file
+- `src/long/guides/claude-from-zero.meta.json`: JSON: title, excerpt
+- `src/long/guides/client-health-score.html`: html file
+- `src/long/guides/client-health-score.meta.json`: JSON: title, excerpt
+- `src/long/guides/connectors-and-mcp.html`: html file
+- `src/long/guides/connectors-and-mcp.meta.json`: JSON: title, excerpt
+- `src/long/guides/connectors-worth-setting-up.html`: html file
+- `src/long/guides/connectors-worth-setting-up.meta.json`: JSON: title, excerpt
+- `src/long/guides/creator-campaign-hq-in-claude.html`: html file
+- `src/long/guides/creator-campaign-hq-in-claude.meta.json`: JSON: title, excerpt
+- `src/long/guides/creator-fit-scorer.html`: html file
+- `src/long/guides/creator-fit-scorer.meta.json`: JSON: title, excerpt
+- `src/long/guides/everyday-life-prompts.html`: html file
+- `src/long/guides/everyday-life-prompts.meta.json`: JSON: title, excerpt
+- `src/long/guides/gemini-inside-google.html`: html file
+- `src/long/guides/gemini-inside-google.meta.json`: JSON: title, excerpt
+- `src/long/guides/get-cited-by-ai-answers.html`: html file
+- `src/long/guides/get-cited-by-ai-answers.meta.json`: JSON: title, excerpt
+- `src/long/guides/growth-experiment-lab.html`: html file
+- `src/long/guides/growth-experiment-lab.meta.json`: JSON: title, excerpt
+- `src/long/guides/hidden-ai-features.html`: html file
+- `src/long/guides/hidden-ai-features.meta.json`: JSON: title, excerpt
+- `src/long/guides/job-search-agent.html`: html file
+- `src/long/guides/job-search-agent.meta.json`: JSON: title, excerpt
+- `src/long/guides/marketing-attribution-lab.html`: html file
+- `src/long/guides/marketing-attribution-lab.meta.json`: JSON: title, excerpt
+- `src/long/guides/one-line-follow-ups.html`: html file
+- `src/long/guides/one-line-follow-ups.meta.json`: JSON: title, excerpt
+- `src/long/guides/pick-your-ai-by-job.html`: html file
+- `src/long/guides/pick-your-ai-by-job.meta.json`: JSON: title, excerpt
+- `src/long/guides/projects-in-claude-and-chatgpt.html`: html file
+- `src/long/guides/projects-in-claude-and-chatgpt.meta.json`: JSON: title, excerpt
+- `src/long/guides/report-that-writes-itself.html`: html file
+- `src/long/guides/report-that-writes-itself.meta.json`: JSON: title, excerpt
+- `src/long/guides/side-project-prompt-chain.html`: html file
+- `src/long/guides/side-project-prompt-chain.meta.json`: JSON: title, excerpt
+- `src/long/guides/youtube-research-with-claude.html`: html file
+- `src/long/guides/youtube-research-with-claude.meta.json`: JSON: title, excerpt
+- `src/long/issues/issue-1.html`: html file
+- `src/long/issues/issue-1.meta.json`: JSON: title, teaser, items
+- `src/long/issues/issue-2.html`: html file
+- `src/long/issues/issue-2.meta.json`: JSON: title, teaser, items
+- `src/long/issues/issue-3.html`: html file
+- `src/long/issues/issue-3.meta.json`: JSON: title, teaser, items
+- `src/long/issues/issue-4.html`: html file
+- `src/long/issues/issue-4.meta.json`: JSON: title, teaser, items
+- `src/long/issues/issue-5.html`: html file
+- `src/long/issues/issue-5.meta.json`: JSON: title, teaser, items
+- `src/long/issues/issue-6.html`: html file
+- `src/long/issues/issue-6.meta.json`: JSON: title, teaser, items

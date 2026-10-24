@@ -1,0 +1,138 @@
+# engine skills
+
+- **21st-ui** (.claude/skills): Find, install, and generate UI with 21st.dev. Use when the user asks for a UI component (pricing table, hero, navbar, dashboard, form, etc.), wants design inspiration, needs a brand logo as an SVG component, or wants to 
+- **agent-reach** (.claude/skills): >
+- **ai-seo** (.claude/skills): When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use when the user mentions 'AI SEO,' 'AEO,' 'GEO,' 'LLMO,' 'answer engine optimization,' 'generati
+- **captions-and-clipping** (.claude/skills): >-
+- **claude-youtube** (.claude/skills): >
+- **comment-mining** (.claude/skills): >
+- **community-management** (.claude/skills): >-
+- **competitor-teardown** (.claude/skills): >
+- **content-matrix** (.claude/skills): >
+- **content-pillars** (.claude/skills): >-
+- **cross-platform-repurposing** (.claude/skills): >-
+- **cut-mistakes** (.claude/skills): Agent 2 of the video editing pipeline. Finds and removes spoken mistakes — stutters, repeated words, false starts, and retakes (re-recorded lines) — from a talking-head recording. Use after cut-silences, when asked to cu
+- **cut-silences** (.claude/skills): Agent 1 of the video editing pipeline. Removes silences and dead air from a talking-head recording. Use when asked to cut silences, trim pauses, remove dead air / gaps, or tighten the pacing of a raw video, given a word-
+- **dm-script-writer** (.claude/skills): >
+- **edit-video** (.claude/skills): Edit a raw talking-head video through transcription, silence trimming, mistake review, visual storytelling, motion graphics, and verified HyperFrames rendering. Use for a complete edit; route a single requested operation
+- **embedded-captions** (.claude/skills): >
+- **engagement-routine** (.claude/skills): >-
+- **faceless-explainer** (.claude/skills): Turn arbitrary text — an article, notes, a topic, a brief — into a faceless explainer video: there is no site or footage to capture, so the visuals are invented per scene (typography, abstract graphics, diagrams, data-vi
+- **find-skills** (.claude/skills): Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used w
+- **frontend-design** (.claude/skills): Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.
+- **general-video** (.claude/skills): >
+- **golive** (.claude/skills): Take an agent-written app from repo to live production on the user's OWN accounts, with providers they choose (hosting, database, auth, payments, email, domain/DNS). The human connects accounts and approves changes; supp
+- **graphify** (.claude/skills): Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a graphify query first. Turns any input (cod
+- **gsap-core** (.claude/skills): Official GSAP skill for the core API — gsap.to(), from(), fromTo(), easing, duration, stagger, defaults, gsap.matchMedia() (responsive, prefers-reduced-motion). Use when the user asks for a JavaScript animation library, 
+- **gsap-performance** (.claude/skills): Official GSAP skill for performance — prefer transforms, avoid layout thrashing, will-change, batching. Use when optimizing GSAP animations, reducing jank, or when the user asks about animation performance, FPS, or smoot
+- **gsap-plugins** (.claude/skills): Official GSAP skill for GSAP plugins — registration, ScrollToPlugin, ScrollSmoother, Flip, Draggable, Inertia, Observer, SplitText, ScrambleText, SVG and physics plugins, CustomEase, EasePack, CustomWiggle, CustomBounce,
+- **gsap-timeline** (.claude/skills): Official GSAP skill for timelines — gsap.timeline(), position parameter, nesting, playback. Use when sequencing animations, choreographing keyframes, or when the user asks about animation sequencing, timelines, or animat
+- **gsap-utils** (.claude/skills): Official GSAP skill for gsap.utils — clamp, mapRange, normalize, interpolate, random, snap, toArray, wrap, pipe. Use when the user asks about gsap.utils, clamp, mapRange, random, snap, toArray, wrap, or helper utilities 
+- **hashtag-strategy** (.claude/skills): >-
+- **hook-generator** (.claude/skills): >
+- **huashu-motion** (.claude/skills): Motion graphics, launch videos and explainers as editable code. A director picks the motion language for your product; you point at frames to change them. 动画、发布片、解说视频，指着画面改。
+- **hyperframes** (.claude/skills): Read first to make, edit, animate or render any video with HyperFrames (HTML rendered to video), including launch films, explainers, music videos, charts, maps, vertical clips, title cards, captions and overlays. Holds t
+- **hyperframes-animation** (.claude/skills): All animation knowledge for HyperFrames — atomic motion rules, multi-phase scene blueprints, scene transitions, broader motion-design techniques, AND the seven runtime adapters (GSAP default, plus Lottie, Three.js, Anime
+- **hyperframes-audio** (.claude/skills): >
+- **hyperframes-cli** (.claude/skills): The HyperFrames CLI by job - scaffold, check, look at frames, edit the timeline, preview, render locally or in the cloud, publish, project history - plus reading its JSON and recovering from build or render failures.
+- **hyperframes-core** (.claude/skills): The HyperFrames composition contract — build one renderable project. Use for composition structure, the `data-*` timing attributes, `class="clip"`, tracks, sub-compositions, variables, framework-owned media playback, det
+- **hyperframes-creative** (.claude/skills): Non-animation creative direction for HyperFrames videos. Use for design spec (frame.md / design.md) handling, palettes, typography, narration, beat planning, audio-reactive visuals, composition patterns, and brand / styl
+- **hyperframes-keyframes** (.claude/skills): >
+- **hyperframes-registry** (.claude/skills): About 450 ready-made HyperFrames blocks and components installed as editable source - transitions, overlays, titles, kinetic type, captions, charts, map overlays, 3D, camera moves. Use it before hand-building any named v
+- **hyperframes-video-beats** (.claude/skills): Plan, write, time, style, and validate motion-graphic beats for long-form talking-head HyperFrames videos. Use when Codex is asked to add or improve visual beats, glassmorphism lower thirds, crumpled-paper full-screen ta
+- **ig-caption-writer** (.claude/skills): Draft an Instagram caption with the hook in the first 125 characters, a skimmable body, and one clear CTA, using a 2026 hook formula chosen by goal (saves, shares, comments, follows). Runs the humanizer pass and, on appr
+- **ig-carousel-planner** (.claude/skills): Plan an Instagram carousel slide by slide, up to 10 slides, with a hook slide that opens a loop, value slides that front-load the payoff, and a payoff slide that earns the save and follow. Picks a 2026 carousel formula (
+- **ig-hook-extractor** (.claude/skills): Reverse-engineer the hook from a viral Instagram Reel or carousel, given a URL or a pasted caption. Identifies which of the 10 canonical 2026 formulas it uses (number-first, contrarian, relatable, confession, listicle, b
+- **image-to-code-skill** (.claude/skills): Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply analyze them, then implement the website to match them as closely as possible. In C
+- **impeccable** (.claude/skills): Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing page
+- **instagram-reels-publishing** (.claude/skills): >-
+- **last30days** (.claude/skills): Research what people actually say about any topic in the last 30 days. Pulls posts and engagement from Reddit, X, YouTube, TikTok, Hacker News, Polymarket, GitHub, and the web. Includes a doctor health check to diagnose 
+- **lead-magnet-generator** (.claude/skills): Creates viral lead magnet posts that drive comments and DMs. Produces 2 versions - a quick punchy format and a detailed format with bullet points. Use when user needs social media posts to give away a lead magnet in exch
+- **li-audit** (.claude/skills): >-
+- **li-carousel** (.claude/skills): >-
+- **li-comment** (.claude/skills): >-
+- **li-dm** (.claude/skills): >-
+- **li-human** (.claude/skills): >-
+- **li-inbox** (.claude/skills): >-
+- **li-plan** (.claude/skills): >-
+- **li-post** (.claude/skills): >-
+- **li-profile** (.claude/skills): >-
+- **li-reply** (.claude/skills): >-
+- **li-repurpose** (.claude/skills): >-
+- **linkedin-content-planner** (.claude/skills): Generate a 7-day LinkedIn content plan from a theme, audience, and pillars. Produces per-day post pillar, format, hook type, CTA, posting time, daily comment targets, and a weekly inbound-readiness check. Use when the us
+- **linkedin-hook-extractor** (.claude/skills): Reverse-engineer the hook formula from a viral LinkedIn post URL. Returns which of the 20 canonical 2026 formulas it uses (anaphora, R.I.P., year-pivot, time-anchor, curiosity-gap, contrarian, comment-gate, emotional col
+- **linkedin-humanizer** (.claude/skills): Remove AI tells from LinkedIn posts/comments: 2026 vocabulary density, reveal bridges, staccato fragments, stacked triads, performed sincerity. Tiered rewriter plus `--mode audit` LinkedIn post auditor and `--mode profil
+- **linkedin-post-writer** (.claude/skills): Draft a new LinkedIn post from scratch using one of 20 2026 hook formulas (anaphora, R.I.P., time-anchor, curiosity-gap, contrarian, controlled A/B, false-binary, and more) plus a founders-edition angle library, picked b
+- **make-a-video** (.claude/skills): Beginner-friendly end-to-end video creator for HyperFrames. Use when the user says "make a video", "create a video", "new video", "build a video", "video from scratch", "I want to make a video", "help me create a video",
+- **media-use** (.claude/skills): Get or make any media for a HyperFrames video - music, sound effects, images, icons, logos, voiceover, avatar and generated video, transcripts, cutouts, colour grades and looks - with HeyGen or free local tools, and mix 
+- **minimalist-skill** (.claude/skills): Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows.
+- **mkt-copywriting** (.claude/skills): When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user says "write copy for,"
+- **mkt-lead-magnets** (.claude/skills): When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentions "lead magnet," "gated content," "content upgrade," "downloadable," "ebook," "cheat shee
+- **mkt-marketing-psychology** (.claude/skills): When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions 'psychology,' 'mental models,' 'cognitive bias,' 'persuasion,' 'behavioral science
+- **mkt-social** (.claude/skills): When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, or Facebook, or wants to do social listening and engagement triage. Also use when the user men
+- **mkt-video** (.claude/skills): When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the user mentions 'video production,' 'AI video,' 'Remotion,' 'Hyperframes,' 'HeyGen,' 'Synthesia
+- **motion-design** (.claude/skills): >
+- **motion-graphics** (.claude/skills): >
+- **motion-showreel** (.claude/skills): Design and build a 10-30 second motion-design showreel or brand reel in the style of Nate's Opus 5.5 "CLAUDE / MOTION REEL": one brand motif transformed through labeled craft chapters, a persistent HUD, cuts locked to a 
+- **niche-research** (.claude/skills): >
+- **on-screen-text-writer** (.claude/skills): >
+- **openfilm** (.claude/skills): Make videos as web pages with OpenFilm. Use when the user asks for a video, motion graphics, an animation, a launch film, an explainer, a music video, to edit, cut, check or render a film (film.html and pages with window
+- **openshorts** (.claude/skills): Turn long videos (podcasts, webinars, streams) into vertical 9:16 clips with subtitles, re-cut them, and publish them to TikTok, Instagram Reels and YouTube Shorts via the OpenShorts API or MCP server. Use when the user 
+- **output-skill** (.claude/skills): Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.
+- **platform-specs-and-validation** (.claude/skills): >-
+- **playwright-cli** (.claude/skills): Automate browser interactions, test web pages and work with Playwright tests.
+- **post-scorer** (.claude/skills): >
+- **product-launch-video** (.claude/skills): Turn a product or marketing URL, pasted script, or brief into a product launch / promo video — SaaS promos, feature reveals, product demos, app and company launches. Use when the user wants to market, launch, promote, or
+- **profile-conversion-audit** (.claude/skills): Use when an owned social profile needs an evidence-based audit of whether the right visitor can understand the account, trust it, and take the next approved step. Trigger phrases include "audit our Instagram profile", "f
+- **redesign-skill** (.claude/skills): Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla
+- **reel-analyzer** (.claude/skills): >
+- **reels-script** (.claude/skills): >-
+- **reels-scripting** (.claude/skills): >
+- **reply-and-comment-writer** (.claude/skills): >-
+- **scheduling-and-queue** (.claude/skills): >-
+- **seo-audit** (.claude/skills): When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technical SEO," "why am I not ranking," "SEO issues," "on-page SEO," "meta tags review," "SEO heal
+- **series-planner** (.claude/skills): >
+- **short-form-edit** (.claude/skills): Turn talking-head footage into a finished reel, YouTube Short, or short advertisement with curiosity-led openings, earned payoffs, story-driven cuts, transcript-synced motion graphics, moving B-roll, captions, subtle mus
+- **short-form-video** (.claude/skills): Maintain the existing May Shorts teaching compositions using their legacy face-mode, scene-overlay, and karaoke-caption patterns. Use only when working on those examples or explicitly requesting this legacy scaffold. For
+- **short-form-video-script** (.claude/skills): >-
+- **slideshow** (.claude/skills): Build a HyperFrames slideshow to present live - slides, fragment reveals, branching hotspots and presenter mode with speaker notes, served by `hyperframes present` - or turn an existing page into one. Use when the person
+- **slopmonster** (.claude/skills): Review writing for its intended reader, check common AI writing patterns, revise, request a second pass from a different model family, and check again. Trigger on /slopmonster, "humanize this", "de-slop this", "does this
+- **social-analytics-report** (.claude/skills): Use when you need to turn supplied social performance data into a decision about what to keep, test, change, or stop. Trigger phrases include "report on this campaign", "what worked on social?", "analyse these post resul
+- **soft-skill** (.claude/skills): Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the common defaults that make AI designs look che
+- **stripe-best-practices** (.claude/skills): >-
+- **style-library** (.claude/skills): Select, customize, or extend the project's reusable motion-graphics card library and style templates. Use for choosing a visual style, adding a card, building a new style pack, or reusing a template in a HyperFrames vide
+- **talking-head-and-piece-to-camera** (.claude/skills): >-
+- **taste-skill** (.claude/skills): Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, a
+- **tiktok-video-publishing** (.claude/skills): >-
+- **utm-campaign-plan** (.claude/skills): Use when a campaign needs a consistent, approved way to label links so the team can distinguish sources and make later reporting possible. Trigger phrases include "plan our UTMs", "name campaign links", "make tracking li
+- **video-storytelling** (.claude/skills): Design and build the visual layer of a long-form talking-head video as one persistent world the camera moves through, instead of a sequence of separate graphics. Use when asked to edit a video, add motion graphics, desig
+- **video-use** (.claude/skills): Edit any video by conversation. Transcribe, cut, color grade, generate overlay animations, burn subtitles — for talking heads, montages, tutorials, travel, interviews. No presets, no menus. Ask questions, confirm the pla
+- **viral-carousel** (.claude/skills): >
+- **viral-hook-creator** (.claude/skills): Creates viral social media hooks using proven psychological patterns and trigger words. Use when user needs attention-grabbing openings for posts, threads, videos, or content.
+- **viral-reverse-engineering** (.claude/skills): >-
+- **vish-studio** (.claude/skills): Vish's full content system for @buildwith.vish and buildwithvvish.com. Use when asked for "the week", "next week's content", "a full package", "run the pipeline", or any single stage of it (topic, hook, script, storyboar
+- **web-design-guidelines** (.claude/skills): Review UI code for Web Interface Guidelines compliance. Use when asked to "review my UI", "check accessibility", "audit design", "review UX", or "check my site against best practices".
+- **website-to-hyperframes** (.claude/skills): |
+- **youtube-publishing-and-metadata** (.claude/skills): >-
+- **youtube-shorts** (.claude/skills): >-
+- **yt-retention** (.claude/skills): >-
+- **yt-script** (.claude/skills): >-
+- **agent-reach** (.agents/skills): >
+- **ai-seo** (.agents/skills): When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use when the user mentions 'AI SEO,' 'AEO,' 'GEO,' 'LLMO,' 'answer engine optimization,' 'generati
+- **comment-mining** (.agents/skills): >
+- **competitor-teardown** (.agents/skills): >
+- **dm-script-writer** (.agents/skills): >
+- **find-skills** (.agents/skills): Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used w
+- **huashu-motion** (.agents/skills): Motion graphics, launch videos and explainers as editable code. A director picks the motion language for your product; you point at frames to change them. 动画、发布片、解说视频，指着画面改。
+- **on-screen-text-writer** (.agents/skills): >
+- **openfilm** (.agents/skills): Make videos as web pages with OpenFilm. Use when the user asks for a video, motion graphics, an animation, a launch film, an explainer, a music video, to edit, cut, check or render a film (film.html and pages with window
+- **profile-conversion-audit** (.agents/skills): Use when an owned social profile needs an evidence-based audit of whether the right visitor can understand the account, trust it, and take the next approved step. Trigger phrases include "audit our Instagram profile", "f
+- **reel-analyzer** (.agents/skills): >
+- **seo-audit** (.agents/skills): When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions "SEO audit," "technical SEO," "why am I not ranking," "SEO issues," "on-page SEO," "meta tags review," "SEO heal
+- **series-planner** (.agents/skills): >
+- **social-analytics-report** (.agents/skills): Use when you need to turn supplied social performance data into a decision about what to keep, test, change, or stop. Trigger phrases include "report on this campaign", "what worked on social?", "analyse these post resul
+- **stripe-best-practices** (.agents/skills): >-
+- **utm-campaign-plan** (.agents/skills): Use when a campaign needs a consistent, approved way to label links so the team can distinguish sources and make later reporting possible. Trigger phrases include "plan our UTMs", "name campaign links", "make tracking li
+- **viral-carousel** (.agents/skills): >
+- **yt-retention** (.agents/skills): >-
+- **yt-script** (.agents/skills): >-
