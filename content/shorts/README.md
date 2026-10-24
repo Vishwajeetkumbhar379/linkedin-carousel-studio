@@ -20,6 +20,19 @@ word-box captions. Research: `research/shorts/viral-animated-explainers-2026-10-
   stitched-gap George read (Vish: "extremely robotic"). Audition other voices with `scripts/shorts/voice_samples.py`.
 - **Sound:** a sound on every visual event, a dark pulsing bed ducked under the voice (`scripts/shorts/sound.py`).
 
+## Reference look (Vish, 24 Oct 2026: "the exact type of animations I was looking for")
+
+Reference: @charles.zhengg "How we taught sand to think" (instagram.com/reel/De0BAl8B3mY). Full teardown with 12 three.js/GSAP rules: `/mnt/project-files/shorts/research/reference-De0BAl8B3mY/TEARDOWN.md` (not in git). From ep 3 on, every episode is built this way:
+
+- **One continuous 3D world, not a stack of cards.** The camera never stops and never cuts to a new flat scene; it flies, cranes and power-of-ten zooms from the everyday object into the mechanism and back out.
+- **Two colours only.** Deep navy world (#001A2D, fog) with grey metal for anything "off"; one amber emissive (#FDB33E) for anything "on". No purple, no RGB lights.
+- **Real-looking materials.** Bloom, shallow depth of field, ACES tone mapping, grain. Instanced fields of thousands of objects lit in waves.
+- **Show the process as light.** Signal, data or force is a glowing point travelling along a path; the thing it reaches lights up.
+- **Two text layers.** Top headline for the one term or number of the beat (counts up); bottom caption at ~74% with an amber pill on the keyword.
+- **Concept ladder, loop ending.** Each line adds one step; the last shot returns to the opening object so the reel loops.
+
+Eps 1 and 2 stay as shipped (flat 2D cards for ep 1, mixed-colour 3D for ep 2).
+
 ## Script rules
 1. Hook line: 12 words or fewer, second person, names the everyday action ("the second you hit send").
    Frame 0 is already mid-action (no intro, no logo, no name).
