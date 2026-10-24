@@ -14,8 +14,10 @@ word-box captions. Research: `research/shorts/viral-animated-explainers-2026-10-
   `INSIDE AI · EP N` top left, `@BUILDWITH.VISH` top right.
 - **Captions:** up to 3 words at a time, each word flips up in 3D as it's said, an amber box with corner handles
   slides to the spoken word.
-- **Voice:** ElevenLabs George (premade), `eleven_multilingual_v2`, the whole script in one request, lines re-spaced
-  with 0.2 to 0.28 s gaps and 0.45 to 0.5 s at scene breaks (`pause_after`).
+- **Voice (Vish's pick, 24 Oct 2026):** ElevenLabs library voice Drew (`q0IMILNRPxOgtBTS4taI`) on `eleven_v3`, stability 0
+  (Creative), the whole script in one natural read with its own breaths and pauses; optional per-line audio tags
+  (`"tag": "[excited]"`, `[curious]`, `[whispers]`, `[dramatic pause]`). Word timings from faster-whisper. Never the old
+  stitched-gap George read (Vish: "extremely robotic"). Audition other voices with `scripts/shorts/voice_samples.py`.
 - **Sound:** a sound on every visual event, a dark pulsing bed ducked under the voice (`scripts/shorts/sound.py`).
 
 ## Script rules

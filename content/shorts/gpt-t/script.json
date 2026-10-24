@@ -6,23 +6,19 @@
   "renderer": "3d",
   "voice": {
     "provider": "elevenlabs",
-    "voice_id": "JBFqnCBsd6RMkjVDRZzb",
-    "name": "George",
-    "model": "eleven_multilingual_v2",
-    "gap": 0.18,
-    "scene_gap": 0.4,
-    "speed": 1.06,
+    "voice_id": "q0IMILNRPxOgtBTS4taI",
+    "name": "Drew",
+    "model": "eleven_v3",
+    "stability": 0.0,
     "lead": 0.02,
-    "natural": true,
-    "stability": 0.32,
-    "similarity": 0.8,
-    "style": 0.38
+    "note": "Vish picked sample 6 (Drew, eleven_v3 with breaths), 24 Oct 2026"
   },
   "hook_type": "letter tease (bait and switch): three letters everyone types, one is not who you think",
   "lines": [
     {
       "text": "G. P. T. You'd think all three letters are OpenAI's. One isn't.",
-      "see": "Three huge chrome letters G P T in a dark void, the T flickers wrong"
+      "see": "Three huge chrome letters G P T in a dark void, the T flickers wrong",
+      "tag": "[excited]"
     },
     {
       "text": "G, generative. It creates things that never existed.",
@@ -35,11 +31,13 @@
     {
       "text": "But T?",
       "see": "Spotlight snaps onto T, everything else goes dark, low hit",
-      "pause_after": true
+      "pause_after": true,
+      "tag": "[curious]"
     },
     {
       "text": "T was invented at Google.",
-      "see": "T turns, four-colour glow, a Google-style campus block rises behind it"
+      "see": "T turns, four-colour glow, a Google-style campus block rises behind it",
+      "tag": "[dramatic pause]"
     },
     {
       "text": "In 2017, eight Google researchers wrote one paper. It invented the Transformer.",
@@ -60,11 +58,13 @@
     },
     {
       "text": "Google paid 2.7 billion dollars to get one back. In June, he joined OpenAI.",
-      "see": "Last figure, $2.7B price tag, then he crosses to the OpenAI side"
+      "see": "Last figure, $2.7B price tag, then he crosses to the OpenAI side",
+      "tag": "[excited]"
     },
     {
       "text": "So should Google have kept the T a secret?",
-      "see": "Back to G P T, the T hangs between two sides, comment bubble. Loops to frame 0"
+      "see": "Back to G P T, the T hangs between two sides, comment bubble. Loops to frame 0",
+      "tag": "[playful]"
     }
   ],
   "facts": [

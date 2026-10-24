@@ -5,22 +5,18 @@
   "template": "hit-send",
   "voice": {
     "provider": "elevenlabs",
-    "voice_id": "JBFqnCBsd6RMkjVDRZzb",
-    "name": "George",
-    "model": "eleven_multilingual_v2",
-    "gap": 0.18,
-    "scene_gap": 0.35,
-    "speed": 1.06,
+    "voice_id": "q0IMILNRPxOgtBTS4taI",
+    "name": "Drew",
+    "model": "eleven_v3",
+    "stability": 0.0,
     "lead": 0.02,
-    "natural": true,
-    "stability": 0.32,
-    "similarity": 0.8,
-    "style": 0.38
+    "note": "Vish picked sample 6 (Drew, eleven_v3 with breaths), 24 Oct 2026"
   },
   "lines": [
     {
       "text": "When you hit send on ChatGPT, you think it reads your message.",
-      "see": "Phone, thumb hits send, flash, token sparks already flying (busy frame 0)"
+      "see": "Phone, thumb hits send, flash, token sparks already flying (busy frame 0)",
+      "tag": "[curious]"
     },
     {
       "text": "It can't. It gets chopped into tokens, tiny scraps of words.",
@@ -29,11 +25,13 @@
     {
       "text": "They race to a data centre, into chips that cost as much as a car. Each.",
       "see": "Tokens streak down a fibre line to an isometric data centre, dive into a glowing GPU, $30,000+ price tag stamps",
-      "pause_after": true
+      "pause_after": true,
+      "tag": "[excited]"
     },
     {
       "text": "And it doesn't know the answer. It guesses.",
-      "see": "Inside the chip: neural lattice lights up, IT DOESN'T KNOW -> IT GUESSES"
+      "see": "Inside the chip: neural lattice lights up, IT DOESN'T KNOW -> IT GUESSES",
+      "tag": "[whispers]"
     },
     {
       "text": "One token at a time, through billions of numbers.",
@@ -46,7 +44,8 @@
     },
     {
       "text": "Tiny. Until it's two and a half billion messages. Every day.",
-      "see": "One bulb multiplies into a wall of thousands, counter races into the billions"
+      "see": "One bulb multiplies into a wall of thousands, counter races into the billions",
+      "tag": "[dramatic pause]"
     },
     {
       "text": "Sam Altman says your please and thank you cost OpenAI tens of millions of dollars.",
@@ -54,7 +53,8 @@
     },
     {
       "text": "So, do you still say please when you hit send?",
-      "see": "Back to the phone: please typed, thumb hovers send, comment bubble. Last frame matches frame 0 (loop)"
+      "see": "Back to the phone: please typed, thumb hovers send, comment bubble. Last frame matches frame 0 (loop)",
+      "tag": "[playful]"
     }
   ],
   "facts": [
