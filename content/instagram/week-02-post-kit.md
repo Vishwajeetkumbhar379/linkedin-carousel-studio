@@ -12,7 +12,8 @@ Built 23 Oct 2026. Every caption is SlopMonster clean, and every claim comes fro
 | Day | Post | File | Keyword | Status |
 |---|---|---|---|---|
 | Mon 27 Oct | Carousel A: "I didn't edit my intro reel. Claude did." | `out/week02/carousel-a-edit/slides.zip` (10 slides) | EDIT | Ready to post. DM link live once the buildwithvish branch is merged |
-| Thu 30 Oct | Reel: Week 2 of 52, "Remote income: still zero. So here's my plan." | Film this weekend (shoot sheet WEEK2), then the v12 edit | (question: 1, 2 or 3) | Script ready, footage needed |
+| Thu 30 Oct | Reel 2: "How AI edited this video" (3D explainer) | Film this weekend (shoot sheet HOW-AI-EDIT) | EDIT | Board approved, footage needed |
+| Sun 2 Nov | Reel 3: Week 2 of 52, "220 companies said no." | Film this weekend (shoot sheet WEEK2), then the v12 edit | (question: 1, 2 or 3) | Script ready, footage needed |
 | Sat 1 Nov | Carousel B: "Brands don't pay for followers." | `out/week02/carousel-b-check/slides.zip` (10 slides) | CHECK | Ready to post. DM link is live already |
 
 ## Mon 27 Oct · Carousel A (EDIT)
@@ -24,7 +25,7 @@ I'm Vish. Last week I posted Week 1 of 52: 40K in debt, no job, building a remot
 
 I've never been an editor. So I filmed it on my phone and let Claude Code do the edit as code: it transcribed every word, cut my best takes, built every sticker and caption as a small web page, and laid a sound under each one.
 
-My part was the feedback. 12 drafts of plain English, like "start with Hey, I'm Vish" and "add more travel clips here".
+My part was the feedback. 12 drafts of plain English, like "start with Hey, I'm Vish" and "don't make it look cheap".
 
 The tools are free and open source: faster-whisper, FFmpeg, Playwright. Claude Code needs a paid plan.
 
@@ -33,10 +34,10 @@ Want the setup and the five prompts I used? Comment EDIT and I'll DM you the fre
 #claudeai #aivideoediting #contentcreation #buildinpublic #remotework
 ```
 - **Alt text:** "A 10-slide guide: how Claude Code edited Vish's Week 1 reel from phone footage with free tools: transcribe, cut on word boundaries, one visual per line, graphics as web pages, a sound for every visual, and 12 rounds of feedback."
-- **Pinned comment:** "Comment EDIT for the free guide. Week 2 drops Thursday: my plan to make money from anywhere."
+- **Pinned comment:** "Comment EDIT for the free guide. On Thursday I'll show you, step by step, how the AI did it."
 - **Music:** none, or something quiet from Instagram's library (carousels can carry a song).
 
-## Thu 30 Oct · Reel: Week 2 of 52
+## Sun 2 Nov · Reel 3: Week 2 of 52
 Script, delivery marks, B-roll and cover: `content/shoot-sheets/2026-10-week-2.json` (key WEEK2), also on the teleprompter page. The edit follows the v12 standard (freeze-frame sticker on "still zero", ending on the "Next week" narrator card).
 
 **Caption** (finalise after filming, keeping only lines you actually said):
