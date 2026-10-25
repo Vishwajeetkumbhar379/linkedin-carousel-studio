@@ -33,7 +33,7 @@
    "format": "One continuous 3D world (the field of video cards); your face as a portal card inside it; captions with one amber key-word pill; music bed with dropouts",
    "length": "60 to 70 s",
    "title_card": "How AI *edited* this video",
-   "post": "First 3D explainer: any Monday teaching slot once the world template is approved",
+   "post": "Video 2: Thu 30 Oct, 18:30 (the same week as Carousel A, same keyword EDIT). Board approved 25 Oct.",
    "cta": "Comment EDIT (the free guide is built: /resources/ai-edit-stack)",
    "model": "@charles.zhengg De0BAl8B3mY + Der5mJsBmwP: object in your hand, 'let's rewind', causal ladder, scale you can feel, tempo words performed, late self-intro, loop ending",
    "hook": "Before you saw my face, / this video was *39* clips / on my phone.",
@@ -45,7 +45,7 @@
     {
      "say": "Before you saw my face, / this video was *39* clips / on my phone.",
      "see": "A phone floating over the dusk field; 39 clip cards fly out of it and scatter into the field",
-     "how": "[lens], hold the phone up"
+     "how": "[lens], selfie at arm's length like Week 1; hold still for a beat on *39* (the frame freezes there and breaks into your 39 clips)"
     },
     {
      "say": "No editing app touched it. // So let's *rewind* / and see what did.",
@@ -84,7 +84,7 @@
     {
      "say": "It took 12 drafts / of plain English feedback / from me. // Hi, / I'm *Vish*.",
      "see": "The camera dives into your portal card: full face (late self-intro)",
-     "how": "[lens]"
+     "how": "[lens], [smile] on 'Hi, I'm Vish'"
     },
     {
      "say": "And if you're still here, / the edit / did its *job*. // Comment *EDIT* / for the five prompts.",
@@ -94,8 +94,10 @@
    ],
    "notes": "Facts, all from the Week 1 project: 39 raw video clips (raw/ folders), word times from faster-whisper (the real values on screen), Whisper heard 'Rish', cuts snapped to word edges, the RVM matte on every frame, every graphic is HTML rendered by Playwright at 30 fps, true silences in the mix, the 12th draft was posted. 60 s x 30 fps = 1,800 frames; at one a second that is 30 minutes. Film: talking lines in your usual light, holding your phone as the prop; the 3D world is built from templates/video/world/.",
    "broll": [
-    "FILM: lines 1, 2, 10 and 11 to camera, phone in hand (they become the portal card)",
-    "FILM: a close-up of your hand putting the phone down on the desk (5 s)",
+    "FILM: the whole script to camera, selfie style like Week 1 (front camera, arm's length, the lamp beside you). Your voice from this take is the voiceover for the whole film; your face only shows on lines 1, 2, 10 and 11, the rest is the 3D world",
+    "Say every line twice. If you fluff, pause and say the whole line again; the edit keeps the last good take",
+    "Optional, cleaner sound: a second phone on the table recording Voice Memos, 30 cm from your mouth, out of frame",
+    "FILM: a close-up of your hand putting the phone down on the desk (5 s, no talking)",
     "No other B-roll: the world is 3D"
    ],
    "cover": {

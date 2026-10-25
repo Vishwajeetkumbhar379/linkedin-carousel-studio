@@ -6,10 +6,11 @@ Version 1, 23 Oct 2026. It merges the locked decisions (brand-profile.md, voice.
 - **Vish**, 27, brand-side influencer marketing (850+ creator deals), moved to Germany, finishing his master's, building AI workflows as a non-engineer. Only facts from `brand-profile.md`. Never invent results, numbers, quotes or clients. Never mention his past relationship.
 - **Instagram @buildwith.vish** is a weekly documentary, "Week N of 52": building a remote income (goal EUR 3,000 a month) to travel the world. It also teaches the AI and marketing skills he uses along the way.
 - **Audience:** creators, marketers and early founders who want remote income and want to use AI without being engineers.
-- **Accounts (Vish, 23 Oct):**
-  - **@buildwith.vish** is the main brand account: 0 followers, no Trial Reels yet.
-  - **@explorevishwa.jeet** is his personal account: now public, more followers, Trial Reels available. Week 1 ran there as a Trial Reel: about 100 views. On @buildwith.vish it got about 50.
-  - **Open decision:** move the brand onto the account that has followers (swap the usernames), or grow @buildwith.vish from zero. Never post the same video on both.
+- **Accounts (decided 25 Oct):**
+  - **@buildwith.vish is the only account the brand posts on.** It's a professional account with 1 follower; Week 1 got about 110 views there. Every reel, carousel and keyword lives here: it's his portfolio for brand work and freelance.
+  - **@explorevishwa.jeet stays private and personal** (1,738 friends and followers, personal highlights). A Week 1 trial reel there also got about 110 views, so its followers didn't bring reach. Optional: share each new reel to its Story for friends; never post brand content on its grid.
+  - **@explorewith.vish (35 followers, old travel reels):** not used for now. Its old reels reached 1,000 to 2,000 views when posted as collabs with the personal account.
+  - **Why:** both accounts got about the same views, so the follower count is not what limits reach yet; the hook and the format are. One focused account teaches Instagram who to show it to. Never post the same video on two accounts.
 - **Site:** https://buildwithvvish.com (Cloudflare Workers; the brief's "BuildWithWiz.com" is taken to mean this domain).
 - **Writing:** British English, no em or en dashes, no banned words (voice.md), hooks of 12 words or fewer, SlopMonster on every script, caption and reply.
 
