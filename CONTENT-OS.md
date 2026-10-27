@@ -133,6 +133,24 @@ On top of the Triple Hook, every hook must also be:
   - One-image provocative posts (e.g. "Claude could get you in trouble") with the full story in the caption.
 - **Every video ships as 9:16 and 4:5 from the same layers,** plus 1 to 2 still posts and a caption per platform.
 
+## Automation stack (own build, no ManyChat; later sold as a setup kit for about 20 €)
+1. **Auto-DM:** built (`buildwithvish/functions/api/ig-webhook.js` + `lib/ig-autodm/`).
+   - Comment keyword → a private DM with the guide, plus a varied public reply.
+   - Live after: "merge", Meta app review (`docs/instagram-autodm.md`), Cloudflare secrets.
+2. **Guide publisher (one command):**
+   - Publishing a new guide also:
+     - adds the keyword to `lib/ig-autodm/config.json`;
+     - adds the guide to the resources catalogue and the website article list;
+     - puts it on the link-in-bio page (buildwithvvish.com/links) at the top.
+   - The Instagram bio link itself points to /links, so it never needs editing.
+3. **Post everywhere (one click):** a publisher that reads the approved batch and posts or schedules through the official APIs, all free.
+   - Instagram reel and Trial Reel through the Graph API (the same Meta app as the auto-DM).
+   - Facebook Reels.
+   - YouTube Shorts through the Data API (about 6 uploads a day on the free quota).
+   - LinkedIn through Typefully.
+   - TikTok through the Content Posting API (posts private or to drafts until TikTok approves the app).
+   - Check each API's current limits before building.
+
 ## Decision log (add one line per change Vish asks for; newest last)
 - **27 Oct:**
   - No topic repeats on Instagram.
@@ -149,3 +167,4 @@ On top of the Triple Hook, every hook must also be:
   - Motion-graphics stories.
   - The 6-still gate per new format.
   - Distribution everywhere through one scheduler, with no flip trick.
+  - Own automation stack (auto-DM, guide publisher, post-everywhere), later sellable.
