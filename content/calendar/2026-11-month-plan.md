@@ -1,5 +1,7 @@
 # The month plan: 27 Oct to 23 Nov 2026 (Weeks 2 to 5 of 52)
 
+**Exact posting dates, files and captions up to 9 Nov:** `content/posting-kit/2026-10-27-to-11-09.md`. The page with copy buttons is https://claude.ai/artifact/4NgFgACswFZKd7YbRoVhdj (rebuild it with `python scripts/posting_kit_page.py`). Where the two differ, the kit wins.
+
 Vish, 27 Oct: "I cannot just wait for one video and then wait the whole week." He also wants series, carousels for LinkedIn, and every post mapped to the top, middle or bottom of the funnel. This plan replaces the 3-posts-a-week rhythm in `2026-weeks-02-05.md` from Week 2 on. The topics, keywords and guides there stay; this file adds the volume.
 
 Built from the references he sent on 27 Oct, all torn down in `research/creators/references-2026-10-27.md`:

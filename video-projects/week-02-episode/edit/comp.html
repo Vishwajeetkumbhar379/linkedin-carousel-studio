@@ -352,7 +352,7 @@ const K = {
   kw: {  // the close (his cloned voice): the three rows, then the keyword types into a comment box
     make(c) { const rows = c.rows.map(r => `<div class="kr" style="display:flex;align-items:center;gap:24px;margin-top:26px"><i style="width:56px;height:56px;border:4px solid #C9873F;border-radius:12px"></i><span style="font:600 70px/1 IT;letter-spacing:-.03em">${r[0]}</span></div>`).join('');
       return el(`<div class="paperbg" style="position:absolute;inset:0"></div>
-        <div style="position:absolute;left:130px;top:330px;color:#1D1C1A"><div class="kh" style="font:400 italic 116px/1 IS">This week</div>${rows}</div>
+        <div style="position:absolute;left:130px;top:330px;color:#1D1C1A"><div class="kh" style="font:400 italic 116px/1 IS">${c.head || "This week"}</div>${rows}</div>
         <div class="cb" style="position:absolute;left:110px;top:1000px;width:860px;background:#fff;border-radius:40px;padding:34px 42px 38px;box-shadow:0 30px 70px rgba(40,30,20,.25);color:#1D1C1A">
           <div class="mono" style="font-size:20px;color:#8a857b">Comment</div>
           <div style="display:flex;align-items:center;gap:8px;margin-top:14px;height:96px"><span class="kt" style="font:700 100px/1 IT;letter-spacing:-.02em"></span><i class="cur" style="width:6px;height:86px;background:#E7A15A"></i></div>
@@ -431,6 +431,24 @@ const K = {
         p.style.opacity = u * (1 - out); p.style.transform = `translate(${(i % 2 ? 1 : -1) * out * 900}px,${(1 - u) * 60 - out * 200}px) rotate(${+p.dataset.r + (i % 2 ? 1 : -1) * out * 30}deg)`; });
       d.querySelectorAll('.ln .w').forEach(w => { const tw = c.line[+w.dataset.i][1]; flip(w, t, tw - .05, .35);
         if (/yes/i.test(w.textContent)) { w.style.color = '#B8742F'; w.style.fontStyle = 'italic'; } }); } },
+  locks: {  // "friction": three locks on a dark card; each opens as he names it
+    make(c) { const lock = `<svg width="78" height="92" viewBox="0 0 78 92"><path class="sh" d="M18 40 V26 a21 21 0 0 1 42 0 V40" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><rect x="6" y="40" width="66" height="48" rx="12" fill="currentColor"/><circle cx="39" cy="62" r="7" fill="#15130F"/></svg>`;
+      const rows = c.rows.map(([txt, sub]) => `<div class="lr" style="display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:18px;padding:16px 0;border-top:1px solid rgba(247,241,230,.12)">
+          <span class="lk" style="color:#8a837a">${lock}</span><div><div style="font:600 54px/1 IT;letter-spacing:-.03em">${txt}</div><div class="mono" style="font-size:18px;color:#9a948a;margin-top:10px">${sub}</div></div>
+          <span class="st mono" style="font-size:20px;color:#8a837a">locked</span></div>`).join('');
+      return el(`<div class="cd" style="width:900px;background:#15130F;border-radius:40px;padding:34px 48px 20px;color:#F7F1E6;box-shadow:0 40px 90px rgba(0,0,0,.45)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:700 92px/1 IT;letter-spacing:-.04em">FRICTION</div><div class="mono" style="font-size:20px;color:#9a948a">between you and a yes</div></div>${rows}</div>
+        <div class="ln" style="position:absolute;left:0;top:${c.line_y || 1080}px;width:900px;text-align:center;font:400 84px/1.1 IS;color:#1D1C1A">${(c.line || []).map(([w], i) => `<span class="w" data-i="${i}">${w}</span>`).join(' ')}</div>`, '', `left:90px;top:${c.y || 320}px`); },
+    upd(d, c, t) { const u = prog(t, c.t0, .45); d.style.opacity = clamp(u * 4, 0, 1) * (1 - prog(t, c.t1 - .25, .25));
+      d.querySelector('.cd').style.transform = `translateY(${(1 - spring(u)) * 200}px)`;
+      d.querySelectorAll('.lr').forEach((r, i) => { const to = c.open[i], on = to !== null && t >= to, uo = on ? prog(t, to, .35) : 0;
+        r.querySelector('.lk').style.color = on ? '#E7A15A' : '#8a837a';
+        r.querySelector('.sh').style.transform = `translate(${on ? 14 * eo(uo) : 0}px,${on ? -12 * eo(uo) : 0}px) rotate(${on ? -28 * eo(uo) : 0}deg)`; r.querySelector('.sh').style.transformOrigin = '60px 40px';
+        const st = r.querySelector('.st'); st.textContent = on ? 'open' : 'locked'; st.style.color = on ? '#E7A15A' : '#8a837a';
+        r.style.transform = `scale(${on ? 1 + .04 * Math.sin(Math.PI * uo) : 1})`; });
+      d.querySelectorAll('.ln .w').forEach(w => { const tw = c.line[+w.dataset.i][1]; flip(w, t, tw - .05, .35);
+        if (/yes/i.test(w.textContent)) { w.style.color = '#B8742F'; w.style.fontStyle = 'italic'; } });
+      d.querySelector('.ln').style.display = c.line && t < (c.line_until || 1e9) ? 'block' : 'none'; } },
 };
 
 function init(tl) {

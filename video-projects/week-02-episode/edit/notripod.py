@@ -93,7 +93,8 @@ def plan(tl: dict) -> dict:
     nocap.append([c1 - 0.45, tl["dur"] + 1])
     hush = [[tf0 - 0.01, uf - 0.02]]
     music = {"start": 0.0, "boost": [0.3, 0.4], "drop": [tl["dur"], tl["dur"]], "back": tl["dur"]}  # a steady low bed (LinkedIn/YouTube file)
-    return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "hush": hush, "music": music, "capy": []}
+    return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "hush": hush, "music": music,
+            "capy": [[L["n1"]["t0"], L["n2"]["t0"], 400], [L["n3"]["t0"], L["c1"]["t0"], 400]]}  # selfie close-ups: captions above his head
 
 
 E.plan = plan

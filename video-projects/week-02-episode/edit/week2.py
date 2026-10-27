@@ -165,6 +165,19 @@ def build() -> dict:
             "next": (nx0, nx0 + NEXT_LEAD) if NARRATOR else None, "next_words": nw, "vo": vo, "dur": round(t * FPS) / FPS}
 
 
+BROLL = TALKS / "broll"
+
+
+def archive_frames(name: str, n: int) -> Path:
+    """Frames of an archive B-roll clip (week-02-talks/broll/<name>_hd.mp4, public domain), cleaned up for a framed card."""
+    d = W / "fr" / f"arch_{name}"
+    if len(list(d.glob("*.jpg"))) < n:
+        d.mkdir(parents=True, exist_ok=True)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(BROLL / f"{name}_hd.mp4"), "-vf",
+                        f"fps={FPS},scale=960:-2:flags=lanczos,hqdn3d=2:2:3:3,unsharp=5:5:0.4:5:5:0", "-q:v", "3", str(d / "%05d.jpg")], check=True)
+    return d
+
+
 # ---------------------------------------------------------------- the picture + graphics
 def plan(tl: dict) -> dict:
     L = tl["lines"]
