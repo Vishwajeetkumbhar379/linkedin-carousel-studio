@@ -197,6 +197,16 @@ On top of the Triple Hook, every hook must also be:
    - TikTok through the Content Posting API (posts private or to drafts until TikTok approves the app).
    - Check each API's current limits before building.
 
+## Nose rule (Vish, 28 Oct, said many times: never break it)
+- **Avatar:** every drawn, cartoon or AI version of Vish gets a small, slim, refined nose.
+  - Never broad, big or caricatured, in any style.
+  - Write it into every image prompt.
+  - Reject any output where the nose draws the eye, before Vish ever sees it.
+- **Same check on every avatar:** light skin tone, bright open eyes, smooth skin with no wrinkles.
+- **Real footage:**
+  - Phone at eye level or a little above, on the 1x lens, at least an arm's length away. Wide lenses up close make the nose look bigger.
+  - Covers and freeze frames never use low angles or wide-lens close-ups.
+
 ## Decision log (add one line per change Vish asks for; newest last)
 - **27 Oct:**
   - No topic repeats on Instagram.
@@ -215,3 +225,4 @@ On top of the Triple Hook, every hook must also be:
   - Distribution everywhere through one scheduler, with no flip trick.
   - Own automation stack (auto-DM, guide publisher, post-everywhere), later sellable.
   - Psychology Breakdown series.
+  - Nose rule for every avatar and cover (28 Oct).
