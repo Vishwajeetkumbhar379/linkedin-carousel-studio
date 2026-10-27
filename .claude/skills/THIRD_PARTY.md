@@ -26,3 +26,8 @@ Not installed:
 - caveman-compress: calls a paid model API.
 - ponytail, REA, "capacity skills", "I have ADHD": no public repo found under those names.
 - Already here before: graphify, agent-reach, last30days, taste, impeccable, Anthropic skills, HyperFrames, marketing skills.
+
+Added 27 Oct 2026 (Vish's screenshot: "3 free skills"):
+- **greensock/gsap-skills** (MIT): gsap-frameworks, gsap-react, gsap-scrolltrigger (the other five were already here).
+- **CloudAI-X/threejs-skills** (MIT): 13 threejs-* skills.
+- **remotion-dev/skills**: 12 remotion-* skills. The repo states no licence, so they are not committed; `scripts/install_plugins.sh` fetches them.
