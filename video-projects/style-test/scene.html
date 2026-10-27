@@ -1,0 +1,93 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/* Style test after @gregisenberg DeuNPzXxKqQ: one big canvas, a camera that zooms and pans, cards that land on the word */
+@font-face{font-family:IT;font-weight:700;src:url(../../templates/fonts-extra/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:IS;src:url(../../templates/fonts-extra/instrument-serif-latin-400-normal.woff2)}
+@font-face{font-family:IS;font-style:italic;src:url(../../templates/fonts-extra/instrument-serif-latin-400-italic.woff2)}
+:root{--paper:#F1ECE3;--ink:#15130F;--muted:#8A8172;--amber:#E7A15A;--red:#D9473A;--card:#FFFDF8}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+#world{position:absolute;left:0;top:0;width:2160px;height:4000px;transform-origin:0 0;
+background-image:linear-gradient(rgba(21,19,15,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(21,19,15,.06) 1px,transparent 1px);background-size:60px 60px}
+.card{position:absolute;background:var(--card);border-radius:28px;box-shadow:0 30px 60px rgba(21,19,15,.16),0 4px 10px rgba(21,19,15,.08);font-family:IT;color:var(--ink)}
+.lbl{font:700 22px IT;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.big{font:700 120px/1 IT;font-variant-numeric:tabular-nums}
+.chip{position:absolute;background:var(--ink);color:var(--paper);font:700 34px IT;padding:14px 26px;border-radius:999px}
+.stamp{position:absolute;border:8px solid var(--red);color:var(--red);font:700 64px IT;letter-spacing:.08em;padding:6px 26px;border-radius:14px;transform:rotate(-9deg);background:rgba(255,253,248,.6)}
+.pass{width:760px;height:250px;display:flex;align-items:center;gap:36px;padding:0 44px;box-sizing:border-box}
+.pass .ic{width:120px;height:120px;border-radius:24px;background:var(--amber);display:grid;place-items:center;font-size:70px}
+.seg{display:inline-block;width:86px;height:40px;border-radius:10px;background:#E4DDD0;margin-right:12px;overflow:hidden}
+.seg i{display:block;height:100%;width:0;background:var(--ink)}
+#hell{position:absolute;left:0;width:2160px;text-align:center;font:400 190px/1 IS;color:var(--ink)}
+#hell i{color:var(--red)}
+#cap{position:absolute;left:0;right:0;top:1590px;text-align:center}
+#cap span{display:inline-block;background:var(--amber);color:var(--ink);font:700 46px IT;padding:12px 28px;border-radius:16px;box-shadow:0 10px 24px rgba(21,19,15,.18)}
+</style></head><body>
+<div id="world">
+  <div class="card" id="lap" style="left:740px;top:470px;width:680px;height:460px;padding:46px;box-sizing:border-box">
+    <div class="lbl">Working remotely</div>
+    <div class="big" id="yrs" style="margin-top:40px">0 yrs</div>
+    <div style="margin-top:34px;height:16px;border-radius:8px;background:#E4DDD0;overflow:hidden"><div id="yrbar" style="height:100%;width:0;background:var(--amber)"></div></div>
+  </div>
+  <div class="chip" id="india" style="left:1300px;top:420px">📍 India</div>
+  <div class="card" id="meet" style="left:1260px;top:1160px;width:640px;height:230px;padding:38px 44px;box-sizing:border-box">
+    <div class="lbl" style="color:var(--red)">● Important meeting</div>
+    <div style="font:700 56px IT;margin-top:22px">Tomorrow, 10:00</div>
+  </div>
+  <div class="card pass" id="p1" style="left:640px;top:1460px"><div class="ic">✈</div><div><div class="lbl">Next flight</div><div style="font:700 60px IT;margin-top:8px">Booked</div></div></div>
+  <div class="card pass" id="p2" style="left:640px;top:1760px"><div class="ic">✈</div><div><div class="lbl">Flight after that</div><div style="font:700 60px IT;margin-top:8px">Booked</div></div></div>
+  <div class="stamp" id="s1" style="left:860px;top:1530px">CANCELLED</div>
+  <div class="stamp" id="s2" style="left:860px;top:1830px">CANCELLED</div>
+  <div class="card" id="desk" style="left:700px;top:2330px;width:760px;height:520px;padding:46px;box-sizing:border-box">
+    <div class="lbl">Office hours</div>
+    <div class="big" style="margin-top:30px;font-size:104px;white-space:nowrap">9:00 → 5:00</div>
+    <div style="margin-top:56px" id="segs"><span class="seg"><i></i></span><span class="seg"><i></i></span><span class="seg"><i></i></span><span class="seg"><i></i></span><span class="seg"><i></i></span><span class="seg"><i></i></span></div>
+    <div class="lbl" id="mo" style="margin-top:22px;color:var(--ink)">0 months</div>
+  </div>
+  <div id="hell" style="top:3240px">That was <i>hell.</i></div>
+</div>
+<div id="cap"><span id="capt"></span></div>
+<script>
+const W = __WORDS__;
+const at = (w, n = 0) => W.filter((x) => x.w.toLowerCase().replace(/[^a-z0-9-]/g, "").startsWith(w))[n].s;
+const cl = (x) => Math.max(0, Math.min(1, x)), eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const eio = (x) => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const back = (x) => { x = cl(x); const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const $ = (id) => document.getElementById(id);
+// camera keyframes: [time, centre x, centre y, zoom]; eased between neighbours
+const CAM = [[0, 1080, 700, 1.5], [0.9, 1080, 700, 1.12], [at("then") - 0.1, 1080, 720, 1.1], [at("cancelled") + 0.2, 1240, 1560, 1.0],
+  [at("and") + 0.1, 1240, 1600, 1.0], [at("stuck") + 0.35, 1080, 2590, 1.18], [at("six"), 1080, 2600, 1.2], [at("months") + 0.4, 1080, 2640, 1.32],
+  [at("for", 2) - 0.05, 1080, 2640, 1.3], [at("travel") + 0.1, 1080, 1900, 0.46], [at("that"), 1080, 1950, 0.46], [at("hell") + 0.3, 1080, 3330, 1.0], [99, 1080, 3330, 1.06]];
+function cam(t) {
+  let i = 0; while (i < CAM.length - 2 && t > CAM[i + 1][0]) i++;
+  const [t0, x0, y0, z0] = CAM[i], [t1, x1, y1, z1] = CAM[i + 1], k = eio((t - t0) / (t1 - t0));
+  const x = x0 + (x1 - x0) * k, y = y0 + (y1 - y0) * k, z = z0 * Math.pow(z1 / z0, k);
+  $("world").style.transform = `translate(${540 - x * z}px,${960 - y * z}px) scale(${z})`;
+}
+function show(id, t0, kind, t, d = 0.45) {
+  const k = (t - t0) / d, el = $(id);
+  if (kind === "rise") el.style.transform = `translateY(${(1 - eo(k)) * 90}px)`;
+  if (kind === "right") el.style.transform = `translateX(${(1 - eo(k)) * 700}px)`;
+  if (kind === "left") el.style.transform = `translateX(${-(1 - eo(k)) * 700}px)`;
+  if (kind === "pop") el.style.transform = `scale(${0.4 + 0.6 * back(k)})`;
+  if (kind === "slam") el.style.transform = `rotate(-9deg) scale(${1 + 1.4 * (1 - eo(k * 1.6))})`;
+  el.style.opacity = cl(k * 2.2);
+}
+const WC = W.reduce((a, w) => { if (/^-/.test(w.w) && a.length) a[a.length - 1] = {...a[a.length - 1], w: a[a.length - 1].w + w.w, e: w.e}; else a.push({...w}); return a; }, []);
+const CH = []; { let cur = []; WC.forEach((w, i) => { cur.push(w); if (/[.,?!]$/.test(w.w) || cur.length === 3 || i === WC.length - 1) { CH.push({s: cur[0].s, e: cur[cur.length - 1].e + 0.2, t: cur.map((x) => x.w.replace(/[.,]$/, "")).join(" ").replace(" -5", "-5")}); cur = []; } }); }
+window.seek = (t) => {
+  cam(t);
+  show("lap", -0.2, "rise", t); const y = Math.round(4 * eo((t - at("four")) / 0.9));
+  $("yrs").textContent = `${y} yrs`; $("yrbar").style.width = `${eo((t - at("four")) / 0.9) * 100}%`;
+  show("india", at("india"), "pop", t);
+  show("meet", at("meeting") - 0.1, "right", t);
+  show("p1", at("then"), "left", t); show("p2", at("then") + 0.12, "left", t);
+  show("s1", at("cancelled"), "slam", t, 0.35); show("s2", at("cancelled") + 0.18, "slam", t, 0.35);
+  show("desk", at("stuck") - 0.1, "rise", t);
+  const m = cl((t - at("six")) / 0.8);
+  document.querySelectorAll(".seg i").forEach((el, i) => { el.style.width = `${cl(m * 6 - i) * 100}%`; });
+  $("mo").textContent = `${Math.round(m * 6)} months`;
+  ["p1", "p2", "s1", "s2", "meet"].forEach((id) => { if (t > at("travel")) $(id).style.filter = `grayscale(${eo((t - at("travel")) / 0.6)})`; });
+  show("hell", at("that") - 0.05, "rise", t, 0.5);
+  const c = CH.find((c) => t >= c.s && t < c.e); $("capt").textContent = c ? c.t : ""; $("cap").style.opacity = c ? 1 : 0;
+};
+seek(0);
+</script></body></html>

@@ -67,3 +67,8 @@ voice.old.wav
 .claude/skills/archify/
 .claude/skills/remotion-*/
 !.claude/skills/remotion-video-creation/
+
+# generated audio and video never go in git (public repo)
+video-projects/**/*.mp3
+video-projects/**/*.mp4
+video-projects/**/*.wav
