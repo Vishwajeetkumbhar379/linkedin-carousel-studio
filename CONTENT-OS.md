@@ -65,7 +65,8 @@ This file overrides every earlier plan where they differ. Change it only when Vi
     - The Zeigarnik effect (why cliffhangers work).
 - **Animated chapters (1 a week):** his story as a cartoon series, with his voice. For example "How I ended up 40k in debt".
   - **Model:** @yourtrainerarc (De-YnCbAq3g: 1.3M views and 11K followers in a week).
-  - **The cartoon Vish is drawn in code**, so it's free, identical in every episode, and walks, talks and blinks. Locked palette.
+  - **The character is Vish's own mascot pack** (`brand/avatar/pack`, served at `/mascot`): the real 3D PNGs (9 expressions, 8 gestures, 8 angles, wave keyframes), animated in code by swapping poses, bouncing and sliding.
+  - **Never redraw his face** with SVG, CSS or simple shapes (the pack guide, and Vish on 27 Oct).
   - **Every episode has:**
     - A series bible.
     - A new picture every 2 seconds.
@@ -184,7 +185,7 @@ On top of the Triple Hook, every hook must also be:
   - The series "Worth It or Slop?".
   - The Triple Hook.
   - Travel and yoga offers.
-  - The cartoon Vish drawn in code.
+  - The cartoon Vish from the mascot PNGs only, never redrawn.
   - The vote.
   - Motion-graphics stories.
   - The 6-still gate per new format.

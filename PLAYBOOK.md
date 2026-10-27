@@ -249,6 +249,8 @@ Research → topic validation → hook → script → storyboard → edit → ca
   - **Warm paper (learn):** the carousels, and the motion reels made from them with `scripts/carousel_reel.py`.
   - **Navy framed print (story):** the cover of every talking reel, from `scripts/print_cover.py`.
 
+- **The mascot (Vish, 27 Oct: "that doesn't look like me"):** any animated Vish uses the real PNGs in `brand/avatar/pack` (read `Vish_Mascot_Claude_Guide.md`). Never a drawn or generated face.
+
 ## 12. Research sources and how reliable they are
 - **"Viral first" rule [Vish, 23 Oct]:** before choosing any topic or format, rank candidate reels by real engagement and model only the winners:
   1. `python scripts/research/ig_fetch.py <codes> --out=<dir> --meta-only` reads likes and comments from the public embed, no login.
