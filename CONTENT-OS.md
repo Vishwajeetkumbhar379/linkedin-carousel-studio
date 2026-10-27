@@ -41,14 +41,26 @@ This file overrides every earlier plan where they differ. Change it only when Vi
   - On screen: two tick boxes, WORTH IT and SLOP. The verdict lands on one at the end.
   - Model: @itstundeanthony "Fact or Hype?" (DeKHCW7iBvJ: 8,992 likes, 3,448 comments). Proof first, live cost on screen, a comment keyword for the setup guide.
 - **Brand-Side.**
-- **Animated chapters (1 a week):** his story, painted, with his own voice. For example "How I ended up 40k in debt".
-  - **Model:** @ink.industries_ (Ddd2Z3sPDEA, 23,994 likes). A painterly gouache character on light paper, simple scenes.
-  - **Free route only:**
-    - FLUX stills through `NVIDIA_API_KEY`, in one locked style prompt.
-    - A character sheet of the painted Vish, made from his real photos, so he looks the same in every shot.
-    - Motion done in code: parallax layers, camera moves, small character moves, brush transitions.
-    - Free Hugging Face image-to-video only when the quota allows.
-  - **Limits:** it won't move as smoothly as paid Seedance, and that has been accepted. The painted Vish appears only in these videos and always gets the AI label.
+- **Animated chapters (1 a week):** his story as a cartoon series, with his voice. For example "How I ended up 40k in debt".
+  - **Model:** @yourtrainerarc (De-YnCbAq3g: 1.3M views and 11K followers in a week).
+  - **The cartoon Vish is drawn in code**, so it's free, identical in every episode, and walks, talks and blinks. Locked palette.
+  - **Every episode has:**
+    - A series bible.
+    - A new picture every 2 seconds.
+    - A twist.
+    - A cliffhanger.
+    - A vote.
+  - The cartoon Vish appears only in these and always gets the AI label.
+- **Motion-graphics stories (2 a week, @eadesignofficial Dd_t1ZhNAoR):** a personal failure story, then his own fix, then a reverse-psychology CTA ("don't comment X unless...").
+  - **Visuals:** pure motion graphics with a new visual every 1.8 s: 3D phones, chat bubbles, kinetic words, money, receipts, a red-string board, a clock, a grid mat.
+  - **Voice:** his recorded voice when there is one. The clone fills gaps or narrates everything when there is no recording. Frequency beats perfection.
+  - **Specific identity in every story:** an Indian marketer in Germany, 27, in debt.
+
+## The vote (locked)
+At the end of Bet episodes and chapters, followers vote on a real decision: which offer to sell first, what to test next, which Sri Lanka city. He follows the result on camera, and a pinned comment counts the votes.
+
+## New-format gate (locked)
+Every new format gets one board of 6 stills, which is free and uses no credits. Vish approves it once, the format is locked, and it runs without reviews after that. Nothing that spends credits runs before that yes.
 
 ## Hooks: the Triple Hook (from @kallawaymarketing De_5mQ0R8PE, locked)
 Every hook has three beats inside the first 1 or 2 sentences. Say each one, show it and write it on screen.
@@ -119,3 +131,7 @@ On top of the Triple Hook, every hook must also be:
   - The series "Worth It or Slop?".
   - The Triple Hook.
   - Travel and yoga offers.
+  - The cartoon Vish drawn in code.
+  - The vote.
+  - Motion-graphics stories.
+  - The 6-still gate per new format.
