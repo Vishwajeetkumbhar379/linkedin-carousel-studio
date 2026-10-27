@@ -31,3 +31,6 @@ Added 27 Oct 2026 (Vish's screenshot: "3 free skills"):
 - **greensock/gsap-skills** (MIT): gsap-frameworks, gsap-react, gsap-scrolltrigger (the other five were already here).
 - **CloudAI-X/threejs-skills** (MIT): 13 threejs-* skills.
 - **remotion-dev/skills**: 12 remotion-* skills. The repo states no licence, so they are not committed; `scripts/install_plugins.sh` fetches them.
+- **anthropics/claude-plugins-official, claude-code-setup**: claude-automation-recommender.
+- **rebelytics/one-skill-to-rule-them-all** (CC BY 4.0, Eoghan Henn and contributors): task-observer. Changed: its trigger now fires only on request, because the upstream one loads a 6,600-word skill on every multi-step task.
+- Not installed (27 Oct): OmniRoute and headroom sit between Claude Code and the model as a proxy, which this managed cloud session can't route through; claude-mem needs a background worker and a database that this container wipes between sessions, and our locked memory files (CONTENT-OS, PLAYBOOK, brand-profile) already do that job. find-skills was already installed.
