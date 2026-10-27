@@ -17,15 +17,16 @@ base = E.base
 W = E.P / "work_notripod"
 E.W = base.W = W
 base.FR, base.LUTS = W / "fr", W / "luts"
-E.OUTNAME = "notripod-9x16.mp4"
-E.LINES = [
+E.OUTNAME = "notripod"
+E.SEQ = [
     ("n1", "IMG_8744", [(6.0, 8.1)], {"tripod": "tripod."}, "full", "day", {"gap": 0.9, "mute": 1}),  # "I don't have a tripod. I don't have a mic." + the freeze
     ("n2", "IMG_8744", [(16.6, 22.4)], {}, "split", "day", {}),
     ("n3", "IMG_8744", [(22.7, 28.8)], {}, "full", "day", {"gap": 0.2}),
+    ("c1", None, "NOTRIPOD_3"),  # "Every video on this account so far was shot on my phone."
+    ("c2", None, "NOTRIPOD_4"),  # "So what would you buy first? A tripod, or a mic?"
 ]
-E.CLONES = [("c1", "NOTRIPOD_3"), ("c2", "NOTRIPOD_4")]  # "Every video on this account so far was shot on my phone." / "So what would you buy first? A tripod, or a mic?"
 E.NARRATOR = None
-E.LAND = {"n3": .25}
+
 
 
 def plan(tl: dict) -> dict:
@@ -91,7 +92,8 @@ def plan(tl: dict) -> dict:
     S("pop", vw("c2", "mic") + 0.4, 0.08)
     nocap.append([c1 - 0.45, tl["dur"] + 1])
     hush = [[tf0 - 0.01, uf - 0.02]]
-    return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "hush": hush, "end": L["n3"]["t1"], "boost": []}
+    music = {"start": 0.0, "boost": [0.3, 0.4], "drop": [tl["dur"], tl["dur"]], "back": tl["dur"]}  # a steady low bed (LinkedIn/YouTube file)
+    return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "hush": hush, "music": music, "capy": []}
 
 
 E.plan = plan
@@ -104,7 +106,6 @@ if __name__ == "__main__":
     elif cmd == "stills":
         base.stills([float(x) for x in sys.argv[2].split(",")])
     elif cmd == "render":
-        pic = base.render(int(opt.get("jobs", 3)))
-        print("->", E.mux(pic, E.mix()))
+        E.finish(base.render(int(opt.get("jobs", 2))))
     elif cmd == "mix":
-        print("->", E.mux(W / "picture.mp4", E.mix()))
+        E.finish(W / "picture.mp4")

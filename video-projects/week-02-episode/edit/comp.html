@@ -324,7 +324,7 @@ const K = {
         <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:400 italic 84px/.9 IS">The goal</div><div class="mono" style="font-size:20px;color:rgba(247,241,230,.6)">Week 52</div></div>
         <div style="display:flex;align-items:baseline;gap:20px;margin-top:34px"><div class="n" style="font:700 190px/.9 IT;letter-spacing:-.05em;color:#E7A15A;font-variant-numeric:tabular-nums;transform-origin:0 70%">€0</div><div class="pm" style="font:400 italic 76px/1 IS;color:rgba(247,241,230,.9)">a month</div></div>
         <div style="height:16px;margin-top:38px;border-radius:8px;background:rgba(247,241,230,.12);overflow:hidden"><i style="display:block;height:100%;width:1.2%;background:#E7A15A"></i></div>
-        <div class="mono" style="display:flex;justify-content:space-between;margin-top:16px;font-size:22px;color:rgba(247,241,230,.62)"><span>Now: €0</span><span class="fr">From anywhere</span></div></div>`, '', 'left:90px;top:170px'); },
+        <div class="mono" style="display:flex;justify-content:space-between;margin-top:16px;font-size:22px;color:rgba(247,241,230,.62)"><span>Now: €0</span><span class="fr">From anywhere</span></div></div>`, '', 'left:90px;top:300px'); },
     upd(d, c, t) { const u = prog(t, c.t0, .45), out = eio(prog(t, c.t1 - .3, .3));
       d.style.opacity = eo(u) * (1 - out); d.style.transform = `translateY(${(1 - eo(u)) * 40 - out * 60}px)`;
       const n = d.querySelector('.n'); n.textContent = '€' + (Math.round(3000 * eo(prog(t, c.num_t, .7)) / 50) * 50).toLocaleString('en-US');
@@ -335,7 +335,7 @@ const K = {
           <i style="width:58px;height:58px;border:4px solid #C9873F;border-radius:13px;flex:none"></i>
           <div><div style="font:600 60px/1 IT;letter-spacing:-.03em">${txt}</div><div class="mono" style="font-size:19px;color:#7d776d;margin-top:12px">${sub}</div></div></div>`).join('');
       return el(`<div style="width:940px;background:#F7F3EC;border-radius:34px;padding:34px 50px 22px;box-shadow:0 34px 80px rgba(0,0,0,.45);color:#1D1C1A">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px"><div style="font:400 italic 88px/1 IS">${c.head}</div><div class="mono" style="font-size:20px;color:#7d776d">This week</div></div>${rows}</div>`, '', 'left:70px;top:170px'); },
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px"><div style="font:400 italic 88px/1 IS">${c.head}</div><div class="mono" style="font-size:20px;color:#7d776d">This week</div></div>${rows}</div>`, '', 'left:70px;top:300px'); },
     upd(d, c, t) { const u = prog(t, c.t0, .5), out = eio(prog(t, c.t1 - .3, .3));
       d.style.opacity = clamp(u * 4, 0, 1) * (1 - out); d.style.transform = `translateY(${(1 - spring(u)) * 260 - out * 120}px)`;
       d.querySelectorAll('.tr').forEach((r, i) => { const ur = prog(t, c.rows[i][2], .35); r.style.opacity = eo(ur); r.style.transform = `translateX(${(1 - eo(ur)) * 70}px)`; }); } },
@@ -356,7 +356,7 @@ const K = {
         <div class="cb" style="position:absolute;left:110px;top:1000px;width:860px;background:#fff;border-radius:40px;padding:34px 42px 38px;box-shadow:0 30px 70px rgba(40,30,20,.25);color:#1D1C1A">
           <div class="mono" style="font-size:20px;color:#8a857b">Comment</div>
           <div style="display:flex;align-items:center;gap:8px;margin-top:14px;height:96px"><span class="kt" style="font:700 100px/1 IT;letter-spacing:-.02em"></span><i class="cur" style="width:6px;height:86px;background:#E7A15A"></i></div>
-          <div class="ks" style="font:400 italic 52px/1.1 IS;color:#B8742F;margin-top:20px">and I'll send you my checklist</div></div>`, '', 'inset:0'); },
+          <div class="ks" style="font:400 italic 52px/1.1 IS;color:#B8742F;margin-top:20px">${c.send || "and I'll send you my checklist"}</div></div>`, '', 'inset:0'); },
     upd(d, c, t) { d.style.transform = `translateY(${(1 - eio(prog(t, c.t0, .45))) * 1920}px)`;
       enter(d.querySelector('.kh'), t, c.t0 + .2, .35, 12, 4);
       d.querySelectorAll('.kr').forEach((r, i) => enter(r, t, c.rows[i][1], .35, 16, 4));
@@ -385,6 +385,52 @@ const K = {
       const x = t < c.a_t ? 540 : t < c.b_t ? 300 + 40 * (1 - eo(prog(t, c.a_t - .3, .3))) : 760 - 460 * (1 - eo(prog(t, c.b_t - .3, .3)));
       d.querySelector('.cur').style.transform = `translate(${x}px,${t < c.a_t ? 1250 - 250 * eo(prog(t, c.t0, .6)) : 960}px)`;
       enter(d.querySelector('.ft'), t, c.b_t + .4, .4, 10, 4); } },
+  hook: {  // no face: his words land huge on black, his real rejection emails flash behind them
+    make(c) { const sh = c.shots.map((f, k) => `<img class="rj" src="${f}" style="position:absolute;left:${[90, 560, 240, 640][k]}px;top:${[420, 520, 980, 900][k]}px;width:380px;border-radius:34px;border:8px solid #121212;opacity:0">`).join('');
+      return el(`${sh}<div class="vg" style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 45%,rgba(0,0,0,.55),rgba(0,0,0,.9))"></div>
+        <div class="b1" style="position:absolute;left:0;right:0;top:470px;text-align:center;color:#F7F1E6">
+          <div class="n" style="font:700 330px/.86 IT;letter-spacing:-.06em;font-variant-numeric:tabular-nums">0</div>
+          <div class="co" style="font:700 112px/1 IT;letter-spacing:-.03em;margin-top:6px">COMPANIES</div>
+          <div class="no" style="display:inline-block;font:700 190px/1 IT;letter-spacing:-.04em;color:#E7A15A;margin-top:26px">SAID NO.</div></div>
+        <div class="b2" style="position:absolute;left:0;right:0;top:470px;text-align:center;color:#F7F1E6">
+          <div class="w2" data-k="so" style="font:700 110px/1 IT;letter-spacing:-.03em">SO I'M</div>
+          <div class="w2" data-k="building" style="font:700 150px/1 IT;letter-spacing:-.04em;margin-top:18px">BUILDING</div>
+          <div class="w2" data-k="own" style="font:700 170px/1 IT;letter-spacing:-.045em;margin-top:18px">MY <span style="color:#E7A15A">OWN</span></div>
+          <div class="w2" data-k="job" style="font:400 italic 230px/.95 IS;color:#E7A15A;margin-top:6px">job.</div></div>`, '', 'inset:0'); },
+    upd(d, c, t) { const [a, b] = c.n220, n = d.querySelector('.n'), sw = t >= c.so - .04;
+      // the emails: each flashes on for a beat in turn, faster as the count climbs, gone once he says "so"
+      d.querySelectorAll('.rj').forEach((im, k) => { const on = !sw && t >= a + k * .14; const R = rng(k + 3);
+        im.style.opacity = on ? (.4 + .08 * Math.sin(t * 30 + k)) : 0; im.style.transform = `rotate(${(R() - .5) * 16}deg) scale(${1.05 - .05 * eo(prog(t, a + k * .14, .25))})`;
+        im.style.filter = 'blur(1px) grayscale(.3)'; });
+      const b1 = d.querySelector('.b1'), b2 = d.querySelector('.b2');
+      b1.style.display = sw ? 'none' : 'block'; b2.style.display = sw ? 'block' : 'none';
+      if (!sw) {
+        n.textContent = String(Math.round(220 * eo(prog(t, a - .05, Math.max(.3, b - a)))));
+        const un = prog(t, a - .05, .25); n.style.transform = `scale(${1.5 - .5 * spring(un)})`; n.style.opacity = t >= a - .05 ? 1 : 0; n.style.filter = un < .4 ? `blur(${(1 - un / .4) * 10}px)` : 'none';
+        const co = d.querySelector('.co'), uc = prog(t, c.companies - .04, .3); co.style.opacity = t >= c.companies - .04 ? 1 : 0; co.style.transform = `translateY(${(1 - eo(uc)) * 40}px)`;
+        const no = d.querySelector('.no'), un2 = prog(t, c.no - .03, .22); no.style.opacity = t >= c.said - .04 ? 1 : 0;
+        no.style.transform = t < c.no - .03 ? 'scale(.92)' : `scale(${1.6 - .6 * spring(un2)}) rotate(${-3 * eo(un2)}deg)`;
+        const sk = t >= c.no && t < c.no + .25 ? (rng(Math.floor(t * 60))() - .5) * 26 * (1 - prog(t, c.no, .25)) : 0;  // the screen shakes on "no"
+        b1.style.transform = `translate(${sk}px,${sk * .6}px)`;
+      } else {
+        d.querySelectorAll('.w2').forEach(w => { const tk = c[w.dataset.k] - .04, u = prog(t, tk, .3);
+          w.style.opacity = t >= tk ? 1 : 0; w.style.transform = `perspective(700px) rotateX(${(1 - eo(u)) * -70}deg) translateY(${(1 - eo(u)) * 30}px)`; });
+      }
+      d.style.opacity = 1 - prog(t, c.t1 - .08, .08); } },
+  wall2: {  // his clone: "220 rejections. Honestly, I'm done waiting for a company to say yes." on paper
+    make(c) { const ph = [[70, 470, -6], [470, 500, 5], [190, 640, 2], [440, 690, -4]].map(([x, y, r], i) =>
+        `<img class="ph" src="../assets/rejections/img_864${4 + i}.jpg" style="position:absolute;left:${x}px;top:${y}px;width:480px;border-radius:40px;border:10px solid #121212;box-shadow:0 40px 80px rgba(0,0,0,.28)" data-r="${r}">`).join('');
+      const ln = c.line.map(([w], i) => `<span class="w" data-i="${i}">${w.replace(/[,.]$/, m => m)}</span>`).join(' ');
+      return el(`<div class="paperbg" style="position:absolute;inset:0"></div>${ph}
+        <div style="position:absolute;left:0;right:0;top:290px;text-align:center"><span class="cnt" style="font:700 170px/.85 IT;letter-spacing:-.06em;color:#1D1C1A"></span>
+          <span style="font:400 italic 76px/1 IS;color:#1D1C1A;margin-left:14px">job rejections</span></div>
+        <div class="ln" style="position:absolute;left:90px;right:90px;top:820px;text-align:center;font:400 96px/1.08 IS;color:#1D1C1A">${ln}</div>`, '', 'inset:0'); },
+    upd(d, c, t) { d.style.opacity = eo(prog(t, c.t0, .3));
+      d.querySelector('.cnt').textContent = Math.round(220 * eo(prog(t, c.count_t, c.count_d)));
+      d.querySelectorAll('.ph').forEach((p, i) => { const u = eo(prog(t, c.t0 + .1 + i * .14, .45)), out = eio(prog(t, c.done_t - .05 + i * .05, .5));
+        p.style.opacity = u * (1 - out); p.style.transform = `translate(${(i % 2 ? 1 : -1) * out * 900}px,${(1 - u) * 60 - out * 200}px) rotate(${+p.dataset.r + (i % 2 ? 1 : -1) * out * 30}deg)`; });
+      d.querySelectorAll('.ln .w').forEach(w => { const tw = c.line[+w.dataset.i][1]; flip(w, t, tw - .05, .35);
+        if (/yes/i.test(w.textContent)) { w.style.color = '#B8742F'; w.style.fontStyle = 'italic'; } }); } },
 };
 
 function init(tl) {

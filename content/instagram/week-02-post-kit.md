@@ -60,8 +60,29 @@ Comment EDIT and I'll send you the prompts.
 - **Pinned comment:** "Comment EDIT for the free guide with the prompts. Sunday: Week 2 of 52."
 - **Alt text:** "A 3D explainer by Vish: how Claude turned 39 phone clips into his Week 1 reel, from word timestamps to cuts, cut-outs, captions rendered as web pages, sound and 12 rounds of feedback."
 
-## Sun 2 Nov · Reel 3: Week 2 of 52 (changed 27 Oct: rewritten from what he filmed)
-Edit: `video-projects/week-02-episode` (`edit/week2.py`, script `content/shoot-sheets/2026-10-week-2-edit.json`, key WEEK2). The closing line is his clone; the "Next week" card is the narrator, as in Week 1. Turn on the AI info label.
+## Sun 2 Nov · Reel 3: Week 2 of 52 (final, 27 Oct: built from his voice note and his answers)
+The edit is `video-projects/week-02-episode/edit/week2.py`, about 48 s:
+1. The hook has no face.
+2. He walks in at the barber.
+3. The haircut on the beat.
+4. The music drops, then the rewind.
+5. The 3,000 euro goal.
+6. Reduce friction.
+7. FRICTION and the "Next week" card.
+
+**Files:**
+- **Instagram:** `out/week2-instagram-9x16.mp4` (no music in it, on purpose).
+- **LinkedIn and YouTube Shorts:** `out/week2-9x16.mp4` (our own music, with the hard drop).
+- **Cover:** `out/week2-cover.jpg`.
+
+**Trending song (Instagram only):**
+1. When posting, tap the music note, search **"What You Waiting For?" (Gwen Stefani)** and pick the chorus ("What you waiting for?").
+2. Set the volume to **Original audio 100, Music about 15**, so the song sits under his voice.
+3. Check for the trending arrow first. If it's gone, pick another arrowed song that fits "take a chance".
+
+Why: the reel then shows on the song's page. It's discovery, not a guaranteed boost (`research/viral/trending-audio-2026-10-27.md`).
+
+**AI label:** turn on "AI info". Two lines are his clone: "220 rejections. Honestly, I'm done waiting…" and "This week: profiles, portfolio, plan…"
 
 **Caption:**
 ```
@@ -69,23 +90,21 @@ Edit: `video-projects/week-02-episode` (`edit/week2.py`, script `content/shoot-s
 
 Week 2 of 52. The goal: 3,000 euros a month, from anywhere.
 
-Before I chase a single client, I'm reducing friction:
+Step one wasn't a laptop. It was a haircut. Then, before I chase a single client, I'm reducing friction:
 1. Profiles on the freelancing platforms
-2. A portfolio, one page
-3. A plan for my content and what I sell
+2. A one-page portfolio
+3. A plan for what I sell
 
-And a haircut. Fresh start.
+Two lines in this video are my AI voice clone, because I didn't film them. Everything else is me.
 
-The last line of this video is my AI voice clone. Everything else I filmed.
+Comment FRICTION and I'll send you my checklist.
 
-Comment FRICTION and I'll send you my checklist, with the three Claude prompts.
-
-#buildinpublic #remotework #freelancing #startingover #52weeks
+#buildinpublic #remotework #freelancing #startingover #jobsearch
 ```
-- **Cover:** navy framed-print template (`cover.py`), stickers "220 rejections", "€0 remote income", "Week 2 of 52"; line "So I'm building my *own job.*"
-- **Alt text:** "Vish, week 2 of 52: after 220 job rejections he sets a goal of 3,000 euros a month from anywhere, gets a haircut, and starts by reducing friction: freelance profiles, a portfolio and a plan."
+- **Alt text:** "Vish, week 2 of 52: after 220 job rejections he decides to build his own job. He gets a haircut, sets a goal of 3,000 euros a month from anywhere, and starts by reducing friction: freelance profiles, a portfolio and a plan."
 - **Pinned comment:** "Comment FRICTION for the checklist. Next week: did it work?"
-- **Keyword:** FRICTION (guide `/resources/reduce-friction`, on the buildwithvish branch: live with "merge").
+- **Keyword:** FRICTION. The guide is `/resources/reduce-friction`, on the buildwithvish branch, and goes live with "merge".
+- **Story the same day:** share the reel with a poll, "Would you quit waiting for a yes? Yes / Not yet".
 
 ## Sat 1 Nov · Carousel B (CHECK)
 **Caption:**
