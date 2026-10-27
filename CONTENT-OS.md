@@ -41,6 +41,28 @@ This file overrides every earlier plan where they differ. Change it only when Vi
   - On screen: two tick boxes, WORTH IT and SLOP. The verdict lands on one at the end.
   - Model: @itstundeanthony "Fact or Hype?" (DeKHCW7iBvJ: 8,992 likes, 3,448 comments). Proof first, live cost on screen, a comment keyword for the setup guide.
 - **Brand-Side.**
+- **Psychology Breakdown (1 a week; model: @ishaanthakurr De_tWIkyChY, "Girls want you to cheat", 10,508 likes):**
+  - **Structure:**
+    1. A hook that sounds wrong or outrageous.
+    2. A personal observation.
+    3. "So I looked it up."
+    4. The real named effect, with its source on screen.
+    5. The snapback into his world: brands, creators, the job hunt, self-improvement.
+    6. A question as the CTA.
+  - **Rules:**
+    - Only real, citable research.
+    - Name the study or concept on screen.
+    - No invented findings.
+  - **Look:** talking head, plus B-roll and our animations, with the study shown as a paper card.
+  - **Topics:**
+    - "Brands want you taken" (mate-choice copying: brands want creators other brands already pay).
+    - Social proof and scarcity in launches.
+    - The decoy effect in creator rate cards.
+    - The IKEA effect (why people love what they build).
+    - The halo effect in CVs and profile photos.
+    - Why rejection hurts like physical pain.
+    - Parasocial bonds (why people follow creators).
+    - The Zeigarnik effect (why cliffhangers work).
 - **Animated chapters (1 a week):** his story as a cartoon series, with his voice. For example "How I ended up 40k in debt".
   - **Model:** @yourtrainerarc (De-YnCbAq3g: 1.3M views and 11K followers in a week).
   - **The cartoon Vish is drawn in code**, so it's free, identical in every episode, and walks, talks and blinks. Locked palette.
@@ -168,3 +190,4 @@ On top of the Triple Hook, every hook must also be:
   - The 6-still gate per new format.
   - Distribution everywhere through one scheduler, with no flip trick.
   - Own automation stack (auto-DM, guide publisher, post-everywhere), later sellable.
+  - Psychology Breakdown series.
