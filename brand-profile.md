@@ -43,3 +43,8 @@ Night studio: dark wall, one warm lamp beside Vish. Tokens: night #14161B, lamp 
 
 ## Hard nos
 AI voices, AI avatars, generated faces, stock footage that doesn't match the line, fake numbers, automated likes or comments on other people's posts.
+- **Added by Vish, 27 Oct 2026:**
+  - The debt is 40k euros, from the master's fees and living costs in Germany.
+  - Before Germany he was an influencer marketing manager at a big brand or agency, on a good salary. He quit it for the master's.
+  - The 220 applications went to mixed roles (marketing, working-student jobs, internships). Most answers were automated rejections.
+  - Never show his city: say "Germany".
