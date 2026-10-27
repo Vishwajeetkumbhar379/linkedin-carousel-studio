@@ -41,6 +41,13 @@ This file overrides every earlier plan where they differ. Change it only when Vi
   - On screen: two tick boxes, WORTH IT and SLOP. The verdict lands on one at the end.
   - Model: @itstundeanthony "Fact or Hype?" (DeKHCW7iBvJ: 8,992 likes, 3,448 comments). Proof first, live cost on screen, a comment keyword for the setup guide.
 - **Brand-Side.**
+- **Daily Take, "Episode N" (from 28 Oct; model @itsaarxv DdCKjJLKtq0, 38,950 likes in 13 s):**
+  - One selfie take while walking, 8 to 12 s.
+  - One polarising sentence from his life ("Hate me for saying this, but...").
+  - Fast, sure delivery.
+  - Big word-by-word captions.
+  - It ends abruptly with "I'm ending this one here", then a 3 s flashing follow card. That card drives the rewatches and the follows.
+  - The episode number builds the habit. He films 20 in one 30-minute walk.
 - **Psychology Breakdown (1 a week; model: @ishaanthakurr De_tWIkyChY, "Girls want you to cheat", 10,508 likes):**
   - **Structure:**
     1. A hook that sounds wrong or outrageous.
