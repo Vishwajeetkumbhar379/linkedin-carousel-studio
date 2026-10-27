@@ -249,11 +249,12 @@ Research → topic validation → hook → script → storyboard → edit → ca
   - **Warm paper (learn):** the carousels, and the motion reels made from them with `scripts/carousel_reel.py`.
   - **Navy framed print (story):** the cover of every talking reel, from `scripts/print_cover.py`.
 
-- **Clone narration and generated music (Vish, 27 Oct, pottery reel: "robotic, no emotion, random pauses everywhere, the music is shit"):**
-  - Never ship a story reel narrated by the clone read line by line with break tags. It comes out flat and word by word.
-  - Story and opinion reels use his real voice: a voice note read in one take, cut with `scripts/voicenote_reel.py`.
-  - If the clone is ever used again, send a 10 second sample first and build nothing until he approves it.
+- **Clone narration and generated music (Vish, 27 Oct, pottery reel: "robotic, no emotion, random pauses everywhere, the music is shit"; then: "I speak slow, speed it up", reference @adilet.fndr DdyqycEINNe at 214 wpm):**
+  - Never read the script line by line with break tags. Generate one continuous take written for speech.
+  - Pace 190 to 210 words a minute: eleven_v3 with emotion tags (stability 0), or multilingual_v2 (stability 0.3, style 0.55, speed 1.2). Trim long gaps and atempo to pace (pitch kept), never rubberband.
+  - Check every new setting with a 10 second sample he approves before building a reel on it. Transcribe it: every word must land.
   - No ElevenLabs Music beds on story reels. Deliver the voice mix clean; he adds trending audio in the Instagram app.
+  - Real voice notes still win for personal stories; speed them up the same way.
 
 - **The mascot (Vish, 27 Oct: "that doesn't look like me"):** any animated Vish uses the real PNGs in `brand/avatar/pack` (read `Vish_Mascot_Claude_Guide.md`). Never a drawn or generated face.
 
