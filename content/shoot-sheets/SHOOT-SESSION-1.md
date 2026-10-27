@@ -123,7 +123,7 @@ Talk like a podcast. Long answers are good. Tell real scenes: where you were, wh
 ## 5. Brand-Side scripted (30 min). 5 videos.
 On the teleprompter page, under "Shoot day 1": CONTRACT, RATEDM, DROPPED, EXPOSURE, DYING.
 
-## 6. "I tried it" tests (10 min today, then 20 s a day for a week). 3 series.
+## 6. "Worth It or Slop?" tests (10 min today, then 20 s a day for a week). 3 episodes.
 Film today: the opener "Everyone says X. I'm testing it for 7 days." Then a 20-second selfie check-in every evening with the real numbers.
 - **T1, from 3 Nov: AI applies to jobs for me for 7 days.** Applications, replies, interviews.
 - **T2: Claude runs my Instagram for 7 days.** Ideas, captions, replies drafted by Claude; I post. Followers and comments.

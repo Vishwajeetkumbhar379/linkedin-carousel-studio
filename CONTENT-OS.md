@@ -32,6 +32,37 @@ This file overrides every earlier plan where they differ. Change it only when Vi
 | Brand-Side | Insider calls from 850+ deals | 1 |
 | Built with AI | Tool tests and the machine, in the 3D or Kallaway look. A clone-narrated explainer is allowed when the animation is top level. | 1 |
 
+## Series (each with its own recurring cover and opener)
+- **Week N of 52:** the Bet episodes.
+- **Real Talk:** confessionals.
+- **Hot Take:** "tell me I'm wrong".
+- **Reacts:** green-screen cut-out over a viral clip.
+- **Worth It or Slop?:** he tests a viral AI tool or claim for real, shows the real cost and result, then gives a verdict.
+  - On screen: two tick boxes, WORTH IT and SLOP. The verdict lands on one at the end.
+  - Model: @itstundeanthony "Fact or Hype?" (DeKHCW7iBvJ: 8,992 likes, 3,448 comments). Proof first, live cost on screen, a comment keyword for the setup guide.
+- **Brand-Side.**
+- **Animated chapters (1 a week):** his story, painted, with his own voice. For example "How I ended up 40k in debt".
+  - **Model:** @ink.industries_ (Ddd2Z3sPDEA, 23,994 likes). A painterly gouache character on light paper, simple scenes.
+  - **Free route only:**
+    - FLUX stills through `NVIDIA_API_KEY`, in one locked style prompt.
+    - A character sheet of the painted Vish, made from his real photos, so he looks the same in every shot.
+    - Motion done in code: parallax layers, camera moves, small character moves, brush transitions.
+    - Free Hugging Face image-to-video only when the quota allows.
+  - **Limits:** it won't move as smoothly as paid Seedance, and that has been accepted. The painted Vish appears only in these videos and always gets the AI label.
+
+## Hooks: the Triple Hook (from @kallawaymarketing De_5mQ0R8PE, locked)
+Every hook has three beats inside the first 1 or 2 sentences. Say each one, show it and write it on screen.
+1. **Context, immediately.** What the video is about, in the first words. Delaying it even to the second half of the first sentence raises the skip rate.
+2. **Lean.** Make them curious in one direction: proof or a stat, their pain or the benefit they want, or something shocking or unexpected.
+3. **Contrarian snapback.** Then yank them the other way: the twist that breaks the direction they were leaning.
+
+Example: "220 companies said no. [context + lean] So I stopped applying. [snapback]"
+
+On top of the Triple Hook, every hook must also be:
+- Controversial or emotional (spicy but true).
+- 12 words or fewer.
+- Readable on frame one.
+
 ## Rules
 - **No topic twice on Instagram.** LinkedIn and Shorts may reuse a topic in a new form.
 - **Openness:** debt and money numbers, low moments and weekly real numbers are OK. **Family is not shown.** His past relationship is never shown.
@@ -75,3 +106,16 @@ This file overrides every earlier plan where they differ. Change it only when Vi
   - Influencer marketing consulting.
   - A full-time role.
   - Brand sponsorships from AI tools.
+  - Travel and yoga brand work. He has taught yoga, and Sri Lanka in December is a showcase for both.
+
+## Decision log (add one line per change Vish asks for; newest last)
+- **27 Oct:**
+  - No topic repeats on Instagram.
+  - Audio fixes in week2.py.
+  - Clip-on mic.
+  - Trending song cut into the mix and muted in Edits.
+  - Free route for animation.
+  - The painted Vish only in animated chapters.
+  - The series "Worth It or Slop?".
+  - The Triple Hook.
+  - Travel and yoga offers.
