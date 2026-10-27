@@ -1,0 +1,114 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/* Canvas reel: one big paper canvas, a camera that follows each new card on its word, a zoom-out reveal, a push-in finish.
+   Layout and camera are computed here from the element list; scripts/canvas_reel.py resolves every cue word to a time. */
+@font-face{font-family:IT;font-weight:700;src:url(__FONTS__/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:IS;src:url(__FONTS__/instrument-serif-latin-400-normal.woff2)}
+@font-face{font-family:IS;font-style:italic;src:url(__FONTS__/instrument-serif-latin-400-italic.woff2)}
+:root{--paper:#F1ECE3;--ink:#15130F;--muted:#8A8172;--amber:#E7A15A;--red:#D9473A;--green:#2F6B3F;--card:#FFFDF8;--line:#E4DDD0}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+#world{position:absolute;left:0;top:0;width:2160px;height:9000px;transform-origin:0 0;
+background-image:linear-gradient(rgba(21,19,15,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(21,19,15,.06) 1px,transparent 1px);background-size:60px 60px}
+.el{position:absolute;font-family:IT;color:var(--ink)}
+.card{background:var(--card);border-radius:28px;box-shadow:0 30px 60px rgba(21,19,15,.16),0 4px 10px rgba(21,19,15,.08);padding:44px 48px;box-sizing:border-box}
+.lbl{font:700 24px IT;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ttl{font:700 64px/1.08 IT;margin-top:16px}
+.sub{font:700 34px/1.25 IT;color:var(--muted);margin-top:14px}
+.num{font:700 128px/1 IT;font-variant-numeric:tabular-nums;margin-top:20px;white-space:nowrap}
+.row{display:flex;gap:22px;align-items:center}
+.ic{flex:none;width:112px;height:112px;border-radius:24px;background:var(--amber);display:grid;place-items:center;font:700 60px IT;color:var(--ink)}
+.chip{background:var(--ink);color:var(--paper);font:700 34px IT;padding:14px 28px;border-radius:999px;white-space:nowrap}
+.stamp{border:6px solid var(--red);color:var(--red);font:700 46px IT;letter-spacing:.08em;padding:4px 20px;border-radius:14px;background:rgba(255,253,248,.7);white-space:nowrap}
+.seg{display:inline-block;height:40px;border-radius:10px;background:var(--line);margin-right:12px;overflow:hidden}
+.seg i{display:block;height:100%;width:0;background:var(--ink)}
+.li{display:flex;gap:20px;align-items:center;font:700 44px/1.2 IT;padding:18px 0;border-top:2px solid var(--line)}
+.li:first-of-type{border-top:0}
+.ck{flex:none;width:52px;height:52px;border-radius:50%;border:4px solid var(--line);display:grid;place-items:center;font:700 32px IT;color:var(--card)}
+.ck.on{background:var(--ink);border-color:var(--ink)}
+.quote{font:400 150px/1.02 IS;text-align:center;width:max-content;max-width:1000px}
+.quote i{color:var(--red)}
+.tag{display:inline-block;background:var(--card);border-radius:999px;padding:14px 28px;margin:10px;font:700 38px IT;box-shadow:0 12px 24px rgba(21,19,15,.12)}
+#hook{position:absolute;left:60px;right:60px;top:210px;text-align:center;font:400 104px/1.02 IS;color:var(--ink)}
+#hook i{color:var(--red)}
+#cap{position:absolute;left:0;right:0;top:1470px;text-align:center}
+#cap span{display:inline-block;background:var(--amber);color:var(--ink);font:700 46px IT;padding:12px 28px;border-radius:16px;box-shadow:0 10px 24px rgba(21,19,15,.18)}
+</style></head><body>
+<div id="world"></div><div id="hook"></div><div id="cap"><span id="capt"></span></div>
+<script>
+const D = __DATA__;  // {words, chunks, hook, hookEnd, end, els:[{type, at, ...}]}
+const cl = (x) => Math.max(0, Math.min(1, x)), eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const eio = (x) => { x = cl(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const back = (x) => { x = cl(x); const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const W = document.getElementById("world");
+const html = (e) => {
+  const lbl = e.label ? `<div class="lbl" style="${e.labelColor ? `color:${e.labelColor}` : ""}">${e.label}</div>` : "";
+  const body = {
+    card: () => `${lbl}${e.title ? `<div class="ttl">${e.title}</div>` : ""}${e.sub ? `<div class="sub">${e.sub}</div>` : ""}`,
+    counter: () => `${lbl}<div class="num"><span class="n">${e.prefix || ""}${e.from || 0}${e.suffix || ""}</span></div>`,
+    bar: () => `${lbl}<div style="margin-top:34px;white-space:nowrap">${Array.from({length: e.n}, () => `<span class="seg" style="width:${Math.floor(560 / e.n) - 12}px"><i></i></span>`).join("")}</div><div class="lbl n" style="margin-top:20px;color:var(--ink)"></div>`,
+    list: () => `${lbl}<div style="margin-top:14px">${e.rows.map((r) => `<div class="li"><div class="ck">✓</div><div>${r.t}</div></div>`).join("")}</div>`,
+  }[e.type];
+  if (body) return `<div class="card" style="width:${e.w || 800}px">${e.icon ? `<div class="row"><div class="ic">${e.icon}</div><div>${body()}</div></div>` : body()}</div>`;
+  if (e.type === "chip") return `<div class="chip">${e.text}</div>`;
+  if (e.type === "stamp") return `<div class="stamp">${e.text}</div>`;
+  if (e.type === "quote") return `<div class="quote">${e.text}</div>`;
+  if (e.type === "tags") return `<div style="width:${e.w || 900}px;text-align:center">${e.items.map((x) => `<span class="tag">${x}</span>`).join("")}</div>`;
+};
+// layout: stack down the canvas; "beside" sits next to the previous block; stamps and chips attach to the previous block
+const B = [];  // blocks the camera visits
+let y = 360, side = 0;
+D.els.forEach((e, i) => {
+  const d = document.createElement("div"); d.className = "el"; d.innerHTML = html(e); W.appendChild(d); e.node = d;
+  const w = d.offsetWidth, h = d.offsetHeight; e.w0 = w; e.h0 = h;
+  if (e.type === "stamp" || e.type === "chip") {
+    e.parent = [...D.els.slice(0, i)].reverse().find((q) => q.type !== "stamp" && q.type !== "chip");
+  } else if (e.beside && B.length) {
+    const blk = B[B.length - 1], p = blk.items[blk.items.length - 1];
+    e.x = p.x + p.w0 + 44; e.y = p.y; blk.items.push(e);
+    const tot = blk.items.reduce((a, q) => a + q.w0, 0) + 44 * (blk.items.length - 1); let x = blk.cx - tot / 2;
+    blk.items.forEach((q) => { q.x = x; x += q.w0 + 44; });
+    y = Math.max(y, e.y + h + 420);
+  } else { const cx = side++ % 2 ? 1560 : 600; e.x = cx - w / 2; e.y = y; y += h + 420; B.push({at: e.at, items: [e], reveal: e.reveal, cx}); }
+});
+// attachments last, so they follow their card after a "beside" re-centre
+D.els.forEach((e) => { if (!e.parent) return; const p = e.parent; e.x = p.x + (e.type === "chip" ? p.w0 - e.w0 * 0.6 : (p.w0 - e.w0) / 2); e.y = p.y + (e.type === "chip" ? -e.h0 * 0.55 : (p.h0 - e.h0) / 2); });
+D.els.forEach((e) => { e.node.style.left = e.x + "px"; e.node.style.top = e.y + "px"; });
+const box = (items) => { const x0 = Math.min(...items.map((q) => q.x)), x1 = Math.max(...items.map((q) => q.x + q.w0)), y0 = Math.min(...items.map((q) => q.y)), y1 = Math.max(...items.map((q) => q.y + q.h0)); return {x: (x0 + x1) / 2, y: (y0 + y1) / 2, w: x1 - x0, h: y1 - y0}; };
+const fit = (b, m = 1) => Math.min(1.45, 940 / b.w, 1240 / b.h) * m;
+// camera: arrive at each block on its word, drift in slowly while it holds; optional reveal shows everything so far
+const K = [];
+B.forEach((blk, i) => {
+  const b = box(blk.items), z = fit(b);
+  if (i === 0) K.push([0, b.x, b.y, z * 1.08]);
+  else { const p = K[K.length - 1]; K.push([blk.at - 0.32, p[1], p[2], p[3] * 1.035]); }
+  K.push([i === 0 ? 0.8 : blk.at + 0.28, b.x, b.y, z]);
+  if (blk.reveal) { const all = box(D.els.filter((q) => q.y <= blk.items[0].y + 10 && q.type !== "stamp" && q.type !== "chip")); K.push([blk.reveal - 0.35, b.x, b.y, z * 1.03]); K.push([blk.reveal + 0.45, all.x, all.y, Math.min(fit(all), 0.62)]); }
+});
+const last = K[K.length - 1]; K.push([D.end + 1, last[1], last[2], last[3] * 1.06]);
+function cam(t) {
+  let i = 0; while (i < K.length - 2 && t > K[i + 1][0]) i++;
+  const [t0, x0, y0, z0] = K[i], [t1, x1, y1, z1] = K[i + 1], k = eio((t - t0) / Math.max(0.01, t1 - t0));
+  const x = x0 + (x1 - x0) * k, yy = y0 + (y1 - y0) * k, z = z0 * Math.pow(z1 / z0, k);
+  W.style.transform = `translate(${540 - x * z}px,${960 - yy * z}px) scale(${z})`;
+}
+function anim(e, t) {
+  const k = (t - e.at) / (e.dur || 0.45), n = e.node, a = e.anim || {stamp: "slam", chip: "pop", tags: "fade", quote: "rise"}[e.type] || "rise";
+  let tr = "";
+  if (a === "rise") tr = `translateY(${(1 - eo(k)) * 90}px)`;
+  if (a === "left") tr = `translateX(${-(1 - eo(k)) * 800}px)`;
+  if (a === "right") tr = `translateX(${(1 - eo(k)) * 800}px)`;
+  if (a === "pop") tr = `scale(${0.4 + 0.6 * back(k)})`;
+  if (a === "slam") tr = `rotate(-9deg) scale(${1 + 1.4 * (1 - eo(k * 1.6))})`;
+  n.style.transform = tr; n.style.opacity = a === "fade" ? 1 : cl(k * 2.2);
+  if (e.out !== undefined && t > e.out) { const o = eo((t - e.out) / 0.5); n.style.opacity = 1 - 0.65 * o; n.style.filter = `grayscale(${o})`; }
+  if (e.type === "counter") { const v = e.from + (e.to - e.from) * eo((t - e.at) / (e.count || 0.9)); n.querySelector(".n").textContent = `${e.prefix || ""}${Math.round(v).toLocaleString("en-GB")}${e.suffix || ""}`; }
+  if (e.type === "bar") { const m = cl((t - (e.fill || e.at)) / (e.count || 0.9)); n.querySelectorAll(".seg i").forEach((s, j) => { s.style.width = `${cl(m * e.n - j) * 100}%`; }); n.querySelector(".n").textContent = `${Math.round(m * e.n)} ${e.unit || ""}`; }
+  if (e.type === "list") n.querySelectorAll(".li").forEach((r, j) => { const q = (t - e.rows[j].at) / 0.35; r.style.opacity = cl(q * 2); r.style.transform = `translateX(${(1 - eo(q)) * 60}px)`; r.querySelector(".ck").classList.toggle("on", t > e.rows[j].at + 0.15); });
+  if (e.type === "tags") n.querySelectorAll(".tag").forEach((g, j) => { const q = (t - e.at - j * 0.14) / 0.35; g.style.opacity = cl(q * 2); g.style.transform = `scale(${0.4 + 0.6 * back(q)})`; });
+}
+window.seek = (t) => {
+  cam(t); D.els.forEach((e) => anim(e, t));
+  const hk = document.getElementById("hook"); hk.innerHTML = D.hook; hk.style.opacity = 1 - cl((t - D.hookEnd) / 0.3);
+  const c = D.chunks.find((c) => t >= c.s && t < c.e); document.getElementById("capt").textContent = c ? c.t : ""; document.getElementById("cap").style.opacity = c ? 1 : 0;
+};
+seek(0);
+</script></body></html>
