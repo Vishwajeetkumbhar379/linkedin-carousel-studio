@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<!-- Board: cartoon chapter 01 "How I ended up €40,000 in debt". Cartoon Vish drawn in code (SVG), reused in every episode.
+     Facts: brand-profile.md (27, €40k from master's fees + living, influencer marketing manager on a good salary, 220 mostly automated rejections). -->
+<link rel="stylesheet" href="/carousel/week-series.css">
+<style>
+body{margin:0;background:#000}
+.f{position:relative;width:1080px;height:1920px;overflow:hidden}
+.sky{background:linear-gradient(#141826 0%,#1E2433 55%,#2A2420 100%)}
+.day{background:linear-gradient(#F6EFE2 0%,#EFE4D0 70%,#E2D3B8 100%)}
+.cap{position:absolute;left:60px;right:60px;top:1180px;text-align:center;font:400 88px/1.04 'Instrument Serif'}
+.cap i{color:#E7A15A}
+.sky .cap{color:#F3EEE5}.day .cap{color:#15130F}.day .cap i{color:#A85A12}
+.ep{position:absolute;left:70px;top:290px;font:600 24px 'Geist Mono';letter-spacing:.16em;text-transform:uppercase;color:#A39A8C}
+svg{position:absolute;left:0;top:0}
+</style></head><body><div id="b"></div>
+<script>
+// The cartoon Vish: wavy dark hair, short beard, brown skin, grey hoodie, silver chain. mood: calm | worried | shocked | happy
+function vish(x, y, s = 1, mood = "calm", look = 0) {
+  const eye = {calm: "M-4 0 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0", worried: "M-5 1 q5 -5 10 0", shocked: "M-6 0 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0", happy: "M-6 2 q6 -7 12 0"}[mood];
+  const mouth = {calm: "M-14 0 q14 8 28 0", worried: "M-12 6 q12 -8 24 0", shocked: "M-8 0 a8 10 0 1 0 16 0 a8 10 0 1 0 -16 0", happy: "M-20 -2 q20 22 40 0 z"}[mood];
+  return `<g transform="translate(${x},${y}) scale(${s})">
+   <path d="M-120 330 q0 -150 120 -160 q120 10 120 160 z" fill="#8C8A86"/><path d="M-40 175 l40 50 l40 -50" fill="none" stroke="#6F6D69" stroke-width="10"/>
+   <path d="M-30 200 q30 40 60 0" fill="none" stroke="#D8D8D8" stroke-width="5"/>
+   <rect x="-26" y="120" width="52" height="60" rx="16" fill="#9A6A4A"/>
+   <path d="M-108 -10 q0 -90 108 -96 q108 6 108 96 l0 100 l-216 0 z" fill="#1B1714"/>
+   <ellipse cx="0" cy="40" rx="92" ry="108" fill="#A8744F"/>
+   <ellipse cx="-92" cy="48" rx="14" ry="22" fill="#9A6A4A"/><ellipse cx="92" cy="48" rx="14" ry="22" fill="#9A6A4A"/>
+   <g fill="#1B1714"><path d="M-104 30 q-22 -96 30 -140 q60 -40 130 -6 q60 34 46 146 q-10 -40 -30 -58 q-20 30 -34 6 q-26 -40 -66 -30 q-34 10 -44 40 q-12 -24 -32 42 z"/>
+    <path d="M-104 20 q-14 50 6 92 q6 -40 18 -60 z"/><path d="M104 18 q16 50 -4 90 q-8 -40 -20 -58 z"/></g>
+   <path d="M-40 -70 q30 -20 60 -6 M10 -96 q40 -6 66 24" stroke="#3A2E27" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <path d="M-70 90 q70 90 140 0 q-10 70 -70 76 q-60 -6 -70 -76 z" fill="#2A211C"/>
+   <g transform="translate(${-34 + look},40)"><path d="${eye}" fill="${mood === "worried" || mood === "happy" ? "none" : "#1B1714"}" stroke="#1B1714" stroke-width="5"/></g>
+   <g transform="translate(${34 + look},40)"><path d="${eye}" fill="${mood === "worried" || mood === "happy" ? "none" : "#1B1714"}" stroke="#1B1714" stroke-width="5"/></g>
+   <path d="M-54 10 q20 ${mood === "worried" ? 10 : -10} 40 0 M14 10 q20 ${mood === "worried" ? 10 : -10} 40 0" stroke="#1B1714" stroke-width="7" fill="none" stroke-linecap="round"/>
+   <path d="M-30 78 q30 -14 60 0" stroke="#2A211C" stroke-width="12" fill="none" stroke-linecap="round"/>
+   <g transform="translate(0,104)"><path d="${mouth}" fill="${mood === "happy" || mood === "shocked" ? "#5A2A22" : "none"}" stroke="#3A1E18" stroke-width="5" stroke-linecap="round"/></g>
+  </g>`;
+}
+const lamp = (x, y) => `<g transform="translate(${x},${y})"><circle cx="130" cy="-170" r="230" fill="url(#glow)"/><rect x="-10" y="-14" width="120" height="14" rx="7" fill="#3A3A42"/><path d="M50 -10 L80 -200 L150 -230" stroke="#3A3A42" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M120 -260 q60 0 80 70 l-110 0 q0 -60 30 -70 z" fill="#E7A15A"/><ellipse cx="145" cy="-188" rx="56" ry="10" fill="#FFE2B8"/></g>`;
+const defs = `<defs><radialGradient id="glow"><stop offset="0" stop-color="#E7A15A" stop-opacity=".45"/><stop offset="1" stop-color="#E7A15A" stop-opacity="0"/></radialGradient></defs>`;
+const desk = `<rect x="0" y="1010" width="1080" height="40" fill="#5A3E2B"/><rect x="0" y="1050" width="1080" height="870" fill="#3A281C"/>`;
+const phone = (x, y, r, inner) => `<g transform="translate(${x},${y}) rotate(${r})"><rect x="-110" y="-200" width="220" height="400" rx="34" fill="#111"/><rect x="-96" y="-182" width="192" height="364" rx="24" fill="#F3EEE5"/>${inner}</g>`;
+const F = [
+ ["sky", `${defs}${lamp(760, 1010)}${desk}${vish(420, 640, 1.25, "shocked")}${phone(700, 860, -8, `<text x="0" y="-110" text-anchor="middle" font-family="Geist Mono" font-size="20" fill="#6E665A">BALANCE</text><text x="0" y="-40" text-anchor="middle" font-family="Inter Tight" font-weight="800" font-size="46" fill="#B3261E">−€40,000</text>`)}`,
+  `I'm 27 and <i>€40,000</i><br>in debt. Here's how.`, "Chapter 1 · How I got here"],
+ ["day", `<rect x="120" y="360" width="840" height="560" rx="30" fill="#fff" opacity=".7"/>${vish(540, 560, 1.15, "happy")}<g transform="translate(250,880)"><rect width="580" height="90" rx="20" fill="#15130F"/><text x="290" y="58" text-anchor="middle" font-family="Inter Tight" font-weight="700" font-size="32" fill="#F3EEE5">Influencer Marketing Manager</text></g><text x="830" y="470" font-family="Inter Tight" font-weight="800" font-size="72" fill="#2F6B3F">€€€</text>`,
+  `I had a <i>good</i> salary.`, "5 years in"],
+ ["day", `${vish(420, 620, 1.1, "calm", 10)}<g transform="translate(700,760) rotate(8)"><rect x="-150" y="-90" width="300" height="180" rx="18" fill="#3049E0"/><text x="0" y="-20" text-anchor="middle" font-family="Geist Mono" font-size="22" fill="#fff">BOARDING PASS</text><text x="0" y="40" text-anchor="middle" font-family="Inter Tight" font-weight="800" font-size="52" fill="#fff">GERMANY</text></g><rect x="140" y="860" width="200" height="150" rx="20" fill="#A85A12"/><rect x="200" y="830" width="80" height="40" rx="10" fill="none" stroke="#A85A12" stroke-width="10"/>`,
+  `Then I quit it,<br>for a <i>master's.</i>`, "A year ago"],
+ ["sky", `${vish(540, 720, 1.1, "worried")}${["Tuition", "Rent", "Visa", "Groceries", "Insurance"].map((t, k) => `<g transform="translate(${170 + (k % 3) * 300},${360 + Math.floor(k / 3) * 150 + (k % 2) * 40}) rotate(${(k % 2 ? 1 : -1) * (6 + k)})"><rect x="-110" y="-40" width="220" height="80" rx="14" fill="#F3EEE5"/><text x="0" y="12" text-anchor="middle" font-family="Inter Tight" font-weight="700" font-size="30" fill="#B3261E">${t}</text></g>`).join("")}`,
+  `Fees. Rent. <i>Everything.</i>`, "In Germany"],
+ ["day", `${Array.from({length: 26}, (_, k) => `<rect x="${130 + (k * 137) % 800}" y="${380 + (k * 53) % 520}" width="170" height="120" rx="8" fill="#fff" stroke="#D9D0C0" stroke-width="3" transform="rotate(${(k * 37) % 30 - 15} ${215 + (k * 137) % 800} ${440 + (k * 53) % 520})"/>`).join("")}${vish(540, 760, 0.9, "worried")}<text x="540" y="1040" text-anchor="middle" font-family="Instrument Serif" font-size="150" fill="#B3261E">220</text>`,
+  `220 companies said <i>no.</i>`, "Mostly automated"],
+ ["sky", `${vish(540, 760, 1.0, "calm", -6)}<g transform="translate(250,470) rotate(-6)"><rect x="-170" y="-60" width="340" height="120" rx="16" fill="#F3EEE5"/><text x="0" y="14" text-anchor="middle" font-family="Inter Tight" font-weight="800" font-size="40" fill="#15130F">A · Keep applying</text></g><g transform="translate(830,470) rotate(6)"><rect x="-170" y="-60" width="340" height="120" rx="16" fill="#E7A15A"/><text x="0" y="14" text-anchor="middle" font-family="Inter Tight" font-weight="800" font-size="40" fill="#15130F">B · Build my own</text></g>`,
+  `What should I do?<br><i>Vote</i>. Part 2 follows you.`, "Cliffhanger"],
+];
+document.getElementById("b").innerHTML = F.map(([c, s, cap, ep]) => `<section class="f ${c}"><svg width="1080" height="1920">${s}</svg><div class="ep">${ep}</div><div class="cap">${cap}</div></section>`).join("");
+document.fonts.ready.then(() => { window.READY = true; });
+</script></body></html>
