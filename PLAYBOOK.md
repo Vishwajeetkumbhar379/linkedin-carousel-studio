@@ -234,6 +234,20 @@ Research → topic validation → hook → script → storyboard → edit → ca
   - **Picture:** crisp, natural skin, no heavy saturation: the film.py looks ("night", "day", "soft"), never a beauty filter. Instagram plays 1080x1920, so that is the export size.
   - **Safe zones from Week 2:** the week label sits at 288 px (below the top bar), captions at about 1190 px (above the bottom 35%), and in a split layout just above his box.
 - **Process:** check that the disk has about 3 GB free before rendering. Full disks crash the browser renderer.
+- **Sound (Vish, 27 Oct, "I shouldn't have to tell again and again"):** he heard echo, missed audio, weird cuts and bad music in Week 2. The fixes are now in `week2.py` (every edit inherits them):
+  - **Speed:** no time-stretch on his voice. Speeding up isolated speech makes the echo.
+  - **Cut points:** every edge is checked against the cleaned audio. If he runs words together, the cut moves to the real quiet between them (`quiet()`). The first word is never clipped (`onset()`).
+  - **Pauses:** held pauses are silent, so the next word never leaks in.
+  - **Sound effects:** from the studio library (`video-projects/sfx-library`), whooshes peaking on the cut.
+  - **Music:** composed per video in one brand sound (ElevenLabs Music, 110 bpm, warm plucks and tight drums), ducked under his voice.
+  - **Files:** one file per video.
+  - **QA before sending:**
+    - Transcribe the final file and compare it word for word with the script.
+    - Loudness at -14 LUFS.
+    - One contact sheet.
+- **One brand look (Vish, 27 Oct):** "it should look like a good brand design, not every video different." Two families only:
+  - **Warm paper (learn):** the carousels, and the motion reels made from them with `scripts/carousel_reel.py`.
+  - **Navy framed print (story):** the cover of every talking reel, from `scripts/print_cover.py`.
 
 ## 12. Research sources and how reliable they are
 - **"Viral first" rule [Vish, 23 Oct]:** before choosing any topic or format, rank candidate reels by real engagement and model only the winners:
