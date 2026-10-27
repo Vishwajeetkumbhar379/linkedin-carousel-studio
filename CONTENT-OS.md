@@ -171,6 +171,23 @@ On top of the Triple Hook, every hook must also be:
   - They use a trending sound.
   - We were too long, too designed and too neutral, with too few posts. All four are fixed from session 1.
 
+## Quality gate (28 Oct, after Vish rejected the 3 loops: "how is this gonna go viral?")
+Nothing is sent to Vish unless it scores 8 out of 10 or higher on all of these, checked on the rendered file:
+1. **Stop:** frame one makes a stranger stop: a face with an emotion, or a claim they react to.
+2. **Story:** there's a setup, a turn and a payoff. Text on a clip is not a story.
+3. **Value or emotion:** the viewer learns something or feels something they'd share.
+4. **Pace:** something new on screen every 2 s or less. No card held for 5 s.
+5. **Comment trigger:** an easy question, a vote or a keyword with a real reason to answer.
+6. **Craft:**
+   - No overlapping text.
+   - Numbers as digits ("220", not "two hundred and twenty").
+   - Audio clean at -14 LUFS.
+   - The transcript matches the script word for word.
+
+Below 8, the file is fixed or dropped, never sent. Rejected on 28 Oct:
+- The 3 loop reels: no story, no payoff.
+- Story 01 v1: 4/10. Cards held 5 to 7 s, overlapping caption, numbers spelled out.
+
 ## Distribution (locked 27 Oct, from @createcontent.club De_8BDNAWl_)
 - **One approved batch goes everywhere, through one scheduler.** Vish connects his accounts once. Best free option to verify: Metricool. LinkedIn can also go through Typefully.
 - **Instagram:**
