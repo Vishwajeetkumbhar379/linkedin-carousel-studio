@@ -145,6 +145,27 @@ On top of the Triple Hook, every hook must also be:
   - Brand sponsorships from AI tools.
   - Travel and yoga brand work. He has taught yoga, and Sri Lanka in December is a showcase for both.
 
+## Hot takes and stories: the 28 Oct fix (from @ronnymitchell_ De8AEo_v9tB and @mohannishere De6vUxXTTSC)
+- **Hot takes use the opinion formula:**
+  1. The opinion as a command ("Stop writing cover letters.").
+  2. Elaborate.
+  3. A story from his life that proves it.
+  4. Tell them what to do.
+  5. A question.
+  - Join a conversation people are already having.
+  - Take a side people will disagree with. No neutral, no nuance in the hook.
+- **Real-talk stories are filmed like a short film:**
+  - His voice over slow, cinematic B-roll of him.
+  - Face to camera only for the turn and the ending.
+  - Emotional music.
+  - Model: @mohannishere's first reel, 61K views on a new account, a storyteller's first leap.
+- **Why new accounts break out and we haven't yet:**
+  - They post often.
+  - They lead with a face and an emotion, or one strong opinion, in the first second.
+  - They stay short.
+  - They use a trending sound.
+  - We were too long, too designed and too neutral, with too few posts. All four are fixed from session 1.
+
 ## Distribution (locked 27 Oct, from @createcontent.club De_8BDNAWl_)
 - **One approved batch goes everywhere, through one scheduler.** Vish connects his accounts once. Best free option to verify: Metricool. LinkedIn can also go through Typefully.
 - **Instagram:**

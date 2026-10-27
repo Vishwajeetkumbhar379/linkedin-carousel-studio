@@ -1,0 +1,3455 @@
+{
+ "legend": {
+  "/": "short breath, about 0.3 s",
+  "//": "full stop, about 0.8 s, let it land",
+  "*word*": "stress this word",
+  "(up)": "lift energy",
+  "(down)": "slower and lower",
+  "[lens]": "lean in slightly, eyes on the lens",
+  "[point]": "point up at the graphic (Format A) or at the screen side (Format B)",
+  "[count]": "count on your fingers",
+  "[smile]": "small genuine smile",
+  "broll": "B-roll to film after the take (3 to 5 s each, no talking)",
+  "<slow>": "tempo word: the edit slows everything (music drops out, motion crawls, a clock or counter shows it)",
+  "<fast>": "tempo word: the edit speeds up (faster camera, a riser, quicker cards)",
+  "<zoom>": "tempo word: push in, step by step, with a scale or label each step",
+  "<rewind>": "tempo word: the camera reverses through the world, with a rewind sound",
+  "<freeze>": "tempo word: the frame stops dead, true silence"
+ },
+ "defaults": {
+  "pace": "aim for 190 to 210 words a minute inside a sentence (Kallaway runs 210 to 240); keep a short beat between lines, never a long one",
+  "energy": "7 out of 10: awake and warm, not a hype voice",
+  "framing": "chest up, a hand's width of space above your head, eyes on the lens",
+  "retake": "If you fluff a line, pause, then say the whole line again. The edit keeps the last take.",
+  "broll": "After the talking take, film the B-roll list on the same phone: 3 to 5 s each, steady, no talking, good light. Film your hands and screens more than your face. The edit cuts to one every few lines (research/creators/style-guide-2026-10-14.md).",
+  "angle": "Film the hook and the CTA a second time from a different angle (wide, standing, or side) so the edit can cut between angles like @justyn.ai."
+ },
+ "sheets": [
+  {
+   "week": "Session 1",
+   "key": "S1-1",
+   "keyword": "",
+   "series": "Shoot session 1",
+   "format": "modular",
+   "length": "15 min, warm-up). Reused in every edit.",
+   "title_card": "0. Reusable clips (any time, separate folder)",
+   "post": "",
+   "cta": "Session 1 · block 1",
+   "model": "",
+   "hook": "Openers:",
+   "hook_alts": [],
+   "lines": [
+    {
+     "say": "\"Hey, I'm Vish.\"",
+     "see": ""
+    },
+    {
+     "say": "\"I'm 27. 220 companies said no. So I'm building my own job.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Week 3 of 52.\" Then the same line for weeks 4 to 10, one take each.",
+     "see": ""
+    },
+    {
+     "say": "Bridges:",
+     "see": ""
+    },
+    {
+     "say": "\"But here's the thing.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Real talk.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Hot take.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Let me show you.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Here's what nobody tells you.\"",
+     "see": ""
+    },
+    {
+     "say": "\"And that's when it hit me.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Trust me on this one.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Okay, I tested it.\"",
+     "see": ""
+    },
+    {
+     "say": "Endings:",
+     "see": ""
+    },
+    {
+     "say": "\"Comment the word on screen and I'll send it to you.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Follow to see if I make it.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Tell me I'm wrong.\"",
+     "see": ""
+    },
+    {
+     "say": "\"Save this one.\"",
+     "see": ""
+    },
+    {
+     "say": "\"See you next week.\"",
+     "see": ""
+    },
+    {
+     "say": "Silent reactions (3 s each, eyes on the lens): laugh, smirk, shocked, \"No.\", \"Wait... what?\", \"Ouch.\", \"Okay, that's actually smart.\", slow head shake, slow nod, eye-roll, facepalm, thinking face.",
+     "see": ""
+    },
+    {
+     "say": "Moves: walk into frame and sit; lean into the lens; close the laptop and look up.",
+     "see": ""
+    }
+   ],
+   "notes": "Full block notes: content/shoot-sheets/SHOOT-SESSION-1.md",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-MASTERS",
+   "keyword": "question in the comments",
+   "series": "Hot Take",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "20 to 25 s",
+   "title_card": "1. HOT TAKE",
+   "post": "",
+   "cta": "Question: agree or disagree?",
+   "model": "",
+   "hook": "Don't do a master's / to get a *job*.",
+   "hook_alts": [
+    "A master's degree is the most expensive way to stay unemployed.",
+    "I paid 40,000 euros / to get rejected 220 times."
+   ],
+   "lines": [
+    {
+     "say": "Don't do a master's / to get a *job*.",
+     "see": "HOT TAKE stamp, the line as a card",
+     "how": "(up) [lens], deadpan"
+    },
+    {
+     "say": "I'm saying this / *while* doing one.",
+     "see": "Your face, eyebrow up",
+     "how": "[smile], small shrug"
+    },
+    {
+     "say": "40,000 euros of debt. / 220 rejections. //",
+     "see": "Two counters: €40,000 and 220",
+     "how": "[count] on fingers, (down)"
+    },
+    {
+     "say": "The degree didn't get me a single interview. / The *work* I post here / gets me messages.",
+     "see": "Inbox: 0 interviews vs DMs arriving",
+     "how": "[point] up at the card"
+    },
+    {
+     "say": "So do this: / build proof first. / Then decide if you need the degree.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "So agree, / or tell me I'm wrong.",
+     "see": "AGREE / DISAGREE buttons",
+     "how": "[lens], lean in"
+    }
+   ],
+   "notes": "Only say 'gets me messages' if that's true on the day; otherwise say 'is what I'm betting on now'. Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-GERMAN",
+   "keyword": "question in the comments",
+   "series": "Hot Take",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "20 to 25 s",
+   "title_card": "2. HOT TAKE",
+   "post": "",
+   "cta": "Question: tell me I'm wrong",
+   "model": "",
+   "hook": "Don't move to Germany for a job / if you don't speak *German*.",
+   "hook_alts": [
+    "Germany says it needs skilled workers. It means German-speaking ones.",
+    "I'm skilled. I don't speak German. Guess what happened."
+   ],
+   "lines": [
+    {
+     "say": "Don't move to Germany for a job / if you don't speak *German*.",
+     "see": "Headline-style card: 'Germany needs skilled workers' with 'German-speaking' scribbled in",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Five years in influencer marketing. / 850 plus creator deals. / No German.",
+     "see": "Your CV lines ticking in, the last one red",
+     "how": "[count]"
+    },
+    {
+     "say": "Most of my 220 rejections / were automatic. / A filter, / not a person.",
+     "see": "A funnel that drops CVs into a bin",
+     "how": "(down), head shake"
+    },
+    {
+     "say": "Is that fair? / Honestly, / I get it. / But then don't call it a shortage.",
+     "see": "The word SHORTAGE with a question mark",
+     "how": "small shrug, [smile]"
+    },
+    {
+     "say": "So do this: / learn it before you move, / or apply remote from day one.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "Expats, / tell me I'm wrong.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Don't claim the language was the reason for each rejection. It's your opinion. Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-APPLY",
+   "keyword": "question in the comments",
+   "series": "Hot Take",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "20 s",
+   "title_card": "3. HOT TAKE",
+   "post": "",
+   "cta": "Question: applications or projects?",
+   "model": "",
+   "hook": "Stop sending applications. // Build *one* project.",
+   "hook_alts": [
+    "Sending 200 applications is lazier than building one project.",
+    "I sent 220 applications. Here's what I should have done."
+   ],
+   "lines": [
+    {
+     "say": "Stop sending applications. // Build *one* project.",
+     "see": "Stack of 200 CVs vs one glowing project card",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "I know. / I sent *220*.",
+     "see": "Counter to 220",
+     "how": "[smile], guilty"
+    },
+    {
+     "say": "Each one took ten minutes / and said the same thing / as the last.",
+     "see": "Copy, paste, send animation looping",
+     "how": "flat voice"
+    },
+    {
+     "say": "This account took more work / than all of them. // And people actually *see* it.",
+     "see": "Your profile grid filling up",
+     "how": "[point] down at the grid"
+    },
+    {
+     "say": "So do this: / this week, / build one thing a company would pay for, / and post it.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "Applications or projects? / Comments.",
+     "see": "Two buttons",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-AIJOB",
+   "keyword": "question in the comments",
+   "series": "Hot Take",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "20 s",
+   "title_card": "4. HOT TAKE",
+   "post": "",
+   "cta": "Question: yes or no?",
+   "model": "",
+   "hook": "Use AI at work *this week*. // Or someone else will.",
+   "hook_alts": [
+    "AI won't take your job. Refusing to use it will.",
+    "The scariest person in your office is the one using AI."
+   ],
+   "lines": [
+    {
+     "say": "Use AI at work *this week*. // Or someone else will.",
+     "see": "Card, then a robot hand passing a laptop to a person",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "I'm not an engineer. / I'm a marketer.",
+     "see": "Your job title card: Influencer Marketing",
+     "how": "[point] at yourself"
+    },
+    {
+     "say": "And AI now edits my videos, / drafts my posts / and answers my comments.",
+     "see": "Three quick screen shots of your tools",
+     "how": "[count]"
+    },
+    {
+     "say": "The marketers I'd worry about / aren't the ones learning this. / It's the ones *waiting*.",
+     "see": "An hourglass",
+     "how": "(down)"
+    },
+    {
+     "say": "So do this: / pick one boring task / and give it to AI tomorrow.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "Are you using it at work yet? / Yes or no.",
+     "see": "YES / NO buttons",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-BRAND",
+   "keyword": "question in the comments",
+   "series": "Hot Take",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "20 s",
+   "title_card": "5. HOT TAKE",
+   "post": "",
+   "cta": "Question: CV or profile?",
+   "model": "",
+   "hook": "Stop polishing your CV. // Build your *profile*.",
+   "hook_alts": [
+    "Your CV is dead. Your profile is the new one.",
+    "Nobody reads your CV. They read your Instagram."
+   ],
+   "lines": [
+    {
+     "say": "Stop polishing your CV. // Build your *profile*.",
+     "see": "A CV going into a shredder, a phone profile rising",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "220 companies saw my CV. / Two pages. / Automatic no.",
+     "see": "CV, then a NO stamp",
+     "how": "[count] 2 on fingers"
+    },
+    {
+     "say": "This account / shows what I can actually do, / every week.",
+     "see": "Your reels as a grid",
+     "how": "[point] down"
+    },
+    {
+     "say": "Nobody can filter that out / with a keyword.",
+     "see": "A keyword filter that fails, sparks",
+     "how": "[smile]"
+    },
+    {
+     "say": "So do this: / post one piece of your work / every week. / Start today.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "CV or profile: / which gets you hired in 2027? / Comments.",
+     "see": "Two cards",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-DEBT",
+   "keyword": "question in the comments",
+   "series": "Hot Take / Real Talk",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "25 s",
+   "title_card": "6. REAL TALK",
+   "post": "",
+   "cta": "Question: what's your plan?",
+   "model": "",
+   "hook": "Give your debt a *deadline*.",
+   "hook_alts": [
+    "Debt isn't the problem. Doing nothing about it is.",
+    "I'm 40,000 euros in debt. Here's my one rule."
+   ],
+   "lines": [
+    {
+     "say": "Give your debt a *deadline*.",
+     "see": "Card, then a debt meter at €40,000",
+     "how": "(down) [lens], calm"
+    },
+    {
+     "say": "I'm 27. / I owe 40,000 euros / for my master's and living here.",
+     "see": "The meter, then a cap and a flat icon",
+     "how": "honest, small nod"
+    },
+    {
+     "say": "Some nights / that number is all I think about.",
+     "see": "Phone screen at night, the number glowing",
+     "how": "(down), look away then back"
+    },
+    {
+     "say": "So I gave it a deadline. / 52 weeks. / 3,000 euros a month. / In public.",
+     "see": "Goal card: €3,000 / month, Week 2 of 52",
+     "how": "(up) [count]"
+    },
+    {
+     "say": "So do this: / write down the number, / the date, / and one way to earn toward it.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "If you've got debt too, / what's your plan? / No judgement here.",
+     "see": "Comment bubble",
+     "how": "[lens], warm"
+    }
+   ],
+   "notes": "Real numbers only. The currency is euros (confirmed 27 Oct). Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-COVER",
+   "keyword": "question in the comments",
+   "series": "Hot Take",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "15 to 20 s",
+   "title_card": "7. HOT TAKE",
+   "post": "",
+   "cta": "Question: what should replace it?",
+   "model": "",
+   "hook": "Stop writing cover letters. // Nobody's *reading* them.",
+   "hook_alts": [
+    "Cover letters are dead. Nobody's reading them.",
+    "I wrote 220 cover letters. Here's who read them."
+   ],
+   "lines": [
+    {
+     "say": "Stop writing cover letters. // Nobody's *reading* them.",
+     "see": "A cover letter with a cobweb",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "I wrote them for 220 applications. / Most of the answers came back / automatic.",
+     "see": "Auto-reply emails stacking",
+     "how": "[smile], tired"
+    },
+    {
+     "say": "A machine doesn't care / that I'm *passionate*.",
+     "see": "The word 'passionate' crossed out",
+     "how": "eye-roll"
+    },
+    {
+     "say": "So do this: / send one line and a link / to something you made.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "What should replace it? / Tell me.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-BALI",
+   "keyword": "question in the comments",
+   "series": "Hot Take",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "20 to 25 s",
+   "title_card": "8. HOT TAKE",
+   "post": "",
+   "cta": "Follow + question",
+   "model": "",
+   "hook": "Don't move to Bali / to *escape*. // Move to test.",
+   "hook_alts": [
+    "'Just move to Bali' is terrible advice. I'm going to Sri Lanka anyway.",
+    "Remote work from paradise is a lie. Here's the true part."
+   ],
+   "lines": [
+    {
+     "say": "Don't move to Bali / to *escape*. // Move to test.",
+     "see": "A beach laptop photo with a red X",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "I'm flying to Sri Lanka / on December 6th. // So, / yes. / I see it.",
+     "see": "Boarding pass: Dec 6",
+     "how": "[smile], caught"
+    },
+    {
+     "say": "The difference? / I'm not going to *escape*. / I'm going to *test* it.",
+     "see": "Two words: ESCAPE crossed, TEST ticked",
+     "how": "[point]"
+    },
+    {
+     "say": "Can I earn from a café / with no clients yet? // That's the whole experiment.",
+     "see": "Café table, laptop, a question mark",
+     "how": "(down)"
+    },
+    {
+     "say": "So do this: / go with a goal and a number, / not just a laptop.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "Follow along. / If it fails, / you'll see that too.",
+     "see": "Follow button",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Flight date confirmed by Vish: 6 Dec, for a month. Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-START",
+   "keyword": "question in the comments",
+   "series": "Hot Take / Real Talk",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "20 s",
+   "title_card": "9. REAL TALK",
+   "post": "",
+   "cta": "Question: what would make you start?",
+   "model": "",
+   "hook": "Post *before* you're ready.",
+   "hook_alts": [
+    "You don't need confidence to start. You need no other option.",
+    "I wanted to post for years. Here's what finally made me start."
+   ],
+   "lines": [
+    {
+     "say": "Post *before* you're ready.",
+     "see": "Card, slow push-in",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "I wanted to make content / for *years*. / I kept stopping.",
+     "see": "Old drafts and deleted videos",
+     "how": "honest"
+    },
+    {
+     "say": "Then 220 companies said no. / And suddenly / posting felt less scary / than doing nothing.",
+     "see": "The 220 counter, then a REC dot",
+     "how": "(up)"
+    },
+    {
+     "say": "So do this: / film one minute today. / Post it. / Nobody's watching yet anyway.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "What would make *you* start?",
+     "see": "Comment bubble",
+     "how": "[lens], warm"
+    }
+   ],
+   "notes": "Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "HT-FOLLOW",
+   "keyword": "question in the comments",
+   "series": "Hot Take",
+   "format": "Hot Take (A split: you below, statement card above)",
+   "length": "15 to 20 s",
+   "title_card": "10. HOT TAKE",
+   "post": "",
+   "cta": "Question: comment anything",
+   "model": "",
+   "hook": "Stop counting followers. // Count *comments*.",
+   "hook_alts": [
+    "Followers are a vanity number. Comments pay the bills.",
+    "After 850 creator deals, I never checked followers first."
+   ],
+   "lines": [
+    {
+     "say": "Stop counting followers. // Count *comments*.",
+     "see": "Follower count crossed out, comment count glowing",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "I signed 850 plus creator deals / on the brand side.",
+     "see": "850+ badge",
+     "how": "[point] at yourself"
+    },
+    {
+     "say": "The first thing I checked / was never followers. / It was whether people *talked back*.",
+     "see": "Comment section scrolling",
+     "how": "lean in"
+    },
+    {
+     "say": "So do this: / end every post with a question / people actually want to answer.",
+     "see": "The action as a checklist card",
+     "how": "[lens], firm"
+    },
+    {
+     "say": "So comment something. / Anything. / Prove my point.",
+     "see": "Comment bubble",
+     "how": "[smile] [lens]"
+    }
+   ],
+   "notes": "Formula: command, elaborate, a story that proves it, what to do, question. Take a side; no hedging.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "RE-GARY",
+   "keyword": "question in the comments",
+   "series": "Reacts",
+   "format": "React (green-screen cut-out over their clip, then you full frame)",
+   "length": "30 to 40 s",
+   "title_card": "11. REACT",
+   "post": "",
+   "cta": "Question: yes or no?",
+   "model": "",
+   "hook": "Gary Vee told people / to document, / not create. // I'm doing it with *40k of debt*.",
+   "hook_alts": [
+    "Gary Vee's best advice, tested by a broke 27-year-old.",
+    "Document, don't create. Here's what that really looks like."
+   ],
+   "lines": [
+    {
+     "say": "[THEIR CLIP, 5 to 8 s: Gary Vee on 'document, don't create']",
+     "see": "Their clip in a frame, credited",
+     "how": "listen, small nod"
+    },
+    {
+     "say": "He's right. / And it's easier said / when you're *Gary Vee*.",
+     "see": "Hard cut to you",
+     "how": "[smile] [lens]"
+    },
+    {
+     "say": "Here's what documenting looks like for me. / 220 rejections. / 40,000 euros of debt. / Week 2 of 52.",
+     "see": "Three cards stacking",
+     "how": "[count]"
+    },
+    {
+     "say": "It's not inspiring. / It's just *true*.",
+     "see": "Quiet frame",
+     "how": "(down)"
+    },
+    {
+     "say": "But true is the only thing / I've got that nobody can copy.",
+     "see": "Your grid",
+     "how": "[point] down"
+    },
+    {
+     "say": "Would you post your real numbers? / Yes or no.",
+     "see": "YES / NO",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "The edit sources a real 'document, don't create' clip, credited. If none is usable, it uses a quote card.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "RE-HORMOZI",
+   "keyword": "question in the comments",
+   "series": "Reacts",
+   "format": "React (green-screen cut-out over their clip, then you full frame)",
+   "length": "30 s",
+   "title_card": "12. REACT",
+   "post": "",
+   "cta": "Question: is he right?",
+   "model": "",
+   "hook": "Hormozi says / volume negates luck. // I sent *220* applications.",
+   "hook_alts": [
+    "I tested Hormozi's rule. 220 times.",
+    "Volume negates luck? Here's my volume."
+   ],
+   "lines": [
+    {
+     "say": "[THEIR CLIP: Hormozi, 'volume negates luck']",
+     "see": "Their clip, credited",
+     "how": "listen"
+    },
+    {
+     "say": "I tried that. / 220 applications.",
+     "see": "Counter to 220",
+     "how": "[smile], raised eyebrow"
+    },
+    {
+     "say": "And here's what I learned. // Volume works / when each try teaches you something.",
+     "see": "Two lines: 220 copies vs 220 experiments",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Mine were the same application, / 220 times.",
+     "see": "Copy-paste loop",
+     "how": "facepalm"
+    },
+    {
+     "say": "Now my volume is posts. / Every one is different. / Every one teaches me something.",
+     "see": "Your reels flipping",
+     "how": "(up)"
+    },
+    {
+     "say": "Is he right? / Tell me.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "RE-HUANG",
+   "keyword": "question in the comments",
+   "series": "Reacts",
+   "format": "React (green-screen cut-out over their clip, then you full frame)",
+   "length": "30 s",
+   "title_card": "13. REACT",
+   "post": "",
+   "cta": "Question: which one are you?",
+   "model": "",
+   "hook": "Nvidia's CEO says / you won't lose your job to AI. // You'll lose it to *someone using AI*.",
+   "hook_alts": [
+    "The richest man in AI just warned marketers.",
+    "This one sentence should scare every marketer."
+   ],
+   "lines": [
+    {
+     "say": "[THEIR CLIP or quote card: Jensen Huang on losing your job to someone who uses AI]",
+     "see": "Their clip or a quote card, credited and dated",
+     "how": "listen"
+    },
+    {
+     "say": "I'm the someone. // Kind of.",
+     "see": "Hard cut to you",
+     "how": "[smile] [lens]"
+    },
+    {
+     "say": "I'm a marketer, / not an engineer. / And in a few months / I built my own editing system / with Claude.",
+     "see": "Screen: your edit system running",
+     "how": "[point]"
+    },
+    {
+     "say": "I didn't learn to code. / I learned to *ask*.",
+     "see": "A chat window, a prompt typing",
+     "how": "(down)"
+    },
+    {
+     "say": "Are you the someone, / or the one being replaced?",
+     "see": "Two buttons",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Verify the quote and its date at edit time; use a quote card if there's no clean clip.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "RE-AMODEI",
+   "keyword": "question in the comments",
+   "series": "Reacts",
+   "format": "React (green-screen cut-out over their clip, then you full frame)",
+   "length": "35 s",
+   "title_card": "14. REACT",
+   "post": "",
+   "cta": "Question: scared or excited?",
+   "model": "",
+   "hook": "The CEO of Anthropic / said AI could wipe out / *half* of entry-level jobs.",
+   "hook_alts": [
+    "220 rejections, and then I heard this.",
+    "The AI boss warned about entry-level jobs. Here's my take as a job seeker."
+   ],
+   "lines": [
+    {
+     "say": "[QUOTE CARD: Dario Amodei, Anthropic, Axios, May 2025: AI could wipe out half of entry-level white-collar jobs]",
+     "see": "Quote card with source and date",
+     "how": "read, (down)"
+    },
+    {
+     "say": "I'm job hunting / *right now*. // So that hit.",
+     "see": "Hard cut to you",
+     "how": "[lens], serious"
+    },
+    {
+     "say": "220 rejections. / Most of them / already automatic.",
+     "see": "Auto-reply emails",
+     "how": "[count]"
+    },
+    {
+     "say": "But here's my take. // Entry-level *tasks* are going. / The people who run the AI / still get hired.",
+     "see": "Tasks fading out, a person at the controls",
+     "how": "(up) [point]"
+    },
+    {
+     "say": "So I'm learning to run it. / In public. / 52 weeks.",
+     "see": "Week 2 of 52",
+     "how": "[smile]"
+    },
+    {
+     "say": "Scared or excited? / Comments.",
+     "see": "Two buttons",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Quote card only, with its source; check the date and wording at edit time.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "RE-ALTMAN",
+   "keyword": "question in the comments",
+   "series": "Reacts",
+   "format": "React (green-screen cut-out over their clip, then you full frame)",
+   "length": "30 s",
+   "title_card": "15. REACT",
+   "post": "",
+   "cta": "Question: alone or team?",
+   "model": "",
+   "hook": "Sam Altman thinks / one person / will build a *billion-dollar* company. // I'm one person.",
+   "hook_alts": [
+    "One-person billion-dollar company? I'll settle for 3,000 euros.",
+    "Sam Altman's prediction, from someone 40k in debt."
+   ],
+   "lines": [
+    {
+     "say": "[QUOTE CARD or CLIP: Sam Altman on the one-person billion-dollar company]",
+     "see": "Quote card, credited and dated",
+     "how": "listen"
+    },
+    {
+     "say": "I'm one person. // I'll take *3,000 euros a month*.",
+     "see": "Goal card: €3,000",
+     "how": "[smile] [lens]"
+    },
+    {
+     "say": "But he's onto something. / My editor, / my assistant, / my comment replies: / all AI. / Built by me.",
+     "see": "Four tool cards, one by one",
+     "how": "[count]"
+    },
+    {
+     "say": "The one-person company / isn't the dream. / It's the *only* option / when nobody hires you.",
+     "see": "A single desk, lamp on",
+     "how": "(down)"
+    },
+    {
+     "say": "Would you build alone, / or with a team?",
+     "see": "Two buttons",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "RE-30DAYS",
+   "keyword": "question in the comments",
+   "series": "Reacts",
+   "format": "React (green-screen cut-out over their clip, then you full frame)",
+   "length": "25 s",
+   "title_card": "16. REACT",
+   "post": "",
+   "cta": "Question: keep going?",
+   "model": "",
+   "hook": "'Post every day for 30 days / and you'll *blow up*.' // Here's my day count.",
+   "hook_alts": [
+    "I'm posting daily. Here are my real numbers.",
+    "Daily posting for 30 days: the honest update."
+   ],
+   "lines": [
+    {
+     "say": "[THEIR CLIP: a creator promising growth from 30 days of daily posts]",
+     "see": "Their clip",
+     "how": "arms crossed"
+    },
+    {
+     "say": "I'm doing it. / Every day.",
+     "see": "A calendar filling",
+     "how": "[lens]"
+    },
+    {
+     "say": "Day [X]: / [FOLLOWERS] followers. / [BEST VIEWS] on my best video.",
+     "see": "Real numbers from your insights",
+     "how": "(down) read them straight"
+    },
+    {
+     "say": "Not blown up. / Not quitting.",
+     "see": "Two words",
+     "how": "[smile]"
+    },
+    {
+     "say": "Should I keep going? / Comments.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Fill [X] and the numbers on the day you film. Real numbers only.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "ST-QUIT",
+   "keyword": "question in the comments",
+   "series": "Real Talk",
+   "format": "Cinematic story: your voice over slow B-roll of you (walking, window, desk at night), face to camera only for the turn and the ending",
+   "length": "40 to 50 s",
+   "title_card": "17. REAL TALK",
+   "post": "",
+   "cta": "Question: would you have quit?",
+   "model": "",
+   "hook": "I quit a good salary / to become *40,000 euros* in debt.",
+   "hook_alts": [
+    "The worst and best decision I made.",
+    "I had a good job. I left it. Here's what happened."
+   ],
+   "lines": [
+    {
+     "say": "I quit a good salary / to become *40,000 euros* in debt.",
+     "see": "Payslip fades, debt meter rises",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "I was an influencer marketing manager. / 850 plus creator deals. / Good money.",
+     "see": "Job card, 850+ badge",
+     "how": "[count]"
+    },
+    {
+     "say": "[YOUR WORDS: the day you decided to quit. Where you were, what you told yourself. 2 or 3 sentences.]",
+     "see": "B-roll you film: your old desk photo, or a window",
+     "how": "talk, don't perform"
+    },
+    {
+     "say": "I moved to Germany / for a master's. / And then the bills started.",
+     "see": "Boarding pass, then bills raining",
+     "how": "(up)"
+    },
+    {
+     "say": "220 rejections later, / do I regret it? //",
+     "see": "Pause on your face",
+     "how": "hold 1 s, [lens]"
+    },
+    {
+     "say": "[YOUR WORDS: honest answer. Yes, no, or both, and why.]",
+     "see": "Full frame, no graphics",
+     "how": "(down)"
+    },
+    {
+     "say": "Would you have quit? / Tell me.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "The [YOUR WORDS] lines are yours: say them how you'd say them to a friend. Everything else is fixed facts. Film like a short film: slow, quiet, real places. Record the voice separately, close to the phone, in a soft room.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "ST-WEEK1",
+   "keyword": "question in the comments",
+   "series": "Real Talk",
+   "format": "Cinematic story: your voice over slow B-roll of you (walking, window, desk at night), face to camera only for the turn and the ending",
+   "length": "40 s",
+   "title_card": "18. REAL TALK",
+   "post": "",
+   "cta": "Question: your hardest week?",
+   "model": "",
+   "hook": "My first week in Germany: / no friends, / no family, / no *German*.",
+   "hook_alts": [
+    "Nobody tells you how lonely moving abroad is.",
+    "Moving abroad, the part nobody films."
+   ],
+   "lines": [
+    {
+     "say": "My first week in Germany: / no friends, / no family, / no *German*.",
+     "see": "Three crossed-out cards",
+     "how": "(down) [count]"
+    },
+    {
+     "say": "[YOUR WORDS: one scene from that week. The supermarket, the paperwork, the first night. Be specific.]",
+     "see": "B-roll: a supermarket aisle, a German letter",
+     "how": "talk naturally"
+    },
+    {
+     "say": "That's when it hit me. / I'd left a good life / for a blank one.",
+     "see": "An empty room, lamp on",
+     "how": "(down)"
+    },
+    {
+     "say": "A year later, / I'm still here. / Still figuring it out. / But now / I'm doing it in public.",
+     "see": "Week 2 of 52",
+     "how": "(up) [smile]"
+    },
+    {
+     "say": "If you moved abroad, / what was your hardest week?",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Don't show your city (rule). Film like a short film: slow, quiet, real places. Record the voice separately, close to the phone, in a soft room.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "ST-ROBOT",
+   "keyword": "question in the comments",
+   "series": "Real Talk",
+   "format": "Cinematic story: your voice over slow B-roll of you (walking, window, desk at night), face to camera only for the turn and the ending",
+   "length": "35 s",
+   "title_card": "19. REAL TALK",
+   "post": "",
+   "cta": "The vote: A or B",
+   "model": "",
+   "hook": "220 rejections. // Most were sent by a *robot*.",
+   "hook_alts": [
+    "I got rejected 220 times without a human reading my CV.",
+    "Nobody read my CV. A machine did."
+   ],
+   "lines": [
+    {
+     "say": "220 rejections. // Most were sent by a *robot*.",
+     "see": "Auto-reply emails flood, AUTOMATED stamp",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Same email. / Different company name. / Sometimes minutes after I applied.",
+     "see": "Timestamps close together",
+     "how": "[count], dry"
+    },
+    {
+     "say": "[YOUR WORDS: how that felt the 100th time.]",
+     "see": "Your face, full frame",
+     "how": "honest"
+    },
+    {
+     "say": "So I stopped applying / and hired the robots instead.",
+     "see": "Your AI tools lighting up",
+     "how": "(up) [smile]"
+    },
+    {
+     "say": "Now AI edits my videos, / drafts my posts / and answers my comments. / I built all of it.",
+     "see": "Three screens",
+     "how": "[point]"
+    },
+    {
+     "say": "Week 2 of 52. / What should I sell first? / A or B.",
+     "see": "Vote: A AI content systems / B influencer consulting",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Only say 'minutes after I applied' if it happened to you. Otherwise cut that line. Film like a short film: slow, quiet, real places. Record the voice separately, close to the phone, in a soft room.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "PSY-TAKEN",
+   "keyword": "question in the comments",
+   "series": "Psychology Breakdown",
+   "format": "Psychology Breakdown (talking head + paper card of the study)",
+   "length": "40 s",
+   "title_card": "20. PSYCHOLOGY",
+   "post": "",
+   "cta": "Question: seen this?",
+   "model": "",
+   "hook": "Brands want you *taken*.",
+   "hook_alts": [
+    "Why brands want creators other brands already pay.",
+    "The psychology of why brands copy each other."
+   ],
+   "lines": [
+    {
+     "say": "Brands want you *taken*.",
+     "see": "Big serif words",
+     "how": "(up) [lens], half smile"
+    },
+    {
+     "say": "After 850 plus creator deals, / I noticed something weird. / The creator *other* brands just paid / suddenly everyone wanted.",
+     "see": "Creator card with three brand stickers landing on it",
+     "how": "[point]"
+    },
+    {
+     "say": "So I looked it up. / It's called *mate-choice copying*.",
+     "see": "Paper card: 'Mate-choice copying'",
+     "how": "(down)"
+    },
+    {
+     "say": "In a 2007 study, / people rated faces as more attractive / when someone else / was already smiling at them.",
+     "see": "Paper card: Jones et al., 2007, Proceedings of the Royal Society B",
+     "how": "explain calmly"
+    },
+    {
+     "say": "Brands do the same. / Social proof / is the strongest thing on your media kit.",
+     "see": "A media kit with 'Worked with' row glowing",
+     "how": "(up) [count]"
+    },
+    {
+     "say": "So put your past brand work *first*. / Even small ones.",
+     "see": "Media kit reordered",
+     "how": "[lens]"
+    },
+    {
+     "say": "Have you seen this happen? / Tell me.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Check the study wording before posting; keep the claim this simple.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "PSY-PAIN",
+   "keyword": "question in the comments",
+   "series": "Psychology Breakdown",
+   "format": "Psychology Breakdown (talking head + paper card of the study)",
+   "length": "35 to 40 s",
+   "title_card": "21. PSYCHOLOGY",
+   "post": "",
+   "cta": "Question: what helps you?",
+   "model": "",
+   "hook": "Rejection hurts / like *physical pain*. // Literally.",
+   "hook_alts": [
+    "220 rejections, and science says I'm not being dramatic.",
+    "Why rejection feels like a punch."
+   ],
+   "lines": [
+    {
+     "say": "Rejection hurts / like *physical pain*. // Literally.",
+     "see": "Big serif words, a slow zoom",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "After 220 job rejections, / I wanted to know / why it felt so heavy.",
+     "see": "220 counter",
+     "how": "honest"
+    },
+    {
+     "say": "So I looked it up. / In 2003, researchers scanned people's brains / while a game left them out.",
+     "see": "Paper card: Eisenberger, Lieberman and Williams, Science, 2003",
+     "how": "explain"
+    },
+    {
+     "say": "Being left out / lit up a brain area / that's also active in *physical* pain.",
+     "see": "A simple brain outline, one area glowing",
+     "how": "[point]"
+    },
+    {
+     "say": "So if a no hurts you, / you're not weak. / Your brain is doing its job.",
+     "see": "Text: not weak",
+     "how": "(up), warm"
+    },
+    {
+     "say": "What helps you after a rejection? / Comments.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "PSY-CLIFF",
+   "keyword": "question in the comments",
+   "series": "Psychology Breakdown",
+   "format": "Psychology Breakdown (talking head + paper card of the study)",
+   "length": "30 s",
+   "title_card": "22. PSYCHOLOGY",
+   "post": "",
+   "cta": "Follow",
+   "model": "",
+   "hook": "Your brain *hates* unfinished stories. // That's why you're still watching.",
+   "hook_alts": [
+    "Why you can't stop watching series.",
+    "The trick every Netflix show uses on you."
+   ],
+   "lines": [
+    {
+     "say": "Your brain *hates* unfinished stories. // That's why you're still watching.",
+     "see": "A progress bar stuck at 90%",
+     "how": "[smile] [lens]"
+    },
+    {
+     "say": "It's called the *Zeigarnik effect*.",
+     "see": "Paper card: Bluma Zeigarnik, 1927",
+     "how": "(down)"
+    },
+    {
+     "say": "In 1927, / a psychologist noticed people remembered / interrupted tasks / better than finished ones.",
+     "see": "Two to-do lists, the unfinished one glowing",
+     "how": "explain"
+    },
+    {
+     "say": "Every series cliffhanger / uses it. / So does my 52-week challenge.",
+     "see": "Week 2 of 52, '?' at the end",
+     "how": "[point] at yourself"
+    },
+    {
+     "say": "I don't know how it ends either. // Follow to find out.",
+     "see": "Follow button",
+     "how": "[lens], grin"
+    }
+   ],
+   "notes": "Later studies on this effect are mixed: keep the claim to what she observed.",
+   "broll": []
+  },
+  {
+   "week": "Session 1",
+   "key": "WIS-1",
+   "keyword": "SLOP",
+   "series": "Worth It or Slop?",
+   "format": "B demo: your screen + you in a bubble",
+   "length": "Opener 20 s + 7 check-ins of 15 s + a 40 s verdict",
+   "title_card": "23. WORTH IT OR SLOP?",
+   "post": "",
+   "cta": "Comment SLOP (guide to build after the test)",
+   "model": "",
+   "hook": "Everyone says / let AI apply to 100 jobs a day. // I'm testing it for *7 days*.",
+   "hook_alts": [
+    "220 rejections by hand. Now the robots try.",
+    "AI job applications: worth it or slop?"
+   ],
+   "lines": [
+    {
+     "say": "Everyone says / let AI apply to 100 jobs a day. // I'm testing it for *7 days*.",
+     "see": "WORTH IT / SLOP boxes, both empty",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Rules: / real applications, / roles I'd actually take, / and I count every reply.",
+     "see": "Three rule cards",
+     "how": "[count]"
+    },
+    {
+     "say": "CHECK-IN, every evening: 'Day [N]. [X] sent. [Y] replies. [Z] interviews. [One honest line.]'",
+     "see": "Tracker updating",
+     "how": "selfie, tired is fine"
+    },
+    {
+     "say": "VERDICT: 'After 7 days: [numbers]. It's... [WORTH IT / SLOP], because [one reason].'",
+     "see": "The verdict box ticks",
+     "how": "hold the pause before the verdict"
+    },
+    {
+     "say": "Comment SLOP / and I'll send you the exact setup / so you can test it yourself.",
+     "see": "Comment bubble: SLOP",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Only real numbers. Pick a tool you'd really use; tell me which before you start so I can check it's safe for your accounts.",
+   "broll": [
+    "Screen recording of the tool applying",
+    "Your inbox every evening (blur names)"
+   ]
+  },
+  {
+   "key": "CVROAST",
+   "keyword": "question in the comments",
+   "series": "Week N of 52 (side episode)",
+   "format": "A split: your CV on top, you below",
+   "length": "30 to 40 s",
+   "title_card": "24. ROAST MY CV",
+   "hook": "This CV got rejected / *220* times. // Roast it.",
+   "hook_alts": [
+    "220 companies read this CV. // All of them said no.",
+    "Recruiters, / be honest. // What's wrong with this CV?"
+   ],
+   "lines": [
+    {
+     "say": "This CV got rejected / *220* times. // Roast it.",
+     "see": "Your real CV, personal details blurred, a red ROAST stamp",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Five years in social media / and influencer marketing.",
+     "see": "Highlighter runs over the experience line",
+     "how": "[point]"
+    },
+    {
+     "say": "Eight hundred and fifty plus / creator deals, / brand side.",
+     "see": "850+ circled in amber"
+    },
+    {
+     "say": "Led teams. / Finishing my master's / in Germany.",
+     "see": "Two more lines highlighted"
+    },
+    {
+     "say": "And still, / *no*.",
+     "see": "Hard punch-in, silence 0.4 s",
+     "how": "(down)"
+    },
+    {
+     "say": "So you tell me. // What would you fix *first*? / I'll update it live, / in next week's video.",
+     "see": "Comment box: 'Fix this first:'",
+     "how": "[lens] [smile]"
+    }
+   ],
+   "cta": "Question: what would you fix first?",
+   "notes": "Blur address, phone, email and any employer names (brand-profile: no employer names). Only promise the update if you'll do it. Strong LinkedIn post too: recruiters answer this.",
+   "broll": [
+    "Scrolling your CV on the iPad",
+    "Printing it or holding it",
+    "Typing an edit"
+   ],
+   "week": "Session 1",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "week": "Session 1",
+   "key": "CALM",
+   "keyword": "CALM",
+   "series": "Extra format test (outside the 52 weeks): reaction + recreate",
+   "format": "Part 1 = our loud v12 style; snap; Part 2 = her calm DNA (desk talk + overhead handwriting + soft piano). The contrast is the point",
+   "length": "45 to 55 s (her clips 6 s at most)",
+   "title_card": "25. HOT TAKE",
+   "post": "Any free slot after Week 2 is up; not instead of the series",
+   "cta": "Comment CALM (resource: the calm-edit prompt, to build before posting) + question: slop or smart?",
+   "model": "@mariah_mpls Derd9IvoWaj (19,265 likes, 563 comments, 23 Oct). We react with respect and recreate her FORMAT, never her words, set or series title. Credit her on screen and tag her",
+   "hook": "Ouch. // She's describing *my* last video.",
+   "hook_alts": [
+    "AI edits are *slop*? // She has a point.",
+    "A video editor just roasted videos like *mine*."
+   ],
+   "lines": [
+    {
+     "say": "Ouch. // She's describing *my* last video.",
+     "see": "Cold open on you, disappointed. Her paused frame slides in as a framed card with @mariah_mpls; HOT TAKE stamp",
+     "how": "(down), small head shake, [lens]"
+    },
+    {
+     "say": "[HER CLIP 1: 4.72 to 6.40 s, \"The graphics are really overstimulating\" + 10.00 to 11.70 s, \"there's constant sound effects\"]",
+     "see": "Her clip in a white-bordered frame, credit @mariah_mpls on screen"
+    },
+    {
+     "say": "And honestly? / She's *right*.",
+     "see": "Hard punch-in on you",
+     "how": "[lens]"
+    },
+    {
+     "say": "People make these with AI / every day. // I made *one*.",
+     "see": "Your Week 1 graphics fly in as 3D cards: the THIS IS VISH sticker, the 40,000 counter, the Next week card, a pop on each",
+     "how": "[point] at the cards"
+    },
+    {
+     "say": "[HER CLIP 2: about 41.9 to 44.1 s, \"into this slot machine style format\"]",
+     "see": "Her clip again, smaller"
+    },
+    {
+     "say": "But AI isn't the problem. // Watch.",
+     "see": "You raise your hand",
+     "how": "[snap] on \"Watch\""
+    },
+    {
+     "say": "AI doesn't make a video loud. / *We* do.",
+     "see": "SNAP: the whole look changes. Daylight desk, still camera, soft piano, small lowercase captions, a serif title \"less, but *better*\"",
+     "how": "calm, slower, (down)"
+    },
+    {
+     "say": "Slop is a weak story / dressed up in effects.",
+     "see": "Overhead: you write \"weak story + effects = slop\""
+    },
+    {
+     "say": "So start with the story. / Then let AI do the boring part: / the cuts, / the captions, / the clean-up.",
+     "see": "Desk, then overhead: \"1. story first  2. AI does the boring part\""
+    },
+    {
+     "say": "This calm version? // AI edited it too.",
+     "see": "Desk, small smile; overhead page \"edited with AI\" and a tick",
+     "how": "[smile] (up)"
+    },
+    {
+     "say": "Same tool. / Different *taste*.",
+     "see": "Overhead: \"same tool. different taste.\""
+    },
+    {
+     "say": "Comment *CALM* / and I'll send you the prompt for this look. // Slop or smart? / Tell me below.",
+     "see": "Overhead page \"comment CALM\", the pen taps it",
+     "how": "[point]"
+    }
+   ],
+   "film": {
+    "part_1_loud_look": [
+     "Your usual spot and light, phone on the tripod, back camera, 4K 30 fps",
+     "Hook: 3 takes, from mildly hurt to really disappointed",
+     "Lines 3, 4 and 6, twice each",
+     "The finger snap: 3 takes, hand close to the lens, then freeze for a second"
+    ],
+    "part_2_her_dna": [
+     "Daytime, next to a window, a tidy desk: notebook, a mug, a plant or books behind you",
+     "A plain sweater in one colour, a different top from part 1 so the switch is obvious",
+     "Camera still, at desk height, you centred with space around you (a mid shot)",
+     "Lines 7, 9, 10, 11 and 12 at the desk, calm and slower than usual, twice each",
+     "Overhead shot: phone above the desk looking straight down (a tripod arm, or the phone on a shelf or a stack of books)",
+     "Write each page slowly with a thick black pen, big letters, one page each: \"weak story + effects = slop\" / \"1. story first  2. AI does the boring part\" / \"edited with AI ✓\" / \"same tool. different taste.\" / \"comment CALM\"",
+     "Keep your hands in shot; record 5 seconds of the room with no talking"
+    ],
+    "write_down_first": [
+     "The 5 notebook pages above, practised once on scrap paper so the letters are big and neat"
+    ]
+   },
+   "edit_notes": "Part 1 follows the v12 standard (punch-ins, 3D cards, a sound on every event). Part 2 copies her DNA: two alternating shots (desk / overhead hands), cuts every 3 to 4 s, no sound effects except the pen and the room, small white lowercase captions low in the frame, a serif title with one script word. Music: add \"Twins\" by Elia Lo Monaco from Instagram's own music picker when posting, under part 2 only; never bake a song into the file. Her clips: 6 s in total at most, credited on screen, for commentary only (German quotation right, § 51 UrhG: name the source, quote only what the comment needs). If her reel allows Remix, Instagram's Remix is the cleanest route.",
+   "broll": [
+    "WRITE FIRST: The 5 notebook pages above, practised once on scrap paper so the letters are big and neat",
+    "FILM, PART 1 (loud look): Your usual spot and light, phone on the tripod, back camera, 4K 30 fps",
+    "FILM, PART 1 (loud look): Hook: 3 takes, from mildly hurt to really disappointed",
+    "FILM, PART 1 (loud look): Lines 3, 4 and 6, twice each",
+    "FILM, PART 1 (loud look): The finger snap: 3 takes, hand close to the lens, then freeze for a second",
+    "FILM, PART 2 (her calm look): Daytime, next to a window, a tidy desk: notebook, a mug, a plant or books behind you",
+    "FILM, PART 2 (her calm look): A plain sweater in one colour, a different top from part 1 so the switch is obvious",
+    "FILM, PART 2 (her calm look): Camera still, at desk height, you centred with space around you (a mid shot)",
+    "FILM, PART 2 (her calm look): Lines 7, 9, 10, 11 and 12 at the desk, calm and slower than usual, twice each",
+    "FILM, PART 2 (her calm look): Overhead shot: phone above the desk looking straight down (a tripod arm, or the phone on a shelf or a stack of books)",
+    "FILM, PART 2 (her calm look): Write each page slowly with a thick black pen, big letters, one page each: \"weak story + effects = slop\" / \"1. story first  2. AI does the boring part\" / \"edited with AI ✓\" / \"same tool. different taste.\" / \"comment CALM\"",
+    "FILM, PART 2 (her calm look): Keep your hands in shot; record 5 seconds of the room with no talking"
+   ],
+   "cover": {
+    "title": "HOT TAKE",
+    "line": "AI edits are *slop*?",
+    "note": "Your sceptical face, one eyebrow up; a small framed screenshot of a loud edit on one side and a calm desk shot on the other; no image of her on the cover"
+   },
+   "notes": "Planned for Extra: hot take. Respectful, not a dunk: agree first, then add the nuance. Facts: your Week 1 reel was edited by Claude with a sound on most visual events (true). Tag @mariah_mpls in the caption. Before posting: build the CALM resource (the calm-edit brief as a Claude prompt) and add CALM to lib/ig-autodm/config.json. COVER: HOT TAKE, \"AI edits are slop?\". Your sceptical face, one eyebrow up; a small framed screenshot of a loud edit on one side and a calm desk shot on the other; no image of her on the cover"
+  },
+  {
+   "key": "CONTRACT",
+   "keyword": "CONTRACT",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "35 to 45 s",
+   "title_card": "26. THIS CLAUSE COSTS YOU MONEY",
+   "hook": "This clause lets a brand / use your face *forever*.",
+   "hook_alts": [
+    "Read this before you sign / your next brand deal.",
+    "Creators sign this every day. // It's a trap."
+   ],
+   "lines": [
+    {
+     "say": "This clause lets a brand / use your face *forever*.",
+     "see": "A contract page, 'in perpetuity, in all media' highlighted",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "After 850 plus creator deals / on the brand side, / these are the lines I'd check first.",
+     "see": "850+ badge"
+    },
+    {
+     "say": "One. / Usage rights. / *Forever* is a red flag. / Ask for a time limit, / and price paid ads separately.",
+     "see": "Numeral 1, the clause rewritten with a time limit",
+     "how": "[count]"
+    },
+    {
+     "say": "Two. / Exclusivity. / Name the competitors / and the dates.",
+     "see": "Numeral 2",
+     "how": "[count]"
+    },
+    {
+     "say": "Three. / Payment in 90 days. / Ask for 30.",
+     "see": "Numeral 3, 90 crossed out, 30",
+     "how": "[count]"
+    },
+    {
+     "say": "There are seven. // Comment *CONTRACT* / and I'll send you all of them, / with the prompt that checks yours.",
+     "see": "Comment bubble: CONTRACT",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Comment CONTRACT (live guide)",
+   "notes": "Facts from the CONTRACT guide on buildwithvvish.com. Not legal advice: say it in the caption.",
+   "broll": [
+    "Signing a paper",
+    "Scrolling a contract on the iPad",
+    "Highlighter on paper"
+   ],
+   "week": "Session 1",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "key": "RATEDM",
+   "keyword": "RATE",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "30 to 35 s",
+   "title_card": "27. DON'T SAY YOUR PRICE FIRST",
+   "hook": "Never put your price / in the *first* DM to a brand.",
+   "hook_alts": [
+    "Your rate card is costing you money.",
+    "The first number in a brand deal / decides everything."
+   ],
+   "lines": [
+    {
+     "say": "Never put your price / in the *first* DM to a brand.",
+     "see": "A DM with a price, crossed out",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "On the brand side, / the first number / sets the whole conversation.",
+     "see": "A slider snapping to the first number"
+    },
+    {
+     "say": "So ask first. / What are the deliverables? / Where will it run? / For how long?",
+     "see": "Three questions typing in, one by one",
+     "how": "[count]"
+    },
+    {
+     "say": "*Then* quote. / Organic posting is one price. / Paid usage is another.",
+     "see": "Two price tags: ORGANIC, PAID USAGE"
+    },
+    {
+     "say": "Want the math brands use / to decide what you're worth? // Comment *RATE*.",
+     "see": "Comment bubble: RATE",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Comment RATE (live guide: campaign math + calculator)",
+   "notes": "Opinion from brand-side experience; no invented numbers.",
+   "broll": [
+    "Typing a DM",
+    "Calculator on phone"
+   ],
+   "week": "Session 1",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "key": "DROPPED",
+   "keyword": "question in the comments",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "30 s",
+   "title_card": "28. HOW CREATORS GET DROPPED",
+   "hook": "Three things / that get creators *dropped* / from a brand's list.",
+   "hook_alts": [
+    "Brands won't tell you why they stopped calling. // I will.",
+    "You lost the deal / after you posted. // Here's why."
+   ],
+   "lines": [
+    {
+     "say": "Three things / that get creators *dropped* / from a brand's list.",
+     "see": "A creator list, one name being struck out",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "One. / Missing the posting window. / The launch doesn't wait for you.",
+     "see": "Calendar, a red missed date",
+     "how": "[count]"
+    },
+    {
+     "say": "Two. / No ad label. / That's a risk for both of you.",
+     "see": "A post with the label missing, then added",
+     "how": "[count]"
+    },
+    {
+     "say": "Three. / Deleting the post early. / Brands notice.",
+     "see": "A post vanishing from a grid",
+     "how": "[count]"
+    },
+    {
+     "say": "Which one have you seen? // Tell me.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Question: which one have you seen?",
+   "notes": "Brand-side opinion; don't tell specific stories or name creators or brands.",
+   "broll": [
+    "Calendar on the iPad",
+    "Scrolling a grid"
+   ],
+   "week": "Session 1",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "key": "EXPOSURE",
+   "keyword": "question in the comments",
+   "series": "Brand-Side (hot take)",
+   "format": "Talking head, close, then A split",
+   "length": "25 to 30 s",
+   "title_card": "29. HOT TAKE",
+   "hook": "Brands, / stop paying creators / in *exposure*.",
+   "hook_alts": [
+    "'We'll give you exposure.' // No.",
+    "Exposure doesn't pay rent. // From the brand side."
+   ],
+   "lines": [
+    {
+     "say": "Brands, / stop paying creators / in *exposure*.",
+     "see": "HOT TAKE stamp",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "I've been on the brand side / of 850 plus deals.",
+     "see": "850+ badge"
+    },
+    {
+     "say": "When you don't pay, / you get the work / of someone who can't say no.",
+     "see": "A cheap-looking post vs a polished one"
+    },
+    {
+     "say": "When you pay, / you get a *partner*. / Deadlines, / ideas, / care.",
+     "see": "Three ticks",
+     "how": "[count]"
+    },
+    {
+     "say": "Agree, / or am I wrong? // Comments.",
+     "see": "AGREE / DISAGREE buttons",
+     "how": "[lens] [smile]"
+    }
+   ],
+   "cta": "Question: agree or disagree?",
+   "notes": "Opinion. Strong LinkedIn text post too.",
+   "broll": [
+    "Coins or a card payment on the phone"
+   ],
+   "week": "Session 1",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "key": "DYING",
+   "keyword": "CREATOR",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "35 to 40 s",
+   "title_card": "30. IS INFLUENCER MARKETING DEAD?",
+   "hook": "Influencer marketing isn't dying. // *Bad* influencer marketing is.",
+   "hook_alts": [
+    "Everyone says influencer marketing is over. // From the brand side: no.",
+    "Influencer marketing is dead? // Only the lazy kind."
+   ],
+   "lines": [
+    {
+     "say": "Influencer marketing isn't dying. // *Bad* influencer marketing is.",
+     "see": "A gravestone that says INFLUENCER MARKETING cracks; 'BAD' slides in front",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Bad looks like this. / Picking creators by follower count.",
+     "see": "A follower number with a red X",
+     "how": "[count]"
+    },
+    {
+     "say": "One post, / then nothing.",
+     "see": "A single post in an empty calendar",
+     "how": "[count]"
+    },
+    {
+     "say": "And no plan / for the content after it goes live.",
+     "see": "A post fading out",
+     "how": "[count]"
+    },
+    {
+     "say": "Good looks like the opposite. / Fit first, / a series, / and the content reused in ads.",
+     "see": "Three green cards"
+    },
+    {
+     "say": "I run mine from one Claude project. // Comment *CREATOR* / and I'll send you the setup.",
+     "see": "Comment bubble: CREATOR",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Comment CREATOR (live guide: campaign HQ in Claude)",
+   "notes": "Opinion; no market statistics unless sourced within 14 days.",
+   "broll": [
+    "Scrolling creators on a phone",
+    "A Claude project on the laptop"
+   ],
+   "week": "Session 1",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "week": "Backlog",
+   "key": "RATE",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "45 to 50 s",
+   "title_card": "HOW BRANDS PRICE YOU",
+   "hook": "Your follower count / is *not* how a brand decides your rate.",
+   "hook_alts": [
+    "Here's what a brand compares your rate to. / It's not other creators.",
+    "After 850-plus deals, here's how rates really get decided."
+   ],
+   "lines": [
+    {
+     "say": "On the brand side, / your rate gets compared to one thing: // what the same money buys in *ads*.",
+     "see": "Scale: creator rate vs ad budget",
+     "how": "[point]"
+    },
+    {
+     "say": "So we look at your *average* views, / not your best post.",
+     "see": "Chart with an average line, best post greyed"
+    },
+    {
+     "say": "Then who's watching. / Right country, / right age, / or not.",
+     "see": "Audience split card",
+     "how": "[count]"
+    },
+    {
+     "say": "Then the extras: / usage rights, / exclusivity, / deadlines. // Each one adds cost.",
+     "see": "Chips stacking onto the price"
+    },
+    {
+     "say": "Want a better rate? / Show your average views / and your audience split / *before* they ask.",
+     "see": "Mini media kit card",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Comment *RATE* / and I'll send you my rate maths sheet.",
+     "see": "Comment bubble: RATE"
+    }
+   ],
+   "notes": "Planned for Week 3. General brand-side practice in your words. Adjust to what you actually compared. No numbers unless they're yours.",
+   "broll": [
+    "Calculator or spreadsheet with rates (no real client numbers)",
+    "Scrolling a creator profile's stats",
+    "Signing a contract (pen close-up)",
+    "Phone showing an inbox of brand emails (blurred)"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "CHECK",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "40 to 50 s",
+   "title_card": "THE FIRST THING BRANDS CHECK",
+   "hook": "After 850-plus creator deals, / this is the first thing I check. // Not your followers. / Your *comments*.",
+   "hook_alts": [
+    "Brands don't trust your follower count. / Here's what we look at instead.",
+    "Your comments section is your real media kit."
+   ],
+   "lines": [
+    {
+     "say": "Followers can be bought. / Likes can be bought. // Comments are *much* harder to fake.",
+     "see": "Three counters, the first two crossed out",
+     "how": "[count] followers, likes, then stop"
+    },
+    {
+     "say": "So I scroll your last five posts / and read the comments.",
+     "see": "A comment feed scrolling",
+     "how": "[point]"
+    },
+    {
+     "say": "Are they *questions*? / People tagging friends? / Or just fire emojis / and 'nice pic'?",
+     "see": "Tags: Question (tick), Tag a friend (tick), Emoji only (cross)"
+    },
+    {
+     "say": "Questions mean people trust you enough to ask. // That's what a brand is paying for.",
+     "see": "Question comments highlighted",
+     "how": "(down) on the second sentence"
+    },
+    {
+     "say": "If you're a creator, / reply to every real question. / It's the cheapest media kit you'll ever make.",
+     "see": "Reply thread with your answer",
+     "how": "[lens]"
+    },
+    {
+     "say": "Comment *CHECK* / and I'll send you the full checklist.",
+     "see": "Comment bubble: CHECK"
+    }
+   ],
+   "notes": "Planned for Week 2 of 52. Change any line that isn't how you actually vetted creators. Your real process beats this draft.",
+   "broll": [
+    "Scrolling a creator's profile on your phone, thumb close-up",
+    "Laptop with a spreadsheet of creators (blur names)",
+    "Pen ticking a printed checklist",
+    "You on a call nodding (wide, no audio)"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "CREATOR",
+   "series": "Steal My Workflow",
+   "format": "A split",
+   "length": "45 to 55 s",
+   "title_card": "THE CAMPAIGN HQ",
+   "hook": "I run creator campaigns from one Claude Project. // I call it the *Campaign HQ*.",
+   "hook_alts": [
+    "One Claude Project runs my whole creator campaign.",
+    "850 creator deals taught me the mess is never the creators. / It's the files."
+   ],
+   "lines": [
+    {
+     "say": "On the brand side, / the mess was never the creators. // It was the *files*.",
+     "see": "Scattered files collapsing into one folder",
+     "how": "Knowing smile"
+    },
+    {
+     "say": "So every campaign gets one Project.",
+     "see": "Card: Campaign HQ"
+    },
+    {
+     "say": "Inside: / the brief, / the brand rules, / and last campaign's results.",
+     "see": "Three file cards drop in",
+     "how": "[count]"
+    },
+    {
+     "say": "Then it does the jobs. / Shortlist creators from my export. / Check their comments come from real people. / Draft outreach that doesn't sound copied.",
+     "see": "Job list ticking off one by one",
+     "how": "[point] at each job"
+    },
+    {
+     "say": "Write the one-page brief. / Check every draft against it. / And write the weekly report.",
+     "see": "List continues to seven"
+    },
+    {
+     "say": "Seven jobs, / one place, // and it never forgets the brief.",
+     "see": "Seven ticks, brief card glows",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Comment *CREATOR* / and I'll send you the full guide with every prompt.",
+     "see": "Comment bubble: CREATOR"
+    }
+   ],
+   "notes": "Planned for Week 2. Matches the CREATOR guide on buildwithvish.",
+   "broll": [
+    "Laptop showing the Claude Project sidebar",
+    "Typing a creator brief, hands on keyboard",
+    "Phone with a creator DM thread (blurred)",
+    "Sticky notes or a whiteboard with campaign steps"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "COMMENT",
+   "series": "Steal My Workflow",
+   "format": "A split",
+   "length": "40 to 45 s",
+   "title_card": "152 LIKES. 579 COMMENTS.",
+   "hook": "A post I saw last week got 152 likes / and 579 *comments*. // Here's why.",
+   "hook_alts": [
+    "Why 'comment X' posts get hundreds of comments.",
+    "Almost four comments for every like. / That's not luck."
+   ],
+   "lines": [
+    {
+     "say": "That's almost four comments for every like. // That's not luck. / It's a *mechanism*.",
+     "see": "Ratio graphic 152 vs 579",
+     "how": "(up)"
+    },
+    {
+     "say": "One: / the ask is tiny. / One word.",
+     "see": "Bubble: Comment GEO",
+     "how": "[count]"
+    },
+    {
+     "say": "Two: / the reward is specific. / A guide you can already picture.",
+     "see": "Guide preview pages"
+    },
+    {
+     "say": "Three: / every comment tells the platform / people care about this post.",
+     "see": "Post spreading across a feed"
+    },
+    {
+     "say": "But it only works / if the guide is actually good. // Otherwise you just taught people / to ignore you.",
+     "see": "Empty guide page, crossed",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Comment *COMMENT* / and yes, / I'll send you my template for these posts.",
+     "see": "Comment bubble: COMMENT",
+     "how": "[smile] on 'and yes'"
+    }
+   ],
+   "notes": "Planned for Week 2. Numbers from Ira Bodnar's LinkedIn post of 5 Oct 2026 (your screenshot). Show the counts only; don't name or tag her without asking.",
+   "broll": [
+    "Scrolling LinkedIn comments on your phone",
+    "Thumb tapping 'comment' on a post",
+    "Laptop with the post analytics page",
+    "Phone face-down buzzing with notifications"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "LOOP",
+   "series": "Steal My Workflow",
+   "format": "A split",
+   "length": "40 to 45 s",
+   "title_card": "94,000 COMMENTS. NOT LUCK.",
+   "hook": "One reel got *94,000* comments. // It wasn't luck.",
+   "hook_alts": [
+    "This reel has more comments than most accounts have followers.",
+    "Why do some reels get 90,000 comments? // Three things."
+   ],
+   "lines": [
+    {
+     "say": "Every one of these reels / ends the same way. // Comment one word, / get something free.",
+     "see": "Comment counter racing to 94,325 while comment bubbles flood in (recreated, no creator name)",
+     "how": "(up)"
+    },
+    {
+     "say": "But the word isn't the trick. / The *gift* is.",
+     "see": "Two cards: 'my guide' crossed out, 'the GitHub link and the full PDF' ticked"
+    },
+    {
+     "say": "One. / It's *specific*. / Not 'my guide'. / The exact file you get.",
+     "see": "Big numeral 1 + the exact-file card",
+     "how": "[count]"
+    },
+    {
+     "say": "Two. / It's *free*, / and it takes three minutes.",
+     "see": "Badge: FREE · 3 MIN",
+     "how": "[count]"
+    },
+    {
+     "say": "Three. / You say the word twice. / Once early, / once at the end.",
+     "see": "A reel timeline with two keyword markers",
+     "how": "[count]"
+    },
+    {
+     "say": "Comments are a signal the app reads. // More signal, / more people see it.",
+     "see": "One phone fanning out into many feeds",
+     "how": "(down)"
+    },
+    {
+     "say": "Comment *LOOP* / and I'll send you my teardown / of twelve reels that did this.",
+     "see": "Comment bubble: LOOP",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 6. Counts are public numbers read on 15 Oct 2026 (research/viral/attention-playbook-2026-10-15.md). Don't name or show the other creators; the edit recreates the counter.",
+   "broll": [
+    "Thumb scrolling Reels, stopping on one",
+    "Typing a one-word comment on your phone",
+    "Phone notifications stacking up on the desk",
+    "You opening a DM with a link"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "HOOK",
+   "series": "Steal My Workflow",
+   "format": "A split",
+   "length": "45 to 50 s",
+   "title_card": "THE 4-PART HOOK",
+   "hook": "Every viral AI explainer uses the same hook. // It has *four* parts.",
+   "hook_alts": [
+    "I studied the most-watched AI explainers. / They all open the same way.",
+    "Steal this hook formula. / It takes ten seconds."
+   ],
+   "lines": [
+    {
+     "say": "One: / the outcome, / made extreme. // 'So clear, it's impossible to skip.'",
+     "see": "Card 1: outcome",
+     "how": "[count]"
+    },
+    {
+     "say": "Two: / a name. // 'It's called the Desire Hook.'",
+     "see": "Card 2: name"
+    },
+    {
+     "say": "Three: / a number. // 'It's only four steps.'",
+     "see": "Card 3: number"
+    },
+    {
+     "say": "Four: / a surprise. // 'The same psychology casinos use.'",
+     "see": "Card 4: surprise",
+     "how": "(up)"
+    },
+    {
+     "say": "The name makes it feel real. / The number makes it feel short. / The surprise makes you stay.",
+     "see": "All four cards lock together"
+    },
+    {
+     "say": "I found this studying Kallaway's reels, / and turned it into a prompt / that writes ten of these for any topic.",
+     "see": "Prompt card",
+     "how": "[lens]"
+    },
+    {
+     "say": "Comment *HOOK* / and I'll send you the prompt.",
+     "see": "Comment bubble: HOOK"
+    }
+   ],
+   "notes": "Planned for Week 4. Credit Kallaway by name; it builds trust and is fair.",
+   "broll": [
+    "Thumb scrolling fast through Reels",
+    "Stopping on one video (thumb lifts)",
+    "Notebook with the 4 parts written out",
+    "Phone screen of a viral explainer (blur the creator)"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "CITED",
+   "series": "Steal My Workflow",
+   "format": "A split",
+   "length": "45 to 55 s",
+   "title_card": "GET CITED BY AI",
+   "hook": "ChatGPT might be recommending your *competitor*. // Here's how to check, and fix it, for free.",
+   "hook_alts": [
+    "People ask AI who to hire now. / Are you in the answer?",
+    "Ranking on Google isn't enough anymore. / You need to be quoted by AI."
+   ],
+   "lines": [
+    {
+     "say": "People now ask AI / which tool to buy, / which agency to hire.",
+     "see": "Chat question: best agency for creator campaigns?"
+    },
+    {
+     "say": "Step one: / write the thirty questions your buyers actually ask.",
+     "see": "Question list",
+     "how": "[count] step one"
+    },
+    {
+     "say": "Ask them in ChatGPT, / Perplexity / and Gemini, / and log who gets named.",
+     "see": "Log table: Brand A, Brand B, You (example)"
+    },
+    {
+     "say": "Step two: / find the pages that rank on Google / but never get quoted.",
+     "see": "Search Console export, rows highlighted"
+    },
+    {
+     "say": "Step three: / rewrite them *answer first*, / with facts people can check.",
+     "see": "Before and after paragraph"
+    },
+    {
+     "say": "Nobody can promise you a citation. // But clear, current pages / give you the best shot.",
+     "see": "Checklist: clear, current, checkable",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Comment *CITED* / and I'll send you the full guide.",
+     "see": "Comment bubble: CITED"
+    }
+   ],
+   "notes": "Planned for Week 3. Matches the CITED guide (sources checked 8 Oct 2026).",
+   "broll": [
+    "Typing a question into ChatGPT on the laptop",
+    "Screen close-up of the AI answer listing brands",
+    "Google search results scrolling",
+    "You pointing at the screen"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "PITCH HOW-TO",
+   "keyword": "PITCH",
+   "series": "Teaching Reel (Kallaway style)",
+   "format": "A split: graphics canvas on top, speaker box below; full-frame for the punchlines",
+   "length": "40 to 45 s",
+   "title_card": "THE 4-LINE PITCH",
+   "post": "Mon 3 Nov, the how-to slot of week 3 (it teaches what the Thursday episode lives)",
+   "cta": "Comment PITCH",
+   "model": "kallawaymarketing DaiCxAkOpNb (54K likes) and Db-zJhiuXP3: named framework, one running example, numbered steps, a tool as the free resource",
+   "hook": "Here's how to pitch a brand / so they *can't* ignore you.",
+   "hook_alts": [
+    "Most creator pitches get *deleted*. // This one gets a reply.",
+    "850 creator deals on the brand side. // This is the pitch that *works*."
+   ],
+   "lines": [
+    {
+     "say": "It's called / the *4-line* pitch.",
+     "see": "Framework map: amber node \"4-line pitch\" wired to 4 empty pills",
+     "how": "[lens]"
+    },
+    {
+     "say": "Say you make running videos, / and you want a *shoe* brand.",
+     "see": "Type-on card: \"Creator: running videos. Brand: running shoes\" (example)"
+    },
+    {
+     "say": "Line one: / *proof*. // Not your followers. / Who they *are*.",
+     "see": "Pill 1 lights: PROOF. Email card types: \"58% of my viewers are runners in Germany, 25 to 34\" (labelled EXAMPLE)",
+     "how": "[count] one"
+    },
+    {
+     "say": "Line two: / *fit*. // Why your viewers / are already their *customers*.",
+     "see": "Pill 2: FIT. Split card: their customer / your viewers, the same three ticks",
+     "how": "[count] two"
+    },
+    {
+     "say": "Line three: / one *idea*. // A 30-day run streak, / filmed in their shoes.",
+     "see": "Pill 3: IDEA. A mini calendar fills 30 days",
+     "how": "[count] three"
+    },
+    {
+     "say": "Line four: / a *small* ask. // Not \"let's collaborate\". / \"Can I send you the plan?\"",
+     "see": "Pill 4: ASK. \"Let's collaborate\" struck through, the small ask types in",
+     "how": "[count] four, then [smile]"
+    },
+    {
+     "say": "Proof, / fit, / idea, / ask. // Four lines.",
+     "see": "Canvas switches to paper: the whole email, 4 lines highlighted",
+     "how": "(down)"
+    },
+    {
+     "say": "Comment *PITCH* / and I'll send you the template / and the Claude prompt / that researches the brand *for* you.",
+     "see": "CTA card: Comment PITCH, plus the template and prompt cards",
+     "how": "[point]"
+    }
+   ],
+   "notes": "Planned for Week 3 of 52. Kallaway skeleton: hook with an extreme but true promise, the name, one running example (the running creator), numbered steps, recap, a tool as the resource. Every number on screen is labelled EXAMPLE. Vish: change any line that doesn't match how you judged pitches on the brand side; say it your way. Before posting: write the PITCH guide (template + brand research prompt, 8-section format) and add PITCH to lib/ig-autodm/config.json.",
+   "broll": [
+    "Close-up typing an email (no names on screen)",
+    "Phone showing a reply notification (fake sender blurred, or skip)",
+    "You at the desk, nodding to camera (for the recap)"
+   ],
+   "cover": {
+    "title": "The 4-line pitch",
+    "line": "Brands *can't* ignore it",
+    "note": "Kallaway-style cover: bold question or promise, one italic serif word, one symbolic image (an email with 4 amber lines)"
+   }
+  },
+  {
+   "week": "Backlog",
+   "key": "SHIP",
+   "series": "Ship Log",
+   "format": "A split",
+   "length": "45 to 50 s",
+   "title_card": "WHAT BROKE THIS MONTH",
+   "hook": "I'm a non-engineer building AI tools. // Here's what *broke* this month.",
+   "hook_alts": [
+    "Three things that broke while I automated my content.",
+    "Building with AI isn't smooth. / Here's my month."
+   ],
+   "lines": [
+    {
+     "say": "One: / my first videos used an AI voice. // People could tell.",
+     "see": "Waveform crossed out",
+     "how": "[count] Honest, slightly embarrassed"
+    },
+    {
+     "say": "So now it's my face, / my voice, / and AI does the edit.",
+     "see": "Phone recording",
+     "how": "[smile]"
+    },
+    {
+     "say": "Two: / Google's AI got overloaded / and my overnight jobs just stopped.",
+     "see": "Error card: high demand"
+    },
+    {
+     "say": "Three: / free tiers have limits. / Ten voiceovers a day, / then you wait.",
+     "see": "Counter 10 / 10"
+    },
+    {
+     "say": "The lesson: / build like it *will* fail, / and save your work as you go.",
+     "see": "Save icon",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Comment *SHIP* / and I'll send you my build log.",
+     "see": "Comment bubble: SHIP"
+    }
+   ],
+   "notes": "Planned for Week 5. All three happened in October 2026 while building this engine.",
+   "broll": [
+    "Terminal with a red error on screen",
+    "You rubbing your face (wide)",
+    "Fixing it: typing close-up",
+    "Green 'passed' or deployed screen"
+   ]
+  },
+  {
+   "key": "ROAST",
+   "keyword": "ROAST",
+   "series": "New Drop / Ship Log",
+   "format": "B demo",
+   "length": "35 to 40 s",
+   "title_card": "CLAUDE ROASTED MY INSTAGRAM",
+   "hook": "I asked Claude / to roast my Instagram. // It did *not* hold back.",
+   "hook_alts": [
+    "Claude looked at my profile / and chose violence.",
+    "My Instagram, / reviewed by an AI with no filter."
+   ],
+   "lines": [
+    {
+     "say": "I asked Claude / to roast my Instagram. // It did *not* hold back.",
+     "see": "Screen: your profile, then Claude's answer appearing",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "[READ ITS SHARPEST LINE, word for word]",
+     "see": "Screen: that line highlighted",
+     "how": "[smile]"
+    },
+    {
+     "say": "Okay. / Fair.",
+     "see": "Punch-in, you wincing",
+     "how": "(down)"
+    },
+    {
+     "say": "[READ THE SECOND LINE]",
+     "see": "Screen: second line highlighted"
+    },
+    {
+     "say": "But then it told me / what to *fix*. / [READ ITS FIRST FIX]",
+     "see": "Screen: the fixes list",
+     "how": "[point]"
+    },
+    {
+     "say": "Want the prompt? / It's harsh. // Comment *ROAST*.",
+     "see": "Comment bubble: ROAST",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Comment ROAST (new guide to build before posting: the roast prompt + how to read it)",
+   "notes": "Run the prompt for real on the day and read its real words; don't script its answers. Needs a guide URL in lib/ig-autodm/config.json before posting.",
+   "broll": [
+    "Screen recording of the prompt and the answer",
+    "Your reaction"
+   ],
+   "week": "Backlog",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "week": "Backlog",
+   "key": "HUMAN",
+   "series": "New Drop",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "3 AI TELLS",
+   "hook": "People can tell / AI wrote your post. // Here are the *three* tells.",
+   "hook_alts": [
+    "This is why your AI posts sound like everyone else's.",
+    "I ran an AI draft through a free detector. // It failed."
+   ],
+   "lines": [
+    {
+     "say": "Tell one. / The long dash. // AI puts it everywhere.",
+     "see": "A draft with every long dash glowing red",
+     "how": "[count]"
+    },
+    {
+     "say": "Tell two. / 'It's not just this, / it's that.' // Every AI post has one.",
+     "see": "The phrase struck through",
+     "how": "[count]"
+    },
+    {
+     "say": "Tell three. / Words nobody says out loud. / *Delve*. / *Landscape*.",
+     "see": "The words pop up and get crossed out",
+     "how": "[count] then [smile]"
+    },
+    {
+     "say": "There's a free Claude skill / that strips all three / and scores the draft / before you post it.",
+     "see": "Terminal: the li-human score panel (real run)"
+    },
+    {
+     "say": "Same draft. / Watch the score.",
+     "see": "Score bar from FLAGGED (red) to pass (green), real numbers from the run",
+     "how": "[point]"
+    },
+    {
+     "say": "It runs on your laptop. / No sign-up, / no API key.",
+     "see": "Chips: free · open source · offline"
+    },
+    {
+     "say": "Comment *HUMAN* / and I'll send you the setup.",
+     "see": "Comment bubble: HUMAN",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 6. Tool: li-human from github.com/avi691/linkedin-agent-skill (MIT, checked 15 Oct 2026). The edit shows the real before and after score from detect.py, never a made-up one. The quoted slop words are examples, on purpose.",
+   "broll": [
+    "Typing a prompt into ChatGPT on the laptop",
+    "Screen close-up of a long AI draft",
+    "Deleting text with backspace (hands)",
+    "Phone showing the posted LinkedIn draft"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "INSTA",
+   "series": "New Drop",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "CLAUDE + INSTAGRAM",
+   "hook": "Instagram isn't in Claude's connector list. // I connected it anyway.",
+   "hook_alts": [
+    "Claude can read your Instagram now. / Five minutes, no code.",
+    "Ask Claude which of your posts get the most saves. / Here's how."
+   ],
+   "lines": [
+    {
+     "say": "It took five minutes / and *zero* code.",
+     "see": "Timer 5:00"
+    },
+    {
+     "say": "In Claude, / tap the *plus*, / then *Manage connectors*.",
+     "see": "Screen: Claude chat, plus menu, Connectors, Manage connectors",
+     "how": "A bit quicker through the steps"
+    },
+    {
+     "say": "Add a custom connector, / paste one link, / sign in.",
+     "see": "Screen: Add custom connector dialog with the Porter link"
+    },
+    {
+     "say": "Now ask it real questions. // Which post type gets the most *saves*? / What should I post next week?",
+     "see": "Chat bubbles with both questions",
+     "how": "(up) on the questions"
+    },
+    {
+     "say": "Want it to publish and read comments too? / A tool called Composio does that part.",
+     "see": "Card: Composio, publish and comments"
+    },
+    {
+     "say": "Both use Meta's official API, / so you're not scraping anything.",
+     "see": "Card: Official API",
+     "how": "(down)"
+    },
+    {
+     "say": "Comment *INSTA* / and I'll send you the full setup, step by step.",
+     "see": "Comment bubble: INSTA",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 1. Facts from the INSTA guide, checked 7 Oct 2026 (Porter and Composio). Re-check the menu names on filming day.",
+   "broll": [
+    "Instagram app open on your phone, scrolling your own posts",
+    "Claude open on the laptop, typing the first prompt",
+    "Phone notification arriving on the desk",
+    "Close-up of the connector settings screen"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "REPORT",
+   "series": "Hire This AI",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "HIRED: AI CAMPAIGN ANALYST",
+   "hook": "I hired an AI campaign analyst. // It writes my Monday report / before I open my laptop.",
+   "hook_alts": [
+    "My Monday campaign report writes itself now.",
+    "This AI does the worst job in influencer marketing."
+   ],
+   "lines": [
+    {
+     "say": "Here's its job description.",
+     "see": "Card: JOB DESCRIPTION",
+     "how": "Dry, deadpan"
+    },
+    {
+     "say": "Every Monday morning, / it pulls last week's numbers for each creator.",
+     "see": "Sheet filling with rows (example data)"
+    },
+    {
+     "say": "It does the maths in a spreadsheet, / *never* in its head.",
+     "see": "Formula bar highlighted",
+     "how": "[point]"
+    },
+    {
+     "say": "Then it makes one call per creator: / *scale*, / *keep*, / *test*, / or *cut*.",
+     "see": "Four chips land one by one",
+     "how": "[count] all four"
+    },
+    {
+     "say": "And it writes the one-page report / the client actually reads.",
+     "see": "One-page report"
+    },
+    {
+     "say": "I check two numbers by hand, / then I send it.",
+     "see": "Two numbers get a tick",
+     "how": "(down)"
+    },
+    {
+     "say": "Comment *REPORT* / and I'll send you the template and the prompt.",
+     "see": "Comment bubble: REPORT",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 2. Your Campaign Report Autopilot project on buildwithvish. Say the real time it runs if it isn't morning.",
+   "broll": [
+    "Monday morning: coffee next to the laptop",
+    "The report opening on screen, scroll",
+    "Chart close-up on the screen",
+    "You reading it and nodding"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "STACK",
+   "series": "Ship Log",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "MY CONTENT ENGINE",
+   "hook": "I talk to my phone. // An AI system turns it into a week of posts.",
+   "hook_alts": [
+    "Here's the free stack behind every video I post.",
+    "My content engine, tool by tool."
+   ],
+   "lines": [
+    {
+     "say": "I film on my phone / and drop the file in Google Drive.",
+     "see": "Phone, Drive folder"
+    },
+    {
+     "say": "Whisper writes the transcript, / free, / on the machine.",
+     "see": "Transcript scrolling"
+    },
+    {
+     "say": "Claude plans the edit / with an open-source kit called *herk-edit-kit*.",
+     "see": "Edit plan with beats",
+     "how": "[point]"
+    },
+    {
+     "say": "HyperFrames builds the graphics. / Then three formats come out: / Reels, / LinkedIn, / YouTube.",
+     "see": "Three frames side by side",
+     "how": "[count]"
+    },
+    {
+     "say": "Every caption goes through a checker / that flags AI-sounding phrases.",
+     "see": "Caption with flagged words crossed out"
+    },
+    {
+     "say": "Then I approve the whole week / in one go.",
+     "see": "Approve button",
+     "how": "(down) [smile]"
+    },
+    {
+     "say": "Comment *STACK* / and I'll send you every tool. / All free.",
+     "see": "Comment bubble: STACK",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 3. Film after the weekly loop is running so every line is true.",
+   "broll": [
+    "Talking into your phone's voice memo",
+    "Laptop turning the memo into posts (screen)",
+    "Calendar view with a week of posts",
+    "Phone showing the finished carousel"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "YOUTUBE",
+   "series": "Steal My Workflow",
+   "format": "B demo",
+   "length": "45 to 50 s",
+   "title_card": "YOUTUBE RESEARCH WITH CLAUDE",
+   "hook": "Claude can do your YouTube research. // Here's the *honest* setup.",
+   "hook_alts": [
+    "Stop watching 50 videos for research. / Do this instead.",
+    "Your next video idea is sitting in someone else's comments."
+   ],
+   "lines": [
+    {
+     "say": "First, the honest part. / Claude's help pages don't say it can watch YouTube videos. // So give it *text*.",
+     "see": "Card: give it text",
+     "how": "(down)"
+    },
+    {
+     "say": "Open a video, / tap *Show transcript*, / copy it.",
+     "see": "Screen: YouTube transcript panel"
+    },
+    {
+     "say": "Do that for the top ten videos in your niche.",
+     "see": "Grid of ten thumbnails (blurred)"
+    },
+    {
+     "say": "Ask Claude: / what does each one promise in the first thirty seconds?",
+     "see": "Hook table"
+    },
+    {
+     "say": "Then paste the comments. // The questions people ask / are your next videos.",
+     "see": "Comment themes card",
+     "how": "(up) [point]"
+    },
+    {
+     "say": "Keep it all in one Project / and do it again every month.",
+     "see": "Monthly calendar"
+    },
+    {
+     "say": "Comment *YOUTUBE* / and I'll send you the prompts.",
+     "see": "Comment bubble: YOUTUBE",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 4. Matches the YOUTUBE guide. Research only: never republish anyone's transcript.",
+   "broll": [
+    "YouTube search on the laptop",
+    "Claude summarising videos (screen scroll)",
+    "Notebook with research notes",
+    "Thumb scrolling YouTube Shorts"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "AGENT",
+   "series": "Hire This AI",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "MY JOB-SEARCH AGENT",
+   "hook": "My job-search agent reads every job ad / *before* I do.",
+   "hook_alts": [
+    "I built an AI that scores job ads for me.",
+    "Job hunting in a new country? / Let an AI do the first pass."
+   ],
+   "lines": [
+    {
+     "say": "I moved to Germany / and I'm job hunting, / so I built myself an assistant.",
+     "see": "Map pin Germany, job board"
+    },
+    {
+     "say": "It's one Claude Project / that knows my CV inside out.",
+     "see": "Project with CV file"
+    },
+    {
+     "say": "I paste a job ad. / It gives me a fit score, / and *why*.",
+     "see": "Score card, labelled example",
+     "how": "[point]"
+    },
+    {
+     "say": "If it's worth it, / it writes a tailored CV summary / and a cover letter draft.",
+     "see": "Two documents"
+    },
+    {
+     "say": "I still read every line / and I send it myself. // That part stays human.",
+     "see": "Send button pressed by hand",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Comment *AGENT* / and I'll send you the setup. / It's free.",
+     "see": "Comment bubble: AGENT"
+    }
+   ],
+   "notes": "Planned for Week 4. Hook changed from 'applies while I sleep': it drafts, you apply. Keep it true.",
+   "broll": [
+    "Job board page scrolling on the laptop",
+    "The agent's output list on screen",
+    "Email inbox with an interview invite (blurred)",
+    "You at the desk with a coffee, reading"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "APPS",
+   "series": "New Drop",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "CHATGPT + YOUR APPS",
+   "hook": "ChatGPT now plugs into your marketing apps. // Here are the three I'd connect *first*.",
+   "hook_alts": [
+    "Stop copy-pasting between ten tabs. / ChatGPT can open them for you.",
+    "Three ChatGPT connections every marketer should switch on."
+   ],
+   "lines": [
+    {
+     "say": "Most marketers still copy and paste / between ten tabs.",
+     "see": "Ten tabs flickering"
+    },
+    {
+     "say": "In ChatGPT's settings, / find the apps section.",
+     "see": "Screen: ChatGPT settings, apps section"
+    },
+    {
+     "say": "One: / your *files*, / so it reads the brief / instead of guessing.",
+     "see": "Files card",
+     "how": "[count]"
+    },
+    {
+     "say": "Two: / your *CRM*, / so it knows which client you mean.",
+     "see": "CRM card"
+    },
+    {
+     "say": "Three: / your *calendar*, / so it plans around real deadlines.",
+     "see": "Calendar card"
+    },
+    {
+     "say": "Connect only what you'd trust a new hire with, / and keep approvals on / for anything that sends or deletes.",
+     "see": "Approval toggle on",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Comment *APPS* / and I'll send you my setup list.",
+     "see": "Comment bubble: APPS"
+    }
+   ],
+   "notes": "Planned for Week 5. Name the exact apps on filming day after checking ChatGPT's directory; menus change often.",
+   "broll": [
+    "ChatGPT apps directory on the laptop",
+    "Connecting an app (click close-up)",
+    "Phone with ChatGPT open",
+    "Result on screen, scroll"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "TRENDS",
+   "series": "New Drop",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "STOP GUESSING WHAT TO POST",
+   "hook": "I stopped guessing what to post. // This free tool reads *Reddit* for me.",
+   "hook_alts": [
+    "Your next viral topic is already on Reddit. // Here's how to find it.",
+    "Before I post, / I check what people argued about this month."
+   ],
+   "lines": [
+    {
+     "say": "It's called *last30days*. / A free Claude skill.",
+     "see": "The real GitHub page as a card"
+    },
+    {
+     "say": "You give it a topic. / It reads Reddit, / YouTube / and Hacker News / from the last thirty days.",
+     "see": "Three source chips light up one by one",
+     "how": "[count]"
+    },
+    {
+     "say": "Then it ranks what people *actually* talked about. / With the upvotes / and the comments.",
+     "see": "Ranked list from a real run, points visible"
+    },
+    {
+     "say": "I asked it about free Claude tools. / The top post this month / had almost *nine hundred* upvotes.",
+     "see": "Result card: 895 points, 'a free Claude skill to de-AI your writing'",
+     "how": "(up)"
+    },
+    {
+     "say": "A skill that makes AI writing / sound human. // So that's my next video.",
+     "see": "Cut to the HUMAN title card",
+     "how": "[smile]"
+    },
+    {
+     "say": "Those sources need no API key. / It runs from your laptop.",
+     "see": "Chips: free · MIT · no key"
+    },
+    {
+     "say": "Comment *TRENDS* / and I'll send you the setup.",
+     "see": "Comment bubble: TRENDS",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 6. Tool: github.com/mvanhorn/last30days-skill (MIT). Reddit, YouTube and Hacker News work without keys; X needs a login, so don't claim X. The 895-point post: r/claudeskills, 24 Sep 2026, from a run on 15 Oct 2026; re-run before filming and use the new top result.",
+   "broll": [
+    "Scrolling Reddit on the phone",
+    "Terminal running the research (screen)",
+    "Notebook: writing the topic down",
+    "You nodding at the screen"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "SKILLS",
+   "series": "Hire This AI",
+   "format": "B demo",
+   "length": "45 to 50 s",
+   "title_card": "11 FREE LINKEDIN SKILLS, TESTED",
+   "hook": "Everyone's sharing eleven free LinkedIn skills for Claude. // I *tested* them.",
+   "hook_alts": [
+    "Claude can now run your LinkedIn drafts. // Here's what's worth installing.",
+    "Eleven free LinkedIn skills. // Three are worth your time."
+   ],
+   "lines": [
+    {
+     "say": "It's free, / it's open source, / and nothing gets posted / until you say yes.",
+     "see": "README lines highlighted (real page)"
+    },
+    {
+     "say": "Skill one. / It writes posts / from twenty-one hook formulas, / in *your* voice.",
+     "see": "Three hook options appear",
+     "how": "[count]"
+    },
+    {
+     "say": "Skill two. / It scores your profile out of a hundred / and rewrites what lost points.",
+     "see": "Score ring with your real score",
+     "how": "[count]"
+    },
+    {
+     "say": "Skill three. / The humanizer. / It strips the AI tells / before you see the draft.",
+     "see": "Before and after of one draft",
+     "how": "[count]"
+    },
+    {
+     "say": "The one I'd skip: / comments on other people's posts. // Those should sound like *you*.",
+     "see": "Comment draft crossed out",
+     "how": "(down)"
+    },
+    {
+     "say": "Comment *SKILLS* / and I'll send you the setup / and my voice file.",
+     "see": "Comment bubble: SKILLS",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 6. Pack: github.com/avi691/linkedin-agent-skill (MIT, 11 skills, checked 15 Oct 2026), installed in this repo as li-*. Before filming, run li-profile on your profile and li-post on one idea; use your real score in line 3.",
+   "broll": [
+    "LinkedIn feed scrolling on the laptop",
+    "Your profile page on screen",
+    "Typing one idea into Claude",
+    "Copying a finished post (hands)"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "FREE",
+   "series": "Ship Log",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "EDITED FOR £0",
+   "hook": "This video was edited for free. // Every tool is free, / *except one*.",
+   "hook_alts": [
+    "My video editor costs zero pounds. // Here's the whole stack.",
+    "Cut, captioned and mixed by free tools. // Here they are."
+   ],
+   "lines": [
+    {
+     "say": "Whisper writes the captions. / Free, / and it runs on my laptop.",
+     "see": "faster-whisper GitHub page card"
+    },
+    {
+     "say": "FFmpeg cuts every pause / and every retake.",
+     "see": "Waveform with the gaps collapsing"
+    },
+    {
+     "say": "A free matting model / cuts me out of the background.",
+     "see": "Matte reveal: room, mask, cut-out"
+    },
+    {
+     "say": "The music and sound effects / come from free libraries / you can use in videos.",
+     "see": "Chips: free music · free SFX · no credit needed"
+    },
+    {
+     "say": "And Claude runs the whole thing / from one command.",
+     "see": "Terminal: make.py running"
+    },
+    {
+     "say": "So the one I pay for? // *Claude* itself.",
+     "see": "Price tag on the Claude card only",
+     "how": "[smile]"
+    },
+    {
+     "say": "Comment *FREE* / and I'll send you the full list / with links.",
+     "see": "Comment bubble: FREE",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 6. Stack used for the EDIT video (14 Oct 2026): faster-whisper (MIT), FFmpeg (LGPL/GPL), RVM matting model (GPL-3.0), herk-edit-kit (MIT), Mixkit music and Pixabay SFX (free licences). Don't name a price for Claude unless you check your plan that day.",
+   "broll": [
+    "Phone on a tripod, pressing record",
+    "Laptop terminal scrolling",
+    "Headphones on the desk while music plays",
+    "The finished reel playing on your phone"
+   ]
+  },
+  {
+   "week": "Backlog",
+   "key": "CLAUDE",
+   "series": "Ship Log",
+   "format": "B demo",
+   "length": "35 to 40 s",
+   "title_card": "AI EDITED MY LAST VIDEO",
+   "post": "Post 1 of week 2: within 1 to 4 days of Week 1 (it answers the 'how?' from the Week 1 caption)",
+   "hook": "My last video? / I didn't edit a *single* second. // Claude did.",
+   "hook_alts": [
+    "This reel took nine versions. // I didn't touch the timeline once.",
+    "I filmed it on my phone. // AI did the rest."
+   ],
+   "lines": [
+    {
+     "say": "I filmed it on my phone. / That's the only part I did.",
+     "see": "Your phone on the tripod, pressing record (B-roll)"
+    },
+    {
+     "say": "Whisper wrote down every word / with the exact timings.",
+     "see": "Screen recording: the transcript with word timings scrolling"
+    },
+    {
+     "say": "Then Claude picked my takes, / graded it like film / and cut me out of my room.",
+     "see": "Before / after grade wipe, then the cut-out matte reveal",
+     "how": "[point]"
+    },
+    {
+     "say": "It even did the sound. // Every click, / and every time the music stops.",
+     "see": "Waveform with the sound markers popping on; the silent beat goes flat"
+    },
+    {
+     "say": "I just told it what I didn't like, / in normal words.",
+     "see": "Chat bubbles of your real feedback ('the music goes up and down, fix it')",
+     "how": "(down)"
+    },
+    {
+     "say": "Nine versions later, / I loved it.",
+     "see": "v1 to v9 thumbnails flipping, v9 lands",
+     "how": "[smile]"
+    },
+    {
+     "say": "Comment *CLAUDE* / and I'll send you every free tool I used.",
+     "see": "Comment bubble: CLAUDE",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Planned for Week 2 of 52. All true of the Week 1 edit (22 Oct 2026): v1 to v9, faster-whisper, FFmpeg, OpenCV, an open matting model, Kenney CC0 sounds, Microsoft Fluent 3D emoji (MIT), Claude. Claude is the one paid tool. Before posting: build the CLAUDE guide (8-section format) and add the keyword to lib/ig-autodm/config.json.",
+   "broll": [
+    "Phone on the tripod, pressing record",
+    "Laptop: the edit timeline / terminal running",
+    "Headphones on, nodding to the music",
+    "The Week 1 reel playing on your phone"
+   ]
+  },
+  {
+   "key": "HONEST",
+   "keyword": "question in the comments",
+   "series": "Week N of 52 (raw talk)",
+   "format": "Raw, one take, no graphics except captions",
+   "length": "25 to 30 s",
+   "title_card": "NOBODY'S WATCHING",
+   "hook": "Nobody's watching this. // *Good.*",
+   "hook_alts": [
+    "I posted for nobody this week.",
+    "If you're waiting to be ready, / I waited for years."
+   ],
+   "lines": [
+    {
+     "say": "Nobody's watching this. // *Good.*",
+     "see": "One take, close, soft light",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "I wanted to make content / for *years*. // I kept stopping.",
+     "see": "Captions only"
+    },
+    {
+     "say": "I overthought it. / I doubted it. / I waited to be ready.",
+     "see": "Captions only",
+     "how": "[count]"
+    },
+    {
+     "say": "Ready never came. // So I'm doing it / in front of whoever's here.",
+     "see": "Captions only"
+    },
+    {
+     "say": "If you're the one person watching, / hi. // What are *you* waiting to start?",
+     "see": "Captions only",
+     "how": "[smile] [lens]"
+    }
+   ],
+   "cta": "Question: what are you waiting to start?",
+   "notes": "Facts from brand-profile (wanted to start for years, kept stopping). Raw on purpose: the contrast with the edited reels is the point.",
+   "broll": [],
+   "week": "Backlog",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "key": "BROKE",
+   "keyword": "question in the comments",
+   "series": "Week N of 52 (side episode)",
+   "format": "Raw selfie, one take, then A split for the goal card",
+   "length": "30 to 35 s",
+   "title_card": "40K IN DEBT. FLIGHT BOOKED.",
+   "hook": "I'm 27. / I'm *40k* in debt. // And I just booked a flight to Sri Lanka.",
+   "hook_alts": [
+    "Booking a flight while 40k in debt. // Stupid or brave?",
+    "Everyone told me to wait. // I booked the flight."
+   ],
+   "lines": [
+    {
+     "say": "I'm 27. / I'm *40k* in debt. // And I just booked a flight to Sri Lanka.",
+     "see": "Selfie, handheld. Boarding-pass card slides in with SRI LANKA stamped",
+     "how": "(down) then (up) on Sri Lanka, [lens]"
+    },
+    {
+     "say": "No, / it's not a holiday.",
+     "see": "Hard cut, punch-in"
+    },
+    {
+     "say": "The whole point of this challenge / is *three thousand euros* a month, / from anywhere.",
+     "see": "Goal card: €3,000 / month, a pin moving Germany to Sri Lanka",
+     "how": "[point]"
+    },
+    {
+     "say": "And anywhere / has to start *somewhere*. //",
+     "see": "Map zooms out",
+     "how": "(down)"
+    },
+    {
+     "say": "I'm not waiting / until everything's perfect. / I did that for years. // It didn't work.",
+     "see": "Calendar pages flipping, years crossed out"
+    },
+    {
+     "say": "So, / stupid or brave? // Tell me in the comments.",
+     "see": "Two buttons: STUPID / BRAVE, cursor hovering",
+     "how": "[smile] [lens]"
+    }
+   ],
+   "cta": "Question: stupid or brave?",
+   "notes": "Check before filming: the currency of the 40k (brand-profile says to confirm before it goes on screen) and that the flight is booked. Every line must be true on the day.",
+   "broll": [
+    "Packing a bag",
+    "Phone showing the booking (hide the booking number)",
+    "Window, plane or train if you have it"
+   ],
+   "week": "Backlog",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "key": "GERMAN",
+   "keyword": "question in the comments",
+   "series": "Week N of 52 (side episode)",
+   "format": "A split",
+   "length": "30 to 35 s",
+   "title_card": "220 NOS. ZERO GERMAN.",
+   "hook": "I live in Germany. / I don't speak German. // *220* companies said no.",
+   "hook_alts": [
+    "Is it the German? // 220 rejections later, I honestly don't know.",
+    "Moving to Germany without the language. // Here's the bill."
+   ],
+   "lines": [
+    {
+     "say": "I live in Germany. / I don't speak German. // *220* companies said no.",
+     "see": "Rejection emails stacking, a counter racing to 220",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Was it the language? // Maybe.",
+     "see": "Big word: MAYBE."
+    },
+    {
+     "say": "I moved here a year ago / for my master's. / No friends, / no family, / no German.",
+     "see": "Three crossed-out cards: FRIENDS, FAMILY, GERMAN",
+     "how": "[count]"
+    },
+    {
+     "say": "Five years in influencer marketing / didn't translate.",
+     "see": "Your CV card, a 'Deutsch: none' line highlighted"
+    },
+    {
+     "say": "So now I've got two options. // Learn German, / or go *fully* remote.",
+     "see": "Split screen: a German textbook vs a laptop on a beach (B-roll)",
+     "how": "[point]"
+    },
+    {
+     "say": "What would you do? // Tell me.",
+     "see": "Comment bubble: German or remote?",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Question: learn German or go remote?",
+   "notes": "All facts from brand-profile.md. Don't claim the language was the reason; it's a question.",
+   "broll": [
+    "Your street sign or a German letter on the table",
+    "Language app open on your phone",
+    "Laptop by a window"
+   ],
+   "week": "Backlog",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "week": "Backlog",
+   "key": "GERMANY",
+   "series": "Ship Log",
+   "format": "A split",
+   "length": "40 to 45 s",
+   "title_card": "NEW COUNTRY. AI JOB HUNT.",
+   "hook": "I moved to Germany / to start again. // So I built an AI / to help me find a job.",
+   "hook_alts": [
+    "Job hunting in a new country, with an AI on my side.",
+    "A job ad is just a brief. / Here's how I read them."
+   ],
+   "lines": [
+    {
+     "say": "New country, / new rules, / and hundreds of job ads.",
+     "see": "Stack of job ads",
+     "how": "[count]"
+    },
+    {
+     "say": "I spent years reading creator briefs. // And a job ad / is just a *brief*.",
+     "see": "Job ad morphs into a brief",
+     "how": "[point]"
+    },
+    {
+     "say": "So my agent reads each ad like one: / what do they really need, / and where's my proof.",
+     "see": "Ad with highlights and proof notes"
+    },
+    {
+     "say": "Over the next weeks / I'll share what it gets right / and what it gets wrong.",
+     "see": "Series card: Ship Log",
+     "how": "(down)"
+    },
+    {
+     "say": "If you're job hunting too, / follow along.",
+     "see": "Follow button",
+     "how": "[lens] [smile]"
+    },
+    {
+     "say": "Comment *AGENT* / for the free setup.",
+     "see": "Comment bubble: AGENT"
+    }
+   ],
+   "notes": "Planned for Week 5. Personal story. Only share what you're comfortable with; no employer names.",
+   "broll": [
+    "Walking on a German street (wide, from behind)",
+    "Train or tram window",
+    "Laptop on a café table with job ads",
+    "Unpacking or desk setup in your room"
+   ]
+  },
+  {
+   "key": "POV",
+   "keyword": "question in the comments",
+   "series": "Week N of 52 (side episode)",
+   "format": "Day-in-the-life montage, your voice over short clips",
+   "length": "25 to 30 s",
+   "title_card": "POV: MY ONLY COWORKER IS CLAUDE",
+   "hook": "POV: / you're 27, / job hunting in Germany, // and your only coworker is *Claude*.",
+   "hook_alts": [
+    "My coworker never sleeps. // It's Claude.",
+    "A job hunt with one coworker. // An AI."
+   ],
+   "lines": [
+    {
+     "say": "POV: / you're 27, / job hunting in Germany, // and your only coworker is *Claude*.",
+     "see": "Morning: coffee, laptop opening, Claude on screen",
+     "how": "[smile]"
+    },
+    {
+     "say": "9 a.m. / It reads the new job ads / before I do.",
+     "see": "Screen: your job-search agent's list (real, blur company names)"
+    },
+    {
+     "say": "11. / I write the cover letter. / It argues with me.",
+     "see": "Screen: a draft with comments"
+    },
+    {
+     "say": "2 p.m. / Lunch. / Inbox still quiet.",
+     "see": "Empty inbox, fork in a bowl",
+     "how": "(down)"
+    },
+    {
+     "say": "6. / I film this.",
+     "see": "Phone propped on books (behind the scenes)"
+    },
+    {
+     "say": "Who's your coworker? // Human or AI?",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Question: who's your coworker?",
+   "notes": "Film the clips across one day. The agent is real (brand-profile); show its real output with companies blurred.",
+   "broll": [
+    "Coffee",
+    "Laptop opening",
+    "Inbox",
+    "Lunch",
+    "Phone on a stack of books"
+   ],
+   "week": "Backlog",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "key": "TWOEDITS",
+   "keyword": "question in the comments",
+   "series": "Ship Log",
+   "format": "Two edits of the same clips, back to back",
+   "length": "30 to 40 s",
+   "title_card": "ME vs AI",
+   "hook": "Same clips. / One edit by me, / one by AI. // Which is which?",
+   "hook_alts": [
+    "I edited this. // Then AI edited it. // Pick one.",
+    "Can you tell which edit is AI?"
+   ],
+   "lines": [
+    {
+     "say": "Same clips. / One edit by me, / one by AI. // Which is which?",
+     "see": "Split screen: A and B playing",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Edit A.",
+     "see": "Edit A plays, 10 s"
+    },
+    {
+     "say": "Edit B.",
+     "see": "Edit B plays, 10 s"
+    },
+    {
+     "say": "Comment *A* or *B*. // I'll tell you on Friday.",
+     "see": "Two buttons: A / B",
+     "how": "[lens] [smile]"
+    }
+   ],
+   "cta": "Question: A or B?",
+   "notes": "Needs one 10 s edit made by you in any app from the same clips; the AI edit comes from the pipeline. Reply with the answer in a pinned comment on the day you promise.",
+   "broll": [
+    "The clip set: 6 to 8 short shots of one simple activity (making coffee, walking to the station)"
+   ],
+   "week": "Backlog",
+   "post": "Next 3 weeks",
+   "model": ""
+  },
+  {
+   "week": "Backlog",
+   "key": "PITCH",
+   "series": "Day N (documentary)",
+   "format": "A split",
+   "length": "40 to 45 s",
+   "title_card": "WEEK 3 OF 52: BET ONE, BRANDS",
+   "post": "The main episode of week 3: about 14 days after Week 1",
+   "hook": "I pitched *20* brands / in one afternoon.",
+   "hook_alts": [
+    "Week 3. / Bet one: / I pitched *20* brands / in one afternoon.",
+    "I offered brands my 850 creator deals. // Here's what I sent."
+   ],
+   "lines": [
+    {
+     "say": "So last week / I told you my three bets. // This week, / bet one: / *brands*.",
+     "see": "The three bet cards from week 2; card 1 lights up amber"
+    },
+    {
+     "say": "I've done 850-plus creator deals / on the brand side. // So I offered to run creator campaigns / for brands, / *remotely*.",
+     "see": "850+ deals counter rolls up, then the card: remote creator campaigns",
+     "how": "(up)"
+    },
+    {
+     "say": "I made a list of brands / that already work with creators, / and I wrote every message *myself*.",
+     "see": "Screen recording: your brand list (names blurred), typing a message",
+     "how": "[point]"
+    },
+    {
+     "say": "20 messages. / One afternoon. // Honestly, / it felt weird / asking for work.",
+     "see": "Sent counter 0 to 20; the outbox filling",
+     "how": "(down) on the second sentence"
+    },
+    {
+     "say": "Here's the exact message / I sent.",
+     "see": "Your pitch on screen (brand name blurred), the key lines highlighted",
+     "how": "[point]"
+    },
+    {
+     "say": "If even *one* brand says yes, / that's my first remote income.",
+     "see": "Income meter: 0, then a question mark",
+     "how": "[lens]"
+    },
+    {
+     "say": "Replies next week. // Comment *PITCH* / and I'll send you my template.",
+     "see": "Comment bubble: PITCH",
+     "how": "[smile]"
+    }
+   ],
+   "notes": "Planned for Week 3 of 52. Do bet one for real before you film. Make the list, write and send the pitches, and screen-record yourself writing one. Then say your real number: if you send 15, say 15 (hook and line 4). Change line 4 to how it really felt. Facts used: 850+ creator deals (brand-profile.md). Before posting: build the PITCH guide (your pitch template, 8-section format) and add the keyword to lib/ig-autodm/config.json. Hook first (23 Oct rule): say the hook as the first words; \"Week 3\" goes on screen as a label.",
+   "broll": [
+    "Laptop: your brand list in a spreadsheet (blur names)",
+    "Typing the pitch, close on the keyboard",
+    "Pressing send, then the outbox",
+    "You leaning back after the last send (wide, no audio)",
+    "Phone face-down on the desk, waiting"
+   ],
+   "cover": {
+    "color": "red",
+    "title": "Week 3 of 52",
+    "stickers": [
+     "850+ creator deals",
+     "20 pitches",
+     "1 afternoon"
+    ],
+    "line": "Bet one: *brands.*"
+   },
+   "next_week": "Next week, on Build with Vish... did anyone reply?"
+  },
+  {
+   "week": "Explainers (3D)",
+   "key": "HOW-AI-EDIT",
+   "keyword": "EDIT",
+   "series": "3D explainer (Charles Zheng grammar, 70% of the new style)",
+   "format": "One continuous 3D world (the field of video cards); your face as a portal card inside it; captions with one amber key-word pill; music bed with dropouts",
+   "length": "60 to 70 s",
+   "title_card": "How AI *edited* this video",
+   "post": "Video 2: Thu 30 Oct, 18:30 (the same week as Carousel A, same keyword EDIT). Board approved 25 Oct.",
+   "cta": "Comment EDIT (the free guide is built: /resources/ai-edit-stack)",
+   "model": "@charles.zhengg De0BAl8B3mY + Der5mJsBmwP: object in your hand, 'let's rewind', causal ladder, scale you can feel, tempo words performed, late self-intro, loop ending",
+   "hook": "Before you saw my face, / this video was *39* clips / on my phone.",
+   "hook_alts": [
+    "No editing app touched this video. // So what *did*?",
+    "This one-minute video / is *1,800* photographs."
+   ],
+   "lines": [
+    {
+     "say": "Before you saw my face, / this video was *39* clips / on my phone.",
+     "see": "A phone floating over the dusk field; 39 clip cards fly out of it and scatter into the field",
+     "how": "[lens], selfie at arm's length like Week 1; hold still for a beat on *39* (the frame freezes there and breaks into your 39 clips)"
+    },
+    {
+     "say": "No editing app touched it. // So let's *rewind* / and see what did.",
+     "see": "<rewind> the camera reverses through the field, rewind sound"
+    },
+    {
+     "say": "First, / AI listened. // Every word I said / got a start time / and an end time.",
+     "see": "A ribbon of your real words rises from the cards: Hey 0.00 to 0.22, I'm 0.74 to 0.86"
+    },
+    {
+     "say": "It even heard my name wrong. // *Rish*. // One line fixed it.",
+     "see": "The 'Rish' card flips to 'Vish'",
+     "how": "[smile]"
+    },
+    {
+     "say": "Then it cut. / Not between sentences: / between *words*.",
+     "see": "The word ribbon splits at the word edges; the gaps collapse"
+    },
+    {
+     "say": "Then it cut *me* out, / every single frame, / so words can sit / *behind* me.",
+     "see": "A frame of you lifts off its background (the matte); a title slides behind you"
+    },
+    {
+     "say": "Every caption, / every sticker / is a tiny web page, / photographed / 30 times a second.",
+     "see": "A page of code flips into a caption; a camera shutter ticks",
+     "how": "<fast>"
+    },
+    {
+     "say": "Let's *slow down* time. // At one frame a second, / a one-minute reel / takes *30 minutes* to watch.",
+     "see": "<slow> music drops out; one frame at a time; a stopwatch runs to 30:00"
+    },
+    {
+     "say": "And the sound? / *Silence*, / exactly where it hurts.",
+     "see": "<freeze> the waveform flattens to a line on 'silence'"
+    },
+    {
+     "say": "It took 12 drafts / of plain English feedback / from me. // Hi, / I'm *Vish*.",
+     "see": "The camera dives into your portal card: full face (late self-intro)",
+     "how": "[lens], [smile] on 'Hi, I'm Vish'"
+    },
+    {
+     "say": "And if you're still here, / the edit / did its *job*. // Comment *EDIT* / for the five prompts.",
+     "see": "Pull back out to the field; the 39 clips settle into one glowing card (loop to the opening)",
+     "how": "[point]"
+    }
+   ],
+   "notes": "Facts, all from the Week 1 project: 39 raw video clips (raw/ folders), word times from faster-whisper (the real values on screen), Whisper heard 'Rish', cuts snapped to word edges, the RVM matte on every frame, every graphic is HTML rendered by Playwright at 30 fps, true silences in the mix, the 12th draft was posted. 60 s x 30 fps = 1,800 frames; at one a second that is 30 minutes. Film: talking lines in your usual light, holding your phone as the prop; the 3D world is built from templates/video/world/.",
+   "broll": [
+    "FILM: the whole script to camera, selfie style like Week 1 (front camera, arm's length, the lamp beside you). Your voice from this take is the voiceover for the whole film; your face only shows on lines 1, 2, 10 and 11, the rest is the 3D world",
+    "Say every line twice. If you fluff, pause and say the whole line again; the edit keeps the last good take",
+    "Optional, cleaner sound: a second phone on the table recording Voice Memos, 30 cm from your mouth, out of frame",
+    "FILM: a close-up of your hand putting the phone down on the desk (5 s, no talking)",
+    "No other B-roll: the world is 3D"
+   ],
+   "cover": {
+    "title": "How AI *edited* this video",
+    "line": "39 clips, 0 editing apps"
+   }
+  },
+  {
+   "week": "Week 2 of 52",
+   "key": "WEEK2",
+   "cta": "Ask: which bet pays first? 1, 2 or 3",
+   "series": "Day N (documentary)",
+   "format": "A split",
+   "length": "35 to 40 s",
+   "title_card": "WEEK 2 OF 52: THE PLAN",
+   "post": "The main episode of week 2: about 7 days after Week 1",
+   "hook": "220 companies said *no*. // So I'm building my own job.",
+   "hook_alts": [
+    "Week 2. / Remote income: still *zero*. // So here's my plan.",
+    "I need 3,000 euros a month from anywhere. // Here's the plan."
+   ],
+   "lines": [
+    {
+     "say": "So last week I told you everything. / The debt, / no job, / 220 rejections.",
+     "see": "Week 1 stat cards flip by: 40K · no job · 0 of 220"
+    },
+    {
+     "say": "Honestly, / I'm done waiting / for a company to say *yes*.",
+     "see": "Rejection emails stack up, then slide off screen",
+     "how": "(down)"
+    },
+    {
+     "say": "For me, / making it is 3,000 euros a month, / from anywhere.",
+     "see": "Goal meter: 0 / 3,000 a month, the bar empty"
+    },
+    {
+     "say": "First: / brands. // I've done 850-plus creator deals / on the brand side, / and I can do that work *remotely*.",
+     "see": "Card 1: run creator campaigns for brands, remotely",
+     "how": "[count] one"
+    },
+    {
+     "say": "Second: / AI. // My last video? / Claude edited all of it. / And I can build that for other people.",
+     "see": "Card 2: AI workflows for marketing, with a clip of the Week 1 reel",
+     "how": "[count] two"
+    },
+    {
+     "say": "And third, / honestly, / it's this account. // I'll show you every week / if it's working.",
+     "see": "Card 3: this account, every week",
+     "how": "[count] three, then [lens]"
+    },
+    {
+     "say": "Which one pays first? // Comment *1*, *2* or *3*.",
+     "see": "The three cards numbered; comment bubble",
+     "how": "[smile]"
+    }
+   ],
+   "notes": "Facts only from brand-profile.md: 220 rejections, 850+ creator deals, made it = EUR 3,000 a month, Claude edited Week 1. If something real happened this week (a call, a first client, a no), swap it into line 2: real beats the plan. Currency: EUR is right for the goal; the 40K stays without a currency until you confirm it. The edit opens with the v12 freeze-frame: on 'still zero' the frame freezes and the stickers €0 · 220 rejections · 0 job offers pop on. Hook first (23 Oct rule): the first spoken words are the hook; \"Week 2\" goes on screen as a label. The freeze-frame lands on \"no\".",
+   "broll": [
+    "Scrolling the rejection emails on your phone (blur names)",
+    "Writing 3,000 / month on paper or a whiteboard",
+    "Laptop open at a café or your desk, typing",
+    "Walking outside, phone in hand (wide, no audio)",
+    "Yoga or a handstand attempt (the trials go on)"
+   ],
+   "cover": {
+    "color": "navy",
+    "title": "Week 2 of 52",
+    "stickers": [
+     "€0 remote income",
+     "220 rejections",
+     "3 bets"
+    ],
+    "line": "So here's my *plan.*"
+   },
+   "next_week": "Next week, on Build with Vish... bet one: Vish pitches brands for remote work."
+  },
+  {
+   "week": "Week 1 of 52",
+   "key": "WEEK1",
+   "cta": "Ask: where are you starting from?",
+   "series": "Day N (documentary)",
+   "format": "Intro, loud + soft",
+   "length": "about 60 s (cut from what you say)",
+   "title_card": "HEY, I'M VISH. 27. 40K IN DEBT.",
+   "hook": "Hey, I'm Vish. / I'm 27. // I'm 40k in debt.",
+   "hook_alts": [
+    "40k in debt, no job, and I just booked a flight.",
+    "New country, can't speak the language, no job, and I booked a flight.",
+    "Hi, I'm Vish. I'm 27, single, 40k in debt, and this is my first video."
+   ],
+   "lines": [
+    {
+     "say": "Hi, I'm Vish. / I'm 27, / and this is my *first video*.",
+     "see": "Hard cut to you, plain, no effects, no music; small tag 'vish, 27 · video 001'",
+     "how": "[lens] plain, calm"
+    },
+    {
+     "say": "I always wanted to start this, / but I never had the *confidence*.",
+     "see": "Paper world, words typed, red pen circles 'confidence'; quick clips of you hitting record and putting the phone down",
+     "how": "(down) softer"
+    },
+    {
+     "say": "A year ago I quit my job / and moved to Germany. / I don't even speak the language. // Honestly, / I doubted my *whole life*.",
+     "see": "Your clips: walking alone, train window, a German letter with the translate app; small 1 YEAR AGO stamp"
+    },
+    {
+     "say": "No friends here, / no family, / and *220* job rejections.",
+     "see": "Table for one, then your real rejection emails scrolling (names blurred), red UNFORTUNATELY stamps and a counter climbing to 220"
+    },
+    {
+     "say": "But here's what I've got. / I've been a social media manager, / an influencer marketing manager, / I've made content, / I've taught yoga, / and I'm finishing my *master's*.",
+     "see": "Video-game character sheet: PLAYER VISH, LVL 27; a stat bar fills on each skill (850+ creator deals on influencer marketing, thesis: Feb on master's); GERMAN 1/10 and REMOTE INCOME 0/10 flash red",
+     "how": "[count] on each skill"
+    },
+    {
+     "say": "Life is all over the place right now. // But I know *one* thing.",
+     "see": "Chaos collage with a riser, then a black frame and half a second of silence",
+     "how": "(down) [lens] on 'one thing'"
+    },
+    {
+     "say": "I want to work remotely / and *travel the world*.",
+     "see": "The music drops: MAIN QUEST banner, then ocean jump, bike riding, travel clips (16:9 frame)",
+     "how": "(up)"
+    },
+    {
+     "say": "So I'm going to *max out every stat* / and try everything to get there. // I have to make it work.",
+     "see": "Back to the character sheet: every bar starts climbing; small FEB 2027 clock",
+     "how": "[lens] sincere"
+    },
+    {
+     "say": "I don't know how yet. // So this is *week one*.",
+     "see": "You walk away down a street; the frame shrinks into a picture and you walk into it. Red WEEK 1 stamp",
+     "how": "(VO over the walk)"
+    },
+    {
+     "say": "Every week I'll show you everything: / the work, / the travel, / the *fails*.",
+     "see": "Three 0.5 s flashes: laptop, plane window, you losing balance in a yoga pose (one real blooper)",
+     "how": "[count] [smile] on 'fails'"
+    },
+    {
+     "say": "So *come with me*.",
+     "see": "Hard cut to the two dancing cats: 'me' / 'you' arrows, then the end card: where are you starting from?",
+     "how": "[smile]"
+    }
+   ],
+   "notes": "Facts from Vish (21 to 22 Oct 2026): social media manager, influencer marketing manager, made content before, master's (MBA) to finish with the thesis; 27; moved to Germany a year ago; no German, no friends or family here; job hunting with many rejections; 2.5 years in influencer marketing, 850+ creator deals; taught yoga; thesis on AI in marketing ends Feb 2027; goal: earn remotely while travelling (made it = EUR 3,000 to 5,000 a month); flight booked, destination revealed in Week 1 part 2 (raw, 2 to 3 days later). Film all 5 hooks, then the full script start to finish 3 ways (deadpan, slower, long pauses), then lines 1 to 8 again as a close-mic voiceover. Lookbook: https://claude.ai/artifact/SK2dN2bbZzosbRMobG6eWw One clean full take also becomes a raw edit for TikTok. Weekly series: Week 1 of 52. Talk while packing your backpack (retention by action). Camera: Blackmagic Camera app or HDR off, 4K, 25 fps, 1/50, fixed white balance, ceiling light off, one lamp at 45 degrees. Say it your way: these are your own words from your voice notes. Change anything that doesn't sound like you; I cut the edit from what you actually say. Hook widened (Vish, 22 Oct) so anyone relates, not just people in Germany. 220 job rejections (Vish, 22 Oct). 40k debt: currency to confirm before it goes on screen. Camera: iPhone 13 Pro Max rear camera, 4K 25 fps, HDR off; iPad Air as teleprompter or wide second angle.",
+   "broll": [
+    "The walk: tripod at chest height on a street or park path, walk straight away for 8 to 10 s, don't look back (3 takes)",
+    "Phone with the booking screen pushed fast at the lens (3 takes)",
+    "Hitting record, hesitating, putting the phone down (3 takes, 2 s)",
+    "Squinting at a German letter, then the translate app over it (3 s)",
+    "Side profile against a plain wall, looking down (10 s)",
+    "The door closing from inside; you on the bed edge, back to camera",
+    "Staring at the laptop; hands typing; thesis over the shoulder",
+    "One yoga pose, plus one take losing your balance",
+    "Outside: walking away from camera, table for one from above, train or tram window",
+    "10 s of room tone"
+   ]
+  },
+  {
+   "week": 1,
+   "key": "EDIT",
+   "series": "Ship Log",
+   "format": "B demo",
+   "length": "40 to 45 s",
+   "title_card": "I DIDN'T EDIT THIS",
+   "hook": "I didn't edit a single second of this video. // *Claude* did.",
+   "hook_alts": [
+    "This video was edited by Claude. / I just pressed record.",
+    "Everything you're about to see / was edited by AI. // Except my face."
+   ],
+   "lines": [
+    {
+     "say": "I filmed this on my phone. / One take, / mistakes and all.",
+     "see": "Raw clip thumbnail with timer 00:00 RAW",
+     "how": "Relaxed, a little amused"
+    },
+    {
+     "say": "Then I dropped the file in a folder / and made coffee.",
+     "see": "File landing in a Drive folder, coffee cup icon"
+    },
+    {
+     "say": "Claude cut every pause, / every *um*, / every line I said twice.",
+     "see": "Waveform with cut marks snapping out",
+     "how": "[count] on the three cuts"
+    },
+    {
+     "say": "It wrote these captions, / picked where to zoom in, / and built every graphic you're seeing.",
+     "see": "Punch-in zoom on 'zoom in', cards pop around you",
+     "how": "[point] on 'every graphic'"
+    },
+    {
+     "say": "It even made three versions: / Reels, / LinkedIn, / YouTube.",
+     "see": "9:16, 4:5 and 16:9 frames side by side"
+    },
+    {
+     "say": "The tools are free and open source. // The only thing it can't do / is film me.",
+     "see": "Text chips: Whisper, HyperFrames, herk-edit-kit",
+     "how": "(down) [smile] on 'film me'"
+    },
+    {
+     "say": "Comment *EDIT* / and I'll send you the exact setup.",
+     "see": "Comment bubble: EDIT",
+     "how": "[lens]"
+    }
+   ],
+   "notes": "Film this one first. It becomes true the moment the pipeline edits it.",
+   "broll": [
+    "Phone on a tripod, you pressing record (over the shoulder)",
+    "Dropping the file into Drive on your laptop, screen close-up",
+    "Making a coffee: hands, cup, steam",
+    "Laptop screen while the edit renders (terminal scrolling)",
+    "Your phone playing the finished reel"
+   ]
+  }
+ ]
+}
