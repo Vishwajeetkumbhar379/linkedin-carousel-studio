@@ -1,0 +1,219 @@
+[
+ {
+  "n": 1,
+  "start": 0.25,
+  "end": 5.16,
+  "text": "Hold on. This video was 39 clips on my phone.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1604",
+    "src": [
+     0.325,
+     1.335
+    ],
+    "at": 0.25
+   },
+   {
+    "clip": "IMG_1604",
+    "src": [
+     3.405,
+     7.005
+    ],
+    "at": 1.56
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "start": 5.58,
+  "end": 10.56,
+  "text": "No editing app touched this, but let's rewind, see what touched it.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1605",
+    "src": [
+     0.075,
+     1.945
+    ],
+    "at": 5.58
+   },
+   {
+    "clip": "IMG_1605",
+    "src": [
+     2.395,
+     3.545
+    ],
+    "at": 7.59
+   },
+   {
+    "clip": "IMG_1605",
+    "src": [
+     5.105,
+     6.785
+    ],
+    "at": 8.88
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "start": 10.98,
+  "end": 18.63,
+  "text": "First, AI listened very carefully to every word I said. It got the start time, it got the end time.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1607",
+    "src": [
+     3.355,
+     11.005
+    ],
+    "at": 10.98
+   }
+  ]
+ },
+ {
+  "n": 4,
+  "start": 19.05,
+  "end": 26.14,
+  "text": "It even got my name wrong. Instead of Vish, it got Rish. But one line fixed it.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1608",
+    "src": [
+     0.845,
+     5.895
+    ],
+    "at": 19.05
+   },
+   {
+    "clip": "IMG_1608",
+    "src": [
+     10.095,
+     11.995
+    ],
+    "at": 24.24
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "start": 26.56,
+  "end": 32.39,
+  "text": "Then it cut everything, not in between the sentences, but in between the words.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1608",
+    "src": [
+     18.215,
+     24.045
+    ],
+    "at": 26.56
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "start": 32.81,
+  "end": 38.2,
+  "text": "Then it cut me out, every single frame, and the caption sits behind me.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1609",
+    "src": [
+     7.215,
+     10.325
+    ],
+    "at": 32.81
+   },
+   {
+    "clip": "IMG_1609",
+    "src": [
+     11.745,
+     13.885
+    ],
+    "at": 36.06
+   }
+  ]
+ },
+ {
+  "n": 7,
+  "start": 38.62,
+  "end": 45.76,
+  "text": "Every caption, every sticker is a tiny web page, photographed 30 times a second.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1610",
+    "src": [
+     0.095,
+     7.235
+    ],
+    "at": 38.62
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "start": 46.18,
+  "end": 53.811,
+  "text": "Let's slow down time. At one frame a second, a one-minute reel takes thirty minutes to watch.",
+  "voice": "clone",
+  "parts": []
+ },
+ {
+  "n": 9,
+  "start": 54.231,
+  "end": 57.367,
+  "text": "And the sound? Silence. Exactly where it hurts.",
+  "voice": "clone",
+  "parts": []
+ },
+ {
+  "n": 10,
+  "start": 57.787,
+  "end": 68.447,
+  "text": "And it didn't take 1, it didn't take 5, it took 12 rounds of feedback from me to get the perfect video I want. Hi, I'm Vish.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1612",
+    "src": [
+     0.345,
+     9.485
+    ],
+    "at": 57.787
+   },
+   {
+    "clip": "IMG_1612",
+    "src": [
+     17.675,
+     19.055
+    ],
+    "at": 67.067
+   }
+  ]
+ },
+ {
+  "n": 11,
+  "start": 68.867,
+  "end": 75.287,
+  "text": "And if you're still here, the edit did its job. Comment EDIT, and I will send you the prompts.",
+  "voice": "vish",
+  "parts": [
+   {
+    "clip": "IMG_1613",
+    "src": [
+     0.325,
+     6.745
+    ],
+    "at": 68.867
+   }
+  ]
+ }
+]

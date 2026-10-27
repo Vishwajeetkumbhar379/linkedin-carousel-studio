@@ -1,0 +1,239 @@
+{
+ "about": "Edit scripts for the Week 2 footage Vish filmed on 25 and 26 Oct (Drive folder 'week 2 raw talk', local copies in video-projects/week-02-talks/raw, gitignored). Written 27 Oct from what he really said, so the captions follow his words. Times are seconds in each clip, from faster-whisper word times (work/transcripts.json); every cut snaps to the quietest 10 ms nearby. 'vish' is his real take; 'clone' is his ElevenLabs clone ('Young indian male'), at most 2 lines a reel, never the hook; 'narrator' is the v12 'Next week' card voice. B-roll queries go to movingimagearchive.com (public domain, credits kept per project) unless the source is his own clip.",
+ "edits": [
+  {
+   "key": "WEEK2",
+   "plan_id": "T4",
+   "title": "Week 2 of 52",
+   "post": "Instagram Reel + Shorts, Sun 2 Nov 18:30; LinkedIn 4:5 Fri 7 Nov",
+   "length": "about 48 s",
+   "hook": "220 companies said *no*. // So I'm building my own job.",
+   "keyword": "FRICTION",
+   "beats": [
+    {
+     "who": "vish",
+     "clip": "IMG_1619",
+     "in": 0.8,
+     "out": 5.1,
+     "say": "220 companies have said no, so I'm building my own job.",
+     "see": "Freeze on 'no' (2.96 s): shutter, he becomes the white-outlined sticker; labels pop on: '220 rejections', 'Week 2 of 52'. Words behind his head.",
+     "sound": "shutter, pops climbing in pitch, then a hard silence on 'no'"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_1619",
+     "in": 5.4,
+     "out": 6.3,
+     "say": "Let's rewind.",
+     "see": "Tape-rewind scramble through 4 frames of the Week 1 reel (its real stills: the 40K odometer, '0 job offers')",
+     "sound": "rewind scramble"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_1620",
+     "in": 0.0,
+     "out": 4.85,
+     "say": "The main goal of this challenge is to make 3,000 euros per month",
+     "see": "Goal meter card behind him: €0 / €3,000 a month, the bar empty",
+     "sound": "counter ticks to 3,000, a soft thud"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_1621",
+     "in": 2.7,
+     "out": 6.6,
+     "say": "so I could work from here, or in Bali, or anywhere.",
+     "see": "'here': his own walk clip (IMG_8742, 0 to 1 s, the street). 'Bali': archive card, 'tropical beach with palm trees' (year label on the frame). 'anywhere': archive card, 'old world map with a travelling plane'",
+     "sound": "a whoosh per card, the bed opens up"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8731",
+     "in": 2.05,
+     "out": 8.0,
+     "say": "Hi! Before we start the week 2 video, come with me. Let's get a haircut.",
+     "see": "Full-frame mirror selfie; then the haircut in 4 quick cuts on the beat (IMG_8694 shop, 8695 basin, 8696 cape, 8697 after), 0.7 s each",
+     "sound": "clipper buzz, scissor snips, the music up for 3 s"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8742",
+     "in": 19.55,
+     "out": 27.8,
+     "say": "The first thing I realised before jumping into the ocean directly: the first thing I should do is reduce friction.",
+     "see": "On 'jumping into the ocean': archive card, 'man diving off a pier into the sea'. On 'reduce friction': the title types on behind him",
+     "sound": "a splash on the dive, type clicks"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8742",
+     "in": 28.45,
+     "out": 44.15,
+     "say": "So what that means is creating profiles on all the freelancing platforms, creating my portfolio, third would be creating a plan, a plan for what my content looks like",
+     "see": "Split layout: a 3-row checklist above him. Each row ticks as he says it: 1 Profiles, 2 Portfolio, 3 Plan",
+     "sound": "a tick per row"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8744",
+     "in": 5.95,
+     "out": 8.3,
+     "say": "I don't have a tripod. I don't have a mic.",
+     "see": "Two archive cards struck through: 'film camera on a tripod', 'old studio microphone'",
+     "sound": "two stamp thuds"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8744",
+     "in": 16.6,
+     "out": 22.4,
+     "say": "Not going super fancy, not investing thousands of euros before earning them.",
+     "see": "A big line behind him: '€0 before €1'",
+     "sound": "a cash-register ding, ducked"
+    },
+    {
+     "who": "clone",
+     "say": "So this week: profiles, portfolio, plan. Comment FRICTION and I'll send you my checklist.",
+     "see": "Back on him (a held, silent frame from IMG_8744 at 28.3 s), the 3 rows tick again in one sweep, the comment bubble with FRICTION",
+     "sound": "3 fast ticks, a chime"
+    },
+    {
+     "who": "narrator",
+     "say": "Next week, on Build with Vish: did reducing friction work?",
+     "see": "The v12 cream 'Next week' card; the 52-week bar fills week 3; 'Follow for week 3'",
+     "sound": "the song ducks under him"
+    }
+   ],
+   "caption_fixes": {
+    "cupemen": "equipment",
+    "3000": "3,000"
+   },
+   "notes": "The 40K stays without a currency until Vish confirms it, so it shows only as the Week 1 still. 'Bali' is a place he names, not a trip: the card is labelled as archive footage with its year. FRICTION needs its guide and a config.json entry before the post goes up."
+  },
+  {
+   "key": "NOTRIPOD",
+   "plan_id": "T5",
+   "title": "No tripod, no mic",
+   "post": "Instagram Reel + Shorts, Mon 3 Nov 18:30",
+   "length": "about 20 s",
+   "hook": "I don't have a tripod. // I don't have a mic.",
+   "keyword": "(question)",
+   "beats": [
+    {
+     "who": "vish",
+     "clip": "IMG_8744",
+     "in": 5.95,
+     "out": 8.3,
+     "say": "I don't have a tripod. I don't have a mic.",
+     "see": "Freeze on 'mic': he becomes a sticker; 'No tripod.' and 'No mic.' land behind his head",
+     "sound": "shutter, two pops"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8744",
+     "in": 16.6,
+     "out": 22.4,
+     "say": "Not going super fancy, not investing thousands of euros before earning them.",
+     "see": "Archive card: 'expensive film studio with lights and cameras', a price tag stamped '€0 spent'",
+     "sound": "stamp"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8744",
+     "in": 22.7,
+     "out": 28.8,
+     "say": "But the basic things, I think I should do that first, and that's what I'm going to do.",
+     "see": "Full frame, him walking",
+     "sound": "the bed only"
+    },
+    {
+     "who": "clone",
+     "say": "Every video on this account so far was shot on my phone.",
+     "see": "Quick grid of his own earlier reels (Week 1, How AI edited this video), real frames",
+     "sound": "shutter clicks per tile"
+    },
+    {
+     "who": "clone",
+     "say": "So what would you buy first? A tripod, or a mic?",
+     "see": "Two buttons, 'Tripod' and 'Mic', a cursor hovering between them",
+     "sound": "a click"
+    }
+   ],
+   "notes": "True to brand-profile.md (iPhone 13 Pro Max). Check before posting that every reel so far really was shot on the phone."
+  },
+  {
+   "key": "FRICTION",
+   "plan_id": "M1",
+   "title": "Reduce friction (teaching reel)",
+   "post": "Optional Reel for Week 3 (the carousel M1 leads on Tue 4 Nov). Uses the same takes as WEEK2, so it never runs in the same week.",
+   "length": "about 30 s",
+   "hook": "Before jumping into the ocean, // reduce friction.",
+   "keyword": "FRICTION",
+   "beats": [
+    {
+     "who": "vish",
+     "clip": "IMG_8742",
+     "in": 21.3,
+     "out": 27.8,
+     "say": "Before jumping into the ocean directly, the first thing I should do is reduce friction.",
+     "see": "Archive: 'man diving off a pier into the sea', frozen mid-air as the title lands behind him",
+     "sound": "a whoosh, the freeze"
+    },
+    {
+     "who": "clone",
+     "say": "Friction is anything that stands between you and a yes.",
+     "see": "Greg Isenberg paper desk: a dark card reading 'FRICTION' with three locks on it",
+     "sound": "three lock clicks"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8742",
+     "in": 28.45,
+     "out": 36.4,
+     "say": "So what that means is creating profiles on all the freelancing platforms, creating my portfolio,",
+     "see": "Lock 1 opens: a profile card. Lock 2 opens: a portfolio page",
+     "sound": "unlock clicks"
+    },
+    {
+     "who": "vish",
+     "clip": "IMG_8742",
+     "in": 37.2,
+     "out": 52.85,
+     "say": "third would be creating a plan, a plan for what my content looks like, what are the ways I'm going to make my skills into something which people will pay for.",
+     "see": "Lock 3 opens: a calendar page; then 'skills → paid' as two cards joined by a cable",
+     "sound": "unlock, a soft chime"
+    },
+    {
+     "who": "clone",
+     "say": "Comment FRICTION and I'll send you the checklist, with three Claude prompts.",
+     "see": "The comment box, FRICTION typed key by key",
+     "sound": "4 heavy key thocks (as HOW-AI-EDIT)"
+    }
+   ]
+  },
+  {
+   "key": "SLOWTIME",
+   "plan_id": "T2 + T3",
+   "title": "Cutdown of How AI edited this video",
+   "post": "Instagram Reel + Shorts, Sun 9 Nov; LinkedIn 4:5 Fri 21 Nov",
+   "length": "about 17 s",
+   "hook": "Every caption, every sticker, is a tiny web page.",
+   "keyword": "EDIT",
+   "beats": [
+    {
+     "who": "film",
+     "from": "how-ai-edit",
+     "acts": "l07 + l08 (38.54 to 54.2 s of the render)",
+     "say": "Every caption, every sticker, is a tiny web page, photographed 30 times a second. Let's slow down time. At one frame a second, a one-minute reel takes 30 minutes to watch."
+    },
+    {
+     "who": "film",
+     "from": "how-ai-edit",
+     "acts": "l11 from 'Comment EDIT' (72.5 s to the end)",
+     "say": "Comment EDIT, and I will send you the prompts."
+    }
+   ],
+   "notes": "No new recording: cut from the finished render, with its soundtrack. Line 8 is the clone, as in the full film."
+  }
+ ]
+}

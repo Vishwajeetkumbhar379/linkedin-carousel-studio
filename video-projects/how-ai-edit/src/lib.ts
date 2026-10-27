@@ -68,14 +68,14 @@ const at = (phrase: string) => cue(phrase) - 0.08;
 export const ACTS = {
   l01: [0, at("No editing app")],
   l02: [at("No editing app"), at("First AI listened")],
-  l03: [at("First AI listened"), at("It even heard")],
-  l04: [at("It even heard"), at("Then it cut not")],
-  l05: [at("Then it cut not"), at("Then it cut me")],
+  l03: [at("First AI listened"), at("It even got")],
+  l04: [at("It even got"), at("Then it cut everything")],
+  l05: [at("Then it cut everything"), at("Then it cut me")],
   l06: [at("Then it cut me"), at("Every caption")],
   l07: [at("Every caption"), at("Let's slow down")],
   l08: [at("Let's slow down"), at("And the sound")],
-  l09: [at("And the sound"), at("It took 12")],
-  l10: [at("It took 12"), at("And if you're")],
+  l09: [at("And the sound"), at("And it didn't take")],
+  l10: [at("And it didn't take"), at("And if you're")],
   l11: [at("And if you're"), VO_END + 1.2],
 } as const;
 export type ActName = keyof typeof ACTS;

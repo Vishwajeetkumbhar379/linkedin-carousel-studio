@@ -12,8 +12,8 @@ Built 23 Oct 2026. Every caption is SlopMonster clean, and every claim comes fro
 | Day | Post | File | Keyword | Status |
 |---|---|---|---|---|
 | Mon 27 Oct | Carousel A: "I didn't edit my intro reel. Claude did." | `out/week02/carousel-a-edit/slides.zip` (10 slides) | EDIT | Ready to post. DM link live once the buildwithvish branch is merged |
-| Thu 30 Oct | Reel 2: "How AI edited this video" (3D explainer) | Film this weekend (shoot sheet HOW-AI-EDIT) | EDIT | Board approved, footage needed |
-| Sun 2 Nov | Reel 3: Week 2 of 52, "220 companies said no." | Film this weekend (shoot sheet WEEK2), then the v12 edit | (question: 1, 2 or 3) | Script ready, footage needed |
+| Thu 30 Oct | Reel 2: "How AI edited this video" (3D explainer) | `video-projects/how-ai-edit/out/how-ai-edit-v1.mp4` | EDIT | Footage in, rendering 27 Oct |
+| Sun 2 Nov | Reel 3: Week 2 of 52, "220 companies said no." | `video-projects/week-02-episode/out/week2-9x16.mp4` | FRICTION | Footage in (25 to 26 Oct), edit 27 Oct |
 | Sat 1 Nov | Carousel B: "Brands don't pay for followers." | `out/week02/carousel-b-check/slides.zip` (10 slides) | CHECK | Ready to post. DM link is live already |
 
 ## Mon 27 Oct · Carousel A (EDIT)
@@ -37,30 +37,55 @@ Want the setup and the five prompts I used? Comment EDIT and I'll DM you the fre
 - **Pinned comment:** "Comment EDIT for the free guide. On Thursday I'll show you, step by step, how the AI did it."
 - **Music:** none, or something quiet from Instagram's library (carousels can carry a song).
 
-## Sun 2 Nov · Reel 3: Week 2 of 52
-Script, delivery marks, B-roll and cover: `content/shoot-sheets/2026-10-week-2.json` (key WEEK2), also on the teleprompter page. The edit follows the v12 standard (freeze-frame sticker on "still zero", ending on the "Next week" narrator card).
+## Thu 30 Oct · Reel 2: How AI edited this video (changed 27 Oct: footage in, film rendered)
+File: `video-projects/how-ai-edit/out/how-ai-edit-v1.mp4` (9:16, -14 LUFS). Lines 8 and 9 are his ElevenLabs clone: turn on Instagram's **AI info** label when posting.
 
-**Caption** (finalise after filming, keeping only lines you actually said):
+**Caption:**
 ```
-Week 2 of 52. Remote income so far: zero. So here's my plan.
+My Week 1 reel was 39 clips on my phone. No editing app touched it.
 
-I'm Vish, 27. I moved to Germany, I've had 220 job rejections, and I'm done waiting for a company to say yes.
+I filmed. Claude did the rest:
+1. It listened to every word and gave each one a start and an end time.
+2. It cut between the words, not between the sentences.
+3. It cut me out of every frame, so the captions sit behind me.
+4. Every caption and sticker is a tiny web page, photographed 30 times a second.
+5. It took 12 rounds of my feedback to get it right.
 
-Making it, for me, is 3,000 euros a month from anywhere. Three bets:
-1. Brands. 850+ creator deals on the brand side, and I can do that work remotely.
-2. AI. My last video? Claude edited all of it, and I can build that for other people.
-3. This account. I'll show you every week whether it's working.
+Two lines in this video are my AI voice clone, because I didn't film them. Everything else is me.
 
-Which one pays first? Comment 1, 2 or 3 👇
+Comment EDIT and I'll send you the prompts.
 
-Next week: bet one, I pitch brands for remote work.
-
-#remotework #digitalnomad #buildinpublic #workfromanywhere #startingover
+#claudeai #aivideoediting #contentcreation #buildinpublic #aitools
 ```
-- **Cover:** navy framed-print template; stickers "€0 remote income", "220 rejections", "3 bets"; the line "So here's my *plan.*" Build it with `cover.html` once the footage is in.
-- **Alt text:** "Vish, week 2 of 52: remote income still at zero, and his three bets to reach 3,000 euros a month from anywhere: brand work, AI workflows and this account."
-- **Pinned comment:** "Which bet pays first? 1, 2 or 3. I'll show you the answer in the coming weeks."
-- **Audio name:** "Week 2 of 52 · Vish".
+- **Pinned comment:** "Comment EDIT for the free guide with the prompts. Sunday: Week 2 of 52."
+- **Alt text:** "A 3D explainer by Vish: how Claude turned 39 phone clips into his Week 1 reel, from word timestamps to cuts, cut-outs, captions rendered as web pages, sound and 12 rounds of feedback."
+
+## Sun 2 Nov · Reel 3: Week 2 of 52 (changed 27 Oct: rewritten from what he filmed)
+Edit: `video-projects/week-02-episode` (`edit/week2.py`, script `content/shoot-sheets/2026-10-week-2-edit.json`, key WEEK2). The closing line is his clone; the "Next week" card is the narrator, as in Week 1. Turn on the AI info label.
+
+**Caption:**
+```
+220 companies said no. So I'm building my own job.
+
+Week 2 of 52. The goal: 3,000 euros a month, from anywhere.
+
+Before I chase a single client, I'm reducing friction:
+1. Profiles on the freelancing platforms
+2. A portfolio, one page
+3. A plan for my content and what I sell
+
+And a haircut. Fresh start.
+
+The last line of this video is my AI voice clone. Everything else I filmed.
+
+Comment FRICTION and I'll send you my checklist, with the three Claude prompts.
+
+#buildinpublic #remotework #freelancing #startingover #52weeks
+```
+- **Cover:** navy framed-print template (`cover.py`), stickers "220 rejections", "€0 remote income", "Week 2 of 52"; line "So I'm building my *own job.*"
+- **Alt text:** "Vish, week 2 of 52: after 220 job rejections he sets a goal of 3,000 euros a month from anywhere, gets a haircut, and starts by reducing friction: freelance profiles, a portfolio and a plan."
+- **Pinned comment:** "Comment FRICTION for the checklist. Next week: did it work?"
+- **Keyword:** FRICTION (guide `/resources/reduce-friction`, on the buildwithvish branch: live with "merge").
 
 ## Sat 1 Nov · Carousel B (CHECK)
 **Caption:**
@@ -97,3 +122,34 @@ Comment CHECK and I'll DM you the full rubric, the prompt and how to build the s
   - from `/api/autodm-stats`: keyword comments, DMs, clicks.
 
   Then keep / test / change / stop.
+
+## LinkedIn this week (changed 27 Oct: LinkedIn gets its own posts, `content/calendar/2026-11-month-plan.md`)
+LinkedIn has no auto-DM: answer keyword comments yourself with the guide link. Post at 08:30 Berlin.
+
+**Tue 28 Oct · text story (T4):**
+```
+220 companies said no.
+
+So I'm building my own job.
+
+I moved to Germany a year ago to do my master's. Before that, I spent 5 years in social media and influencer marketing and signed 850+ creator deals on the brand side.
+
+Since I got here: 220 job rejections.
+
+So I started a 52-week challenge. The goal fits on one line: 3,000 euros a month, from anywhere.
+
+Week 2 starts with one rule. Reduce friction before you chase anything:
+
+1. Profiles. Be findable in two places: one freelance marketplace, and here.
+2. Portfolio. One page, three pieces of proof, real numbers only.
+3. Plan. Three offers, and four weeks I can actually do next to my thesis.
+
+No tripod, no mic, no new camera. I'm not spending money before I earn it.
+
+If you hire for influencer marketing or AI in marketing: what makes a profile worth a reply?
+
+#buildinpublic #influencermarketing #careerchange
+```
+**Wed 29 Oct · PDF carousel:** upload `out/week02/carousel-a-edit/carousel.pdf` as a document, title "How AI edited my intro reel". Text: the Instagram caption of Carousel A, with "Comment EDIT and I'll send you the guide" as the last line.
+
+**Fri 31 Oct · native video:** the How AI edited this video reel as a 4:5 MP4 (exported after the render), with the Instagram caption.

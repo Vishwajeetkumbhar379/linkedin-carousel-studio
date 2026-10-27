@@ -5,7 +5,6 @@
 import React, {useMemo} from 'react';
 import * as THREE from 'three';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {C, FLOOR_Y, Label, canvasTex} from '../world/kit';
 import {Cart, Rail} from '../world/rail';
 import {AUDIO, AudioTerrain, WORDS, WordBox, zAt} from '../world/audio';
@@ -29,15 +28,14 @@ const Blade: React.FC<{tau: number; on: number; label?: string; face: THREE.Vect
 };
 
 export const A05: React.FC<{t: number; fr: number}> = ({t, fr}) => {
-  const t0 = cue("Then it cut not"), notB = cue("Not between"), betw = cue("between words");
+  const t0 = cue("Then it cut everything"), notB = cue("not in between"), betw = cue("between the words");
   const snap1 = sm(t0 + 0.15, t0 + 0.45, t), snap2 = sm(notB + 0.3, notB + 0.6, t);
   const out1 = sm(t0 + 0.5, t0 + 1.0, t), out2 = sm(notB + 0.6, betw, t);
   const lift = (tau: number) => (tau > 1.3 && tau < 1.35 ? out1 : tau > 2.4 ? out2 : 0);
   const shot: Shot = {cam: v3(0.05, FLOOR_Y + 2.5, zAt(0.9) + 3.3), look: v3(AUDIO.x + 0.1, FLOOR_Y + 0.3, zAt(2.3))};
   const face = faceOf(shot);
-  const caption = t < notB - 0.1 ? {w: ['Then', 'it', 'cut'], p: 2} : t < betw - 0.1 ? {w: ['not', 'between', 'sentences'], p: -1} : {w: ['between', 'words'], p: 1};
   return (
-    <Stage fr={fr} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={fr} shot={shot}>
       <Rail played={zAt(1.3)} />
       <AudioTerrain lift={lift} gapShift={-0.05 * out1} />
       {WORDS.slice(0, 5).map((w, i) => <WordBox key={i} w={i === 2 ? {...w, w: 'Vish,'} : w} face={face} flags={false} label={i !== 1} />)}

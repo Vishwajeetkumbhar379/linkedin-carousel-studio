@@ -4,7 +4,6 @@
 import React, {useMemo} from 'react';
 import * as THREE from 'three';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {C, FLOOR_Y, Label, canvasTex} from '../world/kit';
 import {RAIL, RAIL_Y, Rail} from '../world/rail';
 import {GEIST} from '../styleframes/fonts';
@@ -38,7 +37,7 @@ const cardTex = (n: number, title: string) => canvasTex(360, 480, (g) => {
 });
 
 export const A11: React.FC<{t: number; fr: number}> = ({t, fr}) => {
-  const t0 = cue("And if you're"), job = cue("did its job"), comment = cue("Comment EDIT"), five = cue("five prompts");
+  const t0 = cue("And if you're"), job = cue("did its job"), comment = cue("Comment EDIT"), five = cue("the prompts");
   const run = sm(t0, job, t);
   const played = RAIL.start + (RAIL.end + 0.35 - RAIL.start) * (0.9 + 0.1 * run);
   const toBox = sm(comment - 0.5, comment, t);
@@ -50,9 +49,8 @@ export const A11: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const B: Shot = {cam: BOX.clone().add(v3(0, 1.05, 4.3)), look: BOX.clone().add(v3(0, 0.55, 0))};
   const shot: Shot = {cam: mixV(A.cam, B.cam, toBox), look: mixV(A.look, B.look, toBox)};
   const face = faceOf(shot);
-  const caption = t < job - 0.2 ? {w: ["if", "you're", 'still', 'here'], p: -1} : t < comment - 0.1 ? {w: ['the', 'edit', 'did', 'its job'], p: 3} : {w: ['Comment', 'EDIT'], p: 1};
   return (
-    <Stage fr={fr} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={fr} shot={shot}>
       <Rail played={played} />
       {/* the end of the bar, and the one dot left: you */}
       <mesh position={[0, RAIL_Y, RAIL.end - 0.02]}><sphereGeometry args={[0.07, 24, 16]} /><meshBasicMaterial color={new THREE.Color(C.amberHot).multiplyScalar(1.8)} toneMapped={false} /></mesh>

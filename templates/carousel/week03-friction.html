@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/carousel/week-series.css">
+<!-- Week 3 of 52, carousel (Tue 4 Nov): "reduce friction", what Vish said in the Week 2 episode (IMG_8742), taught.
+     Keyword FRICTION -> buildwithvvish.com/resources/reduce-friction (the same three prompts). The dive is real archive
+     film, public domain (Flying the Lindbergh Trail, Part II, 1937, Internet Archive item Flyingth1937_2). -->
+<style>
+.print{position:absolute;background:#FBF8F2;padding:16px 16px 58px;border-radius:6px;box-shadow:0 40px 70px -34px rgba(40,25,5,.55)}
+.print img{display:block;width:100%;filter:contrast(1.05) sepia(.12)}
+.print span{position:absolute;left:22px;bottom:20px;font:500 18px 'Geist Mono',monospace;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.fix{display:grid;grid-template-columns:1fr 60px 300px;gap:18px;align-items:center}
+.fix .arrow{font:500 40px 'Inter Tight';color:var(--amber);text-align:center}
+.fix .to{font:700 36px 'Inter Tight';color:var(--ink)}
+.wk{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:baseline;padding:20px 28px;border-bottom:1.5px solid var(--line);font:500 30px/1.3 'Inter Tight';color:var(--body)}
+.wk:last-child{border-bottom:0}.wk b{font:600 24px 'Geist Mono';color:var(--amber);letter-spacing:.06em}
+.gear{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gear div{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:24px 26px;font:500 29px/1.3 'Inter Tight';color:var(--body)}
+.gear div b{display:block;font:700 34px 'Inter Tight';color:var(--ink);margin-bottom:6px}
+.gear .no b{color:var(--red);text-decoration:line-through;text-decoration-thickness:3px}
+</style>
+</head><body><div id="deck"></div>
+<script>
+const N = 10, A = "/carousel/assets/week03/", F = "/carousel/assets/week02/vish.jpg";
+const top_ = (i) => `<div class="top"><span>Build with Vish · Week 03 of 52</span><span>${String(i).padStart(2, "0")} / ${N}</span></div>`;
+const dots = (i) => `<div class="dots">${Array.from({length: N}, (_, k) => `<i class="${k + 1 === i ? "on" : ""}"></i>`).join("")}</div><div class="handle">@buildwith.vish</div>`;
+const step = (n, name) => `<div class="big" style="top:110px">${n}</div><div class="label" style="top:150px">Step ${n} · ${name}</div>`;
+const S = [
+ // 1. hook
+ (i) => `${top_(i)}
+  <div class="h" style="top:150px;width:930px;font-size:124px">Before you jump in, <em>reduce friction.</em></div>
+  <div class="print" style="left:72px;top:520px;width:600px;transform:rotate(-2deg)"><img src="${A}dive-1937.jpg"><span>1937 · archive film</span></div>
+  <img class="face" src="${F}" style="left:700px;top:560px;width:300px;height:300px;object-position:52% 30%">
+  <div class="sticker amber" style="left:650px;top:880px;transform:rotate(3deg)">220 companies said no</div>
+  <div class="p" style="top:1040px;width:930px;font-size:34px">So I'm building my own job. Before I chase a single client, I'm setting up three things.</div>
+  <div class="swipe" style="top:1200px">Swipe →</div>
+  ${dots(i)}`,
+ // 2. what friction is
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">What friction is</div>
+  <div class="h" style="top:205px;width:930px;font-size:104px">Anything between you and a <em>yes.</em></div>
+  <div class="p" style="top:470px;width:930px">Someone wants to hire you today. Three things can stop them:</div>
+  <div class="rows" style="top:640px">
+   <div class="row fix"><span>They can't <b>find</b> you</span><span class="arrow">→</span><span class="to">1. Profiles</span></div>
+   <div class="row fix"><span>They can't <b>see</b> your work</span><span class="arrow">→</span><span class="to">2. Portfolio</span></div>
+   <div class="row fix"><span>You don't know what you <b>sell</b></span><span class="arrow">→</span><span class="to">3. Plan</span></div>
+  </div>
+  ${dots(i)}`,
+ // 3. profiles
+ (i) => `${top_(i)}${step("01", "Profiles")}
+  <div class="h" style="top:205px;width:640px;font-size:96px">Be findable in <em>two</em> places.</div>
+  <div class="p" style="top:470px;width:930px">Not everywhere. One freelance marketplace where your buyers look, plus your LinkedIn.</div>
+  <div class="rows" style="top:690px">
+   <div class="row"><span class="n">A</span><span><b>A marketplace.</b> Upwork, Fiverr, Contra, or Malt in Europe.</span><span></span></div>
+   <div class="row"><span class="n">B</span><span><b>LinkedIn.</b> Where hiring managers check you anyway.</span><span></span></div>
+  </div>
+  <div class="card" style="left:72px;top:1000px;width:936px"><div class="ex">The headline formula</div><div style="font:600 38px/1.3 'Inter Tight';margin-top:10px">I help <span style="color:var(--amber)">[who]</span> get <span style="color:var(--amber)">[result]</span> with <span style="color:var(--amber)">[skill]</span>.</div></div>
+  ${dots(i)}`,
+ // 4. profile prompt
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">Step 01 · the prompt</div>
+  <div class="h" style="top:205px;width:930px;font-size:92px">Your CV in, a profile <em>out.</em></div>
+  <div class="code" style="top:430px;font-size:25px"><div class="bar"><i></i><i></i><i></i><span>paste into Claude, with your CV</span></div>Using only the facts in my CV, write my profile for <span class="x">[platform]</span>.
+A headline under 70 characters: who I help, with what.
+An overview of 120 to 150 words that opens with the client's problem, not my job title.
+10 skills I can prove.
+Don't invent numbers, clients or results. If something is missing, ask me.</div>
+  <div class="cap" style="left:72px;top:905px">Then read it out loud. Anything you wouldn't say on a call goes.</div>
+  ${dots(i)}`,
+ // 5. portfolio
+ (i) => `${top_(i)}${step("02", "Portfolio")}
+  <div class="h" style="top:205px;width:640px;font-size:96px">Three pieces of <em>proof.</em></div>
+  <div class="p" style="top:470px;width:930px">One page. Each piece answers the same three questions.</div>
+  <div class="card" style="left:72px;top:640px;width:936px;padding:0">
+   <div class="wk"><b>PROBLEM</b><span>What was broken, in one line.</span></div>
+   <div class="wk"><b>3 STEPS</b><span>What you did, in the order you did it.</span></div>
+   <div class="wk"><b>RESULT</b><span>One real number you can show if someone asks.</span></div>
+  </div>
+  <div class="cap" style="left:72px;top:1080px">No work yet? Do one small project for yourself this week and use that.</div>
+  ${dots(i)}`,
+ // 6. portfolio prompt
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">Step 02 · the prompt</div>
+  <div class="h" style="top:205px;width:930px;font-size:92px">Projects in, case studies <em>out.</em></div>
+  <div class="code" style="top:430px;font-size:25px"><div class="bar"><i></i><i></i><i></i><span>paste with your 3 projects</span></div>Turn each of my three projects into a short case study for a one-page portfolio:
+the problem, what I did in 3 steps, and the result with the real number I gave you.
+80 words each, plain English, first person.
+Then suggest the order to show them in, for someone hiring a <span class="x">[role]</span>.</div>
+  <div class="cap" style="left:72px;top:905px">Publish it on a free page builder: Notion, Canva or Carrd.</div>
+  ${dots(i)}`,
+ // 7. plan
+ (i) => `${top_(i)}${step("03", "Plan")}
+  <div class="h" style="top:205px;width:640px;font-size:96px">Know what you <em>sell.</em></div>
+  <div class="p" style="top:470px;width:930px">Three offers, then four weeks you can actually do. Mine has to fit around my master's.</div>
+  <div class="card" style="left:72px;top:660px;width:936px;padding:0">
+   <div class="wk"><b>WEEK 1</b><span>Profiles and portfolio live.</span></div>
+   <div class="wk"><b>WEEK 2</b><span>2 posts. Message 10 people who could buy.</span></div>
+   <div class="wk"><b>WEEK 3</b><span>2 posts. Follow up. One proposal a day.</span></div>
+   <div class="wk"><b>WEEK 4</b><span>Look at what worked. Do more of it.</span></div>
+  </div>
+  <div class="cap" style="left:72px;top:1130px">Example plan. Yours comes from the prompt on the next slide.</div>
+  ${dots(i)}`,
+ // 8. plan prompt
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">Step 03 · the prompt</div>
+  <div class="h" style="top:205px;width:930px;font-size:92px">A goal in, four weeks <em>out.</em></div>
+  <div class="code" style="top:430px;font-size:25px"><div class="bar"><i></i><i></i><i></i><span>paste into the same chat</span></div>I want to earn <span class="x">[amount]</span> a month from <span class="x">[skill]</span> within <span class="x">[time]</span>.
+Based on my CV, list 3 offers I could sell, who would buy each one, and what each should cost to start.
+Then a 4-week plan: what to post each week (2 posts), who to message, and one thing to finish each week.
+Keep it doable alongside <span class="x">[my job or studies]</span>.</div>
+  <div class="cap" style="left:72px;top:870px">My number: 3,000 euros a month, from anywhere, by week 52.</div>
+  ${dots(i)}`,
+ // 9. gear
+ (i) => `${top_(i)}
+  <div class="label" style="top:150px">One more friction</div>
+  <div class="h" style="top:205px;width:930px;font-size:100px">Don't spend before you <em>earn.</em></div>
+  <div class="p" style="top:470px;width:930px">I don't have a tripod. I don't have a mic. Every video so far is my phone.</div>
+  <div class="gear" style="position:absolute;left:72px;top:680px;width:936px">
+   <div><b>Phone</b>The one you have.</div>
+   <div><b>Window light</b>Face it. Free.</div>
+   <div class="no"><b>New camera</b>After the first client.</div>
+   <div class="no"><b>Studio lights</b>After the first client.</div>
+  </div>
+  ${dots(i)}`,
+ // 10. CTA
+ (i) => `${top_(i)}
+  <img class="face" src="${F}" style="left:72px;top:150px;width:210px;height:210px;object-position:52% 30%">
+  <div class="h" style="top:180px;left:320px;width:690px;font-size:76px">Want all three <em>prompts?</em></div>
+  <div class="cta" style="top:470px">
+   <div class="ex" style="color:#A39A8C">Comment</div>
+   <div class="kw">FRICTION</div>
+   <div class="p">and I'll DM you the free guide:</div>
+   <div class="p" style="color:#F3EEE5;margin-top:18px">✓ the profile, portfolio and plan prompts<br>✓ the setup checklist<br>✓ what to fix when Claude sounds generic</div>
+  </div>
+  <div class="p" style="top:1110px;width:930px"><b>Follow for Week 3:</b> did reducing friction work?</div>
+  ${dots(i)}`,
+];
+document.getElementById("deck").innerHTML = S.map((f, k) => `<section class="slide">${f(k + 1)}</section>`).join("");
+Promise.all([...document.images].map((im) => im.decode().catch(() => {}))).then(() => document.fonts.ready).then(() => { window.READY = true; });
+</script></body></html>

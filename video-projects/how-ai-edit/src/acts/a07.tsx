@@ -5,7 +5,6 @@
 import React, {useMemo} from 'react';
 import * as THREE from 'three';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {C, FLOOR_Y, Label} from '../world/kit';
 import {Cart, Rail, Z} from '../world/rail';
 import {PAGE, pageMat} from '../world/browser';
@@ -14,7 +13,7 @@ import {Shot, Stage, faceOf, mixV, sm, v3} from './base';
 const AT = v3(-0.3, FLOOR_Y + 1.9, Z.render);
 
 export const A07: React.FC<{t: number; fr: number}> = ({t, fr}) => {
-  const t0 = cue("Every caption"), page = cue("tiny web page"), photo = cue("photographed"), sec = cue("30 times a second") + 0.6;
+  const t0 = cue("Every caption"), page = cue("tiny webpage"), photo = cue("photographed"), sec = cue("30 times a second") + 0.6;
   const mats = useMemo(() => Array.from({length: 30}, (_, i) => pageMat(i / 29, true, 0.7 + 0.3 * (i / 29))), []);
   const front = useMemo(() => pageMat(1, true), []);
   const chrome = sm(page - 0.3, page + 0.2, t); // the browser appears around the caption
@@ -25,9 +24,8 @@ export const A07: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const k = sm(photo - 0.2, sec, t);
   const shot: Shot = {cam: mixV(close.cam, wide.cam, k), look: mixV(close.look, wide.look, k)};
   const face = faceOf(shot);
-  const caption = t < page - 0.1 ? {w: ['every', 'caption'], p: 1} : t < photo - 0.1 ? {w: ['a', 'tiny', 'web', 'page'], p: 2} : {w: ['30', 'times', 'a', 'second'], p: 0};
   return (
-    <Stage fr={fr} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={fr} shot={shot}>
       <Rail played={Z.render + 2} />
       <Cart z={Z.render + 2} face={face} scale={0.8} />
       <group position={AT} rotation={[0, -0.12, 0]}>

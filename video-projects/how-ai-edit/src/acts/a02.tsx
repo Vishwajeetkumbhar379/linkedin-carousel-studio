@@ -4,7 +4,6 @@
 import React from 'react';
 import * as THREE from 'three';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {Phone3D} from '../kit/phone';
 import {paintRoll, useImgs} from '../styleframes/roll';
 import {tile} from '../styleframes/data';
@@ -20,7 +19,7 @@ const CLIP_PATHS = Array.from({length: 39}, (_, i) => tile(i));
 export const A02: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const imgs = useImgs();
   const clips = useTextures(CLIP_PATHS);
-  const rw = cue("rewind"), see = cue("see what did");
+  const rw = cue("rewind"), see = cue("See what touched it");
   const up = sm(cue("No editing app"), cue("No editing app") + 1.0, t); // the app rises
   const dive = sm(rw - 0.1, see + 0.2, t); // the camera drops to the rail
   const back = sm(rw, see + 0.6, t); // the playhead runs back to 0:00
@@ -30,9 +29,8 @@ export const A02: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const shot: Shot = {cam: mixV(A.cam, B.cam, k), look: mixV(A.look, B.look, k), roll: Math.sin(Math.PI * k) * -0.12};
   const cartZ = RAIL.start - (1 - back) * 26;
   const secs = Math.max(0, (RAIL.start - cartZ) / 26 * 11.1);
-  const words = t < rw - 0.15 ? {w: ['No', 'editing', 'app'], pill: 0} : {w: ["let's", 'rewind'], pill: 1};
   return (
-    <Stage fr={fr} shot={shot} overlay={<Caption words={words.w} pill={words.pill} top={t < rw - 0.15 ? 900 : 1060} />}>
+    <Stage fr={fr} shot={shot}>
       <Rail played={cartZ} />
       {clips ? <ClipLane tex={clips} /> : null}
       <AudioTerrain />

@@ -5,7 +5,6 @@
 import React, {useMemo} from 'react';
 import * as THREE from 'three';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {C, FLOOR_Y, Label, useTextures} from '../world/kit';
 import {Cart, Rail, Z} from '../world/rail';
 import {Shot, Stage, faceOf, mixV, sm, v3} from './base';
@@ -29,9 +28,8 @@ export const A08: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const minutes = run * 30, clock = `${String(Math.floor(minutes)).padStart(2, '0')}:${String(Math.floor((minutes % 1) * 60)).padStart(2, '0')}`;
   const grid = useGrid();
   const wallMat = useMemo(() => tex ? new THREE.MeshBasicMaterial({map: tex[0], toneMapped: false, color: new THREE.Color(0.7, 0.7, 0.72)}) : null, [tex]);
-  const caption = t < at - 0.1 ? {w: ['slow', 'down', 'time'], p: 0} : t < mins - 0.1 ? {w: ['one', 'frame', 'a', 'second'], p: 1} : {w: ['30 minutes', 'to', 'watch'], p: 0};
   return (
-    <Stage fr={tq * 30} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={tq * 30} shot={shot}>
       <Rail played={WALL.z0 + 3} />
       <Cart z={WALL.z0 + 3 - run * 14} face={face} scale={0.8} />
       {wallMat ? (

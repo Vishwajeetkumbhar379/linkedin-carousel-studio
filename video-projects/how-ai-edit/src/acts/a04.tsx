@@ -4,7 +4,6 @@
 // week1.py, and with one clack the R falls to a V.
 import React from 'react';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {C, FLOOR_Y, Label} from '../world/kit';
 import {Cart, Rail, Z} from '../world/rail';
 import {AudioTerrain, WORDS, zAt} from '../world/audio';
@@ -18,17 +17,16 @@ const ROWS = ["HEY I'M", 'RISH,', "I'M 27,"]; // what Whisper heard, in caption 
 const FIX = '{"Rish,": "Vish,"}';
 
 export const A04: React.FC<{t: number; fr: number}> = ({t, fr}) => {
-  const heard = cue("It even heard"), rish = cue("Rish"), one = cue("One line fixed it"), fixed = cue("fixed it");
+  const heard = cue("It even got"), rish = cue("Rish"), one = cue("One line fixed it"), fixed = cue("fixed it");
   const typed = sm(one - 0.2, fixed, t); // the fix types itself while he says "One line fixed it"
   const flip = sm(fixed + 0.05, fixed + 0.4, t);
   const redGlow = sm(rish - 0.2, rish + 0.1, t);
   const zR = zw(2), push = sm(heard, fixed, t);
   const shot: Shot = {cam: v3(0.8 - push * 0.15, BOARD.y + 0.05, zR + 3.3 - push * 0.4), look: v3(BOARD.x + 0.15, BOARD.y - 0.18, zR)};
   const face = faceOf(shot);
-  const caption = t < rish - 0.1 ? {w: ['heard', 'my', 'name', 'wrong'], p: -1} : t < one - 0.1 ? {w: ['Rish.'], p: -1} : {w: ['One', 'line', 'fixed', 'it'], p: 0};
   const shown = FIX.slice(0, Math.round(typed * FIX.length));
   return (
-    <Stage fr={fr} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={fr} shot={shot}>
       <Rail played={zAt(0.9)} />
       <AudioTerrain />
       <Cart z={zAt(0.9)} face={face} scale={0.8} />

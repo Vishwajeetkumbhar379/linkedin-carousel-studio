@@ -226,6 +226,13 @@ Research → topic validation → hook → script → storyboard → edit → ca
 - **Content:**
   - never his past relationship;
   - never a promise the next episode can't keep.
+- **Volume, voice clone and B-roll (Vish, 27 Oct):** "I cannot just wait for one video and then wait the whole week."
+  - **Volume:** every filming session now becomes an episode, shorts, cutdowns and carousels, on Instagram, LinkedIn and Shorts (`content/calendar/2026-11-month-plan.md`). The 3-posts-a-week table in §2 is the minimum, not the plan.
+  - **His clone voice for lines he didn't film:** ElevenLabs "Young indian male" (`rRDZHYKovM5FXW92Zoxe`). At most 2 lines a reel, never the hook, never over his face (a card or B-roll carries those lines), and the post gets Instagram's AI info label and a line in the caption. This replaces "no AI voices" in `brand-profile.md` for his own clone only.
+  - **B-roll for every place or thing he names** ("if you're saying beach, then the beach should be there"): his own clips first, then real public-domain archive film from movingimagearchive.com, re-cut at 640x480 from the Internet Archive source (`video-projects/week-02-talks/broll_search.py`, `broll_hires.py`, credits in `broll/credits.json`). Archive film shows as a framed print with its year, never as fake modern footage.
+  - **Audio:** clean his voice with the ElevenLabs Voice Isolator (echo and room noise out), then only a gentle polish. It must still sound like him.
+  - **Picture:** crisp, natural skin, no heavy saturation: the film.py looks ("night", "day", "soft"), never a beauty filter. Instagram plays 1080x1920, so that is the export size.
+  - **Safe zones from Week 2:** the week label sits at 288 px (below the top bar), captions at about 1190 px (above the bottom 35%), and in a split layout just above his box.
 - **Process:** check that the disk has about 3 GB free before rendering. Full disks crash the browser renderer.
 
 ## 12. Research sources and how reliable they are

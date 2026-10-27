@@ -4,7 +4,6 @@
 // then sound and motion come back together.
 import React from 'react';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {FLOOR_Y} from '../world/kit';
 import {Cart, Rail} from '../world/rail';
 import {MUSIC, MusicRidge, SIL, mz} from '../world/music';
@@ -21,9 +20,8 @@ export const A09: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const shot: Shot = {cam: v3(MUSIC.x - 2.6 + travel * 0.4, FLOOR_Y + 1.35, mz(mid) + 1.6 - travel * 0.6), look: v3(MUSIC.x + 0.1, FLOOR_Y + 0.5, mz(mid) - 0.3)};
   const face = faceOf(shot);
   const frz = tf !== t ? Math.round(fz0 * 30) : fr;
-  const caption = t < sil - 0.1 ? {w: ['and', 'the', 'sound?'], p: -1} : t < hurts - 0.1 ? {w: ['Silence'], p: 0} : {w: ['where', 'it', 'hurts'], p: 2};
   return (
-    <Stage fr={frz} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={frz} shot={shot}>
       <Rail played={cartZ} />
       <MusicRidge face={face} />
       <Cart z={cartZ} face={face} scale={0.8} />

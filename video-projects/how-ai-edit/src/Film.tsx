@@ -14,6 +14,7 @@ import {A09} from './acts/a09';
 import {A10} from './acts/a10';
 import {A11} from './acts/a11';
 import {useFonts} from './styleframes/fonts';
+import {Captions} from './captions';
 
 const BUILT: Partial<Record<ActName, React.FC<{t: number; fr: number}>>> = {l01: A01, l02: A02, l03: A03, l04: A04, l05: A05, l06: A06, l07: A07, l08: A08, l09: A09, l10: A10, l11: A11};
 
@@ -30,7 +31,7 @@ const Act: React.FC<{name: ActName; from: number}> = ({name, from}) => {
   return C ? <C t={t} fr={from + fr} /> : <Pending name={name} />;
 };
 
-export const Film: React.FC<{vo?: boolean}> = ({vo = false}) => (
+export const Film: React.FC<{vo?: boolean}> = ({vo = true}) => (
   <AbsoluteFill style={{background: '#06080f'}}>
     {(Object.keys(ACTS) as ActName[]).map((name) => {
       const [a, b] = ACTS[name], from = Math.round(a * FPS), dur = Math.round(b * FPS) - from;
@@ -40,6 +41,7 @@ export const Film: React.FC<{vo?: boolean}> = ({vo = false}) => (
         </Sequence>
       );
     })}
-    {vo ? <Audio src={staticFile('vo.wav')} /> : null}
+    <Captions />
+    {vo ? <Audio src={staticFile('soundtrack.wav')} /> : null}
   </AbsoluteFill>
 );

@@ -3,7 +3,6 @@
 // drops onto it as a glass box stamped with its real Whisper start and end times.
 import React from 'react';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {useTextures} from '../world/kit';
 import {Cart, RAIL, RAIL_Y, Rail, Z} from '../world/rail';
 import {ClipLane} from '../world/props';
@@ -27,10 +26,9 @@ export const A03: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const shot: Shot = {cam: mixV(A.cam, B.cam, k).add(v3(0.05 * drift, -0.1 * drift, -0.5 * drift)), look: mixV(A.look, B.look, k)};
   // words stamp one after another while he says "Every word I said got a start time and an end time"
   const stampAt = (i: number) => every + (i / WORDS.length) * (endT - every + 0.3);
-  const caption = t < every - 0.1 ? {w: ['AI', 'listened'], p: 1} : t < endT - 0.2 ? {w: ['every', 'word'], p: 1} : {w: ['an', 'end', 'time'], p: 1};
   const face = faceOf(shot);
   return (
-    <Stage fr={fr} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={fr} shot={shot}>
       <Rail played={cartZ} />
       {clips ? <ClipLane tex={clips} /> : null}
       <AudioTerrain hot={null} />

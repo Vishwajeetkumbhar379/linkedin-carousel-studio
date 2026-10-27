@@ -42,3 +42,8 @@ video-projects/**/assets/
 /.env.local
 products/
 out/**/slides.zip
+video-projects/week-02-talks/vo/
+video-projects/week-02-episode/work/
+video-projects/week-02-episode/out/
+video-projects/week-02-episode/raw/
+video-projects/week-02-episode/assets/music/

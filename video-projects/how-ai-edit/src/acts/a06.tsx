@@ -5,7 +5,6 @@
 import React, {useMemo} from 'react';
 import * as THREE from 'three';
 import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
 import {C, FLOOR_Y, Label, useTextures} from '../world/kit';
 import {Cart, Rail} from '../world/rail';
 import {Shot, Stage, faceOf, mixV, sm, v3} from './base';
@@ -17,7 +16,7 @@ const CW = 0.62, CH = CW * (16 / 9);
 
 export const A06: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const tex = useTextures(PATHS);
-  const t0 = cue("Then it cut me"), every = cue("every single frame"), so = cue("so words can"), behind = cue("behind me");
+  const t0 = cue("Then it cut me"), every = cue("every single frame"), so = cue("and the caption sits"), behind = cue("behind me");
   const fan = sm(t0 + 0.2, every + 0.4, t); // the deck opens
   const square = sm(so - 0.3, so + 0.2, t); // and squares up
   const panes = sm(so + 0.1, behind + 0.1, t); // then swings apart into three panes
@@ -38,10 +37,9 @@ export const A06: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const paneShot: Shot = {cam: v3(1.75, FLOOR_Y + 1.55, -32.6), look: v3(-0.25, FLOOR_Y + 1.3, -36.4)};
   const shot: Shot = {cam: mixV(deckShot.cam, paneShot.cam, panes), look: mixV(deckShot.look, paneShot.look, panes)};
   const face = faceOf(shot);
-  const caption = t < every - 0.1 ? {w: ['cut', 'me', 'out'], p: 1} : t < so - 0.1 ? {w: ['every', 'single', 'frame'], p: 0} : {w: ['words', 'sit', 'behind', 'me'], p: 2};
   const hero = 11; // the frame that becomes the three panes
   return (
-    <Stage fr={fr} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={fr} shot={shot}>
       <Rail played={-34} />
       <Cart z={-34} face={face} scale={0.8} />
       {mats ? (

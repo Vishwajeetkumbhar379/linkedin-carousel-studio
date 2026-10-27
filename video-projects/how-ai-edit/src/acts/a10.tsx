@@ -1,13 +1,13 @@
-// Line 10: "It took 12 drafts / of plain English feedback / from me. // Hi, / I'm *Vish*."
+// Line 10: "And it didn't take 1, it didn't take 5, it took 12 rounds of feedback from me... // Hi, I'm *Vish*."
 // Twelve framed drafts of the Week 1 reel stand along the rail, each showing the same moment of that
 // version. Sticky notes carry his real feedback, in his words. v12 is lit: "I loved everything".
 // The camera flies into v12, which becomes his room: "Hi, I'm Vish", and a name tag slaps onto the
 // frame beside him, RISH struck out, VISH written over it.
 import React, {useMemo} from 'react';
 import * as THREE from 'three';
-import {AbsoluteFill, Img, staticFile} from 'remotion';
-import {cue} from '../lib';
-import {Caption} from '../styleframes/caption';
+import {AbsoluteFill, OffthreadVideo, Sequence, staticFile} from 'remotion';
+import LINES from '../../vo/lines.json';
+import {ACTS, cue, cueEnd} from '../lib';
 import {C, FLOOR_Y, Label, canvasTex, useTextures} from '../world/kit';
 import {Cart, Rail, Z} from '../world/rail';
 import {GEIST} from '../styleframes/fonts';
@@ -31,7 +31,7 @@ const noteTex = (text: string, hot: boolean) => canvasTex(360, 300, (g) => {
 
 export const A10: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const tex = useTextures(Array.from({length: 12}, (_, i) => `drafts/v${i + 1}.jpg`));
-  const t0 = cue("It took 12"), plain = cue("plain English"), hi = cue("Hi I'm Vish"), vish = cue("Vish");
+  const t0 = cue("And it didn't take"), plain = cue("rounds of feedback"), hi = cue("Hi I'm Vish"), vish = cueEnd("Hi I'm Vish") - 0.25;
   const notes = useMemo(() => Object.fromEntries(Object.entries(NOTES).map(([v, s]) => [v, noteTex(s, v === '12')])), []);
   const run = sm(t0, hi - 0.4, t), into = sm(hi - 0.6, hi + 0.05, t);
   const A: Shot = {cam: v3(0.1, FLOOR_Y + 1.15, Z.drafts + 2.6), look: v3(0, FLOOR_Y + 0.75, Z.drafts - 8)};
@@ -39,27 +39,28 @@ export const A10: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const C12: Shot = {cam: pos(12).clone().add(v3(-0.05, 0, 0.62)), look: pos(12)};
   const shot: Shot = into > 0 ? {cam: mixV(B.cam, C12.cam, into), look: mixV(B.look, C12.look, into)} : {cam: mixV(A.cam, B.cam, run), look: mixV(A.look, B.look, run)};
   const face = faceOf(shot);
-  const onCam = t >= hi; // "Hi, I'm Vish": his own footage, full frame
+  const camAt = LINES[9].parts[1].at; // where "Hi, I'm Vish" starts in the voiceover (vo/lines.json)
+  const onCam = t >= camAt; // his own footage, full frame, lip-synced
   const slap = sm(vish - 0.05, vish + 0.12, t);
-  const caption = t < plain - 0.1 ? {w: ['12', 'drafts'], p: 0} : t < hi - 0.1 ? {w: ['plain English', 'feedback'], p: 0} : {w: ['Hi,', "I'm", 'Vish'], p: 2};
   if (onCam) {
     return (
       <AbsoluteFill style={{background: '#000'}}>
-        <Img src={staticFile('vish_still.jpg')} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
-        {/* the name tag, slapped onto the frame beside his face, never on it */}
-        <div style={{position: 'absolute', left: 60, top: 420, width: 330, transform: `rotate(-8deg) scale(${0.6 + 0.4 * slap})`, opacity: slap, transformOrigin: 'center', boxShadow: '0 18px 40px rgba(0,0,0,0.45)', borderRadius: 18, overflow: 'hidden', fontFamily: GEIST}}>
+        <Sequence from={Math.round(camAt * 30) - Math.round(ACTS.l10[0] * 30)}>
+          <OffthreadVideo src={staticFile('oncam/l10.mp4')} muted style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+        </Sequence>
+        {/* the name tag, slapped onto the frame beside his face and the caption, never on either */}
+        <div style={{position: 'absolute', left: 20, top: 310, width: 300, transform: `rotate(-8deg) scale(${0.76 * (0.6 + 0.4 * slap)})`, opacity: slap, transformOrigin: 'top left', boxShadow: '0 18px 40px rgba(0,0,0,0.45)', borderRadius: 18, overflow: 'hidden', fontFamily: GEIST}}>
           <div style={{background: C.amber, color: '#14161B', textAlign: 'center', padding: '12px 0 8px', fontWeight: 800, fontSize: 40, lineHeight: 1}}>HELLO<div style={{fontSize: 20, fontWeight: 700, marginTop: 4}}>my name is</div></div>
           <div style={{background: '#f6f3ec', height: 150, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <span style={{fontSize: 64, fontWeight: 800, color: '#9a958a', position: 'absolute', top: 18, left: 62}}>RISH<span style={{position: 'absolute', left: -8, right: -8, top: 34, height: 7, background: C.red, transform: 'rotate(-6deg)'}} /></span>
-            <span style={{fontSize: 76, fontWeight: 800, color: '#14161B', position: 'absolute', top: 58, left: 120, transform: 'rotate(-4deg)', fontStyle: 'italic'}}>VISH</span>
+            <span style={{fontSize: 64, fontWeight: 800, color: '#9a958a', position: 'absolute', top: 18, left: 50}}>RISH<span style={{position: 'absolute', left: -8, right: -8, top: 34, height: 7, background: C.red, transform: 'rotate(-6deg)'}} /></span>
+            <span style={{fontSize: 72, fontWeight: 800, color: '#14161B', position: 'absolute', top: 60, left: 92, transform: 'rotate(-4deg)', fontStyle: 'italic'}}>VISH</span>
           </div>
         </div>
-        <Caption words={caption.w} pill={caption.p} top={300} />
       </AbsoluteFill>
     );
   }
   return (
-    <Stage fr={fr} shot={shot} overlay={<Caption words={caption.w} pill={caption.p} top={1060} />}>
+    <Stage fr={fr} shot={shot}>
       <Rail played={shot.cam.z - 1} />
       <Cart z={shot.cam.z - 1.4} face={face} scale={0.7} />
       {tex ? Array.from({length: 12}, (_, i) => {

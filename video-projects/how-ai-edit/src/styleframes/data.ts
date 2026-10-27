@@ -10,7 +10,7 @@ export const CLIP_SECONDS = [
 ];
 export const N = CLIP_SECONDS.length; // 39
 export const tile = (i: number) => `clips/t${String(i + 1).padStart(2, '0')}.jpg`;
-export const FACE = 'vish_still.jpg';
+export const FACE = 'freeze.jpg'; // the frame he freezes on, from his real take (vo/oncam.py)
 export const dur = (s: number) => { const t = Math.round(s); return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`; };
 
 // The camera roll: 5 columns, 8 rows (7 full + 4), square tiles, like the Photos app zoomed out.

@@ -1,0 +1,142 @@
+{
+ "note": "Vish's real takes (week-02-talks/raw) for lines 1-7, 10, 11; his ElevenLabs clone for lines 8 and 9, which he did not film (Vish, 27 Oct). Times are seconds in each clip, padded at assembly.",
+ "lines": [
+  {
+   "n": 1,
+   "parts": [
+    [
+     "IMG_1604",
+     0.4,
+     1.24
+    ],
+    [
+     "IMG_1604",
+     3.32,
+     6.92
+    ]
+   ],
+   "text": "Hold on. This video was 39 clips on my phone."
+  },
+  {
+   "n": 2,
+   "parts": [
+    [
+     "IMG_1605",
+     0.0,
+     1.86
+    ],
+    [
+     "IMG_1605",
+     2.38,
+     3.52
+    ],
+    [
+     "IMG_1605",
+     5.02,
+     6.72
+    ]
+   ],
+   "text": "No editing app touched this, but let's rewind, see what touched it."
+  },
+  {
+   "n": 3,
+   "parts": [
+    [
+     "IMG_1607",
+     3.44,
+     10.92
+    ]
+   ],
+   "text": "First, AI listened very carefully to every word I said. It got the start time, it got the end time."
+  },
+  {
+   "n": 4,
+   "parts": [
+    [
+     "IMG_1608",
+     0.91,
+     5.81
+    ],
+    [
+     "IMG_1608",
+     10.01,
+     11.91
+    ]
+   ],
+   "text": "It even got my name wrong. Instead of Vish, it got Rish. But one line fixed it."
+  },
+  {
+   "n": 5,
+   "parts": [
+    [
+     "IMG_1608",
+     18.3,
+     23.96
+    ]
+   ],
+   "text": "Then it cut everything, not in between the sentences, but in between the words."
+  },
+  {
+   "n": 6,
+   "parts": [
+    [
+     "IMG_1609",
+     7.3,
+     10.24
+    ],
+    [
+     "IMG_1609",
+     11.66,
+     13.8
+    ]
+   ],
+   "text": "Then it cut me out, every single frame, and the caption sits behind me."
+  },
+  {
+   "n": 7,
+   "parts": [
+    [
+     "IMG_1610",
+     0.18,
+     7.32
+    ]
+   ],
+   "text": "Every caption, every sticker is a tiny web page, photographed 30 times a second."
+  },
+  {
+   "n": 8,
+   "clone": "Let's slow down time. At one frame a second, a one-minute reel takes thirty minutes to watch."
+  },
+  {
+   "n": 9,
+   "clone": "And the sound? Silence. Exactly where it hurts."
+  },
+  {
+   "n": 10,
+   "parts": [
+    [
+     "IMG_1612",
+     0.3,
+     9.4
+    ],
+    [
+     "IMG_1612",
+     17.59,
+     18.97
+    ]
+   ],
+   "text": "And it didn't take 1, it didn't take 5, it took 12 rounds of feedback from me to get the perfect video I want. Hi, I'm Vish."
+  },
+  {
+   "n": 11,
+   "parts": [
+    [
+     "IMG_1613",
+     0.27,
+     6.66
+    ]
+   ],
+   "text": "And if you're still here, the edit did its job. Comment EDIT, and I will send you the prompts."
+  }
+ ]
+}
