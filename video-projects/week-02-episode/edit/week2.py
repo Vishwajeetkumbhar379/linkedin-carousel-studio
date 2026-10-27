@@ -22,6 +22,7 @@ import json
 import os
 import subprocess
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -70,6 +71,8 @@ def audio(src: Path) -> np.ndarray:
 
 
 base.audio = audio
+base.SPEED = 1.0  # Vish, 27 Oct: "a lot of echo": no time-stretch on his voice
+SFXLIB = P.parent / "sfx-library"  # studio sound effects (ElevenLabs), shared by every edit
 
 # ---------------------------------------------------------------- the cut
 BEAT = 60 / 112  # the bed's tempo; the haircut cuts land on it
@@ -80,8 +83,7 @@ MONT = round(len(SHOP) * BEAT * FPS) / FPS
 SEQ = [
     ("h1", "IMG_1619", [(0.9, 3.3)], {"no": "no."}, "hide", "night", {"gap": 0.45, "mute": 1}),  # the faceless hook; a beat on "no."
     ("h1b", "IMG_1619", [(3.3, 4.8)], {"so": "So"}, "hide", "night", {"gap": 0.3}),
-    ("c0", "IMG_8731", [(2.1, 2.6)], {"Hi": "Hi!"}, "full", "day", {"gap": 0.75, "mute": 1, "pre": 0.45}),  # walks in + the freeze
-    ("c1", "IMG_8731", [(2.7, 7.6)], {"before": "Before", "haircut": "haircut."}, "full", "day", {"gap": MONT, "mute": 1}),
+    ("c1", "IMG_8731", [(2.1, 7.6)], {"Hi": "Hi!", "before": "Before", "haircut": "haircut."}, "full", "day", {"gap": MONT, "mute": 1, "pre": 0.45}),
     ("r1", "IMG_1619", [(5.4, 9.6)], {}, "split", "night", {"gap": 0.1}),
     ("k0", None, "WEEK2_5"),
     ("g1", "IMG_1620", [(0.0, 4.7)], {"3000": "3,000"}, "split", "night", {}),
@@ -101,6 +103,41 @@ def vo_words(name: str) -> tuple[float, list]:
     return n, j["words"]
 
 
+def quiet(clip: str, t: float, limit: float, way: int) -> float:
+    """The first 20 ms of near-silence (below -28 dBFS) going from t towards limit (way=1 forward, -1 back); Whisper's word
+    edges are often 0.1 to 0.3 s off when words run together. Falls back to t."""
+    f = ISO / f"{clip}.wav"
+    if not f.exists():
+        return t
+    import soundfile as sf
+    x, sr = sf.read(str(f), always_2d=True)
+    x = x.mean(1)
+    u = t
+    while (u < limit) if way > 0 else (u > limit):
+        seg = x[int(u * sr):int((u + 0.02) * sr)]
+        if len(seg) and 20 * np.log10(np.sqrt((seg ** 2).mean()) + 1e-9) < -28:
+            return round(u + 0.01, 3)
+        u += 0.02 * way
+    return round(t, 3)
+
+
+def onset(clip: str, a: float, floor: float) -> float:
+    """Walk back from a while the cleaned take still has speech in it (50 ms windows above -34 dBFS), at most 0.7 s."""
+    f = ISO / f"{clip}.wav"
+    if not f.exists():
+        return a
+    import soundfile as sf
+    x, sr = sf.read(str(f), always_2d=True)
+    x = x.mean(1)
+    win, t = int(0.05 * sr), a
+    while t - 0.05 >= max(floor, a - 0.7):
+        seg = x[int((t - 0.05) * sr):int(t * sr)]
+        if not len(seg) or 20 * np.log10(np.sqrt((seg ** 2).mean()) + 1e-9) < -34:
+            break
+        t -= 0.05
+    return round(max(t - 0.04, floor, 0.0), 3)
+
+
 def build() -> dict:
     """His takes snapped to word boundaries at one steady speed (Week 1's rules), his clone lines in between, the card last."""
     runs, srcw, order = [], [], []
@@ -114,6 +151,19 @@ def build() -> dict:
         lid, clip, rr, fix, lay, look, fl = e
         for k, (A, B) in enumerate(rr):
             a, b, sel = base.snap(clip, A, B)
+            ws_ = base.WORDS[clip]
+            prv = [w["e"] for w in ws_ if w["e"] <= sel[0]["t"] + 1e-3 and w["t"] < sel[0]["t"]]
+            nxt = [w["t"] for w in ws_ if w["t"] > sel[-1]["t"] + 1e-3]
+            s0, e0 = sel[0]["t"], sel[-1]["e"]
+            if prv and s0 - prv[-1] < 0.15:  # he runs in from the word before: cut in the quiet between them, from the audio
+                a = quiet(clip, s0, max(s0 - 0.35, [w["t"] for w in ws_ if w["e"] <= s0 + 1e-3][-1] + 0.05), -1)
+            else:
+                a = max(a - 0.08, (prv[-1] + 0.02) if prv else 0.0, 0.0)  # "missed audio": room before the first word
+                a = onset(clip, a, (prv[-1] + 0.02) if prv else 0.0)  # Whisper often stamps a first word late ("220" lost its "two")
+            if nxt and nxt[0] - e0 < 0.15:  # he runs on into the next word ("anywhere I should"): the quiet after this one
+                b = quiet(clip, e0, e0 + 0.4, 1)
+            else:
+                b = min(b + 0.14, (nxt[0] - 0.04) if nxt else b + 0.14)  # room after the last word
             pre = fl.get("pre", 0.0) if k == 0 else 0.0  # picture before his first word (he walks in)
             if pre:
                 a = round(max(0.0, a - pre) * FPS) / FPS
@@ -141,7 +191,7 @@ def build() -> dict:
             segs.append([round(r["b"] - r["a"], 4), round(r["b"] - r["a"] + r["hold"], 4), round(o, 4), 1.0])
             o += r["hold"]
         dur = round(o * FPS) / FPS
-        sh = {"clip": r["clip"], "a": r["a"], "b": r["b"] + r["hold"], "t0": t, "dur": dur, "segs": segs, "look": r["look"], "cut": False,
+        sh = {"clip": r["clip"], "a": r["a"], "b": r["b"] + r["hold"], "t0": t, "dur": dur, "segs": segs, "held": r["hold"] > 0, "look": r["look"], "cut": False,
               "mute": r.get("mute", False), "lay": r["lay"], "line": r["line"], "runs": [len(shots)]}
         r["t0"], r["t1"] = t, t + (r["b"] - r["a"]) / base.SPEED
         r["hold"] = dur - (r["t1"] - t)
@@ -212,10 +262,10 @@ def plan(tl: dict) -> dict:
 
     # ---- HOOK, no face: the words land on his voice; his real rejection emails flash behind
     geoms.append([0, "none", 0.0])
-    bgs.append([0, L["c0"]["t0"], "black"])
+    bgs.append([0, L["c1"]["t0"], "black"])
     ws = [w for w in tl["words"] if w["line"] in ("h1", "h1b")]
     wt = lambda s: next(w for w in ws if w["x"].lower().startswith(s.lower()))  # noqa: E731
-    cues.append({"type": "hook", "t0": 0.0, "t1": L["c0"]["t0"] + 0.02, "z": 45,
+    cues.append({"type": "hook", "t0": 0.0, "t1": L["c1"]["t0"] + 0.02, "z": 45,
                  "n220": [wt("220")["t0"], wt("220")["t1"]], "companies": wt("companies")["t0"], "said": wt("said")["t0"], "no": wt("no")["t0"],
                  "so": wt("so")["t0"], "building": wt("building")["t0"], "own": wt("own")["t0"], "job": wt("job")["t0"],
                  "shots": [f"../assets/rejections/img_864{4 + k}.jpg" for k in range(4)]})
@@ -229,23 +279,18 @@ def plan(tl: dict) -> dict:
     for k, s in enumerate(("building", "own", "job")):
         S("pop", wt(s)["t0"], 0.12, f=1.0 + 0.12 * k)
     S("boom", wt("job")["t0"] + 0.1, 0.18)
-    nocap.append([0, L["c0"]["t0"]])
+    nocap.append([0, L["c1"]["t0"]])
 
     # ---- "Hi!": he walks into the room and waves; the frame freezes, he becomes a sticker, the labels pop on
-    geoms.append([L["c0"]["t0"], "full", 0.0])
-    bgs.append([L["c0"]["t0"], 999, "ink"])
-    S("whoosh", L["c0"]["t0"], 0.08)
-    it = next(i for i in items if i["kind"] == "talk" and abs(i["t0"] - L["c0"]["t0"]) < 1e-3)
-    tf0 = T("c0", "hi", end=True) + 0.05
-    uf = L["c1"]["t0"]
-    it["freeze"] = [round(tf0, 4), round(uf, 4), int((tf0 - it["t0"]) * FPS)]
-    tags = [[None, "This is Vish", tf0 + 0.04, 80, 330, -4, 58], [None, "Week 2 of 52", tf0 + 0.26, 610, 1060, 3, 40]]
-    cues.append({"type": "tags", "t0": tf0, "t1": uf + 0.04, "items": [[a, b, round(c, 3), x, y, r, z_] for a, b, c, x, y, r, z_ in tags], "z": 44})
-    S("shutter-old", tf0, 0.12, cut=0.5)
-    S("boom", tf0, 0.1)
+    geoms.append([L["c1"]["t0"], "full", 0.0])
+    bgs.append([L["c1"]["t0"], 999, "ink"])
+    S("whoosh", L["c1"]["t0"], 0.08)
+    tf0 = T("c1", "hi")  # the labels pop on as he waves (no freeze: the take runs on)
+    uf = T("c1", "before")
+    tags = [[None, "This is Vish", tf0 + 0.05, 80, 330, -4, 58], [None, "Week 2 of 52", tf0 + 0.3, 610, 420, 3, 40]]
+    cues.append({"type": "tags", "t0": tf0, "t1": uf + 0.6, "items": [[a, b, round(c, 3), x, y, r, z_] for a, b, c, x, y, r, z_ in tags], "z": 44})
     for k, tg in enumerate(tags):
         S("pop", tg[2], 0.12, f=1.0 + 0.1 * k)
-    nocap.append([tf0, uf])
 
     # ---- the haircut: five cuts on the beat, music up
     m0 = L["c1"]["t1"] + 0.05
@@ -337,11 +382,11 @@ def plan(tl: dict) -> dict:
                  "words": [[w["w"], round(v0 + w["s"], 3), round(v0 + w["e"], 3)] for w in tl["next_words"]]})
     S("whoosh", n0 + 0.15, 0.1, d=0.5)
     S("tick", v0 + tl["next_words"][-1]["e"] - 0.1, 0.07)
-    cues.append({"type": "week", "t0": L["c0"]["t0"], "t1": k1 - CLONE_LEAD, "z": 46,
-                 "hide": [[k0 - CLONE_LEAD, L["g1"]["t0"]], [tf0, uf]]})
+    cues.append({"type": "week", "t0": L["c1"]["t0"], "t1": k1 - CLONE_LEAD, "z": 46,
+                 "hide": [[k0 - CLONE_LEAD, L["g1"]["t0"]]]})
 
     # the music (LinkedIn/YouTube file): starts on "Hi!", up for the haircut, dead from "rewind" to the goal, back under the rest
-    music = {"start": L["c0"]["t0"], "boost": [m0, L["r1"]["t0"]], "drop": [L["r1"]["t0"], L["g1"]["t0"]], "back": L["g1"]["t0"]}
+    music = {"start": L["c1"]["t0"], "boost": [m0, L["r1"]["t0"]], "drop": [L["r1"]["t0"], L["g1"]["t0"]], "back": L["g1"]["t0"]}
     capy = []
     return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "music": music, "capy": capy}
 
@@ -419,8 +464,28 @@ def isolate() -> None:
         print("isolated", c, round(len(x) / SR, 1), "s")
 
 
+LIB = {"whoosh": "whoosh", "rwhoosh": "riser", "boom": "impact", "thump": "hit_soft", "pop": "pop", "click": "click", "tick": "tick",
+       "shutter-old": "shutter", "paper-slide": "paper", "type-hit": "type", "clipper": "clippers", "snip": "scissors", "glitch-text": "glitch",
+       "water-jump": "splash", "k:interface-sounds/Audio/switch_002": "click", "k:interface-sounds/Audio/confirmation_001": "lock_open",
+       "k:impact-sounds/Audio/impactMetal_heavy_002": "stamp"}
+
+
 def sound(name: str, o: dict):
-    """Week 1's sounds, plus the barber's clippers and scissors (synthesised)."""
+    """The studio library (video-projects/sfx-library) for every named sound; synthesised ones only as a fallback."""
+    lib = LIB.get(name, name)
+    if (SFXLIB / f"{lib}.mp3").exists():
+        y = _audio(SFXLIB / f"{lib}.mp3").copy()
+        hit = int(np.argmax(np.abs(y))) if lib.startswith("whoosh") else (len(y) - 1 if lib == "riser" else 0)  # whooshes peak on the cut
+        if o.get("cut"):
+            y = y[: int(o["cut"] * SR)]
+            k = min(len(y) // 3, int(0.08 * SR))
+            y[-k:] *= np.linspace(1, 0, k)
+            hit = min(hit, len(y) - 1)
+        if o.get("f", 1.0) != 1.0:
+            k = o["f"]
+            y = np.interp(np.arange(0, len(y) - 1, k), np.arange(len(y)), y).astype(np.float32)
+            hit = int(hit / k)
+        return y / (np.abs(y).max() + 1e-9), hit
     rng = np.random.default_rng(len(name))
     if name == "clipper":  # a buzzing trimmer: a 118 Hz rasp with a fast flutter
         d = o.get("d", 0.5)
@@ -446,7 +511,50 @@ _sound = base.sound
 base.sound = sound
 
 
-def mix() -> tuple[Path, Path]:
+BRAND = (["modern upbeat indie electronic", "warm analog synth plucks", "punchy tight drums", "deep warm bass", "110 bpm", "confident and hopeful"],
+         ["vocals", "lyrics", "singing", "sad", "corporate stock music", "tape hiss"])
+
+
+def compose(tl: dict) -> Path:
+    """Music composed for this edit (ElevenLabs Music, composition plan): one brand sound for every video, its sections
+    cut to the edit (a tense hook, a groove under his voice, a drop for a montage, an ending). Cached per edit length."""
+    mu, dur = tl["music"], tl["dur"]
+    out = P / "assets" / "music" / f"{OUTNAME}_{int(dur * 10)}.mp3"
+    if out.exists():
+        return out
+    cuts = [(0.0, "hook", ["tense", "dark pulsing sub bass", "sparse", "no drums"])]
+    b0, b1 = mu.get("boost", [0, 0])
+    if b1 - b0 >= 2.0:
+        cuts += [(max(3.0, mu["start"]), "groove", ["light groove", "muted plucks", "soft hi-hats"]),
+                 (b0, "drop", ["full energy drop", "big drums", "bright synth lead"]),
+                 (b1, "main", ["steady warm groove", "mid energy", "leaves room for a voice"])]
+    else:
+        cuts += [(3.0, "main", ["steady warm groove", "mid energy", "leaves room for a voice"])]
+    cuts += [(dur - 4.0, "outro", ["resolving ending", "final hit"])]
+    secs = []
+    for i, (t0, name, styles) in enumerate(cuts):
+        t1 = cuts[i + 1][0] if i + 1 < len(cuts) else dur + 0.5
+        ms = max(3000, int(round((t1 - t0) * 1000)))
+        secs.append({"section_name": name, "positive_local_styles": styles, "negative_local_styles": [], "duration_ms": ms, "lines": []})
+    key = os.environ["CLAUDEELEVENLABS_API"]
+    body = {"composition_plan": {"positive_global_styles": BRAND[0], "negative_global_styles": BRAND[1], "sections": secs}, "model_id": "music_v1"}
+    req = urllib.request.Request("https://api.elevenlabs.io/v1/music?output_format=mp3_44100_192", data=json.dumps(body).encode(), method="POST",
+                                 headers={"xi-api-key": key, "Content-Type": "application/json"})
+    try:
+        data = urllib.request.urlopen(req, timeout=600).read()
+    except urllib.error.HTTPError as e:  # no composition plan: one prompt of the same sound
+        print("composition plan refused:", e.code, e.read()[:200])
+        body = {"prompt": ", ".join(BRAND[0]) + ". Tense intro, then a steady groove that leaves room for a voice, a clean ending. No vocals.",
+                "music_length_ms": int((dur + 0.5) * 1000), "model_id": "music_v1"}
+        req = urllib.request.Request("https://api.elevenlabs.io/v1/music?output_format=mp3_44100_192", data=json.dumps(body).encode(), method="POST",
+                                     headers={"xi-api-key": key, "Content-Type": "application/json"})
+        data = urllib.request.urlopen(req, timeout=600).read()
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_bytes(data)
+    return out
+
+
+def mix() -> Path:
     """Two mixes from the same stems: Instagram (voice + effects + room sound; the trending song is added in the app) and
     LinkedIn/YouTube (the same, plus our bed)."""
     import soundfile as sf
@@ -461,7 +569,7 @@ def mix() -> tuple[Path, Path]:
         speech = []
         for k, (s0, s1, o0, r) in enumerate(sh["segs"]):
             x = a[at(sh["a"] + s0): at(sh["a"] + s1)].copy()
-            if sh.get("mute") and k == len(sh["segs"]) - 1:
+            if (sh.get("mute") or len(sh["segs"]) > 1) and k == len(sh["segs"]) - 1:  # a held pause is silent: no leak of the next word
                 x *= 0.0
             else:
                 speech.append(x)
@@ -500,26 +608,35 @@ def mix() -> tuple[Path, Path]:
         xs, ys = zip(*points)
         return np.interp(np.arange(n) / SR, xs, ys).astype(np.float32)
 
-    # the bed: from "Hi!", up for the haircut, dead silence when he sits down, back (from later in the track) under the goal
+    # the music: steady under him (ducked 6 dB while he speaks), up for a montage, dead silence in a drop, under the narrator
     mu = tl["music"]
-    bed = _audio(P / "assets" / "music" / "bed.mp3")
+    x = _audio(compose(tl))
     song = np.zeros(n, np.float32)
-    s0, d0, d1 = at(mu["start"]), at(mu["drop"][0]), at(mu["back"])
-    song[s0:d0] = bed[: d0 - s0]
-    tail = bed[at(18.0):]
-    song[d1:d1 + min(len(tail), n - d1)] = tail[: n - d1]
-    env = np.sqrt(uniform_filter1d(song ** 2, int(2.0 * SR))) + 1e-4
-    b0, b1 = mu["boost"]
-    target = ramp([(0, 0.022), (b0 - 0.15, 0.022), (b0 + 0.05, 0.09), (b1, 0.09), (b1 + 0.01, 0.0), (mu["back"] - 0.01, 0.0),
-                   (mu["back"] + 0.6, 0.022), (999, 0.022)])
-    song *= np.clip(target / env, 0, 6)
-    hard = np.ones(n, np.float32)  # the drop: a 12 ms edge, true silence
-    hard[d0:d1] = 0.0
-    hard[max(0, d0 - q):d0] = np.linspace(1, 0, d0 - max(0, d0 - q))
-    v0 = tl["next"][1] if tl.get("next") else tl["dur"] - 0.6
-    duck = 0.45 if tl.get("next") else 1.0  # under the narrator
-    music = song * hard * ramp([(0, 1), (v0 - 0.25, 1), (v0 + 0.05, duck), (tl["dur"] - 1.2, duck), (tl["dur"], 0.0), (999, 0.0)])
-    music[:s0] = 0.0
+    song[: min(n, len(x))] = x[:n]
+    hop = int(0.01 * SR)
+    fr = np.abs(voice[: len(voice) // hop * hop]).reshape(-1, hop).max(1)
+    on, venv = (fr > 0.03).astype(float), np.zeros(len(fr))
+    for i in range(1, len(on)):
+        venv[i] = venv[i - 1] + (on[i] - venv[i - 1]) * (0.25 if on[i] > venv[i - 1] else 0.03)
+    venv = np.pad(np.repeat(venv, hop), (0, n))[:n]
+    target = 0.05 * (1 - 0.5 * venv)
+    b0, b1 = mu.get("boost", [0, 0])
+    if b1 - b0 > 0.5:
+        target = np.where((np.arange(n) / SR >= b0) & (np.arange(n) / SR < b1), 0.11, target)
+    env = np.sqrt(uniform_filter1d(song ** 2, int(0.8 * SR))) + 1e-4
+    song *= np.clip(uniform_filter1d(target / env, int(0.2 * SR)), 0, 8)
+    shape = np.ones(n, np.float32)
+    s0 = at(mu.get("start", 0.0))
+    shape[:s0] = 0.0
+    shape[s0:s0 + int(0.3 * SR)] = np.linspace(0, 1, len(shape[s0:s0 + int(0.3 * SR)]))
+    d0, d1 = mu.get("drop", [tl["dur"], tl["dur"]])
+    if d1 > d0:  # the drop: a 12 ms edge into true silence, back with a short fade
+        i0, i1 = at(d0), at(d1)
+        shape[i0:i1] = 0.0
+        shape[max(0, i0 - q):i0] *= np.linspace(1, 0, i0 - max(0, i0 - q))
+        shape[i1:i1 + int(0.25 * SR)] *= np.linspace(0, 1, len(shape[i1:i1 + int(0.25 * SR)]))
+    v0 = tl["next"][1] if tl.get("next") else tl["dur"]
+    music = song * shape * ramp([(0, 1), (v0 - 0.25, 1), (v0 + 0.05, 0.5), (tl["dur"] - 1.0, 0.5 if tl.get("next") else 1.0), (tl["dur"], 0.0), (999, 0.0)])
     # the barber shop's own sound, low, under the haircut
     amb = np.zeros(n, np.float32)
     for it in tl["items"]:
@@ -545,13 +662,10 @@ def mix() -> tuple[Path, Path]:
         fx[i:e] += g * x[: e - i]
     end = at(tl["dur"])
     np.savez(W / "stems.npz", voice=voice[:end], fx=fx[:end], music=music[:end], amb=amb[:end])
-    outs = []
-    for name, mus in (("mix_instagram.wav", 0.0), ("mix.wav", 1.0)):
-        out = (voice + fx + amb + mus * music)[:end]
-        wav = W / name
-        sf.write(wav, np.stack([out, out], 1), SR, subtype="FLOAT")
-        outs.append(wav)
-    return outs[0], outs[1]
+    out = (voice + fx + amb + music)[:end]
+    wav = W / "mix.wav"
+    sf.write(wav, np.stack([out, out], 1), SR, subtype="FLOAT")
+    return wav
 
 
 def mux(picture: Path, wav: Path, name: str) -> Path:
@@ -565,9 +679,7 @@ def mux(picture: Path, wav: Path, name: str) -> Path:
 
 
 def finish(picture: Path) -> None:
-    ig, li = mix()
-    print("->", mux(picture, ig, f"{OUTNAME}-instagram-9x16.mp4"), "(add the trending song in Instagram)")
-    print("->", mux(picture, li, f"{OUTNAME}-9x16.mp4"), "(LinkedIn, YouTube Shorts)")
+    print("->", mux(picture, mix(), f"{OUTNAME}-9x16.mp4"), "(Instagram, LinkedIn, YouTube Shorts)")
 
 
 if __name__ == "__main__":

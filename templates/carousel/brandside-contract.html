@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/carousel/week-series.css">
+<!-- From the brand side 01: 7 contract clauses (keyword CONTRACT -> buildwithvvish.com/#read-creator-contract-red-flags). Facts from that guide. -->
+<style>
+.doc{position:absolute;left:72px;width:936px;background:#FFFDF9;border:1.5px solid var(--line);border-radius:10px;padding:40px 46px;font:400 29px/1.7 'Newsreader',Georgia,serif;color:#4A443B;box-shadow:0 40px 70px -40px rgba(40,25,5,.55)}
+.doc mark{background:rgba(231,161,90,.38);color:var(--ink);padding:2px 4px;border-radius:4px}
+.doc .no{font:500 20px 'Geist Mono';letter-spacing:.12em;color:var(--muted);margin-bottom:12px;display:block}
+.vs{position:absolute;left:72px;width:936px;display:grid;gap:18px}
+.vs div{border-radius:22px;padding:34px 36px;font:500 38px/1.35 'Inter Tight';color:var(--body);background:var(--card);border:1.5px solid var(--line)}
+.vs div b{display:block;font:600 21px 'Geist Mono';letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.vs .bad b{color:var(--red)}.vs .good b{color:var(--green)}.vs .good{border-color:#9DBFA6}
+</style>
+</head><body><div id="deck"></div>
+<script src="/carousel/brandside-head.js"></script>
+<script>
+const F = "/carousel/assets/week02/vish.jpg";
+const clause = (n, title, says, ask, why) => (i) => ["", `
+  <div class="big" style="top:110px">${n}</div><div class="label" style="top:150px">Clause ${n}</div>
+  <div class="h" style="top:205px;width:700px;font-size:92px">${title}</div>
+  <div class="vs" style="top:520px">
+   <div class="bad"><b>What it says</b>${says}</div>
+   <div class="good"><b>Ask for</b>${ask}</div>
+  </div>
+  <div class="cap" style="left:72px;top:1130px;width:936px;line-height:1.5">${why}</div>`];
+deck("From the brand side", [
+ (i) => ["", `
+  <div class="label" style="top:150px">Creator contracts · 7 clauses</div>
+  <div class="h" style="top:205px;width:930px;font-size:112px">This clause lets a brand use your face <em>forever.</em></div>
+  <div class="doc" style="top:620px;transform:rotate(-1.2deg)"><span class="no">§ 4.2 USAGE RIGHTS</span>The Creator grants the Brand the right to use the Content <mark>in perpetuity, in all media now known or later devised,</mark> including paid advertising.</div>
+  <img class="face" src="${F}" style="left:800px;top:960px;width:210px;height:210px;object-position:52% 30%">
+  <div class="sticker amber" style="left:470px;top:1150px;transform:rotate(-3deg)">850+ creator deals, brand side</div>
+  <div class="swipe" style="top:1240px">Swipe →</div>`],
+ clause("01", "Perpetual usage <em>rights.</em>", "“Forever, in all media.” A brand can run your face in its ads for years.", "A time limit, and paid usage priced separately.", "Organic posting and paid ads are two different jobs. Price them that way."),
+ clause("02", "Broad <em>exclusivity.</em>", "“No competing brands.” No category, no end date.", "The named competitors, and a fixed period.", "Open exclusivity can block your income for a year. It should cost the brand money."),
+ (i) => ["", `
+  <div class="big" style="top:110px">03</div><div class="label" style="top:150px">Clauses 03 + 04</div>
+  <div class="h" style="top:205px;width:700px;font-size:92px">Money and <em>labels.</em></div>
+  <div class="vs" style="top:500px">
+   <div class="bad"><b>03 · Payment 90 days after posting</b>Common, and painful for small creators.</div>
+   <div class="good"><b>Ask for</b>30 days.</div>
+   <div class="bad"><b>04 · No disclosure clause</b>If a paid post isn't labelled, both sides carry the risk.</div>
+   <div class="good"><b>Ask for</b>The exact ad label, written into the contract.</div>
+  </div>`],
+ (i) => ["", `
+  <div class="big" style="top:110px">05</div><div class="label" style="top:150px">Clauses 05 + 06</div>
+  <div class="h" style="top:205px;width:700px;font-size:92px">Scope <em>creep.</em></div>
+  <div class="vs" style="top:500px">
+   <div class="bad"><b>05 · Unlimited revisions</b>The brief changes, you reshoot for free.</div>
+   <div class="good"><b>Ask for</b>Two rounds.</div>
+   <div class="bad"><b>06 · “Some stories”</b>That isn't a deliverable.</div>
+   <div class="good"><b>Ask for</b>Number, format, length and posting window.</div>
+  </div>`],
+ clause("07", "No kill <em>fee.</em>", "The brand cancels after you've shot it. You get nothing.", "Payment for the work already done.", "Not legal advice. For anything big, get a lawyer to read it."),
+ (i) => ["", `
+  <div class="label" style="top:150px">Check any contract in 2 minutes</div>
+  <div class="h" style="top:205px;width:930px;font-size:92px">Contract in, red flags <em>out.</em></div>
+  <div class="code" style="top:430px;font-size:25px"><div class="bar"><i></i><i></i><i></i><span>paste into Claude or ChatGPT</span></div>Read this influencer contract. For clauses about usage rights, exclusivity, payment, revisions, disclosure, deliverables and cancellation:
+1. Quote the clause
+2. Rate it fair / watch / unfair
+3. Suggest fairer wording
+Then draft a polite email asking for the 2 most important changes.
+Contract: <span class="x">[paste]</span></div>
+  <div class="cap" style="left:72px;top:1010px">Works from either side: creator, agency or brand.</div>`],
+ (i) => ["", `
+  <img class="face" src="${F}" style="left:72px;top:150px;width:210px;height:210px;object-position:52% 30%">
+  <div class="h" style="top:180px;left:320px;width:690px;font-size:76px">Want the full <em>checklist?</em></div>
+  <div class="cta" style="top:470px">
+   <div class="ex" style="color:#A39A8C">Comment</div>
+   <div class="kw">CONTRACT</div>
+   <div class="p">and I'll DM you the free guide:</div>
+   <div class="p" style="color:#F3EEE5;margin-top:18px">✓ all 7 clauses, with fairer wording<br>✓ the contract check prompt<br>✓ the email that asks for changes</div>
+  </div>
+  <div class="p" style="top:1110px;width:930px"><b>Save it</b> for your next brand deal.</div>`],
+]);
+</script></body></html>

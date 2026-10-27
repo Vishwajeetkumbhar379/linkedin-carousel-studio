@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:IS;src:url(/home/user/linkedin-carousel-studio/templates/fonts-extra/instrument-serif-latin-400-normal.woff2)}
+@font-face{font-family:IS;font-style:italic;src:url(/home/user/linkedin-carousel-studio/templates/fonts-extra/instrument-serif-latin-400-italic.woff2)}
+@font-face{font-family:IT;font-weight:700;src:url(/home/user/linkedin-carousel-studio/templates/fonts-extra/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:GM;font-weight:500;src:url(/home/user/linkedin-carousel-studio/templates/node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{background:radial-gradient(ellipse 75% 60% at 50% 45%,#1F3768 0%,#15274D 55%,#0C1730 100%)}
+.a{position:absolute}
+.grain{position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+.fib{position:absolute;inset:0;opacity:.10;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.012 .2' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='600' height='600' filter='url(%23f)'/></svg>")}
+.print{left:150px;top:450px;width:780px;height:1000px;background:#F1EDE4;padding:24px;box-shadow:0 34px 70px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.3)}
+.print img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block;filter:contrast(1.03) saturate(.95)}
+.sleeve{left:124px;top:422px;width:832px;height:1062px;transform:rotate(-1.1deg);border-radius:8px;mix-blend-mode:screen;
+  background:linear-gradient(118deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.17) 14%,rgba(255,255,255,.03) 24%,rgba(255,255,255,0) 52%,rgba(255,255,255,.1) 71%,rgba(255,255,255,.02) 80%,rgba(255,255,255,0) 100%);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.16),inset 0 0 40px rgba(255,255,255,.06)}
+.crease{position:absolute;mix-blend-mode:screen;filter:blur(1.5px)}
+.tag{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:8px 24px 8px 10px;box-shadow:0 14px 34px rgba(0,0,0,.45);font:700 38px/1 IT;letter-spacing:-.01em;color:#111;text-transform:uppercase;white-space:nowrap}
+.tag img{width:70px;height:70px}
+
+.tag.ac{background:#F0B26A}
+</style></head><body>
+<div class="fib"></div>
+<div class="a" style="left:0;right:0;top:296px;text-align:center;font:400 {{TOPSIZE}}px/1 IS;color:#F3EDE3;letter-spacing:-.01em">{{TOP}}</div>
+<div class="a print" style="transform:rotate(-1.1deg)"><img src="{{PHOTO}}" style="object-position:50% 30%;filter:contrast(1.04) saturate(.92) brightness(.98)"></div>
+<div class="a sleeve"></div>
+<div class="crease" style="left:230px;top:440px;width:3px;height:240px;transform:rotate(28deg);background:linear-gradient(transparent,rgba(255,255,255,.4),transparent)"></div>
+<div class="crease" style="left:880px;top:1250px;width:3px;height:220px;transform:rotate(28deg);background:linear-gradient(transparent,rgba(255,255,255,.3),transparent)"></div>
+{{TAGS}}
+<div class="a" style="left:40px;right:40px;top:1508px;text-align:center;font:400 {{BOTSIZE}}px/1.02 IS;color:#F3EDE3">{{BOTTOM}}</div>
+<div class="grain"></div>
+<script>window.READY = true</script>
+</body></html>

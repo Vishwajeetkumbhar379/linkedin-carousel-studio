@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/carousel/week-series.css">
+<!-- Sound human 01: make AI write in your voice (keyword HUMAN -> buildwithvvish.com/#read-brand-voice-without-ai-sound). Prompts from that guide. -->
+<style>
+.chips{position:absolute;left:72px;width:936px;display:flex;flex-wrap:wrap;gap:16px}
+.chips span{font:600 40px 'Inter Tight';color:var(--red);background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:14px 30px;text-decoration:line-through;text-decoration-thickness:3px}
+.ba{position:absolute;left:72px;width:936px;display:grid;gap:18px}
+.ba div{border-radius:22px;padding:28px 32px;font:500 36px/1.35 'Inter Tight';color:var(--body);background:var(--card);border:1.5px solid var(--line)}
+.ba div b{display:block;font:600 21px 'Geist Mono';letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.ba .bad b{color:var(--red)}.ba .good b{color:var(--green)}
+</style>
+</head><body><div id="deck"></div>
+<script src="/carousel/brandside-head.js"></script>
+<script>
+const F = "/carousel/assets/week02/vish.jpg";
+deck("Sound human", [
+ (i) => ["", `
+  <div class="label" style="top:150px">AI writing · the 4-step fix</div>
+  <div class="h" style="top:205px;width:930px;font-size:124px">Everyone can tell you used <em>AI.</em></div>
+  <div class="chips" style="top:600px"><span>unlock</span><span>elevate</span><span>seamless</span><span>game-changer</span><span>delve</span><span>journey</span></div>
+  <img class="face" src="${F}" style="left:780px;top:900px;width:230px;height:230px;object-position:52% 30%">
+  <div class="p" style="top:930px;width:660px;font-size:36px">Here's how to make it write like <b>you</b> instead.</div>
+  <div class="swipe" style="top:1200px">Swipe →</div>`],
+ (i) => ["", `
+  <div class="label" style="top:150px">Why it sounds like AI</div>
+  <div class="h" style="top:205px;width:930px;font-size:100px">It has no picture of <em>your</em> voice.</div>
+  <div class="ba" style="top:540px">
+   <div class="bad"><b>AI default</b>“In today's fast-paced world, unlock the power of content.”</div>
+   <div class="good"><b>The fix</b>A voice card, a ban list, and a draft that grades itself.</div>
+  </div>`],
+ (i) => ["", `
+  <div class="big" style="top:110px">01</div><div class="label" style="top:150px">Step 01 · voice card</div>
+  <div class="h" style="top:205px;width:700px;font-size:92px">Feed it five good <em>examples.</em></div>
+  <div class="code" style="top:470px;font-size:25px"><div class="bar"><i></i><i></i><i></i><span>paste 5 things you wrote</span></div>Here are 5 things I wrote that sound like me: <span class="x">[paste]</span>.
+Build a voice card with:
+- 5 traits, each with a "I'd say / I'd never say" example
+- sentence length and rhythm
+- words I use often, words I never use
+- how I open and how I close</div>
+  <div class="cap" style="left:72px;top:960px">Save the result. That's your voice file.</div>`],
+ (i) => ["", `
+  <div class="big" style="top:110px">02</div><div class="label" style="top:150px">Step 02 · ban list</div>
+  <div class="h" style="top:205px;width:700px;font-size:92px">Write down what makes you <em>wince.</em></div>
+  <div class="chips" style="top:560px"><span>unlock</span><span>elevate</span><span>seamless</span><span>game-changer</span><span>dive in</span><span>delve</span><span>journey</span><span>landscape</span></div>
+  <div class="p" style="top:900px;width:930px">Add your own. Paste the list under the voice card every time.</div>`],
+ (i) => ["", `
+  <div class="big" style="top:110px">03</div><div class="label" style="top:150px">Step 03 · self-grading</div>
+  <div class="h" style="top:205px;width:700px;font-size:92px">Make it mark its own <em>work.</em></div>
+  <div class="code" style="top:470px;font-size:26px"><div class="bar"><i></i><i></i><i></i><span>same chat</span></div>Using this voice card: <span class="x">[card]</span>
+Write <span class="x">[the piece]</span>.
+Then grade your draft against each trait from 1-5, quote the weakest line, and rewrite it.</div>
+  <div class="cap" style="left:72px;top:850px">It finds its own weakest line faster than you will.</div>`],
+ (i) => ["dark", `
+  <div class="big" style="top:110px">04</div><div class="label" style="top:150px">Step 04 · the one AI can't do</div>
+  <div class="h" style="top:205px;width:800px;font-size:110px">Read it out <em>loud.</em></div>
+  <div class="p" style="top:560px;width:930px;font-size:40px">If you wouldn't say it to a person, cut it.</div>`],
+ (i) => ["", `
+  <img class="face" src="${F}" style="left:72px;top:150px;width:210px;height:210px;object-position:52% 30%">
+  <div class="h" style="top:180px;left:320px;width:690px;font-size:76px">Want both <em>prompts?</em></div>
+  <div class="cta" style="top:470px">
+   <div class="ex" style="color:#A39A8C">Comment</div>
+   <div class="kw">HUMAN</div>
+   <div class="p">and I'll DM you the free guide:</div>
+   <div class="p" style="color:#F3EEE5;margin-top:18px">✓ the voice card prompt<br>✓ the ban list to start from<br>✓ the self-grading prompt</div>
+  </div>
+  <div class="p" style="top:1110px;width:930px"><b>Follow</b> for AI that sounds like you.</div>`],
+]);
+</script></body></html>

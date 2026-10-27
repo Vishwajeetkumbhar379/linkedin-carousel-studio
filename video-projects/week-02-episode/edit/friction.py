@@ -107,7 +107,7 @@ def plan(tl: dict) -> dict:
     S("pop", T("k2", "checklist"), 0.08)
     nocap.append([k2 - E.CLONE_LEAD, tl["dur"] + 1])
     cues.append({"type": "week", "t0": jump_end, "t1": k2 - E.CLONE_LEAD, "z": 46, "hide": [[k1 - E.CLONE_LEAD, L["a2"]["t0"]], [tf0, uf]]})
-    music = {"start": 0.0, "boost": [0.3, 0.4], "drop": [tl["dur"], tl["dur"]], "back": tl["dur"]}  # a steady low bed (LinkedIn/YouTube file)
+    music = {"start": 0.0, "boost": [0, 0], "drop": [tl["dur"], tl["dur"]], "back": tl["dur"]}  # a steady low bed (LinkedIn/YouTube file)
     return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "music": music, "capy": []}
 
 

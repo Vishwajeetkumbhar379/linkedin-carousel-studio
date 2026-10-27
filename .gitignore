@@ -49,3 +49,8 @@ video-projects/week-02-episode/raw/
 video-projects/week-02-episode/assets/music/
 video-projects/week-02-episode/work_notripod/
 video-projects/week-02-episode/work_friction/
+
+# motion reels and generated audio stay local (27 Oct): big files, delivered from the session
+out/**/reel-9x16.mp4
+video-projects/assets-music/
+video-projects/sfx-library/*.mp3

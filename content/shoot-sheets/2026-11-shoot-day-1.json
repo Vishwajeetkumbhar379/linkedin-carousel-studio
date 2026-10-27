@@ -1,0 +1,593 @@
+{
+ "title": "Shoot day 1: 12 new ideas (27 Oct 2026)",
+ "sheets": [
+  {
+   "key": "BROKE",
+   "keyword": null,
+   "series": "Week N of 52 (side episode)",
+   "format": "Raw selfie, one take, then A split for the goal card",
+   "length": "30 to 35 s",
+   "title_card": "40K IN DEBT. FLIGHT BOOKED.",
+   "hook": "I'm 27. / I'm *40k* in debt. // And I just booked a flight to Sri Lanka.",
+   "hook_alts": [
+    "Booking a flight while 40k in debt. // Stupid or brave?",
+    "Everyone told me to wait. // I booked the flight."
+   ],
+   "lines": [
+    {
+     "say": "I'm 27. / I'm *40k* in debt. // And I just booked a flight to Sri Lanka.",
+     "see": "Selfie, handheld. Boarding-pass card slides in with SRI LANKA stamped",
+     "how": "(down) then (up) on Sri Lanka, [lens]"
+    },
+    {
+     "say": "No, / it's not a holiday.",
+     "see": "Hard cut, punch-in"
+    },
+    {
+     "say": "The whole point of this challenge / is *three thousand euros* a month, / from anywhere.",
+     "see": "Goal card: €3,000 / month, a pin moving Germany to Sri Lanka",
+     "how": "[point]"
+    },
+    {
+     "say": "And anywhere / has to start *somewhere*. //",
+     "see": "Map zooms out",
+     "how": "(down)"
+    },
+    {
+     "say": "I'm not waiting / until everything's perfect. / I did that for years. // It didn't work.",
+     "see": "Calendar pages flipping, years crossed out"
+    },
+    {
+     "say": "So, / stupid or brave? // Tell me in the comments.",
+     "see": "Two buttons: STUPID / BRAVE, cursor hovering",
+     "how": "[smile] [lens]"
+    }
+   ],
+   "cta": "Question: stupid or brave?",
+   "notes": "Check before filming: the currency of the 40k (brand-profile says to confirm before it goes on screen) and that the flight is booked. Every line must be true on the day.",
+   "broll": [
+    "Packing a bag",
+    "Phone showing the booking (hide the booking number)",
+    "Window, plane or train if you have it"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "GERMAN",
+   "keyword": null,
+   "series": "Week N of 52 (side episode)",
+   "format": "A split",
+   "length": "30 to 35 s",
+   "title_card": "220 NOS. ZERO GERMAN.",
+   "hook": "I live in Germany. / I don't speak German. // *220* companies said no.",
+   "hook_alts": [
+    "Is it the German? // 220 rejections later, I honestly don't know.",
+    "Moving to Germany without the language. // Here's the bill."
+   ],
+   "lines": [
+    {
+     "say": "I live in Germany. / I don't speak German. // *220* companies said no.",
+     "see": "Rejection emails stacking, a counter racing to 220",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "Was it the language? // Maybe.",
+     "see": "Big word: MAYBE."
+    },
+    {
+     "say": "I moved here a year ago / for my master's. / No friends, / no family, / no German.",
+     "see": "Three crossed-out cards: FRIENDS, FAMILY, GERMAN",
+     "how": "[count]"
+    },
+    {
+     "say": "Five years in influencer marketing / didn't translate.",
+     "see": "Your CV card, a 'Deutsch: none' line highlighted"
+    },
+    {
+     "say": "So now I've got two options. // Learn German, / or go *fully* remote.",
+     "see": "Split screen: a German textbook vs a laptop on a beach (B-roll)",
+     "how": "[point]"
+    },
+    {
+     "say": "What would you do? // Tell me.",
+     "see": "Comment bubble: German or remote?",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Question: learn German or go remote?",
+   "notes": "All facts from brand-profile.md. Don't claim the language was the reason; it's a question.",
+   "broll": [
+    "Your street sign or a German letter on the table",
+    "Language app open on your phone",
+    "Laptop by a window"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "CVROAST",
+   "keyword": null,
+   "series": "Week N of 52 (side episode)",
+   "format": "A split: your CV on top, you below",
+   "length": "30 to 40 s",
+   "title_card": "ROAST MY CV",
+   "hook": "This CV got rejected / *220* times. // Roast it.",
+   "hook_alts": [
+    "220 companies read this CV. // All of them said no.",
+    "Recruiters, / be honest. // What's wrong with this CV?"
+   ],
+   "lines": [
+    {
+     "say": "This CV got rejected / *220* times. // Roast it.",
+     "see": "Your real CV, personal details blurred, a red ROAST stamp",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Five years in social media / and influencer marketing.",
+     "see": "Highlighter runs over the experience line",
+     "how": "[point]"
+    },
+    {
+     "say": "Eight hundred and fifty plus / creator deals, / brand side.",
+     "see": "850+ circled in amber"
+    },
+    {
+     "say": "Led teams. / Finishing my master's / in Germany.",
+     "see": "Two more lines highlighted"
+    },
+    {
+     "say": "And still, / *no*.",
+     "see": "Hard punch-in, silence 0.4 s",
+     "how": "(down)"
+    },
+    {
+     "say": "So you tell me. // What would you fix *first*? / I'll update it live, / in next week's video.",
+     "see": "Comment box: 'Fix this first:'",
+     "how": "[lens] [smile]"
+    }
+   ],
+   "cta": "Question: what would you fix first?",
+   "notes": "Blur address, phone, email and any employer names (brand-profile: no employer names). Only promise the update if you'll do it. Strong LinkedIn post too: recruiters answer this.",
+   "broll": [
+    "Scrolling your CV on the iPad",
+    "Printing it or holding it",
+    "Typing an edit"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "POV",
+   "keyword": null,
+   "series": "Week N of 52 (side episode)",
+   "format": "Day-in-the-life montage, your voice over short clips",
+   "length": "25 to 30 s",
+   "title_card": "POV: MY ONLY COWORKER IS CLAUDE",
+   "hook": "POV: / you're 27, / job hunting in Germany, // and your only coworker is *Claude*.",
+   "hook_alts": [
+    "My coworker never sleeps. // It's Claude.",
+    "A job hunt with one coworker. // An AI."
+   ],
+   "lines": [
+    {
+     "say": "POV: / you're 27, / job hunting in Germany, // and your only coworker is *Claude*.",
+     "see": "Morning: coffee, laptop opening, Claude on screen",
+     "how": "[smile]"
+    },
+    {
+     "say": "9 a.m. / It reads the new job ads / before I do.",
+     "see": "Screen: your job-search agent's list (real, blur company names)"
+    },
+    {
+     "say": "11. / I write the cover letter. / It argues with me.",
+     "see": "Screen: a draft with comments"
+    },
+    {
+     "say": "2 p.m. / Lunch. / Inbox still quiet.",
+     "see": "Empty inbox, fork in a bowl",
+     "how": "(down)"
+    },
+    {
+     "say": "6. / I film this.",
+     "see": "Phone propped on books (behind the scenes)"
+    },
+    {
+     "say": "Who's your coworker? // Human or AI?",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Question: who's your coworker?",
+   "notes": "Film the clips across one day. The agent is real (brand-profile); show its real output with companies blurred.",
+   "broll": [
+    "Coffee",
+    "Laptop opening",
+    "Inbox",
+    "Lunch",
+    "Phone on a stack of books"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "CONTRACT",
+   "keyword": "CONTRACT",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "35 to 45 s",
+   "title_card": "THIS CLAUSE COSTS YOU MONEY",
+   "hook": "This clause lets a brand / use your face *forever*.",
+   "hook_alts": [
+    "Read this before you sign / your next brand deal.",
+    "Creators sign this every day. // It's a trap."
+   ],
+   "lines": [
+    {
+     "say": "This clause lets a brand / use your face *forever*.",
+     "see": "A contract page, 'in perpetuity, in all media' highlighted",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "After 850 plus creator deals / on the brand side, / these are the lines I'd check first.",
+     "see": "850+ badge"
+    },
+    {
+     "say": "One. / Usage rights. / *Forever* is a red flag. / Ask for a time limit, / and price paid ads separately.",
+     "see": "Numeral 1, the clause rewritten with a time limit",
+     "how": "[count]"
+    },
+    {
+     "say": "Two. / Exclusivity. / Name the competitors / and the dates.",
+     "see": "Numeral 2",
+     "how": "[count]"
+    },
+    {
+     "say": "Three. / Payment in 90 days. / Ask for 30.",
+     "see": "Numeral 3, 90 crossed out, 30",
+     "how": "[count]"
+    },
+    {
+     "say": "There are seven. // Comment *CONTRACT* / and I'll send you all of them, / with the prompt that checks yours.",
+     "see": "Comment bubble: CONTRACT",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Comment CONTRACT (live guide)",
+   "notes": "Facts from the CONTRACT guide on buildwithvvish.com. Not legal advice: say it in the caption.",
+   "broll": [
+    "Signing a paper",
+    "Scrolling a contract on the iPad",
+    "Highlighter on paper"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "RATEDM",
+   "keyword": "RATE",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "30 to 35 s",
+   "title_card": "DON'T SAY YOUR PRICE FIRST",
+   "hook": "Never put your price / in the *first* DM to a brand.",
+   "hook_alts": [
+    "Your rate card is costing you money.",
+    "The first number in a brand deal / decides everything."
+   ],
+   "lines": [
+    {
+     "say": "Never put your price / in the *first* DM to a brand.",
+     "see": "A DM with a price, crossed out",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "On the brand side, / the first number / sets the whole conversation.",
+     "see": "A slider snapping to the first number"
+    },
+    {
+     "say": "So ask first. / What are the deliverables? / Where will it run? / For how long?",
+     "see": "Three questions typing in, one by one",
+     "how": "[count]"
+    },
+    {
+     "say": "*Then* quote. / Organic posting is one price. / Paid usage is another.",
+     "see": "Two price tags: ORGANIC, PAID USAGE"
+    },
+    {
+     "say": "Want the math brands use / to decide what you're worth? // Comment *RATE*.",
+     "see": "Comment bubble: RATE",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Comment RATE (live guide: campaign math + calculator)",
+   "notes": "Opinion from brand-side experience; no invented numbers.",
+   "broll": [
+    "Typing a DM",
+    "Calculator on phone"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "DROPPED",
+   "keyword": null,
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "30 s",
+   "title_card": "HOW CREATORS GET DROPPED",
+   "hook": "Three things / that get creators *dropped* / from a brand's list.",
+   "hook_alts": [
+    "Brands won't tell you why they stopped calling. // I will.",
+    "You lost the deal / after you posted. // Here's why."
+   ],
+   "lines": [
+    {
+     "say": "Three things / that get creators *dropped* / from a brand's list.",
+     "see": "A creator list, one name being struck out",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "One. / Missing the posting window. / The launch doesn't wait for you.",
+     "see": "Calendar, a red missed date",
+     "how": "[count]"
+    },
+    {
+     "say": "Two. / No ad label. / That's a risk for both of you.",
+     "see": "A post with the label missing, then added",
+     "how": "[count]"
+    },
+    {
+     "say": "Three. / Deleting the post early. / Brands notice.",
+     "see": "A post vanishing from a grid",
+     "how": "[count]"
+    },
+    {
+     "say": "Which one have you seen? // Tell me.",
+     "see": "Comment bubble",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Question: which one have you seen?",
+   "notes": "Brand-side opinion; don't tell specific stories or name creators or brands.",
+   "broll": [
+    "Calendar on the iPad",
+    "Scrolling a grid"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "EXPOSURE",
+   "keyword": null,
+   "series": "Brand-Side (hot take)",
+   "format": "Talking head, close, then A split",
+   "length": "25 to 30 s",
+   "title_card": "HOT TAKE",
+   "hook": "Brands, / stop paying creators / in *exposure*.",
+   "hook_alts": [
+    "'We'll give you exposure.' // No.",
+    "Exposure doesn't pay rent. // From the brand side."
+   ],
+   "lines": [
+    {
+     "say": "Brands, / stop paying creators / in *exposure*.",
+     "see": "HOT TAKE stamp",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "I've been on the brand side / of 850 plus deals.",
+     "see": "850+ badge"
+    },
+    {
+     "say": "When you don't pay, / you get the work / of someone who can't say no.",
+     "see": "A cheap-looking post vs a polished one"
+    },
+    {
+     "say": "When you pay, / you get a *partner*. / Deadlines, / ideas, / care.",
+     "see": "Three ticks",
+     "how": "[count]"
+    },
+    {
+     "say": "Agree, / or am I wrong? // Comments.",
+     "see": "AGREE / DISAGREE buttons",
+     "how": "[lens] [smile]"
+    }
+   ],
+   "cta": "Question: agree or disagree?",
+   "notes": "Opinion. Strong LinkedIn text post too.",
+   "broll": [
+    "Coins or a card payment on the phone"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "DYING",
+   "keyword": "CREATOR",
+   "series": "Brand-Side",
+   "format": "A split",
+   "length": "35 to 40 s",
+   "title_card": "IS INFLUENCER MARKETING DEAD?",
+   "hook": "Influencer marketing isn't dying. // *Bad* influencer marketing is.",
+   "hook_alts": [
+    "Everyone says influencer marketing is over. // From the brand side: no.",
+    "Influencer marketing is dead? // Only the lazy kind."
+   ],
+   "lines": [
+    {
+     "say": "Influencer marketing isn't dying. // *Bad* influencer marketing is.",
+     "see": "A gravestone that says INFLUENCER MARKETING cracks; 'BAD' slides in front",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Bad looks like this. / Picking creators by follower count.",
+     "see": "A follower number with a red X",
+     "how": "[count]"
+    },
+    {
+     "say": "One post, / then nothing.",
+     "see": "A single post in an empty calendar",
+     "how": "[count]"
+    },
+    {
+     "say": "And no plan / for the content after it goes live.",
+     "see": "A post fading out",
+     "how": "[count]"
+    },
+    {
+     "say": "Good looks like the opposite. / Fit first, / a series, / and the content reused in ads.",
+     "see": "Three green cards"
+    },
+    {
+     "say": "I run mine from one Claude project. // Comment *CREATOR* / and I'll send you the setup.",
+     "see": "Comment bubble: CREATOR",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Comment CREATOR (live guide: campaign HQ in Claude)",
+   "notes": "Opinion; no market statistics unless sourced within 14 days.",
+   "broll": [
+    "Scrolling creators on a phone",
+    "A Claude project on the laptop"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "ROAST",
+   "keyword": "ROAST",
+   "series": "New Drop / Ship Log",
+   "format": "B demo",
+   "length": "35 to 40 s",
+   "title_card": "CLAUDE ROASTED MY INSTAGRAM",
+   "hook": "I asked Claude / to roast my Instagram. // It did *not* hold back.",
+   "hook_alts": [
+    "Claude looked at my profile / and chose violence.",
+    "My Instagram, / reviewed by an AI with no filter."
+   ],
+   "lines": [
+    {
+     "say": "I asked Claude / to roast my Instagram. // It did *not* hold back.",
+     "see": "Screen: your profile, then Claude's answer appearing",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "[READ ITS SHARPEST LINE, word for word]",
+     "see": "Screen: that line highlighted",
+     "how": "[smile]"
+    },
+    {
+     "say": "Okay. / Fair.",
+     "see": "Punch-in, you wincing",
+     "how": "(down)"
+    },
+    {
+     "say": "[READ THE SECOND LINE]",
+     "see": "Screen: second line highlighted"
+    },
+    {
+     "say": "But then it told me / what to *fix*. / [READ ITS FIRST FIX]",
+     "see": "Screen: the fixes list",
+     "how": "[point]"
+    },
+    {
+     "say": "Want the prompt? / It's harsh. // Comment *ROAST*.",
+     "see": "Comment bubble: ROAST",
+     "how": "[lens]"
+    }
+   ],
+   "cta": "Comment ROAST (new guide to build before posting: the roast prompt + how to read it)",
+   "notes": "Run the prompt for real on the day and read its real words; don't script its answers. Needs a guide URL in lib/ig-autodm/config.json before posting.",
+   "broll": [
+    "Screen recording of the prompt and the answer",
+    "Your reaction"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "TWOEDITS",
+   "keyword": null,
+   "series": "Ship Log",
+   "format": "Two edits of the same clips, back to back",
+   "length": "30 to 40 s",
+   "title_card": "ME vs AI",
+   "hook": "Same clips. / One edit by me, / one by AI. // Which is which?",
+   "hook_alts": [
+    "I edited this. // Then AI edited it. // Pick one.",
+    "Can you tell which edit is AI?"
+   ],
+   "lines": [
+    {
+     "say": "Same clips. / One edit by me, / one by AI. // Which is which?",
+     "see": "Split screen: A and B playing",
+     "how": "(up) [lens]"
+    },
+    {
+     "say": "Edit A.",
+     "see": "Edit A plays, 10 s"
+    },
+    {
+     "say": "Edit B.",
+     "see": "Edit B plays, 10 s"
+    },
+    {
+     "say": "Comment *A* or *B*. // I'll tell you on Friday.",
+     "see": "Two buttons: A / B",
+     "how": "[lens] [smile]"
+    }
+   ],
+   "cta": "Question: A or B?",
+   "notes": "Needs one 10 s edit made by you in any app from the same clips; the AI edit comes from the pipeline. Reply with the answer in a pinned comment on the day you promise.",
+   "broll": [
+    "The clip set: 6 to 8 short shots of one simple activity (making coffee, walking to the station)"
+   ],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  },
+  {
+   "key": "HONEST",
+   "keyword": null,
+   "series": "Week N of 52 (raw talk)",
+   "format": "Raw, one take, no graphics except captions",
+   "length": "25 to 30 s",
+   "title_card": "NOBODY'S WATCHING",
+   "hook": "Nobody's watching this. // *Good.*",
+   "hook_alts": [
+    "I posted for nobody this week.",
+    "If you're waiting to be ready, / I waited for years."
+   ],
+   "lines": [
+    {
+     "say": "Nobody's watching this. // *Good.*",
+     "see": "One take, close, soft light",
+     "how": "(down) [lens]"
+    },
+    {
+     "say": "I wanted to make content / for *years*. // I kept stopping.",
+     "see": "Captions only"
+    },
+    {
+     "say": "I overthought it. / I doubted it. / I waited to be ready.",
+     "see": "Captions only",
+     "how": "[count]"
+    },
+    {
+     "say": "Ready never came. // So I'm doing it / in front of whoever's here.",
+     "see": "Captions only"
+    },
+    {
+     "say": "If you're the one person watching, / hi. // What are *you* waiting to start?",
+     "see": "Captions only",
+     "how": "[smile] [lens]"
+    }
+   ],
+   "cta": "Question: what are you waiting to start?",
+   "notes": "Facts from brand-profile (wanted to start for years, kept stopping). Raw on purpose: the contrast with the edited reels is the point.",
+   "broll": [],
+   "week": "Shoot day 1",
+   "post": "Next 3 weeks"
+  }
+ ]
+}
