@@ -35,8 +35,8 @@ export const Flap: React.FC<{from: string; to?: string; flip?: number; tone?: st
   return (
     <group>
       <mesh position={[0, -0.002, -0.004]}><boxGeometry args={[TW + 0.02, TH + 0.02, 0.006]} /><meshStandardMaterial color="#08090c" roughness={0.6} /></mesh>
-      {/* behind the falling flap: the new top, the old bottom (until the flap lands on it) */}
-      <mesh position={[0, GAP / 2 + hh / 2, 0]} material={m.newTop}><planeGeometry args={[TW, hh]} /></mesh>
+      {/* behind the falling flap: the new top, the old bottom (until the flap lands on it); at rest, the old letter whole */}
+      <mesh position={[0, GAP / 2 + hh / 2, 0]} material={flip > 0 ? m.newTop : m.oldTop}><planeGeometry args={[TW, hh]} /></mesh>
       <mesh position={[0, -GAP / 2 - hh / 2, 0]} material={a < Math.PI / 2 ? m.oldBottom : m.newBottom}><planeGeometry args={[TW, hh]} /></mesh>
       {/* the falling flap, hinged on the split */}
       {flip > 0 && flip < 1 ? (

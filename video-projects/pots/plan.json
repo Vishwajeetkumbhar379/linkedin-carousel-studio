@@ -1,14 +1,217 @@
-{"hook": "The planners <i>lost.</i>", "mood": "cinematic, reflective, slow build to hopeful, piano and soft strings with a light beat",
- "sources": [[0.0, 36.3, "Story: Art &amp; Fear, Bayles &amp; Orland, 1993"], [47.2, 53.7, "Seneca, Letters to Lucilius, 1"]],
- "lines": [
-  [["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 1.0, "arch"], ["video-projects/week-02-talks/broll/class_1949.mp4", 1.0, "arch"]],
-  [["video-projects/week-02-talks/broll/class_1956.mp4", 2.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 4.0, "arch"], ["video-projects/week-02-talks/broll/class_1949.mp4", 5.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 7.0, "arch"], ["video-projects/week-02-talks/broll/class_1956.mp4", 9.0, "arch"]],
-  [["video-projects/week-02-talks/broll/class_1956.mp4", 13.0, "arch"], ["video-projects/week-02-talks/broll/marble_1921.mp4", 0.5, "arch"], ["video-projects/week-02-talks/broll/class_1956.mp4", 17.0, "arch"]],
-  [["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 10.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 13.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 16.0, "arch"]],
-  [["video-projects/week-02-talks/broll/class_1949.mp4", 8.0, "arch"]],
-  [["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 19.0, "arch"], ["video-projects/week-02-talks/broll/class_drawing.mp4", 0.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 21.5, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 0.2, "arch"]],
-  [["video-projects/week-01-intro/raw/travel/cafes/IMG_0516.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/cafes/IMG_3995.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/cafes/IMG_7358.MOV", 1.0, "film"]],
-  [["video-projects/week-01-intro/raw/travel/planes/IMG_6250.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/ocean/IMG_4594.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/mountains/IMG_2099.MOV", 1.0, "film"]],
-  [["video-projects/week-02-talks/broll/statue_1940.mp4", 0.2, "arch"], ["video-projects/week-02-talks/broll/marble_1921.mp4", 2.5, "arch"], ["video-projects/week-02-talks/broll/statue_1940.mp4", 1.5, "arch"]],
-  [["video-projects/week-01-intro/raw/travel/bike/IMG_1754.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/yoga/IMG_2362.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/ocean/IMG_5708.MOV", 3.0, "film"]]
- ]}
+{
+ "hook": "The planners <i>lost.</i>",
+ "mood": "cinematic, reflective, slow build to hopeful, piano and soft strings with a light beat",
+ "sources": [
+  [
+   0.0,
+   36.3,
+   "Story: Art &amp; Fear, Bayles &amp; Orland, 1993"
+  ],
+  [
+   47.2,
+   53.7,
+   "Seneca, Letters to Lucilius, 1"
+  ]
+ ],
+ "shots": [
+  [
+   0.0,
+   "video-projects/week-02-talks/broll/pot_wheel_1923.mp4",
+   1.0,
+   "arch"
+  ],
+  [
+   1.4,
+   "video-projects/week-02-talks/broll/class_1949.mp4",
+   1.0,
+   "arch"
+  ],
+  [
+   3.2,
+   "video-projects/week-02-talks/broll/class_1956.mp4",
+   2.0,
+   "arch"
+  ],
+  [
+   4.7,
+   "video-projects/week-02-talks/broll/kid_paint.mp4",
+   0.5,
+   "arch"
+  ],
+  [
+   6.9,
+   "video-projects/week-02-talks/broll/vase_paint.mp4",
+   8.5,
+   "arch"
+  ],
+  [
+   8.3,
+   "video-projects/week-02-talks/broll/class_1956.mp4",
+   9.0,
+   "arch"
+  ],
+  [
+   9.8,
+   "video-projects/week-02-talks/broll/pots_shelf_man.mp4",
+   1.0,
+   "arch"
+  ],
+  [
+   11.0,
+   "video-projects/week-02-talks/broll/pots_row.mp4",
+   0.3,
+   "arch"
+  ],
+  [
+   12.2,
+   "video-projects/week-02-talks/broll/pots_shelves.mp4",
+   2.0,
+   "arch"
+  ],
+  [
+   14.1,
+   "video-projects/week-02-talks/broll/class_1956.mp4",
+   18.0,
+   "arch"
+  ],
+  [
+   16.4,
+   "video-projects/week-02-talks/broll/marble_1921.mp4",
+   0.5,
+   "arch"
+  ],
+  [
+   17.8,
+   "video-projects/week-02-talks/broll/class_1949.mp4",
+   7.0,
+   "arch"
+  ],
+  [
+   19.4,
+   "video-projects/week-02-talks/broll/pot_wheel_1923.mp4",
+   10.0,
+   "arch"
+  ],
+  [
+   21.5,
+   "video-projects/week-02-talks/broll/clay_hands.mp4",
+   0.8,
+   "arch"
+  ],
+  [
+   22.4,
+   "video-projects/week-02-talks/broll/pot_wheel_1923.mp4",
+   16.0,
+   "arch"
+  ],
+  [
+   25.5,
+   "video-projects/week-02-talks/broll/kid_paint.mp4",
+   4.0,
+   "arch"
+  ],
+  [
+   28.3,
+   "video-projects/week-02-talks/broll/pots_shelves.mp4",
+   7.0,
+   "arch"
+  ],
+  [
+   29.7,
+   "video-projects/week-02-talks/broll/pots_shelf_man.mp4",
+   6.0,
+   "arch"
+  ],
+  [
+   31.2,
+   "video-projects/week-02-talks/broll/pot_wheel_1923.mp4",
+   19.0,
+   "arch"
+  ],
+  [
+   33.3,
+   "video-projects/week-02-talks/broll/clay_lump.mp4",
+   0.0,
+   "arch"
+  ],
+  [
+   34.9,
+   "video-projects/week-02-talks/broll/pot_wheel_1923.mp4",
+   22.5,
+   "arch"
+  ],
+  [
+   36.3,
+   "video-projects/week-01-intro/raw/travel/cafes/IMG_0516.MOV",
+   1.0,
+   "film"
+  ],
+  [
+   37.7,
+   "video-projects/week-01-intro/raw/travel/cafes/IMG_3995.MOV",
+   1.0,
+   "film"
+  ],
+  [
+   39.9,
+   "video-projects/week-01-intro/raw/travel/cafes/IMG_7358.MOV",
+   1.0,
+   "film"
+  ],
+  [
+   41.6,
+   "video-projects/week-01-intro/raw/travel/planes/IMG_6250.MOV",
+   1.0,
+   "film"
+  ],
+  [
+   43.6,
+   "video-projects/week-01-intro/raw/travel/ocean/IMG_4594.MOV",
+   1.0,
+   "film"
+  ],
+  [
+   45.1,
+   "video-projects/week-01-intro/raw/travel/mountains/IMG_2099.MOV",
+   1.0,
+   "film"
+  ],
+  [
+   47.2,
+   "video-projects/week-02-talks/broll/statue_1940.mp4",
+   0.2,
+   "arch"
+  ],
+  [
+   48.5,
+   "video-projects/week-02-talks/broll/marble_1921.mp4",
+   2.5,
+   "arch"
+  ],
+  [
+   49.9,
+   "video-projects/week-02-talks/broll/statue_1940.mp4",
+   1.5,
+   "arch"
+  ],
+  [
+   51.8,
+   "video-projects/week-01-intro/raw/travel/bike/IMG_1754.MOV",
+   1.0,
+   "film"
+  ],
+  [
+   53.7,
+   "video-projects/week-01-intro/raw/travel/ocean/IMG_5708.MOV",
+   3.0,
+   "film"
+  ],
+  [
+   55.5,
+   "video-projects/week-01-intro/raw/travel/yoga/IMG_2362.MOV",
+   1.0,
+   "film"
+  ]
+ ],
+ "key": "^(lost|perfect|weight|fifty|quantity|ugly|best|planner|planning|postponing|today)"
+}

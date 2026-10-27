@@ -112,12 +112,15 @@ def tighten(words, a, b, gap=0.22):
     return pieces, new
 
 
-def chunks(words):
+def chunks(words, key=KEY):
     out, cur = [], []
     for k, w in enumerate(words):
         cur.append(w)
-        if w["w"][-1:] in ".,?!:" or len(cur) == 3 or k == len(words) - 1:
-            html = " ".join(f"<b>{x['w'].strip('.,?!:')}</b>" if KEY.match(x["w"]) else x["w"].strip(".,?!:") for x in cur)
+        nxt = words[k + 1]["w"] if k + 1 < len(words) else ""
+        # at three words, wait for a one-word sentence end ("got an A.") rather than leave it alone on screen
+        full = len(cur) == 3 and not (nxt[-1:] in ".?!" and w["w"][-1:] not in ".,?!:")
+        if w["w"][-1:] in ".,?!:" or full or len(cur) == 4 or k == len(words) - 1:
+            html = " ".join(f"<b>{x['w'].strip('.,?!:')}</b>" if key.match(x["w"]) else x["w"].strip(".,?!:") for x in cur)
             out.append({"t0": cur[0]["s"], "t1": cur[-1]["e"] + 0.15, "html": html})
             cur = []
     for a, b in zip(out, out[1:]):

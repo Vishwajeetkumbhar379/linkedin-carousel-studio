@@ -3,7 +3,7 @@
 // on camera they sit above his head; over the 3D world they sit at 55% (inside Instagram's safe box).
 import React from 'react';
 import {useCurrentFrame} from 'remotion';
-import {WORDS, chunk} from './lib';
+import {WORDS, chunk, cue} from './lib';
 import {Caption} from './styleframes/caption';
 import LINES from '../vo/lines.json';
 
@@ -27,11 +27,14 @@ const clean = (w: string) => w.replace(/^-/, '').replace(/[,.]$/, '');
 // while he is on camera (line 1 before the freeze, "Hi, I'm Vish") captions go above his head
 const ON_CAM: [number, number][] = [[0, WORDS.find((w) => w.w === '39')!.s - 0.06], [LINES[9].parts[1].at, LINES[10].start]];
 
+// while act 7 pushes into the film's own "39 clips" caption at frame centre, ours drops below it
+const LOW: [number, number][] = [[cue('Every caption') - 0.1, cue('photographed') - 0.1]];
+
 export const Captions: React.FC = () => {
   const t = useCurrentFrame() / 30;
   const i = CHUNKS.findIndex((c) => t >= c.s && t < c.e);
   if (i < 0) return null;
   const [, pill, color] = UNITS[i];
-  const top = ON_CAM.some(([a, b]) => t >= a && t < b) ? 300 : 1060;
+  const top = ON_CAM.some(([a, b]) => t >= a && t < b) ? 300 : LOW.some(([a, b]) => t >= a && t < b) ? 1300 : 1060;
   return <Caption words={CHUNKS[i].words.map((w) => clean(w.w))} pill={pill} top={top} pillColor={color} />;
 };

@@ -249,6 +249,12 @@ Research → topic validation → hook → script → storyboard → edit → ca
   - **Warm paper (learn):** the carousels, and the motion reels made from them with `scripts/carousel_reel.py`.
   - **Navy framed print (story):** the cover of every talking reel, from `scripts/print_cover.py`.
 
+- **Clone narration and generated music (Vish, 27 Oct, pottery reel: "robotic, no emotion, random pauses everywhere, the music is shit"):**
+  - Never ship a story reel narrated by the clone read line by line with break tags. It comes out flat and word by word.
+  - Story and opinion reels use his real voice: a voice note read in one take, cut with `scripts/voicenote_reel.py`.
+  - If the clone is ever used again, send a 10 second sample first and build nothing until he approves it.
+  - No ElevenLabs Music beds on story reels. Deliver the voice mix clean; he adds trending audio in the Instagram app.
+
 - **The mascot (Vish, 27 Oct: "that doesn't look like me"):** any animated Vish uses the real PNGs in `brand/avatar/pack` (read `Vish_Mascot_Claude_Guide.md`). Never a drawn or generated face.
 
 ## 12. Research sources and how reliable they are

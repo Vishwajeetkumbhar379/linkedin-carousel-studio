@@ -19,10 +19,14 @@ export const A07: React.FC<{t: number; fr: number}> = ({t, fr}) => {
   const chrome = sm(page - 0.3, page + 0.2, t); // the browser appears around the caption
   const shots = Math.floor(30 * sm(photo, sec + 0.4, t)); // shutter clicks: how many photographs exist
   const flash = shots > 0 && shots < 30 ? 1 - ((30 * sm(photo, sec + 0.4, t)) % 1) : 0;
-  const close: Shot = {cam: AT.clone().add(v3(0.05, 0.12, 1.25)), look: AT.clone().add(v3(0, 0.1, 0))};
+  // close enough that the caption fills the frame without spilling off it, then back until the whole
+  // page and its browser bar are in frame as the voice says "web page", then wide for the stack
+  const close: Shot = {cam: AT.clone().add(v3(0.03, 0.06, 1.9)), look: AT.clone().add(v3(0, 0.03, 0))};
+  const page2: Shot = {cam: AT.clone().add(v3(0, 0.02, 2.8)), look: AT.clone()};
   const wide: Shot = {cam: AT.clone().add(v3(-1.7, -0.1, 3.1)), look: AT.clone().add(v3(0.55, -0.5, -1.2))};
-  const k = sm(photo - 0.2, sec, t);
-  const shot: Shot = {cam: mixV(close.cam, wide.cam, k), look: mixV(close.look, wide.look, k)};
+  const back = sm(t0 + 0.3, page + 0.4, t), k = sm(photo - 0.2, sec, t);
+  const mid = {cam: mixV(close.cam, page2.cam, back), look: mixV(close.look, page2.look, back)};
+  const shot: Shot = {cam: mixV(mid.cam, wide.cam, k), look: mixV(mid.look, wide.look, k)};
   const face = faceOf(shot);
   return (
     <Stage fr={fr} shot={shot}>
