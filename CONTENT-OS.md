@@ -67,7 +67,12 @@ This file overrides every earlier plan where they differ. Change it only when Vi
   - **Model:** @yourtrainerarc (De-YnCbAq3g: 1.3M views and 11K followers in a week).
   - **The character is Vish's own mascot pack** (`brand/avatar/pack`, served at `/mascot`): the real 3D PNGs (9 expressions, 8 gestures, 8 angles, wave keyframes), animated in code by swapping poses, bouncing and sliding.
   - **Never redraw his face** with SVG, CSS or simple shapes (the pack guide, and Vish on 27 Oct).
-  - **The 2D version (pending Vish's yes, 27 Oct):** every pack PNG redrawn as a flat 2D drawing with FLUX Kontext, free on Hugging Face. Locked prompt in `scripts/char2d.py`, seed 7. Plus mouth, blink and gesture variants, animated in code. A hand-drawn SVG Vish scored 5/10 and was dropped.
+  - **Avatar route (28 Oct), a hybrid:**
+    1. The free AI drawing tool makes the likeness once, from 3 to 5 selfies Vish likes, with the nose rule in every prompt.
+    2. The drawing is traced into vector layers (head, hair, eyes, brows, mouth shapes, arms).
+    3. Code animates those layers: expressions, blinks, lip-sync, gestures, camera.
+    - Pure hand-coded SVG (`templates/video/char/vish2d.js`) only reached 5.5 out of 10 on likeness, so it's kept as the rig skeleton only.
+  - **Earlier attempt (27 Oct, superseded):** every pack PNG redrawn as a flat 2D drawing with FLUX Kontext, free on Hugging Face. Locked prompt in `scripts/char2d.py`, seed 7. Plus mouth, blink and gesture variants, animated in code. A hand-drawn SVG Vish scored 5/10 and was dropped.
   - **Short loop reels (from 28 Oct):** 3 a week, 6 to 12 s. One striking clip of Vish, one line of text, a trending song added in the app. They're cheap reach tests made from footage we already have.
   - **Every episode has:**
     - A series bible.
