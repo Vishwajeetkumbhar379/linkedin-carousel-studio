@@ -120,6 +120,19 @@ On top of the Triple Hook, every hook must also be:
   - Brand sponsorships from AI tools.
   - Travel and yoga brand work. He has taught yoga, and Sri Lanka in December is a showcase for both.
 
+## Distribution (locked 27 Oct, from @createcontent.club De_8BDNAWl_)
+- **One approved batch goes everywhere, through one scheduler.** Vish connects his accounts once. Best free option to verify: Metricool. LinkedIn can also go through Typefully.
+- **Instagram:**
+  - The normal reel, plus the same topic as a Trial Reel with a different hook (a real second cut, to reach non-followers).
+  - The flip-and-speed-up trick to dodge duplicate detection is not used. It breaks the originality rules and risks the account.
+- **TikTok, YouTube Shorts and Facebook Reels:** every reel.
+- **LinkedIn:**
+  - Videos that fit the professional angle.
+  - Document carousels.
+  - Text posts.
+  - One-image provocative posts (e.g. "Claude could get you in trouble") with the full story in the caption.
+- **Every video ships as 9:16 and 4:5 from the same layers,** plus 1 to 2 still posts and a caption per platform.
+
 ## Decision log (add one line per change Vish asks for; newest last)
 - **27 Oct:**
   - No topic repeats on Instagram.
@@ -135,3 +148,4 @@ On top of the Triple Hook, every hook must also be:
   - The vote.
   - Motion-graphics stories.
   - The 6-still gate per new format.
+  - Distribution everywhere through one scheduler, with no flip trick.
