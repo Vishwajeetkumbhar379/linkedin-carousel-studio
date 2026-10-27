@@ -78,7 +78,8 @@ MONT = round(len(SHOP) * BEAT * FPS) / FPS
 # In order. A take: (id, clip, runs of (from, to) word-start times kept, caption fixes, layout, look, flags).
 # A clone line: (id, None, vo file in week-02-talks/vo). Layout "hide" = no picture of him (a full-screen graphic).
 SEQ = [
-    ("h1", "IMG_1619", [(0.9, 4.8)], {"no": "no."}, "hide", "night", {"gap": 0.3}),  # the faceless hook
+    ("h1", "IMG_1619", [(0.9, 3.3)], {"no": "no."}, "hide", "night", {"gap": 0.45, "mute": 1}),  # the faceless hook; a beat on "no."
+    ("h1b", "IMG_1619", [(3.3, 4.8)], {"so": "So"}, "hide", "night", {"gap": 0.3}),
     ("c0", "IMG_8731", [(2.1, 2.6)], {"Hi": "Hi!"}, "full", "day", {"gap": 0.75, "mute": 1, "pre": 0.45}),  # walks in + the freeze
     ("c1", "IMG_8731", [(2.7, 7.6)], {"before": "Before", "haircut": "haircut."}, "full", "day", {"gap": MONT, "mute": 1}),
     ("r1", "IMG_1619", [(5.4, 9.6)], {}, "split", "night", {"gap": 0.1}),
@@ -199,7 +200,7 @@ def plan(tl: dict) -> dict:
     # ---- HOOK, no face: the words land on his voice; his real rejection emails flash behind
     geoms.append([0, "none", 0.0])
     bgs.append([0, L["c0"]["t0"], "black"])
-    ws = [w for w in tl["words"] if w["line"] == "h1"]
+    ws = [w for w in tl["words"] if w["line"] in ("h1", "h1b")]
     wt = lambda s: next(w for w in ws if w["x"].lower().startswith(s.lower()))  # noqa: E731
     cues.append({"type": "hook", "t0": 0.0, "t1": L["c0"]["t0"] + 0.02, "z": 45,
                  "n220": [wt("220")["t0"], wt("220")["t1"]], "companies": wt("companies")["t0"], "said": wt("said")["t0"], "no": wt("no")["t0"],
