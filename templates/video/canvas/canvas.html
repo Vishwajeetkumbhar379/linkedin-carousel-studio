@@ -26,7 +26,7 @@ background-image:linear-gradient(rgba(21,19,15,.06) 1px,transparent 1px),linear-
 .ck.on{background:var(--ink);border-color:var(--ink)}
 .quote{font:400 150px/1.02 IS;text-align:center;width:max-content;max-width:1000px}
 .quote i{color:var(--red)}
-.tag{display:inline-block;background:var(--card);border-radius:999px;padding:14px 28px;margin:10px;font:700 38px IT;box-shadow:0 12px 24px rgba(21,19,15,.12)}
+.tag{display:inline-block;background:var(--card);border-radius:999px;padding:16px 32px;margin:12px;font:700 52px IT;box-shadow:0 12px 24px rgba(21,19,15,.12)}
 #hook{position:absolute;left:60px;right:60px;top:210px;text-align:center;font:400 104px/1.02 IS;color:var(--ink)}
 #hook i{color:var(--red)}
 #cap{position:absolute;left:0;right:0;top:1470px;text-align:center}
@@ -62,10 +62,9 @@ D.els.forEach((e, i) => {
   if (e.type === "stamp" || e.type === "chip") {
     e.parent = [...D.els.slice(0, i)].reverse().find((q) => q.type !== "stamp" && q.type !== "chip");
   } else if (e.beside && B.length) {
+    // "beside" now stacks under the previous card in the same shot: side by side halved the zoom on a phone
     const blk = B[B.length - 1], p = blk.items[blk.items.length - 1];
-    e.x = p.x + p.w0 + 44; e.y = p.y; blk.items.push(e);
-    const tot = blk.items.reduce((a, q) => a + q.w0, 0) + 44 * (blk.items.length - 1); let x = blk.cx - tot / 2;
-    blk.items.forEach((q) => { q.x = x; x += q.w0 + 44; });
+    e.x = blk.cx - w / 2; e.y = p.y + p.h0 + 44; blk.items.push(e);
     y = Math.max(y, e.y + h + 420);
   } else { const cx = side++ % 2 ? 1560 : 600; e.x = cx - w / 2; e.y = y; y += h + 420; B.push({at: e.at, items: [e], reveal: e.reveal, cx}); }
 });
