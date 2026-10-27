@@ -1682,6 +1682,88 @@
    "model": ""
   },
   {
+   "week": "Session 1",
+   "key": "INTRO-OFFICIAL",
+   "keyword": "question in the comments",
+   "series": "Intro (pinned post)",
+   "format": "Showreel: a new shot every 0.7 s, one big word over each shot (model: @kalok.ho Dce4odUM9Jv, 54 shots in 60 s)",
+   "length": "40 to 50 s",
+   "title_card": "31. HI, I'M VISH",
+   "post": "",
+   "cta": "Follow + question",
+   "model": "",
+   "hook": "Hi, I'm Vish. // *Officially*, / I'm finishing a master's in Germany.",
+   "hook_alts": [
+    "Officially, a student. Unofficially, 220 rejections into building my own job.",
+    "Let me introduce myself properly."
+   ],
+   "lines": [
+    {
+     "say": "Hi, I'm Vish.",
+     "see": "Your name typed letter by letter (phone notes or a label maker), sticker 'HELLO my name is VISH' on your chest",
+     "how": "[smile] [lens]"
+    },
+    {
+     "say": "*Officially*, / I'm finishing a master's in Germany.",
+     "see": "Uni papers, laptop with thesis, a stamp",
+     "how": "deadpan"
+    },
+    {
+     "say": "*Unofficially*, / I'm 220 rejections into building my own job.",
+     "see": "Inbox flood, then you closing the laptop and grinning",
+     "how": "(up)"
+    },
+    {
+     "say": "I've signed 850 plus creator deals, / built an AI that edits my videos, / and once, / taught yoga.",
+     "see": "Three fast shots, one word each: SIGN (hand signing), BUILD (screen), TEACH (a yoga pose)",
+     "how": "[count], quick"
+    },
+    {
+     "say": "I'm 40,000 euros in debt, / which is a lot of euros / for someone with no job.",
+     "see": "Bank app (blurred), you shrugging",
+     "how": "[smile], dry"
+    },
+    {
+     "say": "In December, / I take my laptop to Sri Lanka / to find out if 'from anywhere' is real.",
+     "see": "Packing, passport, a map with a pin",
+     "how": "(up)"
+    },
+    {
+     "say": "So yeah. / That's me. // Week 2 of 52. / Stick around.",
+     "see": "You walking away from the camera, title card",
+     "how": "[lens], then turn and walk"
+    }
+   ],
+   "notes": "Pinned post for new visitors. The funny lines only work dry: say them flat, don't laugh at your own joke. Film 25 B-roll shots of 2 to 3 s each (list below); I cut a new shot every 0.7 s.",
+   "broll": [
+    "Typing VISH on the phone (close-up)",
+    "A 'HELLO my name is' sticker going on your chest",
+    "Hand signing a paper",
+    "Laptop screen with your video timeline",
+    "A yoga pose (one, any)",
+    "Bank app on the phone (blurred numbers)",
+    "Passport and boarding pass on the desk",
+    "Packing a backpack",
+    "Closing a laptop, looking up",
+    "Desk lamp switching on",
+    "Coffee being poured",
+    "Walking past the camera on the street",
+    "Your shoes walking",
+    "Window with rain or sun",
+    "Notebook page with '52 weeks' written",
+    "Phone notification pile (blurred)",
+    "Your hand turning the phone camera on",
+    "A clap (to start the shot)",
+    "Looking out of a train window",
+    "Cooking, one shot",
+    "Thumb scrolling job ads",
+    "A wall calendar with a circle on 6 Dec",
+    "A map on the laptop zooming to Sri Lanka",
+    "Tying shoes",
+    "You laughing off camera"
+   ]
+  },
+  {
    "week": "Backlog",
    "key": "RATE",
    "series": "Brand-Side",
