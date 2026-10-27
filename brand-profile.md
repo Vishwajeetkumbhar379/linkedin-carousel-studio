@@ -48,3 +48,22 @@ AI voices, AI avatars, generated faces, stock footage that doesn't match the lin
   - Before Germany he was an influencer marketing manager at a big brand or agency, on a good salary. He quit it for the master's.
   - The 220 applications went to mixed roles (marketing, working-student jobs, internships). Most answers were automated rejections.
   - Never show his city: say "Germany".
+- **Added by Vish, 27 Oct 2026 (voice-note answers; his own words in quotes):**
+  - Remote before Germany: about 4 years working remotely in India while travelling. Paid in rupees, which wasn't enough; few roles allowed work from anywhere; some kept calling him back for meetings. Why euros: "earn in euros and then travel, so it's cheaper."
+  - Worst travel moment: booked his next flights, an important meeting came up, cancelled the next 2 flights, more client work followed, and he was stuck in India for 6 months in a 9 to 5. "For someone obsessed with travelling, that was hell."
+  - Why travel: "When I'm not travelling, my life feels on autopilot. When I'm travelling, I count every single day." Travel is "like a live Netflix", but you live the stories. Met an 80-year-old couple who gave him life advice (never link it to his own relationships); kids who were thrilled playing with rocks; people of many nationalities.
+  - Perfect ordinary Tuesday: up around 6, quick ocean swim, yoga, coffee, smoothie bowl, 3 hours of work, out to explore and shop, gym in the evening, friends, a little work before bed, plan tomorrow. Ideally Bali, with months in South Africa, South America and Spain.
+  - Hot take on nomads: Bali is saturated, "every next person is a coach". He doesn't want a career that is valid for one year: stable income plus freedom to experiment across genres. Bali's nature and people are lovely but it gets repetitive "if you are not smart". Doesn't want to be tied to one place.
+  - The master's is in international business consulting, heavy on finance and accounting, which he never studied before, so he had to work extra hard and travelled Europe less than he wanted.
+  - Sri Lanka for a month: excited to be back to backpacking life; expects coming back to feel hard.
+  - Advice for Indians moving abroad: "the country you choose is the most important thing." Germany suits people who want structure and a stable 9 to 5: nature, organised people, paid for every hour (overtime is paid), punctual, clean. But not lively, not built for remote workers, people can feel cold. India is warm and close-knit. His part-time colleagues are nice.
+  - Why Germany and a master's then: wanted out of the Indian work experience and felt that waiting longer would make it too late to restart. There is also a personal reason he is not comfortable sharing: never ask, never hint.
+  - Brand-side story: a brand made the team redo a creator shortlist 22 times, overnight, because it wanted creators with strong, original personal brands. Then it forced changes to every line of their videos. "They want originality but don't give the freedom to do so."
+  - AI and marketers: AI won't replace marketers; marketers who use AI will automate the heavy work. What's left is psychology, taste and creativity.
+  - Tools he uses daily: Claude Code, Claude, ChatGPT, ElevenLabs, Gemini.
+  - Yoga taught him self-awareness, self-control and staying calm in any situation.
+  - Hustle culture: "the biggest hustle is figuring out how not to hustle", using AI.
+  - First thing he'd do with EUR 3,000 a month: save, invest, book a flight.
+  - Pet peeve: copy-paste content on Instagram and LinkedIn, "I cannot even distinguish who is who."
+  - To his younger self on confidence: "the way you speak to yourself defines how confident you are." Confidence is a character you play: repeat it, act as one, and you become it.
+  - Still to answer: the belief he held at 22, people he admires.

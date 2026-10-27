@@ -61,3 +61,7 @@ video-projects/week-02-episode/work_notripod/
 video-projects/week-02-talks/broll/*.mp4
 video-projects/week-02-talks/vo/
 voice.old.wav
+
+# large third-party skills, fetched by scripts/install_plugins.sh
+.claude/skills/ppt-master/
+.claude/skills/archify/
