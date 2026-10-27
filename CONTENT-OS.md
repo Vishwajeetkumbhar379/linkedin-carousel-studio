@@ -195,6 +195,17 @@ Below 8, the file is fixed or dropped, never sent. Rejected on 28 Oct:
 - The 3 loop reels: no story, no payoff.
 - Story 01 v1: 4/10. Cards held 5 to 7 s, overlapping caption, numbers spelled out.
 
+## Brand focus and the voice-note engine (Vish, 28 Oct, "come up with new ideas")
+- **The show:** working remotely while travelling the world. The journey, plus teaching what he learns and what he already knows (AI, marketing, brand deals, travel, yoga, life abroad).
+- **The 52-week bet and the debt are back-story.** Mention them at most once every 2 weeks, never in back-to-back posts.
+- **Voice-note engine (`scripts/voicenote_reel.py`):**
+  1. Vish answers question prompts by voice note (in the chat, or in the Drive folder "VOICE NOTES (answers)").
+  2. The script cleans the voice, transcribes it, picks the best 25 to 55 s and a hook with the free LLM, and tightens the pauses.
+  3. It cuts his travel library every ~2 s with the film look, adds big captions with amber key words, and ducks the brand music under him.
+  4. It checks loudness and the transcript.
+  - Every answer becomes a reel, plus a LinkedIn post and a carousel where it fits.
+  - His real voice comes first. The clone is only for gaps.
+
 ## Distribution (locked 27 Oct, from @createcontent.club De_8BDNAWl_)
 - **One approved batch goes everywhere, through one scheduler.** Vish connects his accounts once. Best free option to verify: Metricool. LinkedIn can also go through Typefully.
 - **Instagram:**
@@ -255,3 +266,4 @@ Below 8, the file is fixed or dropped, never sent. Rejected on 28 Oct:
   - Own automation stack (auto-DM, guide publisher, post-everywhere), later sellable.
   - Psychology Breakdown series.
   - Nose rule for every avatar and cover (28 Oct).
+  - Remote work and travel as the show; debt as back-story; voice-note engine (28 Oct).
