@@ -267,3 +267,9 @@ Below 8, the file is fixed or dropped, never sent. Rejected on 28 Oct:
   - Psychology Breakdown series.
   - Nose rule for every avatar and cover (28 Oct).
   - Remote work and travel as the show; debt as back-story; voice-note engine (28 Oct).
+
+## Decision log, 28 Oct 2026: the formula Vish pointed at
+- References: @waitwhatdidyoudo De9bqWtoARc (new account, 600k views on video 1: a 3D low-poly micro-drama, a panicking builder and his AI, cuts every 2.6 s, a fresh free tool as the twist) and @guipaulinooo De5Ur0HNvIt (60 code-made reels in 2 weeks, 11k followers: one continuous canvas, the reel explains that Claude made it, comment keyword for the skills).
+- What we copy: faceless reels made in code, one idea each, 35 to 45 s, clone voice at about 200 wpm, a hook that starts mid-conflict, cards that land on the word, one comment keyword or one question.
+- Week 3 runs the 2D canvas style (`video-projects/style-test`). The 3D micro-drama (Vish and his AI as low-poly characters) is the next format once the canvas week ships.
+- Scripts are approved as text before anything is built.
