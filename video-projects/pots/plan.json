@@ -1,0 +1,14 @@
+{"hook": "The planners <i>lost.</i>", "mood": "cinematic, reflective, slow build to hopeful, piano and soft strings with a light beat",
+ "sources": [[0.0, 36.3, "Story: Art &amp; Fear, Bayles &amp; Orland, 1993"], [47.2, 53.7, "Seneca, Letters to Lucilius, 1"]],
+ "lines": [
+  [["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 1.0, "arch"], ["video-projects/week-02-talks/broll/class_1949.mp4", 1.0, "arch"]],
+  [["video-projects/week-02-talks/broll/class_1956.mp4", 2.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 4.0, "arch"], ["video-projects/week-02-talks/broll/class_1949.mp4", 5.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 7.0, "arch"], ["video-projects/week-02-talks/broll/class_1956.mp4", 9.0, "arch"]],
+  [["video-projects/week-02-talks/broll/class_1956.mp4", 13.0, "arch"], ["video-projects/week-02-talks/broll/marble_1921.mp4", 0.5, "arch"], ["video-projects/week-02-talks/broll/class_1956.mp4", 17.0, "arch"]],
+  [["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 10.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 13.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 16.0, "arch"]],
+  [["video-projects/week-02-talks/broll/class_1949.mp4", 8.0, "arch"]],
+  [["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 19.0, "arch"], ["video-projects/week-02-talks/broll/class_drawing.mp4", 0.0, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 21.5, "arch"], ["video-projects/week-02-talks/broll/pot_wheel_1923.mp4", 0.2, "arch"]],
+  [["video-projects/week-01-intro/raw/travel/cafes/IMG_0516.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/cafes/IMG_3995.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/cafes/IMG_7358.MOV", 1.0, "film"]],
+  [["video-projects/week-01-intro/raw/travel/planes/IMG_6250.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/ocean/IMG_4594.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/mountains/IMG_2099.MOV", 1.0, "film"]],
+  [["video-projects/week-02-talks/broll/statue_1940.mp4", 0.2, "arch"], ["video-projects/week-02-talks/broll/marble_1921.mp4", 2.5, "arch"], ["video-projects/week-02-talks/broll/statue_1940.mp4", 1.5, "arch"]],
+  [["video-projects/week-01-intro/raw/travel/bike/IMG_1754.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/yoga/IMG_2362.MOV", 1.0, "film"], ["video-projects/week-01-intro/raw/travel/ocean/IMG_5708.MOV", 3.0, "film"]]
+ ]}

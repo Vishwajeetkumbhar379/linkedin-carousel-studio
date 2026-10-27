@@ -1,62 +1,63 @@
-__pycache__/
-*.egg-info/
-.pytest_cache/
-.venv/
-.env
-node_modules/
-out/*/frames/
-*.big.png
-research/raw/
-brand/voice/
-out/batch-*/**/*.wav
-out/batch-*/*.wav
-revoice.log
-voice.old.wav
 
+# Local secrets written by `elevenlabs onboard`
+# Vish raw footage and renders stay out of git (Drive holds the originals)
+# motion reels and generated audio stay local (27 Oct): big files, delivered from the session
+# per-project media (music, SFX, private screenshots) stays local
 # voice-clone and reel working files (takes, QA stills, intermediate audio)
-.clone/
-.takes/
-out/flagship/*/frames/
-out/flagship/*/*.wav
-
 # voice25 working files (raw takes stay local; video.mp4 carries the voice)
-**/voice25-take.wav
 **/.v25/
 **/video-silent.mp4
-
-# Vish raw footage and renders stay out of git (Drive holds the originals)
-video-projects/**/raw*
-video-projects/**/*.mp4
-video-projects/**/*.mov
-video-projects/**/*.wav
-video-projects/**/work*/
-video-projects/**/out/
-video-projects/**/mascot/
-research/creators/teardown/**/*.jpg
-video-projects/**/broll/
-video-projects/**/music/
-research/creators/teardown/**/transcript.json
-# per-project media (music, SFX, private screenshots) stays local
-video-projects/**/assets/
-# Local secrets written by `elevenlabs onboard`
+**/voice25-take.wav
+*.big.png
+*.egg-info/
+.clone/
+.env
+.pytest_cache/
+.takes/
+.venv/
 /.env.local
-products/
-out/**/slides.zip
-video-projects/week-02-talks/vo/
-video-projects/week-02-episode/work/
-video-projects/week-02-episode/out/
-video-projects/week-02-episode/raw/
-video-projects/week-02-episode/assets/music/
-video-projects/week-02-episode/work_notripod/
-video-projects/week-02-episode/work_friction/
-
-# motion reels and generated audio stay local (27 Oct): big files, delivered from the session
-out/**/reel-9x16.mp4
-video-projects/assets-music/
-video-projects/sfx-library/*.mp3
-graphify-out/
+__pycache__/
 brand/avatar/pack2d/
+brand/voice/
+graphify-out/
+node_modules/
+out/**/reel-9x16.mp4
+out/**/slides.zip
+out/*/frames/
+out/batch-*/**/*.wav
+out/batch-*/*.wav
+out/flagship/*/*.wav
+out/flagship/*/frames/
 out/loops/
+out/voicenotes/
+products/
+research/creators/teardown/**/*.jpg
+research/creators/teardown/**/transcript.json
+research/raw/
+revoice.log
+video-projects/**/*.mov
+video-projects/**/*.mp4
+video-projects/**/*.wav
+video-projects/**/assets/
+video-projects/**/broll/
+video-projects/**/mascot/
+video-projects/**/music/
+video-projects/**/out/
+video-projects/**/raw*
+video-projects/**/work*/
+video-projects/assets-music/
 video-projects/mg-story-01/*.mp3
 video-projects/mg-story-01/*.mp4
-out/voicenotes/
+video-projects/pots/*.mp3
+video-projects/pots/*.mp4
+video-projects/pots/work/
+video-projects/sfx-library/*.mp3
+video-projects/week-02-episode/assets/music/
+video-projects/week-02-episode/out/
+video-projects/week-02-episode/raw/
+video-projects/week-02-episode/work/
+video-projects/week-02-episode/work_friction/
+video-projects/week-02-episode/work_notripod/
+video-projects/week-02-talks/broll/*.mp4
+video-projects/week-02-talks/vo/
+voice.old.wav
