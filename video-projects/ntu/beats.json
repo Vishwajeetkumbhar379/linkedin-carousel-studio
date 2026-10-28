@@ -1,0 +1,1771 @@
+{
+ "e1": {
+  "ep": 1,
+  "mood": "upbeat playful tech, bright plucks, light hip hop beat, curious and clever",
+  "hook": "You don't need<br><i>an editor</i> anymore.",
+  "hookEnd": "This reel",
+  "mascot": [
+   [
+    "Nobody",
+    "arms"
+   ],
+   [
+    "This reel",
+    "point_left"
+   ],
+   [
+    "Claude made it",
+    "explain"
+   ],
+   [
+    "Step one",
+    "point_up"
+   ],
+   [
+    "Step two",
+    "point_left"
+   ],
+   [
+    "Step three",
+    "think"
+   ],
+   [
+    "Step four",
+    "explain"
+   ],
+   [
+    "this guy",
+    "wave"
+   ],
+   [
+    "Step five",
+    "point_left"
+   ],
+   [
+    "total cost",
+    "thumbs"
+   ],
+   [
+    "part nobody",
+    "think"
+   ],
+   [
+    "marketer",
+    "arms"
+   ],
+   [
+    "I tell Claude",
+    "explain"
+   ],
+   [
+    "Comment EDIT",
+    "point_left"
+   ],
+   [
+    "prompts",
+    "wave"
+   ]
+  ],
+  "react": [
+   [
+    "No video AI",
+    "wink",
+    1.2
+   ],
+   [
+    "this guy",
+    "laugh",
+    1.4
+   ],
+   [
+    "say no",
+    "skeptical",
+    1.3
+   ]
+  ],
+  "els": [
+   {
+    "type": "card",
+    "at": "No editor",
+    "icon": "✂",
+    "label": "Video editor",
+    "title": "Not opened",
+    "w": 576
+   },
+   {
+    "type": "card",
+    "at": "No video AI",
+    "beside": true,
+    "icon": "✦",
+    "label": "Video AI",
+    "title": "Not used",
+    "w": 576
+   },
+   {
+    "type": "stamp",
+    "at": "either",
+    "text": "NEITHER"
+   },
+   {
+    "type": "code",
+    "at": "Claude made it",
+    "file": "series.html · written by Claude",
+    "lines": [
+     "<span class=\"k\">const </span>back = (x) =&gt; { x = cl(x); <span class=\"k\">const </span>c = 1.6; <span class=\"k\">return </span>1 +",
+     "<span class=\"k\">const </span>lerpK = (keys, t, f) =&gt; { <span class=\"k\">if </span>(!keys || !keys.length ",
+     "  <span class=\"k\">if </span>(i === keys.length - 1) <span class=\"k\">return </span>f(keys[i], keys[i], 1)",
+     "<span class=\"k\">const </span>esc = (s) =&gt; String(s).replace(/&amp;/g, &quot;&amp;amp;&quot;).replac",
+     "<span class=\"k\">const </span>PK = &quot;brand/avatar/pack/&quot;;",
+     "<span class=\"k\">const </span>POSE = {point_left: &quot;03_gestures/01_point_screen_lef",
+     "  think: &quot;03_gestures/06_thinking.png&quot;, arms: &quot;03_gestures",
+     "  rest: &quot;04_wave_keyframes/01_rest.png&quot;, w1: &quot;04_wave_keyf",
+     "  side: &quot;01_angles/08_front_facing_screen_left.png&quot;};",
+     "<span class=\"k\">const </span>EXPR = {smile: &quot;01_confident_smile.png&quot;, laugh: &quot;02_",
+     "  focused: &quot;06_focused.png&quot;, concerned: &quot;07_concerned.png&quot;",
+     "<span class=\"k\">const </span>W = document.getElementById(&quot;world&quot;), M = document.g",
+     "Object.entries(POSE).forEach(([k, f]) =&gt; { <span class=\"k\">const </span>im = docu",
+     "<span class=\"k\">const </span>RX = {}, RE = document.getElementById(&quot;react&quot;); Obje",
+     "document.getElementById(&quot;bug&quot;).innerHTML = `${esc(D.series",
+     "<span class=\"k\">const </span>CUR = `&lt;svg class=&quot;cur&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=",
+     "<span class=\"k\">const </span>html = (e) =&gt; {",
+     "  <span class=\"k\">const </span>lbl = e.label ? `&lt;div class=&quot;lbl&quot; style=&quot;${e.label",
+     "  <span class=\"k\">const </span>body = {",
+     "    card: () =&gt; `${lbl}${e.title ? `&lt;div class=&quot;ttl&quot;&gt;${e.t",
+     "    counter: () =&gt; `${lbl}&lt;div class=&quot;num&quot;&gt;&lt;span class=&quot;n&quot;",
+     "    bar: () =&gt; `${lbl}&lt;div style=&quot;margin-top:34px;white-sp",
+     "    list: () =&gt; `${lbl}&lt;div style=&quot;margin-top:14px&quot;&gt;${e.ro",
+     "    wave: () =&gt; `${lbl}${e.title ? `&lt;div class=&quot;ttl&quot; style",
+     "    doc: () =&gt; `${lbl}&lt;div style=&quot;margin-top:12px&quot;&gt;${e.lin",
+     "  }[e.type];",
+     "  <span class=\"k\">if </span>(body) <span class=\"k\">return </span>`&lt;div class=&quot;card${e.type === &quot;doc&quot; ? &quot;",
+     "  <span class=\"k\">if </span>(e.type === &quot;shot&quot;) {",
+     "    <span class=\"k\">const </span>f = e.frame || &quot;browser&quot;, top = f === &quot;browser&quot; ",
+     "    <span class=\"k\">return </span>`&lt;div class=&quot;shot ${f}&quot; style=&quot;width:${e.w || 9",
+     "  }",
+     "  <span class=\"k\">if </span>(e.type === &quot;map&quot;) {",
+     "    <span class=\"k\">const </span>paths = (e.routes || []).map((r, i) =&gt; `&lt;path id",
+     "    <span class=\"k\">const </span>pins = (e.pins || []).map((p) =&gt; `&lt;g class=&quot;pin&quot;",
+     "    <span class=\"k\">return </span>`&lt;div class=&quot;card&quot; style=&quot;width:${e.w || 900}px",
+     "  }",
+     "  <span class=\"k\">if </span>(e.type === &quot;code&quot;) <span class=\"k\">return </span>`&lt;div class=&quot;code&quot; style=&quot;",
+     "  <span class=\"k\">if </span>(e.type === &quot;dlg&quot;) <span class=\"k\">return </span>`&lt;div class=&quot;dlg&quot;&gt;&lt;h3&gt;${e.t",
+     "  <span class=\"k\">if </span>(e.type === &quot;chip&quot;) <span class=\"k\">return </span>`&lt;div class=&quot;chip&quot;&gt;${e.tex",
+     "  <span class=\"k\">if </span>(e.type === &quot;stamp&quot;) <span class=\"k\">return </span>`&lt;div class=&quot;stamp&quot;${e.co",
+     "  <span class=\"k\">if </span>(e.type === &quot;quote&quot;) <span class=\"k\">return </span>`&lt;div class=&quot;quote&quot;&gt;${e.t",
+     "  <span class=\"k\">if </span>(e.type === &quot;tags&quot;) <span class=\"k\">return </span>`&lt;div style=&quot;width:${e.w |"
+    ],
+    "w": 940,
+    "h": 1000,
+    "scrollAt": "In code",
+    "scrollDur": 3.2,
+    "hl": [
+     8,
+     9,
+     10
+    ],
+    "hlAt": "Let me show you"
+   },
+   {
+    "type": "chip",
+    "at": "In code",
+    "text": "Real code. This reel."
+   },
+   {
+    "type": "card",
+    "at": "Step one",
+    "label": "Step 1 · The script",
+    "title": "“Nobody tells you this.”",
+    "sub": "Written like I'm talking to a friend.",
+    "w": 688
+   },
+   {
+    "type": "shot",
+    "at": "Step two",
+    "src": "video-projects/ntu/assets/elevenlabs.png",
+    "url": "elevenlabs.io",
+    "w": 940,
+    "vh": 980,
+    "scroll": [
+     [
+      "Step two",
+      0
+     ],
+     [
+      "trained on",
+      0.05
+     ]
+    ],
+    "cursor": [
+     [
+      "voice clone",
+      0.55,
+      0.62
+     ],
+     [
+      "ElevenLabs",
+      0.5,
+      0.5,
+      true
+     ]
+    ]
+   },
+   {
+    "type": "wave",
+    "at": "trained on",
+    "beside": true,
+    "label": "My voice clone",
+    "title": "Reading the script",
+    "until": "Step three",
+    "w": 752
+   },
+   {
+    "type": "tags",
+    "at": "times every single word",
+    "w": 900,
+    "gap": 0.18,
+    "items": [
+     "Nobody <b style='color:#E7A15A'>0.2s</b>",
+     "tells <b style='color:#E7A15A'>0.5s</b>",
+     "you <b style='color:#E7A15A'>0.7s</b>",
+     "this <b style='color:#E7A15A'>0.9s</b>",
+     "You <b style='color:#E7A15A'>1.6s</b>",
+     "don't <b style='color:#E7A15A'>1.8s</b>"
+    ]
+   },
+   {
+    "type": "card",
+    "at": "Step four",
+    "label": "Step 4",
+    "title": "Every card. Every camera move.",
+    "w": 688,
+    "reveal": "every camera move"
+   },
+   {
+    "type": "counter",
+    "at": "Step five",
+    "label": "Frames rendered",
+    "from": 0,
+    "to": 1500,
+    "until": "Frame by frame",
+    "w": 608
+   },
+   {
+    "type": "card",
+    "at": "The total cost",
+    "icon": "€",
+    "label": "Total cost",
+    "title": "My Claude subscription",
+    "w": 688
+   },
+   {
+    "type": "stamp",
+    "at": "subscription",
+    "text": "THAT'S IT",
+    "color": "#2F6B3F"
+   },
+   {
+    "type": "quote",
+    "at": "I'm a marketer",
+    "text": "Marketer,<br><i>not engineer.</i>"
+   },
+   {
+    "type": "list",
+    "at": "I don't write the code",
+    "label": "How we work",
+    "w": 704,
+    "rows": [
+     {
+      "t": "Claude writes the code",
+      "at": "I don't write the code"
+     },
+     {
+      "t": "I say what I want",
+      "at": "what I want"
+     },
+     {
+      "t": "I say no until it's right",
+      "at": "say no"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "Comment EDIT",
+    "label": "Comment",
+    "title": "EDIT",
+    "sub": "I'll send you the prompts.",
+    "w": 608
+   },
+   {
+    "type": "card",
+    "at": "send you the prompts",
+    "beside": true,
+    "label": "Tomorrow · EP 2",
+    "labelColor": "#D9473A",
+    "title": "One meeting cost me six months",
+    "w": 608
+   }
+  ],
+  "template": "series",
+  "series": "NOBODY TELLS YOU"
+ },
+ "e2": {
+  "ep": 2,
+  "mood": "reflective warm piano, soft pads, light drums enter halfway, hopeful turn at the end",
+  "hook": "Remote work can<br><i>still trap you.</i>",
+  "hookEnd": "For four years",
+  "mascot": [
+   [
+    "Nobody",
+    "arms"
+   ],
+   [
+    "For four years",
+    "point_left"
+   ],
+   [
+    "booked",
+    "thumbs"
+   ],
+   [
+    "important meeting",
+    "think"
+   ],
+   [
+    "stuck",
+    "front"
+   ],
+   [
+    "That was hell",
+    "arms"
+   ],
+   [
+    "learned the hard way",
+    "explain"
+   ],
+   [
+    "Remote isn't",
+    "point_left"
+   ],
+   [
+    "autopilot",
+    "think"
+   ],
+   [
+    "fixing both",
+    "thumbs"
+   ],
+   [
+    "December",
+    "point_left"
+   ],
+   [
+    "Would you",
+    "explain"
+   ]
+  ],
+  "react": [
+   [
+    "cancelled both",
+    "concerned",
+    1.4
+   ],
+   [
+    "That was hell",
+    "skeptical",
+    1.2
+   ],
+   [
+    "Sri Lanka",
+    "pleased",
+    1.4
+   ]
+  ],
+  "els": [
+   {
+    "type": "counter",
+    "at": "For four years",
+    "label": "Working remotely from India",
+    "from": 0,
+    "to": 4,
+    "suffix": " years",
+    "w": 624
+   },
+   {
+    "type": "map",
+    "at": "travelled",
+    "src": "video-projects/ntu/assets/map_south_asia.png",
+    "iw": 768,
+    "ih": 768,
+    "w": 900,
+    "h": 856,
+    "label": "India",
+    "pins": [
+     {
+      "x": 494.9,
+      "y": 279.1,
+      "label": "Me, remote",
+      "at": "travelled"
+     }
+    ],
+    "routes": [
+     {
+      "a": [
+       494.9,
+       279.1
+      ],
+      "b": [
+       740,
+       70
+      ],
+      "at": "booked",
+      "dur": 1.0,
+      "cancel": "cancelled both"
+     },
+     {
+      "a": [
+       494.9,
+       279.1
+      ],
+      "b": [
+       40,
+       120
+      ],
+      "at": "two flights",
+      "dur": 1.0,
+      "curve": -0.3,
+      "cancel": "cancelled both"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "important meeting",
+    "beside": true,
+    "label": "● Important meeting",
+    "labelColor": "#D9473A",
+    "title": "Tomorrow, 10:00",
+    "w": 608,
+    "anim": "right"
+   },
+   {
+    "type": "stamp",
+    "at": "cancelled both",
+    "text": "BOTH CANCELLED"
+   },
+   {
+    "type": "tags",
+    "at": "more client work",
+    "w": 900,
+    "gap": 0.22,
+    "items": [
+     "Client work",
+     "Client work",
+     "Client work",
+     "Client work"
+    ]
+   },
+   {
+    "type": "bar",
+    "at": "stuck",
+    "fill": "six months",
+    "label": "Office hours, nine to five",
+    "n": 6,
+    "unit": "months",
+    "w": 624
+   },
+   {
+    "type": "quote",
+    "at": "That was hell",
+    "text": "That was <i>hell.</i>"
+   },
+   {
+    "type": "list",
+    "at": "Remote isn't freedom",
+    "label": "Remote isn't freedom when",
+    "w": 720,
+    "rows": [
+     {
+      "t": "Your currency doesn't stretch",
+      "at": "paid in a currency",
+      "x": true
+     },
+     {
+      "t": "One meeting can call you back",
+      "at": "one meeting can",
+      "x": true
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "not travelling",
+    "label": "Not travelling",
+    "title": "Autopilot",
+    "w": 608,
+    "out": "When I travel"
+   },
+   {
+    "type": "card",
+    "at": "When I travel",
+    "beside": true,
+    "label": "Travelling",
+    "labelColor": "#2F6B3F",
+    "title": "I count every single day",
+    "w": 608
+   },
+   {
+    "type": "list",
+    "at": "fixing both",
+    "label": "So I'm fixing both",
+    "w": 688,
+    "rows": [
+     {
+      "t": "Earn in euros",
+      "at": "Earn in euros"
+     },
+     {
+      "t": "Work that can't call me back",
+      "at": "Build work"
+     }
+    ]
+   },
+   {
+    "type": "map",
+    "at": "In December",
+    "src": "video-projects/ntu/assets/map_india_europe.png",
+    "iw": 1024,
+    "ih": 768,
+    "w": 940,
+    "h": 668,
+    "label": "December",
+    "pins": [
+     {
+      "x": 113.8,
+      "y": 91.2,
+      "label": "Germany",
+      "at": "In December"
+     },
+     {
+      "x": 918.2,
+      "y": 677.8,
+      "label": "Sri Lanka",
+      "at": "Sri Lanka"
+     }
+    ],
+    "routes": [
+     {
+      "a": [
+       113.8,
+       91.2
+      ],
+      "b": [
+       918.2,
+       677.8
+      ],
+      "at": "I'm in Sri Lanka",
+      "dur": 1.6,
+      "color": "#E7A15A",
+      "curve": -0.2
+     }
+    ]
+   },
+   {
+    "type": "shot",
+    "at": "for a month",
+    "frame": "photo",
+    "src": "video-projects/ntu/assets/sigiriya.jpg",
+    "w": 900,
+    "vh": 600,
+    "fit": "cover",
+    "caption": "Sri Lanka, for a month",
+    "credit": "Photo: Wikimedia Commons"
+   },
+   {
+    "type": "card",
+    "at": "Would you",
+    "label": "Your turn",
+    "title": "Would you have cancelled the flights?",
+    "w": 656
+   },
+   {
+    "type": "card",
+    "at": "cancelled the flights",
+    "beside": true,
+    "label": "Tomorrow · EP 3",
+    "labelColor": "#D9473A",
+    "title": "Bali has a coach problem",
+    "w": 656
+   }
+  ],
+  "template": "series",
+  "series": "NOBODY TELLS YOU"
+ },
+ "e3": {
+  "ep": 3,
+  "mood": "playful tropical, light marimba and percussion, cheeky, sunny",
+  "hook": "Bali has a<br><i>coach problem.</i>",
+  "hookEnd": "Every next person",
+  "mascot": [
+   [
+    "Nobody",
+    "arms"
+   ],
+   [
+    "Every next person",
+    "point_left"
+   ],
+   [
+    "I don't have a problem",
+    "explain"
+   ],
+   [
+    "Because here's how",
+    "point_up"
+   ],
+   [
+    "Everyone moves",
+    "point_left"
+   ],
+   [
+    "Don't get me wrong",
+    "thumbs"
+   ],
+   [
+    "perfect Tuesday",
+    "explain"
+   ],
+   [
+    "repetitive",
+    "think"
+   ],
+   [
+    "stable income",
+    "point_left"
+   ],
+   [
+    "my rule",
+    "point_up"
+   ],
+   [
+    "A skill travels",
+    "arms"
+   ],
+   [
+    "Agree",
+    "explain"
+   ]
+  ],
+  "react": [
+   [
+    "coach for coaches",
+    "laugh",
+    1.3
+   ],
+   [
+    "same island#2",
+    "wink",
+    1.2
+   ],
+   [
+    "repetitive",
+    "skeptical",
+    1.3
+   ]
+  ],
+  "els": [
+   {
+    "type": "shot",
+    "at": "Every next person",
+    "frame": "photo",
+    "src": "video-projects/ntu/assets/ubud.jpg",
+    "w": 900,
+    "vh": 620,
+    "fit": "cover",
+    "caption": "Bali",
+    "credit": "Photo: Wikimedia Commons"
+   },
+   {
+    "type": "tags",
+    "at": "A business coach",
+    "w": 900,
+    "gap": 0.75,
+    "items": [
+     "Business coach",
+     "Mindset coach",
+     "Coach for coaches"
+    ]
+   },
+   {
+    "type": "card",
+    "at": "I don't have a problem",
+    "label": "No problem with",
+    "title": "Coaches",
+    "w": 608
+   },
+   {
+    "type": "card",
+    "at": "careers that are",
+    "beside": true,
+    "label": "My problem",
+    "labelColor": "#D9473A",
+    "title": "Careers valid for one year",
+    "w": 608
+   },
+   {
+    "type": "list",
+    "at": "Everyone moves",
+    "label": "How it goes",
+    "w": 720,
+    "rows": [
+     {
+      "t": "Move to the same island",
+      "at": "Everyone moves"
+     },
+     {
+      "t": "Sell the same course",
+      "at": "Everyone sells"
+     },
+     {
+      "t": "To the same people",
+      "at": "To the same people"
+     },
+     {
+      "t": "Who move to the same island",
+      "at": "Who then move"
+     }
+    ]
+   },
+   {
+    "type": "stamp",
+    "at": "same island#2",
+    "text": "↻ REPEAT"
+   },
+   {
+    "type": "quote",
+    "at": "Bali is beautiful",
+    "text": "Bali is <i>beautiful.</i>"
+   },
+   {
+    "type": "list",
+    "at": "perfect Tuesday",
+    "label": "My perfect Tuesday",
+    "w": 688,
+    "rows": [
+     {
+      "t": "Ocean swim",
+      "at": "ocean swim"
+     },
+     {
+      "t": "Yoga",
+      "at": "yoga"
+     },
+     {
+      "t": "Three hours of work",
+      "at": "three hours"
+     }
+    ]
+   },
+   {
+    "type": "chip",
+    "at": "Ideally",
+    "text": "Ideally, in Bali"
+   },
+   {
+    "type": "card",
+    "at": "repetitive",
+    "label": "If you're not smart",
+    "title": "It gets repetitive fast",
+    "w": 656
+   },
+   {
+    "type": "list",
+    "at": "I want a stable",
+    "label": "What I want",
+    "w": 688,
+    "rows": [
+     {
+      "t": "A stable income",
+      "at": "stable income"
+     },
+     {
+      "t": "Freedom to experiment",
+      "at": "freedom to experiment"
+     },
+     {
+      "t": "Different skills",
+      "at": "Different skills"
+     }
+    ]
+   },
+   {
+    "type": "map",
+    "at": "Different countries",
+    "src": "video-projects/ntu/assets/map_world_mid.png",
+    "iw": 1024,
+    "ih": 600,
+    "w": 940,
+    "h": 551,
+    "label": "Different countries",
+    "pins": [
+     {
+      "x": 839.7,
+      "y": 286.0,
+      "label": "Bali",
+      "at": "Different countries"
+     },
+     {
+      "x": 577.1,
+      "y": 353.5,
+      "label": "South Africa",
+      "at": "Different countries",
+      "delay": 0.25
+     },
+     {
+      "x": 364.4,
+      "y": 302.79999999999995,
+      "label": "South America",
+      "at": "Different countries",
+      "delay": 0.5
+     },
+     {
+      "x": 501.5,
+      "y": 136.2,
+      "label": "Spain",
+      "at": "Different countries",
+      "delay": 0.75
+     }
+    ]
+   },
+   {
+    "type": "quote",
+    "at": "Build the skill first",
+    "text": "Skill first.<br><i>Location second.</i>"
+   },
+   {
+    "type": "card",
+    "at": "A skill travels",
+    "label": "The difference",
+    "title": "A skill travels with you.",
+    "sub": "A trend doesn't.",
+    "w": 688
+   },
+   {
+    "type": "card",
+    "at": "Agree",
+    "label": "Comment",
+    "title": "Agree or disagree?",
+    "w": 640
+   },
+   {
+    "type": "card",
+    "at": "disagree",
+    "beside": true,
+    "label": "Tomorrow · EP 4",
+    "labelColor": "#D9473A",
+    "title": "Confidence is a character you play",
+    "w": 640
+   }
+  ],
+  "template": "series",
+  "series": "NOBODY TELLS YOU"
+ },
+ "e4": {
+  "ep": 4,
+  "mood": "soft inspiring piano, gentle strings, builds slowly to warm and confident",
+  "hook": "Confidence isn't found.<br><i>It's played.</i>",
+  "hookEnd": "For years",
+  "mascot": [
+   [
+    "Nobody",
+    "think"
+   ],
+   [
+    "For years",
+    "point_left"
+   ],
+   [
+    "I overthought",
+    "think"
+   ],
+   [
+    "younger self",
+    "explain"
+   ],
+   [
+    "So change",
+    "point_up"
+   ],
+   [
+    "character you play",
+    "arms"
+   ],
+   [
+    "You say it",
+    "point_up"
+   ],
+   [
+    "This guy",
+    "wave"
+   ],
+   [
+    "Every video",
+    "thumbs"
+   ],
+   [
+    "Follow",
+    "point_left"
+   ]
+  ],
+  "react": [
+   [
+    "every time",
+    "concerned",
+    1.2
+   ],
+   [
+    "doubted",
+    "thought",
+    1.3
+   ],
+   [
+    "This guy",
+    "wink",
+    1.4
+   ]
+  ],
+  "els": [
+   {
+    "type": "card",
+    "at": "For years",
+    "icon": "●",
+    "label": "For years",
+    "title": "I wanted to make content",
+    "w": 688
+   },
+   {
+    "type": "dlg",
+    "at": "every time",
+    "title": "Delete draft?",
+    "body": "This video will be deleted.",
+    "btns": [
+     "Keep",
+     "Delete"
+    ],
+    "red": 1,
+    "pick": 1,
+    "press": "stopped"
+   },
+   {
+    "type": "list",
+    "at": "Not because",
+    "label": "Why I stopped",
+    "w": 704,
+    "rows": [
+     {
+      "t": "Nothing to say",
+      "at": "nothing to say",
+      "x": true
+     },
+     {
+      "t": "Didn't feel confident",
+      "at": "feel confident"
+     }
+    ]
+   },
+   {
+    "type": "tags",
+    "at": "I overthought everything",
+    "w": 900,
+    "gap": 0.3,
+    "items": [
+     "Overthinking",
+     "Doubting",
+     "Waiting"
+    ]
+   },
+   {
+    "type": "map",
+    "at": "move to Germany",
+    "src": "video-projects/ntu/assets/map_india_europe.png",
+    "iw": 1024,
+    "ih": 768,
+    "w": 940,
+    "h": 668,
+    "label": "The move",
+    "pins": [
+     {
+      "x": 887.5,
+      "y": 523.5,
+      "label": "India",
+      "at": "move to Germany"
+     },
+     {
+      "x": 113.8,
+      "y": 91.2,
+      "label": "Germany",
+      "at": "Germany"
+     }
+    ],
+    "routes": [
+     {
+      "a": [
+       887.5,
+       523.5
+      ],
+      "b": [
+       113.8,
+       91.2
+      ],
+      "at": "move to Germany",
+      "dur": 1.4,
+      "curve": 0.2
+     }
+    ]
+   },
+   {
+    "type": "stamp",
+    "at": "doubted",
+    "text": "DOUBTED IT"
+   },
+   {
+    "type": "card",
+    "at": "The way you",
+    "label": "Note to my younger self",
+    "title": "The way you talk to yourself decides how confident you are.",
+    "w": 720
+   },
+   {
+    "type": "doc",
+    "at": "So change what you say",
+    "label": "For example",
+    "w": 720,
+    "lines": [
+     {
+      "t": "I'm not ready",
+      "nw": "I'm learning in public",
+      "at": "change what you say"
+     },
+     {
+      "t": "Who would watch this?",
+      "nw": "Someone needs this",
+      "at": "isn't something"
+     }
+    ]
+   },
+   {
+    "type": "quote",
+    "at": "It's a character",
+    "text": "It's a <i>character</i><br>you play."
+   },
+   {
+    "type": "list",
+    "at": "You say it",
+    "label": "How you play it",
+    "w": 656,
+    "rows": [
+     {
+      "t": "Say it",
+      "at": "You say it"
+     },
+     {
+      "t": "Repeat it",
+      "at": "You repeat it"
+     },
+     {
+      "t": "Act like him",
+      "at": "You act like him"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "And one day",
+    "label": "And one day",
+    "title": "You are him.",
+    "w": 608
+   },
+   {
+    "type": "card",
+    "at": "This guy",
+    "label": "The character",
+    "title": "Confident Vish",
+    "sub": "Played a little more every video.",
+    "w": 640
+   },
+   {
+    "type": "card",
+    "at": "Follow",
+    "label": "Follow",
+    "title": "Watch him become real",
+    "w": 640
+   },
+   {
+    "type": "card",
+    "at": "become real",
+    "beside": true,
+    "label": "Tomorrow · EP 5",
+    "labelColor": "#D9473A",
+    "title": "A brand made us redo one shortlist 22 times",
+    "w": 640
+   }
+  ],
+  "template": "series",
+  "series": "NOBODY TELLS YOU"
+ },
+ "e5": {
+  "ep": 5,
+  "mood": "tense light pizzicato and soft synth pulse, investigative, a firm beat at the end",
+  "hook": "A brand made us redo<br><i>one shortlist 22 times.</i>",
+  "hookEnd": "I've worked on",
+  "mascot": [
+   [
+    "Nobody",
+    "arms"
+   ],
+   [
+    "I've worked on",
+    "thumbs"
+   ],
+   [
+    "This one still",
+    "think"
+   ],
+   [
+    "A brand asked",
+    "explain"
+   ],
+   [
+    "So we built",
+    "point_left"
+   ],
+   [
+    "Twenty two times",
+    "front"
+   ],
+   [
+    "Niche",
+    "thumbs"
+   ],
+   [
+    "Then the videos",
+    "think"
+   ],
+   [
+    "They wanted originality",
+    "arms"
+   ],
+   [
+    "Creators, this",
+    "point_left"
+   ],
+   [
+    "If you hire",
+    "point_up"
+   ],
+   [
+    "Be honest",
+    "explain"
+   ]
+  ],
+  "react": [
+   [
+    "They sent it back",
+    "skeptical",
+    1.2
+   ],
+   [
+    "Twenty two times",
+    "surprised",
+    1.4
+   ],
+   [
+    "rewrote",
+    "concerned",
+    1.4
+   ]
+  ],
+  "els": [
+   {
+    "type": "counter",
+    "at": "850",
+    "label": "Creator deals, brand side",
+    "from": 0,
+    "to": 850,
+    "suffix": "+",
+    "w": 608
+   },
+   {
+    "type": "card",
+    "at": "A brand asked",
+    "label": "The brief",
+    "title": "Strong, original personal brands",
+    "sub": "Nobody copying anybody.",
+    "w": 704
+   },
+   {
+    "type": "list",
+    "at": "So we built a shortlist",
+    "label": "Shortlist",
+    "w": 656,
+    "rows": [
+     {
+      "t": "Creator A",
+      "at": "built a shortlist"
+     },
+     {
+      "t": "Creator B",
+      "at": "built a shortlist"
+     },
+     {
+      "t": "Creator C",
+      "at": "built a shortlist"
+     }
+    ]
+   },
+   {
+    "type": "stamp",
+    "at": "They sent it back",
+    "text": "SENT BACK"
+   },
+   {
+    "type": "counter",
+    "at": "We built it again",
+    "label": "Shortlist version",
+    "from": 1,
+    "to": 22,
+    "prefix": "v",
+    "until": "Twenty two times",
+    "w": 576
+   },
+   {
+    "type": "stamp",
+    "at": "Twenty two times",
+    "text": "22 TIMES"
+   },
+   {
+    "type": "card",
+    "at": "through the night",
+    "icon": "☾",
+    "label": "Overnight",
+    "title": "We worked through the night",
+    "w": 688
+   },
+   {
+    "type": "tags",
+    "at": "Niche, original",
+    "w": 900,
+    "gap": 0.35,
+    "items": [
+     "Niche",
+     "Original",
+     "Real"
+    ]
+   },
+   {
+    "type": "doc",
+    "at": "Then the videos came in",
+    "label": "The creator's script",
+    "w": 720,
+    "lines": [
+     {
+      "t": "Their own words",
+      "nw": "Brand wording",
+      "at": "rewrote"
+     },
+     {
+      "t": "Their own story",
+      "nw": "Key message",
+      "at": "every single line"
+     },
+     {
+      "t": "Their own joke",
+      "nw": "Mandatory line",
+      "at": "Every one"
+     }
+    ]
+   },
+   {
+    "type": "quote",
+    "at": "They wanted originality",
+    "text": "They wanted<br><i>originality.</i>"
+   },
+   {
+    "type": "card",
+    "at": "didn't want to give",
+    "beside": true,
+    "label": "But not",
+    "labelColor": "#D9473A",
+    "title": "The freedom that creates it",
+    "w": 640
+   },
+   {
+    "type": "card",
+    "at": "Creators, this",
+    "label": "Creators",
+    "title": "This is why your brief reads like a script",
+    "w": 704
+   },
+   {
+    "type": "card",
+    "at": "If you hire",
+    "label": "Brands, the rule",
+    "title": "Hire them for their voice? Let them use it.",
+    "w": 704
+   },
+   {
+    "type": "card",
+    "at": "Be honest",
+    "label": "Brands, be honest",
+    "title": "Have you done this?",
+    "w": 640
+   },
+   {
+    "type": "card",
+    "at": "done this",
+    "beside": true,
+    "label": "Tomorrow · EP 6",
+    "labelColor": "#D9473A",
+    "title": "Germany or India? Pick the country first",
+    "w": 640
+   }
+  ],
+  "template": "series",
+  "series": "NOBODY TELLS YOU"
+ },
+ "e6": {
+  "ep": 6,
+  "mood": "warm curious acoustic guitar, light percussion, gentle and friendly",
+  "hook": "The country matters<br><i>more than the career.</i>",
+  "hookEnd": "I moved",
+  "mascot": [
+   [
+    "Nobody",
+    "arms"
+   ],
+   [
+    "I moved",
+    "point_left"
+   ],
+   [
+    "gets right",
+    "thumbs"
+   ],
+   [
+    "gets wrong",
+    "think"
+   ],
+   [
+    "India is the opposite",
+    "explain"
+   ],
+   [
+    "Neither",
+    "arms"
+   ],
+   [
+    "If you want",
+    "point_left"
+   ],
+   [
+    "So which",
+    "explain"
+   ]
+  ],
+  "react": [
+   [
+    "feel cold",
+    "concerned",
+    1.2
+   ],
+   [
+    "warm",
+    "pleased",
+    1.2
+   ]
+  ],
+  "els": [
+   {
+    "type": "map",
+    "at": "I moved",
+    "src": "video-projects/ntu/assets/map_india_europe.png",
+    "iw": 1024,
+    "ih": 768,
+    "w": 940,
+    "h": 668,
+    "label": "About a year ago",
+    "pins": [
+     {
+      "x": 887.5,
+      "y": 523.5,
+      "label": "India",
+      "at": "from India"
+     },
+     {
+      "x": 113.8,
+      "y": 91.2,
+      "label": "Germany",
+      "at": "Germany"
+     }
+    ],
+    "routes": [
+     {
+      "a": [
+       887.5,
+       523.5
+      ],
+      "b": [
+       113.8,
+       91.2
+      ],
+      "at": "from India",
+      "dur": 1.4,
+      "curve": 0.2
+     }
+    ]
+   },
+   {
+    "type": "shot",
+    "at": "Here's what Germany",
+    "frame": "photo",
+    "src": "video-projects/ntu/assets/germany.jpg",
+    "w": 900,
+    "vh": 600,
+    "fit": "cover",
+    "caption": "Germany",
+    "credit": "Photo: Wikimedia Commons"
+   },
+   {
+    "type": "list",
+    "at": "You work extra hours",
+    "label": "Germany gets right",
+    "w": 704,
+    "rows": [
+     {
+      "t": "Overtime is paid",
+      "at": "You get paid"
+     },
+     {
+      "t": "Meetings start on time",
+      "at": "Meetings start"
+     },
+     {
+      "t": "Structure",
+      "at": "Things are structured"
+     },
+     {
+      "t": "Nature",
+      "at": "The nature"
+     },
+     {
+      "t": "Clean streets",
+      "at": "The streets"
+     }
+    ]
+   },
+   {
+    "type": "list",
+    "at": "gets wrong",
+    "label": "Germany gets wrong",
+    "w": 704,
+    "rows": [
+     {
+      "t": "Not lively",
+      "at": "not lively",
+      "x": true
+     },
+     {
+      "t": "Not built for remote work",
+      "at": "built for remote",
+      "x": true
+     },
+     {
+      "t": "People can feel cold",
+      "at": "feel cold",
+      "x": true
+     }
+    ]
+   },
+   {
+    "type": "shot",
+    "at": "India is the opposite",
+    "frame": "photo",
+    "src": "video-projects/ntu/assets/india.jpg",
+    "w": 900,
+    "vh": 640,
+    "fit": "cover",
+    "caption": "India",
+    "credit": "Photo: Wikimedia Commons"
+   },
+   {
+    "type": "tags",
+    "at": "Chaotic",
+    "w": 900,
+    "gap": 0.45,
+    "items": [
+     "Chaotic",
+     "Warm",
+     "Close"
+    ]
+   },
+   {
+    "type": "quote",
+    "at": "Neither one",
+    "text": "Neither is<br><i>better.</i>"
+   },
+   {
+    "type": "card",
+    "at": "If you want structure",
+    "label": "Want structure and a stable 9 to 5?",
+    "title": "Germany works.",
+    "w": 688
+   },
+   {
+    "type": "card",
+    "at": "If you need warmth",
+    "beside": true,
+    "label": "Need warmth around you?",
+    "labelColor": "#D9473A",
+    "title": "Think twice.",
+    "w": 688
+   },
+   {
+    "type": "card",
+    "at": "So which are you",
+    "label": "Comment",
+    "title": "Structure or warmth?",
+    "sub": "I'll tell you where to look.",
+    "w": 656
+   },
+   {
+    "type": "card",
+    "at": "where to look",
+    "beside": true,
+    "label": "Friday · EP 7",
+    "labelColor": "#D9473A",
+    "title": "The biggest hustle is not hustling",
+    "w": 656
+   }
+  ],
+  "template": "series",
+  "series": "NOBODY TELLS YOU"
+ },
+ "e7": {
+  "ep": 7,
+  "mood": "confident modern lo-fi beat, warm keys, head-nod groove",
+  "hook": "The biggest hustle:<br><i>not hustling.</i>",
+  "hookEnd": "Everyone's scared",
+  "mascot": [
+   [
+    "Nobody",
+    "arms"
+   ],
+   [
+    "Everyone's scared",
+    "think"
+   ],
+   [
+    "master's thesis",
+    "explain"
+   ],
+   [
+    "heavy lifting",
+    "thumbs"
+   ],
+   [
+    "So what's left",
+    "think"
+   ],
+   [
+    "Psychology",
+    "point_up"
+   ],
+   [
+    "daily stack",
+    "point_left"
+   ],
+   [
+    "And yes",
+    "front"
+   ],
+   [
+    "On Sunday",
+    "explain"
+   ],
+   [
+    "Hustle less",
+    "arms"
+   ],
+   [
+    "What's one task",
+    "point_left"
+   ]
+  ],
+  "react": [
+   [
+    "It won't",
+    "wink",
+    1.0
+   ],
+   [
+    "And yes",
+    "laugh",
+    1.5
+   ]
+  ],
+  "els": [
+   {
+    "type": "card",
+    "at": "Everyone's scared",
+    "label": "Everyone's scared",
+    "title": "AI will replace marketers",
+    "w": 688
+   },
+   {
+    "type": "stamp",
+    "at": "It won't",
+    "text": "IT WON'T",
+    "color": "#2F6B3F"
+   },
+   {
+    "type": "card",
+    "at": "master's thesis",
+    "icon": "✎",
+    "label": "My master's thesis",
+    "title": "AI in marketing",
+    "sub": "Finishing it now.",
+    "w": 688
+   },
+   {
+    "type": "list",
+    "at": "Marketers who use AI",
+    "label": "AI takes",
+    "w": 704,
+    "rows": [
+     {
+      "t": "The heavy lifting",
+      "at": "heavy lifting"
+     },
+     {
+      "t": "The repetitive tool work",
+      "at": "repetitive tool work"
+     }
+    ]
+   },
+   {
+    "type": "quote",
+    "at": "So what's left",
+    "text": "So what's<br><i>left?</i>"
+   },
+   {
+    "type": "tags",
+    "at": "Psychology",
+    "w": 900,
+    "gap": 0.5,
+    "items": [
+     "Psychology",
+     "Taste",
+     "Creativity"
+    ]
+   },
+   {
+    "type": "shot",
+    "at": "Claude Code, which",
+    "src": "video-projects/ntu/assets/claude_code.png",
+    "url": "anthropic.com/claude-code",
+    "w": 940,
+    "vh": 900,
+    "scroll": [
+     [
+      "Claude Code, which",
+      0
+     ],
+     [
+      "built this video",
+      0.025
+     ]
+    ],
+    "cursor": [
+     [
+      "which built",
+      0.3,
+      0.5
+     ],
+     [
+      "this video",
+      0.22,
+      0.36,
+      true
+     ]
+    ]
+   },
+   {
+    "type": "tags",
+    "at": "Claude#2",
+    "w": 900,
+    "gap": 0.42,
+    "items": [
+     "Claude",
+     "ChatGPT",
+     "ElevenLabs",
+     "Gemini"
+    ]
+   },
+   {
+    "type": "shot",
+    "at": "which is my voice",
+    "src": "video-projects/ntu/assets/elevenlabs.png",
+    "url": "elevenlabs.io",
+    "w": 940,
+    "vh": 760,
+    "scroll": [
+     [
+      "which is my voice",
+      0.0
+     ],
+     [
+      "And yes",
+      0.04
+     ]
+    ]
+   },
+   {
+    "type": "card",
+    "at": "And yes",
+    "label": "Plot twist",
+    "labelColor": "#D9473A",
+    "title": "Every episode this week was my AI voice clone",
+    "w": 720
+   },
+   {
+    "type": "wave",
+    "at": "voice clone",
+    "beside": true,
+    "label": "My voice clone",
+    "until": "Sunday",
+    "w": 720
+   },
+   {
+    "type": "card",
+    "at": "On Sunday",
+    "label": "Sunday",
+    "title": "Why I cloned my voice",
+    "w": 640
+   },
+   {
+    "type": "quote",
+    "at": "Hustle less",
+    "text": "Hustle less.<br><i>Think more.</i>"
+   },
+   {
+    "type": "card",
+    "at": "What's one task",
+    "label": "Comment",
+    "title": "One task you'd hand to AI tomorrow?",
+    "w": 688
+   }
+  ],
+  "template": "series",
+  "series": "NOBODY TELLS YOU"
+ }
+}

@@ -1,5 +1,9 @@
 """Canvas reel: a voiceover + a beat list -> a 9:16 reel on one paper canvas with a moving camera (templates/video/canvas).
-    python scripts/canvas_reel.py <project dir> <key>
+    python scripts/canvas_reel.py <project dir> <key>                    -> the reel
+    python scripts/canvas_reel.py <project dir> <key> --stills 1.5,9,20  -> work/<key>_<t>.jpg (storyboard frames, no sound)
+A beat with "template": "series" uses templates/video/series (Vish's mascot as presenter, screen recordings, maps, code,
+dialogs; "mascot": [[phrase, pose]], "react": [[phrase, expression, seconds]], "ep", "series"). Without <key>_words.json,
+--stills times the script at a stand-in speaking pace (for a storyboard before the voice exists).
 Needs <key>.mp3, <key>_words.json (whisper word times), scripts.json (the script, emotion tags allowed) and beats.json[key]:
 {"hook": "html", "hookEnd": "phrase", "els": [{"type": card|counter|bar|list|chip|stamp|quote|tags, "at": "phrase", ...}]}.
 Every "at", "out", "fill", "reveal" and row "at" is a phrase from the script ("word#2" = second time it is said), resolved to
@@ -32,10 +36,23 @@ def align(script, words):
     return [{"w": t, "s": round(s, 3), "e": round(e, 3)} for t, (s, e) in zip(toks, T)]
 
 
-def main(proj: Path, key: str):
+def standin(script):
+    """Word times at a calm 1.15x pace, for storyboard frames before the voice is made."""
+    t, out = 0.2, []
+    for w in re.sub(r"\[[^\]]*\]", " ", script).split():
+        out.append({"w": w, "s": round(t, 3), "e": round(t + 0.27, 3)}); t += 0.31 + (0.42 if re.search(r"[.?!]$", w) else 0.16 if w.endswith(",") else 0)
+    return out
+
+
+TIMES = ("at", "out", "fill", "reveal", "press", "until", "scrollAt", "cancel", "hlAt")
+TRACKS = ("scroll", "cursor", "mascot", "react")
+
+
+def main(proj: Path, key: str, stills=None):
     script = json.loads((proj / "scripts.json").read_text())[key]
     beat = json.loads((proj / "beats.json").read_text())[key]
-    W = align(script, json.loads((proj / f"{key}_words.json").read_text()))
+    wf = proj / f"{key}_words.json"
+    W = align(script, json.loads(wf.read_text()) if wf.exists() else standin(script))
     N = [norm(w["w"]) for w in W]
 
     def at(ph):
@@ -45,10 +62,17 @@ def main(proj: Path, key: str):
         if len(hits) < int(n): sys.exit(f"{key}: phrase not in script: {ph!r}")
         return W[hits[int(n) - 1]]["s"]
 
-    for e in beat["els"]:
-        for f in ("at", "out", "fill", "reveal"):
-            if f in e: e[f] = at(e[f])
-        for r in e.get("rows", []): r["at"] = at(r["at"])
+    def resolve(o):  # every time key and every track's first column, anywhere in the beat
+        if isinstance(o, dict):
+            for f, v in o.items():
+                if f in TIMES and isinstance(v, (str, int, float)): o[f] = at(v)
+                elif f in TRACKS: o[f] = [[at(r[0])] + r[1:] for r in v]
+                else: resolve(v)
+        elif isinstance(o, list):
+            for v in o: resolve(v)
+    resolve(beat["els"])
+    for k in TRACKS:
+        if k in beat: beat[k] = [[at(r[0])] + r[1:] for r in beat[k]]
     end = W[-1]["e"] + 1.0
     chunks, cur = [], []
     for i, w in enumerate(W):
@@ -56,23 +80,41 @@ def main(proj: Path, key: str):
         if re.search(r"[.,?!:]$", w["w"]) or len(cur) == 3 or i == len(W) - 1:
             chunks.append({"s": cur[0]["s"], "e": cur[-1]["e"] + 0.2, "t": " ".join(x["w"] for x in cur).rstrip(".,:")}); cur = []
     for c, d in zip(chunks, chunks[1:]): c["e"] = min(c["e"], d["s"])
-    data = {"chunks": chunks, "hook": beat["hook"], "hookEnd": at(beat["hookEnd"]), "end": end, "els": beat["els"]}
+    data = {"chunks": chunks, "hook": beat["hook"], "hookEnd": at(beat["hookEnd"]), "end": end, "els": beat["els"],
+            "mascot": beat.get("mascot", []), "react": beat.get("react", []), "ep": beat.get("ep", ""), "series": beat.get("series", ""), "root": ROOT.as_uri()}
     work = proj / "work"; work.mkdir(exist_ok=True)
-    page = (ROOT / "templates/video/canvas/canvas.html").read_text().replace("__FONTS__", (ROOT / "templates/fonts-extra").as_uri()).replace("__DATA__", json.dumps(data))
+    tpl = beat.get("template", "canvas")
+    page = (ROOT / f"templates/video/{tpl}/{tpl}.html").read_text().replace("__FONTS__", (ROOT / "templates/fonts-extra").as_uri()).replace("__DATA__", json.dumps(data))
     (work / f"{key}.html").write_text(page)
+    if stills:
+        with sync_playwright() as p:
+            b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1080, "height": 1920})
+            pg.goto((work / f"{key}.html").as_uri()); pg.evaluate("window.ready || 0"); pg.wait_for_timeout(600)
+            for t in stills:
+                pg.evaluate(f"seek({t})"); pg.screenshot(path=str(work / f"{key}_{t}.jpg"), type="jpeg", quality=85)
+            b.close()
+        print("stills ->", work, f"{end:.1f}s"); return
     pic = work / f"{key}_pic.mp4"
     enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "image2pipe", "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", str(pic)], stdin=subprocess.PIPE)
     with sync_playwright() as p:
         b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1080, "height": 1920})
-        pg.goto((work / f"{key}.html").as_uri()); pg.wait_for_timeout(500)
+        pg.goto((work / f"{key}.html").as_uri()); pg.evaluate("window.ready || 0"); pg.wait_for_timeout(500)
         for f in range(int(end * FPS)):
             pg.evaluate(f"seek({f / FPS})"); enc.stdin.write(pg.screenshot(type="jpeg", quality=93))
         b.close()
     enc.stdin.close(); enc.wait()
     # sound: one effect per card, quiet under the voice
-    S = {"stamp": ("stamp", .8), "chip": ("pop", .5), "tags": ("pop", .45), "counter": ("tick", .4), "quote": ("hit_soft", .8)}
+    S = {"stamp": ("stamp", .8), "chip": ("pop", .5), "tags": ("pop", .45), "counter": ("tick", .4), "quote": ("hit_soft", .8), "code": ("keys", .35),
+         "map": ("whoosh", .45), "dlg": ("pop", .5)}
     cues = [(S.get(e["type"], ("whoosh_soft", .4)), e["at"]) for e in beat["els"]]
     cues += [(("whoosh", .5), e["reveal"]) for e in beat["els"] if "reveal" in e]
+    cues += [(("click", .5), c[0]) for e in beat["els"] for c in e.get("cursor", []) if len(c) > 3 and c[3]]
+    cues += [(("click", .5), e["press"]) for e in beat["els"] if "press" in e]
+    cues += [(("swoosh_up", .4), r["at"]) for e in beat["els"] for r in e.get("routes", [])]
+    cues += [(("stamp", .5), r["cancel"]) for e in beat["els"] for r in e.get("routes", []) if "cancel" in r]
+    cues += [(("paper", .4), l["at"]) for e in beat["els"] for l in e.get("lines", []) if isinstance(l, dict) and "at" in l]
+    cues += [(("pop", .35), r[0]) for r in data["react"]]
+    if data["mascot"]: cues.append((("whoosh_soft", .4), data["mascot"][0][0]))
     ins = ["-i", str(proj / f"{key}.mp3")] + sum([["-i", str(SFX / f"{c[0]}.mp3")] for c, _ in cues], [])
     fl = [f"[{i + 2}:a]adelay={int(t * 1000)}|{int(t * 1000)},volume={c[1] * 0.3:.3f}[s{i}]" for i, (c, t) in enumerate(cues)]
     # music ships inside the file (Vish, 28 Oct), ducked under the voice so every word stays on top
@@ -89,4 +131,5 @@ def main(proj: Path, key: str):
 
 
 if __name__ == "__main__":
-    main(Path(sys.argv[1]).resolve(), sys.argv[2])
+    a = sys.argv[1:]
+    main(Path(a[0]).resolve(), a[1], [float(x) for x in a[a.index("--stills") + 1].split(",")] if "--stills" in a else None)
