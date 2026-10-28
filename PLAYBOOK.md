@@ -264,6 +264,20 @@ Research → topic validation → hook → script → storyboard → edit → ca
   - Music and sound design ship inside the file. He has no time to add music later, and audio added in the app never matches the cuts.
   - Pace of the picture: no beat-per-shot montages; at least two beats a shot, smooth zoom transitions, slow push-ins.
 
+- **Voice model (Vish, 28 Oct):** his clone runs on **Eleven v4** (`eleven_v4`), the model of the ElevenLabs sample he said "sounds like me". Emotion tags in the script are fine (v4 doesn't read them aloud), then `voice_polish.py --speed 1.15`.
+- **Editing rules from @minolee.mp4's "15 AI editing rules" (Vish sent the PDF, 28 Oct), adapted to his breath rule:**
+  - Captions are for reading: 2 to 3 words, never ending on a weak word (a, the, to, my, and). Talking heads: plain white with a soft shadow, no box, no bounce.
+  - The gap follows the tone. Normal line: about 0.15 s. A serious line: 0.35 s so it lands. Story beat: 0.5 s. A joke can cut mid-word. Keep up to 60 ms of each word's own fade; never leak a sliver of a cut word.
+  - 1 to 3 frame J-cuts: hear the next line just before you see it.
+  - Money in full ("EUR 3,000", never "3k"). Real receipts only.
+  - Safe zone: nothing in the top 15%, the bottom 20% or the right-hand button column. Never cover his face; cards sit above his head, one at a time.
+  - Name an app or a result? Show the real one (logo, screenshot, UI). No emojis on screen.
+  - B-roll is literal and his own, one clip per listed item (0.9 s minimum), darkened so captions read.
+  - Punch in to about 1.25x only on the lines that matter.
+  - Voice on top: music about 25% in a quiet intro, about 10% once the drums hit; start the song where it gets good.
+  - The loop: edit, watch like a viewer, say exactly what's off, save it as a rule.
+- **AI-video route (NMXWZ "AI Reel in 3 Prompts", 28 Oct):** for character stories in the low-poly 3D look, Claude writes the character-sheet and shot prompts, Vish makes the images in ChatGPT and the clips in Gemini Omni (his own accounts), and Claude Code cuts, captions and mixes the clips. Image first, video second. The same sheets and the same style and voice locks in every clip.
+
 - **The mascot (Vish, 27 Oct: "that doesn't look like me"):** any animated Vish uses the real PNGs in `brand/avatar/pack` (read `Vish_Mascot_Claude_Guide.md`). Never a drawn or generated face.
 
 ## 12. Research sources and how reliable they are
