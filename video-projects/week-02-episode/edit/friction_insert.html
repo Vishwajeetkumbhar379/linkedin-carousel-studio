@@ -1,0 +1,149 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/* Week 2, 41.0 to 64.2 s: the plan shown, not just said (Vish, 28 Oct: "show what I'm talking about: the freelance
+   forms filling up, the portfolio, the plan"). Every beat lands on its word from the voice (WORDS, video time). */
+@font-face{font-family:IT;font-weight:700;src:url(__FONTS__/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:IS;src:url(__FONTS__/instrument-serif-latin-400-normal.woff2)}
+@font-face{font-family:IS;font-style:italic;src:url(__FONTS__/instrument-serif-latin-400-italic.woff2)}
+:root{--paper:#F1ECE3;--ink:#1D1C1A;--muted:#8A8172;--amber:#E7A15A;--red:#D9473A;--green:#2F6B3F;--card:#FFFDF8;--line:#E4DDD0;--night:#14161B}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--paper);font-family:IT;color:var(--ink)}
+.s{position:absolute;inset:0;opacity:0}
+.serif{font-family:IS;font-weight:400}
+.card{background:var(--card);border-radius:30px;box-shadow:0 30px 70px rgba(29,28,26,.16),0 4px 12px rgba(29,28,26,.08)}
+.lbl{font:700 26px IT;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+#cap{position:absolute;left:60px;right:60px;top:1520px;text-align:center;font:700 52px IT;color:var(--ink);z-index:9}
+#cap b{color:var(--amber)}
+/* A: friction */
+.node{position:absolute;top:900px;width:200px;height:200px;border-radius:50%;display:grid;place-items:center;font:700 54px IT}
+.bar{position:absolute;top:880px;width:150px;height:240px;border-radius:18px;background:var(--ink);color:var(--paper);display:grid;place-items:center;text-align:center;font:700 26px/1.2 IT;padding:12px;box-sizing:border-box}
+/* B: search */
+.search{position:absolute;left:90px;right:90px;top:640px;height:120px;border-radius:60px;display:flex;align-items:center;padding:0 46px;font:700 44px IT;gap:26px}
+.res{position:absolute;left:90px;right:90px;height:110px;border-radius:22px;background:#E9E2D6}
+/* D: claude + profile */
+.chat{position:absolute;left:70px;right:70px;top:300px;padding:34px 40px}
+.bubble{margin-top:18px;background:#F3EEE6;border-radius:22px;padding:22px 26px;font:700 34px/1.3 IT}
+.form{position:absolute;left:70px;right:70px;top:770px;padding:38px 42px}
+.f{margin-top:22px}
+.f .v{margin-top:10px;min-height:56px;border:3px solid var(--line);border-radius:16px;padding:12px 18px;font:700 34px/1.3 IT}
+.chip{display:inline-block;margin:10px 10px 0 0;padding:12px 22px;border-radius:999px;background:var(--amber);color:var(--ink);font:700 28px IT}
+.btn{display:inline-block;margin-top:26px;padding:20px 40px;border-radius:999px;background:var(--ink);color:var(--paper);font:700 32px IT}
+/* E: phone */
+.phone{position:absolute;left:290px;top:250px;width:500px;height:1020px;border-radius:64px;background:#0D0E12;padding:18px;box-sizing:border-box;box-shadow:0 40px 90px rgba(0,0,0,.35)}
+.scr{width:100%;height:100%;border-radius:48px;overflow:hidden;position:relative;background:var(--night)}
+.url{position:absolute;top:0;left:0;right:0;height:64px;background:#1E2128;color:#C9CDD6;font:700 22px IT;display:grid;place-items:center;z-index:2}
+.pf{position:absolute;left:28px;right:28px;border-radius:20px;background:#1F232C;color:#EDEFF4;padding:20px;font:700 24px/1.3 IT}
+/* F: plan */
+.grid{position:absolute;left:80px;right:80px;top:560px}
+.wk{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.wk .n{width:150px;font:700 30px IT;color:var(--muted)}
+.dot{width:82px;height:82px;border-radius:20px;background:#E4DDD0;display:grid;place-items:center;font:700 26px IT;color:var(--ink)}
+/* G: keyword */
+.kwc{position:absolute;left:140px;right:140px;top:640px;padding:44px 50px;text-align:left}
+.kwt{font:700 110px IT;letter-spacing:.04em;margin-top:8px}
+.dm{position:absolute;right:120px;top:1060px;max-width:620px;background:var(--amber);border-radius:30px 30px 8px 30px;padding:26px 32px;font:700 36px/1.3 IT}
+</style></head><body>
+<div class="s" id="A">
+  <div class="serif" style="position:absolute;left:0;right:0;top:300px;text-align:center;font-size:190px">Friction</div>
+  <div class="serif" id="Asub" style="position:absolute;left:80px;right:80px;top:540px;text-align:center;font-size:76px;font-style:italic;color:var(--amber)"></div>
+  <div class="node" style="left:60px;background:var(--card);box-shadow:0 20px 50px rgba(0,0,0,.12)">You</div>
+  <div class="node" style="right:60px;background:var(--amber)">Yes</div>
+  <div style="position:absolute;left:260px;right:260px;top:996px;height:8px;border-radius:4px;background:repeating-linear-gradient(90deg,var(--ink) 0 20px,transparent 20px 34px)"></div>
+  <div class="bar" id="b0" style="left:300px">No profile</div><div class="bar" id="b1" style="left:465px">No portfolio</div><div class="bar" id="b2" style="left:630px">No plan</div>
+</div>
+<div class="s" id="B">
+  <div class="lbl" style="position:absolute;left:90px;top:560px">A client, today</div>
+  <div class="search card"><span style="font-size:52px">⌕</span><span id="q"></span><span id="caret" style="width:4px;height:56px;background:var(--ink)"></span></div>
+  <div class="res" id="r0" style="top:820px"></div><div class="res" id="r1" style="top:950px"></div><div class="res" id="r2" style="top:1080px"></div>
+  <div id="none" style="position:absolute;left:90px;right:90px;top:1240px;font:700 46px IT;color:var(--red)">No results for Vish.</div>
+</div>
+<div class="s" id="C">
+  <div class="serif" style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:120px">This week</div>
+  <div id="c3" style="position:absolute;left:70px;right:70px;top:640px;display:flex;gap:30px">
+    <div class="card cc" style="flex:1;padding:40px 30px;text-align:center"><div class="serif" style="font-size:110px;color:var(--amber)">1</div><div style="font:700 40px IT">Profiles</div></div>
+    <div class="card cc" style="flex:1;padding:40px 30px;text-align:center"><div class="serif" style="font-size:110px;color:var(--amber)">2</div><div style="font:700 40px IT">Portfolio</div></div>
+    <div class="card cc" style="flex:1;padding:40px 30px;text-align:center"><div class="serif" style="font-size:110px;color:var(--amber)">3</div><div style="font:700 40px IT">Plan</div></div>
+  </div>
+</div>
+<div class="s" id="D">
+  <div class="chat card"><div class="lbl">Claude</div><div class="bubble" id="prompt"></div></div>
+  <div class="form card" id="form"><div class="lbl">Freelance profile</div>
+    <div class="f"><div class="lbl" style="font-size:20px">Headline</div><div class="v" id="hl"></div></div>
+    <div class="f"><div class="lbl" style="font-size:20px">Overview</div><div class="v" id="ov"></div></div>
+    <div class="f"><div class="lbl" style="font-size:20px">Skills</div><div id="sk"></div></div>
+    <div class="btn" id="pub">Publish profile</div>
+  </div>
+</div>
+<div class="s" id="E">
+  <div class="phone"><div class="scr">
+    <div class="url" id="url">buildwithvvish.com</div>
+    <img id="home" src="../assets/insert/site.png" style="position:absolute;top:64px;left:0;width:464px">
+    <div id="port" style="position:absolute;inset:64px 0 0 0;background:var(--night);opacity:0">
+      <div class="pf" id="p0" style="top:30px;font-size:34px">Vish Kumbhar<div style="font-size:22px;color:#E7A15A;margin-top:8px">Influencer marketing · AI content systems</div></div>
+      <div class="pf" id="p1" style="top:200px">850+ creator deals<div style="font-size:20px;color:#9AA1AE">on the brand side</div></div>
+      <div class="pf" id="p2" style="top:330px">5 years in social and influencer marketing</div>
+      <div class="pf" id="p3" style="top:460px">AI systems I built<div style="font-size:20px;color:#9AA1AE">this content engine · an AI job-search agent</div></div>
+      <div class="pf" id="p4" style="top:640px;background:#E7A15A;color:#14161B;text-align:center">Work with me</div>
+    </div>
+  </div></div>
+  <div class="lbl" style="position:absolute;left:0;right:0;top:1310px;text-align:center" id="elbl">Building it this week</div>
+</div>
+<div class="s" id="F">
+  <div class="serif" style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:104px">The next 4 weeks</div>
+  <div style="position:absolute;left:0;right:0;top:470px;text-align:center;font:700 30px IT;color:var(--muted)"><span style="color:var(--amber)">■</span> content &nbsp;&nbsp; <span style="color:var(--green)">■</span> income</div>
+  <div class="grid" id="grid"></div>
+</div>
+<div class="s" id="G">
+  <div class="kwc card"><div class="lbl">Comment</div><div class="kwt" id="kw"></div></div>
+  <div class="dm" id="dm">Here's the checklist ✓</div>
+</div>
+<div id="cap"></div>
+<script>
+const D = __DATA__;  // {words:[{w,s,e}] in video time, t0, t1}
+const cl = (x) => Math.max(0, Math.min(1, x)), eo = (x) => 1 - Math.pow(1 - cl(x), 3);
+const back = (x) => { x = cl(x); const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const $ = (id) => document.getElementById(id);
+const at = (w, n = 0) => D.words.filter((x) => x.w.toLowerCase().replace(/[^a-z']/g, "").startsWith(w))[n].s;
+// scenes and their windows (video time): each fades and pushes in on its own cue
+const SC = [["A", D.t0, at("if")], ["B", at("if"), at("so")], ["C", at("so"), at("profiles")], ["D", at("profiles"), at("portfolio")],
+            ["E", at("portfolio"), at("plan")], ["F", at("plan"), at("comment")], ["G", at("comment"), D.t1 + 1]];
+const type = (el, txt, t, a, b) => { const n = Math.round(txt.length * cl((t - a) / (b - a))); el.textContent = txt.slice(0, n); };
+// the plan grid: 4 weeks x 7 days
+const G = $("grid");
+for (let w = 0; w < 4; w++) { const r = document.createElement("div"); r.className = "wk"; r.innerHTML = `<div class="n">Week ${w + 1}</div>` + Array.from({length: 7}, () => '<div class="dot"></div>').join(""); G.appendChild(r); }
+const dots = [...document.querySelectorAll(".dot")];
+window.seek = (t) => {
+  SC.forEach(([id, a, b]) => { const el = $(id), k = Math.min(cl((t - a + 0.12) / 0.32), cl((b - t + 0.12) / 0.28));
+    el.style.opacity = k; el.style.transform = `scale(${1.04 - 0.04 * eo((t - a) / 0.5) + 0.03 * cl((t - a) / Math.max(1, b - a))})`; });
+  // A: friction between you and yes
+  type($("Asub"), "anything between you and a yes", t, at("anything"), at("yes") + 0.2);
+  ["b0", "b1", "b2"].forEach((id, i) => { const k = (t - at("stands") - i * 0.18) / 0.3; $(id).style.opacity = cl(k * 3); $(id).style.transform = `translateY(${-(1 - eo(k)) * 420}px) rotate(${(1 - eo(k)) * (i - 1) * 12}deg)`; });
+  // B: the client searches, nothing comes up
+  type($("q"), "freelance marketing + AI", t, at("client"), at("where"));
+  $("caret").style.opacity = Math.floor(t * 3) % 2 ? 1 : 0.2;
+  ["r0", "r1", "r2"].forEach((id, i) => { $(id).style.opacity = cl((t - at("where") - i * 0.12) / 0.25); });
+  $("none").style.opacity = cl((t - at("look")) / 0.25); $("none").style.transform = `translateX(${(1 - eo((t - at("look")) / 0.3)) * -40}px)`;
+  // C: three things
+  document.querySelectorAll(".cc").forEach((c, i) => { const k = (t - at("three") - i * 0.16) / 0.35; c.style.opacity = cl(k * 2); c.style.transform = `scale(${0.5 + 0.5 * back(k)})`; });
+  // D: Claude writes the profile from the CV, then the form fills itself
+  type($("prompt"), "Turn my CV into a freelance profile: headline, overview, skills.", t, at("profiles"), at("freelance"));
+  const fk = (t - at("freelance")) / 0.35; $("form").style.opacity = cl(fk * 2); $("form").style.transform = `translateY(${(1 - eo(fk)) * 120}px)`;
+  type($("hl"), "Influencer marketing manager · AI content systems", t, at("platforms"), at("from"));
+  type($("ov"), "850+ creator deals on the brand side. Now I build AI content systems.", t, at("from"), at("claude"));
+  const S = ["Influencer marketing", "Brand partnerships", "Claude", "AI workflows"];
+  $("sk").innerHTML = S.map((s, i) => { const k = (t - at("claude") + 0.3 - i * 0.12) / 0.25; return k > 0 ? `<span class="chip" style="transform:scale(${0.5 + 0.5 * back(k)})">${s}</span>` : ""; }).join("");
+  const pk = t - at("claude") - 0.45; $("pub").textContent = pk > 0 ? "Published ✓" : "Publish profile"; $("pub").style.background = pk > 0 ? "var(--green)" : "var(--ink)";
+  // E: his site, then the portfolio page building itself
+  const e0 = at("portfolio"); $("home").style.transform = `translateY(${-eo((t - e0) / 1.0) * 260}px)`;
+  const pp = cl((t - at("one") + 0.1) / 0.3); $("port").style.opacity = pp; $("url").textContent = pp > 0.5 ? "buildwithvvish.com/portfolio" : "buildwithvvish.com";
+  ["p0", "p1", "p2", "p3", "p4"].forEach((id, i) => { const k = (t - at("one") - 0.15 - i * 0.28) / 0.3; $(id).style.opacity = cl(k * 2); $(id).style.transform = `translateY(${(1 - eo(k)) * 40}px)`; });
+  // F: four weeks fill up, content most days, income checkpoints
+  const f0 = at("next"), f1 = at("income") + 0.3;
+  dots.forEach((d, i) => { const k = (t - f0 - (i / dots.length) * (f1 - f0)) / 0.2; const inc = i % 7 === 6;
+    d.style.background = k > 0 ? (inc ? "var(--green)" : "var(--amber)") : "#E4DDD0"; d.style.transform = `scale(${k > 0 ? 0.6 + 0.4 * back(k) : 1})`; d.textContent = k > 0 && inc ? "€" : ""; d.style.color = inc ? "#fff" : "var(--ink)"; });
+  // G: the keyword and the DM it sends
+  type($("kw"), "FRICTION", t, at("friction", 1), at("friction", 1) + 0.5);
+  const dk = (t - at("checklist")) / 0.3; $("dm").style.opacity = cl(dk * 2); $("dm").style.transform = `translateY(${(1 - eo(dk)) * 60}px)`;
+  // captions, 2 to 3 words, never ending on a weak word
+  const c = D.chunks.find((c) => t >= c.s && t < c.e); $("cap").textContent = c ? c.t : "";
+};
+seek(D.t0);
+</script></body></html>
