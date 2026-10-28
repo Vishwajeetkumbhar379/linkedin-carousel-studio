@@ -386,7 +386,8 @@ def plan(tl: dict) -> dict:
     kr = [["Profiles", T("k1", "profiles")], ["Portfolio", T("k1", "portfolio")], ["Plan", T("k1", "plan")]]
     # what friction means first (Vish, 28 Oct: "what does that mean? there is no proper flow"), then the checklist
     week = T("k1", "this")
-    title(k1 - CLONE_LEAD + 0.1, week - 0.05, html="Friction:<br><i class=am>anything between you and a yes.</i>", size=104, y=520, z=40)
+    title(k1 - CLONE_LEAD + 0.1, week - 0.05, html="Friction:<br><i class=am>anything between<br>you and a yes.</i>", size=96, y=560, z=40,
+          color="#1D1C1A", x=70, shadow=0)  # ink on the paper, inside the frame (the first cut was white on cream and ran off the edges)
     S("type-hit", k1, 0.07)
     cues.append({"type": "kw", "t0": week - 0.1, "t1": tl["next"][0] + 0.6, "rows": kr, "key": "FRICTION", "key_t": T("k1", "friction", nth=1),
                  "box_t": T("k1", "comment") - 0.15, "send_t": T("k1", "checklist") - 0.25, "send": "for my checklist", "z": 47})
