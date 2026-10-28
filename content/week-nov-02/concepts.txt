@@ -1,0 +1,110 @@
+STORYTELLING STRATEGY + 12 CONCEPTS, made 2 to 8 Nov 2026 (for posting from 9 Nov). For approval; no scripts until you pick.
+Nothing here changes the episodes already rendered or the locked motion style. This adds a story layer on top.
+
+==================================================
+1. WHAT I COULD AND COULDN'T ACCESS (28 Oct)
+- Read in full: your Mosycreate PDF (29 pages).
+- Read: Berger and Milkman 2012 abstract (Crossref).
+- Titles only, not watched: all 8 YouTube videos. YouTube asked for a sign-in bot check from this server, so no transcripts.
+- Not opened: all 13 Instagram reels and accounts. instagram.com is blocked by this session's network settings.
+- Not available: Loewenstein 1994 and Green and Brock 2000 (no abstract in Crossref; full texts are paywalled).
+- Our own earlier research (repo, 28 Oct): Paritosh and Kallaway notes in content/week-04/research-scripts.txt and CONTENT-OS.md.
+- Labels below: [V] verified in a source I read. [R] our earlier research. [K] my background knowledge of the published work,
+  not checked here. Treat [K] as a hypothesis until I can watch or read the source.
+
+==================================================
+2. THE LESSONS THAT MATTER
+[V PDF] Make the first 70 to 80% coherent and believable, then let ONE late detail change the meaning. Don't explain the joke.
+[V PDF] Seven beats: ordinary frustration, plausible solution, polished demo, repeat (teach the rule), personal exception,
+        re-score the emotion (music or silence), hold and leave.
+[V PDF] Delete-the-effects test: read the script aloud with no music or visuals. If a stranger can't explain the twist, fix the
+        story, not the motion. One extra clean sentence beats five stronger transitions.
+[V PDF] At the reversal, choose ONE audio action (pitch drop, filter, hard cut or silence). Then hold. Test 0.6, 1.1, 1.7 s.
+[V PDF] Narration: short opener, pause while the picture works, clean escalation, near-flat reaction to the reveal. The hardest
+        beat may be deciding NOT to say the last line.
+[V PDF] Humour engines: serious UI meets a private disaster; false convenience; automation that says what a polite friend
+        wouldn't; unreliable metrics (the KPI that measures feelings); bureaucratic absurdity; silence as the punchline.
+[V Berger & Milkman] Positive content is shared more than negative, and high-arousal emotions (awe, anger, anxiety) are
+        shared more than low-arousal ones like sadness. So: aim for surprise, amusement and awe, not sadness.
+[R] Paritosh's strongest titles use a statement, a number and a time box; questions were weaker.
+[R] Kallaway: name the topic in about five words, then turn it the other way. Proof on screen, not just talk.
+[K] Loewenstein: curiosity needs a specific gap the viewer feels close to closing. Vague mystery doesn't work. Always pay it off.
+[K] Green and Brock: people get absorbed through focus, mental pictures and feeling. So use concrete images ("one coffee, 3.50").
+[K] Stanton: make me care in the first beat; give 2 + 2, not 4 (let the viewer work it out); know the ending first.
+[K] Matthew Dicks: every story is about a five-second moment of change. Start at the opposite of where you end. Cut what doesn't serve that moment.
+[K] Jenny Hoyos: write the ending first; a hook you understand with the sound off; stakes plus irony; end the moment the story ends.
+
+==================================================
+3. OUR CREATIVE IDENTITY (proposal)
+"The honest experiment." A 27-year-old Indian marketer in Germany runs his own life like a brand campaign: dashboards, briefs,
+KPIs and real numbers, applied to messy real life. The data is serious; the last line is human.
+- Voice: plain and warm, exact numbers, one honest aside per beat, understated humour, a deadpan last line.
+- Signature device: a clean, serious interface (review, brief, converter, ranking), then one late human reversal and silence.
+- Recurring markers: "Week N of 52", a real-numbers card, and ending on a line or a held frame, never on "follow for more".
+- This keeps your locked pillars (AI, brand-side, build in public, the weekly documentary). It adds no new character.
+
+==================================================
+4. THE 12 CONCEPTS
+Scores 1 to 5: Hook, Story, Payoff, Relevance, Share, Comments, Feasible, Original, Cost (5 = cheap), Series.
+Every reason is a hypothesis to test, not a promise.
+
+TALKING (you on camera, the Week 2 edit style)
+1. THE ACCOUNTING TWIST. "I quit a good job to become a student again. The scary part wasn't Germany."
+   Story: a good salary, then quitting, a new country, no German. Ending: the hardest part was accounting, which you'd never
+   studied. Tests: a story that starts at the opposite of its ending (Dicks), plus an understated reversal.
+   Scores 4 4 4 4 3 4 5 4 5 3.
+2. TAKE 14. "I wanted to make content for years. I never started, because I wanted to be good first."
+   Ending: the clapper reads "TAKE [real number]", and you shrug. Tests: relatable contradiction (Kaytie), meta reveal, loop.
+   Scores 5 4 5 4 5 4 5 4 5 2.
+3. PERFECT TUESDAY VS REAL TUESDAY. Your dream day (ocean, yoga, three hours of work) against today's real one, beat by beat,
+   on a split screen. Ending: one shared detail ("the coffee is the same"). Tests: making the ordinary interesting (Shivank).
+   Scores 4 3 3 4 4 5 4 3 4 3.
+4. MY REJECTION EMAILS, RANKED. A ranking of your real (blurred) rejection emails, from the worst to the "best".
+   Ending: number 1 is the one human reply. Tests: identification (job seekers) and genuine comments ("which one did you get?").
+   Scores 4 4 4 5 4 5 4 4 5 2.
+
+FACELESS MOTION COMEDY (your voice, Mosy-level craft, 15 to 25 s, original UI)
+5. MY JOB SEARCH PERFORMANCE REVIEW. A formal HR dashboard reviews your 220 applications with real numbers. Last metric:
+   "Most reliable contact: no-reply@." Silence. Tests: the unreliable-metrics engine. Scores 5 4 4 5 5 4 4 4 4 3.
+6. RUPEE BRAIN. A converter turns every German price into rupees: coffee, rent, a train ticket. The last item is 40,000 euros.
+   The app freezes. Hard cut. Tests: false convenience, then silence. Uses the debt story (only one debt video in 2 weeks).
+   Needs you to confirm you really convert prices in your head. Scores 5 4 5 4 5 4 4 5 4 3.
+7. LINKEDIN HONESTY MODE. A fictional tool translates LinkedIn posts into the truth ("Thrilled to announce" becomes "tired").
+   Ending: it translates YOUR Week 3 post. Tests: automation with judgment; your pet peeve about copy-paste posts.
+   Scores 4 3 4 4 5 4 4 4 4 4.
+8. BRAND BRIEF TRANSLATOR. Phrases from creator briefs, translated from the brand side ("authentic", "quick turnaround").
+   Ending: "originality" just loads forever. Built from your real 22-shortlists story, framed as your opinion.
+   Tests: insider knowledge plus humour for creators and marketers. Scores 4 4 4 5 5 5 4 5 4 5.
+
+CURIOSITY EXPLAINERS (Zack D style: question, progressive reveal, payoff; every claim fact-checked before scripting)
+9. DOES REJECTION REALLY HURT? Your 220 rejections plus the science of social pain, including where the research is debated.
+   Ending: the honest answer, plus what yoga taught you. Scores 4 4 4 4 4 4 3 4 4 3.
+10. THE IKEA EFFECT. Why people overvalue what they built (Norton, Mochon and Ariely). Shown on the video editor you built in
+   code. Ending: the editor that "loves" its own edit. Scores 3 3 4 4 3 3 4 4 4 4.
+
+EXPERIMENT SERIES (a premise, rules, an uncertain outcome, a reason to come back)
+11. 30 DAYS: CAN MY AI JOB AGENT GET ME AN INTERVIEW? Episode 1 sets the rules and the counter. Weekly updates, real numbers
+   only. Tests: the challenge loop (an uncertain future you document). Scores 5 3 3 5 4 5 4 3 5 5.
+12. CAN I WORK FROM A BACKPACK? A Sri Lanka pilot (6 Dec): the rules, the kit, the risks. Ending: "Ask me in 31 days."
+   Scores 4 3 3 4 4 4 4 3 5 5.
+
+==================================================
+5. RECOMMENDED BATCH (5 videos, plus an upgraded Week 3 episode)
+- Upgrade the Week 3 episode script (Thu 5 Nov) with this system: five hooks, a twist ending, delivery marks.
+- 2 TAKE 14 (talking): the strongest relatable hook and a meta ending.
+- 1 THE ACCOUNTING TWIST (talking): stakes plus a witty reversal, with no debt mention.
+- 4 REJECTION EMAILS, RANKED (talking plus screens): the best bet for genuine comments.
+- 8 BRAND BRIEF TRANSLATOR (faceless comedy): your expertise, a repeatable series.
+- 6 RUPEE BRAIN (faceless comedy): the strongest surprise ending. This is the one debt video of the fortnight.
+Mix: 3 talking + 2 faceless. One filming session (about 90 min) plus two motion builds.
+
+Each approved script comes with: 5 hooks, the chosen hook and why, a TELEPROMPTER version with delivery marks
+(/ = pause, CAPS = stress, [smile], [look off, then back], an energy level per beat), 3 endings, a loop, beats with timestamps,
+shot-by-shot visuals, motion and sound per the PDF, captions, a description, assets, time and cost, and a fact checklist.
+
+==================================================
+6. YOUR DECISIONS
+a) Approve the batch, or swap any concept.
+b) New format: faceless comedy shorts with fictional apps (5 to 8). Yes or no? Each is labelled "a fictional app" on screen.
+c) Truth checks: do you really convert prices to rupees in your head (6)? Can I use your real rejection emails, blurred (4)?
+d) References: allow instagram.com (and a YouTube sign-in route) in the session settings, or send me screen recordings or transcripts.
