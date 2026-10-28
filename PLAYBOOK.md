@@ -256,10 +256,13 @@ Research → topic validation → hook → script → storyboard → edit → ca
   - No ElevenLabs Music beds on story reels. Deliver the voice mix clean; he adds trending audio in the Instagram app.
   - Real voice notes still win for personal stories; speed them up the same way.
 
-- **Sound (Vish, 28 Oct: "robotic, cut abruptly after every sentence, echo chamber, 10 feet away, I speak slow"):**
-  - Every voice, real or clone, goes through `scripts/voice_polish.py`: ElevenLabs Voice Isolator, pauses shrunk to 0.2 s with equal-power joins (never dead air, never 10 ms cuts), atempo 1.25 for his real voice and 1.18 for the clone, close-mic EQ and compression.
-  - Check after: zero dead-air gaps over 60 ms, every scripted word in the transcript, 180 to 200 wpm.
-  - The clone learned the room from echoey recordings. Re-clone from mic recordings once he has the mic.
+- **Voice and sound (Vish, 28 Oct, final word; replaces the earlier clone and music notes):**
+  - His real voice first, wherever a recording exists. It carries the emotion (the Week 1 intro is the benchmark). The clone only fills lines he never recorded, and uses voice B (multilingual v2, expressive settings).
+  - Real voice at 1.2x with ffmpeg atempo (pitch kept). Never rubberband: it put echo on him.
+  - A breath of about 0.5 s between lines, words fading in and out softly (25 ms in, 100 ms out), never dead air or 12 ms chops.
+  - Clean every voice with `scripts/voice_polish.py` (isolator, soft joins, close-mic tone).
+  - Music and sound design ship inside the file. He has no time to add music later, and audio added in the app never matches the cuts.
+  - Pace of the picture: no beat-per-shot montages; at least two beats a shot, smooth zoom transitions, slow push-ins.
 
 - **The mascot (Vish, 27 Oct: "that doesn't look like me"):** any animated Vish uses the real PNGs in `brand/avatar/pack` (read `Vish_Mascot_Claude_Guide.md`). Never a drawn or generated face.
 

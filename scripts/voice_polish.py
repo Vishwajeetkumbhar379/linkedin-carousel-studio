@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 
 SR = 48000
-MAX_PAUSE, XF = 0.2, 0.035  # longest pause kept, crossfade (s)
+MAX_PAUSE, XF = 0.42, 0.035  # longest pause kept (a breath), crossfade (s)
 TONE = ("highpass=f=75,lowshelf=f=140:g=3,equalizer=f=350:t=q:w=1.2:g=-2.5,equalizer=f=4200:t=q:w=1:g=2.5,"
         "highshelf=f=10000:g=1.5,deesser=i=0.4,acompressor=threshold=-21dB:ratio=3:attack=5:release=90:makeup=3,"
         "alimiter=limit=0.9,loudnorm=I=-16:TP=-1.5:LRA=7")
@@ -79,5 +79,5 @@ def main(src: Path, dst: Path, speed: float = 1.15, iso: bool = True):
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    sp = float(a[a.index("--speed") + 1]) if "--speed" in a else 1.15
+    sp = float(a[a.index("--speed") + 1]) if "--speed" in a else 1.2
     main(Path(a[0]).resolve(), Path(a[1]).resolve(), sp, "--no-isolate" not in a)

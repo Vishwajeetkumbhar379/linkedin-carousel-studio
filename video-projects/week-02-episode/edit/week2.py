@@ -71,13 +71,27 @@ def audio(src: Path) -> np.ndarray:
 
 
 base.audio = audio
-base.SPEED = 1.0  # Vish, 27 Oct: "a lot of echo": no time-stretch on his voice
+base.SPEED = 1.2  # Vish, 28 Oct: "my real voice, 1.2x"; rubberband put echo on it (27 Oct), so his voice uses atempo
+
+
+def _stretch(x: np.ndarray, rate: float, speech: bool) -> np.ndarray:
+    """Pitch-kept time-stretch with ffmpeg atempo (WSOLA): the method of the real-voice sample Vish approved on 28 Oct."""
+    if abs(rate - 1.0) < 1e-3 or len(x) < 256:
+        return x
+    import soundfile as sf
+    buf = io.BytesIO(); sf.write(buf, x, base.SR, format="WAV", subtype="FLOAT")
+    y = subprocess.run(["ffmpeg", "-v", "error", "-i", "pipe:0", "-af", f"atempo={rate:.5f}", "-ar", str(base.SR), "-ac", "1", "-f", "f32le", "-"],
+                       input=buf.getvalue(), capture_output=True, check=True).stdout
+    return np.frombuffer(y, np.float32).copy()
+
+
+base.stretch = _stretch
 SFXLIB = P.parent / "sfx-library"  # studio sound effects (ElevenLabs), shared by every edit
 
 # ---------------------------------------------------------------- the cut
 BEAT = 60 / 112  # the bed's tempo; the haircut cuts land on it
 SHOP = [("intro/IMG_8694.MOV", 0.6), ("intro/IMG_8696.MOV", 2.0), ("intro/IMG_8696.MOV", 5.5), ("intro/IMG_8697.MOV", 0.3), ("intro/IMG_8697.MOV", 7.0)]
-MONT = round(len(SHOP) * BEAT * FPS) / FPS
+MONT = round(len(SHOP) * 2 * BEAT * FPS) / FPS  # two beats a shot (Vish, 28 Oct: the haircut was "super super fast")
 # In order. A take: (id, clip, runs of (from, to) word-start times kept, caption fixes, layout, look, flags).
 # A clone line: (id, None, vo file in week-02-talks/vo). Layout "hide" = no picture of him (a full-screen graphic).
 SEQ = [
@@ -92,7 +106,8 @@ SEQ = [
     ("k1", None, "WEEK2_9"),
 ]
 NARRATOR = "WEEK2_10"  # "Next week, on Build with Vish: did reducing friction work?"
-CLONE_LEAD, CLONE_TAIL = 0.35, 0.25
+CLONE_LEAD, CLONE_TAIL = 0.45, 0.45
+BREATH = 0.5  # the shortest pause between two lines
 NEXT_LEAD, NEXT_TAIL = 0.35, 0.75
 
 
@@ -173,7 +188,8 @@ def build() -> dict:
                 if x:
                     srcw.append({"line": lid, "x": x, "s0": max(a, w["t"]), "s1": min(b, w["e"]), "clip": clip})
         order.append(lid)
-        runs[-1]["hold"] = round(fl.get("gap", 0.0) * FPS) / FPS
+        # a breath after every line (Vish, 28 Oct: "there is some breather in between so it feels natural")
+        runs[-1]["hold"] = round(max(fl.get("gap", 0.0), BREATH) * FPS) / FPS
         runs[-1]["mute"] = bool(fl.get("mute"))
     # shots: one per take run (no joins in this edit), each mapped onto the output timeline
     t, shots, lines, words, vo = 0.0, [], {}, [], []
@@ -237,12 +253,12 @@ def plan(tl: dict) -> dict:
     def S(name, t, g, **o):
         fx.append([name, round(t, 3), g, o])
 
-    def B(t0, t1, rel, src_in, look="day", kb=(1.0, 1.06), speed=1.0, fy=0.5, tx="punch"):
+    def B(t0, t1, rel, src_in, look="day", kb=(1.0, 1.08), speed=1.0, fy=0.5, tx="zoom"):
         src = P / "raw" / rel
         n = max(1, round((t1 - t0) * FPS)) + base.TAIL
         d = base.extract(src, src_in, n, look, "1080:-2", f"b_{Path(rel).stem}_{src_in:.2f}_{n}_{speed}", speed)
         items.append({"t0": round(t0, 4), "t1": round(t1, 4), "dir": str(d), "n": n, "kind": "broll", "geom": "full", "kb": kb, "fy": fy,
-                      "src": str(src), "src_in": src_in, "speed": speed, "tx": tx, "txd": 0.22, "dx": 0.0})
+                      "src": str(src), "src_in": src_in, "speed": speed, "tx": tx, "txd": 0.34, "dx": 0.0})
 
     def title(t0, t1, words=None, html=None, font="serif", size=96, y=None, z=45, **k):
         cues.append({"type": "title", "t0": round(t0, 3), "t1": round(t1, 3), "words": words, "html": html, "font": font, "size": size,
@@ -295,8 +311,8 @@ def plan(tl: dict) -> dict:
     # ---- the haircut: five cuts on the beat, music up
     m0 = L["c1"]["t1"] + 0.05
     for k, (rel, s) in enumerate(SHOP):
-        a, b = m0 + k * BEAT, (m0 + (k + 1) * BEAT) if k < len(SHOP) - 1 else L["r1"]["t0"]
-        B(a, b, rel, s, tx="zoom" if k == 0 else "punch")
+        a, b = m0 + k * 2 * BEAT, (m0 + (k + 1) * 2 * BEAT) if k < len(SHOP) - 1 else L["r1"]["t0"]
+        B(a, b, rel, s, tx="zoom")
         S("whoosh", a, 0.06)
         S("clipper", a + 0.04, 0.05, d=BEAT * 0.8)
         S("snip", a + BEAT * 0.55, 0.07)
@@ -579,12 +595,13 @@ def mix() -> Path:
     with ThreadPoolExecutor(4) as ex:
         outs = list(ex.map(lambda j: base.stretch(j[0], j[1], True), jobs))
     q = int(0.012 * SR)
+    qi, qo = int(0.025 * SR), int(0.1 * SR)  # a word lands softly and decays naturally (12 ms ends sounded chopped)
     for (x, r, t0, dur, sh), y in zip(jobs, outs):
         m = int(round(dur * SR))
         y = np.pad(y, (0, max(0, m - len(y))))[:m] * sh["gain"]
-        if len(y) > 2 * q:
-            y[:q] *= np.linspace(0, 1, q)
-            y[-q:] *= np.linspace(1, 0, q)
+        if len(y) > qi + qo:
+            y[:qi] *= np.sin(np.linspace(0, np.pi / 2, qi)) ** 2
+            y[-qo:] *= np.cos(np.linspace(0, np.pi / 2, qo)) ** 2
         i = at(t0)
         voice[i:i + len(y)] += y[: max(0, n - i)]
     # his voice, already isolated: only a gentle polish (Vish, 27 Oct: enhanced, never unreal)
