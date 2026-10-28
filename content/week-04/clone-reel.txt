@@ -1,0 +1,26 @@
+CLONE REEL: "I was insecure about my voice" (your idea, 28 Oct)
+Length about 35 s. You film 2 short clips (same seat, lamp on, phone at eye level). I build everything else.
+
+CLIP A (you, on camera, about 6 s)
+"I was always insecure about my voice.
+Too slow. Too flat. So I almost never posted.
+Then I heard my clone."
+
+[GRAPHIC: your face shrinks into a waveform, which turns into the ElevenLabs player. A soft whoosh, then silence for half a second.]
+
+[THE CLONE, about 15 s, from the ElevenLabs file you sent, with captions:]
+"So, I come home after a 12 hour shift. Half asleep on my feet, and the front door is open..."
+"...My aunt, who'd flown in from Lyon, pulls me into a hug. Mon trésor, tu travailles trop!"
+[The French line gets its own big caption with the translation: "My treasure, you work too much!"]
+
+CLIP B (you, on camera, about 8 s, a little smile)
+"That's me. Except... I don't speak French.
+Two minutes of my voice, and one setting most people get wrong.
+Comment CLONE and I'll send you the exact setup."
+
+ON SCREEN: AI label on (the clone speaks). The guide is ready at buildwithvvish.com/resources/voice-clone, live once you say "merge".
+CAPTION
+I was insecure about my voice. Then I heard my clone.
+I don't speak French. Apparently, now I do.
+Comment CLONE for the exact setup.
+#elevenlabs #aivoice #contentcreator #aitools
