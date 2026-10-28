@@ -1,0 +1,639 @@
+{
+ "estimate": false,
+ "voice": "Drew",
+ "lines": [
+  {
+   "text": "Incognito mode doesn't make you invisible.",
+   "start": 0.02,
+   "end": 2.5,
+   "words": [
+    {
+     "w": "Incognito",
+     "start": 0.02,
+     "end": 0.8
+    },
+    {
+     "w": "mode",
+     "start": 0.8,
+     "end": 1.16
+    },
+    {
+     "w": "doesn't",
+     "start": 1.16,
+     "end": 1.74
+    },
+    {
+     "w": "make",
+     "start": 1.74,
+     "end": 1.92
+    },
+    {
+     "w": "you",
+     "start": 1.92,
+     "end": 2.08
+    },
+    {
+     "w": "invisible.",
+     "start": 2.08,
+     "end": 2.5
+    }
+   ]
+  },
+  {
+   "text": "It only makes your own laptop forget.",
+   "start": 3.02,
+   "end": 4.88,
+   "words": [
+    {
+     "w": "It",
+     "start": 3.02,
+     "end": 3.2
+    },
+    {
+     "w": "only",
+     "start": 3.2,
+     "end": 3.42
+    },
+    {
+     "w": "makes",
+     "start": 3.42,
+     "end": 3.7
+    },
+    {
+     "w": "your",
+     "start": 3.7,
+     "end": 3.88
+    },
+    {
+     "w": "own",
+     "start": 3.88,
+     "end": 4.04
+    },
+    {
+     "w": "laptop",
+     "start": 4.04,
+     "end": 4.42
+    },
+    {
+     "w": "forget.",
+     "start": 4.42,
+     "end": 4.88
+    }
+   ]
+  },
+  {
+   "text": "Here's the weird part. Everything else still sees you.",
+   "start": 5.44,
+   "end": 8.88,
+   "words": [
+    {
+     "w": "Here's",
+     "start": 5.44,
+     "end": 5.76
+    },
+    {
+     "w": "the",
+     "start": 5.76,
+     "end": 5.86
+    },
+    {
+     "w": "weird",
+     "start": 5.86,
+     "end": 6.06
+    },
+    {
+     "w": "part.",
+     "start": 6.06,
+     "end": 6.36
+    },
+    {
+     "w": "Everything",
+     "start": 6.88,
+     "end": 7.2
+    },
+    {
+     "w": "else",
+     "start": 7.2,
+     "end": 7.64
+    },
+    {
+     "w": "still",
+     "start": 7.64,
+     "end": 8.26
+    },
+    {
+     "w": "sees",
+     "start": 8.26,
+     "end": 8.62
+    },
+    {
+     "w": "you.",
+     "start": 8.62,
+     "end": 8.88
+    }
+   ]
+  },
+  {
+   "text": "Every page you open leaves as a packet with your address on it.",
+   "start": 9.44,
+   "end": 13.42,
+   "words": [
+    {
+     "w": "Every",
+     "start": 9.44,
+     "end": 9.7
+    },
+    {
+     "w": "page",
+     "start": 9.7,
+     "end": 9.96
+    },
+    {
+     "w": "you",
+     "start": 9.96,
+     "end": 10.22
+    },
+    {
+     "w": "open",
+     "start": 10.22,
+     "end": 10.54
+    },
+    {
+     "w": "leaves",
+     "start": 10.54,
+     "end": 11.14
+    },
+    {
+     "w": "as",
+     "start": 11.14,
+     "end": 11.38
+    },
+    {
+     "w": "a",
+     "start": 11.38,
+     "end": 11.5
+    },
+    {
+     "w": "packet",
+     "start": 11.5,
+     "end": 11.86
+    },
+    {
+     "w": "with",
+     "start": 11.86,
+     "end": 12.38
+    },
+    {
+     "w": "your",
+     "start": 12.38,
+     "end": 12.52
+    },
+    {
+     "w": "address",
+     "start": 12.52,
+     "end": 12.92
+    },
+    {
+     "w": "on",
+     "start": 12.92,
+     "end": 13.28
+    },
+    {
+     "w": "it.",
+     "start": 13.28,
+     "end": 13.42
+    }
+   ]
+  },
+  {
+   "text": "Your Wi-Fi, your employer, your internet provider. They all see it pass.",
+   "start": 13.8,
+   "end": 18.44,
+   "words": [
+    {
+     "w": "Your",
+     "start": 13.8,
+     "end": 13.88
+    },
+    {
+     "w": "Wi-Fi,",
+     "start": 13.88,
+     "end": 14.16
+    },
+    {
+     "w": "your",
+     "start": 14.96,
+     "end": 15.06
+    },
+    {
+     "w": "employer,",
+     "start": 15.06,
+     "end": 15.54
+    },
+    {
+     "w": "your",
+     "start": 16.08,
+     "end": 16.16
+    },
+    {
+     "w": "internet",
+     "start": 16.16,
+     "end": 16.52
+    },
+    {
+     "w": "provider.",
+     "start": 16.52,
+     "end": 16.9
+    },
+    {
+     "w": "They",
+     "start": 17.5,
+     "end": 17.6
+    },
+    {
+     "w": "all",
+     "start": 17.6,
+     "end": 17.82
+    },
+    {
+     "w": "see",
+     "start": 17.82,
+     "end": 18.06
+    },
+    {
+     "w": "it",
+     "start": 18.06,
+     "end": 18.16
+    },
+    {
+     "w": "pass.",
+     "start": 18.16,
+     "end": 18.44
+    }
+   ]
+  },
+  {
+   "text": "And the sites you visit? Google's own help page says they may too.",
+   "start": 18.44,
+   "end": 23.58,
+   "words": [
+    {
+     "w": "And",
+     "start": 18.44,
+     "end": 18.79
+    },
+    {
+     "w": "the",
+     "start": 19.28,
+     "end": 19.4
+    },
+    {
+     "w": "sites",
+     "start": 19.4,
+     "end": 19.66
+    },
+    {
+     "w": "you",
+     "start": 19.66,
+     "end": 19.9
+    },
+    {
+     "w": "visit?",
+     "start": 19.9,
+     "end": 20.18
+    },
+    {
+     "w": "Google's",
+     "start": 20.8,
+     "end": 21.26
+    },
+    {
+     "w": "own",
+     "start": 21.26,
+     "end": 21.4
+    },
+    {
+     "w": "help",
+     "start": 21.4,
+     "end": 21.6
+    },
+    {
+     "w": "page",
+     "start": 21.6,
+     "end": 21.92
+    },
+    {
+     "w": "says",
+     "start": 21.92,
+     "end": 22.26
+    },
+    {
+     "w": "they",
+     "start": 22.26,
+     "end": 22.94
+    },
+    {
+     "w": "may",
+     "start": 22.94,
+     "end": 23.2
+    },
+    {
+     "w": "too.",
+     "start": 23.2,
+     "end": 23.58
+    }
+   ]
+  },
+  {
+   "text": "In 2020, users sued Google for five billion dollars over it.",
+   "start": 24.16,
+   "end": 29.18,
+   "words": [
+    {
+     "w": "In",
+     "start": 24.16,
+     "end": 24.34
+    },
+    {
+     "w": "2020,",
+     "start": 24.34,
+     "end": 24.96
+    },
+    {
+     "w": "users",
+     "start": 25.28,
+     "end": 25.68
+    },
+    {
+     "w": "sued",
+     "start": 25.68,
+     "end": 26.08
+    },
+    {
+     "w": "Google",
+     "start": 26.08,
+     "end": 26.42
+    },
+    {
+     "w": "for",
+     "start": 26.42,
+     "end": 26.9
+    },
+    {
+     "w": "five",
+     "start": 26.9,
+     "end": 27.4
+    },
+    {
+     "w": "billion",
+     "start": 27.4,
+     "end": 28.16
+    },
+    {
+     "w": "dollars",
+     "start": 28.16,
+     "end": 28.64
+    },
+    {
+     "w": "over",
+     "start": 28.64,
+     "end": 28.96
+    },
+    {
+     "w": "it.",
+     "start": 28.96,
+     "end": 29.18
+    }
+   ]
+  },
+  {
+   "text": "Even inside Google, one engineer wrote: stop calling it Incognito.",
+   "start": 29.18,
+   "end": 34.38,
+   "words": [
+    {
+     "w": "Even",
+     "start": 29.18,
+     "end": 29.94
+    },
+    {
+     "w": "inside",
+     "start": 29.94,
+     "end": 30.48
+    },
+    {
+     "w": "Google,",
+     "start": 30.48,
+     "end": 30.86
+    },
+    {
+     "w": "one",
+     "start": 31.26,
+     "end": 31.52
+    },
+    {
+     "w": "engineer",
+     "start": 31.52,
+     "end": 31.92
+    },
+    {
+     "w": "wrote:",
+     "start": 31.92,
+     "end": 32.32
+    },
+    {
+     "w": "stop",
+     "start": 32.74,
+     "end": 33.06
+    },
+    {
+     "w": "calling",
+     "start": 33.06,
+     "end": 33.46
+    },
+    {
+     "w": "it",
+     "start": 33.46,
+     "end": 33.66
+    },
+    {
+     "w": "Incognito.",
+     "start": 33.66,
+     "end": 34.38
+    }
+   ]
+  },
+  {
+   "text": "In 2024, Google agreed to delete or anonymise billions of records.",
+   "start": 35.0,
+   "end": 40.56,
+   "words": [
+    {
+     "w": "In",
+     "start": 35.0,
+     "end": 35.2
+    },
+    {
+     "w": "2024,",
+     "start": 35.2,
+     "end": 35.9
+    },
+    {
+     "w": "Google",
+     "start": 36.44,
+     "end": 36.8
+    },
+    {
+     "w": "agreed",
+     "start": 36.8,
+     "end": 37.24
+    },
+    {
+     "w": "to",
+     "start": 37.24,
+     "end": 37.42
+    },
+    {
+     "w": "delete",
+     "start": 37.42,
+     "end": 37.8
+    },
+    {
+     "w": "or",
+     "start": 37.8,
+     "end": 38.26
+    },
+    {
+     "w": "anonymise",
+     "start": 38.26,
+     "end": 39.04
+    },
+    {
+     "w": "billions",
+     "start": 39.04,
+     "end": 39.7
+    },
+    {
+     "w": "of",
+     "start": 39.7,
+     "end": 40.18
+    },
+    {
+     "w": "records.",
+     "start": 40.18,
+     "end": 40.56
+    }
+   ]
+  },
+  {
+   "text": "And the welcome screen changed. From browse privately, to browse more privately.",
+   "start": 41.14,
+   "end": 47.12,
+   "words": [
+    {
+     "w": "And",
+     "start": 41.14,
+     "end": 41.34
+    },
+    {
+     "w": "the",
+     "start": 41.34,
+     "end": 41.46
+    },
+    {
+     "w": "welcome",
+     "start": 41.46,
+     "end": 41.76
+    },
+    {
+     "w": "screen",
+     "start": 41.76,
+     "end": 42.14
+    },
+    {
+     "w": "changed.",
+     "start": 42.14,
+     "end": 42.66
+    },
+    {
+     "w": "From",
+     "start": 43.08,
+     "end": 43.24
+    },
+    {
+     "w": "browse",
+     "start": 43.24,
+     "end": 43.88
+    },
+    {
+     "w": "privately,",
+     "start": 43.88,
+     "end": 44.3
+    },
+    {
+     "w": "to",
+     "start": 44.3,
+     "end": 45.06
+    },
+    {
+     "w": "browse",
+     "start": 45.06,
+     "end": 45.86
+    },
+    {
+     "w": "more",
+     "start": 45.86,
+     "end": 46.52
+    },
+    {
+     "w": "privately.",
+     "start": 46.52,
+     "end": 47.12
+    }
+   ]
+  },
+  {
+   "text": "So who were you actually hiding from?",
+   "start": 47.84,
+   "end": 49.7,
+   "words": [
+    {
+     "w": "So",
+     "start": 47.84,
+     "end": 48.02
+    },
+    {
+     "w": "who",
+     "start": 48.02,
+     "end": 48.24
+    },
+    {
+     "w": "were",
+     "start": 48.24,
+     "end": 48.42
+    },
+    {
+     "w": "you",
+     "start": 48.42,
+     "end": 48.56
+    },
+    {
+     "w": "actually",
+     "start": 48.56,
+     "end": 48.94
+    },
+    {
+     "w": "hiding",
+     "start": 48.94,
+     "end": 49.32
+    },
+    {
+     "w": "from?",
+     "start": 49.32,
+     "end": 49.7
+    }
+   ]
+  }
+ ],
+ "duration": 50.52
+}
