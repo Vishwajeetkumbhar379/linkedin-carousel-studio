@@ -521,13 +521,19 @@ async function render(t) {
     if (o && dx > 0 && u < dx) { out = o; ou = eio(u / dx); } }
   const since = ck >= 0 ? (k - ck) / TL.fps : 1e9;
   const F = $('#frame'), FA = $('#fa'), FB = $('#fb'), C = $('#cut'), CB = $('#cutbg'), FZ = $('#fz'), FL = $('#fl');
-  F.style.display = 'none'; C.style.display = 'none'; CB.style.display = 'none'; FB.style.display = 'none'; FZ.style.display = 'none'; FL.style.display = 'none';
+  F.style.display = 'none'; C.style.display = 'none'; CB.style.display = 'none'; CB.style.filter = 'none'; FB.style.display = 'none'; FZ.style.display = 'none'; FL.style.display = 'none';
   if (it && it.kind === 'cut') {
     const idx = frameIdx(it, t), [hx, hy] = it.track[Math.min(idx, it.track.length - 1)];
     await Promise.all([setImg(C, `${it.dir}/cut/${pad(idx + 1)}.webp`), setImg(CB, `${it.dir}/${pad(idx + 1)}.jpg`)]);
-    const iw = CB.naturalWidth || 1920, ih = CB.naturalHeight || 1080, S = Math.max(1080 / iw, 1920 / ih) * zAt(it, t);  // landscape takes and vertical selfies
-    const left = clamp(540 - hx * S, 1080 - iw * S, 0), top = clamp((ih > iw ? 700 : 860) - hy * S, 1920 - ih * S, 0);
-    for (const im of [C, CB]) { im.style.display = 'block'; im.style.width = iw * S + 'px'; im.style.height = ih * S + 'px'; im.style.transform = `translate(${left}px,${top}px)`; }
+    // vertical selfies fill the frame as they are; a landscape take keeps his whole head: his room, softly blurred, fills the
+    // frame, and he stands cut out over it, anchored to the bottom, with the room above his head for the words behind him
+    const iw = CB.naturalWidth || 1920, ih = CB.naturalHeight || 1080, land = iw > ih, z = zAt(it, t);
+    const Sb = Math.max(1080 / iw, 1920 / ih) * z, Sc = land ? 1.3 * z : Sb;
+    const lb = clamp(540 - hx * Sb, 1080 - iw * Sb, 0), tb = clamp((land ? 860 : 700) - hy * Sb, 1920 - ih * Sb, 0);
+    const lc = land ? 540 - hx * Sc : lb, tc = land ? 1920 - ih * Sc : tb;
+    for (const [im, S, l, tp] of [[CB, Sb, lb, tb], [C, Sc, lc, tc]]) { im.style.display = 'block'; im.style.width = iw * S + 'px'; im.style.height = ih * S + 'px'; im.style.transform = `translate(${l}px,${tp}px)`; }
+    CB.style.filter = land ? 'blur(14px) brightness(.62) saturate(.9)' : 'none';
+    C.style.webkitMaskImage = C.style.maskImage = land ? 'linear-gradient(to bottom, transparent 0, #000 70px)' : 'none';  // his hair can touch the top of a landscape take
   } else if (it && !g.hide && g.w > 2) {
     const idx = frameIdx(it, t);
     const jobs = [setImg(FA, `${it.dir}/${pad(idx + 1)}.jpg`)];

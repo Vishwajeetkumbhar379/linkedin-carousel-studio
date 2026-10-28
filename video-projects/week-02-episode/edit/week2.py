@@ -331,7 +331,7 @@ def plan(tl: dict) -> dict:
     S("rwhoosh", r0, 0.08, d=max(0.3, r1 - r0))
     S("glitch-text", r0, 0.06, cut=max(0.2, r1 - r0))
     nocap.append([r0, r1])
-    tags = [[None, "40K debt", T("r1", "debt"), 70, 470, -5, 84], [None, "No job", T("r1", "job"), 600, 560, 4, 84]]  # tucked behind his head
+    tags = [[None, "40K debt", T("r1", "debt"), 60, 640, -5, 84], [None, "No job", T("r1", "job"), 610, 730, 4, 84]]  # tucked behind his head
     cues.append({"type": "tags", "t0": T("r1", "debt") - 0.02, "t1": L["r1"]["t1"] + 0.15, "items": [[a, b, round(c, 3), x, y, r, z_] for a, b, c, x, y, r, z_ in tags], "z": 20})
     for k, tg in enumerate(tags):
         S("pop", tg[2], 0.12, f=1.0 + 0.12 * k)
@@ -357,7 +357,7 @@ def plan(tl: dict) -> dict:
     num = T("g1", "3,000")
     here, bali, anyw = T("g2", "here"), T("g2", "bali"), T("g2", "anywhere")
     cues.append({"type": "goal", "t0": L["g1"]["t0"] + 0.1, "t1": here - 0.1, "num_t": num, "month_t": T("g1", "month"),
-                 "from_t": T("g2", "from"), "z": 20, "top": 170})
+                 "from_t": T("g2", "from"), "z": 20, "top": 330})
     for k in range(1, 19):
         S("tick", num + 0.7 * (1 - (1 - k / 18) ** (1 / 3)), 0.045, f=1.0 + 0.25 * (k % 2))
     S("thump", num + 0.72, 0.2)
@@ -410,11 +410,11 @@ def plan(tl: dict) -> dict:
     S("whoosh", n0 + 0.15, 0.1, d=0.5)
     S("tick", v0 + tl["next_words"][-1]["e"] - 0.1, 0.07)
     cues.append({"type": "week", "t0": L["c1"]["t0"], "t1": k1 - CLONE_LEAD, "z": 46,
-                 "hide": [[k0 - CLONE_LEAD, L["g1"]["t0"]]]})
+                 "hide": [[k0 - CLONE_LEAD, L["g1"]["t0"]], [L["g1"]["t0"] - 0.1, here], [T("f1", "first") - 0.1, k1]]})  # off while words sit behind him
 
     # the music (LinkedIn/YouTube file): starts on "Hi!", up for the haircut, dead from "rewind" to the goal, back under the rest
     music = {"start": L["c1"]["t0"], "boost": [m0, L["r1"]["t0"]], "drop": [L["r1"]["t0"], L["g1"]["t0"]], "back": L["g1"]["t0"]}
-    capy = []
+    capy = [[i["t0"], i["t1"], 1540] for i in items if i["kind"] == "cut"]  # on a cut-out the line sits on his chest, never across his mouth
     return {"items": items, "cues": cues, "geoms": geoms, "bgs": bgs, "nocap": nocap, "sfx": fx, "music": music, "capy": capy}
 
 
