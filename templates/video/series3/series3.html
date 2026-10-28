@@ -1,5 +1,6 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
-/* Series reel v3 ("Nobody Tells You", Vish 28 Oct: "the mascot needs more expression and motion; half body, face, walking;
+/* Safe zone (Vish, 28 Oct): Instagram zooms 9:16 reels on tall phones and cuts ~100 px a side, so every label, caption and card stays 130 px in.
+   Series reel v3 ("Nobody Tells You", Vish 28 Oct: "the mascot needs more expression and motion; half body, face, walking;
    the motion graphics more advanced and extremely smooth: zoom, pan, 3D flips, Apple-style 3D product shots").
    Layers: chapter colour > paper canvas with a moving camera (cards tilt in in 3D) > three.js studio shots (phone, laptop,
    globe, card stack) that flip in > Vish's mascot (2D, drawn in code: lip sync from the words, blinks, nods, poses, a walk) >
@@ -67,17 +68,17 @@ background-image:linear-gradient(rgba(21,19,15,.06) 1px,transparent 1px),linear-
 .doc .dl em{display:block;font:400 52px/1.1 IS;font-style:italic;color:var(--red);opacity:0}
 #mas{position:absolute;inset:0;z-index:5;pointer-events:none}
 #react{position:absolute;left:640px;top:930px;width:300px;height:300px;border-radius:50%;background:var(--card);overflow:hidden;z-index:6;border:9px solid var(--amber);box-shadow:0 20px 40px rgba(21,19,15,.25);opacity:0}
-#bug{position:absolute;left:44px;top:56px;z-index:8;font:700 26px IT;letter-spacing:.12em;background:var(--ink);color:var(--paper);padding:13px 24px;border-radius:999px}
+#bug{position:absolute;left:130px;top:150px;z-index:8;font:700 26px IT;letter-spacing:.12em;background:var(--ink);color:var(--paper);padding:13px 24px;border-radius:999px}
 #bug b{color:var(--amber)}
-#chap{position:absolute;left:48px;top:122px;z-index:8;font:500 24px GM;color:var(--fg);opacity:.7;letter-spacing:.04em}
-#tick{position:absolute;right:44px;top:56px;z-index:8;font:500 24px GM;color:var(--fg);text-align:right;letter-spacing:.06em}
+#chap{position:absolute;left:134px;top:216px;z-index:8;font:500 24px GM;color:var(--fg);opacity:.7;letter-spacing:.04em}
+#tick{position:absolute;right:130px;top:150px;z-index:8;font:500 24px GM;color:var(--fg);text-align:right;letter-spacing:.06em}
 #tick b{display:block;font:700 54px IT;letter-spacing:0;color:var(--red);font-variant-numeric:tabular-nums}
 #prog{position:absolute;left:0;top:0;height:10px;width:0;background:var(--amber);z-index:9}
-#kc{position:absolute;left:52px;right:52px;top:190px;z-index:7;font:700 70px/1.1 IT;color:var(--fg);letter-spacing:-.01em}
+#kc{position:absolute;left:130px;right:130px;top:280px;z-index:7;font:700 70px/1.1 IT;color:var(--fg);letter-spacing:-.01em}
 #kc span{display:inline-block;margin-right:.24em;transition:none}
 #kc span.em{font:400 84px/1 IS;font-style:italic;color:var(--red)}
 #kc span.now{color:var(--amber)}
-#hook{position:absolute;left:52px;right:52px;top:190px;z-index:7;font:400 128px/0.98 IS;color:var(--fg)}
+#hook{position:absolute;left:130px;right:130px;top:280px;z-index:7;font:400 116px/0.98 IS;color:var(--fg)}
 #hook i{color:var(--red)}
 </style>
 <script type="importmap">{"imports":{"three":"__ROOT__/templates/node_modules/three/build/three.module.js","three/addons/":"__ROOT__/templates/node_modules/three/examples/jsm/"}}</script>
@@ -142,7 +143,7 @@ D.els.forEach((e) => { e.node.style.left = e.x + "px"; e.node.style.top = e.y + 
 const box = (items) => { const x0 = Math.min(...items.map((q) => q.x)), x1 = Math.max(...items.map((q) => q.x + q.w0)), y0 = Math.min(...items.map((q) => q.y)), y1 = Math.max(...items.map((q) => q.y + q.h0)); return {x: (x0 + x1) / 2, y: (y0 + y1) / 2, w: x1 - x0, h: y1 - y0}; };
 // the shot area: under the captions, over the mascot's head: centre (540, 850), 980 x 800
 // faceless episodes (no mascot): the shot sits lower and fills more of the frame
-const CY = D.faceless ? 1010 : 850, fit = (b, m = 1) => Math.min(D.faceless ? 1.75 : 1.5, 980 / b.w, (D.faceless ? 1120 : 800) / b.h) * m;
+const CY = D.faceless ? 1010 : 850, fit = (b, m = 1) => Math.min(D.faceless ? 1.75 : 1.5, 820 / b.w, (D.faceless ? 1080 : 760) / b.h) * m;
 const K = [];
 B.forEach((blk, i) => {
   const b = box(blk.items), z = fit(b, blk.zoom);
