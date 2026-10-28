@@ -78,3 +78,4 @@ video-projects/week-02-episode/edit/_friction_insert_filled.html
 
 # third-party face detector model (OpenCV zoo YuNet), downloaded on demand for brand/avatar/rig
 brand/avatar/rig/*.onnx
+video-projects/inside-ai/voices.log
