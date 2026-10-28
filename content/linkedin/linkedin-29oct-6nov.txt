@@ -1,0 +1,175 @@
+LINKEDIN, THU 29 OCT TO FRI 6 NOV: one post a day, ready to paste
+Post at 08:30 your time (LinkedIn's morning window). Images and short animations are in content/linkedin/trend-posts/.
+For the image posts, upload the .mp4 if you want motion in the feed (it autoplays muted) or the .png for a still.
+Reply to every comment in the first hour: that is what LinkedIn rewards.
+
+==================================================
+THU 29 OCT · VIDEO: video-projects/week-02-episode/out/week2-9x16.mp4 (upload natively, not as a link)
+
+220 companies said no. So I built a job search automation with Claude.
+
+I'm a marketer, not an engineer. Week 2 of building a remote income, and this is what I removed:
+
+1. Profiles and a portfolio, so a client can see my work in one place.
+2. A job search automation. Every day it finds new roles, scores how well I fit and drafts a tailored CV and cover letter. I read every one before it goes out.
+3. My setup, so I can hit record without waiting.
+
+Friction is anything between you and your goal. What's yours this week?
+
+(Part of the voice in this video is my AI voice clone.)
+
+#JobSearch #RemoteWork #ClaudeAI #BuildInPublic
+
+==================================================
+FRI 30 OCT · IMAGE: trend-posts/opus-55-limits.png (or .mp4)
+
+Anthropic released Claude Opus 5.5 this week, and the most useful part for marketers is the easiest to miss.
+
+It costs 40% less than Opus 5 on typical work. It generates output more than 30% faster. Paid plans get higher five-hour limits, and subscribers get a limit reset they can save and use whenever they choose.
+
+Here's how I'd spend that reset as a marketer:
+
+1. One long session on the work you keep putting off. For me, that's the system that writes, voices and edits my reels.
+2. Turn one recurring report into something that runs on its own.
+3. Write your brand voice down once, properly, so every draft after this starts from it.
+
+Cheaper and faster doesn't make the thinking cheaper. It just removes the excuse.
+
+What would you build with yours?
+
+#ClaudeAI #AIinMarketing #MarketingOps #Productivity
+
+==================================================
+SAT 31 OCT · TEXT (lighter day, story post)
+
+A brand once made us redo one creator shortlist 22 times.
+
+The brief: creators with a strong personal brand. Original. Nobody copying anyone.
+
+We worked through the night to hit the deadline. The final list was niche and genuinely original.
+
+Then the videos came in.
+
+And the brand rewrote every line the creators said.
+
+They wanted originality. They didn't want to give the freedom that creates it.
+
+I've worked on 850+ creator deals from the brand side. I've seen this more than once.
+
+If you hire a creator for their voice, let them use it. Brief the goal, not the script.
+
+Brands: what's the hardest part of letting go?
+
+#InfluencerMarketing #CreatorEconomy #BrandPartnerships
+
+==================================================
+MON 2 NOV · IMAGE: trend-posts/agent-skills-280m.png (or .mp4)
+
+280 million installs. Of a text file.
+
+On 22 October, Anthropic donated Agent Skills to the Agentic AI Foundation, under the Linux Foundation. A skill is a folder with one SKILL.md file that teaches an AI agent one specific job, plus any scripts or reference it needs.
+
+Why marketers should care: 1 million skills have been published and nearly 280 million installed. More than 70 agent platforms read them, including ChatGPT, Cursor, GitHub Copilot and VS Code. Write a skill once and it works almost everywhere.
+
+I'm a marketer, not an engineer, and I use skills every day. Mine cover job scouting, applications, carousels, creator shortlists and contract reviews.
+
+The best ones are boring: one task, written down properly, done the same way every time.
+
+If you write one this month, write it for the task you explain to people most often.
+
+Comment SKILLS and I'll send you my list.
+
+#AIAgents #ClaudeAI #MarketingAutomation #AgentSkills
+
+==================================================
+TUE 3 NOV · TEXT
+
+Moving abroad from India? Pick the country before the career.
+
+Germany gets a lot right. Every extra hour is paid. Meetings start on time. Things are structured.
+
+What it gets wrong: it isn't lively, it isn't built for remote work, and people can feel cold.
+
+India is the opposite. Chaotic, but warm.
+
+Neither is better. They suit different people.
+
+Do you want structure, or do you want warmth?
+
+#MovingAbroad #WorkInGermany #RemoteWork #Careers
+
+==================================================
+WED 4 NOV · TEXT
+
+For years I wanted to make content, and I kept stopping.
+
+Not because I had nothing to say. Because I didn't feel confident enough to say it.
+
+What I'd tell my younger self: the way you talk to yourself decides how confident you are.
+
+Confidence isn't something you have. It's a character you play. You say it, you repeat it, you act like it.
+
+Every post this year is me playing that character until it's just me.
+
+What's the thing you keep stopping?
+
+#Confidence #PersonalBranding #BuildInPublic
+
+==================================================
+THU 5 NOV · IMAGE: trend-posts/instagram-90-min.png (or .mp4)
+
+Instagram is testing 90-minute videos. From the brand side, this changes more than the format.
+
+The facts first. On 26 October, Instagram started testing Features: horizontal, long-form videos of up to 90 minutes, with a small group of creators in the US.
+
+I've worked on 850+ creator deals on the brand side. Here's what I'd expect if it rolls out:
+
+1. Integrations come back. A reel has room for a mention. A 30-minute video has room for a segment.
+2. Usage rights get messier. Brands will want to cut that segment into ads. Creators should price that separately.
+3. Rate cards need a new line. Long-form isn't a reel times ten. Price it on the work and the audience, not the minutes.
+
+Creators: don't change your format for a test. Do add a long-form line to your rate card before a brand asks.
+
+Brands: would you pay more for a long-form integration than for a reel?
+
+#InfluencerMarketing #CreatorEconomy #Instagram #BrandDeals
+
+==================================================
+FRI 6 NOV · TEXT
+
+The biggest hustle now is figuring out how not to hustle.
+
+AI won't replace marketers.
+Marketers who use AI will hand it the heavy lifting: the repetitive tool work nobody misses.
+
+What's left is the part that was always the job.
+Psychology. Taste. Creativity.
+
+I'm writing my master's thesis on exactly this: how AI marketing automation changes the work of marketers in Germany.
+
+My daily stack: Claude Code, Claude, ChatGPT, ElevenLabs, Gemini.
+
+What's one task you'd hand to AI tomorrow?
+
+#AIinMarketing #FutureOfWork #MarketingStrategy
+
+==================================================
+SPARE (use any weekday you miss)
+
+One meeting kept me stuck in India for 6 months.
+
+I had worked remotely for about 4 years. My next two flights were booked.
+
+Then an important meeting came up. I cancelled both flights. More client work followed. I ended up in a 9 to 5 for half a year.
+
+For someone obsessed with travel, that was hell.
+
+Remote isn't freedom when:
+1. you're paid in a currency that doesn't stretch
+2. one meeting can call you back
+
+So I'm changing both. I moved to Germany for my master's, and I'm building income in euros. In December I work from Sri Lanka for a month.
+
+What's keeping you in one place right now?
+
+#RemoteWork #DigitalNomad #CareerChange

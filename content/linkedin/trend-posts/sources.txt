@@ -1,0 +1,21 @@
+SOURCES for the trend posts (checked 28 Oct 2026, all within 14 days)
+
+opus-55-limits (Fri 30 Oct)
+- Anthropic, "Introducing Claude Opus 5.5", 28 Oct 2026, https://www.anthropic.com/news/claude-opus-5-5
+  40% cheaper than Opus 5 on typical workloads; output more than 30% faster; higher five-hour limits on Pro, Max, Team and seat-based
+  Enterprise; subscription users get a rate limit reset they can save and use whenever they choose.
+
+agent-skills-280m (Mon 2 Nov)
+- Anthropic, "Donating Agent Skills to the Agentic AI Foundation", 22 Oct 2026, https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation
+  A skill is a folder with a SKILL.md file; 1 million skills published, nearly 280 million installed; 70+ agent platforms including ChatGPT,
+  Cursor, GitHub Copilot and VS Code; donated to the AAIF under the Linux Foundation.
+
+instagram-90-min (Thu 5 Nov)
+- TechCrunch, "Watch out, YouTube: Instagram goes from short-form to 90-minute videos", 26 Oct 2026, https://techcrunch.com/2026/10/26/watch-out-youtube-instagram-goes-from-short-form-to-90-minute-videos/
+- GSMArena, "Instagram is testing long-form videos called Features", Oct 2026, https://www.gsmarena.com/instagram_is_testing_longform_videos_called_features-news-75222.php
+  Horizontal long-form "Features", up to 90 minutes, test with select creators in the US. The brand-deal points in the post are Vish's opinion.
+
+Trending Reels audio (for the in-app pick on Week 2 and the episodes), third-party trackers, 21 to 25 Oct 2026:
+- https://socialbee.com/blog/trending-instagram-songs-this-week/ ("Housewife", Tate McRae, playful and confident)
+- https://creatordb.app/free-tools/trending-instagram-audio/ ("Windows in Brazil (Sped Up)", 0 to 100 glow-up trend)
+- https://later.com/blog/instagram-reels-trends/ ("Pump It", Black Eyed Peas, vlog timestamps trend, 23 Oct)

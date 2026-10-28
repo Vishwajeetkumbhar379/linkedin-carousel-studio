@@ -537,26 +537,27 @@ _sound = base.sound
 base.sound = sound
 
 
-BRAND = (["modern upbeat indie electronic", "warm analog synth plucks", "punchy tight drums", "deep warm bass", "110 bpm", "confident and hopeful"],
-         ["vocals", "lyrics", "singing", "sad", "corporate stock music", "tape hiss"])
+# Vish, 28 Oct: "the music is super serious, I'm smiling": a feel-good, playful, trending-Reels sound (upbeat funky house, bouncy)
+BRAND = (["feel-good upbeat funky house", "bouncy groove", "playful plucked guitar and bright keys", "handclaps", "groovy bass", "118 bpm", "sunny, fun, smiling"],
+         ["vocals", "lyrics", "singing", "sad", "dark", "tense", "cinematic", "corporate stock music", "tape hiss"])
 
 
 def compose(tl: dict) -> Path:
     """Music composed for this edit (ElevenLabs Music, composition plan): one brand sound for every video, its sections
     cut to the edit (a tense hook, a groove under his voice, a drop for a montage, an ending). Cached per edit length."""
     mu, dur = tl["music"], tl["dur"]
-    out = P / "assets" / "music" / f"{OUTNAME}_{int(dur * 10)}.mp3"
+    out = P / "assets" / "music" / f"{OUTNAME}_fun_{int(dur * 10)}.mp3"
     if out.exists():
         return out
-    cuts = [(0.0, "hook", ["tense", "dark pulsing sub bass", "sparse", "no drums"])]
+    cuts = [(0.0, "hook", ["playful bouncy intro", "plucked guitar riff", "light shaker", "curious and cheeky"])]
     b0, b1 = mu.get("boost", [0, 0])
     if b1 - b0 >= 2.0:
-        cuts += [(max(3.0, mu["start"]), "groove", ["light groove", "muted plucks", "soft hi-hats"]),
-                 (b0, "drop", ["full energy drop", "big drums", "bright synth lead"]),
-                 (b1, "main", ["steady warm groove", "mid energy", "leaves room for a voice"])]
+        cuts += [(max(3.0, mu["start"]), "groove", ["light bouncy groove", "handclaps", "funky bass"]),
+                 (b0, "drop", ["fun high-energy drop", "four on the floor", "bright brass stabs", "party feel"]),
+                 (b1, "main", ["happy light groove", "mid energy", "leaves room for a voice"])]
     else:
-        cuts += [(3.0, "main", ["steady warm groove", "mid energy", "leaves room for a voice"])]
-    cuts += [(dur - 4.0, "outro", ["resolving ending", "final hit"])]
+        cuts += [(3.0, "main", ["happy light groove", "mid energy", "leaves room for a voice"])]
+    cuts += [(dur - 4.0, "outro", ["upbeat happy ending", "final hit"])]
     secs = []
     for i, (t0, name, styles) in enumerate(cuts):
         t1 = cuts[i + 1][0] if i + 1 < len(cuts) else dur + 0.5
@@ -570,7 +571,7 @@ def compose(tl: dict) -> Path:
         data = urllib.request.urlopen(req, timeout=600).read()
     except urllib.error.HTTPError as e:  # no composition plan: one prompt of the same sound
         print("composition plan refused:", e.code, e.read()[:200])
-        body = {"prompt": ", ".join(BRAND[0]) + ". Tense intro, then a steady groove that leaves room for a voice, a clean ending. No vocals.",
+        body = {"prompt": ", ".join(BRAND[0]) + ". Playful intro, a fun drop, then a happy groove that leaves room for a voice, a clean ending. No vocals.",
                 "music_length_ms": int((dur + 0.5) * 1000), "model_id": "music_v1"}
         req = urllib.request.Request("https://api.elevenlabs.io/v1/music?output_format=mp3_44100_192", data=json.dumps(body).encode(), method="POST",
                                      headers={"xi-api-key": key, "Content-Type": "application/json"})
