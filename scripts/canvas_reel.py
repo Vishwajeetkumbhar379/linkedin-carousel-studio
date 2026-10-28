@@ -133,14 +133,17 @@ def main(proj: Path, key: str, stills=None):
             b.close()
         print("stills ->", work, f"{end:.1f}s"); return
     pic = work / f"{key}_pic.mp4"
-    enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "image2pipe", "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", str(pic)], stdin=subprocess.PIPE)
-    with sync_playwright() as p:
-        b = p.chromium.launch(args=GL); pg = b.new_page(viewport={"width": 1080, "height": 1920})
-        pg.on("pageerror", lambda e: print("page error:", e)); opened(pg)
-        for f in range(int(end * FPS)):
-            pg.evaluate(f"seek({f / FPS})"); enc.stdin.write(pg.screenshot(type="jpeg", quality=93))
-        b.close()
-    enc.stdin.close(); enc.wait()
+    if REUSE and pic.exists():  # --reuse-pic: the picture rendered, only the sound needs mixing again
+        pass
+    else:
+        enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "image2pipe", "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", str(pic)], stdin=subprocess.PIPE)
+        with sync_playwright() as p:
+            b = p.chromium.launch(args=GL); pg = b.new_page(viewport={"width": 1080, "height": 1920})
+            pg.on("pageerror", lambda e: print("page error:", e)); opened(pg)
+            for f in range(int(end * FPS)):
+                pg.evaluate(f"seek({f / FPS})"); enc.stdin.write(pg.screenshot(type="jpeg", quality=93))
+            b.close()
+        enc.stdin.close(); enc.wait()
     # sound: one effect per card, quiet under the voice
     S = {"stamp": ("stamp", .8), "chip": ("pop", .5), "tags": ("pop", .45), "counter": ("tick", .4), "quote": ("hit_soft", .8), "code": ("keys", .35),
          "map": ("whoosh", .45), "dlg": ("pop", .5)}
@@ -159,6 +162,7 @@ def main(proj: Path, key: str, stills=None):
         cues += [(("pop", .35), p["at"] + p.get("delay", 0)) for p in h.get("pins", [])] + [(("paper", .45), f) for f in h.get("flips", [])]
     cues += [(("riser", .3), c[0] - 0.4) for c in data["chapters"][1:]]
     if data.get("ticker"): cues += [(("tick", .35), k[0]) for k in data["ticker"]["keys"][1:]]
+    cues = [(c, max(0.0, t)) for c, t in cues]  # a shot that opens the reel would put its lead-in whoosh before zero
     ins = ["-i", str(proj / f"{key}.mp3")] + sum([["-i", str(SFX / f"{c[0]}.mp3")] for c, _ in cues], [])
     fl = [f"[{i + 2}:a]adelay={int(t * 1000)}|{int(t * 1000)},volume={c[1] * 0.3:.3f}[s{i}]" for i, (c, t) in enumerate(cues)]
     # music ships inside the file (Vish, 28 Oct), ducked under the voice so every word stays on top
@@ -174,6 +178,8 @@ def main(proj: Path, key: str, stills=None):
     pic.unlink(missing_ok=True)  # the picture-only render is rebuilt from the page any time; the disk is small
     print("->", out, f"{end:.1f}s")
 
+
+REUSE = "--reuse-pic" in sys.argv
 
 if __name__ == "__main__":
     a = sys.argv[1:]
