@@ -200,7 +200,7 @@ Research → topic validation → hook → script → storyboard → edit → ca
   - possibly the two songs baked into the audio.
 
   Fixes from Week 2: hook first, 35 to 45 s, and the distribution routine below. Never promise "viral"; report the real numbers.
-- **Mascot (28 Oct): never cut a talking mouth into a still picture.** The lip mask on the 3D mascot PNGs looked "horrible, creepy". The talking mascot is now Vish in 2D, drawn fully in code (`templates/video/char/vishcap.js`): black cap, grey hoodie, white tee, black joggers, the look from the haircut clip (IMG_8731). Every part of the face moves on its own: mouth shapes from the words, blinks, brows, eyes, head. Nose rule as always: small and slim, and he should look handsome. Check a still sheet (`templates/video/char/sheets/vishcap_sheet.py`) after any change to the face.
+- **Mascot (28 Oct): never cut a talking mouth into a still picture.** The lip mask on the 3D mascot PNGs looked "horrible, creepy". The talking mascot is now Vish in 2D, drawn fully in code (`templates/video/char/vishcap.js`): black cap, grey hoodie, white tee, black joggers, the look from the haircut clip (IMG_8731). Every part of the face moves on its own: mouth shapes from the words, blinks, brows, eyes, head. Nose rule as always: small and slim, and he should look handsome. Check a still sheet (`templates/video/char/sheets/vishcap_sheet.py`) after any change to the face. Locked look (28 Oct, commit d64e60a): light beard shade, lit cheekbones, thicker neck. Painted lips and contour hollows were rejected ("looks like Botox").
 - **Distribution routine for every Reel:**
   - the same day, also post to YouTube Shorts and LinkedIn;
   - share it to the Story with a question sticker;
