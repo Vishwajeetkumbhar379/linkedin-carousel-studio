@@ -98,11 +98,11 @@ SEQ = [
     ("h1", "IMG_1619", [(0.9, 3.3)], {"no": "no."}, "hide", "night", {"gap": 0.45, "mute": 1}),  # the faceless hook; a beat on "no."
     ("h1b", "IMG_1619", [(3.3, 4.8)], {"so": "So"}, "hide", "night", {"gap": 0.3}),
     ("c1", "IMG_8731", [(2.1, 7.6)], {"Hi": "Hi!", "before": "Before", "haircut": "haircut."}, "full", "day", {"gap": MONT, "mute": 1, "pre": 0.45}),
-    ("r1", "IMG_1619", [(5.4, 9.6)], {}, "split", "night", {"gap": 0.1}),
+    ("r1", "IMG_1619", [(5.4, 9.6)], {}, "cut", "night", {"gap": 0.1}),
     ("k0", None, "WEEK2_5"),
-    ("g1", "IMG_1620", [(0.0, 4.7)], {"3000": "3,000"}, "split", "night", {}),
-    ("g2", "IMG_1621", [(2.7, 6.5)], {"anywhere": "anywhere."}, "split", "night", {"gap": 0.25}),
-    ("f1", "IMG_8742", [(21.4, 27.6)], {"before": "Before"}, "split", "day", {"gap": 0.25}),
+    ("g1", "IMG_1620", [(0.0, 4.7)], {"3000": "3,000"}, "cut", "night", {}),
+    ("g2", "IMG_1621", [(2.7, 6.5)], {"anywhere": "anywhere."}, "cut", "night", {"gap": 0.25}),
+    ("f1", "IMG_8742", [(21.4, 27.6)], {"before": "Before"}, "cut", "day", {"gap": 0.25}),
     ("k1", None, "WEEK2_9"),
 ]
 NARRATOR = "WEEK2_10"  # "Next week, on Build with Vish: did reducing friction work?"
@@ -271,10 +271,11 @@ def plan(tl: dict) -> dict:
         n = round(sh["dur"] * FPS) + base.TAIL
         portrait = sh["clip"].startswith("IMG_87")
         key = hashlib.md5(json.dumps(sh["segs"]).encode()).hexdigest()[:6]
+        cut = sh["lay"] == "cut"  # Vish, 28 Oct: "cut me out, all the text goes behind me" (a split cropped his head)
         d = base.extract(P / "raw" / "intro" / f"{sh['clip']}.MOV", sh["a"], n, sh["look"], "1080:1920" if portrait else "1920:1080",
-                         f"s_{sh['clip']}_{sh['a']:.3f}_{n}_{key}", matte=True, cut=False, segs=sh["segs"])
-        items.append({"zc": [], "t0": round(sh["t0"], 4), "t1": round(sh["t0"] + sh["dur"], 4), "dir": str(d), "n": n, "off": 0, "kind": "talk",
-                      "geom": {"full": "full", "45": "f45", "split": "split"}[sh["lay"]], "track": None, "z": 1.0, "shot": d.name})
+                         f"s_{sh['clip']}_{sh['a']:.3f}_{n}_{key}" + ("_cut" if cut else ""), matte=True, cut=cut, segs=sh["segs"])
+        items.append({"zc": [], "t0": round(sh["t0"], 4), "t1": round(sh["t0"] + sh["dur"], 4), "dir": str(d), "n": n, "off": 0, "kind": "cut" if cut else "talk",
+                      "geom": {"full": "full", "45": "f45", "split": "split", "cut": "full"}[sh["lay"]], "track": None, "z": 1.0, "shot": d.name})
 
     # ---- HOOK, no face: the words land on his voice; his real rejection emails flash behind
     geoms.append([0, "none", 0.0])
@@ -321,7 +322,7 @@ def plan(tl: dict) -> dict:
     nocap.append([L["c1"]["t1"], L["r1"]["t0"]])
 
     # ---- the music drops dead: "Let's rewind." Week 1 flashes backwards, then "the debt, the no job"
-    geoms.append([L["r1"]["t0"], "split", 0.0])
+    geoms.append([L["r1"]["t0"], "full", 0.0])
     r0 = T("r1", "rewind", end=True) + 0.02
     r1 = T("r1", "so") - 0.03
     files = [str(W / "w1" / f"r{k}.jpg") for k in range(5)]
@@ -330,8 +331,8 @@ def plan(tl: dict) -> dict:
     S("rwhoosh", r0, 0.08, d=max(0.3, r1 - r0))
     S("glitch-text", r0, 0.06, cut=max(0.2, r1 - r0))
     nocap.append([r0, r1])
-    tags = [[None, "40K debt", T("r1", "debt"), 130, 430, -4, 64], [None, "No job", T("r1", "job"), 560, 600, 4, 64]]  # above his box
-    cues.append({"type": "tags", "t0": T("r1", "debt") - 0.02, "t1": L["r1"]["t1"] + 0.15, "items": [[a, b, round(c, 3), x, y, r, z_] for a, b, c, x, y, r, z_ in tags], "z": 44})
+    tags = [[None, "40K debt", T("r1", "debt"), 70, 470, -5, 84], [None, "No job", T("r1", "job"), 600, 560, 4, 84]]  # tucked behind his head
+    cues.append({"type": "tags", "t0": T("r1", "debt") - 0.02, "t1": L["r1"]["t1"] + 0.15, "items": [[a, b, round(c, 3), x, y, r, z_] for a, b, c, x, y, r, z_ in tags], "z": 20})
     for k, tg in enumerate(tags):
         S("pop", tg[2], 0.12, f=1.0 + 0.12 * k)
 
@@ -351,12 +352,12 @@ def plan(tl: dict) -> dict:
     nocap.append([k0 - CLONE_LEAD, L["g1"]["t0"]])
 
     # ---- the goal: 3,000 a month, from here, Bali, anywhere (his own footage)
-    geoms.append([L["g1"]["t0"] - 0.05, "split", 0.45])
+    geoms.append([L["g1"]["t0"] - 0.05, "full", 0.45])
     S("whoosh", L["g1"]["t0"], 0.08)
     num = T("g1", "3,000")
     here, bali, anyw = T("g2", "here"), T("g2", "bali"), T("g2", "anywhere")
     cues.append({"type": "goal", "t0": L["g1"]["t0"] + 0.1, "t1": here - 0.1, "num_t": num, "month_t": T("g1", "month"),
-                 "from_t": T("g2", "from"), "z": 40})
+                 "from_t": T("g2", "from"), "z": 20, "top": 170})
     for k in range(1, 19):
         S("tick", num + 0.7 * (1 - (1 - k / 18) ** (1 / 3)), 0.045, f=1.0 + 0.25 * (k % 2))
     S("thump", num + 0.72, 0.2)
@@ -368,14 +369,14 @@ def plan(tl: dict) -> dict:
         S("whoosh", s - 0.08, 0.08)
 
     # ---- reduce friction: "before jumping into the ocean" (his own dive), then the title above him
-    geoms.append([L["f1"]["t0"] - 0.05, "split", 0.4])
+    geoms.append([L["f1"]["t0"] - 0.05, "full", 0.4])
     jump, d_end = T("f1", "jumping"), T("f1", "directly", end=True) + 0.1
     geoms.append([jump - 0.08, "full", 0.2])
     B(jump - 0.08, d_end, "travel/ocean/IMG_5708.MOV", 3.9, tx="zoom")
     S("water-jump", jump - 0.08 + 0.9, 0.14)  # he hits the water about 0.9 s into the clip
-    geoms.append([d_end, "split", 0.35])
-    title(T("f1", "first"), T("f1", "reduce") - 0.02, html="The first thing:", size=96, y=400, z=40)
-    title(T("f1", "reduce"), L["k1"]["t0"] - CLONE_LEAD, html="Reduce <i class=am>friction.</i>", size=150, y=380, z=40)
+    geoms.append([d_end, "full", 0.35])
+    title(T("f1", "first"), T("f1", "reduce") - 0.02, html="The first thing:", size=120, y=150, z=20)   # behind him, over his hair
+    title(T("f1", "reduce"), L["k1"]["t0"] - CLONE_LEAD, html="Reduce<br><i class=am>friction.</i>", size=210, y=110, z=20)
     S("type-hit", T("f1", "reduce"), 0.07)
     S("thump", T("f1", "friction"), 0.14)
 
@@ -448,6 +449,8 @@ def prep() -> dict:
     base.run_jobs()
     for it in pl["items"]:
         it["n"] = base.count(Path(it["dir"]))
+        if it["kind"] == "cut":
+            it["track"] = json.loads((Path(it["dir"]) / "track.json").read_text())
         if it["kind"] == "talk":
             selfie = Path(it["dir"]).name.startswith("s_IMG_87") and it["geom"] == "split"
             it["track"] = face_track(Path(it["dir"])) if selfie else json.loads((Path(it["dir"]) / "track.json").read_text())

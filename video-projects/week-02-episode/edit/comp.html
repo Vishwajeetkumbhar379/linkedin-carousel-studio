@@ -324,7 +324,7 @@ const K = {
         <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:400 italic 84px/.9 IS">The goal</div><div class="mono" style="font-size:20px;color:rgba(247,241,230,.6)">Week 52</div></div>
         <div style="display:flex;align-items:baseline;gap:20px;margin-top:34px"><div class="n" style="font:700 190px/.9 IT;letter-spacing:-.05em;color:#E7A15A;font-variant-numeric:tabular-nums;transform-origin:0 70%">€0</div><div class="pm" style="font:400 italic 76px/1 IS;color:rgba(247,241,230,.9)">a month</div></div>
         <div style="height:16px;margin-top:38px;border-radius:8px;background:rgba(247,241,230,.12);overflow:hidden"><i style="display:block;height:100%;width:1.2%;background:#E7A15A"></i></div>
-        <div class="mono" style="display:flex;justify-content:space-between;margin-top:16px;font-size:22px;color:rgba(247,241,230,.62)"><span>Now: €0</span><span class="fr">From anywhere</span></div></div>`, '', 'left:90px;top:300px'); },
+        <div class="mono" style="display:flex;justify-content:space-between;margin-top:16px;font-size:22px;color:rgba(247,241,230,.62)"><span>Now: €0</span><span class="fr">From anywhere</span></div></div>`, '', `left:90px;top:${c.top ?? 300}px`); },
     upd(d, c, t) { const u = prog(t, c.t0, .45), out = eio(prog(t, c.t1 - .3, .3));
       d.style.opacity = eo(u) * (1 - out); d.style.transform = `translateY(${(1 - eo(u)) * 40 - out * 60}px)`;
       const n = d.querySelector('.n'); n.textContent = '€' + (Math.round(3000 * eo(prog(t, c.num_t, .7)) / 50) * 50).toLocaleString('en-US');
@@ -523,10 +523,11 @@ async function render(t) {
   const F = $('#frame'), FA = $('#fa'), FB = $('#fb'), C = $('#cut'), CB = $('#cutbg'), FZ = $('#fz'), FL = $('#fl');
   F.style.display = 'none'; C.style.display = 'none'; CB.style.display = 'none'; FB.style.display = 'none'; FZ.style.display = 'none'; FL.style.display = 'none';
   if (it && it.kind === 'cut') {
-    const idx = frameIdx(it, t), [hx, hy] = it.track[Math.min(idx, it.track.length - 1)], S = 1.778 * zAt(it, t);
+    const idx = frameIdx(it, t), [hx, hy] = it.track[Math.min(idx, it.track.length - 1)];
     await Promise.all([setImg(C, `${it.dir}/cut/${pad(idx + 1)}.webp`), setImg(CB, `${it.dir}/${pad(idx + 1)}.jpg`)]);
-    const left = clamp(540 - hx * S, 1080 - 1920 * S, 0), top = clamp(860 - hy * S, 1920 - 1080 * S, 0);
-    for (const im of [C, CB]) { im.style.display = 'block'; im.style.width = 1920 * S + 'px'; im.style.height = 1080 * S + 'px'; im.style.transform = `translate(${left}px,${top}px)`; }
+    const iw = CB.naturalWidth || 1920, ih = CB.naturalHeight || 1080, S = Math.max(1080 / iw, 1920 / ih) * zAt(it, t);  // landscape takes and vertical selfies
+    const left = clamp(540 - hx * S, 1080 - iw * S, 0), top = clamp((ih > iw ? 700 : 860) - hy * S, 1920 - ih * S, 0);
+    for (const im of [C, CB]) { im.style.display = 'block'; im.style.width = iw * S + 'px'; im.style.height = ih * S + 'px'; im.style.transform = `translate(${left}px,${top}px)`; }
   } else if (it && !g.hide && g.w > 2) {
     const idx = frameIdx(it, t);
     const jobs = [setImg(FA, `${it.dir}/${pad(idx + 1)}.jpg`)];
