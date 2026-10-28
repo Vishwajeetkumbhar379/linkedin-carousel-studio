@@ -1,6 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
-/* Week 2, 41.0 to 64.2 s: the plan shown, not just said (Vish, 28 Oct: "show what I'm talking about: the freelance
-   forms filling up, the portfolio, the plan"). Every beat lands on its word from the voice (WORDS, video time). */
+/* Week 2, the friction section shown, not just said. Vish, 28 Oct: friction is anything between you and the goal (hitting
+   record, a client's yes), then "so I did": profiles + his real portfolio, the job search automation he built (tailored CV and
+   cover letter, he reads everything), the setup (tripod, mic, a ready corner). Every beat lands on its word (WORDS, video time). */
 @font-face{font-family:IT;font-weight:700;src:url(__FONTS__/inter-tight-latin-700-normal.woff2)}
 @font-face{font-family:IS;src:url(__FONTS__/instrument-serif-latin-400-normal.woff2)}
 @font-face{font-family:IS;font-style:italic;src:url(__FONTS__/instrument-serif-latin-400-italic.woff2)}
@@ -10,60 +11,76 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--p
 .serif{font-family:IS;font-weight:400}
 .card{background:var(--card);border-radius:30px;box-shadow:0 30px 70px rgba(29,28,26,.16),0 4px 12px rgba(29,28,26,.08)}
 .lbl{font:700 26px IT;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.big{position:absolute;left:0;right:0;text-align:center}
+.num{display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--amber);font:700 46px IT;vertical-align:middle;margin-right:22px}
 #cap{position:absolute;left:60px;right:60px;top:1520px;text-align:center;font:700 52px IT;color:var(--ink);z-index:9}
-#cap b{color:var(--amber)}
-/* A: friction */
-.node{position:absolute;top:900px;width:200px;height:200px;border-radius:50%;display:grid;place-items:center;font:700 54px IT}
-.bar{position:absolute;top:880px;width:150px;height:240px;border-radius:18px;background:var(--ink);color:var(--paper);display:grid;place-items:center;text-align:center;font:700 26px/1.2 IT;padding:12px;box-sizing:border-box}
-/* B: search */
-.search{position:absolute;left:90px;right:90px;top:640px;height:120px;border-radius:60px;display:flex;align-items:center;padding:0 46px;font:700 44px IT;gap:26px}
-.res{position:absolute;left:90px;right:90px;height:110px;border-radius:22px;background:#E9E2D6}
-/* D: claude + profile */
-.chat{position:absolute;left:70px;right:70px;top:300px;padding:34px 40px}
-.bubble{margin-top:18px;background:#F3EEE6;border-radius:22px;padding:22px 26px;font:700 34px/1.3 IT}
-.form{position:absolute;left:70px;right:70px;top:770px;padding:38px 42px}
+/* A: friction, two lanes */
+.lane{position:absolute;left:60px;right:60px;height:230px}
+.nd{position:absolute;top:15px;width:200px;height:200px;border-radius:50%;display:grid;place-items:center;font:700 44px IT;text-align:center;line-height:1.1}
+.path{position:absolute;left:200px;right:200px;top:111px;height:8px;border-radius:4px;background:repeating-linear-gradient(90deg,var(--ink) 0 20px,transparent 20px 34px)}
+.bar{position:absolute;top:0;width:190px;height:230px;border-radius:20px;background:var(--ink);color:var(--paper);display:grid;place-items:center;text-align:center;font:700 30px/1.15 IT;padding:14px;box-sizing:border-box}
+.rec{display:flex;align-items:center;gap:12px;color:#fff}.rec i{width:30px;height:30px;border-radius:50%;background:#fff}
+/* B: the list */
+.list{position:absolute;left:90px;right:90px;top:620px;padding:40px 46px}
+.row{position:relative;display:flex;align-items:center;font:700 52px IT;padding:26px 0;border-top:3px solid var(--line)}
+.row:first-of-type{border-top:0}
+.strike{position:absolute;left:100px;top:50%;height:10px;border-radius:5px;background:var(--amber);transform-origin:left center}
+/* C: Claude + profile */
+.chat{position:absolute;left:70px;right:70px;top:260px;padding:34px 40px}
+.bubble{margin-top:18px;background:#F3EEE6;border-radius:22px;padding:22px 26px;font:700 36px/1.3 IT;min-height:94px}
+.form{position:absolute;left:70px;right:70px;top:690px;padding:38px 42px}
 .f{margin-top:22px}
 .f .v{margin-top:10px;min-height:56px;border:3px solid var(--line);border-radius:16px;padding:12px 18px;font:700 34px/1.3 IT}
 .chip{display:inline-block;margin:10px 10px 0 0;padding:12px 22px;border-radius:999px;background:var(--amber);color:var(--ink);font:700 28px IT}
 .btn{display:inline-block;margin-top:26px;padding:20px 40px;border-radius:999px;background:var(--ink);color:var(--paper);font:700 32px IT}
-/* E: phone */
-.phone{position:absolute;left:290px;top:250px;width:500px;height:1020px;border-radius:64px;background:#0D0E12;padding:18px;box-sizing:border-box;box-shadow:0 40px 90px rgba(0,0,0,.35)}
-.scr{width:100%;height:100%;border-radius:48px;overflow:hidden;position:relative;background:var(--night)}
+/* D: phone with the real portfolio */
+.phone{position:absolute;left:280px;top:300px;width:520px;height:1080px;border-radius:66px;background:#0D0E12;padding:18px;box-sizing:border-box;box-shadow:0 40px 90px rgba(0,0,0,.35)}
+.scr{width:100%;height:100%;border-radius:50px;overflow:hidden;position:relative;background:#000}
 .url{position:absolute;top:0;left:0;right:0;height:64px;background:#1E2128;color:#C9CDD6;font:700 22px IT;display:grid;place-items:center;z-index:2}
-.pf{position:absolute;left:28px;right:28px;border-radius:20px;background:#1F232C;color:#EDEFF4;padding:20px;font:700 24px/1.3 IT}
-/* F: plan */
-.grid{position:absolute;left:80px;right:80px;top:560px}
-.wk{display:flex;align-items:center;gap:16px;margin-bottom:26px}
-.wk .n{width:150px;font:700 30px IT;color:var(--muted)}
-.dot{width:82px;height:82px;border-radius:20px;background:#E4DDD0;display:grid;place-items:center;font:700 26px IT;color:var(--ink)}
-/* G: keyword */
+/* E/F: job search */
+.pill{display:inline-block;padding:18px 34px;border-radius:999px;background:var(--card);border:3px solid var(--ink);font:700 40px IT}
+.jobs{position:absolute;left:70px;right:70px;top:300px;padding:30px 36px}
+.job{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:3px solid var(--line);font:700 34px IT}
+.job:first-of-type{border-top:0}.job span{font-size:24px;padding:8px 16px;border-radius:999px;background:#E9F1EA;color:var(--green)}
+.ring{position:absolute;left:70px;top:820px;width:400px;height:520px;padding:30px;box-sizing:border-box;text-align:center}
+.chk{text-align:left;font:700 26px/1.6 IT;margin-top:8px}.chk b{color:var(--green)}
+.doc{position:absolute;top:820px;width:250px;height:340px;padding:24px;box-sizing:border-box}
+.doc h4{margin:0 0 6px;font:700 24px IT}.doc p{margin:0 0 14px;font:700 17px IT;color:var(--muted)}
+.ln{height:12px;border-radius:6px;background:var(--line);margin:12px 0}.ln.a{background:var(--amber)}
+.stamp{position:absolute;left:520px;top:1190px;padding:18px 30px;border:6px solid var(--green);border-radius:20px;color:var(--green);font:700 44px IT;background:rgba(255,253,248,.92);transform-origin:center}
+/* G: setup */
+.watch{position:absolute;left:90px;top:560px;width:330px;height:330px;border-radius:50%;border:14px solid var(--ink);box-sizing:border-box}
+.hand{position:absolute;left:50%;top:50%;width:10px;height:130px;margin-left:-5px;background:var(--red);border-radius:5px;transform-origin:50% 0}
+.chores{position:absolute;left:480px;right:70px;top:560px}
+.chore{font:700 40px IT;padding:18px 0;border-bottom:3px solid var(--line)}
+svg .st{fill:none;stroke:var(--ink);stroke-width:12;stroke-linecap:round;stroke-linejoin:round}
+.tag{position:absolute;font:700 32px IT;padding:12px 22px;border-radius:999px;background:var(--amber)}
+.recb{position:absolute;left:420px;top:1230px;width:240px;height:240px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;font:700 54px IT;box-shadow:0 30px 60px rgba(217,71,58,.35)}
+/* H: keyword */
 .kwc{position:absolute;left:140px;right:140px;top:640px;padding:44px 50px;text-align:left}
 .kwt{font:700 110px IT;letter-spacing:.04em;margin-top:8px}
 .dm{position:absolute;right:120px;top:1060px;max-width:620px;background:var(--amber);border-radius:30px 30px 8px 30px;padding:26px 32px;font:700 36px/1.3 IT}
 </style></head><body>
+<div class="s" id="S0"><div class="serif big" id="sid" style="top:680px;font-size:220px">So I did.</div></div>
 <div class="s" id="A">
-  <div class="serif" style="position:absolute;left:0;right:0;top:300px;text-align:center;font-size:190px">Friction</div>
-  <div class="serif" id="Asub" style="position:absolute;left:80px;right:80px;top:540px;text-align:center;font-size:76px;font-style:italic;color:var(--amber)"></div>
-  <div class="node" style="left:60px;background:var(--card);box-shadow:0 20px 50px rgba(0,0,0,.12)">You</div>
-  <div class="node" style="right:60px;background:var(--amber)">Yes</div>
-  <div style="position:absolute;left:260px;right:260px;top:996px;height:8px;border-radius:4px;background:repeating-linear-gradient(90deg,var(--ink) 0 20px,transparent 20px 34px)"></div>
-  <div class="bar" id="b0" style="left:300px">No profile</div><div class="bar" id="b1" style="left:465px">No portfolio</div><div class="bar" id="b2" style="left:630px">No plan</div>
+  <div class="serif big" style="top:200px;font-size:180px">Friction</div>
+  <div class="serif big" id="Asub" style="top:420px;font-size:70px;font-style:italic;color:var(--amber);padding:0 70px"></div>
+  <div class="lane" id="L1" style="top:720px"><div class="nd" style="left:0;background:var(--card);box-shadow:0 20px 50px rgba(0,0,0,.12)">You</div><div class="path"></div>
+    <div class="nd" style="right:0;background:var(--red)"><span class="rec"><i></i>REC</span></div>
+    <div class="bar" id="b0" style="left:290px">No tripod</div><div class="bar" id="b1" style="left:490px">No mic</div></div>
+  <div class="lane" id="L2" style="top:1070px"><div class="nd" style="left:0;background:var(--card);box-shadow:0 20px 50px rgba(0,0,0,.12)">You</div><div class="path"></div>
+    <div class="nd" style="right:0;background:var(--amber)">Client:<br>yes</div>
+    <div class="bar" id="b2" style="left:290px">No profile</div><div class="bar" id="b3" style="left:490px">No portfolio</div></div>
 </div>
 <div class="s" id="B">
-  <div class="lbl" style="position:absolute;left:90px;top:560px">A client, today</div>
-  <div class="search card"><span style="font-size:52px">⌕</span><span id="q"></span><span id="caret" style="width:4px;height:56px;background:var(--ink)"></span></div>
-  <div class="res" id="r0" style="top:820px"></div><div class="res" id="r1" style="top:950px"></div><div class="res" id="r2" style="top:1080px"></div>
-  <div id="none" style="position:absolute;left:90px;right:90px;top:1240px;font:700 46px IT;color:var(--red)">No results for Vish.</div>
-</div>
-<div class="s" id="C">
-  <div class="serif" style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:120px">This week</div>
-  <div id="c3" style="position:absolute;left:70px;right:70px;top:640px;display:flex;gap:30px">
-    <div class="card cc" style="flex:1;padding:40px 30px;text-align:center"><div class="serif" style="font-size:110px;color:var(--amber)">1</div><div style="font:700 40px IT">Profiles</div></div>
-    <div class="card cc" style="flex:1;padding:40px 30px;text-align:center"><div class="serif" style="font-size:110px;color:var(--amber)">2</div><div style="font:700 40px IT">Portfolio</div></div>
-    <div class="card cc" style="flex:1;padding:40px 30px;text-align:center"><div class="serif" style="font-size:110px;color:var(--amber)">3</div><div style="font:700 40px IT">Plan</div></div>
+  <div class="serif big" style="top:330px;font-size:130px">My friction list</div>
+  <div class="list card">
+    <div class="row" id="r0"><span class="num">1</span>Profiles + portfolio<i class="strike"></i></div>
+    <div class="row" id="r1"><span class="num">2</span>Job search<i class="strike"></i></div>
+    <div class="row" id="r2"><span class="num">3</span>Video setup<i class="strike"></i></div>
   </div>
 </div>
-<div class="s" id="D">
+<div class="s" id="C">
   <div class="chat card"><div class="lbl">Claude</div><div class="bubble" id="prompt"></div></div>
   <div class="form card" id="form"><div class="lbl">Freelance profile</div>
     <div class="f"><div class="lbl" style="font-size:20px">Headline</div><div class="v" id="hl"></div></div>
@@ -72,74 +89,114 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:var(--p
     <div class="btn" id="pub">Publish profile</div>
   </div>
 </div>
-<div class="s" id="E">
+<div class="s" id="D">
+  <div class="lbl big" style="top:220px">Built: my portfolio</div>
   <div class="phone"><div class="scr">
-    <div class="url" id="url">buildwithvvish.com</div>
-    <img id="home" src="../assets/insert/site.png" style="position:absolute;top:64px;left:0;width:464px">
-    <div id="port" style="position:absolute;inset:64px 0 0 0;background:var(--night);opacity:0">
-      <div class="pf" id="p0" style="top:30px;font-size:34px">Vish Kumbhar<div style="font-size:22px;color:#E7A15A;margin-top:8px">Influencer marketing · AI content systems</div></div>
-      <div class="pf" id="p1" style="top:200px">850+ creator deals<div style="font-size:20px;color:#9AA1AE">on the brand side</div></div>
-      <div class="pf" id="p2" style="top:330px">5 years in social and influencer marketing</div>
-      <div class="pf" id="p3" style="top:460px">AI systems I built<div style="font-size:20px;color:#9AA1AE">this content engine · an AI job-search agent</div></div>
-      <div class="pf" id="p4" style="top:640px;background:#E7A15A;color:#14161B;text-align:center">Work with me</div>
-    </div>
+    <div class="url">buildwithvvish.com/#portfolio</div>
+    <img id="folio" src="../assets/insert/portfolio.png" style="position:absolute;top:64px;left:0;width:484px">
   </div></div>
-  <div class="lbl" style="position:absolute;left:0;right:0;top:1310px;text-align:center" id="elbl">Building it this week</div>
+</div>
+<div class="s" id="E">
+  <div class="big" style="top:250px"><span class="num">2</span><span class="serif" style="font-size:110px;vertical-align:middle">Job search</span></div>
+  <div class="big" id="look" style="top:470px"><span class="pill">Looking for: <span style="color:var(--amber)">remote work</span></span></div>
+  <img id="jc" src="../assets/insert/jobcard.png" style="position:absolute;left:90px;top:700px;width:900px;border-radius:44px;box-shadow:0 40px 90px rgba(0,0,0,.35)">
+  <div class="lbl big" id="jcl" style="top:1350px">I built it with Claude</div>
 </div>
 <div class="s" id="F">
-  <div class="serif" style="position:absolute;left:0;right:0;top:330px;text-align:center;font-size:104px">The next 4 weeks</div>
-  <div style="position:absolute;left:0;right:0;top:470px;text-align:center;font:700 30px IT;color:var(--muted)"><span style="color:var(--amber)">■</span> content &nbsp;&nbsp; <span style="color:var(--green)">■</span> income</div>
-  <div class="grid" id="grid"></div>
+  <div class="lbl big" style="top:230px">Every day</div>
+  <div class="jobs card" id="jobs"><div class="lbl" style="margin-bottom:6px">New roles</div>
+    <div class="job" id="j0">Influencer Marketing Manager<span>Remote</span></div>
+    <div class="job" id="j1">Brand Partnerships Lead<span>Remote</span></div>
+    <div class="job" id="j2">Social Media Manager<span>Remote</span></div>
+  </div>
+  <div class="ring card" id="ring"><div class="lbl">Fit</div>
+    <svg width="220" height="220" viewBox="0 0 220 220" style="margin-top:10px"><circle cx="110" cy="110" r="90" stroke="#E4DDD0" stroke-width="22" fill="none"/>
+      <circle id="arc" cx="110" cy="110" r="90" stroke="#2F6B3F" stroke-width="22" fill="none" stroke-linecap="round" stroke-dasharray="565.5" stroke-dashoffset="565.5" transform="rotate(-90 110 110)"/>
+      <text x="110" y="122" text-anchor="middle" font-family="IT" font-weight="700" font-size="34" fill="#1D1C1A" id="fitt">Strong</text></svg>
+    <div class="chk" id="chk"><div><b>✓</b> Creator partnerships</div><div><b>✓</b> Social media</div><div><b>✓</b> English</div></div>
+  </div>
+  <div class="doc card" id="d0" style="left:500px"><h4>CV</h4><p>tailored to this role</p><div class="ln"></div><div class="ln a" style="width:80%"></div><div class="ln"></div><div class="ln a" style="width:60%"></div><div class="ln"></div><div class="ln" style="width:70%"></div><div class="ln"></div></div>
+  <div class="doc card" id="d1" style="left:770px"><h4>Cover letter</h4><p>written for this role</p><div class="ln" style="width:50%"></div><div class="ln"></div><div class="ln a" style="width:85%"></div><div class="ln"></div><div class="ln"></div><div class="ln a" style="width:55%"></div><div class="ln"></div></div>
+  <div class="stamp" id="stamp">I read every one ✓</div>
 </div>
 <div class="s" id="G">
+  <div class="big" style="top:250px"><span class="num">3</span><span class="serif" style="font-size:110px;vertical-align:middle">My setup</span></div>
+  <div class="watch" id="watch"><i class="hand" id="hand"></i></div>
+  <div class="chores" id="chores"><div class="chore">Find a spot</div><div class="chore">Prop up the phone</div><div class="chore">Fix the light</div><div class="chore">Check the sound</div></div>
+  <div class="lbl" id="lost" style="position:absolute;left:90px;top:930px;width:330px;text-align:center;color:var(--red)">Time lost</div>
+</div>
+<div class="s" id="G2">
+  <div class="lbl big" style="top:240px">Next</div>
+  <svg width="1080" height="900" viewBox="0 0 1080 900" style="position:absolute;left:0;top:300px">
+    <g id="tri"><path class="st" pathLength="1" d="M250 120 L250 520 M250 520 L150 800 M250 520 L250 800 M250 520 L350 800 M190 120 L310 120 L310 60 L190 60 Z"/></g>
+    <g id="mic"><path class="st" pathLength="1" d="M540 120 a70 70 0 0 1 140 0 L680 300 a70 70 0 0 1 -140 0 Z M500 300 a110 110 0 0 0 220 0 M610 410 L610 520 M540 520 L680 520"/></g>
+    <g id="cor"><path class="st" pathLength="1" d="M800 800 L800 80 M800 800 L1030 800 M900 300 L1000 300 L970 200 L930 200 Z M950 300 L950 800"/></g>
+  </svg>
+  <div class="tag" id="t0" style="left:150px;top:1120px">Tripod</div>
+  <div class="tag" id="t1" style="left:540px;top:1120px">Good mic</div>
+  <div class="tag" id="t2" style="left:800px;top:1120px">Ready corner</div>
+  <div class="recb" id="recb">● REC</div>
+</div>
+<div class="s" id="H">
   <div class="kwc card"><div class="lbl">Comment</div><div class="kwt" id="kw"></div></div>
   <div class="dm" id="dm">Here's the checklist ✓</div>
 </div>
 <div id="cap"></div>
 <script>
-const D = __DATA__;  // {words:[{w,s,e}] in video time, t0, t1}
+const D = __DATA__;  // {words:[{w,s,e}] in video time, t0, t1, chunks}
 const cl = (x) => Math.max(0, Math.min(1, x)), eo = (x) => 1 - Math.pow(1 - cl(x), 3);
 const back = (x) => { x = cl(x); const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
 const $ = (id) => document.getElementById(id);
 const at = (w, n = 0) => D.words.filter((x) => x.w.toLowerCase().replace(/[^a-z']/g, "").startsWith(w))[n].s;
-// scenes and their windows (video time): each fades and pushes in on its own cue
-const SC = [["A", D.t0, at("if")], ["B", at("if"), at("so")], ["C", at("so"), at("profiles")], ["D", at("profiles"), at("portfolio")],
-            ["E", at("portfolio"), at("plan")], ["F", at("plan"), at("comment")], ["G", at("comment"), D.t1 + 1]];
+const pop = (el, t, a, d = 0.3, dy = 60) => { const k = (t - a) / d; el.style.opacity = cl(k * 2); el.style.transform = `translateY(${(1 - eo(k)) * dy}px) scale(${0.85 + 0.15 * back(k)})`; };
 const type = (el, txt, t, a, b) => { const n = Math.round(txt.length * cl((t - a) / (b - a))); el.textContent = txt.slice(0, n); };
-// the plan grid: 4 weeks x 7 days
-const G = $("grid");
-for (let w = 0; w < 4; w++) { const r = document.createElement("div"); r.className = "wk"; r.innerHTML = `<div class="n">Week ${w + 1}</div>` + Array.from({length: 7}, () => '<div class="dot"></div>').join(""); G.appendChild(r); }
-const dots = [...document.querySelectorAll(".dot")];
+// scenes and their windows (video time): each fades and pushes in on its own cue
+const SC = [["S0", D.t0, at("but")], ["A", at("but"), at("listed") - 0.15], ["B", at("listed") - 0.15, at("one")], ["C", at("one"), at("built")],
+            ["D", at("built"), at("two")], ["E", at("two"), at("every")], ["F", at("every"), at("three", 1)], ["G", at("three", 1), at("so", 3)],
+            ["G2", at("so", 3), at("comment")], ["H", at("comment"), D.t1 + 1]];
 window.seek = (t) => {
   SC.forEach(([id, a, b]) => { const el = $(id), k = Math.min(cl((t - a + 0.12) / 0.32), cl((b - t + 0.12) / 0.28));
     el.style.opacity = k; el.style.transform = `scale(${1.04 - 0.04 * eo((t - a) / 0.5) + 0.03 * cl((t - a) / Math.max(1, b - a))})`; });
-  // A: friction between you and yes
-  type($("Asub"), "anything between you and a yes", t, at("anything"), at("yes") + 0.2);
-  ["b0", "b1", "b2"].forEach((id, i) => { const k = (t - at("stands") - i * 0.18) / 0.3; $(id).style.opacity = cl(k * 3); $(id).style.transform = `translateY(${-(1 - eo(k)) * 420}px) rotate(${(1 - eo(k)) * (i - 1) * 12}deg)`; });
-  // B: the client searches, nothing comes up
-  type($("q"), "freelance marketing + AI", t, at("client"), at("where"));
-  $("caret").style.opacity = Math.floor(t * 3) % 2 ? 1 : 0.2;
-  ["r0", "r1", "r2"].forEach((id, i) => { $(id).style.opacity = cl((t - at("where") - i * 0.12) / 0.25); });
-  $("none").style.opacity = cl((t - at("look")) / 0.25); $("none").style.transform = `translateX(${(1 - eo((t - at("look")) / 0.3)) * -40}px)`;
-  // C: three things
-  document.querySelectorAll(".cc").forEach((c, i) => { const k = (t - at("three") - i * 0.16) / 0.35; c.style.opacity = cl(k * 2); c.style.transform = `scale(${0.5 + 0.5 * back(k)})`; });
-  // D: Claude writes the profile from the CV, then the form fills itself
-  type($("prompt"), "Turn my CV into a freelance profile: headline, overview, skills.", t, at("profiles"), at("freelance"));
-  const fk = (t - at("freelance")) / 0.35; $("form").style.opacity = cl(fk * 2); $("form").style.transform = `translateY(${(1 - eo(fk)) * 120}px)`;
-  type($("hl"), "Influencer marketing manager · AI content systems", t, at("platforms"), at("from"));
-  type($("ov"), "850+ creator deals on the brand side. Now I build AI content systems.", t, at("from"), at("claude"));
-  const S = ["Influencer marketing", "Brand partnerships", "Claude", "AI workflows"];
-  $("sk").innerHTML = S.map((s, i) => { const k = (t - at("claude") + 0.3 - i * 0.12) / 0.25; return k > 0 ? `<span class="chip" style="transform:scale(${0.5 + 0.5 * back(k)})">${s}</span>` : ""; }).join("");
-  const pk = t - at("claude") - 0.45; $("pub").textContent = pk > 0 ? "Published ✓" : "Publish profile"; $("pub").style.background = pk > 0 ? "var(--green)" : "var(--ink)";
-  // E: his site, then the portfolio page building itself
-  const e0 = at("portfolio"); $("home").style.transform = `translateY(${-eo((t - e0) / 1.0) * 260}px)`;
-  const pp = cl((t - at("one") + 0.1) / 0.3); $("port").style.opacity = pp; $("url").textContent = pp > 0.5 ? "buildwithvvish.com/portfolio" : "buildwithvvish.com";
-  ["p0", "p1", "p2", "p3", "p4"].forEach((id, i) => { const k = (t - at("one") - 0.15 - i * 0.28) / 0.3; $(id).style.opacity = cl(k * 2); $(id).style.transform = `translateY(${(1 - eo(k)) * 40}px)`; });
-  // F: four weeks fill up, content most days, income checkpoints
-  const f0 = at("next"), f1 = at("income") + 0.3;
-  dots.forEach((d, i) => { const k = (t - f0 - (i / dots.length) * (f1 - f0)) / 0.2; const inc = i % 7 === 6;
-    d.style.background = k > 0 ? (inc ? "var(--green)" : "var(--amber)") : "#E4DDD0"; d.style.transform = `scale(${k > 0 ? 0.6 + 0.4 * back(k) : 1})`; d.textContent = k > 0 && inc ? "€" : ""; d.style.color = inc ? "#fff" : "var(--ink)"; });
-  // G: the keyword and the DM it sends
+  // S0: "So I did."
+  pop($("sid"), t, D.t0 + 0.35, 0.35, 80);
+  // A: friction is anything between you and your goal: hitting record, a client's yes
+  type($("Asub"), "anything between you and your goal", t, at("anything"), at("goal") + 0.3);
+  [["L1", at("between", 1)], ["L2", at("between", 2)]].forEach(([id, a]) => pop($(id), t, a - 0.1, 0.35, 80));
+  [["b0", at("hitting")], ["b1", at("record") + 0.2], ["b2", at("client")], ["b3", at("yes")]].forEach(([id, a], i) => {
+    const k = (t - a) / 0.3; $(id).style.opacity = cl(k * 3); $(id).style.transform = `translateY(${-(1 - eo(k)) * 380}px) rotate(${(1 - eo(k)) * (i % 2 ? 10 : -10)}deg)`; });
+  // B: the list, then three get crossed off
+  ["r0", "r1", "r2"].forEach((id, i) => { pop($(id), t, at("listed") + i * 0.18, 0.3, 40);
+    const s = $(id).querySelector(".strike"); const k = eo((t - at("removed") - i * 0.2) / 0.3); s.style.width = `${k * 560}px`; s.style.opacity = k > 0 ? 1 : 0; });
+  // C: Claude writes the profile from the CV, the form fills, published
+  type($("prompt"), "Turn my CV into a freelance profile.", t, at("one") + 0.2, at("claude") - 0.1);
+  const fk = (t - at("claude")) / 0.35; $("form").style.opacity = cl(fk * 2); $("form").style.transform = `translateY(${(1 - eo(fk)) * 120}px)`;
+  type($("hl"), "Influencer marketing · brand partnerships · AI", t, at("wrote"), at("from"));
+  type($("ov"), "Five years in social and influencer marketing. 850+ creator deals on the brand side.", t, at("from"), at("and", 4) + 0.1);
+  const SK = ["Influencer marketing", "Brand partnerships", "Claude", "AI workflows"];
+  $("sk").innerHTML = SK.map((s, i) => { const k = (t - at("cv") + 0.2 - i * 0.12) / 0.25; return k > 0 ? `<span class="chip" style="transform:scale(${0.5 + 0.5 * back(k)})">${s}</span>` : ""; }).join("");
+  const pk = t - at("and", 4) - 0.1; $("pub").textContent = pk > 0 ? "Published ✓" : "Publish profile"; $("pub").style.background = pk > 0 ? "var(--green)" : "var(--ink)";
+  // D: his real portfolio page, scrolled from the top to the tools he built
+  const d0 = at("portfolio") + 0.4, d1 = at("two") - 0.3; $("folio").style.transform = `translateY(${-((1 - Math.cos(Math.PI * cl((t - d0) / (d1 - d0)))) / 2) * 2140}px)`;
+  // E: looking for remote work, so he built the job search automation (the real card from his portfolio)
+  pop($("look"), t, at("looking"), 0.3, 40);
+  pop($("jc"), t, at("automation") - 0.15, 0.4, 120); pop($("jcl"), t, at("claude", 1), 0.3, 30);
+  // F: every day: finds roles, scores the fit, writes a tailored CV and cover letter, he reads every one
+  pop($("jobs"), t, at("every") + 0.05, 0.3, 40);
+  ["j0", "j1", "j2"].forEach((id, i) => pop($(id), t, at("finds") + i * 0.15, 0.25, 30));
+  pop($("ring"), t, at("scores") - 0.1, 0.3, 60);
+  const rk = eo((t - at("scores")) / 0.9); $("arc").setAttribute("stroke-dashoffset", 565.5 * (1 - 0.86 * rk));
+  [...$("chk").children].forEach((c, i) => { c.style.opacity = cl((t - at("well") - i * 0.18) / 0.2); });
+  pop($("d0"), t, at("tailored") - 0.1, 0.35, 80); pop($("d1"), t, at("cover") - 0.1, 0.35, 80);
+  const sk = (t - at("read")) / 0.3; $("stamp").style.opacity = cl(sk * 3); $("stamp").style.transform = `rotate(-6deg) scale(${1.6 - 0.6 * eo(sk)})`;
+  // G: every time he wants to record, setting up eats time
+  const g0 = at("three", 1); $("hand").style.transform = `rotate(${180 + Math.max(0, t - g0) * 220}deg)`;
+  [...$("chores").children].forEach((c, i) => pop(c, t, at("every", 2) + i * 0.55, 0.3, 30));
+  $("lost").style.opacity = cl((t - at("lose")) / 0.25);
+  // G2: next: tripod, a good mic, one corner always ready; hit record, no waiting
+  [["tri", "t0", at("tripod")], ["mic", "t1", at("mic")], ["cor", "t2", at("corner")]].forEach(([g, tg, a]) => {
+    const k = eo((t - a + 0.25) / 0.7); const p = $(g).querySelector("path"); p.style.strokeDasharray = 1; p.style.strokeDashoffset = 1 - k; pop($(tg), t, a + 0.1, 0.3, 30); });
+  const hk = (t - at("hit", 1)) / 0.3; $("recb").style.opacity = cl(hk * 3); $("recb").style.transform = `scale(${hk > 0 ? (0.6 + 0.4 * back(hk)) * (1 + 0.04 * Math.sin((t - at("hit", 1)) * 9)) : 0.6})`;
+  // H: the keyword and the DM it sends
   type($("kw"), "FRICTION", t, at("friction", 1), at("friction", 1) + 0.5);
   const dk = (t - at("checklist")) / 0.3; $("dm").style.opacity = cl(dk * 2); $("dm").style.transform = `translateY(${(1 - eo(dk)) * 60}px)`;
   // captions, 2 to 3 words, never ending on a weak word

@@ -212,4 +212,4 @@ Answer these, in your own words. I cut it into the episode with graphics and mus
 3. A number: applications sent, posts made, euros earned, people met. Only real ones.
 4. What you're trying next week, in one sentence.
 5. End: "Next week on Build with Vish: [the question]."
-Week 3 (film Wed 4 Nov): did reducing friction work? Did the profile, portfolio and plan happen?
+Week 3 (film Wed 4 Nov): did reducing friction work? Profiles and portfolio, the job search automation, the setup: the questions are in content/week-03/plan.txt.

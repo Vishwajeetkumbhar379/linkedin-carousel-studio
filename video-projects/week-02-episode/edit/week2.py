@@ -383,10 +383,11 @@ def plan(tl: dict) -> dict:
     k1 = L["k1"]["t0"]
     geoms.append([k1 - CLONE_LEAD, "none", 0.3])
     bgs.append([k1 - CLONE_LEAD, 999, "paper"])
-    kr = [["Profiles", T("k1", "profiles")], ["Portfolio", T("k1", "portfolio")], ["Plan", T("k1", "plan")]]
+    kr = [["Profiles", T("k1", "profiles")], ["Job search", T("k1", "job")], ["Setup", T("k1", "setup")]]
+    # Vish, 28 Oct: friction is anything between you and the goal, then "so I did": profiles + portfolio, the job search automation, the setup
     # what friction means first (Vish, 28 Oct: "what does that mean? there is no proper flow"), then the checklist
     week = T("k1", "this")
-    title(k1 - CLONE_LEAD + 0.1, week - 0.05, html="Friction:<br><i class=am>anything between<br>you and a yes.</i>", size=96, y=560, z=40,
+    title(k1 - CLONE_LEAD + 0.1, week - 0.05, html="Friction:<br><i class=am>anything between<br>you and your goal.</i>", size=96, y=560, z=40,
           color="#1D1C1A", x=70, shadow=0)  # ink on the paper, inside the frame (the first cut was white on cream and ran off the edges)
     S("type-hit", k1, 0.07)
     cues.append({"type": "kw", "t0": week - 0.1, "t1": tl["next"][0] + 0.6, "rows": kr, "key": "FRICTION", "key_t": T("k1", "friction", nth=1),
@@ -397,6 +398,10 @@ def plan(tl: dict) -> dict:
     for k in range(len("FRICTION")):
         S("click", T("k1", "friction", nth=1) + 0.09 * k, 0.07, f=0.9 + 0.03 * k)
     S("pop", T("k1", "checklist"), 0.08)
+    for w in ("record", "yes", "portfolio", "automation", "tailored", "read", "tripod", "mic", "corner"):
+        S("pop", T("k1", w), 0.06)  # each insert beat lands with a sound (friction_insert.html)
+    for w, k in (("two", 0), ("three", 1)):  # "three" first appears in "I removed three"
+        S("whoosh", T("k1", w, nth=k) - 0.12, 0.08, d=0.4)
     nocap.append([k1 - CLONE_LEAD, tl["dur"] + 1])
     n0, v0 = tl["next"]
     cues.append({"type": "next", "t0": n0, "t1": tl["dur"] + 1, "z": 48,

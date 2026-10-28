@@ -1,4 +1,4 @@
-"""Week 2's friction section shown, not just said: render edit/friction_insert.html over 41.0 to 64.2 s and lay it on the cut.
+"""Week 2's friction section shown, not just said: render edit/friction_insert.html over the k1 line and lay it on the cut.
     python edit/friction_insert.py          -> out/week2-9x16.mp4 (the base cut is kept as work/week2-base.mp4)
 Beats land on the words of the k1 line in work/timeline.json, so a new voice re-times it. Picture only; the mix stays.
 """
@@ -6,6 +6,7 @@ import json
 import re
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -33,6 +34,14 @@ page = page.replace("__DATA__", json.dumps({"words": W, "t0": T0, "t1": T1, "chu
 filled = E / "_friction_insert_filled.html"
 filled.write_text(page)
 ins = P / "work" / "friction_insert.mp4"
+if len(sys.argv) > 2 and sys.argv[1] == "stills":  # python edit/friction_insert.py stills 42,50,61 -> work/fi_<t>.jpg
+    with sync_playwright() as p:
+        b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1080, "height": 1920})
+        pg.goto(filled.as_uri()); pg.wait_for_timeout(700)
+        for t in sys.argv[2].split(","):
+            pg.evaluate(f"seek({t})"); pg.screenshot(path=str(P / "work" / f"fi_{t}.jpg"), type="jpeg", quality=80)
+        b.close()
+    sys.exit()
 enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "image2pipe", "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-crf", "17",
                         "-pix_fmt", "yuv420p", str(ins)], stdin=subprocess.PIPE)
 with sync_playwright() as p:
