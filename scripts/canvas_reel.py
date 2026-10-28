@@ -110,7 +110,7 @@ def main(proj: Path, key: str, stills=None):
     for c, d in zip(chunks, chunks[1:]): c["e"] = min(c["e"], d["s"])
     data = {"chunks": chunks, "hook": beat["hook"], "hookEnd": at(beat["hookEnd"]), "end": end, "els": beat["els"],
             "mascot": beat.get("mascot", []), "react": beat.get("react", []), "ep": beat.get("ep", ""), "series": beat.get("series", ""), "root": ROOT.as_uri(),
-            "heroes": beat.get("heroes", []), "chapters": beat.get("chapters", []), "ticker": beat.get("ticker"), "em": beat.get("em", []), "lines": caption_lines(W)}
+            "heroes": beat.get("heroes", []), "chapters": beat.get("chapters", []), "ticker": beat.get("ticker"), "em": beat.get("em", []), "lines": caption_lines(W), "faceless": beat.get("faceless", False)}
     if beat.get("template") == "series3":
         data["env"] = envelope(proj / f"{key}.mp3") if (proj / f"{key}.mp3").exists() else []
     work = proj / "work"; work.mkdir(exist_ok=True)

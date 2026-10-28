@@ -1,0 +1,12 @@
+INSIDE AI EP 3 to 9: FACTS (checked 28 Oct 2026; evergreen facts, no news)
+EP 3 plane: geostationary orbit 35,786 km up; plane to satellite to ground station is about 71,600 km each way, about 143,000 km round trip;
+  Earth's circumference 40,075 km (so about 3.5 times); light covers 143,000 km in about 0.48 s. Starlink's main shells orbit at about 550 km.
+  Many airlines use geostationary satellite Wi-Fi; some now use Starlink (hence the twist).
+EP 4 strawberry: 10 letters, 3 R's. GPT-4-era tokenizers split it into chunks like "str", "aw", "berry"; the "two R's" answer was widely reported in Aug 2024.
+EP 5 sampling: models pick each next token by sampling from a probability distribution; "temperature" is the API setting. The 90/6/1 odds are labelled as an example.
+EP 6 pre-trained: GPT = Generative Pre-trained Transformer. GPT-3 was trained on about 300 billion tokens (Brown et al., 2020).
+  Reading time: 300e9 tokens x 0.75 words per token / 250 words a minute = about 9e8 minutes, about 1,700 years nonstop.
+EP 7 hallucination: Mata v. Avianca (S.D.N.Y.), 2023: a lawyer filed six non-existent cases ChatGPT produced (incl. Varghese v. China Southern Airlines,
+  Shaboon v. Egyptair, Petersen v. Iran Air), asked ChatGPT whether they were real and it said yes; the court fined the lawyers and their firm 5,000 dollars (22 Jun 2023).
+EP 8 reasoning: reasoning models produce hidden reasoning tokens before the visible answer; in the API these are billed as output tokens.
+EP 9 context: the model keeps no state between requests; chat apps resend the conversation each turn; every model has a context-window limit and long chats get trimmed.

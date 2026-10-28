@@ -1,0 +1,1000 @@
+{
+ "a3": {
+  "ep": 3,
+  "mood": "dark cinematic tech, deep pulsing synth bass, curious ticking percussion, clean modern, builds to a lift",
+  "hook": "Your message goes<br><i>143,000 km.</i>",
+  "hookEnd": "flying at",
+  "em": [
+   "up",
+   "Starlink",
+   "reverse"
+  ],
+  "chapters": [
+   [
+    "You ask ChatGPT",
+    "#0D0F14",
+    "the question"
+   ],
+   [
+    "It goes up",
+    "#10131B",
+    "the trip"
+   ],
+   [
+    "That's about",
+    "#0D0F14",
+    "the maths"
+   ],
+   [
+    "Unless your airline",
+    "#15120C",
+    "the twist"
+   ]
+  ],
+  "ticker": {
+   "label": "KM TRAVELLED",
+   "keys": [
+    [
+     "You ask ChatGPT",
+     0
+    ],
+    [
+     "satellite parked",
+     36000
+    ],
+    [
+     "back down to",
+     72000
+    ],
+    [
+     "same trip in reverse",
+     143000
+    ]
+   ]
+  },
+  "mascot": [],
+  "react": [],
+  "heroes": [
+   {
+    "kind": "globe",
+    "at": "flying at",
+    "until": "That's about",
+    "keys": [
+     [
+      "flying at",
+      46,
+      5,
+      8.6
+     ],
+     [
+      "satellite parked",
+      18,
+      0,
+      9.4
+     ],
+     [
+      "same trip in reverse",
+      35,
+      -30,
+      9.0
+     ]
+    ],
+    "pins": [
+     {
+      "lat": 48.0,
+      "lon": 6.0,
+      "label": "You, 11 km up",
+      "at": "flying at"
+     },
+     {
+      "lat": 0.0,
+      "lon": 0.0,
+      "label": "Satellite, 36,000 km up",
+      "at": "satellite parked"
+     },
+     {
+      "lat": 40.4,
+      "lon": -3.7,
+      "label": "Ground station",
+      "at": "back down to"
+     },
+     {
+      "lat": 39.0,
+      "lon": -77.5,
+      "label": "Data centre",
+      "at": "into a data centre"
+     }
+    ],
+    "routes": [
+     {
+      "a": [
+       48.0,
+       6.0
+      ],
+      "b": [
+       0.0,
+       0.0
+      ],
+      "at": "It goes up",
+      "dur": 1.2,
+      "lift": 0.9,
+      "color": "#E7A15A"
+     },
+     {
+      "a": [
+       0.0,
+       0.0
+      ],
+      "b": [
+       40.4,
+       -3.7
+      ],
+      "at": "back down to",
+      "dur": 1.1,
+      "lift": 0.9,
+      "color": "#E7A15A"
+     },
+     {
+      "a": [
+       40.4,
+       -3.7
+      ],
+      "b": [
+       39.0,
+       -77.5
+      ],
+      "at": "into a data centre",
+      "dur": 1.2,
+      "lift": 0.2
+     }
+    ],
+    "dark": true
+   }
+  ],
+  "els": [
+   {
+    "type": "dlg",
+    "at": "You ask ChatGPT",
+    "title": "Wi-Fi on board",
+    "body": "Connected · 35,000 ft",
+    "btns": [
+     "Ask ChatGPT"
+    ],
+    "pick": 0,
+    "press": "travel further"
+   },
+   {
+    "type": "counter",
+    "at": "That's about",
+    "label": "Round trip",
+    "from": 0,
+    "to": 143000,
+    "suffix": " km",
+    "w": 980
+   },
+   {
+    "type": "card",
+    "at": "around the Earth",
+    "label": "That's",
+    "title": "3.5× around<br>the Earth",
+    "w": 640
+   },
+   {
+    "type": "stamp",
+    "at": "half a second",
+    "text": "0.5 SECONDS"
+   },
+   {
+    "type": "card",
+    "at": "Unless your airline",
+    "label": "With Starlink",
+    "title": "550 km up",
+    "w": 600
+   },
+   {
+    "type": "quote",
+    "at": "next time the wifi",
+    "text": "Remember where your message <i>just went.</i>"
+   }
+  ],
+  "template": "series3",
+  "series": "INSIDE AI",
+  "faceless": true
+ },
+ "a4": {
+  "ep": 4,
+  "mood": "dark cinematic tech, deep pulsing synth bass, curious ticking percussion, clean modern, builds to a lift",
+  "hook": "AI couldn't count<br><i>to three.</i>",
+  "hookEnd": "Here's why",
+  "em": [
+   "tokens",
+   "three",
+   "count"
+  ],
+  "chapters": [
+   [
+    "Ask an older AI",
+    "#0D0F14",
+    "the fail"
+   ],
+   [
+    "Here's why",
+    "#10131B",
+    "the reason"
+   ],
+   [
+    "Newer models",
+    "#0D0F14",
+    "the fix"
+   ],
+   [
+    "So how many",
+    "#15120C",
+    "the test"
+   ]
+  ],
+  "ticker": {
+   "label": "PIECES IT SEES",
+   "keys": [
+    [
+     "Ask an older AI",
+     10
+    ],
+    [
+     "It reads tokens",
+     3
+    ]
+   ]
+  },
+  "mascot": [],
+  "react": [],
+  "heroes": [
+   {
+    "kind": "cards",
+    "at": "Chunks of text",
+    "until": "So counting the",
+    "faces": [
+     {
+      "label": "Token 1",
+      "title": "str",
+      "size": 170,
+      "at": "like str"
+     },
+     {
+      "label": "Token 2",
+      "title": "aw",
+      "size": 170,
+      "at": "aw and"
+     },
+     {
+      "label": "Token 3",
+      "title": "berry",
+      "size": 150,
+      "color": "#D9473A",
+      "at": "and berry"
+     }
+    ],
+    "dark": true
+   }
+  ],
+  "els": [
+   {
+    "type": "dlg",
+    "at": "Ask an older AI",
+    "title": "How many R's in strawberry?",
+    "body": "There are 2 R's in strawberry.",
+    "btns": [
+     "Thanks!"
+    ],
+    "pick": 0,
+    "press": "write you a poem"
+   },
+   {
+    "type": "stamp",
+    "at": "couldn't count",
+    "text": "IT'S THREE"
+   },
+   {
+    "type": "tags",
+    "at": "It reads tokens",
+    "w": 900,
+    "gap": 0.05,
+    "items": [
+     "s",
+     "t",
+     "r",
+     "a",
+     "w",
+     "b",
+     "e",
+     "r",
+     "r",
+     "y"
+    ]
+   },
+   {
+    "type": "card",
+    "at": "three puzzle pieces",
+    "label": "To the model",
+    "title": "3 pieces,<br>not 10 letters",
+    "w": 680
+   },
+   {
+    "type": "doc",
+    "at": "Newer models",
+    "label": "Thinking first",
+    "w": 780,
+    "lines": [
+     {
+      "t": "strawberry",
+      "nw": "s t R a w b e R R y",
+      "at": "spelling the word"
+     },
+     {
+      "t": "How many R's?",
+      "nw": "3",
+      "at": "letter by letter"
+     }
+    ]
+   },
+   {
+    "type": "quote",
+    "at": "Did you just count",
+    "text": "Be honest. <i>Did you just count?</i>"
+   }
+  ],
+  "template": "series3",
+  "series": "INSIDE AI",
+  "faceless": true
+ },
+ "a5": {
+  "ep": 5,
+  "mood": "dark cinematic tech, deep pulsing synth bass, curious ticking percussion, clean modern, builds to a lift",
+  "hook": "Same question.<br><i>Two answers.</i>",
+  "hookEnd": "For every next word",
+  "em": [
+   "dice",
+   "temperature",
+   "underdog"
+  ],
+  "chapters": [
+   [
+    "Ask ChatGPT the exact",
+    "#0D0F14",
+    "the mystery"
+   ],
+   [
+    "For every next word",
+    "#10131B",
+    "the odds"
+   ],
+   [
+    "Developers even get",
+    "#0D0F14",
+    "the dial"
+   ],
+   [
+    "So every answer",
+    "#15120C",
+    "the truth"
+   ]
+  ],
+  "ticker": {
+   "label": "TEMPERATURE",
+   "keys": [
+    [
+     "Ask ChatGPT the exact",
+     1
+    ],
+    [
+     "Turn it down",
+     0
+    ],
+    [
+     "Turn it up",
+     1
+    ],
+    [
+     "all the way up",
+     2
+    ]
+   ]
+  },
+  "mascot": [],
+  "react": [],
+  "heroes": [
+   {
+    "kind": "cards",
+    "at": "exact same question",
+    "until": "For every next word",
+    "faces": [
+     {
+      "label": "Ask #1",
+      "title": "“Blue.”",
+      "size": 120,
+      "at": "exact same question"
+     },
+     {
+      "label": "Ask #2",
+      "title": "“Teal.”",
+      "size": 120,
+      "color": "#E7A15A",
+      "at": "two different answers"
+     }
+    ],
+    "dark": true
+   }
+  ],
+  "els": [
+   {
+    "type": "stamp",
+    "at": "That's not a bug",
+    "text": "ON PURPOSE"
+   },
+   {
+    "type": "list",
+    "at": "The sky is",
+    "label": "The sky is… (example odds)",
+    "w": 760,
+    "rows": [
+     {
+      "t": "blue · 90%",
+      "at": "The sky is"
+     },
+     {
+      "t": "clear · 6%",
+      "at": "Clear six"
+     },
+     {
+      "t": "falling · 1%",
+      "at": "Falling one",
+      "x": true
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "rolls weighted dice",
+    "label": "So it",
+    "title": "Rolls weighted<br>dice",
+    "w": 620
+   },
+   {
+    "type": "card",
+    "at": "Sometimes the underdog",
+    "label": "Sometimes",
+    "title": "The underdog<br>wins",
+    "w": 620
+   },
+   {
+    "type": "bar",
+    "at": "called temperature",
+    "fill": "all the way up",
+    "label": "Temperature",
+    "n": 10,
+    "unit": "",
+    "w": 680
+   },
+   {
+    "type": "quote",
+    "at": "one roll of the dice",
+    "text": "Every answer is <i>one roll of the dice.</i>"
+   }
+  ],
+  "template": "series3",
+  "series": "INSIDE AI",
+  "faceless": true
+ },
+ "a6": {
+  "ep": 6,
+  "mood": "dark cinematic tech, deep pulsing synth bass, curious ticking percussion, clean modern, builds to a lift",
+  "hook": "1,700 years<br><i>of reading.</i>",
+  "hookEnd": "Sounds boring",
+  "em": [
+   "patterns",
+   "Google",
+   "pre-trained"
+  ],
+  "chapters": [
+   [
+    "Last time",
+    "#0D0F14",
+    "G · P · T"
+   ],
+   [
+    "Before you ever typed",
+    "#10131B",
+    "the reading"
+   ],
+   [
+    "here's the twist",
+    "#0D0F14",
+    "the twist"
+   ],
+   [
+    "And the G",
+    "#15120C",
+    "next time"
+   ]
+  ],
+  "ticker": {
+   "label": "LETTERS DECODED",
+   "keys": [
+    [
+     "Last time",
+     1
+    ],
+    [
+     "That's the P",
+     2
+    ]
+   ]
+  },
+  "mascot": [],
+  "react": [],
+  "heroes": [
+   {
+    "kind": "cards",
+    "at": "Last time",
+    "until": "Sounds boring",
+    "faces": [
+     {
+      "label": "Letter 1",
+      "title": "G",
+      "size": 260,
+      "at": "Last time"
+     },
+     {
+      "label": "Letter 2",
+      "title": "P",
+      "size": 260,
+      "color": "#E7A15A",
+      "at": "Now the P"
+     },
+     {
+      "label": "Letter 3",
+      "title": "T",
+      "size": 260,
+      "at": "came from Google"
+     }
+    ],
+    "dark": true
+   }
+  ],
+  "els": [
+   {
+    "type": "card",
+    "at": "P stands for",
+    "label": "P stands for",
+    "title": "Pre-trained",
+    "w": 640
+   },
+   {
+    "type": "counter",
+    "at": "alone was trained",
+    "label": "GPT-3 read",
+    "from": 0,
+    "to": 300,
+    "suffix": " billion tokens",
+    "w": 840
+   },
+   {
+    "type": "counter",
+    "at": "Reading that nonstop",
+    "label": "You, reading nonstop",
+    "from": 0,
+    "to": 1700,
+    "suffix": " years",
+    "w": 780
+   },
+   {
+    "type": "list",
+    "at": "here's the twist",
+    "label": "What it did",
+    "w": 720,
+    "rows": [
+     {
+      "t": "Memorised it",
+      "at": "didn't memorise",
+      "x": true
+     },
+     {
+      "t": "Learned patterns",
+      "at": "It learned patterns"
+     }
+    ]
+   },
+   {
+    "type": "quote",
+    "at": "That's the P",
+    "text": "Everything it learned <i>before it met you.</i>"
+   },
+   {
+    "type": "stamp",
+    "at": "And the G",
+    "text": "G: NEXT TIME"
+   }
+  ],
+  "template": "series3",
+  "series": "INSIDE AI",
+  "faceless": true
+ },
+ "a7": {
+  "ep": 7,
+  "mood": "dark cinematic tech, deep pulsing synth bass, curious ticking percussion, clean modern, builds to a lift",
+  "hook": "Six court cases.<br><i>None existed.</i>",
+  "hookEnd": "He even asked",
+  "em": [
+   "hallucination",
+   "predicts",
+   "yes"
+  ],
+  "chapters": [
+   [
+    "a lawyer in New York",
+    "#0D0F14",
+    "the case"
+   ],
+   [
+    "But it wasn't lying",
+    "#10131B",
+    "the reason"
+   ],
+   [
+    "The lawyers were fined",
+    "#0D0F14",
+    "the cost"
+   ],
+   [
+    "So use it",
+    "#15120C",
+    "the rule"
+   ]
+  ],
+  "ticker": {
+   "label": "REAL CASES",
+   "keys": [
+    [
+     "a lawyer in New York",
+     6
+    ],
+    [
+     "None of them existed",
+     0
+    ]
+   ]
+  },
+  "mascot": [],
+  "react": [],
+  "heroes": [
+   {
+    "kind": "cards",
+    "at": "a lawyer in New York",
+    "until": "He even asked",
+    "faces": [
+     {
+      "label": "Case 1 of 6",
+      "title": "Varghese v.\nChina Southern",
+      "size": 70,
+      "at": "a lawyer in New York"
+     },
+     {
+      "label": "Case 2 of 6",
+      "title": "Shaboon v.\nEgyptair",
+      "size": 76,
+      "at": "six court cases"
+     },
+     {
+      "label": "Case 3 of 6",
+      "title": "Petersen v.\nIran Air",
+      "size": 76,
+      "color": "#D9473A",
+      "at": "None of them existed"
+     }
+    ],
+    "dark": true
+   }
+  ],
+  "els": [
+   {
+    "type": "stamp",
+    "at": "had made them up",
+    "text": "DOESN'T EXIST"
+   },
+   {
+    "type": "dlg",
+    "at": "asked it if",
+    "title": "Are these cases real?",
+    "body": "Yes, they are real cases.",
+    "btns": [
+     "OK"
+    ],
+    "pick": 0,
+    "press": "It said yes"
+   },
+   {
+    "type": "card",
+    "at": "It predicts",
+    "label": "It predicts",
+    "title": "What an answer<br>usually looks like",
+    "w": 720
+   },
+   {
+    "type": "card",
+    "at": "called a hallucination",
+    "label": "This is called",
+    "title": "A hallucination",
+    "w": 660
+   },
+   {
+    "type": "counter",
+    "at": "were fined",
+    "label": "The fine",
+    "from": 0,
+    "to": 5000,
+    "suffix": " dollars",
+    "w": 640
+   },
+   {
+    "type": "list",
+    "at": "use it to draft",
+    "label": "The rule",
+    "w": 740,
+    "rows": [
+     {
+      "t": "Use it to draft",
+      "at": "use it to draft"
+     },
+     {
+      "t": "Let it check itself",
+      "at": "Never to check",
+      "x": true
+     }
+    ]
+   }
+  ],
+  "template": "series3",
+  "series": "INSIDE AI",
+  "faceless": true
+ },
+ "a8": {
+  "ep": 8,
+  "mood": "dark cinematic tech, deep pulsing synth bass, curious ticking percussion, clean modern, builds to a lift",
+  "hook": "“Thinking…”<br><i>is a hidden essay.</i>",
+  "hookEnd": "Reasoning models",
+  "em": [
+   "hidden",
+   "volume",
+   "essay"
+  ],
+  "chapters": [
+   [
+    "When ChatGPT says",
+    "#0D0F14",
+    "the screen"
+   ],
+   [
+    "Reasoning models",
+    "#10131B",
+    "the draft"
+   ],
+   [
+    "nobody tells you",
+    "#0D0F14",
+    "the bill"
+   ],
+   [
+    "It's not thinking",
+    "#15120C",
+    "the truth"
+   ]
+  ],
+  "ticker": {
+   "label": "DRAFTS",
+   "keys": [
+    [
+     "When ChatGPT says",
+     0
+    ],
+    [
+     "try an approach",
+     1
+    ],
+    [
+     "try again",
+     2
+    ]
+   ]
+  },
+  "mascot": [],
+  "react": [],
+  "heroes": [
+   {
+    "kind": "cards",
+    "at": "try an approach",
+    "until": "Sometimes thousands",
+    "faces": [
+     {
+      "label": "Draft 1",
+      "title": "Approach A",
+      "size": 96,
+      "at": "try an approach"
+     },
+     {
+      "label": "Check",
+      "title": "Wrong.",
+      "size": 120,
+      "color": "#D9473A",
+      "at": "throw it away"
+     },
+     {
+      "label": "Draft 2",
+      "title": "Approach B",
+      "size": 96,
+      "color": "#E7A15A",
+      "at": "try again"
+     }
+    ],
+    "dark": true
+   }
+  ],
+  "els": [
+   {
+    "type": "wave",
+    "at": "says thinking",
+    "label": "ChatGPT",
+    "title": "Thinking…",
+    "until": "Reasoning models",
+    "w": 720
+   },
+   {
+    "type": "card",
+    "at": "one line answer",
+    "label": "You see",
+    "title": "One line",
+    "w": 520
+   },
+   {
+    "type": "stamp",
+    "at": "Developers pay",
+    "text": "BILLED"
+   },
+   {
+    "type": "card",
+    "at": "hard questions",
+    "label": "Hard questions",
+    "title": "Take longer.<br>Cost more.",
+    "w": 640
+   },
+   {
+    "type": "quote",
+    "at": "thinking out loud",
+    "text": "Thinking out loud, <i>with the volume off.</i>"
+   }
+  ],
+  "template": "series3",
+  "series": "INSIDE AI",
+  "faceless": true
+ },
+ "a9": {
+  "ep": 9,
+  "mood": "dark cinematic tech, deep pulsing synth bass, curious ticking percussion, clean modern, builds to a lift",
+  "hook": "It re-reads<br><i>your whole chat.</i>",
+  "hookEnd": "no memory between",
+  "em": [
+   "fifty",
+   "forgetting",
+   "fresh"
+  ],
+  "chapters": [
+   [
+    "Every time you send",
+    "#0D0F14",
+    "the secret"
+   ],
+   [
+    "So the app",
+    "#10131B",
+    "the resend"
+   ],
+   [
+    "And at some point",
+    "#0D0F14",
+    "the limit"
+   ],
+   [
+    "That's why a fresh",
+    "#15120C",
+    "the fix"
+   ]
+  ],
+  "ticker": {
+   "label": "MESSAGES RE-READ",
+   "keys": [
+    [
+     "Every time you send",
+     1
+    ],
+    [
+     "Message one",
+     1
+    ],
+    [
+     "Message fifty",
+     50
+    ]
+   ]
+  },
+  "mascot": [],
+  "react": [],
+  "heroes": [
+   {
+    "kind": "cards",
+    "at": "quietly sends",
+    "until": "long chats get slower",
+    "faces": [
+     {
+      "label": "Send 1",
+      "title": "Reads 1",
+      "size": 110,
+      "at": "Message one"
+     },
+     {
+      "label": "Send 2",
+      "title": "Reads 2",
+      "size": 110,
+      "at": "it reads one"
+     },
+     {
+      "label": "Send 50",
+      "title": "Reads 50",
+      "size": 110,
+      "color": "#E7A15A",
+      "at": "Message fifty"
+     }
+    ],
+    "dark": true
+   }
+  ],
+  "els": [
+   {
+    "type": "stamp",
+    "at": "None",
+    "text": "NO MEMORY"
+   },
+   {
+    "type": "counter",
+    "at": "reads all fifty",
+    "label": "Messages it re-reads",
+    "from": 1,
+    "to": 50,
+    "suffix": "",
+    "w": 660
+   },
+   {
+    "type": "bar",
+    "at": "called the context window",
+    "fill": "oldest parts",
+    "label": "Context window",
+    "n": 10,
+    "unit": "/ 10 full",
+    "w": 700
+   },
+   {
+    "type": "stamp",
+    "at": "starts forgetting",
+    "text": "FORGOTTEN"
+   },
+   {
+    "type": "card",
+    "at": "a fresh chat",
+    "label": "The fix",
+    "title": "Start a<br>fresh chat",
+    "w": 600
+   }
+  ],
+  "template": "series3",
+  "series": "INSIDE AI",
+  "faceless": true
+ }
+}

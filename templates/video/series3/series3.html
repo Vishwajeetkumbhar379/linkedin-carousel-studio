@@ -141,7 +141,8 @@ D.els.forEach((e) => { if (!e.parent) return; const p = e.parent; e.x = p.x + (e
 D.els.forEach((e) => { e.node.style.left = e.x + "px"; e.node.style.top = e.y + "px"; });
 const box = (items) => { const x0 = Math.min(...items.map((q) => q.x)), x1 = Math.max(...items.map((q) => q.x + q.w0)), y0 = Math.min(...items.map((q) => q.y)), y1 = Math.max(...items.map((q) => q.y + q.h0)); return {x: (x0 + x1) / 2, y: (y0 + y1) / 2, w: x1 - x0, h: y1 - y0}; };
 // the shot area: under the captions, over the mascot's head: centre (540, 850), 980 x 800
-const CY = 850, fit = (b, m = 1) => Math.min(1.5, 980 / b.w, 800 / b.h) * m;
+// faceless episodes (no mascot): the shot sits lower and fills more of the frame
+const CY = D.faceless ? 1010 : 850, fit = (b, m = 1) => Math.min(D.faceless ? 1.75 : 1.5, 980 / b.w, (D.faceless ? 1120 : 800) / b.h) * m;
 const K = [];
 B.forEach((blk, i) => {
   const b = box(blk.items), z = fit(b, blk.zoom);
