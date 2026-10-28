@@ -2,7 +2,7 @@
 # Voice: Eleven v4 with his clone (Vish, 28 Oct: "sounds so good, sounds like me") for all 7, polished with breaths, re-timed, rendered with music inside. Two streams.
 cd "$(dirname "$0")/.."
 one() { k=$1
-  python3 - "$k" <<'PY'
+  [ -s ${k}_raw4.mp3 ] || python3 - "$k" <<'PY'
 import json, os, re, sys, requests
 k = sys.argv[1]; t = json.load(open("scripts.json"))[k]
 r = requests.post("https://api.elevenlabs.io/v1/text-to-speech/rRDZHYKovM5FXW92Zoxe?output_format=mp3_44100_128", headers={"xi-api-key": os.environ["CLAUDEELEVENLABS_API"]},

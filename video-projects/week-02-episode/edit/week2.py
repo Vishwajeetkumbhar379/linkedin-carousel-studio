@@ -384,13 +384,17 @@ def plan(tl: dict) -> dict:
     geoms.append([k1 - CLONE_LEAD, "none", 0.3])
     bgs.append([k1 - CLONE_LEAD, 999, "paper"])
     kr = [["Profiles", T("k1", "profiles")], ["Portfolio", T("k1", "portfolio")], ["Plan", T("k1", "plan")]]
-    cues.append({"type": "kw", "t0": k1 - CLONE_LEAD, "t1": tl["next"][0] + 0.6, "rows": kr, "key": "FRICTION", "key_t": T("k1", "friction"),
+    # what friction means first (Vish, 28 Oct: "what does that mean? there is no proper flow"), then the checklist
+    week = T("k1", "this")
+    title(k1 - CLONE_LEAD + 0.1, week - 0.05, html="Friction:<br><i class=am>anything between you and a yes.</i>", size=104, y=520, z=40)
+    S("type-hit", k1, 0.07)
+    cues.append({"type": "kw", "t0": week - 0.1, "t1": tl["next"][0] + 0.6, "rows": kr, "key": "FRICTION", "key_t": T("k1", "friction", nth=1),
                  "box_t": T("k1", "comment") - 0.15, "send_t": T("k1", "checklist") - 0.25, "send": "for my checklist", "z": 47})
     S("whoosh", k1 - CLONE_LEAD + 0.05, 0.1, d=0.5)
     for k, (_, tk) in enumerate(kr):
         S("click", tk, 0.09, f=1.0 + 0.08 * k)
     for k in range(len("FRICTION")):
-        S("click", T("k1", "friction") + 0.09 * k, 0.07, f=0.9 + 0.03 * k)
+        S("click", T("k1", "friction", nth=1) + 0.09 * k, 0.07, f=0.9 + 0.03 * k)
     S("pop", T("k1", "checklist"), 0.08)
     nocap.append([k1 - CLONE_LEAD, tl["dur"] + 1])
     n0, v0 = tl["next"]
