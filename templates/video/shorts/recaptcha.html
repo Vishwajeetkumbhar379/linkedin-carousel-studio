@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/shorts/shorts.css">
+<script src="/node_modules/gsap/dist/gsap.min.js"></script>
+<script src="/video/shorts/captions.js"></script>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+/* Ep 8 "recaptcha": the reference look (README): one continuous world, navy + one amber emissive, camera never stops */
+:root{--navy:#001A2D;--amb:#FDB33E}
+#root{background:var(--navy)}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+#wbox{background:var(--amb)}
+#wbox i{border-color:var(--amb)}
+.hl{position:absolute;left:30px;right:30px;top:240px;padding:30px 30px 40px;text-align:center;z-index:60;opacity:0;pointer-events:none;background:radial-gradient(closest-side,rgba(0,14,26,.82),rgba(0,14,26,.55) 60%,transparent)}
+.lab{font:500 28px 'Geist Mono';letter-spacing:.2em;color:var(--amb);text-transform:uppercase;margin-bottom:10px}
+.num{font:700 230px/1 'Inter Tight';letter-spacing:-.05em;color:#FBF7F0;font-variant-numeric:tabular-nums;text-shadow:0 0 70px rgba(253,179,62,.45)}
+.term{font:700 120px/0.95 'Inter Tight';letter-spacing:-.04em;color:#FBF7F0;text-transform:uppercase;text-shadow:0 0 60px rgba(253,179,62,.35)}
+.q{font:400 100px/0.98 'Instrument Serif';color:#FBF7F0;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+.q.s{font-size:84px}
+.q em{font-style:italic;color:var(--amb)}
+#tag b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+.cbub{position:absolute;right:110px;top:1110px;padding:22px 30px;border-radius:30px;background:#fff;color:#111;font:600 36px 'Inter Tight';box-shadow:0 30px 60px -20px #000;z-index:60;opacity:0}
+</style></head>
+<body><div id="root">
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div class="hl" id="hBooks"><div class="lab">It started with</div><div class="term">Books</div></div>
+<div class="hl" id="hTest"><div class="lab">Carnegie Mellon · reCAPTCHA</div><div class="term">Two words.<br>One test.</div></div>
+<div class="hl" id="h440"><div class="lab">Words read in year one</div><div class="num" id="n440">440M</div></div>
+<div class="hl" id="h2009"><div class="lab">Google buys reCAPTCHA</div><div class="num" id="n2009">2009</div></div>
+<div class="hl" id="hSite"><div class="lab">Google's reCAPTCHA site</div><div class="q s">“…build <em>machine learning</em> datasets”</div></div>
+<div class="hl" id="h61"><div class="lab">UC Irvine estimate · 819M hours</div><div class="num" id="n61">$6.1B</div></div>
+<div class="hl" id="hNow"><div class="lab">Google · since April 2026</div><div class="q s">“Only as necessary to provide and <em>maintain</em> the service”</div></div>
+<div class="hl" id="hQ"><div class="q">Should Google have <em>paid you?</em></div></div>
+<div class="cbub" id="cbub">💬 Pay me / Fair trade</div>
+<div id="tag"><b></b>INSIDE AI · EP 8</div>
+<div id="handle">@BUILDWITH.VISH</div>
+<div id="cap"><div id="capline"></div></div>
+<div id="vig"></div><div id="grain"></div>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { BokehPass } from "three/addons/postprocessing/BokehPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const W = 1080, H = 1920;
+await Promise.all(['700 64px "Inter Tight"', '500 30px "Geist Mono"', '400 100px "Instrument Serif"'].map(f => document.fonts.load(f)));
+const SFX = []; window.SFX = SFX;
+const sfx = (t, s) => SFX.push({t: Math.max(0, +t.toFixed(3)), s});
+const cl = x => Math.min(1, Math.max(0, x));
+const seg = (t, a, b) => cl((t - a) / Math.max(1e-4, b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b, k) => a + (b - a) * k;
+const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(23);
+const norm = w => w.toLowerCase().replace(/[^a-z0-9$.']/g, '').replace(/\.$/, '');
+let L, D;
+function wt(i, key) { for (const w of L[i].words) if (norm(w.w).startsWith(key)) return w.start; return L[i].start; }
+const S = i => L[i].start, E = i => L[i].end, N = i => (i + 1 < L.length ? L[i + 1].start : D);
+
+/* ---------- renderer: navy world, ACES, bloom + depth of field ---------- */
+const NAVY = 0x001A2D, AMBER = new THREE.Color(0xFDB33E), METAL = 0x6B7A90, OFF = new THREE.Color(0x1d3149);
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true});
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(NAVY);
+scene.fog = new THREE.FogExp2(0x02182a, 0.011);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.3;
+const camera = new THREE.PerspectiveCamera(40, W / H, 0.01, 900);
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bokeh = new BokehPass(scene, camera, {focus: 10, aperture: 0.0004, maxblur: 0.008});
+composer.addPass(bokeh);
+const bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 1.0, 0.55, 0.8);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+const moon = new THREE.DirectionalLight(0x9fb6d8, 1.5); moon.position.set(-30, 60, 40); scene.add(moon);
+scene.add(new THREE.HemisphereLight(0x3a5878, 0x000a14, 0.6));
+const key = new THREE.PointLight(0xaec3e0, 6, 14, 2); key.position.set(-2, 3, 5); scene.add(key);
+
+function dotTex() { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); }
+const DOT = dotTex();
+const metal = (c = METAL, r = 0.35) => new THREE.MeshStandardMaterial({color: c, metalness: 0.8, roughness: r});
+const glowMat = (c = AMBER, o = 1) => new THREE.MeshBasicMaterial({color: c.clone ? c.clone() : c, toneMapped: false, transparent: o < 1, opacity: o});
+const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(1, 1, 1), tmpP = new THREE.Vector3(), tmpE = new THREE.Euler(), tmpC = new THREE.Color();
+const ctex = (c) => { const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t; };
+const canvas = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
+
+/* ---------- world anchors ---------- */
+const BOOK = new THREE.Vector3(0, -8, -30);      // the open book
+const GY = -8.7;                                  // ground
+const NET = new THREE.Vector3(20, 22, -55);       // the dataset / model
+const WALLZ = -150;
+
+/* ---------- the challenge: a 3x3 "select all traffic lights" grid ---------- */
+const TS = 1.05, TG = 1.13;
+const tileXY = i => [((i % 3) - 1) * TG, (1 - Math.floor(i / 3)) * TG - 0.3];
+const LIGHTS = [0, 1, 4, 5, 7];
+function drawTile(x, i) {
+  const s = 256; const g = x.createLinearGradient(0, 0, 0, s); g.addColorStop(0, '#0d2236'); g.addColorStop(1, '#061424'); x.fillStyle = g; x.fillRect(0, 0, s, s);
+  const r = (a => () => (a = (a * 9301 + 49297) % 233280) / 233280)(i * 77 + 5);
+  // skyline / street furniture
+  x.fillStyle = '#16304a'; for (let k = 0; k < 5; k++) { const w = 30 + r() * 50, h = 60 + r() * 120; x.fillRect(r() * s, s - h - 40, w, h); }
+  x.fillStyle = '#0a1b2c'; x.fillRect(0, s - 44, s, 44);
+  x.fillStyle = '#2b4a6a'; for (let k = 0; k < 6; k++) x.fillRect(k * 46 + 8, s - 26, 26, 6);
+  if (LIGHTS.includes(i)) {
+    const cx = 70 + r() * 110, top = 30 + r() * 40;
+    x.fillStyle = '#3a4d63'; x.fillRect(cx - 5, top + 110, 10, s - top - 150);
+    x.fillStyle = '#1a2533'; x.beginPath(); x.roundRect(cx - 28, top, 56, 124, 12); x.fill();
+    const on = Math.floor(r() * 3);
+    for (let k = 0; k < 3; k++) { x.beginPath(); x.arc(cx, top + 22 + k * 40, 14, 0, 6.283); x.fillStyle = k === on ? '#FDB33E' : '#2e3d4f'; x.fill(); if (k === on) { x.shadowColor = '#FDB33E'; x.shadowBlur = 24; x.fill(); x.shadowBlur = 0; } }
+  } else if (i % 2) {
+    x.fillStyle = '#33475e'; x.beginPath(); x.roundRect(40 + r() * 60, s - 96, 130, 48, 14); x.fill();
+    x.fillStyle = '#0c1826'; x.beginPath(); x.arc(80, s - 46, 14, 0, 6.283); x.arc(170, s - 46, 14, 0, 6.283); x.fill();
+  } else {
+    x.fillStyle = '#28425c'; x.beginPath(); x.arc(128, 120, 50, 0, 6.283); x.fill(); x.fillRect(122, 150, 12, 70);
+  }
+}
+const grid = new THREE.Group(); scene.add(grid);
+const tiles = [], tileSel = [], tileTick = [];
+{
+  const back = new THREE.Mesh(new RoundedBoxGeometry(3.85, 5.55, 0.08, 3, 0.05), new THREE.MeshStandardMaterial({color: 0x13263b, roughness: 0.55, metalness: 0.3}));
+  back.position.set(0, -0.1, -0.06); grid.add(back);
+  const hc = canvas(768, 160), hx = hc.getContext('2d');
+  hx.fillStyle = '#FDB33E'; hx.fillRect(0, 0, 768, 160);
+  hx.fillStyle = '#1a1206'; hx.font = '500 30px Geist Mono, monospace'; hx.fillText('SELECT ALL IMAGES WITH', 34, 58);
+  hx.font = '700 64px Inter Tight, sans-serif'; hx.fillText('TRAFFIC LIGHTS', 32, 126);
+  const head = new THREE.Mesh(new THREE.PlaneGeometry(3.55, 0.74), new THREE.MeshBasicMaterial({map: ctex(hc), color: 0x9a9a9a, toneMapped: false}));
+  head.position.set(0, 2.07, 0.0); head.name = 'head'; grid.add(head);
+  const vc = canvas(512, 120), vx = vc.getContext('2d');
+  vx.fillStyle = '#0c1a2a'; vx.fillRect(0, 0, 512, 120); vx.fillStyle = '#FDB33E'; vx.beginPath(); vx.roundRect(300, 20, 196, 80, 10); vx.fill();
+  vx.fillStyle = '#1a1206'; vx.font = '700 40px Inter Tight, sans-serif'; vx.fillText('VERIFY', 330, 75);
+  vx.fillStyle = '#6b7a90'; vx.font = '500 26px Geist Mono, monospace'; vx.fillText('I AM HUMAN', 20, 72);
+  const ver = new THREE.Mesh(new THREE.PlaneGeometry(3.55, 0.83), new THREE.MeshBasicMaterial({map: ctex(vc), color: 0x8a8a8a, toneMapped: false}));
+  ver.position.set(0, -2.45, 0.0); ver.name = 'verify'; grid.add(ver);
+  for (let i = 0; i < 9; i++) {
+    const c = canvas(256, 256); drawTile(c.getContext('2d'), i);
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(TS, TS), new THREE.MeshBasicMaterial({map: ctex(c), color: 0xa8a8a8, toneMapped: false}));
+    const [x, y] = tileXY(i); m.position.set(x, y, 0.0); grid.add(m); tiles.push(m);
+    const frame = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(TS * 0.9, TS * 0.9)), new THREE.LineBasicMaterial({color: AMBER, toneMapped: false, transparent: true, opacity: 0}));
+    frame.position.set(x, y, 0.02); grid.add(frame); tileSel.push(frame);
+    const tick = new THREE.Mesh(new THREE.CircleGeometry(0.085, 24), glowMat(AMBER, 0)); tick.position.set(x - TS * 0.36, y + TS * 0.36, 0.03); grid.add(tick); tileTick.push(tick);
+  }
+}
+/* the cursor: a flat arrow pointer */
+const cursor = new THREE.Group(); grid.add(cursor);
+{
+  const pts = [[0, 0], [0, -0.62], [0.15, -0.48], [0.26, -0.74], [0.36, -0.7], [0.25, -0.44], [0.44, -0.44]];
+  const sh = new THREE.Shape(pts.map(p => new THREE.Vector2(p[0], p[1])));
+  const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, {depth: 0.03, bevelEnabled: true, bevelThickness: 0.01, bevelSize: 0.012, bevelSegments: 1}), new THREE.MeshBasicMaterial({color: 0x8a939e, toneMapped: false}));
+  const o = new THREE.Mesh(new THREE.ShapeGeometry(sh), new THREE.MeshBasicMaterial({color: 0x000000})); o.scale.setScalar(1.18); o.position.set(-0.035, 0.05, -0.005);
+  cursor.add(o, m); cursor.position.z = 0.18;
+}
+const ripple = new THREE.Mesh(new THREE.RingGeometry(0.9, 1, 48), glowMat(AMBER, 0)); ripple.material.depthWrite = false; grid.add(ripple);
+
+/* ---------- the book, its pages and the two words ---------- */
+const bookG = new THREE.Group(); bookG.position.copy(BOOK); scene.add(bookG);
+function pageTex(seed, mark) {
+  const c = canvas(512, 704), x = c.getContext('2d'); const r = (a => () => (a = (a * 9301 + 49297) % 233280) / 233280)(seed);
+  x.fillStyle = '#5e6a7a'; x.fillRect(0, 0, 512, 704);
+  x.fillStyle = '#3a4656';
+  for (let row = 0; row < 26; row++) { let px = 40; const y = 50 + row * 24; while (px < 470) { const w = 14 + r() * 60; if (px + w > 470) break; x.fillRect(px, y, w, 9); px += w + 10; } }
+  if (mark) { x.fillStyle = '#2a3646'; x.fillRect(260, 50 + 14 * 24 - 6, 120, 22); }
+  return ctex(c);
+}
+const pageL = new THREE.Mesh(new THREE.PlaneGeometry(5.6, 7.8, 24, 1), new THREE.MeshStandardMaterial({map: pageTex(3, false), roughness: 0.9}));
+const pageR = new THREE.Mesh(new THREE.PlaneGeometry(5.6, 7.8, 24, 1), new THREE.MeshStandardMaterial({map: pageTex(9, true), roughness: 0.9}));
+[pageL, pageR].forEach((p, k) => { const pa = p.geometry.attributes.position; for (let i = 0; i < pa.count; i++) { const u = (pa.getX(i) + 2.8) / 5.6; const v = k ? u : 1 - u; pa.setZ(i, Math.sin(Math.min(1, v * 1.6) * Math.PI / 2) * 0.45 - 0.0); } p.geometry.computeVertexNormals(); p.rotation.x = -Math.PI / 2; p.position.set(k ? 2.85 : -2.85, 0.32, 0); bookG.add(p); });
+{ const cover = new THREE.Mesh(new RoundedBoxGeometry(11.9, 0.3, 8.3, 2, 0.06), metal(0x24364d, 0.5)); cover.position.y = 0.0; bookG.add(cover); }
+const markGlow = new THREE.Mesh(new THREE.PlaneGeometry(1.32, 0.3), glowMat(AMBER, 0)); markGlow.rotation.x = -Math.PI / 2;
+markGlow.position.set(2.85 - 2.8 + (320 / 512) * 5.6, 0.82, -3.9 + ((50 + 14 * 24 + 5) / 704) * 7.8); bookG.add(markGlow);
+/* the two words: warped, like the old text CAPTCHAs */
+function wordCanvas(word, seed, smudge, label, typed) {
+  const c = canvas(640, 300), x = c.getContext('2d'); const r = (a => () => (a = (a * 9301 + 49297) % 233280) / 233280)(seed);
+  x.fillStyle = '#c9d2dc'; x.fillRect(0, 0, 640, 210);
+  x.fillStyle = '#0c1a2a'; x.fillRect(0, 210, 640, 90);
+  x.save(); if (smudge) x.filter = 'blur(3.2px)';
+  x.fillStyle = '#0b1420'; let px = 46;
+  for (const ch of word) { x.save(); x.translate(px, 140 + Math.sin(px * 0.03) * 16); x.rotate((r() - 0.5) * 0.5); x.scale(1 + (r() - 0.5) * 0.3, 1 + (r() - 0.5) * 0.4); x.font = `700 ${100 + r() * 16}px Instrument Serif, serif`; x.fillText(ch, 0, 0); px += x.measureText(ch).width * 0.95; x.restore(); }
+  x.restore();
+  if (smudge) { for (let k = 0; k < 900; k++) { x.fillStyle = `rgba(30,40,55,${r() * 0.35})`; x.fillRect(r() * 640, r() * 210, 2 + r() * 5, 2 + r() * 5); } }
+  x.strokeStyle = '#0b1420'; x.lineWidth = 5; x.beginPath(); x.moveTo(30, 120); for (let k = 0; k <= 12; k++) x.lineTo(30 + k * 48, 120 + Math.sin(k * 1.3 + seed) * 18); x.stroke();
+  x.font = '500 34px Geist Mono, monospace'; x.fillStyle = label.c; x.fillText(label.t, 26, 268);
+  if (typed !== undefined) { x.fillStyle = '#FDB33E'; x.font = '700 46px Inter Tight, sans-serif'; x.fillText(typed, 330, 272); }
+  return c;
+}
+const w1c = wordCanvas('morning', 4, false, {t: 'TEST · ANSWER KNOWN', c: '#FDB33E'});
+const w1 = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 1.406), new THREE.MeshBasicMaterial({map: ctex(w1c), color: 0x9a9a9a, toneMapped: false, transparent: true, opacity: 0}));
+const w2T = ctex(wordCanvas('overlooks', 8, true, {t: 'SCAN: ???', c: '#6b7a90'}));
+const w2 = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 1.406), new THREE.MeshBasicMaterial({map: w2T, color: 0x9a9a9a, toneMapped: false, transparent: true, opacity: 0}));
+w1.position.set(0, 3.0, 0.6); w2.position.set(0, 1.75, 0.6); w1.rotation.x = w2.rotation.x = -0.35; w1.scale.setScalar(0.8); w2.scale.setScalar(0.8);
+bookG.add(w1, w2);
+const scanBar = new THREE.Mesh(new THREE.PlaneGeometry(0.04, 1.0), glowMat(AMBER, 0)); scanBar.position.set(0, 1.82, 0.63); scanBar.rotation.x = -0.35; scanBar.scale.y = 0.8; bookG.add(scanBar);
+const w2Frame = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(3.08, 1.48)), new THREE.LineBasicMaterial({color: AMBER, toneMapped: false, transparent: true, opacity: 0}));
+w2Frame.position.copy(w2.position); w2Frame.rotation.x = -0.35; w2Frame.scale.setScalar(0.8); bookG.add(w2Frame);
+let w2State = '';
+function setW2(state, typed) { const k = state + '|' + typed; if (k === w2State) return; w2State = k;
+  const lab = state === 'scan' ? {t: 'SCAN: ???', c: '#6b7a90'} : state === 'typed' ? {t: 'YOU:', c: '#FBF7F0'} : {t: 'UNKNOWN WORD', c: '#6b7a90'};
+  const c = wordCanvas('overlooks', 8, true, lab, state === 'typed' ? typed : undefined); w2T.image = c; w2T.needsUpdate = true; }
+
+/* ---------- ground + the library: thousands of books lighting in a wave ---------- */
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(1200, 1200), new THREE.MeshStandardMaterial({color: 0x021626, roughness: 0.95})); ground.rotation.x = -Math.PI / 2; ground.position.y = GY; scene.add(ground);
+const gh = new THREE.GridHelper(600, 150, 0x0e2c47, 0x0a2238); gh.position.y = GY + 0.02; gh.material.transparent = true; gh.material.opacity = 0.5; scene.add(gh);
+const BK = [];
+for (let i = 0; i < 64; i++) for (let j = 0; j < 46; j++) { const x = -40 + i * 1.3 + (rnd() - .5) * 0.4, z = BOOK.z - 32 + j * 1.45 + (rnd() - .5) * 0.4; const d = Math.hypot(x - BOOK.x, z - BOOK.z); if (d < 8.5 || x > 32) continue; BK.push({x, z, d, ry: (rnd() - .5) * 0.5, h: 0.12 + rnd() * 0.22, ph: rnd()}); }
+const bookBox = new THREE.InstancedMesh(new THREE.BoxGeometry(0.95, 1, 1.25), new THREE.MeshStandardMaterial({color: 0x1a2a3e, roughness: 0.6, metalness: 0.2}), BK.length);
+const bookTop = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.85, 1.15), new THREE.MeshBasicMaterial({color: 0xffffff, toneMapped: false}), BK.length);
+{ const qT = new THREE.Quaternion();
+  BK.forEach((b, k) => { tmpQ.setFromEuler(tmpE.set(0, b.ry, 0)); bookBox.setMatrixAt(k, tmpM.compose(tmpP.set(b.x, GY + b.h / 2, b.z), tmpQ, tmpS.set(1, b.h, 1)));
+    qT.setFromEuler(tmpE.set(-Math.PI / 2, 0, b.ry, 'YXZ')); bookTop.setMatrixAt(k, tmpM.compose(tmpP.set(b.x, GY + b.h + 0.01, b.z), qT, tmpS.set(1, 1, 1))); bookTop.setColorAt(k, OFF); }); }
+scene.add(bookBox, bookTop);
+
+/* ---------- the street: houses with numbers (Street View) ---------- */
+const HOUSES = [];
+for (let i = 0; i < 12; i++) for (const sd of [1, -1]) HOUSES.push({x: 38 + i * 5.2 + (sd > 0 ? 0 : 2.4), z: BOOK.z + sd * 5.2, sd, h: 3 + rnd() * 1.6, n: String(2 * i + (sd > 0 ? 2 : 1) + 10 * Math.floor(rnd() * 3))});
+const houseBox = new THREE.InstancedMesh(new THREE.BoxGeometry(4, 1, 4), new THREE.MeshStandardMaterial({color: 0x22344a, roughness: 0.7, metalness: 0.15}), HOUSES.length);
+const roofs = new THREE.InstancedMesh(new THREE.ConeGeometry(3.1, 1.8, 4), new THREE.MeshStandardMaterial({color: 0x17263a, roughness: 0.7}), HOUSES.length);
+const doors = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.8, 1.5), new THREE.MeshStandardMaterial({color: 0x0b1724, roughness: 0.6}), HOUSES.length);
+const winds = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.8, 0.7), new THREE.MeshBasicMaterial({color: 0x3c5674, toneMapped: false}), HOUSES.length * 2);
+const plates = [];
+HOUSES.forEach((h, k) => {
+  tmpQ.identity(); houseBox.setMatrixAt(k, tmpM.compose(tmpP.set(h.x, GY + h.h / 2, h.z), tmpQ, tmpS.set(1, h.h, 1)));
+  tmpQ.setFromEuler(tmpE.set(0, Math.PI / 4, 0)); roofs.setMatrixAt(k, tmpM.compose(tmpP.set(h.x, GY + h.h + 0.9, h.z), tmpQ, tmpS.set(1, 1, 1)));
+  const fz = h.z - h.sd * 2.01; tmpQ.setFromEuler(tmpE.set(0, h.sd > 0 ? Math.PI : 0, 0));
+  doors.setMatrixAt(k, tmpM.compose(tmpP.set(h.x - 0.6, GY + 0.75, fz), tmpQ, tmpS));
+  winds.setMatrixAt(k * 2, tmpM.compose(tmpP.set(h.x + 1.0, GY + 1.5, fz), tmpQ, tmpS)); winds.setMatrixAt(k * 2 + 1, tmpM.compose(tmpP.set(h.x + 1.0, GY + h.h - 0.8, fz), tmpQ, tmpS));
+  const c = canvas(192, 112), x = c.getContext('2d'); x.fillStyle = '#060f19'; x.beginPath(); x.roundRect(0, 0, 192, 112, 16); x.fill(); x.fillStyle = '#ffffff'; x.font = '700 84px Inter Tight, sans-serif'; x.textAlign = 'center'; x.fillText(h.n, 96, 88);
+  const p = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 0.86), new THREE.MeshBasicMaterial({map: ctex(c), color: 0x33465c, toneMapped: false}));
+  p.position.set(h.x + 0.6, GY + 2.5, fz - h.sd * 0.02); p.quaternion.copy(tmpQ); scene.add(p); plates.push({m: p, h});
+});
+scene.add(houseBox, roofs, doors, winds);
+
+/* ---------- the dataset: a network sphere that fills with light ---------- */
+const NP = 2200, netG = new THREE.BufferGeometry(), netPos = new Float32Array(NP * 3), netCol = new Float32Array(NP * 3), netTh = [];
+for (let i = 0; i < NP; i++) { const y = 1 - (i / (NP - 1)) * 2, r = Math.sqrt(1 - y * y), th = i * 2.39996; const R = i < 1700 ? 6 : 1.5 + rnd() * 4; const u = i < 1700 ? 1 : 1;
+  const v = i < 1700 ? [Math.cos(th) * r, y, Math.sin(th) * r] : (() => { const a = rnd() * 6.283, b = Math.acos(2 * rnd() - 1); return [Math.sin(b) * Math.cos(a), Math.cos(b), Math.sin(b) * Math.sin(a)]; })();
+  netPos.set([v[0] * R * u, v[1] * R, v[2] * R], i * 3); netTh.push(rnd()); }
+netG.setAttribute('position', new THREE.BufferAttribute(netPos, 3)); netG.setAttribute('color', new THREE.BufferAttribute(netCol, 3));
+const net = new THREE.Group(); net.position.copy(NET); scene.add(net);
+net.add(new THREE.Points(netG, new THREE.PointsMaterial({size: 0.32, map: DOT, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false})));
+const netLinks = (() => { const a = []; for (let i = 0; i < 900; i++) { const j = Math.floor(rnd() * NP), k = Math.floor(rnd() * NP); const dx = netPos[j * 3] - netPos[k * 3], dy = netPos[j * 3 + 1] - netPos[k * 3 + 1], dz = netPos[j * 3 + 2] - netPos[k * 3 + 2]; if (dx * dx + dy * dy + dz * dz < 9) a.push(netPos[j * 3], netPos[j * 3 + 1], netPos[j * 3 + 2], netPos[k * 3], netPos[k * 3 + 1], netPos[k * 3 + 2]); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(a, 3)); return new THREE.LineSegments(g, new THREE.LineBasicMaterial({color: AMBER, transparent: true, opacity: 0.1, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false})); })();
+net.add(netLinks);
+const core = new THREE.Mesh(new THREE.IcosahedronGeometry(1.2, 1), glowMat(AMBER, 1)); core.material.wireframe = true; net.add(core);
+/* shield (line 9): fresnel sphere + two rings */
+const shieldMat = new THREE.ShaderMaterial({transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  uniforms: {uO: {value: 0}, uT: {value: 0}, uC: {value: AMBER}},
+  vertexShader: `varying vec3 vN; varying vec3 vV; varying vec3 vP; void main(){ vec4 w = modelMatrix*vec4(position,1.0); vP = position; vN = normalize(mat3(modelMatrix)*normal); vV = normalize(cameraPosition - w.xyz); gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: `uniform float uO; uniform float uT; uniform vec3 uC; varying vec3 vN; varying vec3 vV; varying vec3 vP; void main(){ float f = pow(1.0-abs(dot(vN,vV)),2.6); float s = 0.55+0.45*sin(vP.y*30.0 - uT*4.0); gl_FragColor = vec4(uC*(f*1.6*s+0.03), 1.0)*uO; }`});
+const shield = new THREE.Mesh(new THREE.SphereGeometry(8.6, 64, 32), shieldMat); net.add(shield);
+const rings = [0, 1].map(k => { const r = new THREE.Mesh(new THREE.TorusGeometry(9.2 + k * 0.6, 0.05, 8, 160), glowMat(AMBER, 0)); r.material.depthWrite = false; net.add(r); return r; });
+
+/* ---------- the wall: millions of clicks (tiny 3x3 grids, lit in waves) ---------- */
+const WC = 40, WR = 48, WN = WC * WR * 9;
+const wall = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.86, 0.86), new THREE.MeshBasicMaterial({color: 0xffffff, toneMapped: false, fog: false}), WN);
+const WD = new Float32Array(WN), WL = new Uint8Array(WN);
+{ let k = 0; tmpQ.identity();
+  for (let c = 0; c < WC; c++) for (let r = 0; r < WR; r++) { const gx = NET.x + (c - WC / 2) * 3.6, gy = NET.y + (r - WR / 2) * 3.6; const pick = new Set(); while (pick.size < 3 + Math.floor(rnd() * 2)) pick.add(Math.floor(rnd() * 9));
+    for (let i = 0; i < 9; i++) { const x = gx + ((i % 3) - 1), y = gy + (1 - Math.floor(i / 3)); wall.setMatrixAt(k, tmpM.compose(tmpP.set(x, y, WALLZ), tmpQ, tmpS.set(1, 1, 1))); WD[k] = Math.hypot(x - NET.x, y - NET.y) + rnd() * 6; WL[k] = pick.has(i) ? 1 : 0; wall.setColorAt(k, OFF); k++; } } }
+scene.add(wall);
+
+/* ---------- packets: amber points flying along arcs into the dataset ---------- */
+const PK = 900, pkG = new THREE.BufferGeometry(), pkP = new Float32Array(PK * 3);
+pkG.setAttribute('position', new THREE.BufferAttribute(pkP, 3));
+const pkMat = new THREE.PointsMaterial({size: 0.5, map: DOT, color: AMBER, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false});
+scene.add(new THREE.Points(pkG, pkMat));
+let FL = [];
+const fly = (from, to, t0, dur, lift = 6) => FL.push({a: from.clone(), b: to.clone(), t0, dur, lift});
+const tileW = i => { const [x, y] = tileXY(i); return new THREE.Vector3(x, y, 0.05); };
+
+/* ---------- camera: keyframes, eased, with a drift so it never stops ---------- */
+let CK = [];
+const tgt = new THREE.Vector3();
+function camAt(t) {
+  if (window.COVER_CAM) { const c = window.COVER_CAM; camera.position.set(...c.p); camera.lookAt(...c.l); camera.fov = c.f; camera.updateProjectionMatrix(); return Math.hypot(c.p[0] - c.l[0], c.p[1] - c.l[1], c.p[2] - c.l[2]); }
+  let i = 0; while (i < CK.length - 1 && CK[i + 1].t <= t) i++;
+  const a = CK[i], b = CK[Math.min(i + 1, CK.length - 1)];
+  const k = b === a ? 0 : (b.e || eio)(seg(t, a.t, b.t));
+  const p = a.p.map((v, j) => lerp(v, b.p[j], k)), l = a.l.map((v, j) => lerp(v, b.l[j], k));
+  const dist = Math.hypot(p[0] - l[0], p[1] - l[1], p[2] - l[2]), dr = Math.min(0.03, dist * 0.006);
+  camera.position.set(p[0] + Math.sin(t * 0.9) * dr, p[1] + Math.cos(t * 0.7) * dr, p[2] + Math.sin(t * 0.55 + 1) * dr);
+  tgt.set(...l); camera.lookAt(tgt);
+  camera.fov = lerp(a.f || 40, b.f || 40, k); camera.updateProjectionMatrix();
+  return dist;
+}
+const hl = (id, t, a, b, fade = 0.22) => { const el = document.getElementById(id); const o = Math.min(seg(t, a, a + fade), 1 - seg(t, b - fade, b)); el.style.opacity = o; el.style.transform = `translateY(${(1 - eo(seg(t, a, a + 0.4))) * 40}px) scale(${lerp(0.94, 1, eo(seg(t, a, a + 0.4)))})`; };
+
+let CLK = [], VERIFY = 0, RESET = 0, CUR = [], LIBR0 = 0, LIBR1 = 0, PLATE = [];
+window.setup = async function (spec) {
+  L = spec.lines; D = spec.duration;
+  Captions.build(spec);
+  const B = BOOK;
+  const g0 = {p: [0.6, -0.5, 15.5], l: [0.1, -0.9, 0], f: 36}, g1 = {p: [-0.6, 0.3, 17.5], l: [0, -0.9, 0], f: 36};
+  CK = [
+    {t: 0, ...g0},
+    {t: E(0), ...g1},
+    {t: S(1) + 1.6, p: [2.2, 0.6, 16.5], l: [0, -0.9, 0], f: 36},
+    {t: E(1) - 0.1, p: [-1.8, 1.0, 16.0], l: [0, -0.9, 0], f: 36},
+    {t: S(2) + 0.7, p: [-4.5, 2.6, 7.5], l: [6, 4, -30], f: 46},
+    {t: S(2) + 1.8, p: [-1.5, -1, -13], l: [B.x, B.y - 1.0, B.z], f: 46},
+    {t: N(2), p: [0, -2.4, -20.5], l: [B.x, B.y - 1.2, B.z], f: 44},
+    {t: S(3) + 0.9, p: [0.4, -3.0, -19.0], l: [0, B.y + 2.25, B.z + 0.6], f: 40},
+    {t: N(3), p: [-0.4, -3.2, -19.6], l: [0, B.y + 2.25, B.z + 0.6], f: 40},
+    {t: S(4) + 0.6, p: [0.3, -4.7, -23.4], l: [0, B.y + 1.55, B.z + 0.6], f: 40},
+    {t: N(4), p: [-0.2, -4.9, -24.0], l: [0, B.y + 1.6, B.z + 0.6], f: 38},
+    {t: S(5) + 1.6, p: [-7, 3, -10], l: [0, B.y - 2, B.z - 3], f: 50},
+    {t: N(5) - 0.2, p: [6, 13, -3], l: [12, B.y - 3, B.z - 5], f: 54},
+    {t: S(6) + 1.3, p: [33, -6.0, B.z + 0.6], l: [52, -7.8, B.z - 0.8], f: 50},
+    {t: N(6), p: [58, -6.4, B.z - 0.3], l: [78, -7.6, B.z + 0.8], f: 50},
+    {t: S(7) + 1.4, p: [32, 5, 6], l: [NET.x, NET.y - 6, NET.z], f: 52},
+    {t: N(7), p: [23, 17, -22], l: [NET.x, NET.y - 3, NET.z], f: 48},
+    {t: S(8) + 0.5, p: [22, 19.5, -30], l: [NET.x, NET.y - 2.5, NET.z], f: 48},
+    {t: N(8), p: [21, 26, 40], l: [NET.x, NET.y - 10, NET.z - 20], f: 50},
+    {t: S(9) + 1.3, p: [25, 23.5, -27], l: [NET.x, NET.y - 3, NET.z], f: 46},
+    {t: N(9) - 0.25, p: [14, 12, -6], l: [8, 6, -20], f: 48},
+    {t: S(10) + 1.0, ...g1},
+    {t: D, ...g0},
+  ];
+  // clicks: frame 0 is mid-challenge (tile 1 already picked, the cursor is on tile 4)
+  CLK = [{i: 1, t: -1}, {i: 4, t: 0.2}, {i: 0, t: wt(0, 'free')}, {i: 5, t: wt(1, 'clicked')}, {i: 7, t: wt(1, 'lights')}];
+  VERIFY = wt(1, 'human'); RESET = N(9) - 0.6;
+  const C2 = [{i: 1, t: S(10) + 1.3}];
+  CUR = [{t: -1, i: 4}];
+  CLK.slice(1).forEach(c => CUR.push({t: c.t, i: c.i}));
+  CUR.push({t: VERIFY, i: 'v'}); CUR.push({t: C2[0].t, i: 1}); CUR.push({t: D + 0.2, i: 4});
+  CLK = CLK.concat(C2.map(c => ({...c, ep: 1})));
+  // packets: every click flies off into the dark (the dataset, far behind)
+  CLK.forEach(c => { if (c.t > 0 && !c.ep) for (let k = 0; k < 3; k++) fly(tileW(c.i), NET, c.t + k * 0.08, 2.6 + k * 0.2, 8); });
+  LIGHTS.forEach((i, k) => fly(tileW(i), NET, VERIFY + 0.1 + k * 0.06, 2.8, 10));
+  // the typed word goes too
+  const typedAt = wt(4, 'read') + 0.2;
+  fly(new THREE.Vector3(B.x, B.y + 1.8, B.z + 0.6), NET, typedAt + 0.9, 2.6, 8);
+  // library wave + packets
+  LIBR0 = S(5) + 0.3; LIBR1 = N(5) - 0.3;
+  for (let k = 0; k < 70; k++) { const b = BK[Math.floor(rnd() * BK.length)]; const tl = LIBR0 + (b.d / 50) * (LIBR1 - LIBR0); fly(new THREE.Vector3(b.x, GY + b.h, b.z), NET, tl + 0.2 + rnd() * 0.6, 3 + rnd(), 10); }
+  // plates light in order along the street, each sends a packet
+  const p0 = S(6) + 1.0, p1 = N(6) + 0.2;
+  PLATE = plates.map(p => ({...p, t: p0 + ((p.h.x - 38) / 62) * (p1 - p0)}));
+  PLATE.forEach(p => fly(p.m.position, NET, p.t + 0.15, 2.6 + rnd(), 7));
+  // line 7: streams from everything into the model
+  for (let k = 0; k < 260; k++) { const t0 = S(7) + rnd() * (N(8) - S(7)); let from;
+    const u = rnd(); if (u < 0.4) { const b = BK[Math.floor(rnd() * BK.length)]; from = new THREE.Vector3(b.x, GY + b.h, b.z); }
+    else if (u < 0.65) from = plates[Math.floor(rnd() * plates.length)].m.position.clone();
+    else from = new THREE.Vector3(NET.x + (rnd() - .5) * 140, NET.y + (rnd() - .5) * 150, WALLZ + 1);
+    fly(from, NET, t0, 1.8 + rnd() * 1.4, 4 + rnd() * 6); }
+  // sound map
+  sfx(0.2, 'click'); sfx(wt(0, 'free'), 'click'); sfx(wt(0, 'free') + 0.05, 'zip');
+  sfx(wt(1, 'clicked'), 'click'); sfx(wt(1, 'lights'), 'click'); sfx(VERIFY, 'ding'); sfx(VERIFY + 0.1, 'zip');
+  sfx(S(2) + 0.5, 'whoosh'); sfx(wt(2, 'books'), 'thump');
+  sfx(S(3) + 0.2, 'whoosh'); sfx(wt(3, 'two'), 'pop'); sfx(wt(3, 'test'), 'ding');
+  sfx(S(4) + 0.3, 'scratch'); for (let k = 0; k < 6; k++) sfx(typedAt + k * 0.09, 'tap'); sfx(typedAt + 0.8, 'ding');
+  sfx(S(5) + 0.4, 'whoosh'); sfx(S(5) + 0.5, 'rise'); sfx(wt(5, 'million'), 'thump'); sfx(wt(5, 'york'), 'tick');
+  sfx(S(6) + 0.3, 'whoosh'); sfx(wt(6, '2009'), 'thump'); PLATE.filter((_, k) => k % 3 === 0).forEach(p => sfx(p.t, 'tick'));
+  sfx(S(7) + 0.3, 'whoosh'); sfx(S(7) + 0.8, 'rise'); sfx(wt(7, 'datasets'), 'ding');
+  sfx(S(8), 'whoosh'); sfx(wt(8, '819'), 'thump'); sfx(wt(8, '$6.1'), 'coin'); sfx(wt(8, '$6.1') + 0.1, 'thump');
+  sfx(wt(9, 'only'), 'ding'); sfx(S(9) + 1.2, 'rise');
+  sfx(N(9) - 0.3, 'whoosh'); sfx(C2[0].t, 'click'); sfx(wt(10, 'paid'), 'pop'); sfx(D - 0.25, 'thump');
+  SFX.sort((a, b) => a.t - b.t);
+  window.READY = true;
+};
+
+const head = grid.getObjectByName('head'), verify = grid.getObjectByName('verify');
+window.frame = function (t) {
+  const dist = camAt(t);
+  /* the grid: selection state per epoch */
+  const ep = t >= RESET ? 1 : 0;
+  for (let i = 0; i < 9; i++) {
+    const c = CLK.find(c => c.i === i && (c.ep || 0) === ep && t >= c.t);
+    const k = c ? eo(seg(t, c.t, c.t + 0.18)) : 0;
+    tiles[i].scale.setScalar(1 - 0.12 * k);
+    tiles[i].material.color.setScalar(0.66 + 0.25 * k + (c ? 0.6 * Math.exp(-(t - c.t) * 6) : 0));
+    tileSel[i].material.opacity = k; tileTick[i].material.opacity = k; tileTick[i].material.color.copy(AMBER).multiplyScalar(1 + 2 * (c ? Math.exp(-(t - c.t) * 5) : 0));
+  }
+  const vk = t >= VERIFY && t < RESET ? Math.exp(-(t - VERIFY) * 3) : 0;
+  verify.material.color.setScalar(0.54 + 0.9 * vk);
+  head.material.color.setScalar(0.6 + 0.05 * Math.sin(t * 3));
+  /* cursor: glides tile to tile, presses on each click */
+  let ci = 0; while (ci < CUR.length - 1 && CUR[ci + 1].t <= t) ci++;
+  const ca = CUR[ci], cb = CUR[Math.min(ci + 1, CUR.length - 1)];
+  const pos = j => j === 'v' ? [1.15, -2.45] : tileXY(j);
+  const [ax, ay] = pos(ca.i), [bx, by] = pos(cb.i);
+  const mk = cb === ca ? 0 : eio(seg(t, Math.max(ca.t + 0.25, cb.t - 0.55), cb.t - 0.06));
+  const press = Math.exp(-Math.max(0, t - ca.t) * 9) + Math.exp(-Math.max(0, cb.t - t) * 18) * 0.4;
+  cursor.position.set(lerp(ax, bx, mk) + 0.05, lerp(ay, by, mk) - 0.05, 0.18 - 0.08 * Math.min(1, press));
+  cursor.scale.setScalar(1 - 0.12 * Math.min(1, press));
+  const lastC = CLK.filter(c => t >= c.t && c.t > 0).pop();
+  if (lastC) { const u = seg(t, lastC.t, lastC.t + 0.45); const [x, y] = tileXY(lastC.i); ripple.position.set(x, y, 0.06); ripple.scale.setScalar(0.1 + 0.55 * eo(u)); ripple.material.opacity = u < 1 ? 0.9 * (1 - u) : 0; } else ripple.material.opacity = 0;
+
+  /* the two words above the book */
+  const wIn = seg(t, S(3) + 0.2, S(3) + 0.8);
+  w1.material.opacity = wIn * (1 - seg(t, N(5), N(5) + 0.4)); w2.material.opacity = seg(t, wt(3, 'two') + 0.1, wt(3, 'two') + 0.6) * (1 - seg(t, N(5), N(5) + 0.4));
+  w1.position.y = 3.0 + Math.sin(t * 1.3) * 0.04; w2.position.y = 1.75 + Math.sin(t * 1.3 + 1.6) * 0.04; w2Frame.position.y = w2.position.y;
+  w1.material.color.setScalar(t >= wt(3, 'test') ? 0.72 + 0.5 * Math.exp(-(t - wt(3, 'test')) * 4) : 0.5);
+  const typedAt = wt(4, 'read') + 0.2, sc0 = S(4) + 0.2, sc1 = typedAt - 0.15;
+  const scanning = t >= sc0 && t < sc1;
+  scanBar.material.opacity = scanning ? 0.95 : 0; scanBar.position.x = (((t - sc0) * 1.4) % 1 - 0.5) * 2.2; scanBar.position.y = w2.position.y + 0.07;
+  const word = 'overlooks', nT = Math.floor(seg(t, typedAt, typedAt + 0.75) * word.length + 0.001);
+  setW2(t >= typedAt ? 'typed' : scanning ? 'scan' : 'idle', word.slice(0, nT));
+  const done = seg(t, typedAt + 0.75, typedAt + 0.95);
+  w2Frame.material.opacity = done * (0.6 + 0.4 * Math.exp(-(t - typedAt - 0.8) * 3)) * (1 - seg(t, N(5), N(5) + 0.4));
+  w2.material.color.setScalar(t < S(3) ? 0.5 : 0.62 + 0.4 * done);
+  markGlow.material.opacity = done * 0.9; markGlow.material.color.copy(AMBER).multiplyScalar(1 + 1.5 * Math.exp(-Math.max(0, t - typedAt - 0.8) * 3));
+
+  /* the library wave */
+  const R = 50 * eo(seg(t, LIBR0, LIBR1));
+  const fade = 1 - 0.55 * seg(t, S(9), S(9) + 1.2);
+  BK.forEach((b, k) => { let v = 0; if (t >= LIBR0 && b.d < R) { const dt = (R - b.d) / 50 * (LIBR1 - LIBR0); v = b.ph > 0.45 ? 0.3 + 1.1 * Math.exp(-dt * 4) : 0.1 + 0.6 * Math.exp(-dt * 4); } if (ep) v = 0.35 * (1 - seg(t, RESET, RESET + 1)); v *= fade;
+    tmpC.copy(OFF); if (v > 0) tmpC.lerp(AMBER, Math.min(1, v)).multiplyScalar(Math.max(1, v)); bookTop.setColorAt(k, tmpC); });
+  bookTop.instanceColor.needsUpdate = true;
+  /* the street numbers */
+  PLATE.forEach(p => { const on = t >= p.t ? 1 + 2.2 * Math.exp(-(t - p.t) * 4) : 0; const f = on * fade * (ep ? 1 - seg(t, RESET, RESET + 1) : 1);
+    if (f > 0) p.m.material.color.copy(AMBER).multiplyScalar(Math.max(0.4, f)); else p.m.material.color.set(0x33465c); });
+
+  /* packets */
+  let pi = 0, arrived = 0;
+  for (const f of FL) {
+    const u = seg(t, f.t0, f.t0 + f.dur);
+    if (t >= f.t0 + f.dur) arrived++;
+    if (pi >= PK) continue;
+    if (u > 0 && u < 1) { const e = eio(u); pkP[pi * 3] = lerp(f.a.x, f.b.x, e); pkP[pi * 3 + 1] = lerp(f.a.y, f.b.y, e) + Math.sin(u * Math.PI) * f.lift; pkP[pi * 3 + 2] = lerp(f.a.z, f.b.z, e); pi++; }
+  }
+  for (let k = pi; k < PK; k++) pkP[k * 3 + 1] = -999;
+  pkG.attributes.position.needsUpdate = true;
+  pkMat.size = dist > 30 ? 1.1 : dist > 8 ? 0.55 : 0.16;
+
+  /* the network fills with what arrives */
+  const fill = Math.min(1, arrived / (FL.length * 0.85));
+  net.rotation.y = t * 0.12; net.rotation.x = Math.sin(t * 0.2) * 0.15;
+  for (let i = 0; i < NP; i++) { const on = netTh[i] < fill; const tw = 0.7 + 0.3 * Math.sin(t * 3 + i);
+    tmpC.copy(OFF).multiplyScalar(1.6); if (on) tmpC.copy(AMBER).multiplyScalar(1.2 * tw); netCol.set([tmpC.r, tmpC.g, tmpC.b], i * 3); }
+  netG.attributes.color.needsUpdate = true;
+  netLinks.material.opacity = 0.08 + 0.45 * fill;
+  core.material.color.copy(AMBER).multiplyScalar(0.4 + 2.2 * fill); core.rotation.y = -t * 0.5;
+  /* shield */
+  const sh = seg(t, wt(9, 'only') - 0.3, wt(9, 'only') + 0.6) * (1 - seg(t, N(9) - 0.3, N(9) + 0.3));
+  shieldMat.uniforms.uO.value = sh * 0.8; shieldMat.uniforms.uT.value = t; shield.visible = sh > 0;
+  rings.forEach((r, k) => { r.material.opacity = sh * 0.9; r.rotation.set(Math.PI / 2 + k * 0.6 + t * (k ? -0.3 : 0.25), t * 0.2, k * 0.8); r.scale.setScalar(lerp(1.6, 1, eo(sh))); });
+  /* the wall of clicks */
+  const wv = t > S(8) - 0.4 && t < N(9) + 0.3; wall.visible = wv;
+  if (wv) { const Rw = 120 * eo(seg(t, S(8) - 0.2, wt(8, '$6.1') + 0.3)); const wf = 1 - seg(t, S(9) + 0.5, N(9));
+    for (let k = 0; k < WN; k++) { let v = 0; if (WL[k] && WD[k] < Rw) v = (0.55 + 0.6 * Math.exp(-(Rw - WD[k]) * 0.1)) * wf + 0.15 * (1 - wf); tmpC.set(0x0b1b2d); if (v > 0) tmpC.lerp(AMBER, Math.min(1, v)); wall.setColorAt(k, tmpC); }
+    wall.instanceColor.needsUpdate = true; }
+
+  /* fog thins out when we are far away */
+  scene.fog.density = camera.position.z > 10 && camera.position.y > 10 ? 0.004 : 0.011;
+  /* depth of field: focus on what the camera looks at */
+  bokeh.uniforms.focus.value = dist; bokeh.uniforms.aperture.value = dist < 6 ? 0.006 : dist < 14 ? 0.0018 : 0.0003;
+  bokeh.uniforms.maxblur.value = 0.006;
+
+  /* headline layer */
+  hl('hBooks', t, wt(2, 'books') - 0.15, N(2) + 0.2);
+  hl('hTest', t, wt(3, 'two') - 0.1, N(3));
+  hl('h440', t, S(5) + 0.1, N(5));
+  document.getElementById('n440').textContent = Math.round(lerp(0, 440, eo(seg(t, S(5) + 0.1, wt(5, 'million') + 0.2)))) + 'M';
+  hl('h2009', t, wt(6, '2009') - 0.25, wt(6, 'street') - 0.1);
+  hl('hSite', t, wt(7, 'site') - 0.1, N(7));
+  hl('h61', t, wt(8, '819') - 0.1, N(8));
+  const m61 = eo(seg(t, wt(8, '$6.1') - 0.3, wt(8, '$6.1') + 0.5));
+  document.getElementById('n61').textContent = t < wt(8, '$6.1') - 0.3 ? '819M' : '$' + lerp(0, 6.1, m61).toFixed(1) + 'B';
+  document.querySelector('#h61 .lab').textContent = t < wt(8, '$6.1') - 0.3 ? 'UC Irvine estimate · hours' : 'UC Irvine estimate · unpaid work';
+  hl('hNow', t, wt(9, 'google') - 0.1, N(9));
+  hl('hQ', t, wt(10, 'should') - 0.1, D + 1);
+  const bub = document.getElementById('cbub'); bub.style.opacity = cl((t - wt(10, 'paid') - 0.15) / 0.3) * (1 - seg(t, D - 0.35, D - 0.1));
+
+  composer.render();
+  Captions.draw(t);
+};
+document.fonts.ready.then(() => { window.STAGE_LOADED = true; });
+</script>
+</body></html>
