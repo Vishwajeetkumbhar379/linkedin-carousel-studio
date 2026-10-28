@@ -907,7 +907,7 @@ Which one do you need to hear today?
 
 ```
 A brand made us redo one creator shortlist 22 times. Overnight.
-I've signed 850+ creator deals on the brand side, and this one explains a lot.
+I've worked on 850+ creator deals from the brand side, and this one explains a lot.
 They wanted creators with strong, original personal brands.
 So the list went back. And back. 22 times.
 So you'd think they'd let those creators be themselves, right?
