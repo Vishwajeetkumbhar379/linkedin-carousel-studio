@@ -75,7 +75,13 @@ def main(proj: Path, key: str):
     cues += [(("whoosh", .5), e["reveal"]) for e in beat["els"] if "reveal" in e]
     ins = ["-i", str(proj / f"{key}.mp3")] + sum([["-i", str(SFX / f"{c[0]}.mp3")] for c, _ in cues], [])
     fl = [f"[{i + 2}:a]adelay={int(t * 1000)}|{int(t * 1000)},volume={c[1] * 0.3:.3f}[s{i}]" for i, (c, t) in enumerate(cues)]
-    mix = "[1:a]" + "".join(f"[s{i}]" for i in range(len(cues))) + f"amix=inputs={len(cues) + 1}:normalize=0,loudnorm=I=-14:TP=-1.5[a]"
+    # music ships inside the file (Vish, 28 Oct), ducked under the voice so every word stays on top
+    from carousel_reel import compose
+    mi = len(cues) + 2
+    ins += ["-i", str(compose(f"cv-{proj.name}-{key}", end + 1, beat.get("mood", "warm modern lo-fi, soft plucks, light drums, hopeful")))]
+    fl += ["[1:a]asplit=2[v][vk]", f"[{mi}:a]volume=0.22,afade=t=out:st={max(0, end - 1.2):.2f}:d=1.2[mu]",
+           "[mu][vk]sidechaincompress=threshold=0.03:ratio=6:attack=15:release=350:makeup=1[md]"]
+    mix = "[v]" + "".join(f"[s{i}]" for i in range(len(cues))) + f"[md]amix=inputs={len(cues) + 2}:normalize=0,loudnorm=I=-14:TP=-1.5[a]"
     out = proj / f"{proj.name}-{key}-9x16.mp4"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(pic), *ins, "-filter_complex", ";".join(fl + [mix]), "-map", "0:v", "-map", "[a]",
                     "-c:v", "libx264", "-crf", "20", "-preset", "medium", "-c:a", "aac", "-b:a", "192k", "-t", f"{end:.2f}", "-movflags", "+faststart", str(out)], check=True)

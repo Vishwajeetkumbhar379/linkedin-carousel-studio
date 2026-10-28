@@ -1,87 +1,613 @@
 {
-"r1": {"hook": "One meeting.<br><i>Six months.</i>", "hookEnd": "Then one meeting", "els": [
-  {"type": "counter", "at": "For four years", "label": "Working remotely", "from": 0, "to": 4, "suffix": " yrs", "w": 700},
-  {"type": "chip", "at": "India", "text": "India"},
-  {"type": "card", "at": "one meeting", "anim": "right", "label": "● Important meeting", "labelColor": "#D9473A", "title": "Tomorrow, 10:00", "w": 720, "out": "obsessed"},
-  {"type": "card", "at": "cancelled", "anim": "left", "icon": "✈", "label": "Next flight", "title": "Booked", "w": 460, "out": "obsessed"},
-  {"type": "stamp", "at": "two flights", "text": "CANCELLED"},
-  {"type": "card", "at": "cancelled", "anim": "right", "beside": true, "icon": "✈", "label": "Flight after", "title": "Booked", "w": 460, "out": "obsessed"},
-  {"type": "stamp", "at": "flights", "text": "CANCELLED"},
-  {"type": "bar", "at": "stuck", "fill": "six months", "label": "Office hours, 9 to 5", "n": 6, "unit": "months", "w": 760, "reveal": "For someone"},
-  {"type": "quote", "at": "That was hell", "text": "That was <i>hell.</i>"},
-  {"type": "list", "at": "Remote isn't", "label": "Remote isn't freedom when", "w": 860, "rows": [
-    {"t": "Your currency doesn't stretch", "at": "paid in a currency"}, {"t": "One meeting can call you back", "at": "one meeting can call"}]},
-  {"type": "list", "at": "So I'm fixing both", "label": "So I'm fixing both", "w": 860, "rows": [
-    {"t": "Income in euros", "at": "Income in euros"}, {"t": "A job that can't call me back", "at": "A job that"}]},
-  {"type": "card", "at": "In December", "anim": "pop", "icon": "✈", "label": "December", "title": "Sri Lanka, one month", "w": 760},
-  {"type": "quote", "at": "Follow to see", "text": "Will I <i>make it?</i>"}
-]},
-"r2": {"hook": "Redo it.<br><i>22 times.</i>", "hookEnd": "They wanted creators", "els": [
-  {"type": "card", "at": "A brand", "label": "Brand brief", "title": "Creator shortlist", "w": 640},
-  {"type": "counter", "at": "Twenty two", "beside": true, "label": "Redo", "prefix": "#", "from": 1, "to": 22, "count": 1.3, "w": 460},
-  {"type": "tags", "at": "They wanted creators", "w": 900, "items": ["Strong personal brand", "Original", "Nobody copying"]},
-  {"type": "card", "at": "worked through the night", "icon": "☾", "label": "Deadline", "title": "All-nighter", "w": 640},
-  {"type": "list", "at": "And we found them", "label": "Final shortlist", "w": 700, "rows": [
-    {"t": "Niche", "at": "Niche"}, {"t": "Original", "at": "original#2"}, {"t": "Real", "at": "real"}]},
-  {"type": "card", "at": "Then the videos came in", "label": "Creator script, draft 1", "title": "Their own words", "sub": "every line, rewritten by the brand", "w": 820, "reveal": "They wanted originality"},
-  {"type": "stamp", "at": "rewrote", "text": "REWRITTEN"},
-  {"type": "quote", "at": "They just didn't", "text": "Originality, <i>without freedom.</i>"},
-  {"type": "card", "at": "If you hire", "label": "The rule", "title": "Hire the voice. Let them use it.", "w": 820},
-  {"type": "quote", "at": "Brands, be honest", "text": "Brands, <i>be honest.</i>"}
-]},
-"r3": {"hook": "No editor<br><i>made this.</i>", "hookEnd": "Claude wrote it", "els": [
-  {"type": "card", "at": "No editor", "label": "Video editor", "title": "None", "w": 620},
-  {"type": "stamp", "at": "No video AI", "text": "NO VIDEO AI"},
-  {"type": "card", "at": "Claude wrote it", "anim": "pop", "icon": "</>", "label": "Claude", "title": "Wrote it in code", "w": 760},
-  {"type": "list", "at": "Here's how it works", "label": "How it works", "w": 920, "rows": [
-    {"t": "I write the script", "at": "I write"}, {"t": "My voice clone reads it", "at": "my voice clone"}, {"t": "Claude times every word", "at": "Claude times"},
-    {"t": "It builds every card and camera move", "at": "it builds"}, {"t": "It renders, frame by frame", "at": "it renders"}]},
-  {"type": "card", "at": "What it costs me", "label": "What it costs", "title": "My Claude subscription", "w": 800, "reveal": "I'm a marketer"},
-  {"type": "card", "at": "not an engineer", "label": "Me", "title": "A marketer, not an engineer", "w": 820},
-  {"type": "quote", "at": "Comment EDIT", "text": "Comment <i>EDIT</i>"}
-]},
-"r4": {"hook": "Bali has a<br><i>coach problem.</i>", "hookEnd": "I don't have a problem", "els": [
-  {"type": "tags", "at": "every next person", "w": 900, "items": ["Life coach", "Mindset coach", "Business coach", "Breathwork coach", "Money coach", "Dating coach"]},
-  {"type": "card", "at": "I have a problem", "anim": "right", "label": "My problem", "title": "Careers that last one year", "w": 800},
-  {"type": "stamp", "at": "valid for one year", "text": "EXPIRES"},
-  {"type": "card", "at": "just another creator", "label": "Not this", "title": "A ring light and a course", "w": 800, "out": "I want a stable"},
-  {"type": "list", "at": "I want a stable", "label": "I want", "w": 880, "rows": [
-    {"t": "A stable income", "at": "stable income"}, {"t": "Freedom to experiment", "at": "freedom to experiment"}, {"t": "Skills, countries, genres", "at": "Different skills"}]},
-  {"type": "card", "at": "Bali is beautiful", "label": "Bali", "title": "Beautiful. Lovely people.", "sub": "Repetitive, if you're not smart.", "w": 820, "reveal": "So here's my rule"},
-  {"type": "list", "at": "Build the skill", "label": "My rule", "w": 760, "rows": [
-    {"t": "Skill first", "at": "Build the skill"}, {"t": "Location second", "at": "The location second"}]},
-  {"type": "quote", "at": "Agree, or disagree", "text": "Agree, or <i>disagree?</i>"}
-]},
-"r5": {"hook": "Germany pays<br><i>for overtime.</i>", "hookEnd": "Here's what Germany", "els": [
-  {"type": "card", "at": "Moving abroad", "label": "Moving abroad from India?", "title": "Pick the country first", "w": 800},
-  {"type": "list", "at": "You work extra", "label": "Germany gets right", "labelColor": "#2F6B3F", "w": 860, "rows": [
-    {"t": "Every extra hour, paid", "at": "You get paid"}, {"t": "Meetings start on time", "at": "Meetings start"}, {"t": "Structured", "at": "Things are structured"}, {"t": "Clean streets", "at": "The streets are clean"}]},
-  {"type": "list", "at": "Here's what it gets wrong", "label": "Germany gets wrong", "labelColor": "#D9473A", "w": 860, "rows": [
-    {"t": "Not lively", "at": "It's not lively"}, {"t": "Not built for remote work", "at": "not built for remote"}, {"t": "People can feel cold", "at": "people can feel cold"}]},
-  {"type": "card", "at": "India is the opposite", "label": "India", "title": "Chaotic, but warm", "sub": "Your people are close.", "w": 760, "reveal": "So, do you want"},
-  {"type": "quote", "at": "or do you want warmth", "text": "Structure, or <i>warmth?</i>"},
-  {"type": "card", "at": "Comment which one", "label": "Comment", "title": "I'll tell you where to look", "w": 800}
-]},
-"r6": {"hook": "Stop<br><i>hustling.</i>", "hookEnd": "AI won't replace", "els": [
-  {"type": "quote", "at": "The biggest hustle", "text": "How <i>not</i> to hustle"},
-  {"type": "card", "at": "AI won't replace", "label": "AI vs marketers", "title": "AI won't replace you", "w": 760},
-  {"type": "list", "at": "But marketers who use AI", "label": "Hand AI", "w": 820, "rows": [
-    {"t": "The heavy lifting", "at": "heavy lifting"}, {"t": "Repetitive tool work", "at": "repetitive tool work"}]},
-  {"type": "card", "at": "So what's left", "label": "What's left", "title": "The part that was always the job", "w": 840},
-  {"type": "tags", "at": "Psychology", "w": 900, "items": ["Psychology", "Taste", "Creativity"]},
-  {"type": "tags", "at": "My daily stack", "w": 900, "items": ["Claude Code", "Claude", "ChatGPT", "ElevenLabs", "Gemini"], "reveal": "Hustle less"},
-  {"type": "quote", "at": "Hustle less", "text": "Hustle less.<br><i>Think more.</i>"},
-  {"type": "card", "at": "What's one task", "label": "Your turn", "title": "One task you'd hand to AI tomorrow?", "w": 860}
-]},
-"r7": {"hook": "I faked this.<br><i>On purpose.</i>", "hookEnd": "And I kept stopping", "els": [
-  {"type": "card", "at": "For years", "label": "For years", "title": "I wanted to make content", "w": 800},
-  {"type": "stamp", "at": "I kept stopping", "text": "STOPPED"},
-  {"type": "card", "at": "Not because", "label": "Not because", "title": "I had nothing to say", "w": 760, "out": "Because I didn't"},
-  {"type": "card", "at": "Because I didn't", "label": "Because", "title": "I didn't feel confident", "w": 760},
-  {"type": "card", "at": "The way you talk", "label": "To my younger self", "title": "How you talk to yourself decides your confidence", "w": 880},
-  {"type": "bar", "at": "It's a character", "fill": "You say it", "count": 2.6, "label": "Character sheet: confidence", "n": 5, "unit": "of 5", "w": 760, "reveal": "And one day"},
-  {"type": "quote", "at": "you are him", "text": "One day,<br><i>you are him.</i>"},
-  {"type": "card", "at": "Follow to watch", "label": "Episode 1", "title": "Watch him become real", "w": 760},
-  {"type": "chip", "at": "Follow to watch", "text": "Follow"}
-]}
+ "r1": {
+  "hook": "One meeting.<br><i>Six months.</i>",
+  "hookEnd": "Then one meeting",
+  "els": [
+   {
+    "type": "counter",
+    "at": "For four years",
+    "label": "Working remotely",
+    "from": 0,
+    "to": 4,
+    "suffix": " yrs",
+    "w": 700
+   },
+   {
+    "type": "chip",
+    "at": "India",
+    "text": "India"
+   },
+   {
+    "type": "card",
+    "at": "one meeting",
+    "anim": "right",
+    "label": "\u25cf Important meeting",
+    "labelColor": "#D9473A",
+    "title": "Tomorrow, 10:00",
+    "w": 720,
+    "out": "obsessed"
+   },
+   {
+    "type": "card",
+    "at": "cancelled",
+    "anim": "left",
+    "icon": "\u2708",
+    "label": "Next flight",
+    "title": "Booked",
+    "w": 460,
+    "out": "obsessed"
+   },
+   {
+    "type": "stamp",
+    "at": "two flights",
+    "text": "CANCELLED"
+   },
+   {
+    "type": "card",
+    "at": "cancelled",
+    "anim": "right",
+    "beside": true,
+    "icon": "\u2708",
+    "label": "Flight after",
+    "title": "Booked",
+    "w": 460,
+    "out": "obsessed"
+   },
+   {
+    "type": "stamp",
+    "at": "flights",
+    "text": "CANCELLED"
+   },
+   {
+    "type": "bar",
+    "at": "stuck",
+    "fill": "six months",
+    "label": "Office hours, 9 to 5",
+    "n": 6,
+    "unit": "months",
+    "w": 760,
+    "reveal": "For someone"
+   },
+   {
+    "type": "quote",
+    "at": "That was hell",
+    "text": "That was <i>hell.</i>"
+   },
+   {
+    "type": "list",
+    "at": "Remote isn't",
+    "label": "Remote isn't freedom when",
+    "w": 860,
+    "rows": [
+     {
+      "t": "Your currency doesn't stretch",
+      "at": "paid in a currency"
+     },
+     {
+      "t": "One meeting can call you back",
+      "at": "one meeting can call"
+     }
+    ]
+   },
+   {
+    "type": "list",
+    "at": "So I'm fixing both",
+    "label": "So I'm fixing both",
+    "w": 860,
+    "rows": [
+     {
+      "t": "Income in euros",
+      "at": "Income in euros"
+     },
+     {
+      "t": "A job that can't call me back",
+      "at": "A job that"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "In December",
+    "anim": "pop",
+    "icon": "\u2708",
+    "label": "December",
+    "title": "Sri Lanka, one month",
+    "w": 760
+   },
+   {
+    "type": "quote",
+    "at": "Follow to see",
+    "text": "Will I <i>make it?</i>"
+   }
+  ],
+  "mood": "reflective then hopeful, soft piano and warm synth pads, light beat building"
+ },
+ "r2": {
+  "hook": "Redo it.<br><i>22 times.</i>",
+  "hookEnd": "They wanted creators",
+  "els": [
+   {
+    "type": "card",
+    "at": "A brand",
+    "label": "Brand brief",
+    "title": "Creator shortlist",
+    "w": 640
+   },
+   {
+    "type": "counter",
+    "at": "Twenty two",
+    "beside": true,
+    "label": "Redo",
+    "prefix": "#",
+    "from": 1,
+    "to": 22,
+    "count": 1.3,
+    "w": 460
+   },
+   {
+    "type": "tags",
+    "at": "They wanted creators",
+    "w": 900,
+    "items": [
+     "Strong personal brand",
+     "Original",
+     "Nobody copying"
+    ]
+   },
+   {
+    "type": "card",
+    "at": "worked through the night",
+    "icon": "\u263e",
+    "label": "Deadline",
+    "title": "All-nighter",
+    "w": 640
+   },
+   {
+    "type": "list",
+    "at": "And we found them",
+    "label": "Final shortlist",
+    "w": 700,
+    "rows": [
+     {
+      "t": "Niche",
+      "at": "Niche"
+     },
+     {
+      "t": "Original",
+      "at": "original#2"
+     },
+     {
+      "t": "Real",
+      "at": "real"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "Then the videos came in",
+    "label": "Creator script, draft 1",
+    "title": "Their own words",
+    "sub": "every line, rewritten by the brand",
+    "w": 820,
+    "reveal": "They wanted originality"
+   },
+   {
+    "type": "stamp",
+    "at": "rewrote",
+    "text": "REWRITTEN"
+   },
+   {
+    "type": "quote",
+    "at": "They just didn't",
+    "text": "Originality, <i>without freedom.</i>"
+   },
+   {
+    "type": "card",
+    "at": "If you hire",
+    "label": "The rule",
+    "title": "Hire the voice. Let them use it.",
+    "w": 820
+   },
+   {
+    "type": "quote",
+    "at": "Brands, be honest",
+    "text": "Brands, <i>be honest.</i>"
+   }
+  ],
+  "mood": "playful tension, plucky strings, light percussion, a little cheeky"
+ },
+ "r3": {
+  "hook": "No editor<br><i>made this.</i>",
+  "hookEnd": "Claude wrote it",
+  "els": [
+   {
+    "type": "card",
+    "at": "No editor",
+    "label": "Video editor",
+    "title": "None",
+    "w": 620
+   },
+   {
+    "type": "stamp",
+    "at": "No video AI",
+    "text": "NO VIDEO AI"
+   },
+   {
+    "type": "card",
+    "at": "Claude wrote it",
+    "anim": "pop",
+    "icon": "</>",
+    "label": "Claude",
+    "title": "Wrote it in code",
+    "w": 760
+   },
+   {
+    "type": "list",
+    "at": "Here's how it works",
+    "label": "How it works",
+    "w": 920,
+    "rows": [
+     {
+      "t": "I write the script",
+      "at": "I write"
+     },
+     {
+      "t": "My voice clone reads it",
+      "at": "my voice clone"
+     },
+     {
+      "t": "Claude times every word",
+      "at": "Claude times"
+     },
+     {
+      "t": "It builds every card and camera move",
+      "at": "it builds"
+     },
+     {
+      "t": "It renders, frame by frame",
+      "at": "it renders"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "What it costs me",
+    "label": "What it costs",
+    "title": "My Claude subscription",
+    "w": 800,
+    "reveal": "I'm a marketer"
+   },
+   {
+    "type": "card",
+    "at": "not an engineer",
+    "label": "Me",
+    "title": "A marketer, not an engineer",
+    "w": 820
+   },
+   {
+    "type": "quote",
+    "at": "Comment EDIT",
+    "text": "Comment <i>EDIT</i>"
+   }
+  ],
+  "mood": "modern tech, clean electronic plucks, upbeat and curious"
+ },
+ "r4": {
+  "hook": "Bali has a<br><i>coach problem.</i>",
+  "hookEnd": "I don't have a problem",
+  "els": [
+   {
+    "type": "tags",
+    "at": "every next person",
+    "w": 900,
+    "items": [
+     "Life coach",
+     "Mindset coach",
+     "Business coach",
+     "Breathwork coach",
+     "Money coach",
+     "Dating coach"
+    ]
+   },
+   {
+    "type": "card",
+    "at": "I have a problem",
+    "anim": "right",
+    "label": "My problem",
+    "title": "Careers that last one year",
+    "w": 800
+   },
+   {
+    "type": "stamp",
+    "at": "valid for one year",
+    "text": "EXPIRES"
+   },
+   {
+    "type": "card",
+    "at": "just another creator",
+    "label": "Not this",
+    "title": "A ring light and a course",
+    "w": 800,
+    "out": "I want a stable"
+   },
+   {
+    "type": "list",
+    "at": "I want a stable",
+    "label": "I want",
+    "w": 880,
+    "rows": [
+     {
+      "t": "A stable income",
+      "at": "stable income"
+     },
+     {
+      "t": "Freedom to experiment",
+      "at": "freedom to experiment"
+     },
+     {
+      "t": "Skills, countries, genres",
+      "at": "Different skills"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "Bali is beautiful",
+    "label": "Bali",
+    "title": "Beautiful. Lovely people.",
+    "sub": "Repetitive, if you're not smart.",
+    "w": 820,
+    "reveal": "So here's my rule"
+   },
+   {
+    "type": "list",
+    "at": "Build the skill",
+    "label": "My rule",
+    "w": 760,
+    "rows": [
+     {
+      "t": "Skill first",
+      "at": "Build the skill"
+     },
+     {
+      "t": "Location second",
+      "at": "The location second"
+     }
+    ]
+   },
+   {
+    "type": "quote",
+    "at": "Agree, or disagree",
+    "text": "Agree, or <i>disagree?</i>"
+   }
+  ],
+  "mood": "sunny, laid-back tropical house, light and confident"
+ },
+ "r5": {
+  "hook": "Germany pays<br><i>for overtime.</i>",
+  "hookEnd": "Here's what Germany",
+  "els": [
+   {
+    "type": "card",
+    "at": "Moving abroad",
+    "label": "Moving abroad from India?",
+    "title": "Pick the country first",
+    "w": 800
+   },
+   {
+    "type": "list",
+    "at": "You work extra",
+    "label": "Germany gets right",
+    "labelColor": "#2F6B3F",
+    "w": 860,
+    "rows": [
+     {
+      "t": "Every extra hour, paid",
+      "at": "You get paid"
+     },
+     {
+      "t": "Meetings start on time",
+      "at": "Meetings start"
+     },
+     {
+      "t": "Structured",
+      "at": "Things are structured"
+     },
+     {
+      "t": "Clean streets",
+      "at": "The streets are clean"
+     }
+    ]
+   },
+   {
+    "type": "list",
+    "at": "Here's what it gets wrong",
+    "label": "Germany gets wrong",
+    "labelColor": "#D9473A",
+    "w": 860,
+    "rows": [
+     {
+      "t": "Not lively",
+      "at": "It's not lively"
+     },
+     {
+      "t": "Not built for remote work",
+      "at": "not built for remote"
+     },
+     {
+      "t": "People can feel cold",
+      "at": "people can feel cold"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "India is the opposite",
+    "label": "India",
+    "title": "Chaotic, but warm",
+    "sub": "Your people are close.",
+    "w": 760,
+    "reveal": "So, do you want"
+   },
+   {
+    "type": "quote",
+    "at": "or do you want warmth",
+    "text": "Structure, or <i>warmth?</i>"
+   },
+   {
+    "type": "card",
+    "at": "Comment which one",
+    "label": "Comment",
+    "title": "I'll tell you where to look",
+    "w": 800
+   }
+  ],
+  "mood": "warm acoustic guitar and soft beat, thoughtful"
+ },
+ "r6": {
+  "hook": "Stop<br><i>hustling.</i>",
+  "hookEnd": "AI won't replace",
+  "els": [
+   {
+    "type": "quote",
+    "at": "The biggest hustle",
+    "text": "How <i>not</i> to hustle"
+   },
+   {
+    "type": "card",
+    "at": "AI won't replace",
+    "label": "AI vs marketers",
+    "title": "AI won't replace you",
+    "w": 760
+   },
+   {
+    "type": "list",
+    "at": "But marketers who use AI",
+    "label": "Hand AI",
+    "w": 820,
+    "rows": [
+     {
+      "t": "The heavy lifting",
+      "at": "heavy lifting"
+     },
+     {
+      "t": "Repetitive tool work",
+      "at": "repetitive tool work"
+     }
+    ]
+   },
+   {
+    "type": "card",
+    "at": "So what's left",
+    "label": "What's left",
+    "title": "The part that was always the job",
+    "w": 840
+   },
+   {
+    "type": "tags",
+    "at": "Psychology",
+    "w": 900,
+    "items": [
+     "Psychology",
+     "Taste",
+     "Creativity"
+    ]
+   },
+   {
+    "type": "tags",
+    "at": "My daily stack",
+    "w": 900,
+    "items": [
+     "Claude Code",
+     "Claude",
+     "ChatGPT",
+     "ElevenLabs",
+     "Gemini"
+    ],
+    "reveal": "Hustle less"
+   },
+   {
+    "type": "quote",
+    "at": "Hustle less",
+    "text": "Hustle less.<br><i>Think more.</i>"
+   },
+   {
+    "type": "card",
+    "at": "What's one task",
+    "label": "Your turn",
+    "title": "One task you'd hand to AI tomorrow?",
+    "w": 860
+   }
+  ],
+  "mood": "confident chill hip-hop beat, smooth keys"
+ },
+ "r7": {
+  "hook": "I faked this.<br><i>On purpose.</i>",
+  "hookEnd": "And I kept stopping",
+  "els": [
+   {
+    "type": "card",
+    "at": "For years",
+    "label": "For years",
+    "title": "I wanted to make content",
+    "w": 800
+   },
+   {
+    "type": "stamp",
+    "at": "I kept stopping",
+    "text": "STOPPED"
+   },
+   {
+    "type": "card",
+    "at": "Not because",
+    "label": "Not because",
+    "title": "I had nothing to say",
+    "w": 760,
+    "out": "Because I didn't"
+   },
+   {
+    "type": "card",
+    "at": "Because I didn't",
+    "label": "Because",
+    "title": "I didn't feel confident",
+    "w": 760
+   },
+   {
+    "type": "card",
+    "at": "The way you talk",
+    "label": "To my younger self",
+    "title": "How you talk to yourself decides your confidence",
+    "w": 880
+   },
+   {
+    "type": "bar",
+    "at": "It's a character",
+    "fill": "You say it",
+    "count": 2.6,
+    "label": "Character sheet: confidence",
+    "n": 5,
+    "unit": "of 5",
+    "w": 760,
+    "reveal": "And one day"
+   },
+   {
+    "type": "quote",
+    "at": "you are him",
+    "text": "One day,<br><i>you are him.</i>"
+   },
+   {
+    "type": "card",
+    "at": "Follow to watch",
+    "label": "Episode 1",
+    "title": "Watch him become real",
+    "w": 760
+   },
+   {
+    "type": "chip",
+    "at": "Follow to watch",
+    "text": "Follow"
+   }
+  ],
+  "mood": "intimate and warm, soft piano, gentle build to hopeful"
+ }
 }

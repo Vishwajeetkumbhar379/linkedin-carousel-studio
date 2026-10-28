@@ -1,0 +1,136 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- Vish, low-poly 3D mascot, built in code (three.js). Style of the @waitwhatdidyoudo reference: faceted, warm night light.
+     Likeness from his own cues, never a traced face: black cap with an amber patch, long dark hair swept back, thin moustache,
+     neat goatee, light stubble, small slim nose (CONTENT-OS nose rule), big bright eyes, fair warm skin, grey hoodie, hoop earrings.
+     API: window.show(pose, {t, blink, mouth, smile, brow, yaw, tilt}) then it renders. Poses: idle, wave, point, shrug, think. -->
+<style>html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#14161B}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./lib/three.module.js"}}</script></head><body>
+<script type="module">
+import * as THREE from "three";
+const C = {skin: "#F2CDAA", skinShade: "#E4B892", stubble: "#9A7A66", hair: "#1C1613", cap: "#18181C", amber: "#E7A15A",
+  hoodie: "#8E959D", hoodieDark: "#737A82", lip: "#8E4B3E", mouth: "#3A1512", iris: "#4A2C18", gold: "#D8B06A", white: "#FBF7F2"};
+const R = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
+R.setPixelRatio(1); R.setSize(1080, 1920); R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.05;
+R.outputColorSpace = THREE.SRGBColorSpace; R.shadowMap.enabled = true; document.body.appendChild(R.domElement);
+const scene = new THREE.Scene();
+const cam = new THREE.PerspectiveCamera(28, 1080 / 1920, 0.1, 100);
+// backdrop: night studio, warm lamp glow behind his left shoulder
+const bg = document.createElement("canvas"); bg.width = 512; bg.height = 1024; const g = bg.getContext("2d");
+const lg = g.createLinearGradient(0, 0, 0, 1024); lg.addColorStop(0, "#1B1E26"); lg.addColorStop(1, "#0F1116"); g.fillStyle = lg; g.fillRect(0, 0, 512, 1024);
+const rg = g.createRadialGradient(400, 380, 10, 400, 380, 420); rg.addColorStop(0, "rgba(231,161,90,.38)"); rg.addColorStop(1, "rgba(231,161,90,0)"); g.fillStyle = rg; g.fillRect(0, 0, 512, 1024);
+const bgt = new THREE.CanvasTexture(bg); bgt.colorSpace = THREE.SRGBColorSpace;
+const back = new THREE.Mesh(new THREE.PlaneGeometry(9, 16), new THREE.MeshBasicMaterial({map: bgt})); back.position.set(0, 1.4, -4); scene.add(back);
+scene.add(new THREE.HemisphereLight("#FFE9D2", "#2A2F3A", 0.55));
+const key = new THREE.DirectionalLight("#FFE4C4", 2.2); key.position.set(2.2, 3.2, 4); key.castShadow = true; scene.add(key);
+const fill = new THREE.DirectionalLight("#8FA8D6", 0.6); fill.position.set(-3, 1.2, 2.5); scene.add(fill);
+const rim = new THREE.DirectionalLight("#FFB066", 1.6); rim.position.set(-2.5, 3, -3); scene.add(rim);
+const M = (c, o = {}) => new THREE.MeshStandardMaterial({color: c, flatShading: true, roughness: 0.75, metalness: 0, ...o});
+const mesh = (geo, mat, p = [0, 0, 0], s = [1, 1, 1], r = [0, 0, 0]) => { const m = new THREE.Mesh(geo, mat); m.position.set(...p); m.scale.set(...s); m.rotation.set(...r); m.castShadow = true; return m; };
+
+const body = new THREE.Group(); scene.add(body);
+// ---- torso: grey hoodie
+const torso = mesh(new THREE.CylinderGeometry(0.5, 0.68, 1.25, 7), M(C.hoodie), [0, 0.72, 0]); body.add(torso);
+body.add(mesh(new THREE.SphereGeometry(0.56, 7, 5, 0, Math.PI * 2, 0, Math.PI / 2), M(C.hoodie), [0, 1.3, 0], [1.18, 0.42, 0.82]));
+body.add(mesh(new THREE.TorusGeometry(0.21, 0.075, 5, 9), M(C.hoodieDark), [0, 1.43, 0.02], [1, 1, 1], [Math.PI / 2 - 0.25, 0, 0]));
+for (const x of [-0.07, 0.07]) body.add(mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.32, 4), M(C.white), [x, 1.2, 0.33], [1, 1, 1], [0.12, 0, 0]));
+body.add(mesh(new THREE.BoxGeometry(0.46, 0.2, 0.04), M(C.hoodieDark), [0, 0.42, 0.55], [1, 1, 1], [-0.12, 0, 0]));  // pocket
+body.add(mesh(new THREE.CylinderGeometry(0.12, 0.14, 0.24, 7), M(C.skinShade), [0, 1.52, 0]));  // neck
+
+// ---- head
+const head = new THREE.Group(); head.position.set(0, 1.98, 0.02); body.add(head);
+const hg = new THREE.IcosahedronGeometry(0.42, 2); const pos = hg.attributes.position; const col = [];
+const skin = new THREE.Color(C.skin), stub = new THREE.Color(C.stubble);
+for (let i = 0; i < pos.count; i++) {
+  let x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
+  if (y < 0) { const k = -y / 0.42; x *= 1 - 0.28 * k; z *= 1 - 0.08 * k; if (z > 0) z += 0.04 * k; }  // a slimmer jaw, chin forward
+  pos.setXYZ(i, x, y, z);
+  // light stubble on the cheeks and jaw, never on the upper face
+  const s = y < -0.08 && z > -0.05 ? Math.min(0.42, (-y - 0.08) * 2.2) * (Math.abs(x) > 0.05 || y < -0.26 ? 1 : 0.35) : 0;
+  const c = skin.clone().lerp(stub, s); col.push(c.r, c.g, c.b);
+}
+hg.setAttribute("color", new THREE.Float32BufferAttribute(col, 3)); hg.computeVertexNormals();
+head.add(mesh(hg, new THREE.MeshStandardMaterial({vertexColors: true, flatShading: true, roughness: 0.7}), [0, 0, 0], [0.92, 1.1, 0.96]));
+for (const s of [-1, 1]) {
+  head.add(mesh(new THREE.IcosahedronGeometry(0.085, 1), M(C.skinShade), [s * 0.385, -0.02, -0.02], [0.5, 1, 0.8]));
+  head.add(mesh(new THREE.TorusGeometry(0.034, 0.008, 5, 12), M(C.gold, {metalness: 0.6, roughness: 0.3}), [s * 0.4, -0.12, 0.0], [1, 1, 1], [0, Math.PI / 2, 0]));
+}
+// hair: long, dark, swept back under the cap, falling behind the neck
+const hairM = M(C.hair);
+head.add(mesh(new THREE.IcosahedronGeometry(0.4, 1), hairM, [0, -0.02, -0.2], [1.02, 1.12, 0.72]));
+head.add(mesh(new THREE.IcosahedronGeometry(0.26, 1), hairM, [0, -0.38, -0.26], [1.15, 1.1, 0.6]));
+for (const s of [-1, 1]) head.add(mesh(new THREE.BoxGeometry(0.1, 0.36, 0.2), hairM, [s * 0.36, 0.0, -0.12], [1, 1, 1], [0.15, 0, s * 0.08]));
+// black cap, amber patch, brim forward
+const capM = M(C.cap, {roughness: 0.6});
+head.add(mesh(new THREE.SphereGeometry(0.455, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2), capM, [0, 0.12, -0.01], [0.98, 0.78, 1.02]));
+head.add(mesh(new THREE.CylinderGeometry(0.47, 0.47, 0.06, 10), capM, [0, 0.14, -0.01], [0.98, 1, 1.02]));
+const brim = mesh(new THREE.CylinderGeometry(0.29, 0.29, 0.03, 10, 1, false, 0, Math.PI), capM, [0, 0.14, 0.3], [1.05, 1, 0.95], [0.12, -Math.PI / 2, 0]);
+head.add(brim);
+head.add(mesh(new THREE.BoxGeometry(0.12, 0.07, 0.02), M(C.amber, {emissive: C.amber, emissiveIntensity: 0.25}), [0, 0.33, 0.395], [1, 1, 1], [-0.45, 0, 0]));
+// eyes: big, bright, with a catch-light; each eye is a group so it can blink
+const eyes = [];
+for (const s of [-1, 1]) {
+  const e = new THREE.Group(); e.position.set(s * 0.145, 0.03, 0.355); head.add(e);
+  e.add(mesh(new THREE.SphereGeometry(0.082, 14, 10), new THREE.MeshStandardMaterial({color: C.white, roughness: 0.3}), [0, 0, 0], [1, 0.84, 0.5]));
+  const iris = new THREE.Group(); iris.position.z = 0.04; e.add(iris);
+  iris.add(mesh(new THREE.CircleGeometry(0.05, 16), new THREE.MeshStandardMaterial({color: C.iris, roughness: 0.4}), [0, -0.005, 0.002]));
+  iris.add(mesh(new THREE.CircleGeometry(0.026, 16), new THREE.MeshBasicMaterial({color: "#0B0807"}), [0, -0.005, 0.004]));
+  iris.add(mesh(new THREE.CircleGeometry(0.014, 10), new THREE.MeshBasicMaterial({color: "#FFFFFF"}), [0.016, 0.014, 0.006]));
+  eyes.push({e, iris});
+}
+const brows = [-1, 1].map((s) => { const b = mesh(new THREE.BoxGeometry(0.15, 0.032, 0.035), M(C.hair), [s * 0.148, 0.155, 0.385], [1, 1, 1], [0, 0, s * -0.08]); head.add(b); return b; });
+// small, slim nose
+head.add(mesh(new THREE.ConeGeometry(0.03, 0.11, 4), M(C.skinShade), [0, -0.05, 0.41], [0.75, 1, 1], [Math.PI / 2 + 0.25, 0, Math.PI / 4]));
+// mouth: a smile line and an opening that follows the voice
+const smileM = mesh(new THREE.TorusGeometry(0.07, 0.012, 4, 12, Math.PI), M(C.lip), [0, -0.165, 0.392], [1, 0.55, 1], [0, 0, Math.PI]);
+head.add(smileM);
+const open = new THREE.Group(); open.position.set(0, -0.18, 0.392); head.add(open);
+open.add(mesh(new THREE.CircleGeometry(0.06, 12), new THREE.MeshBasicMaterial({color: C.mouth})));
+open.add(mesh(new THREE.PlaneGeometry(0.075, 0.018), new THREE.MeshBasicMaterial({color: C.white}), [0, 0.03, 0.002]));
+// thin moustache and a neat goatee
+for (const s of [-1, 1]) head.add(mesh(new THREE.BoxGeometry(0.085, 0.018, 0.025), M(C.hair), [s * 0.045, -0.118, 0.404], [1, 1, 1], [0, 0, s * -0.18]));
+head.add(mesh(new THREE.ConeGeometry(0.048, 0.1, 5), M(C.hair), [0, -0.305, 0.33], [1, 1, 0.7], [Math.PI + 0.25, 0, 0]));
+head.add(mesh(new THREE.BoxGeometry(0.03, 0.035, 0.02), M(C.hair), [0, -0.225, 0.392]));
+
+// ---- arms: shoulder and elbow pivots, hands with a pointing finger
+function arm(s) {
+  const sh = new THREE.Group(); sh.position.set(s * 0.62, 1.24, 0); body.add(sh);
+  sh.add(mesh(new THREE.CylinderGeometry(0.14, 0.12, 0.52, 6), M(C.hoodie), [0, -0.26, 0]));
+  const el = new THREE.Group(); el.position.y = -0.52; sh.add(el);
+  el.add(mesh(new THREE.CylinderGeometry(0.12, 0.1, 0.46, 6), M(C.hoodie), [0, -0.23, 0]));
+  el.add(mesh(new THREE.CylinderGeometry(0.105, 0.105, 0.06, 6), M(C.hoodieDark), [0, -0.45, 0]));
+  const hand = new THREE.Group(); hand.position.y = -0.55; el.add(hand);
+  hand.add(mesh(new THREE.IcosahedronGeometry(0.1, 1), M(C.skin), [0, 0, 0], [0.9, 1.05, 0.6]));
+  const finger = mesh(new THREE.CylinderGeometry(0.024, 0.022, 0.15, 5), M(C.skin), [s * -0.03, -0.14, 0.02]); hand.add(finger);
+  const thumb = mesh(new THREE.CylinderGeometry(0.026, 0.024, 0.09, 5), M(C.skin), [s * -0.09, -0.02, 0.03], [1, 1, 1], [0, 0, s * 0.9]); hand.add(thumb);
+  return {sh, el, hand, finger, s};
+}
+const A = {L: arm(1), R: arm(-1)};  // L = his left (screen right)
+
+const ease = (x) => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const POSES = {
+  idle: (t) => ({L: [0.16, 0, 0.18, 0], R: [0.16, 0, 0.18, 0], yaw: 0.06 * Math.sin(t * 0.7), tilt: 0.03 * Math.sin(t * 0.9), brow: 0}),
+  wave: (t) => ({L: [0.16, 0, 0.18, 0], R: [2.45, 0, -0.55 + 0.35 * Math.sin(t * 9), 0], yaw: -0.08, tilt: 0.06, brow: 0.6, finger: "open"}),
+  point: (t) => ({L: [0.16, 0, 0.18, 0], R: [2.75, 0.1, -0.15, 0], yaw: -0.12, tilt: 0.04, brow: 0.8, finger: "point"}),
+  shrug: (t) => ({L: [0.55, 0.0, 1.55, 0], R: [0.55, 0.0, 1.55, 0], yaw: 0, tilt: 0.12, brow: 1.0, shoulders: 0.06}),
+  think: (t) => ({L: [0.16, 0, 0.18, 0], R: [0.35, -0.2, 2.45, 0], yaw: 0.18, tilt: -0.1, brow: -0.4, look: [0.5, 0.6]}),
+};
+window.show = (name, o = {}) => {
+  const t = o.t || 0, p = POSES[name](t);
+  for (const k of ["L", "R"]) {
+    const a = A[k], [raise, fwd, bend] = p[k];
+    a.sh.rotation.set(fwd, 0, a.s * raise); a.el.rotation.set(0, 0, a.s * bend);
+    a.finger.scale.y = p.finger === "point" && k === "R" ? 1.6 : 1; a.finger.position.y = p.finger === "point" && k === "R" ? 0.17 : -0.14;
+  }
+  body.position.y = (p.shoulders || 0);
+  head.rotation.set(p.tilt * 0.5 + (o.nod || 0), p.yaw + (o.yaw || 0), p.tilt + (o.tilt || 0));
+  const bl = o.blink ?? 0;
+  eyes.forEach(({e, iris}) => { e.scale.y = 1 - 0.92 * bl; const lk = p.look || o.look || [0, 0]; iris.position.x = lk[0] * 0.02; iris.position.y = lk[1] * 0.02; });
+  const b = o.brow ?? p.brow; brows.forEach((br, i) => { br.position.y = 0.155 + 0.03 * b; br.rotation.z = (i ? 1 : -1) * (-0.08 - 0.12 * b); });
+  const m = o.mouth || 0; open.scale.set(0.8 + 0.4 * m, Math.max(0.01, m), 1); open.visible = m > 0.05;
+  smileM.visible = m <= 0.05; smileM.scale.set(1, 0.4 + 0.5 * (o.smile ?? 0.8), 1);
+  const cz = o.close ? 3.0 : 5.6, cy = o.close ? 1.95 : 1.55;
+  cam.position.set(o.camX || 0, cy + 0.15, cz); cam.lookAt(0, cy, 0);
+  R.render(scene, cam);
+};
+window.show("idle"); window.ready = true;
+</script></body></html>
