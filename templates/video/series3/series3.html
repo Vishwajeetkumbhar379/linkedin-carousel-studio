@@ -2,7 +2,7 @@
 /* Series reel v3 ("Nobody Tells You", Vish 28 Oct: "the mascot needs more expression and motion; half body, face, walking;
    the motion graphics more advanced and extremely smooth: zoom, pan, 3D flips, Apple-style 3D product shots").
    Layers: chapter colour > paper canvas with a moving camera (cards tilt in in 3D) > three.js studio shots (phone, laptop,
-   globe, card stack) that flip in > Vish's mascot (the real 3D PNGs, mouth driven by the voice, blinks, nods, poses) >
+   globe, card stack) that flip in > Vish's mascot (2D, drawn in code: lip sync from the words, blinks, nods, poses, a walk) >
    word-by-word captions, the EP badge, a live counter, the progress line. Every time is a spoken phrase resolved by
    scripts/canvas_reel.py, so a new voice re-times the whole reel. */
 @font-face{font-family:IT;font-weight:700;src:url(__FONTS__/inter-tight-latin-700-normal.woff2)}
@@ -67,7 +67,6 @@ background-image:linear-gradient(rgba(21,19,15,.06) 1px,transparent 1px),linear-
 .doc .dl em{display:block;font:400 52px/1.1 IS;font-style:italic;color:var(--red);opacity:0}
 #mas{position:absolute;inset:0;z-index:5;pointer-events:none}
 #react{position:absolute;left:640px;top:930px;width:300px;height:300px;border-radius:50%;background:var(--card);overflow:hidden;z-index:6;border:9px solid var(--amber);box-shadow:0 20px 40px rgba(21,19,15,.25);opacity:0}
-#react img{width:100%;height:100%;object-fit:cover;display:none}
 #bug{position:absolute;left:44px;top:56px;z-index:8;font:700 26px IT;letter-spacing:.12em;background:var(--ink);color:var(--paper);padding:13px 24px;border-radius:999px}
 #bug b{color:var(--amber)}
 #chap{position:absolute;left:48px;top:122px;z-index:8;font:500 24px GM;color:var(--fg);opacity:.7;letter-spacing:.04em}
@@ -87,6 +86,7 @@ background-image:linear-gradient(rgba(21,19,15,.06) 1px,transparent 1px),linear-
 <div id="stage"><div id="flat"><div id="world"></div></div><canvas id="gl" width="1080" height="1920"></canvas></div>
 <canvas id="mas" width="1080" height="1920"></canvas><div id="react"></div>
 <div id="hook"></div><div id="kc"></div><div id="bug"></div><div id="chap"></div><div id="tick"></div><div id="prog"></div>
+<script src="__ROOT__/templates/video/char/vishcap.js"></script>
 <script type="module">
 import * as THREE from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
@@ -199,121 +199,108 @@ function anim(e, t) {
 const ENV = D.env || [], FPS = 30;
 function env(t) { const f = t * FPS, i = Math.floor(f), k = f - i; const a = ENV[i] || 0, b = ENV[i + 1] || 0; return a + (b - a) * k; }
 
-// ================================================================ the mascot: the real PNGs, a mouth that follows the voice, blinks, nods, poses
-const PK = "brand/avatar/pack/";
-const POSE = {point_left: "03_gestures/01_point_screen_left.png", point_right: "03_gestures/02_point_screen_right.png", point_up: "03_gestures/03_point_up.png",
-  present: "03_gestures/04_present_screen_right.png", explain: "03_gestures/05_explaining.png", think: "03_gestures/06_thinking.png", arms: "03_gestures/07_arms_crossed.png",
-  thumbs: "03_gestures/08_thumbs_up.png", front: "01_angles/01_front.png", turn_r: "01_angles/02_front_facing_screen_right.png", walk_r: "01_angles/03_profile_facing_screen_right.png",
-  walk_l: "01_angles/07_profile_facing_screen_left.png", turn_l: "01_angles/08_front_facing_screen_left.png", rest: "04_wave_keyframes/01_rest.png",
-  w1: "04_wave_keyframes/03_wave_center.png", w2: "04_wave_keyframes/04_wave_out.png", w3: "04_wave_keyframes/05_wave_in.png",
-  smile: "02_expressions/01_confident_smile.png", laugh: "02_expressions/02_laughing.png", thought: "02_expressions/03_thoughtful.png", surprised: "02_expressions/04_surprised.png",
-  skeptical: "02_expressions/05_skeptical.png", focused: "02_expressions/06_focused.png", concerned: "02_expressions/07_concerned.png", pleased: "02_expressions/08_pleased.png",
-  wink: "02_expressions/09_winking.png"};
-const OPEN_MOUTH = new Set(["laugh", "surprised"]);
-const PI = {}; Object.entries(POSE).forEach(([k, f]) => { PI[k] = img(src(PK + f)); });
-const LM = D.lm || {};
-const MC = $("mas").getContext("2d"), OC = document.createElement("canvas"), oc = OC.getContext("2d"), JC = document.createElement("canvas"), jc = JC.getContext("2d");
-const skinCache = {};
-function skinOf(key, im, x, y) {
-  if (skinCache[key]) return skinCache[key];
-  const c = document.createElement("canvas"); c.width = im.naturalWidth; c.height = im.naturalHeight; const g = c.getContext("2d"); g.drawImage(im, 0, 0);
-  const d = g.getImageData(Math.round(x) - 2, Math.round(y) - 2, 5, 5).data; let r = 0, gg = 0, b = 0, n = 0;
-  for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 200) { r += d[i]; gg += d[i + 1]; b += d[i + 2]; n++; }
-  return (skinCache[key] = n ? `rgb(${Math.round(r / n * 0.93)},${Math.round(gg / n * 0.9)},${Math.round(b / n * 0.88)})` : "#a8775c");
-}
-// draws pose `key` with the mouth `open` (0..1) and the eyelids `blink` (0..1) into OC, at the source size
-function renderPose(key, open, blink) {
-  const im = PI[key], w = im.naturalWidth, h = im.naturalHeight; if (!w) return null;
-  if (OC.width !== w || OC.height !== h) { OC.width = JC.width = w; OC.height = JC.height = h; }
-  oc.clearRect(0, 0, w, h); oc.drawImage(im, 0, 0);
-  const L = LM[POSE[key]]; if (!L) return OC;
-  const [rx, ry] = L.rmouth, [lx, ly] = L.lmouth, [ex1, ey1] = L.reye, [ex2, ey2] = L.leye;
-  const mw = Math.hypot(lx - rx, ly - ry), mcx = (rx + lx) / 2, mcy = (ry + ly) / 2 + mw * 0.05, eyeY = (ey1 + ey2) / 2, em = Math.max(8, mcy - eyeY), io = Math.hypot(ex2 - ex1, ey2 - ey1);
-  if (open > 0.03 && !OPEN_MOUTH.has(key)) {
-    // a lens-shaped opening between the real lips: soft dark inside, a faint line of upper teeth, the lower jaw drops with it
-    const d = open * em * 0.18, half = mw * 0.5 * (0.9 - open * 0.12), top = mcy - d * 0.1, bot = mcy + d;
-    const ang = Math.atan2(ly - ry, lx - rx), M = new DOMMatrix().translate(mcx, mcy).rotate(ang * 180 / Math.PI).translate(-mcx, -mcy);
-    const lens0 = new Path2D(); lens0.moveTo(mcx - half, mcy); lens0.quadraticCurveTo(mcx, top - d * 0.3, mcx + half, mcy); lens0.quadraticCurveTo(mcx, bot + d * 0.25, mcx - half, mcy); lens0.closePath();
-    const lens = new Path2D(); lens.addPath(lens0, M);
-    jc.globalCompositeOperation = "source-over"; jc.clearRect(0, 0, w, h); jc.drawImage(im, 0, d);
-    jc.globalCompositeOperation = "destination-in";
-    let g = jc.createLinearGradient(0, mcy + d * 0.2, 0, mcy + d * 0.9); g.addColorStop(0, "rgba(0,0,0,0)"); g.addColorStop(1, "rgba(0,0,0,1)"); jc.fillStyle = g; jc.fillRect(0, 0, w, h);
-    g = jc.createRadialGradient(mcx, mcy + em * 0.45, 0, mcx, mcy + em * 0.45, em * 1.15); g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(0.6, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)"); jc.fillStyle = g; jc.fillRect(0, 0, w, h);
-    oc.drawImage(JC, 0, 0);
-    oc.save(); oc.filter = `blur(${Math.max(0.4, mw * 0.008)}px)`;
-    g = oc.createRadialGradient(mcx, mcy + d * 0.5, 0, mcx, mcy + d * 0.5, half); g.addColorStop(0, "#1f0806"); g.addColorStop(1, "#4b1c16"); oc.fillStyle = g; oc.fill(lens); oc.filter = "none";
-    oc.clip(lens);
-    if (d > em * 0.06) { oc.fillStyle = "rgba(232,222,212,.78)"; oc.fillRect(mcx - half * 0.62, top - d * 0.2, half * 1.24, Math.min(d * 0.26, em * 0.045) + d * 0.08); }
-    oc.fillStyle = "rgba(140,52,52,.45)"; oc.beginPath(); oc.ellipse(mcx, bot - d * 0.05, half * 0.45, d * 0.22, 0, 0, Math.PI * 2); oc.fill();
-    oc.restore();
-    oc.strokeStyle = "rgba(70,30,24,.5)"; oc.lineWidth = Math.max(0.8, mw * 0.018); oc.stroke(lens);
+// ================================================================ the mascot: Vish in 2D, drawn in code (templates/video/char/vishcap.js)
+// Vish, 28 Oct: the lip mask on the 3D pictures looked creepy; now the whole face is drawn, so the mouth, eyes and brows are his.
+// Track keys keep their names: expressions (smile, laugh, ...) and poses (explain, point_up, walk_r, ...).
+const VC = window.VishCap;
+const RIG = {smile: {expr: "smile"}, laugh: {expr: "laugh"}, thought: {expr: "thought"}, surprised: {expr: "surprised"}, skeptical: {expr: "skeptical"},
+  focused: {expr: "focused"}, concerned: {expr: "concerned"}, pleased: {expr: "pleased"}, wink: {expr: "wink"},
+  point_left: {pose: "point_left"}, point_right: {pose: "point_right"}, point_up: {pose: "point_up"}, present: {pose: "present"}, explain: {pose: "explain"},
+  think: {pose: "think", expr: "thought"}, arms: {pose: "arms"}, thumbs: {pose: "thumbs", expr: "pleased"}, front: {pose: "rest"}, rest: {pose: "rest"},
+  turn_r: {pose: "rest", turn: 0.4}, turn_l: {pose: "rest", turn: -0.4}, wave: {pose: "wave"}, walk_r: {pose: "rest", walk: 1}, walk_l: {pose: "rest", walk: -1}};
+const isFace = (k) => RIG[k] && !RIG[k].pose;
+const MODE = (m) => m[2] || (isFace(m[1]) ? "face" : (m[1] === "walk_l" || m[1] === "walk_r") ? "walk" : "bust");
+
+// ---- lip sync from the words: every letter becomes a mouth shape, timed inside its word, opened by the voice's loudness
+const SH = {a: {o: 0.7, w: 0.6, r: 0}, e: {o: 0.38, w: 0.9, r: 0}, i: {o: 0.34, w: 0.85, r: 0}, o: {o: 0.55, w: 0.25, r: 0.85}, u: {o: 0.3, w: 0.1, r: 1},
+  m: {o: 0, w: 0.45, r: 0}, f: {o: 0.16, w: 0.6, r: 0, f: 1}, sh: {o: 0.24, w: 0.3, r: 0.6}, th: {o: 0.22, w: 0.6, r: 0}, c: {o: 0.24, w: 0.6, r: 0.1}, n: {o: 0.4, w: 0.6, r: 0}};
+const shapeOf = (w, i) => {
+  const ch = w[i], nx = w[i + 1] || "";
+  if (ch === "o" && nx === "o") return [SH.u, 2]; if (ch === "e" && nx === "e") return [SH.e, 2]; if (ch === "o" && nx === "u") return [SH.o, 2];
+  if ((ch === "s" || ch === "c") && nx === "h") return [SH.sh, 2]; if (ch === "t" && nx === "h") return [SH.th, 2];
+  if ("a".includes(ch)) return [SH.a, 1]; if ("e".includes(ch)) return [SH.e, 1]; if ("iy".includes(ch)) return [SH.i, 1]; if (ch === "o") return [SH.o, 1];
+  if ("uwq".includes(ch)) return [SH.u, 1]; if ("mbp".includes(ch)) return [SH.m, 1]; if ("fv".includes(ch)) return [SH.f, 1];
+  if (/[0-9]/.test(ch)) return [SH.n, 1]; return [SH.c, 1];
+};
+const PH = [];  // [start, end, shape]
+(D.lines || []).forEach((ln) => ln.words.forEach((wd) => {
+  const w = String(wd.w).toLowerCase().replace(/[^a-z0-9]/g, ""); if (!w) return;
+  const seg = []; for (let i = 0; i < w.length;) { const [s, n] = shapeOf(w, i); const vow = s === SH.a || s === SH.e || s === SH.i || s === SH.o || s === SH.u; seg.push([s, vow ? 1.5 : 0.8]); i += n; }
+  const tot = seg.reduce((a, b) => a + b[1], 0), dur = Math.max(0.08, wd.e - wd.s); let t0 = wd.s;
+  seg.forEach(([s, wt]) => { const d = (dur * wt) / tot; PH.push([t0, t0 + d, s]); t0 += d; });
+}));
+const REST = {o: 0, w: 0.5, r: 0, f: 0};
+const mix = (a, b, k) => ({o: lerp(a.o, b.o, k), w: lerp(a.w, b.w, k), r: lerp(a.r, b.r, k), f: lerp(a.f || 0, b.f || 0, k)});
+function talkAt(t) {
+  let lo = 0, hi = PH.length - 1, i = -1;
+  while (lo <= hi) { const md = (lo + hi) >> 1; if (PH[md][0] <= t) { i = md; lo = md + 1; } else hi = md - 1; }
+  if (i < 0) return null;
+  const [a, b, s] = PH[i];
+  if (t > b) {  // between words: ease to the rest shape, or straight on to the next word
+    const n = PH[i + 1], gap = n ? n[0] - b : 9;
+    if (gap < 0.14) return mix(s, n[2], cl((t - b) / gap));
+    const q = cl((t - b) / 0.1); return q >= 1 ? null : mix(s, REST, q);
   }
-  if (blink > 0.02) {
-    const skin = skinOf(key, im, (ex1 + ex2) / 2, eyeY - io * 0.5);
-    for (const [ex, ey] of [[ex1, ey1], [ex2, ey2]]) {
-      const ew = io * 0.36, eh = io * 0.22;
-      oc.save(); oc.beginPath(); oc.ellipse(ex, ey, ew * 0.56, eh * 0.62, 0, 0, Math.PI * 2); oc.clip();
-      const lid = ey - eh * 0.62 + eh * 1.24 * blink; oc.fillStyle = skin; oc.fillRect(ex - ew, ey - eh, ew * 2, lid - (ey - eh));
-      oc.strokeStyle = "rgba(40,22,14,.9)"; oc.lineWidth = Math.max(1, io * 0.035); oc.beginPath(); oc.ellipse(ex, lid - eh * 0.1, ew * 0.5, eh * 0.18, 0, 0.1 * Math.PI, 0.9 * Math.PI); oc.stroke();
-      oc.restore();
-    }
-  }
-  return OC;
+  const q = (t - a) / (b - a), n = PH[i + 1];
+  const nxt = n && n[0] - b < 0.05 ? n[2] : REST;
+  let m = q > 0.6 ? mix(s, nxt, (q - 0.6) / 0.4) : s;
+  if (i === 0 || PH[i - 1][1] < a - 0.14) m = mix(REST, m, cl((t - a) / 0.06));  // a word that starts after a pause opens from closed
+  const lv = 0.55 + 0.65 * cl(env(t) * 1.6);
+  return {o: cl(m.o * lv), w: m.w, r: m.r, f: m.f};
 }
+
 // deterministic blinks every 2.2 to 4.6 s
 const BL = []; { let s = 7, t = 1.2; while (t < D.end + 2) { s = (s * 16807) % 2147483647; BL.push(t); t += 2.2 + (s / 2147483647) * 2.4; } }
-const blinkAt = (t) => { for (const b of BL) { const q = (t - b) / 0.16; if (q >= 0 && q <= 1) return Math.sin(q * Math.PI); } return 0; };
-const isFace = (k) => POSE[k] && POSE[k].startsWith("02_expressions");
-const MODE = (m) => m[2] || (isFace(m[1]) ? "face" : (m[1] === "walk_l" || m[1] === "walk_r") ? "walk" : "bust");
-const XDEF = {point_left: 720, point_up: 560, explain: 540, think: 560, arms: 540, thumbs: 600, front: 540, point_right: 360, present: 360, turn_l: 600, turn_r: 480};
-let mouth = 0;
+const blinkAt = (t) => { for (const b of BL) { const q = (t - b) / 0.15; if (q >= 0 && q <= 1) return Math.sin(q * Math.PI); } return 0; };
+const MC = $("mas").getContext("2d");
+// framing per mode: where the eye line sits on screen and the rig scale
 function mascot(t) {
   MC.clearRect(0, 0, 1080, 1920);
   const L = D.mascot || []; let i = -1; for (let j = 0; j < L.length; j++) if (t >= L[j][0]) i = j;
   if (i < 0) return;
   const m = L[i], mode = MODE(m); if (mode === "off") return;
   const prev = i > 0 ? L[i - 1] : null, newMode = !prev || MODE(prev) !== mode || prev[1] === "off" || (m[3] && m[3].x !== undefined && prev[3] && prev[3].x !== m[3].x);
-  const since = t - m[0], o = m[3] || {};
-  let key = m[1]; if (key === "wave") key = ["w1", "w2", "w1", "w3"][Math.floor(since * 5) % 4];
-  // the mouth follows the voice: attack fast, release slower, so words read as words
-  const target = cl((env(t) - 0.08) / 0.7); mouth = target > mouth ? lerp(mouth, target, 0.85) : lerp(mouth, target, 0.6);
-  const open = D.talk === false ? 0 : mouth * (o.mute ? 0 : 1), blink = blinkAt(t);
-  const pic = renderPose(key, open, blink); if (!pic) return;
-  const w = pic.width, h = pic.height, enter = newMode ? eo5(since / 0.5) : 1, sq = 1 - eo(since / 0.3);
-  const nod = env(t) * 1.8, sway = Math.sin(t * 1.25) * 1.6, breathe = 1 + Math.sin(t * 2.4) * 0.006;
+  const since = t - m[0], o = m[3] || {}, rg = RIG[m[1]] || RIG.smile;
+  const talking = D.talk !== false && !o.mute, tk = talking ? talkAt(t) : null;
+  const e = env(t), enter = newMode ? eo5(since / 0.5) : 1, pop = 1 - eo(since / 0.35);
+  // a new pose or face settles in with a small overshoot; the head nods on the stresses and drifts between them
+  const P = {expr: rg.expr || "smile", pose: rg.pose || "rest", talk: tk, blink: blinkAt(t), t,
+    turn: (rg.turn || 0) + Math.sin(t * 0.7) * 0.05, tilt: Math.sin(t * 0.9) * 1.6 + Math.sin(since * 9) * pop * 3, nod: -e * 5 + pop * 6, look: null};
+  if (rg.expr === "thought" || rg.pose === "think") P.look = [-0.5 + Math.sin(t * 0.8) * 0.1, -0.65];
   MC.save();
   if (mode === "face") {           // head and shoulders, big, rising from the bottom edge
-    const S = (o.size || 720) / w, x = o.x ?? 540;
-    MC.translate(x, 1920 + 30 + (1 - enter) * 700); MC.rotate((sway + nod * 0.8) * Math.PI / 180); MC.scale(S * (1 + 0.03 * sq) * breathe, S * (1 - 0.045 * sq) * breathe);
-    MC.drawImage(pic, -w / 2, -h);
-  } else if (mode === "bust") {    // half body: the top 62 percent of a full-body pose, big at the bottom
-    const S = (o.size || 900) / w, x = o.x ?? XDEF[key] ?? 540, ch = h * 0.62;
-    MC.translate(x, 1920 + 20 + (1 - enter) * 900 - nod * 2); MC.rotate(sway * 0.6 * Math.PI / 180); MC.scale(S * (1 + 0.03 * sq) * breathe, S * (1 - 0.045 * sq) * breathe);
-    MC.drawImage(pic, 0, 0, w, ch, -w / 2, -ch, w, ch);
+    const s = 1.4 * (o.size || 720) / 720, x = o.x ?? 540, eyeY = 1520 + (1 - enter) * 760;
+    Object.assign(P, {x, y: eyeY + VC.EYE * s, s: s * (1 + 0.02 * pop), shadow: 0});
+    VC.draw(MC, P);
+  } else if (mode === "bust") {    // half body: head, arms and the hoodie down to the pocket
+    const s = 0.95 * (o.size || 900) / 900, x = o.x ?? 540, eyeY = 1370 + (1 - enter) * 900;
+    Object.assign(P, {x, y: eyeY + VC.EYE * s, s, shadow: 0});
+    VC.draw(MC, P);
   } else if (mode === "full") {    // full body in the corner
-    const S = (o.size || 560) / w, x = o.x ?? 840;
-    MC.translate(x + (1 - enter) * 600, 1920 + 28); MC.scale(S * (1 + 0.03 * sq), S * (1 - 0.045 * sq) * breathe);
-    MC.fillStyle = "rgba(21,19,15,.16)"; MC.beginPath(); MC.ellipse(0, -14, w * 0.3, 16, 0, 0, Math.PI * 2); MC.fill();
-    MC.drawImage(pic, -w / 2, -h);
-  } else if (mode === "walk") {    // walking across: a bouncing stride from one side to the other
-    const S = (o.size || 640) / w, dur = o.dur || 1.8, q = cl(since / dur), dir = key === "walk_l" ? -1 : 1;
+    const s = 0.5 * (o.size || 560) / 560, x = (o.x ?? 840) + (1 - enter) * 600;
+    Object.assign(P, {x, y: 1890, s});
+    VC.draw(MC, P);
+  } else if (mode === "walk") {    // walking across: a stride from one side to the other, then he stops and faces us
+    const s = 0.55 * (o.size || 640) / 640, dur = o.dur || 1.8, q = cl(since / dur), dir = rg.walk || 1;
     const x0 = o.from ?? (dir > 0 ? -280 : 1360), x1 = o.to ?? (dir > 0 ? 760 : 320), x = lerp(x0, x1, eio(q));
-    const step = Math.abs(Math.sin(since * 7.5)) * (q < 1 ? 1 : 0);
-    MC.translate(x, 1920 + 28 - step * 26); MC.rotate((q < 1 ? Math.sin(since * 7.5) * 2.2 : 0) * Math.PI / 180); MC.scale(S, S * (1 - step * 0.02));
-    MC.fillStyle = "rgba(21,19,15,.16)"; MC.beginPath(); MC.ellipse(0, -14 + step * 26, w * 0.26, 14, 0, 0, Math.PI * 2); MC.fill();
-    MC.drawImage(pic, -w / 2, -h);
-  } else if (mode === "peek") {    // just the head, peeking up from the bottom edge
-    const S = (o.size || (isFace(key) ? 520 : 820)) / w, x = o.x ?? 860, ch = h * (isFace(key) ? 0.72 : 0.3), rise = eo5(since / 0.45);
-    MC.translate(x, 1920 + 10 + (1 - rise) * 400); MC.rotate((-8 + sway) * Math.PI / 180); MC.scale(S, S);
-    MC.drawImage(pic, 0, 0, w, ch, -w / 2, -ch, w, ch);
+    Object.assign(P, {x, y: 1890, s, walk: q < 1 ? since * 7.5 : null, dir, turn: q < 1 ? 0 : P.turn});
+    VC.draw(MC, P);
+  } else if (mode === "peek") {    // the head and shoulders peeking up from the bottom corner
+    const s = 1.05 * (o.size || 520) / 520, x = o.x ?? 860, rise = eo5(since / 0.45);
+    MC.translate(x, 1920); MC.rotate(-8 * Math.PI / 180); MC.translate(-x, -1920);
+    Object.assign(P, {x, y: 1650 + (1 - rise) * 560 + VC.EYE * s, s, shadow: 0, turn: P.turn - 0.25});
+    VC.draw(MC, P);
   }
   MC.restore();
 }
-const RX = {}; ["smile", "laugh", "thought", "surprised", "skeptical", "focused", "concerned", "pleased", "wink"].forEach((k) => { const im = document.createElement("img"); im.src = src(PK + POSE[k]); $("react").appendChild(im); RX[k] = im; loads.push(im.decode().catch(() => 0)); });
+// reaction stickers: his face in a circle, popping in on a word
+const RC = document.createElement("canvas"); RC.width = RC.height = 300; RC.style.cssText = "width:100%;height:100%;display:block"; $("react").appendChild(RC);
+const rc = RC.getContext("2d");
 function react(t) {
   const el = $("react"), L = D.react || []; let cur = null; for (const r of L) if (t >= r[0] && t < r[0] + (r[2] || 1.4)) cur = r;
   if (!cur) { el.style.opacity = 0; return; }
-  Object.values(RX).forEach((im) => { im.style.display = "none"; }); RX[cur[1]].style.display = "block";
+  rc.clearRect(0, 0, 300, 300); rc.fillStyle = "#F6E7D2"; rc.fillRect(0, 0, 300, 300);
+  const s = 0.62; VC.draw(rc, {x: 150, y: 150 + VC.EYE * s, s, expr: cur[1], pose: "rest", t, blink: blinkAt(t), shadow: 0, tilt: Math.sin(t * 6) * 3});
   const q = (t - cur[0]) / 0.3, o = (cur[0] + (cur[2] || 1.4) - t) / 0.25;
   el.style.opacity = cl(Math.min(q * 2, o)); el.style.transform = `scale(${0.4 + 0.6 * back(q)}) rotate(${(1 - eo(q)) * -12}deg)`;
 }

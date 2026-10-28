@@ -113,7 +113,6 @@ def main(proj: Path, key: str, stills=None):
             "heroes": beat.get("heroes", []), "chapters": beat.get("chapters", []), "ticker": beat.get("ticker"), "em": beat.get("em", []), "lines": caption_lines(W)}
     if beat.get("template") == "series3":
         data["env"] = envelope(proj / f"{key}.mp3") if (proj / f"{key}.mp3").exists() else []
-        data["lm"] = json.loads((ROOT / "brand/avatar/rig/landmarks.json").read_text())
     work = proj / "work"; work.mkdir(exist_ok=True)
     tpl = beat.get("template", "canvas")
     page = (ROOT / f"templates/video/{tpl}/{tpl}.html").read_text().replace("__FONTS__", (ROOT / "templates/fonts-extra").as_uri()).replace("__ROOT__", ROOT.as_uri()).replace("__DATA__", json.dumps(data))

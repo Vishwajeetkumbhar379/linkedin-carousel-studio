@@ -74,6 +74,7 @@ This file overrides every earlier plan where they differ. Change it only when Vi
   - **Model:** @yourtrainerarc (De-YnCbAq3g: 1.3M views and 11K followers in a week).
   - **The character is Vish's own mascot pack** (`brand/avatar/pack`, served at `/mascot`): the real 3D PNGs (9 expressions, 8 gestures, 8 angles, wave keyframes), animated in code by swapping poses, bouncing and sliding.
   - **Never redraw his face** with SVG, CSS or simple shapes (the pack guide, and Vish on 27 Oct).
+  - **Update 28 Oct (Vish): the talking mascot in the series reels is the 2D Vish drawn in code** (`templates/video/char/vishcap.js`, black cap and grey hoodie from the haircut clip), because the lip mask on the 3D pictures looked creepy. He asked for it in code so every part of the face can move. The nose rule applies.
   - **Avatar route (28 Oct), a hybrid:**
     1. The free AI drawing tool makes the likeness once, from 3 to 5 selfies Vish likes, with the nose rule in every prompt.
     2. The drawing is traced into vector layers (head, hair, eyes, brows, mouth shapes, arms).
@@ -267,6 +268,7 @@ Below 8, the file is fixed or dropped, never sent. Rejected on 28 Oct:
   - Psychology Breakdown series.
   - Nose rule for every avatar and cover (28 Oct).
   - Remote work and travel as the show; debt as back-story; voice-note engine (28 Oct).
+  - The talking mascot is the 2D Vish in code (cap and hoodie), never a mouth cut into a picture (28 Oct).
 
 ## Decision log, 28 Oct 2026: the formula Vish pointed at
 - References: @waitwhatdidyoudo De9bqWtoARc (new account, 600k views on video 1: a 3D low-poly micro-drama, a panicking builder and his AI, cuts every 2.6 s, a fresh free tool as the twist) and @guipaulinooo De5Ur0HNvIt (60 code-made reels in 2 weeks, 11k followers: one continuous canvas, the reel explains that Claude made it, comment keyword for the skills).
