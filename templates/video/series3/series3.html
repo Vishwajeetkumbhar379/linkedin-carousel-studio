@@ -231,7 +231,7 @@ function renderPose(key, open, blink) {
   const mw = Math.hypot(lx - rx, ly - ry), mcx = (rx + lx) / 2, mcy = (ry + ly) / 2 + mw * 0.05, eyeY = (ey1 + ey2) / 2, em = Math.max(8, mcy - eyeY), io = Math.hypot(ex2 - ex1, ey2 - ey1);
   if (open > 0.03 && !OPEN_MOUTH.has(key)) {
     // a lens-shaped opening between the real lips: soft dark inside, a faint line of upper teeth, the lower jaw drops with it
-    const d = open * em * 0.22, half = mw * 0.5 * (0.9 - open * 0.12), top = mcy - d * 0.1, bot = mcy + d;
+    const d = open * em * 0.18, half = mw * 0.5 * (0.9 - open * 0.12), top = mcy - d * 0.1, bot = mcy + d;
     const ang = Math.atan2(ly - ry, lx - rx), M = new DOMMatrix().translate(mcx, mcy).rotate(ang * 180 / Math.PI).translate(-mcx, -mcy);
     const lens0 = new Path2D(); lens0.moveTo(mcx - half, mcy); lens0.quadraticCurveTo(mcx, top - d * 0.3, mcx + half, mcy); lens0.quadraticCurveTo(mcx, bot + d * 0.25, mcx - half, mcy); lens0.closePath();
     const lens = new Path2D(); lens.addPath(lens0, M);
@@ -276,7 +276,7 @@ function mascot(t) {
   const since = t - m[0], o = m[3] || {};
   let key = m[1]; if (key === "wave") key = ["w1", "w2", "w1", "w3"][Math.floor(since * 5) % 4];
   // the mouth follows the voice: attack fast, release slower, so words read as words
-  const target = cl((env(t) - 0.1) / 0.55); mouth = target > mouth ? target : lerp(mouth, target, 0.5);
+  const target = cl((env(t) - 0.08) / 0.7); mouth = target > mouth ? lerp(mouth, target, 0.85) : lerp(mouth, target, 0.6);
   const open = D.talk === false ? 0 : mouth * (o.mute ? 0 : 1), blink = blinkAt(t);
   const pic = renderPose(key, open, blink); if (!pic) return;
   const w = pic.width, h = pic.height, enter = newMode ? eo5(since / 0.5) : 1, sq = 1 - eo(since / 0.3);

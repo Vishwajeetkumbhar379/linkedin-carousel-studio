@@ -49,12 +49,17 @@ TRACKS = ("scroll", "cursor", "mascot", "react", "keys", "chapters")
 
 
 def envelope(mp3, fps=30):
-    """The voice's loudness per video frame, 0..1 (drives the mascot's mouth, nods and waveforms)."""
+    """The voice per video frame, 0..1, shaped for a talking mouth: syllable peaks (loudness above its own 200 ms average)
+    open it, the gaps between syllables close it, pauses keep it shut."""
     import numpy as np
     a = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-i", str(mp3), "-ac", "1", "-ar", "16000", "-f", "f32le", "-"], capture_output=True).stdout, np.float32)
-    n = 16000 // fps; f = a[: len(a) // n * n].reshape(-1, n)
+    hop = 160; f = a[: len(a) // hop * hop].reshape(-1, hop)                      # 10 ms frames
     r = np.sqrt((f ** 2).mean(1)); r = r / (np.percentile(r, 95) + 1e-9)
-    return [round(float(min(1.0, x)), 3) for x in r]
+    slow = np.convolve(r, np.ones(20) / 20, mode="same")                          # 200 ms
+    syl = np.clip(r - 0.75 * slow, 0, None); syl = syl / (np.percentile(syl, 95) + 1e-9)
+    m = np.clip(0.35 * np.clip(r, 0, 1) + 0.75 * syl, 0, 1) * (r > 0.08)
+    step = 100 / fps
+    return [round(float(m[int(i * step): int((i + 1) * step)].max()), 3) for i in range(int(len(m) / step))]
 
 
 def caption_lines(W, limit=40):
