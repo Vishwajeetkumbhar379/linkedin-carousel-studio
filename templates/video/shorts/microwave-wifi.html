@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/shorts/shorts.css">
+<script src="/node_modules/gsap/dist/gsap.min.js"></script>
+<script src="/video/shorts/captions.js"></script>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+/* Ep 9 "microwave wifi": the reference look (README): one continuous world, navy + one amber emissive, camera never stops */
+:root{--navy:#001A2D;--amb:#FDB33E}
+#root{background:var(--navy)}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+#wbox{background:var(--amb)}
+#wbox i{border-color:var(--amb)}
+.hl{position:absolute;left:60px;right:60px;top:270px;text-align:center;z-index:60;opacity:0;pointer-events:none}
+.lab{font:500 28px 'Geist Mono';letter-spacing:.2em;color:var(--amb);text-transform:uppercase}
+.num{font:700 230px/1 'Inter Tight';letter-spacing:-.05em;color:#FBF7F0;font-variant-numeric:tabular-nums;text-shadow:0 0 70px rgba(253,179,62,.45)}
+.num small{font-size:110px;letter-spacing:-.03em;margin-left:14px}
+.term{font:700 120px/0.95 'Inter Tight';letter-spacing:-.04em;color:#FBF7F0;text-transform:uppercase;text-shadow:0 0 60px rgba(253,179,62,.35)}
+.term em{font-style:normal;color:var(--amb)}
+.q{font:400 120px/0.98 'Instrument Serif';color:#FBF7F0;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+.q em{font-style:italic;color:var(--amb)}
+#hud{position:absolute;left:64px;top:226px;z-index:70;font:500 24px 'Geist Mono';letter-spacing:.16em;color:#FBF7F0;opacity:0;display:flex;gap:14px;align-items:center}
+#hud b{display:inline-block;width:12px;height:12px;border-radius:50%;background:#6B7A90}
+#hud.on b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+#tag b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+.cbub{position:absolute;right:110px;top:1110px;padding:22px 30px;border-radius:30px;background:#fff;color:#111;font:600 36px 'Inter Tight';box-shadow:0 30px 60px -20px #000;z-index:60;opacity:0}
+#gl.glitch{filter:contrast(1.25) saturate(1.3)}
+</style></head>
+<body><div id="root">
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div class="hl" id="h245"><div class="lab">Microwave oven</div><div class="num" id="n245">2.45<small>GHz</small></div></div>
+<div class="hl" id="hSame"><div class="lab">Wi-Fi 2.4 · Microwave 2.45</div><div class="term">Same<br><em>band</em></div></div>
+<div class="hl" id="hHoles"><div class="lab">Mesh hole vs wave</div><div class="term">1 mm<br>vs <em>12 cm</em></div></div>
+<div class="hl" id="h01"><div class="lab">UK limit · 2.4 GHz Wi-Fi</div><div class="num">0.1<small>W</small></div></div>
+<div class="hl" id="h1000"><div class="lab">A typical microwave</div><div class="num" id="n1000">1,000<small>W</small></div></div>
+<div class="hl" id="h5"><div class="lab">The fix</div><div class="num">5<small>GHz</small></div></div>
+<div class="hl" id="hQ"><div class="q">2.4, or <em>5?</em></div></div>
+<div class="cbub" id="cbub">💬 2.4 / 5</div>
+<div id="tag"><b></b>INSIDE AI · EP 9</div>
+<div id="handle">@BUILDWITH.VISH</div>
+<div id="hud"><b></b><span id="hudt">WI-FI · 2.4 GHz</span></div>
+<div id="cap"><div id="capline"></div></div>
+<div id="vig"></div><div id="grain"></div>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { BokehPass } from "three/addons/postprocessing/BokehPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const W = 1080, H = 1920;
+const SFX = []; window.SFX = SFX;
+const sfx = (t, s) => SFX.push({t: Math.max(0, +t.toFixed(3)), s});
+const cl = x => Math.min(1, Math.max(0, x));
+const seg = (t, a, b) => cl((t - a) / Math.max(1e-4, b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b, k) => a + (b - a) * k;
+const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(9);
+const norm = w => w.toLowerCase().replace(/[^a-z0-9$.']/g, '').replace(/\.$/, '');
+let L, D;
+function wt(i, key) { for (const w of L[i].words) if (norm(w.w).startsWith(key)) return w.start; return L[i].start; }
+const S = i => L[i].start, E = i => L[i].end, N = i => (i + 1 < L.length ? L[i + 1].start : D);
+
+/* ---------- renderer: navy world, ACES, bloom + depth of field ---------- */
+const NAVY = 0x001A2D, AMBER = new THREE.Color(0xFDB33E), METAL = 0x6B7A90, GREY = new THREE.Color(0x6B7A90);
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true});
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(NAVY);
+scene.fog = new THREE.FogExp2(0x02182a, 0.05);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.3;
+const camera = new THREE.PerspectiveCamera(40, W / H, 0.004, 60);
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bokeh = new BokehPass(scene, camera, {focus: 1, aperture: 0.002, maxblur: 0.008});
+composer.addPass(bokeh);
+const bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.95, 0.5, 0.8);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+const moon = new THREE.DirectionalLight(0x9fb6d8, 1.3); moon.position.set(3, 5, 4); scene.add(moon);
+const hemi = new THREE.HemisphereLight(0x3a5878, 0x000a14, 0.6); scene.add(hemi);
+const spill = new THREE.PointLight(0xFDB33E, 0.5, 1.6, 2); spill.position.set(-0.08, 0.16, 0.12); scene.add(spill);
+const cavL = new THREE.PointLight(0xFDB33E, 0.35, 0.6, 2); cavL.position.set(-0.075, 0.27, -0.25); scene.add(cavL);
+const scrL = new THREE.PointLight(0xc8d8f0, 0.12, 0.5, 2); scene.add(scrL);
+
+function dotTex() { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); }
+const DOT = dotTex();
+const metal = (c = METAL, r = 0.35) => new THREE.MeshStandardMaterial({color: c, metalness: 0.8, roughness: r});
+const glowMat = (c = AMBER, o = 1) => new THREE.MeshBasicMaterial({color: c.clone ? c.clone() : c, toneMapped: false, transparent: o < 1, opacity: o});
+const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(1, 1, 1), tmpP = new THREE.Vector3(), tmpC = new THREE.Color(), V = (x, y, z) => new THREE.Vector3(x, y, z);
+const box = (w, h, d, m, x, y, z, par = scene) => { const o = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); o.position.set(x, y, z); par.add(o); return o; };
+
+/* ---------- the kitchen at night (metres, counter top at y = 0) ---------- */
+const stone = new THREE.MeshStandardMaterial({color: 0x0c1c2c, roughness: 0.32, metalness: 0.2});
+box(5.4, 0.05, 1.3, stone, -0.6, -0.025, 0);
+box(5.4, 0.9, 1.2, new THREE.MeshStandardMaterial({color: 0x07131f, roughness: 0.8}), -0.6, -0.48, 0.02);
+box(5.4, 2.4, 0.02, new THREE.MeshStandardMaterial({color: 0x041320, roughness: 0.9}), -0.6, 0.6, -0.66);
+/* back-splash tiles: an instanced wall that lights up as the leak passes */
+const TX = 54, TY = 8, TILES = [];
+const tiles = new THREE.InstancedMesh(new RoundedBoxGeometry(0.094, 0.094, 0.012, 2, 0.006), new THREE.MeshStandardMaterial({color: 0xffffff, roughness: 0.35, metalness: 0.3}), TX * TY);
+for (let i = 0, k = 0; i < TX; i++) for (let j = 0; j < TY; j++, k++) { const p = V(-3.25 + i * 0.1, 0.05 + j * 0.1, -0.645); TILES.push(p); tiles.setMatrixAt(k, tmpM.compose(p, tmpQ.identity(), tmpS)); tiles.setColorAt(k, tmpC.set(0x13263a)); }
+scene.add(tiles);
+/* wall cabinets + the shelf with the router */
+const cab = new THREE.MeshStandardMaterial({color: 0x0a1a2a, roughness: 0.55, metalness: 0.2});
+for (let i = 0; i < 5; i++) { box(0.58, 0.62, 0.34, cab, 1.55 - i * 0.6, 1.25, -0.48); box(0.02, 0.2, 0.02, metal(0x5d6a7e, 0.25), 1.55 - i * 0.6 + 0.24, 1.05, -0.3); }
+box(0.7, 0.025, 0.3, cab, -2.0, 0.9, -0.5);
+const ROUTER = V(-2.0, 0.955, -0.48);
+const router = new THREE.Group(); router.position.copy(ROUTER); scene.add(router);
+{ const b = new THREE.Mesh(new RoundedBoxGeometry(0.24, 0.045, 0.15, 3, 0.012), new THREE.MeshStandardMaterial({color: 0x1a2533, metalness: 0.5, roughness: 0.35})); router.add(b);
+  [-0.09, 0, 0.09].forEach((x, i) => { const a = new THREE.Mesh(new THREE.CylinderGeometry(0.007, 0.009, 0.17, 12), metal(0x2a3646, 0.4)); a.position.set(x, 0.1, -0.06); a.rotation.z = (i - 1) * 0.25; router.add(a); });
+  for (let i = 0; i < 4; i++) { const l = new THREE.Mesh(new THREE.SphereGeometry(0.005, 10, 8), glowMat(AMBER)); l.position.set(-0.075 + i * 0.03, 0.006, 0.077); l.name = 'led' + i; router.add(l); } }
+/* a kettle and a bowl so it reads as a kitchen */
+{ const pts = []; for (let i = 0; i <= 16; i++) { const u = i / 16; pts.push(new THREE.Vector2(0.075 + 0.03 * Math.sin(u * Math.PI) - 0.03 * u, u * 0.2)); }
+  const k = new THREE.Mesh(new THREE.LatheGeometry(pts, 40), metal(0x7b889c, 0.2)); k.position.set(1.15, 0, -0.32); scene.add(k);
+  const h = new THREE.Mesh(new THREE.TorusGeometry(0.06, 0.01, 10, 30, Math.PI), metal(0x2a3646, 0.4)); h.position.set(1.15, 0.2, -0.32); scene.add(h);
+  const bowl = new THREE.Mesh(new THREE.SphereGeometry(0.11, 32, 12, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2), new THREE.MeshStandardMaterial({color: 0x24344a, roughness: 0.4, side: THREE.DoubleSide})); bowl.position.set(-0.9, 0.11, -0.25); scene.add(bowl); }
+
+/* ---------- the microwave: housing, cavity, door with the mesh, keypad ---------- */
+const MW = new THREE.Group(); scene.add(MW);
+const shell = new THREE.MeshStandardMaterial({color: 0x2a3748, metalness: 0.65, roughness: 0.32});
+box(0.52, 0.012, 0.4, shell, 0, 0.306, -0.25, MW); box(0.52, 0.012, 0.4, shell, 0, 0.006, -0.25, MW);
+box(0.012, 0.31, 0.4, shell, -0.254, 0.155, -0.25, MW); box(0.52, 0.31, 0.012, shell, 0, 0.155, -0.444, MW);
+box(0.16, 0.31, 0.4, new THREE.MeshStandardMaterial({color: 0x161f2b, metalness: 0.5, roughness: 0.4}), 0.18, 0.155, -0.25, MW);
+const cavM = new THREE.MeshStandardMaterial({color: 0x46536a, roughness: 0.55, metalness: 0.3, side: THREE.BackSide, emissive: 0xFDB33E, emissiveIntensity: 0.05});
+box(0.35, 0.29, 0.38, cavM, -0.075, 0.155, -0.25, MW);
+const tt = new THREE.Group(); tt.position.set(-0.075, 0.012, -0.25); MW.add(tt);
+{ const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.005, 48), new THREE.MeshStandardMaterial({color: 0x9fb6d8, roughness: 0.1, metalness: 0.1, transparent: true, opacity: 0.45})); tt.add(plate);
+  const mug = new THREE.Mesh(new THREE.CylinderGeometry(0.042, 0.038, 0.095, 32), new THREE.MeshStandardMaterial({color: 0x24344a, roughness: 0.5})); mug.position.set(0.02, 0.05, 0); tt.add(mug);
+  const hd = new THREE.Mesh(new THREE.TorusGeometry(0.025, 0.007, 10, 24), new THREE.MeshStandardMaterial({color: 0x24344a, roughness: 0.5})); hd.position.set(0.068, 0.05, 0); tt.add(hd); }
+/* door: frame + perforated metal plate (holes 1.5 mm, pitch 2.2 mm) */
+const door = new THREE.Group(); MW.add(door);
+const frameM = new THREE.MeshStandardMaterial({color: 0x1d2836, metalness: 0.6, roughness: 0.3});
+box(0.03, 0.31, 0.02, frameM, -0.245, 0.155, -0.045, door); box(0.03, 0.31, 0.02, frameM, 0.085, 0.155, -0.045, door);
+box(0.36, 0.04, 0.02, frameM, -0.08, 0.02, -0.045, door); box(0.36, 0.04, 0.02, frameM, -0.08, 0.29, -0.045, door);
+box(0.012, 0.18, 0.02, metal(0x7b889c, 0.2), 0.085, 0.155, -0.025, door);
+const holeC = document.createElement('canvas'); holeC.width = holeC.height = 64;
+{ const x = holeC.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, 64, 64); x.globalCompositeOperation = 'destination-out'; x.beginPath(); x.arc(32, 32, 22, 0, Math.PI * 2); x.fill(); }
+const holeT = new THREE.CanvasTexture(holeC); holeT.wrapS = holeT.wrapT = THREE.RepeatWrapping; holeT.repeat.set(0.30 / 0.0022, 0.23 / 0.0022); holeT.anisotropy = 8;
+const meshM = new THREE.MeshStandardMaterial({color: 0x26313f, metalness: 0.7, roughness: 0.35, map: holeT, transparent: true, depthWrite: false, side: THREE.DoubleSide, emissive: 0xFDB33E, emissiveIntensity: 0, emissiveMap: holeT});
+const meshPlate = new THREE.Mesh(new THREE.PlaneGeometry(0.30, 0.23), meshM); meshPlate.position.set(-0.08, 0.155, -0.045); door.add(meshPlate);
+const WIN = V(-0.08, 0.155, -0.045);
+/* keypad + display */
+const kp = new THREE.Group(); kp.position.set(0.18, 0, -0.049); MW.add(kp);
+const dispC = document.createElement('canvas'); dispC.width = 256; dispC.height = 96;
+const dispT = new THREE.CanvasTexture(dispC); dispT.colorSpace = THREE.SRGBColorSpace;
+{ const d = new THREE.Mesh(new THREE.PlaneGeometry(0.12, 0.045), new THREE.MeshBasicMaterial({map: dispT, toneMapped: false})); d.position.set(0, 0.255, 0.002); kp.add(d); }
+const keyM = new THREE.MeshStandardMaterial({color: 0x2a3646, roughness: 0.5, metalness: 0.3});
+for (let r = 0; r < 4; r++) for (let c = 0; c < 3; c++) { const k = new THREE.Mesh(new RoundedBoxGeometry(0.03, 0.022, 0.008, 2, 0.003), keyM); k.position.set(-0.04 + c * 0.04, 0.205 - r * 0.032, 0.002); kp.add(k); }
+const startM = new THREE.MeshStandardMaterial({color: 0x2a3646, roughness: 0.4, metalness: 0.3, emissive: 0xFDB33E, emissiveIntensity: 0});
+const startB = new THREE.Mesh(new RoundedBoxGeometry(0.11, 0.032, 0.01, 2, 0.004), startM); startB.position.set(0, 0.05, 0.003); kp.add(startB);
+const startLab = (() => { const c = document.createElement('canvas'); c.width = 256; c.height = 64; const x = c.getContext('2d'); x.fillStyle = '#FBF7F0'; x.font = '700 40px Inter Tight, sans-serif'; x.textAlign = 'center'; x.fillText('START', 128, 46); const m = new THREE.Mesh(new THREE.PlaneGeometry(0.08, 0.02), new THREE.MeshBasicMaterial({map: new THREE.CanvasTexture(c), transparent: true, toneMapped: false})); m.position.set(0, 0.05, 0.0085); kp.add(m); return m; })();
+function drawDisp(t) { const x = dispC.getContext('2d'); x.fillStyle = '#05101a'; x.fillRect(0, 0, 256, 96); const s = Math.max(0, 90 - Math.floor(t)); x.fillStyle = '#FDB33E'; x.font = '600 70px Geist Mono, monospace'; x.textAlign = 'center'; x.fillText(`${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`, 128, 74); dispT.needsUpdate = true; }
+
+/* waves inside the cavity: standing waves at the real 12.2 cm wavelength */
+const LAM = 0.122, KW = 2 * Math.PI / LAM;
+const WL = [];
+[[0.07, -0.34], [0.15, -0.2], [0.23, -0.31], [0.11, -0.12], [0.2, -0.4]].forEach(([y, z]) => WL.push({ax: 'x', y, z}));
+[[-0.2, 0.09], [-0.12, 0.21], [-0.02, 0.13], [0.05, 0.24]].forEach(([x, y]) => WL.push({ax: 'z', x, y}));
+const WP = 140, wavG = new THREE.BufferGeometry(), wavP = new Float32Array(WL.length * WP * 3), wavCol = new Float32Array(WL.length * WP * 3);
+wavG.setAttribute('position', new THREE.BufferAttribute(wavP, 3)); wavG.setAttribute('color', new THREE.BufferAttribute(wavCol, 3));
+const waves = new THREE.Points(wavG, new THREE.PointsMaterial({size: 0.007, map: DOT, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false}));
+scene.add(waves);
+/* the one long wave behind the mesh + a 12 cm bracket */
+const BP = 420, bigG = new THREE.BufferGeometry(), bigP = new Float32Array(BP * 3);
+bigG.setAttribute('position', new THREE.BufferAttribute(bigP, 3));
+const bigM = new THREE.PointsMaterial({size: 0.0045, map: DOT, color: AMBER, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false});
+scene.add(new THREE.Points(bigG, bigM));
+const BX0 = -0.2;
+const bracket = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints([V(BX0, 0.105, -0.035), V(BX0 + LAM, 0.105, -0.035), V(BX0, 0.098, -0.035), V(BX0, 0.112, -0.035), V(BX0 + LAM, 0.098, -0.035), V(BX0 + LAM, 0.112, -0.035)]),
+  new THREE.LineBasicMaterial({color: AMBER, transparent: true, opacity: 0, toneMapped: false}));
+scene.add(bracket);
+
+/* leak: fresnel shells expanding out of the door */
+const shellMat = () => new THREE.ShaderMaterial({transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  uniforms: {uO: {value: 0}, uC: {value: AMBER}},
+  vertexShader: `varying vec3 vN; varying vec3 vV; void main(){ vec4 w = modelMatrix*vec4(position,1.0); vN = normalize(mat3(modelMatrix)*normal); vV = normalize(cameraPosition - w.xyz); gl_Position = projectionMatrix*viewMatrix*w; }`,
+  fragmentShader: `uniform float uO; uniform vec3 uC; varying vec3 vN; varying vec3 vV; void main(){ float f = pow(1.0-abs(dot(vN,vV)),3.0); gl_FragColor = vec4(uC*(f*1.6+0.015), 1.0)*uO; }`});
+const SHN = 5, SHELLS = [];
+for (let i = 0; i < SHN; i++) { const m = new THREE.Mesh(new THREE.SphereGeometry(1, 48, 24, 0, Math.PI * 2, 0, Math.PI), shellMat()); m.position.copy(WIN).add(V(0, 0, 0.01)); m.visible = false; scene.add(m); SHELLS.push(m); }
+const SH_LIFE = 1.6, SH_GAP = SH_LIFE / SHN, SH_R = 0.8;
+
+/* ---------- the phone on a stand, screen = the video ---------- */
+const PHONE = V(0.25, 0.0, 0.3), PYAW = 0.36;
+const phoneG = new THREE.Group(); phoneG.position.copy(PHONE); phoneG.rotation.y = PYAW; scene.add(phoneG);
+const scrC = document.createElement('canvas'); scrC.width = 300; scrC.height = 620;
+const scrT = new THREE.CanvasTexture(scrC); scrT.colorSpace = THREE.SRGBColorSpace; scrT.anisotropy = 4;
+const tilt = new THREE.Group(); tilt.position.y = 0.012; tilt.rotation.x = -0.28; phoneG.add(tilt);
+{ const body = new THREE.Mesh(new RoundedBoxGeometry(0.075, 0.155, 0.008, 3, 0.004), new THREE.MeshStandardMaterial({color: 0x1a222e, metalness: 0.6, roughness: 0.3})); body.position.y = 0.078; tilt.add(body);
+  const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.069, 0.149), new THREE.MeshBasicMaterial({map: scrT, toneMapped: false, color: 0xbcbcbc})); scr.position.set(0, 0.078, 0.0042); tilt.add(scr);
+  const st = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.012, 0.05), metal(0x2a3646, 0.4)); st.position.set(0, 0.006, -0.02); phoneG.add(st); }
+const PSCR = V(0, 0.085, 0.012).applyEuler(new THREE.Euler(0, PYAW, 0)).add(PHONE);
+function drawScreen(buf, band, t, prog) {
+  const x = scrC.getContext('2d'), w = 300, h = 620;
+  const g = x.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#0b2a46'); g.addColorStop(.62, '#123a5e'); g.addColorStop(.63, '#06182a'); g.addColorStop(1, '#030d18');
+  x.fillStyle = g; x.fillRect(0, 0, w, h);
+  const sy = 330 - prog * 120; x.fillStyle = '#FDB33E'; x.beginPath(); x.arc(150 + prog * 40, sy, 46, 0, Math.PI * 2); x.fill();
+  x.fillStyle = '#06182a'; x.beginPath(); x.moveTo(0, 400); for (let i = 0; i <= 10; i++) x.lineTo(i * 30, 380 - 40 * Math.abs(Math.sin(i * 1.3 + prog * 2))); x.lineTo(w, 400); x.fill();
+  x.fillStyle = '#03101c'; x.fillRect(0, 392, w, h);
+  x.fillStyle = '#FBF7F0'; x.font = '600 26px Inter Tight, sans-serif'; x.textAlign = 'left'; x.fillText('9:41', 22, 40);
+  x.textAlign = 'right'; x.font = '500 18px Geist Mono, monospace'; x.fillStyle = band === 5 ? '#FDB33E' : '#9fb6d8'; x.fillText(band === 5 ? '5G Wi-Fi' : '2.4G Wi-Fi', w - 22, 38);
+  x.fillStyle = '#24364d'; x.fillRect(22, 560, w - 44, 8); x.fillStyle = '#FDB33E'; x.fillRect(22, 560, (w - 44) * (0.18 + prog * 0.7), 8);
+  x.fillStyle = 'rgba(253,179,62,.35)'; x.fillRect(22, 560, (w - 44) * Math.min(1, 0.2 + prog * 0.7 + (buf ? 0.01 : 0.15)), 8);
+  if (buf) {
+    x.fillStyle = 'rgba(2,10,18,.55)'; x.fillRect(0, 0, w, h);
+    for (let i = 0; i < 8; i++) { const a = t * 7 + i * Math.PI / 4; x.fillStyle = `rgba(251,247,240,${0.15 + 0.85 * (i / 7)})`; x.beginPath(); x.arc(150 + Math.cos(a) * 38, 300 + Math.sin(a) * 38, 8, 0, Math.PI * 2); x.fill(); }
+    x.fillStyle = '#FBF7F0'; x.textAlign = 'center'; x.font = '600 28px Inter Tight, sans-serif'; x.fillText('Buffering' + '.'.repeat(1 + Math.floor(t * 3) % 3), 150, 400);
+  }
+  scrT.needsUpdate = true;
+}
+
+/* ---------- Wi-Fi packets: router -> phone, two lanes (2.4 low past the door, 5 high and clean) ---------- */
+const LOW = new THREE.CatmullRomCurve3([ROUTER.clone().add(V(0, 0.05, 0.08)), V(-1.3, 0.62, 0.05), V(-0.45, 0.3, 0.12), V(0.05, 0.17, 0.16), PSCR.clone()]);
+const HIGH = new THREE.CatmullRomCurve3([ROUTER.clone().add(V(0, 0.05, 0.08)), V(-1.2, 1.05, 0.35), V(-0.3, 0.95, 0.5), V(0.35, 0.5, 0.42), PSCR.clone()]);
+let UHIT = 0, best = 9; for (let i = 0; i <= 200; i++) { const d = LOW.getPoint(i / 200).distanceTo(WIN); if (d < best) { best = d; UHIT = i / 200; } }
+const PK = 48, TR = 6, pkG = new THREE.BufferGeometry(), pkP = new Float32Array(PK * TR * 3), pkC = new Float32Array(PK * TR * 3);
+pkG.setAttribute('position', new THREE.BufferAttribute(pkP, 3)); pkG.setAttribute('color', new THREE.BufferAttribute(pkC, 3));
+scene.add(new THREE.Points(pkG, new THREE.PointsMaterial({size: 0.032, map: DOT, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false})));
+const PK_GAP = 0.085, PK_T = 1.15, PK_R = []; for (let i = 0; i < 4000; i++) PK_R.push(rnd());
+const lanePts = (c, n) => c.getPoints(n);
+const laneM = new THREE.LineBasicMaterial({color: AMBER, transparent: true, opacity: 0, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false});
+const laneHi = new THREE.Line(new THREE.BufferGeometry().setFromPoints(lanePts(HIGH, 120)), laneM); scene.add(laneHi);
+
+/* ---------- the frequency ruler (vertical: 2 GHz at the bottom, 5.5 at the top) ---------- */
+const RX = -0.75, RZ = 0.3, yF = f => 0.35 + (f - 2) / 3.5 * 1.2;
+const ruler = new THREE.Group(); scene.add(ruler);
+const rulM = new THREE.LineBasicMaterial({color: 0x9fb6d8, transparent: true, opacity: 0, toneMapped: false});
+{ const a = [V(RX, yF(2), RZ), V(RX, yF(5.5), RZ)]; for (let f = 2; f <= 5.501; f += 0.1) { const maj = Math.abs(f - Math.round(f)) < 0.01; const w = maj ? 0.05 : 0.022; a.push(V(RX - w, yF(f), RZ), V(RX, yF(f), RZ)); }
+  ruler.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(a), rulM)); }
+const sprites = [];
+function label(txt, col, h = 0.05, align = 'right') { const c = document.createElement('canvas'); c.width = 512; c.height = 128; const x = c.getContext('2d'); x.fillStyle = col; x.font = '600 80px Geist Mono, monospace'; x.textAlign = align; x.textBaseline = 'middle'; x.fillText(txt, align === 'right' ? 500 : 12, 64);
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({map: new THREE.CanvasTexture(c), transparent: true, opacity: 0, depthWrite: false, toneMapped: false})); s.scale.set(h * 4, h, 1); s.center.set(align === 'right' ? 1 : 0, 0.5); scene.add(s); sprites.push(s); return s; }
+[[2, '2 GHz'], [3, '3'], [4, '4'], [5, '5 GHz']].forEach(([f, s]) => label(s, '#9fb6d8', 0.03).position.set(RX - 0.065, yF(f), RZ));
+const band = new THREE.Mesh(new THREE.BoxGeometry(0.024, yF(2.5) - yF(2.4), 0.012), glowMat(AMBER, 0)); band.position.set(RX, (yF(2.4) + yF(2.5)) / 2, RZ); scene.add(band);
+const mkWifi = new THREE.Mesh(new THREE.SphereGeometry(0.009, 20, 14), glowMat(AMBER)), mkMw = new THREE.Mesh(new THREE.SphereGeometry(0.009, 20, 14), glowMat(AMBER));
+scene.add(mkWifi, mkMw);
+const lbWifi = label('WI-FI', '#FBF7F0', 0.026, 'right'), lbMw = label('MICROWAVE', '#FDB33E', 0.026, 'left');
+
+/* ---------- camera: keyframes, eased, with a drift so it never stops ---------- */
+let CK = [];
+const tgt = new THREE.Vector3();
+function camAt(t) {
+  if (window.COVER_CAM) { const c = window.COVER_CAM; camera.position.set(...c.p); camera.lookAt(...c.l); camera.fov = c.f; camera.updateProjectionMatrix(); return Math.hypot(c.p[0] - c.l[0], c.p[1] - c.l[1], c.p[2] - c.l[2]); }
+  let i = 0; while (i < CK.length - 1 && CK[i + 1].t <= t) i++;
+  const a = CK[i], b = CK[Math.min(i + 1, CK.length - 1)];
+  const k = b === a ? 0 : (b.e || eio)(seg(t, a.t, b.t));
+  const p = a.p.map((v, j) => lerp(v, b.p[j], k)), l = a.l.map((v, j) => lerp(v, b.l[j], k));
+  let dist = Math.hypot(p[0] - l[0], p[1] - l[1], p[2] - l[2]); if (a.fd || b.fd) dist = lerp(a.fd || dist, b.fd || dist, k);
+  const dr = Math.min(0.012, dist * 0.008);
+  camera.position.set(p[0] + Math.sin(t * 0.9) * dr, p[1] + Math.cos(t * 0.7) * dr, p[2] + Math.sin(t * 0.55 + 1) * dr);
+  tgt.set(...l); camera.lookAt(tgt);
+  camera.fov = lerp(a.f || 40, b.f || 40, k); camera.updateProjectionMatrix();
+  return dist;
+}
+const hl = (id, t, a, b, fade = 0.22) => { const el = document.getElementById(id); const o = Math.min(seg(t, a, a + fade), 1 - seg(t, b - fade, b)); el.style.opacity = o; el.style.transform = `translateY(${(1 - eo(seg(t, a, a + 0.4))) * 40}px) scale(${lerp(0.94, 1, eo(seg(t, a, a + 0.4)))})`; };
+
+let T5 = 1e9, T5END = 1e9, HIT = [];
+function hitRate(t) {
+  if (t >= S(10) - 0.6) return 0.6;
+  if (t >= T5) return 0;
+  if (t >= S(8)) return 0.6 + 0.35 * seg(t, S(8), wt(8, 'leak'));
+  return 0.55;
+}
+window.setup = async function (spec) {
+  L = spec.lines; D = spec.duration;
+  Captions.build(spec);
+  T5 = wt(9, '5') - 0.1; T5END = S(10) - 0.6;
+  const F0 = {p: [0.43, 0.15, 0.76], l: [0.13, 0.12, -0.05], f: 36, fd: 0.5};
+  const ps = [PSCR.x, PSCR.y, PSCR.z];
+  CK = [
+    {t: 0, ...F0},
+    {t: E(0), p: [0.41, 0.14, 0.7], l: [0.12, 0.12, -0.05], f: 34, fd: 0.45},
+    {t: S(1) + 0.55, p: [0.36, 0.13, 0.22], l: [0.17, 0.07, -0.05], f: 40},
+    {t: wt(1, 'video') + 0.1, p: [0.33, 0.12, 0.2], l: [0.17, 0.06, -0.05], f: 38},
+    {t: N(1) - 0.15, p: [0.4, 0.14, 0.62], l: ps, f: 36},
+    {t: S(2) + 1.3, p: [1.0, 1.0, 2.0], l: [-0.7, 0.42, -0.25], f: 46},
+    {t: N(2), p: [0.6, 1.1, 2.15], l: [-0.8, 0.4, -0.3], f: 46},
+    {t: S(3) + 0.5, p: [-0.08, 0.17, 0.3], l: [-0.08, 0.155, -0.2], f: 44},
+    {t: S(3) + 1.3, p: [-0.075, 0.26, -0.075], l: [-0.09, 0.1, -0.36], f: 64},
+    {t: N(3) - 0.2, p: [0.0, 0.25, -0.1], l: [-0.15, 0.1, -0.33], f: 64},
+    {t: S(4) + 0.9, p: [-0.25, 0.66, 1.3], l: [-0.75, 0.66, 0.28], f: 46},
+    {t: wt(4, 'same') + 0.1, p: [-0.42, 0.55, 1.0], l: [-0.75, 0.6, 0.28], f: 42},
+    {t: N(4), p: [-0.4, 0.53, 0.92], l: [-0.75, 0.6, 0.28], f: 42},
+    {t: S(5) + 0.9, p: [0.02, 0.2, 0.32], l: [-0.08, 0.155, -0.1], f: 42},
+    {t: N(5), p: [-0.06, 0.16, 0.14], l: [-0.1, 0.155, -0.1], f: 42},
+    {t: S(6) + 0.6, p: [-0.12, 0.15, 0.17], l: [-0.13, 0.15, -0.045], f: 40},
+    {t: wt(6, 'twelve') + 0.6, p: [-0.135, 0.15, 0.36], l: [-0.135, 0.145, -0.045], f: 40},
+    {t: N(6), p: [-0.12, 0.155, 0.4], l: [-0.12, 0.15, -0.045], f: 40},
+    {t: wt(7, 'and') + 0.1, p: [0.35, 0.32, 1.0], l: [-0.15, 0.17, -0.05], f: 44},
+    {t: wt(7, 'tenth') - 0.2, p: [-1.55, 1.07, 0.2], l: [-2.0, 0.97, -0.46], f: 40},
+    {t: N(7), p: [-1.6, 1.04, 0.24], l: [-2.0, 0.97, -0.46], f: 38},
+    {t: S(8) + 1.0, p: [0.6, 0.65, 1.4], l: [-0.45, 0.3, -0.1], f: 46},
+    {t: wt(8, 'leak') + 0.2, p: [0.3, 0.38, 0.75], l: [-0.3, 0.2, 0.05], f: 44},
+    {t: N(8), p: [0.22, 0.36, 0.7], l: [-0.35, 0.2, 0.05], f: 44},
+    {t: S(9) + 0.7, p: [-0.3, 0.95, 1.35], l: [-0.75, 1.05, 0.28], f: 46},
+    {t: T5 + 0.9, p: [-0.35, 1.2, 1.3], l: [-0.75, 1.5, 0.28], f: 44},
+    {t: wt(9, 'microwave') + 0.1, p: [1.0, 0.75, 1.8], l: [-0.5, 0.55, 0.0], f: 48},
+    {t: N(9), p: [0.55, 0.28, 0.95], l: ps, f: 40},
+    {t: S(10) + 0.8, ...F0},
+    {t: D, p: [0.42, 0.145, 0.72], l: [0.13, 0.12, -0.05], f: 35, fd: 0.46},
+  ];
+  for (let k = 0; k * PK_GAP < D + 2; k++) HIT.push(null);
+  // sound map
+  sfx(0, 'thump'); sfx(wt(0, 'slowing'), 'scratch');
+  sfx(S(1) + 0.1, 'whoosh'); sfx(wt(1, 'start'), 'click'); sfx(wt(1, 'start') + 0.08, 'tap'); sfx(wt(1, 'freezes'), 'scratch');
+  sfx(S(2) + 0.2, 'whoosh'); sfx(S(2) + 1.1, 'rise'); for (let k = 0; k < 5; k++) sfx(S(2) + 1.4 + k * 0.32, 'tick');
+  sfx(S(3) + 0.3, 'whoosh'); sfx(wt(3, '2.45'), 'thump'); sfx(wt(3, '2.45') + 0.05, 'ding');
+  sfx(S(4) + 0.2, 'whoosh'); sfx(wt(4, '2.4'), 'pop'); sfx(wt(4, 'same'), 'ding');
+  sfx(S(5) + 0.2, 'whoosh'); [0.9, 1.4, 1.9].forEach(d => sfx(S(5) + d, 'tick'));
+  sfx(wt(6, 'millimetre'), 'pop'); sfx(wt(6, 'twelve'), 'rise');
+  sfx(S(7) + 0.1, 'whoosh'); sfx(wt(7, 'tenth') - 0.2, 'whoosh'); sfx(wt(7, 'tenth'), 'ding');
+  sfx(S(8) + 0.1, 'thump'); sfx(wt(8, 'thousand'), 'coin'); sfx(wt(8, 'drowns'), 'scratch');
+  sfx(S(9) + 0.1, 'whoosh'); sfx(T5 + 0.1, 'zip'); sfx(T5 + 0.5, 'ding'); sfx(wt(9, 'touch'), 'send');
+  sfx(N(9) - 0.2, 'whoosh'); sfx(wt(10, '5'), 'pop'); sfx(D - 0.25, 'thump');
+  SFX.sort((a, b) => a.t - b.t);
+  window.READY = true;
+};
+
+const hudEl = document.getElementById('hud'), hudT = document.getElementById('hudt'), glc = document.getElementById('gl');
+const tmpV = new THREE.Vector3(), tmpV2 = new THREE.Vector3();
+window.frame = function (t) {
+  const dist = camAt(t);
+  const cp = camera.position;
+  const five = t >= T5 && t < T5END;
+  /* microwave: always running; the turntable turns, the cavity glows */
+  tt.rotation.y = t * 0.9;
+  const hum = 0.85 + 0.15 * Math.sin(t * 2 * Math.PI * 1.7);
+  cavM.emissiveIntensity = 0.06 * hum; cavL.intensity = 0.16 * hum; spill.intensity = 0.3 * hum;
+  drawDisp(t);
+  const press = wt(1, 'start');
+  startM.emissiveIntensity = t >= press - 0.05 ? 0.4 + 2.2 * Math.exp(-(t - press) * 2.5) : 0.4;
+  startB.position.z = 0.003 - (t >= press && t < press + 0.18 ? 0.003 : 0);
+
+  /* door vanishes as the camera flies through it */
+  const thru = cp.z < 0.035 && cp.z > -0.46 && Math.abs(cp.x + 0.08) < 0.16 && cp.y > 0.02 && cp.y < 0.3;
+  door.visible = !thru;
+
+  /* leak strength over the story */
+  let leak = 0.3;
+  if (t >= S(3) - 0.2 && t < S(7)) leak = 0.3 * (1 - seg(t, S(3) - 0.2, S(3) + 0.3));
+  if (t >= S(7)) leak = lerp(0.12, 0.55, seg(t, wt(7, 'isn'), wt(7, 'isn') + 0.6));
+  if (t >= S(8)) leak = lerp(0.55, 1.0, seg(t, S(8), wt(8, 'leak')));
+  if (t >= N(8) - 0.3) leak = lerp(1.0, 0.3, seg(t, N(8) - 0.3, N(8) + 0.5));
+  const nearDoor = cp.distanceTo(WIN) < 0.5 ? seg(cp.distanceTo(WIN), 0.28, 0.5) : 1;
+  const shellO = leak * nearDoor;
+  SHELLS.forEach((s, i) => { const age = ((t + i * SH_GAP) % SH_LIFE) / SH_LIFE; const r = 0.05 + age * SH_R * (0.6 + 0.4 * leak);
+    s.scale.setScalar(r); s.material.uniforms.uO.value = shellO * 0.55 * Math.pow(1 - age, 1.5) * seg(age, 0, 0.08) * seg(cp.distanceTo(WIN) - r, 0.05, 0.35); s.visible = shellO > 0.01; s.userData.r = r; s.userData.o = s.material.uniforms.uO.value; });
+  /* tiles light where a shell front passes */
+  for (let k = 0; k < TILES.length; k++) { const d = TILES[k].distanceTo(WIN); let v = 0; for (const s of SHELLS) if (s.visible) v += s.userData.o * 6 * Math.exp(-Math.pow((d - s.userData.r) / 0.05, 2));
+    tmpC.set(0x13263a); if (v > 0.01) tmpC.lerp(AMBER, Math.min(1, v)).multiplyScalar(1 + v * 0.8); tiles.setColorAt(k, tmpC); }
+  tiles.instanceColor.needsUpdate = true;
+
+  /* cavity waves: standing, with a bright pulse running to the door and back */
+  const showIn = 1 - 0.8 * seg(t, S(6) - 0.2, S(6) + 0.3) * (1 - seg(t, N(6) + 0.2, N(6) + 0.6));
+  const pulse = (s, len) => { const c = ((t * 0.9) % 2); const pos = c < 1 ? c : 2 - c; return 0.45 + 1.4 * Math.exp(-Math.pow((s / len - pos) / 0.12, 2)); };
+  const slam = t >= S(5) && t < N(5) + 0.3;
+  WL.forEach((wl, li) => { for (let j = 0; j < WP; j++) { const u = j / (WP - 1); const o = (li * WP + j) * 3; let x, y, z, s, len;
+      const amp = 0.018 * Math.cos(t * 2 * Math.PI * 0.8 + li);
+      if (wl.ax === 'x') { s = u * 0.33; len = 0.33; x = -0.24 + s; y = wl.y + amp * Math.sin(KW * s); z = wl.z; }
+      else { s = u * 0.37; len = 0.37; x = wl.x; y = wl.y + amp * Math.sin(KW * s + 0.4); z = -0.43 + s; }
+      wavP[o] = x; wavP[o + 1] = y; wavP[o + 2] = z;
+      const b = showIn * (wl.ax === 'z' && slam ? pulse(s, len) * 1.3 : 0.7) * hum;
+      wavCol[o] = AMBER.r * b; wavCol[o + 1] = AMBER.g * b; wavCol[o + 2] = AMBER.b * b; } });
+  wavG.attributes.position.needsUpdate = true; wavG.attributes.color.needsUpdate = true;
+  waves.material.size = cp.z < 0.05 && Math.abs(cp.x) < 0.3 ? 0.006 : 0.009;
+  /* the mesh flashes when the pulses hit it */
+  const hitF = slam ? Math.max(0, Math.cos(((t * 0.9) % 2) * Math.PI)) : 0;
+  meshM.emissiveIntensity = 0.05 * hum + 0.6 * Math.pow(hitF, 6);
+
+  /* the one long wave behind the mesh (line 7) */
+  const bw = seg(t, S(6) - 0.2, S(6) + 0.3) * (1 - seg(t, N(6) + 0.2, N(6) + 0.6));
+  bigM.opacity = bw;
+  for (let j = 0; j < BP; j++) { const u = j / (BP - 1), x = -0.225 + u * 0.29; bigP[j * 3] = x; bigP[j * 3 + 1] = 0.155 + 0.03 * Math.sin(KW * (x - BX0) - t * 3) * (0.6 + 0.4 * Math.sin(t * 2)); bigP[j * 3 + 2] = -0.052; }
+  bigG.attributes.position.needsUpdate = true;
+  bracket.material.opacity = seg(t, wt(6, 'twelve') - 0.1, wt(6, 'twelve') + 0.3) * (1 - seg(t, N(6) + 0.1, N(6) + 0.5));
+
+  /* packets */
+  const rate = hitRate;
+  for (let s = 0; s < PK; s++) for (let r = 0; r < TR; r++) pkP.set([0, -99, 0], (s * TR + r) * 3);
+  const kNow = Math.floor(t / PK_GAP);
+  for (let k = Math.max(0, kNow - 40); k <= kNow; k++) {
+    const t0 = k * PK_GAP, hi = t0 >= T5 && t0 < T5END, dur = hi ? PK_T * 0.8 : PK_T;
+    const u = (t - t0) / dur; if (u < 0) continue;
+    const tc = t0 + UHIT * dur;
+    const hit = !hi && PK_R[k % PK_R.length] < rate(tc);
+    const slot = k % PK;
+    let dead = false;
+    for (let r = 0; r < TR; r++) {
+      const ur = u - r * 0.022; const o = (slot * TR + r) * 3;
+      let col = AMBER, b = (1 - r / TR) * 1.6;
+      if (ur < 0) continue;
+      if (hit && ur > UHIT) {
+        const fall = (ur - UHIT) * dur; if (r > 0) continue; // a dropped packet loses its trail
+        LOW.getPoint(UHIT, tmpV); tmpV.y -= 0.9 * fall * fall; tmpV.x += 0.08 * fall * (PK_R[(k + 7) % PK_R.length] - 0.5); tmpV.z += 0.25 * fall;
+        if (tmpV.y < 0.012) tmpV.y = 0.012;
+        b = Math.max(0, 1.0 - fall * 0.8); col = GREY; dead = true;
+        pkP.set([tmpV.x, tmpV.y, tmpV.z], o); pkC.set([col.r * b, col.g * b, col.b * b], o); continue;
+      }
+      if (ur > 1) continue;
+      (hi ? HIGH : LOW).getPoint(ur, tmpV);
+      pkP.set([tmpV.x, tmpV.y, tmpV.z], o); pkC.set([col.r * b, col.g * b, col.b * b], o);
+    }
+  }
+  pkG.attributes.position.needsUpdate = true; pkG.attributes.color.needsUpdate = true;
+  laneM.opacity = 0.6 * seg(t, T5, T5 + 0.5) * (1 - seg(t, T5END - 0.3, T5END));
+  for (let i = 0; i < 4; i++) router.getObjectByName('led' + i).material.color.copy(AMBER).multiplyScalar(0.6 + 1.6 * (Math.sin(t * (13 + i * 5) + i) > 0.2 ? 1 : 0));
+
+  /* ruler: lines 5 and 10 */
+  const rv = Math.max(seg(t, S(4) + 0.1, S(4) + 0.6) * (1 - seg(t, N(4) + 0.1, N(4) + 0.6)), seg(t, S(9), S(9) + 0.5) * (1 - seg(t, wt(9, 'microwave'), wt(9, 'microwave') + 0.5)));
+  rulM.opacity = rv; sprites.forEach(s => s.material.opacity = rv); band.material.opacity = rv * (0.35 + 0.6 * seg(t, wt(4, 'same') - 0.2, wt(4, 'same') + 0.2));
+  const inRul = t < N(4) + 0.8;
+  const aw = inRul ? eo(seg(t, S(4) + 0.3, wt(4, '2.4') + 0.2)) : 1, am = inRul ? eo(seg(t, wt(4, 'same') - 0.7, wt(4, 'same') + 0.1)) : 1;
+  const fW = !inRul ? lerp(2.4, 5.0, eio(seg(t, T5 - 0.1, T5 + 0.6))) : 2.4;
+  const wTo = V(RX + 0.03, yF(fW), RZ + 0.01), mTo = V(RX - 0.03, yF(2.45), RZ + 0.01);
+  mkWifi.position.copy(ROUTER).lerp(wTo, aw); mkMw.position.copy(WIN).lerp(mTo, am);
+  mkWifi.visible = mkMw.visible = rv > 0.02; mkWifi.scale.setScalar(Math.max(0.01, rv)); mkMw.scale.setScalar(Math.max(0.01, rv));
+  lbWifi.position.copy(mkWifi.position).add(V(-0.03, 0.02, 0)); lbMw.position.copy(mkMw.position).add(V(0.03, -0.02, 0));
+  lbWifi.material.opacity = rv * aw; lbMw.material.opacity = rv * am;
+
+  /* phone */
+  const buf = !(t >= T5 + 0.5 && t < T5END);
+  drawScreen(buf, five ? 5 : 2, t, five ? seg(t, T5 + 0.5, T5END) : 0.08);
+  scrL.position.copy(PSCR).add(V(0.02, 0.02, 0.06));
+  glc.classList.toggle('glitch', t >= wt(8, 'drowns') && t < N(8) - 0.2 && Math.sin(t * 23) > 0.6);
+  glc.style.transform = t >= wt(8, 'drowns') && t < N(8) - 0.2 && Math.sin(t * 17) > 0.85 ? `translateX(${Math.sin(t * 91) * 8}px)` : '';
+
+  /* depth of field: focus on what the camera looks at */
+  bokeh.uniforms.focus.value = dist; bokeh.uniforms.aperture.value = dist < 0.5 ? 0.02 : dist < 1.2 ? 0.008 : 0.003;
+  bokeh.uniforms.maxblur.value = 0.007;
+
+  /* headline layer */
+  hl('h245', t, wt(3, '2.45') - 0.2, N(3));
+  hl('hSame', t, wt(4, 'same') - 0.15, N(4) + 0.1);
+  hl('hHoles', t, wt(6, 'millimetre') - 0.2, N(6) + 0.2);
+  hl('h01', t, wt(7, 'tenth') - 0.25, N(7));
+  hl('h1000', t, S(8), N(8) - 0.1);
+  document.getElementById('n1000').innerHTML = Math.round(lerp(0, 1000, eo(seg(t, S(8), wt(8, 'thousand') + 0.3)))).toLocaleString('en-GB') + '<small>W</small>';
+  hl('h5', t, T5, wt(9, 'microwave') + 0.1);
+  hl('hQ', t, wt(10, 'are') - 0.1, D + 1);
+  const cb = document.getElementById('cbub'); cb.style.opacity = cl((t - wt(10, '5') - 0.15) / 0.3) * (1 - seg(t, D - 0.35, D - 0.1));
+  const hudOn = t < S(3) || (t >= S(10) && t < wt(10, 'are') - 0.1);
+  hudEl.style.opacity = hudOn ? 0.85 : 0;
+  hudEl.classList.toggle('on', five); hudT.textContent = five ? 'WI-FI · 5 GHz' : 'WI-FI · 2.4 GHz';
+
+  composer.render();
+  Captions.draw(t);
+};
+document.fonts.ready.then(() => { drawScreen(true, 2, 0, 0.08); drawDisp(0); window.STAGE_LOADED = true; });
+</script>
+</body></html>
