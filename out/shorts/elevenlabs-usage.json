@@ -23,5 +23,10 @@
   "slug": "flight-mode",
   "chars": 722,
   "key": "ELEVENLABS_API_KEY"
+ },
+ {
+  "slug": "lift-button",
+  "chars": 714,
+  "key": "ELEVENLABS_API_KEY"
  }
 ]

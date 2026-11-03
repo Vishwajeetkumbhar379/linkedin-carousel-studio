@@ -1,0 +1,144 @@
+{
+  "slug": "lift-button",
+  "series": "Inside AI",
+  "episode": 4,
+  "template": "lift-button",
+  "renderer": "3d",
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "q0IMILNRPxOgtBTS4taI",
+    "name": "Drew",
+    "model": "eleven_v3",
+    "stability": 0.0,
+    "lead": 0.02,
+    "note": "Vish's pick (Drew, eleven_v3 with breaths), 24 Oct 2026"
+  },
+  "look": "Reference look (README): one continuous 3D world, navy + amber emissive, camera never stops, loop ending",
+  "hook_type": "shock claim then the real answer (batch 2 rules, 28 Oct 2026)",
+  "lines": [
+    {
+      "text": "That close door button? It probably does nothing.",
+      "see": "Tight on the lift's close-door button glowing amber as it is pressed, slow push",
+      "tag": "[whispers]"
+    },
+    {
+      "text": "You press it. Again. And again. The doors don't move any faster.",
+      "see": "Pull back inside the lift: the button flashes on every press, the doors stay wide open"
+    },
+    {
+      "text": "So here's what's actually behind the panel.",
+      "see": "Camera dives into the panel and slips through the wall into the gap behind it",
+      "pause_after": true,
+      "tag": "[curious]"
+    },
+    {
+      "text": "Your press races down a wire to the controller. Which ignores it.",
+      "see": "An amber pulse runs along the wire up to the controller cabinet; it hits and dies, screen says IGNORED",
+      "tag": "[excited]"
+    },
+    {
+      "text": "In America, a 1990 disability law makes lift doors wait.",
+      "see": "Controller screen switches to a hold timer, headline 1990 counts up"
+    },
+    {
+      "text": "At least three seconds, so someone in a wheelchair has time to get in.",
+      "see": "Inside the lift looking out: a wheelchair rolls in while 3 s counts down, then the doors close",
+      "pause_after": true
+    },
+    {
+      "text": "So lots of close buttons were quietly switched off. Except for firefighters.",
+      "see": "Back on the panel: the close button goes dead grey, then the fire service key switch lights amber",
+      "tag": "[dramatic pause]"
+    },
+    {
+      "text": "And it's not just lifts. In 2004, New York had 3,250 crossing buttons.",
+      "see": "Camera rises up the shaft past every floor and out of the roof over a night city; thousands of crossing buttons light up, headline 3,250"
+    },
+    {
+      "text": "Over 2,500 of them did nothing.",
+      "see": "A wave turns 2,500 of the lights grey, headline 2,500 counts up",
+      "tag": "[dramatic pause]"
+    },
+    {
+      "text": "In the UK, though? Most close buttons actually work.",
+      "see": "Dive back down the shaft into the lift: press, and the doors close straight away",
+      "tag": "[curious]"
+    },
+    {
+      "text": "So would you rather know, or keep pressing?",
+      "see": "Back to the same close button (loop to frame 0), question headline, comment bubble",
+      "tag": "[playful]"
+    }
+  ],
+  "facts": [
+    {
+      "claim": "The New York Times (27 Oct 2016) reported that the close-door function in US lifts faded into obsolescence a few years after the Americans with Disabilities Act of 1990; Karen Penafiel of the National Elevator Industry said 'the riding public would not be able to make those doors close any faster'; firefighters and maintenance workers with keys can still use the buttons",
+      "source": "https://www.cbsnews.com/boston/news/door-close-elevator-button-dont-work-placebo",
+      "date": "2016-10-27"
+    },
+    {
+      "claim": "Drexel University confirms the New York Times piece on placebo buttons (lifts and crossings) ran on 27 Oct 2016",
+      "source": "https://drexel.edu/news/in-the-news/2016/October/Oct-27-Kounios-NYT",
+      "date": "2016-10-27"
+    },
+    {
+      "claim": "ADA Standards for Accessible Design (1991), 4.10.8 Door Delay for Car Calls: 'The minimum time for elevator doors to remain fully open in response to a car call shall be 3 seconds'",
+      "source": "https://www.access-board.gov/adaag-1991-2002.html",
+      "date": "1991-07-26"
+    },
+    {
+      "claim": "Under the ADA, lift doors must stay open long enough for people using crutches, canes or wheelchairs to board",
+      "source": "https://www.cbsnews.com/boston/news/door-close-elevator-button-dont-work-placebo",
+      "date": "2016-10-27"
+    },
+    {
+      "claim": "The New York Times (27 Feb 2004): 'more than 2,500 of the 3,250 walk buttons that still exist function essentially as mechanical placebos' in New York City",
+      "source": "https://reason.com/2004/02/27/buttons-down/",
+      "date": "2004-02-27"
+    },
+    {
+      "claim": "UK: 'close door' buttons are fully functional in most lifts (The Telegraph); a Lift and Escalator Industry Association spokesman said not all lifts have the button, but when present they work",
+      "source": "https://mentalfloss.com/article/547416/do-close-door-buttons-elevators-actually-do-anything",
+      "date": "2018-06-22"
+    },
+    {
+      "claim": "Counterpoint: many US close buttons do work once the ADA minimum hold has passed, and the button is required in fire service mode, which is tested at annual inspections (ASME A17.1)",
+      "source": "https://computer.rip/2023-03-13-the-door-close-button.html",
+      "date": "2023-03-13"
+    }
+  ],
+  "publish": {
+    "title": "That close door button does nothing? #shorts",
+    "caption": "In many US lifts the close door button can't beat a 3-second legal minimum, and some are switched off for everyone except firefighters. In the UK, most of them actually work.\n\nWould you rather know, or keep pressing? 👇\n\nComment LIFT and I'll send you the 1-page guide with every source.\n\nInside AI, episode 4.\n\n#elevator #lift #placebo #howitworks #didyouknow",
+    "pinned_comment": "Be honest: how many times do you press the close button before giving up? 😅",
+    "tags": [
+      "close door button",
+      "elevator button",
+      "lift button",
+      "placebo buttons",
+      "crosswalk button",
+      "how it works",
+      "explained",
+      "ada"
+    ],
+    "comment_keyword": "LIFT"
+  },
+  "cover": {
+    "line": 3,
+    "at": 0.85,
+    "lines": [
+      "That close",
+      "button gets",
+      "[ignored]"
+    ],
+    "kicker": "What the close door button <b>really</b> does",
+    "circle": {
+      "x": 540,
+      "y": 1040,
+      "rx": 440,
+      "ry": 200
+    },
+    "bgY": 0,
+    "bgScale": 1.0
+  }
+}

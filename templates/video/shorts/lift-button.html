@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/shorts/shorts.css">
+<script src="/node_modules/gsap/dist/gsap.min.js"></script>
+<script src="/video/shorts/captions.js"></script>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+/* Ep 4 "lift button": the reference look (README): one continuous world, navy + one amber emissive, camera never stops */
+:root{--navy:#001A2D;--amb:#FDB33E}
+#root{background:var(--navy)}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+#wbox{background:var(--amb)}
+#wbox i{border-color:var(--amb)}
+.hl{position:absolute;left:60px;right:60px;top:270px;text-align:center;z-index:60;opacity:0;pointer-events:none}
+.lab{font:500 28px 'Geist Mono';letter-spacing:.2em;color:var(--amb);text-transform:uppercase}
+.num{font:700 230px/1 'Inter Tight';letter-spacing:-.05em;color:#FBF7F0;font-variant-numeric:tabular-nums;text-shadow:0 0 70px rgba(253,179,62,.45)}
+.num small{font-size:120px;letter-spacing:-.03em}
+.term{font:700 120px/0.95 'Inter Tight';letter-spacing:-.04em;color:#FBF7F0;text-transform:uppercase;text-shadow:0 0 60px rgba(253,179,62,.35)}
+.q{font:400 104px/0.98 'Instrument Serif';color:#FBF7F0;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+.q em{font-style:italic;color:var(--amb)}
+#hud{position:absolute;left:64px;top:226px;z-index:70;font:500 24px 'Geist Mono';letter-spacing:.16em;color:#FBF7F0;opacity:0;display:flex;gap:14px;align-items:center}
+#hud b{display:inline-block;width:12px;height:12px;border-radius:50%;background:#6B7A90}
+#hud.on b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+#tag b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+.cbub{position:absolute;right:110px;top:1110px;padding:22px 30px;border-radius:30px;background:#fff;color:#111;font:600 36px 'Inter Tight';box-shadow:0 30px 60px -20px #000;z-index:60;opacity:0}
+</style></head>
+<body><div id="root">
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div class="hl" id="h1990"><div class="lab">Americans with Disabilities Act</div><div class="num" id="n1990">1990</div></div>
+<div class="hl" id="h3s"><div class="lab">Minimum door hold · ADA rules</div><div class="num" id="n3s">3.0<small>s</small></div></div>
+<div class="hl" id="hFire"><div class="lab">Still works for</div><div class="term">Fire<br>service</div></div>
+<div class="hl" id="h3250"><div class="lab">New York crossing buttons · 2004</div><div class="num" id="n3250">3,250</div></div>
+<div class="hl" id="h2500"><div class="lab">Did nothing · NYT 2004</div><div class="num" id="n2500">2,500</div></div>
+<div class="hl" id="hUK"><div class="lab">UK lift industry · 2018</div><div class="term">Most of them<br>work</div></div>
+<div class="hl" id="hQ"><div class="q">Know it, or keep <em>pressing?</em></div></div>
+<div class="cbub" id="cbub">💬 Know / Keep pressing</div>
+<div id="tag"><b></b>INSIDE AI · EP 4</div>
+<div id="handle">@BUILDWITH.VISH</div>
+<div id="hud"><b></b><span id="hudt">DOORS: OPEN</span></div>
+<div id="cap"><div id="capline"></div></div>
+<div id="vig"></div><div id="grain"></div>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { BokehPass } from "three/addons/postprocessing/BokehPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const W = 1080, H = 1920;
+const SFX = []; window.SFX = SFX;
+const sfx = (t, s) => SFX.push({t: Math.max(0, +t.toFixed(3)), s});
+const cl = x => Math.min(1, Math.max(0, x));
+const seg = (t, a, b) => cl((t - a) / Math.max(1e-4, b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b, k) => a + (b - a) * k;
+const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(7);
+const norm = w => w.toLowerCase().replace(/[^a-z0-9$.']/g, '').replace(/\.$/, '');
+let L, D;
+function wt(i, key, n = 0) { for (const w of L[i].words) if (norm(w.w).startsWith(key) && n-- === 0) return w.start; return L[i].start; }
+const S = i => L[i].start, E = i => L[i].end, N = i => (i + 1 < L.length ? L[i + 1].start : D);
+
+/* ---------- renderer: navy world, ACES, bloom + depth of field ---------- */
+const NAVY = 0x001A2D, AMBER = new THREE.Color(0xFDB33E), METAL = 0x6B7A90;
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true});
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(NAVY);
+scene.fog = new THREE.FogExp2(0x02182a, 0.01);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.3;
+const camera = new THREE.PerspectiveCamera(40, W / H, 0.01, 1200);
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bokeh = new BokehPass(scene, camera, {focus: 1, aperture: 0.004, maxblur: 0.008});
+composer.addPass(bokeh);
+const bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 1.0, 0.55, 0.78);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+const moon = new THREE.DirectionalLight(0x9fb6d8, 1.4); moon.position.set(-60, 120, 80); scene.add(moon);
+const hemi = new THREE.HemisphereLight(0x3a5878, 0x000a14, 0.55); scene.add(hemi);
+const carL = new THREE.PointLight(0xaec3e0, 2.2, 6, 2); carL.position.set(0, 2.2, 0); scene.add(carL);
+const shaftL = new THREE.PointLight(0x7f9bbf, 0, 14, 2); scene.add(shaftL);
+const btnL = new THREE.PointLight(0xFDB33E, 0, 0.9, 2); scene.add(btnL);
+const pulseL = new THREE.PointLight(0xFDB33E, 0, 1.4, 2); scene.add(pulseL);
+
+function dotTex() { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); }
+const DOT = dotTex();
+const metal = (c = METAL, r = 0.35) => new THREE.MeshStandardMaterial({color: c, metalness: 0.8, roughness: r});
+const glowMat = (c = AMBER, o = 1) => new THREE.MeshBasicMaterial({color: c.clone ? c.clone() : c, toneMapped: false, transparent: o < 1, opacity: o});
+const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(1, 1, 1), tmpP = new THREE.Vector3(), tmpC = new THREE.Color();
+const box = (w, h, d, mat, x, y, z, parent = scene) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); parent.add(m); return m; };
+
+/* ---------- the lift car (metres): x -1..1, y 0..2.4, z -0.8..0.8, doors at +z ---------- */
+const wallM = new THREE.MeshStandardMaterial({color: 0x56657a, metalness: 0.85, roughness: 0.32});
+const darkM = new THREE.MeshStandardMaterial({color: 0x0d1b2b, roughness: 0.8});
+const car = new THREE.Group(); scene.add(car);
+box(2, 0.06, 1.6, darkM, 0, -0.03, 0, car);                 // floor
+box(2, 0.06, 1.6, wallM, 0, 2.43, 0, car);                  // roof
+box(0.04, 2.4, 1.6, wallM, -1.02, 1.2, 0, car);             // left wall
+box(0.04, 2.4, 1.6, wallM, 1.02, 1.2, 0, car);              // right wall (panel side)
+box(2, 2.4, 0.04, wallM, 0, 1.2, -0.82, car);               // back wall
+box(0.55, 2.4, 0.04, wallM, -0.74, 1.2, 0.82, car);         // front returns
+box(0.55, 2.4, 0.04, wallM, 0.74, 1.2, 0.82, car);
+box(0.9, 0.3, 0.04, wallM, 0, 2.25, 0.82, car);             // transom
+const rail = box(1.96, 0.04, 0.04, metal(0x8592a6, 0.25), 0, 0.95, -0.77, car);
+const ceil = box(1.2, 0.01, 0.8, new THREE.MeshBasicMaterial({color: 0x9fb2cc, toneMapped: false}), 0, 2.395, 0, car);
+const doorM = new THREE.MeshStandardMaterial({color: 0x6a788c, metalness: 0.85, roughness: 0.28});
+const doorL = box(0.46, 2.1, 0.03, doorM, -0.225, 1.05, 0.86, car), doorR = box(0.46, 2.1, 0.03, doorM, 0.225, 1.05, 0.86, car);
+const landL = box(0.46, 2.1, 0.03, doorM, -0.225, 1.05, 1.04), landR = box(0.46, 2.1, 0.03, doorM, 0.225, 1.05, 1.04);
+function setDoors(o) { // o: 0 closed .. 1 open
+  const x = 0.225 + 0.46 * o; doorL.position.x = -x; doorR.position.x = x; landL.position.x = -x; landR.position.x = x;
+}
+
+/* the button panel on the right wall */
+const PX = 0.995;
+const panel = box(0.02, 0.86, 0.36, metal(0x7b889c, 0.22), PX, 1.2, 0.5, car);
+function labelTex(txt, size = 64) { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = `600 ${size}px Inter Tight, sans-serif`; x.fillText(txt, 64, 68); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; }
+function closeTex() { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = '#fff';
+  x.beginPath(); x.moveTo(22, 34); x.lineTo(58, 64); x.lineTo(22, 94); x.fill(); x.beginPath(); x.moveTo(106, 34); x.lineTo(70, 64); x.lineTo(106, 94); x.fill(); x.fillRect(61, 30, 6, 68);
+  const t = new THREE.CanvasTexture(c); return t; }
+function openTex() { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = '#fff';
+  x.beginPath(); x.moveTo(56, 34); x.lineTo(20, 64); x.lineTo(56, 94); x.fill(); x.beginPath(); x.moveTo(72, 34); x.lineTo(108, 64); x.lineTo(72, 94); x.fill(); x.fillRect(61, 30, 6, 68);
+  const t = new THREE.CanvasTexture(c); return t; }
+const BTN = [];
+function addButton(y, z, tex, r = 0.03) {
+  const g = new THREE.Group(); g.position.set(PX - 0.012, y, z); car.add(g);
+  const cap = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.012, 32), metal(0x9aa6b8, 0.2)); cap.rotation.z = Math.PI / 2; g.add(cap);
+  const lab = new THREE.Mesh(new THREE.PlaneGeometry(r * 1.5, r * 1.5), new THREE.MeshBasicMaterial({map: tex, transparent: true, toneMapped: false, color: 0x8d9bb0}));
+  lab.rotation.y = -Math.PI / 2; lab.position.x = -0.0065; g.add(lab);
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(r * 1.12, 0.0035, 8, 40), glowMat(new THREE.Color(0x2a3a50))); ring.rotation.y = Math.PI / 2; ring.position.x = -0.002; g.add(ring);
+  const b = {g, cap, lab, ring}; BTN.push(b); return b;
+}
+for (let r = 0; r < 4; r++) for (let c = 0; c < 2; c++) addButton(1.52 - r * 0.1, 0.42 + c * 0.16, labelTex(String(7 - r * 2 + c)));  // 7 8 / 5 6 / 3 4 / 1 2
+const OPEN = addButton(1.1, 0.42, openTex(), 0.032);
+const CLOSE = addButton(1.1, 0.58, closeTex(), 0.032);
+const CB = new THREE.Vector3(PX - 0.02, 1.1, 0.58);
+/* fire service key switch */
+const keyG = new THREE.Group(); keyG.position.set(PX - 0.012, 0.9, 0.5); car.add(keyG);
+{ const k = new THREE.Mesh(new THREE.CylinderGeometry(0.026, 0.026, 0.014, 32), metal(0x8a96a8, 0.25)); k.rotation.z = Math.PI / 2; keyG.add(k);
+  const slot = new THREE.Mesh(new THREE.BoxGeometry(0.004, 0.03, 0.006), new THREE.MeshBasicMaterial({color: 0x05101c})); slot.position.x = -0.0075; slot.name = 'slot'; keyG.add(slot);
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(0.031, 0.003, 8, 40), glowMat(new THREE.Color(0x2a3a50))); ring.rotation.y = Math.PI / 2; ring.name = 'ring'; keyG.add(ring);
+  const lab = new THREE.Mesh(new THREE.PlaneGeometry(0.11, 0.028), new THREE.MeshBasicMaterial({map: (() => { const c = document.createElement('canvas'); c.width = 256; c.height = 64; const x = c.getContext('2d'); x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = '600 34px Geist Mono, monospace'; x.fillText('FIRE SERVICE', 128, 34); return new THREE.CanvasTexture(c); })(), transparent: true, toneMapped: false, color: 0x8d9bb0}));
+  lab.rotation.y = -Math.PI / 2; lab.position.set(-0.004, -0.05, 0); lab.name = 'lab'; keyG.add(lab); }
+
+/* the wheelchair user (simple mannequin, grey metal: "off" world) */
+const chair = new THREE.Group(); scene.add(chair);
+{ const cm = metal(0x5d6a7e, 0.5), bodyM = new THREE.MeshStandardMaterial({color: 0x3a4a60, roughness: 0.6, metalness: 0.2});
+  [-1, 1].forEach(s => { const w = new THREE.Mesh(new THREE.TorusGeometry(0.29, 0.022, 10, 40), cm); w.rotation.y = Math.PI / 2; w.position.set(s * 0.29, 0.31, 0.05); chair.add(w);
+    const f = new THREE.Mesh(new THREE.TorusGeometry(0.06, 0.015, 8, 20), cm); f.rotation.y = Math.PI / 2; f.position.set(s * 0.2, 0.07, -0.34); chair.add(f); });
+  box(0.48, 0.05, 0.44, cm, 0, 0.5, -0.02, chair); box(0.48, 0.46, 0.04, cm, 0, 0.76, 0.2, chair);
+  const cap = (r, l, x, y, z, rx = 0) => { const m = new THREE.Mesh(new THREE.CapsuleGeometry(r, l, 6, 12), bodyM); m.position.set(x, y, z); m.rotation.x = rx; chair.add(m); };
+  cap(0.15, 0.36, 0, 0.88, 0.05); const head = new THREE.Mesh(new THREE.SphereGeometry(0.11, 24, 16), bodyM); head.position.set(0, 1.3, 0.03); chair.add(head);
+  [-1, 1].forEach(s => { cap(0.065, 0.3, s * 0.1, 0.58, -0.17, Math.PI / 2); cap(0.055, 0.32, s * 0.1, 0.34, -0.36); cap(0.045, 0.26, s * 0.22, 0.8, -0.12, 0.9); }); }
+chair.rotation.y = 0;
+
+/* ---------- the shaft (x -1.4..1.4, z -1.25..1.0, up to 41 m) + building + lobby ---------- */
+const TOP = 40, FL = 3.6;
+const shaftM = new THREE.MeshStandardMaterial({color: 0x24323f, roughness: 0.9, side: THREE.BackSide});
+const none = new THREE.MeshBasicMaterial({visible: false});
+{ const g = new THREE.BoxGeometry(2.8, TOP + 1.6, 2.25); const m = new THREE.Mesh(g, [shaftM, shaftM, none, shaftM, none, shaftM]); m.position.set(0, (TOP + 1.6) / 2 - 0.6, -0.125); scene.add(m); }
+const frontM = new THREE.MeshStandardMaterial({color: 0x2c3a4a, roughness: 0.8});
+box(3.1, 0.6, 0.1, frontM, 0, 2.6, 1.0); // above ground door
+box(1.0, 2.3, 0.1, frontM, -0.95, 1.15, 1.0); box(1.0, 2.3, 0.1, frontM, 0.95, 1.15, 1.0);
+box(3.0, 2.4, 0.1, frontM, -2.6, 1.2, 1.0); box(3.0, 2.4, 0.1, frontM, 2.6, 1.2, 1.0); box(8, 0.4, 0.1, frontM, 0, 3.1, 1.0);
+const LAND = [];
+for (let f = 1; f * FL < TOP - 1; f++) {
+  const y = f * FL;
+  box(2.8, FL, 0.1, frontM, 0, y + FL / 2 - 0.2, 1.0);
+  const d1 = box(0.9, 2.1, 0.04, doorM, 0, y + 1.05, 0.93); LAND.push(d1);
+  const sill = box(1.0, 0.03, 0.06, new THREE.MeshBasicMaterial({color: 0x3c5674, toneMapped: false}), 0, y + 0.01, 0.92);
+}
+box(2.8, 0.2, 0.1, frontM, 0, 3.5, 1.0);
+/* guide rails, ropes, counterweight, sheave */
+[-1, 1].forEach(s => box(0.06, TOP + 1, 0.1, metal(0x5d6a7e, 0.3), s * 1.33, TOP / 2, -0.1));
+const ROPE = []; [-0.08, 0, 0.08].forEach(x => { const r = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 1, 6), metal(0x9aa6b8, 0.3)); r.position.x = x; scene.add(r); ROPE.push(r); });
+const cwt = box(0.9, 2.2, 0.2, metal(0x3d4b60, 0.5), -0.3, 22, -1.12);
+const sheave = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.08, 12, 40), metal(0x7b889c, 0.3)); sheave.position.set(-0.1, TOP + 0.3, -0.55); scene.add(sheave);
+/* lobby (ground floor, in front of the doors) */
+{ const lm = new THREE.MeshStandardMaterial({color: 0x1a2a3d, roughness: 0.8, side: THREE.BackSide});
+  const lob = new THREE.Mesh(new THREE.BoxGeometry(8, 3.3, 4.2), [lm, lm, lm, lm, lm, none]); lob.position.set(0, 1.65, 3.1); scene.add(lob);
+  const lf = new THREE.Mesh(new THREE.PlaneGeometry(8, 4.2), new THREE.MeshStandardMaterial({color: 0x0f1f30, roughness: 0.5, metalness: 0.3})); lf.rotation.x = -Math.PI / 2; lf.position.set(0, 0.005, 3.1); scene.add(lf);
+  [-2, 2].forEach(x => { const p = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 0.04), new THREE.MeshBasicMaterial({color: 0x6f86a6, toneMapped: false})); p.rotation.x = Math.PI / 2; p.position.set(x, 3.24, 3); scene.add(p); }); }
+const lobbyL = new THREE.PointLight(0x9fb6d8, 1.1, 7, 2); lobbyL.position.set(0, 2.8, 3); scene.add(lobbyL);
+/* the building around the shaft: 10 x 10 m, 40 m tall, roof with the shaft hole */
+const bldM = new THREE.MeshStandardMaterial({color: 0x1b2a3c, roughness: 0.75, metalness: 0.3});
+{ [[0, 5.05, 0], [0, -5.05, Math.PI], [5.05, 0, Math.PI / 2], [-5.05, 0, -Math.PI / 2]].forEach(([x, z, ry]) => { const p = new THREE.Mesh(new THREE.PlaneGeometry(10.1, TOP), bldM); p.position.set(x, TOP / 2, z); p.rotation.y = ry; scene.add(p); });
+  box(10, 0.3, 3.6, bldM, 0, TOP, 3.3); box(10, 0.3, 3.7, bldM, 0, TOP, -3.2); box(3.6, 0.3, 2.3, bldM, -3.2, TOP, -0.12); box(3.6, 0.3, 2.3, bldM, 3.2, TOP, -0.12); }
+
+/* ---------- the wire: button -> behind the wall -> controller ---------- */
+const wireCurve = new THREE.CatmullRomCurve3([
+  new THREE.Vector3(1.03, 1.1, 0.58), new THREE.Vector3(1.1, 1.12, 0.5), new THREE.Vector3(1.14, 1.6, 0.25), new THREE.Vector3(1.14, 2.3, -0.2),
+  new THREE.Vector3(0.9, 2.62, -0.55), new THREE.Vector3(0.45, 2.75, -0.95), new THREE.Vector3(0.3, 2.86, -1.1)]);
+const TSEG = 300, RSEG = 8;
+scene.add(new THREE.Mesh(new THREE.TubeGeometry(wireCurve, TSEG, 0.009, RSEG), metal(0x3d4b60, 0.4)));
+const trail = new THREE.Mesh(new THREE.TubeGeometry(wireCurve, TSEG, 0.012, RSEG), glowMat(AMBER, 0.9)); trail.material.depthWrite = false; scene.add(trail);
+const PULSE = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute([0, -999, 0], 3)),
+  new THREE.PointsMaterial({size: 0.09, map: DOT, color: AMBER, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false}));
+scene.add(PULSE);
+/* the controller cabinet on the back of the shaft, with a screen */
+const CTRL = new THREE.Vector3(0.3, 3.3, -1.12);
+box(0.8, 0.9, 0.16, metal(0x4a586c, 0.35), CTRL.x, CTRL.y, CTRL.z);
+const scrC = document.createElement('canvas'); scrC.width = 512; scrC.height = 560;
+const scrT = new THREE.CanvasTexture(scrC); scrT.colorSpace = THREE.SRGBColorSpace; scrT.anisotropy = 4;
+const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.64, 0.7), new THREE.MeshBasicMaterial({map: scrT, toneMapped: false, color: 0xbdbdbd}));
+scr.position.set(CTRL.x, CTRL.y, CTRL.z + 0.082); scene.add(scr);
+const ctrlLeds = new THREE.InstancedMesh(new THREE.BoxGeometry(0.03, 0.012, 0.005), new THREE.MeshBasicMaterial({color: 0xffffff, toneMapped: false}), 12);
+for (let i = 0; i < 12; i++) { ctrlLeds.setMatrixAt(i, tmpM.compose(tmpP.set(CTRL.x - 0.33 + i * 0.06, CTRL.y - 0.42, CTRL.z + 0.082), tmpQ.identity(), tmpS.set(1, 1, 1))); ctrlLeds.setColorAt(i, tmpC.set(0x1d3149)); }
+scene.add(ctrlLeds);
+function drawCtrl(st, t) {
+  const x = scrC.getContext('2d'), w = 512, h = 560;
+  x.fillStyle = '#04111e'; x.fillRect(0, 0, w, h);
+  x.textAlign = 'center'; x.fillStyle = '#6f86a6'; x.font = '500 30px Geist Mono, monospace'; x.fillText('DOOR CONTROLLER', w / 2, 56);
+  x.fillRect(40, 78, w - 80, 2);
+  if (st.mode === 'idle' || st.mode === 'req') {
+    x.fillStyle = '#9fb6d8'; x.font = '500 34px Geist Mono, monospace'; x.fillText('DOORS: OPEN', w / 2, 170); x.fillText('HOLD: ACTIVE', w / 2, 230);
+    if (st.mode === 'req') { x.fillStyle = '#FDB33E'; x.font = '700 44px Geist Mono, monospace'; x.fillText('▶|◀ CLOSE?', w / 2, 360); }
+  } else if (st.mode === 'ign') {
+    x.fillStyle = '#FDB33E'; x.font = '500 30px Geist Mono, monospace'; x.fillText('CLOSE REQUEST', w / 2, 170);
+    x.fillStyle = '#FBF7F0'; x.font = '700 92px Inter Tight, sans-serif'; x.fillText('IGNORED', w / 2, 330);
+    x.strokeStyle = '#FDB33E'; x.lineWidth = 6; x.beginPath(); x.moveTo(70, 300); x.lineTo(442, 300); x.stroke();
+    x.fillStyle = '#6f86a6'; x.font = '500 26px Geist Mono, monospace'; x.fillText('HOLD TIMER RUNNING', w / 2, 430);
+  } else if (st.mode === 'hold') {
+    const k = st.k; // 1 = full, 0 = done
+    x.lineWidth = 22; x.strokeStyle = '#1d3149'; x.beginPath(); x.arc(w / 2, 300, 150, 0, Math.PI * 2); x.stroke();
+    x.strokeStyle = '#FDB33E'; x.beginPath(); x.arc(w / 2, 300, 150, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * k); x.stroke();
+    x.fillStyle = '#FBF7F0'; x.font = '700 110px Inter Tight, sans-serif'; x.fillText((3 * k).toFixed(1), w / 2, 330);
+    x.fillStyle = '#9fb6d8'; x.font = '500 26px Geist Mono, monospace'; x.fillText('MIN HOLD · ADA', w / 2, 510);
+  } else if (st.mode === 'fire') {
+    x.fillStyle = st.on ? '#FDB33E' : '#6f86a6'; x.font = '700 50px Geist Mono, monospace'; x.fillText('FIRE SERVICE', w / 2, 220);
+    x.fillStyle = '#FBF7F0'; x.font = '500 34px Geist Mono, monospace'; x.fillText(st.on ? 'CLOSE: ENABLED' : 'CLOSE: OFF', w / 2, 320);
+  } else if (st.mode === 'work') {
+    x.fillStyle = '#FDB33E'; x.font = '700 50px Geist Mono, monospace'; x.fillText('CLOSE: OK', w / 2, 260);
+    x.fillStyle = '#9fb6d8'; x.font = '500 34px Geist Mono, monospace'; x.fillText('DOORS: CLOSING', w / 2, 340);
+  }
+  scrT.needsUpdate = true;
+}
+
+/* ---------- the city of crossing buttons (New York, 2004: 3,250) ---------- */
+const ST = 14, NB = 29;  // street pitch, blocks per side; blocks centred on multiples of 14, crossings at 7 + 14k
+const cityGround = new THREE.Mesh(new THREE.PlaneGeometry(1400, 1400), new THREE.MeshStandardMaterial({color: 0x021626, roughness: 0.95})); cityGround.rotation.x = -Math.PI / 2; cityGround.position.y = -0.02; scene.add(cityGround);
+const grid = new THREE.GridHelper(NB * ST, NB, 0x0e2c47, 0x0e2c47); grid.position.set(7, 0.01, 7); grid.material.transparent = true; grid.material.opacity = 0.6; scene.add(grid);
+const BL = [];
+for (let i = 0; i < NB; i++) for (let j = 0; j < NB; j++) { const bx = (i - (NB - 1) / 2) * ST, bz = (j - (NB - 1) / 2) * ST; if (Math.abs(bx) < 1 && Math.abs(bz) < 1) continue; const d = Math.hypot(bx, bz); BL.push({x: bx, z: bz, h: 8 + rnd() * 26 + 40 * Math.exp(-d / 90) * rnd()}); }
+const blds = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), bldM, BL.length);
+BL.forEach((b, k) => blds.setMatrixAt(k, tmpM.compose(tmpP.set(b.x, b.h / 2, b.z), tmpQ.identity(), tmpS.set(9.4, b.h, 9.4))));
+scene.add(blds);
+{ const a = []; BL.concat([{x: 0, z: 0, h: TOP}]).forEach(b => { for (let k = 0; k < 18; k++) { const side = Math.floor(rnd() * 4), u = (rnd() - .5) * 8.6, y = 2 + rnd() * (b.h - 3), o = b.h === TOP ? 5.12 : 4.75;
+    if (side === 0) a.push(b.x + u, y, b.z + o); else if (side === 1) a.push(b.x + o, y, b.z + u); else if (side === 2) a.push(b.x + u, y, b.z - o); else a.push(b.x - o, y, b.z + u); } });
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(a, 3));
+  scene.add(new THREE.Points(g, new THREE.PointsMaterial({size: 0.7, map: DOT, color: 0x6f86a6, transparent: true, opacity: 0.55, depthWrite: false, blending: THREE.AdditiveBlending}))); }
+const XB = [];
+for (let i = 0; i <= NB; i++) for (let j = 0; j <= NB; j++) { const cx = (i - NB / 2) * ST, cz = (j - NB / 2) * ST; for (const [ox, oz] of [[-2.4, -2.4], [2.4, -2.4], [-2.4, 2.4], [2.4, 2.4]]) XB.push({x: cx + ox, z: cz + oz, d: Math.hypot(cx, cz)}); }
+XB.sort((a, b) => a.d - b.d); XB.length = 3250;
+const XN = XB.length;
+const posts = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.09, 0.09, 1.3, 6), metal(0x3d4b60, 0.45), XN);
+XB.forEach((b, k) => { posts.setMatrixAt(k, tmpM.compose(tmpP.set(b.x, 0.65, b.z), tmpQ.identity(), tmpS.set(1, 1, 1))); b.dead = 0; b.r = rnd(); });
+scene.add(posts);
+// 2,500 of them are placebos: pick them at random
+{ const idx = XB.map((_, k) => k); for (let k = idx.length - 1; k > 0; k--) { const j = Math.floor(rnd() * (k + 1)); [idx[k], idx[j]] = [idx[j], idx[k]]; } idx.slice(0, 2500).forEach((k, n) => { XB[k].dead = 1; XB[k].ord = n / 2500; }); }
+const xbG = new THREE.BufferGeometry(), xbP = new Float32Array(XN * 3), xbC = new Float32Array(XN * 3);
+XB.forEach((b, k) => xbP.set([b.x, 1.4, b.z], k * 3));
+xbG.setAttribute('position', new THREE.BufferAttribute(xbP, 3)); xbG.setAttribute('color', new THREE.BufferAttribute(xbC, 3));
+scene.add(new THREE.Points(xbG, new THREE.PointsMaterial({size: 5, map: DOT, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false})));
+const DEAD = new THREE.Color(0x24384f);
+
+/* ---------- camera: keyframes, eased, with a drift so it never stops ---------- */
+let CK = [];
+const tgt = new THREE.Vector3();
+function camAt(t) {
+  if (window.COVER_CAM) { const c = window.COVER_CAM; camera.position.set(...c.p); camera.lookAt(...c.l); camera.fov = c.f; camera.updateProjectionMatrix(); return Math.hypot(c.p[0] - c.l[0], c.p[1] - c.l[1], c.p[2] - c.l[2]); }
+  let i = 0; while (i < CK.length - 1 && CK[i + 1].t <= t) i++;
+  const a = CK[i], b = CK[Math.min(i + 1, CK.length - 1)];
+  const k = b === a ? 0 : (b.e || eio)(seg(t, a.t, b.t));
+  const p = a.p.map((v, j) => lerp(v, b.p[j], k)), l = a.l.map((v, j) => lerp(v, b.l[j], k));
+  const dist = Math.hypot(p[0] - l[0], p[1] - l[1], p[2] - l[2]), dr = Math.min(0.03, dist * 0.008);
+  camera.position.set(p[0] + Math.sin(t * 0.9) * dr, p[1] + Math.cos(t * 0.7) * dr, p[2] + Math.sin(t * 0.55 + 1) * dr);
+  tgt.set(...l); camera.lookAt(tgt);
+  camera.fov = lerp(a.f || 40, b.f || 40, k); camera.updateProjectionMatrix();
+  return dist;
+}
+const hl = (id, t, a, b, fade = 0.22) => { const el = document.getElementById(id); const o = Math.min(seg(t, a, a + fade), 1 - seg(t, b - fade, b)); el.style.opacity = o; el.style.transform = `translateY(${(1 - eo(seg(t, a, a + 0.4))) * 40}px) scale(${lerp(0.94, 1, eo(seg(t, a, a + 0.4)))})`; };
+
+let PRESS = [], T = {};
+window.setup = async function (spec) {
+  L = spec.lines; D = spec.duration;
+  Captions.build(spec);
+  const c0 = {p: [0.42, 1.2, 0.3], l: [CB.x, CB.y + 0.08, CB.z - 0.06], f: 40}, c1 = {p: [0.55, 1.17, 0.4], l: [CB.x, CB.y + 0.05, CB.z - 0.04], f: 38};
+  T = {
+    pulse0: S(3) + 0.15, pulse1: wt(3, 'controller') + 0.15, ign: wt(3, 'ignores') - 0.05,
+    hold0: wt(5, 'three') - 0.1, hold1: E(5) - 0.35, roll0: S(5) + 0.2, roll1: E(5) - 0.6,
+    off: S(6) + 0.3, fire: wt(6, 'firefighters') - 0.1,
+    lit0: S(7) + 2.2, lit1: wt(7, '3250') + 0.5, dead0: wt(8, '2500') - 0.2, dead1: wt(8, 'nothing') + 0.3,
+    uk: wt(9, 'actually') - 0.1, reopen: S(10) - 0.05,
+  };
+  PRESS = [0.3, wt(0, 'button'), wt(1, 'press'), wt(1, 'again'), wt(1, 'again', 1), wt(1, 'faster'), S(3) + 0.05, T.uk, wt(10, 'keep'), wt(10, 'pressing')];
+  CK = [
+    {t: 0, ...c0},
+    {t: E(0), ...c1},
+    {t: S(1) + 0.9, p: [-0.55, 1.55, -0.55], l: [0.6, 1.0, 0.75], f: 46},
+    {t: N(1) - 0.2, p: [-0.35, 1.45, -0.6], l: [0.3, 1.05, 0.9], f: 50},
+    {t: S(2) + 0.8, p: [0.78, 1.12, 0.52], l: [CB.x + 0.2, CB.y, CB.z], f: 40},
+    {t: S(2) + 1.6, p: [1.2, 0.95, 0.85], l: [1.12, 1.35, 0.3], f: 48},
+    {t: N(2), p: [1.22, 0.9, 0.95], l: [1.12, 1.5, 0.15], f: 50},
+    {t: lerp(T.pulse0, T.pulse1, 0.5), p: [1.24, 1.6, 0.85], l: [1.1, 2.3, -0.3], f: 52},
+    {t: T.pulse1, p: [0.95, 3.4, 0.55], l: [CTRL.x, CTRL.y + 0.1, CTRL.z], f: 50},
+    {t: N(3), p: [0.75, 3.75, 0.25], l: [CTRL.x, CTRL.y + 0.12, CTRL.z], f: 50},
+    {t: N(4) - 0.5, p: [1.05, 3.95, 0.75], l: [CTRL.x, CTRL.y + 0.15, CTRL.z], f: 52},
+    {t: S(5) + 0.4, p: [0.6, 1.9, -0.72], l: [0, 0.6, 2.5], f: 54},
+    {t: N(5) - 0.1, p: [0.45, 2.0, -0.7], l: [0.05, 0.6, 1.8], f: 54},
+    {t: S(6) + 0.9, p: [0.25, 1.25, 0.05], l: [CB.x, 1.05, 0.52], f: 42},
+    {t: T.fire, p: [0.45, 1.05, 0.3], l: [CB.x, 1.0, 0.52], f: 42},
+    {t: N(6), p: [0.52, 1.02, 0.34], l: [CB.x, 0.98, 0.52], f: 40},
+    {t: S(7) + 0.5, p: [0.55, 3.4, 0.45], l: [0, 20, -0.1], f: 62, e: eo},
+    {t: S(7) + 1.9, p: [0.2, 34, 0.3], l: [0, 70, -0.1], f: 62, e: x => x * x},
+    {t: S(7) + 2.7, p: [6, 90, 30], l: [0, 0, -40], f: 54, e: eo},
+    {t: N(7), p: [30, 120, 110], l: [0, 0, -70], f: 52},
+    {t: N(8) - 0.2, p: [60, 95, 130], l: [0, 0, -70], f: 52},
+    {t: S(9) + 0.7, p: [0.2, 50, 0.25], l: [0, 0, -0.1], f: 60, e: eio},
+    {t: S(9) + 1.7, p: [0.3, 4.5, 0.2], l: [0.6, 0, 0.4], f: 60, e: x => x * x},
+    {t: T.uk - 0.3, p: [-0.4, 1.5, -0.45], l: [0.5, 1.05, 0.8], f: 46, e: eo},
+    {t: N(9), p: [-0.3, 1.45, -0.55], l: [0.4, 1.05, 0.85], f: 48},
+    {t: S(10) + 0.8, ...c0},
+    {t: D, ...c0},
+  ];
+  // sound map
+  PRESS.forEach(p => sfx(p, 'click'));
+  sfx(S(2) + 0.6, 'whoosh'); sfx(T.pulse0, 'zip'); sfx(T.pulse1, 'ding'); sfx(T.ign, 'scratch');
+  sfx(S(4), 'whoosh'); sfx(wt(4, '1990'), 'thump');
+  sfx(S(5), 'whoosh'); for (let k = 0; k < 3; k++) sfx(lerp(T.hold0, T.hold1, k / 3), 'tick'); sfx(T.hold1 + 0.1, 'thump');
+  sfx(T.off, 'pop'); sfx(T.fire, 'ding');
+  sfx(S(7) + 0.4, 'rise'); sfx(S(7) + 2.0, 'whoosh'); sfx(wt(7, '3250'), 'thump');
+  sfx(T.dead0, 'scratch'); sfx(wt(8, 'nothing'), 'thump');
+  sfx(S(9) + 0.6, 'whoosh'); sfx(T.uk + 0.25, 'thump'); sfx(wt(9, 'work'), 'ding');
+  sfx(S(10) + 0.2, 'whoosh'); sfx(D - 0.25, 'thump');
+  SFX.sort((a, b) => a.t - b.t);
+  window.READY = true;
+};
+
+function doorOpen(t) {
+  let o = 1;
+  o *= 1 - eio(seg(t, T.hold1, T.hold1 + 0.7));        // 3 s hold runs out: doors close
+  o += eio(seg(t, S(9) + 1.0, S(9) + 1.5)) * (1 - seg(t, T.uk + 0.05, T.uk + 0.45)); // UK: open, press, shut at once
+  if (t >= T.reopen) o = eio(seg(t, T.reopen, T.reopen + 0.6));
+  return cl(o);
+}
+
+const hudEl = document.getElementById('hud'), hudT = document.getElementById('hudt');
+window.frame = function (t) {
+  const dist = camAt(t);
+  const inCity = camera.position.y > TOP + 2;
+  const doors = doorOpen(t); setDoors(doors);
+
+  /* the close button: glows on every press, dies when "switched off", back for fire service */
+  let press = 0; for (const p of PRESS) if (t >= p) press = Math.max(press, Math.exp(-(t - p) * 4.5));
+  const dead = t >= T.off && t < T.fire ? seg(t, T.off, T.off + 0.4) : 0;
+  const glow = (t >= T.off && t < T.fire ? 0 : 0.45) + 1.1 * press;
+  CLOSE.ring.material.color.copy(AMBER).multiplyScalar(glow);
+  CLOSE.lab.material.color.copy(AMBER).multiplyScalar(0.4 + 1.2 * press).lerp(new THREE.Color(0x4b5a6e), dead);
+  CLOSE.cap.position.x = 0.004 * press;
+  btnL.position.copy(CB).add(new THREE.Vector3(-0.06, 0, 0)); btnL.intensity = 0.03 * glow;
+  const fire = seg(t, T.fire, T.fire + 0.3) * (1 - seg(t, N(6), N(6) + 0.3));
+  keyG.getObjectByName('ring').material.color.set(0x2a3a50).lerp(AMBER, fire).multiplyScalar(1 + 0.6 * fire);
+  keyG.getObjectByName('lab').material.color.set(0x8d9bb0).lerp(AMBER, fire);
+  keyG.getObjectByName('slot').rotation.x = fire * Math.PI / 2;
+
+  /* the pulse along the wire, and the trail it leaves */
+  const u = eo(seg(t, T.pulse0, T.pulse1));
+  const pulseOn = t >= T.pulse0 && t < T.pulse1 + 0.05;
+  const trailA = t >= T.pulse0 ? (t < T.ign ? 1 : 1 - seg(t, T.ign, T.ign + 0.8)) : 0;
+  trail.visible = trailA > 0.01; trail.material.opacity = 0.9 * trailA;
+  trail.geometry.setDrawRange(0, Math.floor(u * TSEG) * RSEG * 6);
+  const pp = wireCurve.getPointAt(Math.min(u, 0.999));
+  PULSE.geometry.attributes.position.setXYZ(0, pp.x, pulseOn ? pp.y : -999, pp.z); PULSE.geometry.attributes.position.needsUpdate = true;
+  pulseL.position.copy(pp); pulseL.intensity = pulseOn ? 1.2 : 0;
+  // controller screen + LEDs
+  let st = {mode: 'idle'};
+  if (t >= T.pulse1 - 0.05) st = {mode: 'req'};
+  if (t >= T.ign) st = {mode: 'ign'};
+  if (t >= S(4) + 0.3) st = {mode: 'hold', k: 1 - seg(t, T.hold0, T.hold1)};
+  if (t >= T.off) st = {mode: 'fire', on: t >= T.fire};
+  if (t >= S(9)) st = {mode: t >= T.uk ? 'work' : 'idle'};
+  drawCtrl(st, t);
+  const hit = t >= T.pulse1 ? Math.exp(-(t - T.pulse1) * 3) : 0;
+  for (let i = 0; i < 12; i++) ctrlLeds.setColorAt(i, tmpC.set(0x1d3149).lerp(AMBER, cl(hit * 2 - i * 0.08)).multiplyScalar(1 + hit * 2));
+  ctrlLeds.instanceColor.needsUpdate = true;
+
+  /* the wheelchair rolls in while the doors wait */
+  const rk = eio(seg(t, T.roll0, T.roll1));
+  chair.visible = t >= T.roll0 - 0.5 && t < N(6);
+  chair.position.set(-0.2, 0, lerp(3.4, 0.4, rk));
+  chair.children.forEach(c => { if (c.geometry && c.geometry.type === 'TorusGeometry') c.rotation.x = -(lerp(3.4, 0.4, rk)) / 0.29; });
+
+  /* ropes from the car roof to the sheave */
+  ROPE.forEach(r => { const y0 = 2.46, y1 = TOP + 0.2; r.scale.y = y1 - y0; r.position.set(r.position.x, (y0 + y1) / 2, -0.05); });
+  shaftL.position.set(0.3, camera.position.y + 1.5, 0.2); shaftL.intensity = camera.position.y > 3 && !inCity ? 2.5 : 0;
+
+  /* the city: buttons light up in a wave, then 2,500 go dark */
+  for (let k = 0; k < XN; k++) {
+    const b = XB[k];
+    const on = seg(t, lerp(T.lit0, T.lit1, b.d / 230), lerp(T.lit0, T.lit1, b.d / 230) + 0.25);
+    const off = b.dead ? seg(t, lerp(T.dead0, T.dead1, b.ord), lerp(T.dead0, T.dead1, b.ord) + 0.15) : 0;
+    const v = on * (1.4 + 0.25 * Math.sin(t * 5 + b.r * 30));
+    tmpC.copy(DEAD).multiplyScalar(on).lerp(AMBER, on * (1 - off)).multiplyScalar(Math.max(1, v * (1 - off)));
+    if (off > 0) tmpC.copy(AMBER).multiplyScalar(v).lerp(DEAD, off);
+    xbC[k * 3] = tmpC.r; xbC[k * 3 + 1] = tmpC.g; xbC[k * 3 + 2] = tmpC.b;
+  }
+  xbG.attributes.color.needsUpdate = true;
+  scene.fog.density = inCity ? 0.0045 : 0.01;
+  carL.intensity = inCity ? 0 : 2.2;
+
+  /* depth of field: focus on what the camera looks at */
+  bokeh.uniforms.focus.value = dist; bokeh.uniforms.aperture.value = dist < 1 ? 0.02 : dist < 4 ? 0.006 : dist < 30 ? 0.0012 : 0.0002;
+  bokeh.uniforms.maxblur.value = 0.007;
+
+  /* headline layer */
+  
+  hl('h1990', t, S(4) + 0.1, N(4) - 0.05);
+  document.getElementById('n1990').textContent = Math.round(lerp(1950, 1990, eo(seg(t, S(4) + 0.1, wt(4, '1990') + 0.1))));
+  hl('h3s', t, wt(5, 'three') - 0.2, N(5));
+  document.getElementById('n3s').innerHTML = (3 * (1 - seg(t, T.hold0, T.hold1))).toFixed(1) + '<small>s</small>';
+  hl('hFire', t, T.fire - 0.1, N(6));
+  hl('h3250', t, wt(7, '2004') - 0.1, N(7) - 0.05);
+  document.getElementById('n3250').textContent = Math.round(lerp(0, 3250, eo(seg(t, wt(7, '2004'), wt(7, '3250') + 0.2)))).toLocaleString('en-GB');
+  hl('h2500', t, S(8), N(8) + 0.1);
+  document.getElementById('n2500').textContent = Math.round(lerp(0, 2500, eo(seg(t, S(8), wt(8, 'nothing') + 0.1)))).toLocaleString('en-GB');
+  hl('hUK', t, wt(9, 'most') - 0.1, N(9));
+  hl('hQ', t, wt(10, 'would') - 0.1, D + 1);
+  const cb = document.getElementById('cbub'); cb.style.opacity = cl((t - wt(10, 'pressing') - 0.1) / 0.3) * (1 - seg(t, D - 0.35, D - 0.1));
+  hudEl.style.opacity = (t < S(4) || (t >= S(9) && t < S(10))) ? 0.85 : 0;
+  hudEl.classList.toggle('on', press > 0.3);
+  hudT.textContent = doors > 0.98 ? 'DOORS: OPEN' : doors < 0.02 ? 'DOORS: CLOSED' : 'DOORS: MOVING';
+
+  composer.render();
+  Captions.draw(t);
+};
+document.fonts.ready.then(() => { drawCtrl({mode: 'idle'}, 0); window.STAGE_LOADED = true; });
+</script>
+</body></html>
