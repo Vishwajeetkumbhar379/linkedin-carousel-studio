@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/shorts/shorts.css">
+<script src="/node_modules/gsap/dist/gsap.min.js"></script>
+<script src="/video/shorts/captions.js"></script>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+/* Ep 5 "plane windows": the reference look (README): one continuous world, navy + one amber emissive, camera never stops */
+:root{--navy:#001A2D;--amb:#FDB33E}
+#root{background:var(--navy)}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+#wbox{background:var(--amb)}
+#wbox i{border-color:var(--amb)}
+.hl{position:absolute;left:60px;right:60px;top:270px;text-align:center;z-index:60;opacity:0;pointer-events:none}
+.lab{font:500 28px 'Geist Mono';letter-spacing:.2em;color:var(--amb);text-transform:uppercase}
+.num{font:700 230px/1 'Inter Tight';letter-spacing:-.05em;color:#FBF7F0;font-variant-numeric:tabular-nums;text-shadow:0 0 70px rgba(253,179,62,.45)}
+.num small{font-size:64px;letter-spacing:-.02em;color:#c9d3e0;margin-left:14px}
+.term{font:700 120px/0.95 'Inter Tight';letter-spacing:-.04em;color:#FBF7F0;text-transform:uppercase;text-shadow:0 0 60px rgba(253,179,62,.35)}
+.q{font:400 104px/0.98 'Instrument Serif';color:#FBF7F0;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+.q em{font-style:italic;color:var(--amb)}
+.bar{margin:26px auto 0;width:880px;height:22px;border-radius:11px;background:rgba(107,122,144,.35);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;border-radius:11px;background:var(--amb);box-shadow:0 0 24px var(--amb)}
+#tag b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+.cbub{position:absolute;right:110px;top:1110px;padding:22px 30px;border-radius:30px;background:#fff;color:#111;font:600 36px 'Inter Tight';box-shadow:0 30px 60px -20px #000;z-index:60;opacity:0}
+#rew{position:absolute;left:64px;top:226px;z-index:70;font:500 26px 'Geist Mono';letter-spacing:.16em;color:#FBF7F0;opacity:0}
+#gl.rw{filter:contrast(1.2) saturate(.6) brightness(1.1)}
+</style></head>
+<body><div id="root">
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div class="hl" id="h1952"><div class="lab">World's first jet airliner</div><div class="num" id="n1952">1952</div></div>
+<div class="hl" id="h1954"><div class="lab">Two Comets broke up in mid-air</div><div class="num" id="n1954">1954</div></div>
+<div class="hl" id="hBal"><div class="lab">Every single flight</div><div class="term">Inflate.<br>Deflate.</div></div>
+<div class="hl" id="hSharp"><div class="lab">Where stress piles up</div><div class="term">Sharp<br>corners</div></div>
+<div class="hl" id="hTank"><div class="lab">Water-tank test flights</div><div class="num" id="nTank">0</div></div>
+<div class="hl" id="hCyc"><div class="lab" id="cycLab">Test fuselage</div><div class="num" style="font-size:190px"><span id="nCyc">16,000</span><small>cycles</small></div><div class="bar"><i id="cycBar"></i></div></div>
+<div class="hl" id="hRoof"><div class="lab">Elba wreckage · first fracture</div><div class="term">A window<br>in the roof</div></div>
+<div class="hl" id="hQ"><div class="q">Would you have <em>boarded?</em></div></div>
+<div class="cbub" id="cbub">💬 Yes / No way</div>
+<div id="tag"><b></b>INSIDE AI · EP 5</div>
+<div id="handle">@BUILDWITH.VISH</div>
+<div id="rew">◀◀ REWIND</div>
+<div id="cap"><div id="capline"></div></div>
+<div id="vig"></div><div id="grain"></div>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { BokehPass } from "three/addons/postprocessing/BokehPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const W = 1080, H = 1920;
+const SFX = []; window.SFX = SFX;
+const sfx = (t, s) => SFX.push({t: Math.max(0, +t.toFixed(3)), s});
+const cl = x => Math.min(1, Math.max(0, x));
+const seg = (t, a, b) => cl((t - a) / Math.max(1e-4, b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b, k) => a + (b - a) * k;
+const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(5);
+const norm = w => w.toLowerCase().replace(/[^a-z0-9$.']/g, '').replace(/\.$/, '');
+let L, D;
+function wt(i, key) { for (const w of L[i].words) if (norm(w.w).startsWith(key)) return w.start; return L[i].start; }
+const S = i => L[i].start, E = i => L[i].end, N = i => (i + 1 < L.length ? L[i + 1].start : D);
+
+/* ---------- renderer: navy world, ACES, bloom + depth of field ---------- */
+const NAVY = 0x001A2D, AMBER = new THREE.Color(0xFDB33E), METAL = 0x6B7A90;
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true});
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(NAVY);
+scene.fog = new THREE.FogExp2(0x02182a, 0.006);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.3;
+const camera = new THREE.PerspectiveCamera(40, W / H, 0.01, 900);
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bokeh = new BokehPass(scene, camera, {focus: 10, aperture: 0.0004, maxblur: 0.008});
+composer.addPass(bokeh);
+const bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.9, 0.5, 0.86);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+const moon = new THREE.DirectionalLight(0x9fb6d8, 1.7); moon.position.set(-30, 60, 40); scene.add(moon);
+const hemi = new THREE.HemisphereLight(0x3a5878, 0x000a14, 0.6); scene.add(hemi);
+const cabinL = [-6, -1, 4, 8].map(x => { const p = new THREE.PointLight(0xaec3e0, 1.2, 6, 2); p.position.set(x, 1.0, 0); scene.add(p); return p; });
+
+function dotTex() { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); }
+const DOT = dotTex();
+const metal = (c = METAL, r = 0.35) => new THREE.MeshStandardMaterial({color: c, metalness: 0.8, roughness: r});
+const glowMat = (c = AMBER, o = 1) => new THREE.MeshBasicMaterial({color: c.clone ? c.clone() : c, toneMapped: false, transparent: o < 1, opacity: o});
+const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(1, 1, 1), tmpP = new THREE.Vector3(), tmpC = new THREE.Color(), tmpV = new THREE.Vector3();
+
+/* ---------- skin coordinates: (x0, phi0) frame, u along the fuselage, v around it ---------- */
+const HR = 1.5;
+const frameAt = (x0, y0, sd = 1) => { const a = Math.asin(y0 / HR); return {x0, phi: sd > 0 ? a : Math.PI - a}; };
+function skin(f, u, v, off, out = new THREE.Vector3()) { const p = f.phi + v / HR, r = HR + off; return out.set(f.x0 + u, r * Math.sin(p), r * Math.cos(p)); }
+function skinBasis(f, off) { const p = f.phi; const pos = skin(f, 0, 0, off); const X = new THREE.Vector3(1, 0, 0), Y = new THREE.Vector3(0, Math.cos(p), -Math.sin(p)), Z = new THREE.Vector3(0, Math.sin(p), Math.cos(p)); return tmpM.clone().makeBasis(X, Y, Z).setPosition(pos); }
+// window outline: a superellipse, n = 2 round, n ~ 9 the Comet's squarish window
+const superR = (th, A, B, n) => 1 / Math.pow(Math.pow(Math.abs(Math.cos(th) / A), n) + Math.pow(Math.abs(Math.sin(th) / B), n), 1 / n);
+const outline = (A, B, n, k = 96) => { const pts = []; for (let i = 0; i < k; i++) { const th = i / k * Math.PI * 2, r = superR(th, A, B, n); pts.push(new THREE.Vector2(Math.cos(th) * r, Math.sin(th) * r)); } return pts; };
+function paneGeo(A, B, n) { const g = new THREE.ShapeGeometry(new THREE.Shape(outline(A, B, n)), 1); const p = g.attributes.position, uv = g.attributes.uv; for (let i = 0; i < p.count; i++) uv.setXY(i, (p.getX(i) + A) / (2 * A), (p.getY(i) + B) / (2 * B)); return g; }
+function rimGeo(A, B, n, w) { const s = new THREE.Shape(outline(A + w, B + w, n)); s.holes.push(new THREE.Path(outline(A, B, n).reverse())); return new THREE.ShapeGeometry(s, 1); }
+
+/* ---------- the Comet (metres, nose at +x); front section splits off at XS ---------- */
+const XS = 4.0, XT = -12, XN = 10;
+const hullMat = new THREE.MeshStandardMaterial({color: 0x66738a, metalness: 0.7, roughness: 0.42, envMapIntensity: 0.3, side: THREE.DoubleSide, transparent: true, opacity: 1});
+const wingM = new THREE.MeshStandardMaterial({color: 0x7b889c, metalness: 0.75, roughness: 0.35, side: THREE.DoubleSide});
+const plane = new THREE.Group(); scene.add(plane);
+const rear = new THREE.Group(); plane.add(rear);
+const front = new THREE.Group(); front.position.x = XS; plane.add(front);
+const ext = (pts, depth) => { const s = new THREE.Shape(pts.map(p => new THREE.Vector2(p[0], p[1]))); return new THREE.ExtrudeGeometry(s, {depth, bevelEnabled: true, bevelThickness: 0.04, bevelSize: 0.04, bevelSegments: 2}); };
+{
+  const cyl = (a, b) => { const m = new THREE.Mesh(new THREE.CylinderGeometry(HR, HR, b - a, 72, 1, true), hullMat); m.rotation.z = Math.PI / 2; m.position.x = (a + b) / 2; return m; };
+  rear.add(cyl(XT, XS));
+  const fc = cyl(XS, XN); fc.position.x -= XS; front.add(fc);
+  const nose = new THREE.Mesh(new THREE.SphereGeometry(HR, 56, 28, 0, Math.PI * 2, 0, Math.PI / 2), hullMat); nose.rotation.z = -Math.PI / 2; nose.scale.set(1, 2.2, 1); nose.position.x = XN - XS; front.add(nose);
+  const cock = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.16, 1.1), new THREE.MeshBasicMaterial({color: 0x0b1726})); cock.position.set(XN + 1.3 - XS, 0.72, 0); cock.rotation.z = -0.5; front.add(cock);
+  const tail = new THREE.Mesh(new THREE.CylinderGeometry(HR, 0.3, 6, 56, 1, true), hullMat); tail.rotation.z = Math.PI / 2; tail.position.set(XT - 3, 0.45, 0); rear.add(tail);
+  [1, -1].forEach(sd => {
+    // swept wing, engines buried in the root (the Comet's signature)
+    const g = ext([[2.4, 1.2], [-3.8, 1.2], [-8.0, 17.5], [-6.2, 17.5]], 0.22); g.rotateX(Math.PI / 2); if (sd < 0) g.scale(1, 1, -1);
+    const w = new THREE.Mesh(g, wingM); w.position.y = -0.7; rear.add(w);
+    [2.1, 3.3].forEach(zz => { const intake = new THREE.Mesh(new THREE.CircleGeometry(0.34, 32), new THREE.MeshStandardMaterial({color: 0x07111c, roughness: 0.7})); intake.scale.set(1, 0.6, 1); intake.rotation.y = Math.PI / 2; intake.position.set(2.0 - (zz - 1.2) * 0.42, -0.62, sd * zz); rear.add(intake); });
+    const st = ext([[-14.0, 0.4], [-17.0, 0.4], [-18.4, 5.8], [-17.2, 5.8]], 0.12); st.rotateX(Math.PI / 2); if (sd < 0) st.scale(1, 1, -1);
+    const s2 = new THREE.Mesh(st, wingM); s2.position.y = 0.55; rear.add(s2);
+  });
+  const fin = new THREE.Mesh(ext([[-11.6, 1.2], [-16.4, 1.2], [-18.2, 6.6], [-16.2, 6.6]], 0.16), wingM); fin.position.z = -0.08; rear.add(fin);
+}
+/* windows: outer glowing pane + metal rim, inner pane (night sky with an amber horizon) */
+const WA = 0.17, WB = 0.21, NSQ = 9;
+const skyC = document.createElement('canvas'); skyC.width = 64; skyC.height = 128;
+{ const x = skyC.getContext('2d'), g = x.createLinearGradient(0, 0, 0, 128); g.addColorStop(0, '#02101d'); g.addColorStop(0.45, '#0e3254'); g.addColorStop(0.68, '#8a5a24'); g.addColorStop(0.76, '#FDB33E'); g.addColorStop(0.84, '#c9862e'); g.addColorStop(1, '#051a2c'); x.fillStyle = g; x.fillRect(0, 0, 64, 128); }
+const skyT = new THREE.CanvasTexture(skyC); skyT.colorSpace = THREE.SRGBColorSpace;
+const outMat = new THREE.MeshBasicMaterial({color: new THREE.Color(0xFDB33E).multiplyScalar(0.5), toneMapped: false, side: THREE.DoubleSide});
+const inMat = new THREE.MeshBasicMaterial({map: skyT, toneMapped: false, side: THREE.DoubleSide, color: 0xd8d8d8});
+const rimMat = new THREE.MeshStandardMaterial({color: 0x2c3646, metalness: 0.6, roughness: 0.55, envMapIntensity: 0.2, side: THREE.DoubleSide});
+let paneG = paneGeo(WA, WB, NSQ), rimG = rimGeo(WA, WB, NSQ, 0.035), curN = NSQ;
+const WIN = [];
+const HX = 2.5, HY = 0.25;
+for (let i = 0; i < 16; i++) for (const sd of [1, -1]) {
+  const x = -9 + i * 1.15; if (Math.abs(x - XS) < 0.3) continue;
+  const f = frameAt(x, HY, sd), par = x > XS ? front : rear;
+  const o = new THREE.Mesh(paneG, outMat), r = new THREE.Mesh(rimG, rimMat), n = new THREE.Mesh(paneG, inMat);
+  [[o, 0.02], [r, 0.022], [n, -0.03]].forEach(([m, off]) => { m.matrixAutoUpdate = false; m.matrix.copy(skinBasis(f, off)); if (par === front) m.matrix.premultiply(new THREE.Matrix4().makeTranslation(-XS, 0, 0)); par.add(m); });
+  WIN.push({o, r, n, f});
+}
+function setWindowShape(n) {
+  if (Math.abs(n - curN) < 0.04) return; curN = n;
+  const pg = paneGeo(WA, WB, n), rg = rimGeo(WA, WB, n, 0.035);
+  WIN.forEach(w => { w.o.geometry = pg; w.n.geometry = pg; w.r.geometry = rg; }); paneG.dispose(); rimG.dispose(); paneG = pg; rimG = rg;
+}
+const HF = frameAt(HX, HY, 1);
+/* ADF windows: two small squarish windows on the roof, forward of the wing */
+const ADF = [3.0, 3.55].map(x => { const f = {x0: x, phi: Math.PI / 2}; const g = paneGeo(0.11, 0.08, 10); const m = new THREE.Mesh(g, glowMat(new THREE.Color(0xFDB33E).multiplyScalar(0.4))); m.matrixAutoUpdate = false; m.matrix.copy(skinBasis(f, 0.02)); const r = new THREE.Mesh(rimGeo(0.11, 0.08, 10, 0.03), rimMat); r.matrixAutoUpdate = false; r.matrix.copy(skinBasis(f, 0.022)); rear.add(m, r); return {m, f}; });
+
+/* cabin: floor, ceiling strip, bins, seats and the passenger at the hero window */
+const cabin = new THREE.Group(); rear.add(cabin);
+{
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(22, 2.7), new THREE.MeshStandardMaterial({color: 0x0d1b2b, roughness: 0.85})); floor.rotation.x = -Math.PI / 2; floor.position.set(-1, -0.7, 0); cabin.add(floor);
+  const strip = new THREE.Mesh(new THREE.BoxGeometry(20, 0.03, 0.12), new THREE.MeshBasicMaterial({color: 0x4f6a8a, toneMapped: false})); strip.position.set(-1, 1.36, 0); cabin.add(strip);
+  [-1, 1].forEach(sd => { const bin = new THREE.Mesh(new THREE.BoxGeometry(20, 0.36, 0.5), new THREE.MeshStandardMaterial({color: 0x1a2a3d, roughness: 0.6})); bin.position.set(-1, 1.02, sd * 0.98); cabin.add(bin); });
+}
+const seatM = new THREE.MeshStandardMaterial({color: 0x24344a, roughness: 0.7, metalness: 0.1});
+const SROWS = []; for (let i = 0; i < 14; i++) SROWS.push(-9 + i * 1.15 - 0.3);
+const SZ = [-1.0, -0.55, 0.55, 1.0];
+const backs = new THREE.InstancedMesh(new RoundedBoxGeometry(0.12, 0.82, 0.42, 2, 0.04), seatM, SROWS.length * 4);
+const cush = new THREE.InstancedMesh(new RoundedBoxGeometry(0.5, 0.14, 0.42, 2, 0.04), seatM, SROWS.length * 4);
+{ let k = 0; tmpQ.identity(); for (const xs of SROWS) for (const z of SZ) { backs.setMatrixAt(k, tmpM.compose(tmpP.set(xs - 0.25, -0.05, z), tmpQ, tmpS)); cush.setMatrixAt(k, tmpM.compose(tmpP.set(xs, -0.42, z), tmpQ, tmpS)); k++; } }
+cabin.add(backs, cush);
+const pax = new THREE.Group(); cabin.add(pax);
+{
+  const skinM = new THREE.MeshStandardMaterial({color: 0x3a4a60, roughness: 0.55, metalness: 0.05});
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.1, 32, 24), skinM); head.scale.set(0.92, 1.15, 0.95); head.position.set(0, 0.36, 0);
+  const hair = new THREE.Mesh(new THREE.SphereGeometry(0.104, 32, 16, 0, Math.PI * 2, 0, 1.4), new THREE.MeshStandardMaterial({color: 0x101a26, roughness: 0.8})); hair.scale.set(0.95, 1.1, 1); hair.position.set(-0.012, 0.38, -0.008); hair.rotation.z = 0.35;
+  const nose = new THREE.Mesh(new THREE.ConeGeometry(0.018, 0.05, 12), skinM); nose.rotation.x = Math.PI / 2; nose.position.set(0, 0.35, 0.1);
+  const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.05, 0.1, 16), skinM); neck.position.y = 0.23;
+  const torso = new THREE.Mesh(new RoundedBoxGeometry(0.4, 0.46, 0.24, 3, 0.09), new THREE.MeshStandardMaterial({color: 0x1b2a3c, roughness: 0.75})); torso.position.y = -0.02; torso.rotation.y = Math.PI / 2;
+  pax.add(head, hair, nose, neck, torso);
+  pax.position.set(HX - 0.1, -0.05, 1.02); pax.rotation.y = 0.5;
+}
+const winL = new THREE.PointLight(0xFDB33E, 0.5, 1.3, 2); winL.position.set(HX, HY - 0.05, 1.32); cabin.add(winL);
+
+/* stress: light flowing around the hull (v direction) and around the hero window */
+const SN = 1500, stG = new THREE.BufferGeometry(), stP = new Float32Array((SN + 160) * 3), stCol = new Float32Array((SN + 160) * 3);
+stG.setAttribute('position', new THREE.BufferAttribute(stP, 3)); stG.setAttribute('color', new THREE.BufferAttribute(stCol, 3));
+const stMat = new THREE.PointsMaterial({size: 0.022, map: DOT, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false});
+const stress = new THREE.Points(stG, stMat); stress.frustumCulled = false; scene.add(stress);
+const ST = []; for (let i = 0; i < SN; i++) { let u = (rnd() - .5) * 1.5; if (Math.abs(u) < 0.004) u = 0.004; ST.push({u, v0: rnd() * 1.8, sp: 0.28 + rnd() * 0.08}); }
+const TRAP = []; for (let i = 0; i < 160; i++) TRAP.push({c: i % 4, a: rnd() * 6.283, r: rnd(), w: 2 + rnd() * 5});
+/* cracks: a chain of light from a corner */
+function crackPath(f, u0, v0, du, dv, len, n, seed) { const r = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(seed); const pts = []; let u = u0, v = v0, a = Math.atan2(dv, du); for (let i = 0; i < n; i++) { a += (r() - .5) * 0.5; u += Math.cos(a) * len / n; v += Math.sin(a) * len / n; pts.push([u, v]); } return {f, pts}; }
+const CR = [crackPath(HF, WA * 0.97, WB * 0.97, 1, 0.8, 0.85, 150, 7), crackPath(ADF[0].f, -0.11, 0.08, -1, 0.6, 0.9, 150, 3)];
+const crG = new THREE.BufferGeometry(), crP = new Float32Array(300 * 3);
+crG.setAttribute('position', new THREE.BufferAttribute(crP, 3));
+const crack = new THREE.Points(crG, new THREE.PointsMaterial({size: 0.03, map: DOT, color: new THREE.Color(0xFDB33E).multiplyScalar(1.7), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false}));
+crack.frustumCulled = false; scene.add(crack);
+const cornerGlow = new THREE.Sprite(new THREE.SpriteMaterial({map: DOT, color: AMBER, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false})); scene.add(cornerGlow);
+
+/* pressure: arrows push outwards from inside, rings run along the hull */
+const AR = 12 * 14, arrows = new THREE.InstancedMesh(new THREE.ConeGeometry(0.07, 0.26, 10), glowMat(AMBER), AR); rear.add(arrows);
+const ARP = []; for (let i = 0; i < 12; i++) for (let j = 0; j < 14; j++) ARP.push({x: -9 + i * 1.15 + 0.5, a: j / 14 * Math.PI * 2 + i * 0.2});
+const rings = [0, 1, 2].map(() => { const m = new THREE.Mesh(new THREE.TorusGeometry(HR + 0.04, 0.025, 8, 96), glowMat(AMBER, 0.9)); m.rotation.y = Math.PI / 2; m.material.depthWrite = false; scene.add(m); return m; });
+
+/* breakup debris */
+const DN = 420, dbG = new THREE.BufferGeometry(), dbP = new Float32Array(DN * 3);
+dbG.setAttribute('position', new THREE.BufferAttribute(dbP, 3));
+const debris = new THREE.Points(dbG, new THREE.PointsMaterial({size: 0.09, map: DOT, color: 0xb8c4d6, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending})); debris.frustumCulled = false; scene.add(debris);
+const DB = []; for (let i = 0; i < DN; i++) { const a = rnd() * 6.283; DB.push({a, vx: (rnd() - .4) * 5, vr: 1 + rnd() * 5, hot: rnd() < 0.3}); }
+const flash = new THREE.Sprite(new THREE.SpriteMaterial({map: DOT, color: AMBER, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false})); flash.position.set(XS, 1.0, 0); scene.add(flash);
+
+/* the world: night sea with moon glints, stars, clouds (all scroll: the plane flies) */
+const GY = -34, SPEED = 9, PERIOD = 360, wrapX = x => ((x + 180) % PERIOD + PERIOD) % PERIOD - 180;
+const seaM = new THREE.MeshStandardMaterial({color: 0x021626, roughness: 0.35, metalness: 0.4, transparent: true});
+const sea = new THREE.Mesh(new THREE.PlaneGeometry(1400, 1400), seaM); sea.rotation.x = -Math.PI / 2; sea.position.y = GY; scene.add(sea);
+const GN = 6000, glG = new THREE.BufferGeometry(), gl0 = new Float32Array(GN * 3), glP = new Float32Array(GN * 3);
+for (let i = 0; i < GN; i++) { gl0[i * 3] = (rnd() - .5) * 360; gl0[i * 3 + 1] = GY + 0.1; gl0[i * 3 + 2] = -60 + Math.pow(rnd(), 1.6) * 240 * (rnd() < .5 ? -0.4 : 1); }
+glG.setAttribute('position', new THREE.BufferAttribute(glP, 3));
+const glM = new THREE.PointsMaterial({size: 0.5, map: DOT, color: 0x7f9bbf, transparent: true, opacity: 0.7, depthWrite: false, blending: THREE.AdditiveBlending}); scene.add(new THREE.Points(glG, glM));
+const KN = 900, cloudG = new THREE.BufferGeometry(), cloud0 = new Float32Array(KN * 3), cloudP = new Float32Array(KN * 3);
+for (let i = 0; i < KN; i++) { cloud0[i * 3] = (rnd() - .5) * 360; cloud0[i * 3 + 1] = -10 - rnd() * 10; cloud0[i * 3 + 2] = (rnd() - .5) * 300; }
+cloudG.setAttribute('position', new THREE.BufferAttribute(cloudP, 3));
+const cloudM = new THREE.PointsMaterial({size: 10, map: DOT, color: 0x1d3a58, transparent: true, opacity: 0.4, depthWrite: false}); scene.add(new THREE.Points(cloudG, cloudM));
+const STN = 1600, starG = new THREE.BufferGeometry(), starP = new Float32Array(STN * 3);
+for (let i = 0; i < STN; i++) { const a = rnd() * 6.283, e = 0.05 + rnd() * 1.4, r = 420; starP[i * 3] = Math.cos(a) * Math.cos(e) * r; starP[i * 3 + 1] = Math.sin(e) * r; starP[i * 3 + 2] = Math.sin(a) * Math.cos(e) * r; }
+starG.setAttribute('position', new THREE.BufferAttribute(starP, 3));
+const starM = new THREE.PointsMaterial({size: 1.6, map: DOT, color: 0x9fb6d8, transparent: true, opacity: 0.8, depthWrite: false, fog: false}); scene.add(new THREE.Points(starG, starM));
+
+/* the water tank (Farnborough-style test rig) */
+const tank = new THREE.Group(); scene.add(tank);
+const waterM = new THREE.MeshStandardMaterial({color: 0x0a3556, roughness: 0.15, metalness: 0.2, transparent: true, opacity: 0, side: THREE.BackSide, depthWrite: false});
+const glassM = new THREE.MeshStandardMaterial({color: 0x1b4a70, roughness: 0.05, metalness: 0.3, transparent: true, opacity: 0, side: THREE.FrontSide, depthWrite: false});
+const TB = new THREE.BoxGeometry(34, 6.4, 6.4);
+tank.add(new THREE.Mesh(TB, waterM), new THREE.Mesh(TB, glassM));
+const tankEdge = new THREE.LineSegments(new THREE.EdgesGeometry(TB), new THREE.LineBasicMaterial({color: 0x6B7A90, transparent: true, opacity: 0})); tank.add(tankEdge);
+const surf = new THREE.Mesh(new THREE.PlaneGeometry(34, 6.4, 1, 1), new THREE.MeshBasicMaterial({color: 0x2c6c9c, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide})); surf.rotation.x = -Math.PI / 2; surf.position.y = 3.0; tank.add(surf);
+tank.position.set(-2, 0, 0);
+const BN = 260, bbG = new THREE.BufferGeometry(), bbP = new Float32Array(BN * 3);
+bbG.setAttribute('position', new THREE.BufferAttribute(bbP, 3));
+const bubM = new THREE.PointsMaterial({size: 0.05, map: DOT, color: 0x6f9fca, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending}); scene.add(new THREE.Points(bbG, bubM));
+const BB = []; for (let i = 0; i < BN; i++) BB.push({x: -18 + rnd() * 32, z: (rnd() - .5) * 6, s: 0.4 + rnd() * 0.8, o: rnd() * 6});
+
+/* ---------- camera: keyframes, eased, with a drift so it never stops ---------- */
+let CK = [];
+const tgt = new THREE.Vector3();
+function camAt(t) {
+  if (window.COVER_CAM) { const c = window.COVER_CAM; camera.position.set(...c.p); camera.lookAt(...c.l); camera.fov = c.f; camera.updateProjectionMatrix(); return Math.hypot(c.p[0] - c.l[0], c.p[1] - c.l[1], c.p[2] - c.l[2]); }
+  let i = 0; while (i < CK.length - 1 && CK[i + 1].t <= t) i++;
+  const a = CK[i], b = CK[Math.min(i + 1, CK.length - 1)];
+  const k = b === a ? 0 : (b.e || eio)(seg(t, a.t, b.t));
+  const p = a.p.map((v, j) => lerp(v, b.p[j], k)), l = a.l.map((v, j) => lerp(v, b.l[j], k));
+  const dist = Math.hypot(p[0] - l[0], p[1] - l[1], p[2] - l[2]), dr = Math.min(0.03, dist * 0.006);
+  camera.position.set(p[0] + Math.sin(t * 0.9) * dr, p[1] + Math.cos(t * 0.7) * dr, p[2] + Math.sin(t * 0.55 + 1) * dr);
+  tgt.set(...l); camera.lookAt(tgt);
+  camera.fov = lerp(a.f || 40, b.f || 40, k); camera.updateProjectionMatrix();
+  return dist;
+}
+const hl = (id, t, a, b, fade = 0.22) => { const el = document.getElementById(id); const o = Math.min(seg(t, a, a + fade), 1 - seg(t, b - fade, b)); el.style.opacity = o; el.style.transform = `translateY(${(1 - eo(seg(t, a, a + 0.4))) * 40}px) scale(${lerp(0.94, 1, eo(seg(t, a, a + 0.4)))})`; };
+const fmt = n => Math.round(n).toLocaleString('en-GB');
+
+let T = {};
+window.setup = async function (spec) {
+  L = spec.lines; D = spec.duration;
+  Captions.build(spec);
+  const hc = skin(HF, 0, 0, 0).toArray(), corner = skin(HF, WA, WB, 0).toArray();
+  const p0 = [HX + 0.75, 0.42, -0.4], l0 = [HX - 0.02, 0.3, 1.25];
+  T = {broke: wt(2, 'broke'), round: wt(5, 'round'), sharp: wt(5, 'sharp'), trap: wt(5, 'trap'), tank: wt(6, 'tank'), tore: wt(7, 'tore'), win7: wt(7, 'window'),
+       c16: wt(8, '16000'), c1290: wt(8, '1290'), crack: wt(9, 'crack'), roof: wt(9, 'roof'), rnd10: wt(10, 'round'), would: wt(10, 'would')};
+  CK = [
+    {t: 0, p: p0, l: l0, f: 34},
+    {t: E(0) - 0.2, p: [HX + 0.42, 0.4, 0.55], l: [HX + WA, HY + WB, 1.45], f: 32},
+    {t: S(1) + 0.9, p: [HX + 0.1, 0.3, 2.3], l: [HX + 0.4, -1.2, 8], f: 44},
+    {t: S(1) + 2.6, p: [7, 1.2, 9], l: [1, -0.5, 0], f: 42},
+    {t: N(1), p: [17, 3.5, 20], l: [-1, -0.6, 0], f: 40},
+    {t: T.broke, p: [12, 3.2, 17], l: [1, -0.3, 0], f: 40},
+    {t: N(2), p: [9, 2.6, 14], l: [2, -0.8, 0], f: 42},
+    {t: S(3) + 0.6, p: [12, 2.2, 10], l: [-1, 0, 0], f: 42},
+    {t: N(3), p: [7, 1.4, 7.5], l: [1, 0, 0], f: 40},
+    {t: S(4) + 1.6, p: [HX + 0.5, 0.7, 4.2], l: hc, f: 40},
+    {t: N(4), p: [HX + 0.05, 0.3, 3.15], l: hc, f: 38},
+    {t: T.trap - 0.1, p: [HX - 0.05, 0.26, 3.0], l: hc, f: 38},
+    {t: N(5), p: [HX + 0.3, 0.5, 2.45], l: corner, f: 36},
+    {t: T.tank + 0.3, p: [15, 6.5, 19], l: [-2, -0.5, 0], f: 42},
+    {t: N(6) - 0.2, p: [9, 3, 11], l: [1, 0, 0], f: 42},
+    {t: wt(7, 'corner'), p: [HX + 0.42, 0.6, 2.5], l: corner, f: 36},
+    {t: N(7), p: [HX + 0.5, 0.7, 2.7], l: [HX + WA + 0.25, HY + WB + 0.2, 1.4], f: 38},
+    {t: N(8) - 0.3, p: [6.5, 1.8, 7], l: [HX, 0.1, 1.2], f: 42},
+    {t: S(9) + 1.2, p: [6.2, 3.6, 2.6], l: [3.2, 1.5, 0], f: 40},
+    {t: T.crack + 1.2, p: [4.6, 2.5, 1.0], l: [2.8, 1.5, 0], f: 38},
+    {t: N(9), p: [4.2, 2.3, 0.7], l: [2.6, 1.4, 0], f: 38},
+    {t: S(10) + 1.0, p: [HX + 0.6, 0.5, 0.35], l: l0, f: 40},
+    {t: D, p: p0, l: l0, f: 34},
+  ];
+  // sound map
+  sfx(0, 'thump'); sfx(wt(0, 'fall'), 'scratch');
+  sfx(S(1), 'whoosh'); sfx(S(1) + 2.0, 'whoosh'); sfx(wt(1, '1952'), 'ding');
+  sfx(wt(2, '1954'), 'thump'); sfx(T.broke - 0.3, 'rise'); sfx(T.broke + 0.35, 'scratch'); sfx(T.broke + 0.4, 'thump');
+  sfx(S(3), 'zip'); sfx(wt(3, 'weird'), 'pop'); for (let k = 0; k < 3; k++) sfx(wt(3, 'inflates') + k * 0.8, 'rise');
+  sfx(S(4) + 0.2, 'whoosh'); sfx(wt(4, 'flow'), 'tick'); sfx(wt(4, 'hole'), 'tick');
+  sfx(T.round, 'pop'); sfx(T.sharp, 'click'); sfx(T.trap, 'scratch');
+  sfx(S(6), 'whoosh'); sfx(T.tank, 'thump'); for (let k = 0; k < 6; k++) sfx(wt(6, 'pumped') + k * 0.55, 'tick');
+  sfx(T.tore - 0.05, 'scratch'); sfx(wt(7, 'corner'), 'thump');
+  sfx(T.c16, 'ding'); sfx(T.c1290 - 0.05, 'thump'); sfx(T.c1290, 'scratch');
+  sfx(S(9) - 0.6, 'whoosh'); sfx(T.crack, 'scratch'); sfx(T.roof, 'ding');
+  sfx(S(10) - 0.3, 'whoosh'); sfx(T.rnd10, 'pop'); sfx(T.would, 'ding'); sfx(D - 0.25, 'thump');
+  SFX.sort((a, b) => a.t - b.t);
+  window.READY = true;
+};
+
+const glc = document.getElementById('gl');
+window.frame = function (t) {
+  const dist = camAt(t);
+  /* phases */
+  const tankK = seg(t, S(6) + 0.2, T.tank + 0.3) * (1 - seg(t, S(9) - 0.8, S(9) + 0.1));
+  const flying = 1 - tankK;
+  /* scrolling world */
+  const off = -SPEED * t;
+  for (let i = 0; i < GN; i++) { glP[i * 3] = wrapX(gl0[i * 3] + off); glP[i * 3 + 1] = gl0[i * 3 + 1]; glP[i * 3 + 2] = gl0[i * 3 + 2]; }
+  glG.attributes.position.needsUpdate = true; glM.opacity = 0.7 * flying * (0.75 + 0.25 * Math.sin(t * 3));
+  for (let i = 0; i < KN; i++) { cloudP[i * 3] = wrapX(cloud0[i * 3] + off * 1.3); cloudP[i * 3 + 1] = cloud0[i * 3 + 1]; cloudP[i * 3 + 2] = cloud0[i * 3 + 2]; }
+  cloudG.attributes.position.needsUpdate = true; cloudM.opacity = 0.4 * flying;
+  seaM.opacity = flying; sea.visible = flying > 0.01; starM.opacity = 0.8 * flying;
+
+  /* the breakup (and its rewind) */
+  const pb = seg(t, T.broke + 0.3, T.broke + 3.2) * (1 - seg(t, S(3) - 0.05, S(3) + 0.55));
+  const shake = seg(t, T.broke - 0.6, T.broke + 0.3) * (pb < 0.02 ? 1 : 0);
+  const tau = pb * 3;
+  plane.position.set(0, Math.sin(t * 0.6) * 0.05 * flying + Math.sin(t * 47) * 0.02 * shake, 0); plane.rotation.x = Math.sin(t * 0.4) * 0.004;
+  front.position.set(XS + tau * 0.8, -tau * tau * 0.55, tau * 0.3); front.rotation.set(tau * 0.08, 0, -tau * 0.32);
+  rear.position.set(-tau * 0.3, -tau * tau * 0.35, 0); rear.rotation.set(0, 0, tau * 0.12);
+  for (let i = 0; i < DN; i++) { const d = DB[i], r = HR + d.vr * tau * 0.7; if (pb <= 0.001) { dbP.set([0, -999, 0], i * 3); continue; }
+    dbP.set([XS + d.vx * tau, Math.sin(d.a) * r - tau * tau * 1.2, Math.cos(d.a) * r], i * 3); }
+  dbG.attributes.position.needsUpdate = true;
+  const fl = pb > 0.001 ? Math.exp(-tau * 4) : 0; flash.scale.setScalar(2 + 14 * fl); flash.material.opacity = fl; flash.visible = fl > 0.01;
+  const rw = t >= S(3) - 0.05 && t < S(3) + 0.6;
+  document.getElementById('rew').style.opacity = rw ? 0.9 : 0; glc.classList.toggle('rw', rw);
+
+  /* pressure: the cabin breathes (balloon) in line 4 and in the tank */
+  const balloon = seg(t, wt(3, 'every') - 0.2, wt(3, 'every') + 0.3) * (1 - seg(t, N(3) - 0.2, N(3) + 0.4));
+  const tankPump = seg(t, wt(6, 'pumped') - 0.2, wt(6, 'pumped')) * (1 - seg(t, T.tore, T.tore + 0.3));
+  const bph = balloon > 0 ? (0.5 - 0.5 * Math.cos((t - wt(3, 'every')) * Math.PI * 2 / 1.25)) : (tankPump > 0 ? 0.5 - 0.5 * Math.cos((t - wt(6, 'pumped')) * Math.PI * 2 / 0.55) : 0);
+  const press = Math.max(balloon, tankPump) * bph;
+  const sc = 1 + 0.055 * press; plane.scale.set(1, sc, sc);
+  const arK = balloon;
+  ARP.forEach((a, i) => { const r = 1.05 + 0.18 * press; tmpP.set(a.x, Math.sin(a.a) * r, Math.cos(a.a) * r); tmpQ.setFromUnitVectors(tmpV.set(0, 1, 0), new THREE.Vector3(0, Math.sin(a.a), Math.cos(a.a))); const s = arK * (0.6 + 0.6 * press); tmpS.set(s, s, s); arrows.setMatrixAt(i, tmpM.compose(tmpP, tmpQ, tmpS)); });
+  tmpS.set(1, 1, 1); arrows.instanceMatrix.needsUpdate = true; arrows.visible = arK > 0.01;
+  const ringK = Math.max(balloon, tankPump);
+  const per = balloon > 0 ? 1.25 : 0.55, t0 = balloon > 0 ? wt(3, 'every') : wt(6, 'pumped');
+  rings.forEach((m, k) => { const u = (((t - t0) / per + k / 3) % 1 + 1) % 1; m.position.set(lerp(-12, 10, u), plane.position.y, 0); m.scale.setScalar(sc); m.material.opacity = 0.85 * ringK * Math.sin(u * Math.PI); m.visible = ringK > 0.01; });
+  // cutaway: the hull goes see-through while the pressure arrows are shown
+  const cut = balloon;
+
+  /* window shape: squarish, round in line 6a, squarish again, round at the end */
+  const nShape = lerp(NSQ, 2, seg(t, T.round - 0.1, T.round + 0.4) * (1 - seg(t, T.sharp - 0.1, T.sharp + 0.35))) ;
+  const nEnd = lerp(nShape, 2, seg(t, T.rnd10 - 0.1, T.rnd10 + 0.5));
+  setWindowShape(nEnd);
+  const sq = cl((curN - 2) / (NSQ - 2));
+
+  /* camera inside or outside the hull */
+  const cp = camera.position, rc = Math.hypot(cp.y - plane.position.y, cp.z);
+  const inX = cp.x > XT - 1 && cp.x < XN + 1;
+  const nearSkin = inX ? 1 - seg(Math.abs(rc - HR), 0.1, 0.7) : 0;
+  const inside = rc < HR && inX;
+  hullMat.opacity = Math.min(1 - 0.93 * nearSkin, 1 - 0.72 * cut); hullMat.depthWrite = hullMat.opacity > 0.98; hullMat.visible = nearSkin < 0.6;
+  WIN.forEach(w => { w.o.visible = w.r.visible = nearSkin < 0.6 && !inside; w.n.visible = inside; });
+  cabinL.forEach(l => l.intensity = inside ? 1.2 : 0.25 + 0.6 * cut);
+  scene.fog.density = inside ? 0.002 : lerp(0.006, 0.012, tankK);
+  outMat.color.copy(AMBER).multiplyScalar(0.5 * (pb > 0.01 ? (Math.sin(t * 37) > 0 ? 1 : 0.15) : 1));
+
+  /* stress flow around the hero window */
+  const sOn = Math.max(seg(t, S(4) + 0.8, wt(4, 'flow')) * (1 - seg(t, N(5) + 0.4, T.tank)),
+                       seg(t, wt(7, 'corner') - 0.4, wt(7, 'corner')) * (1 - seg(t, N(8) - 0.6, N(8))),
+                       seg(t, T.rnd10, T.rnd10 + 0.5));
+  const sOff = inside ? -0.035 : 0.025;
+  const heat = sq * (0.7 + 0.3 * seg(t, T.sharp, T.trap + 0.3));
+  for (let i = 0; i < SN; i++) {
+    const s = ST[i]; let v = ((s.v0 + s.sp * t) % 1.8) - 0.9;
+    const rho = Math.hypot(s.u, v), th = Math.atan2(v, s.u), R = superR(th, WA * 1.08, WB * 1.08, Math.max(2, curN));
+    const r = Math.sqrt(rho * rho + R * R), uu = Math.cos(th) * r, vv = Math.sin(th) * r;
+    if (sOn <= 0.001) { stP.set([0, -999, 0], i * 3); continue; }
+    skin(HF, uu, vv, sOff, tmpP); stP.set([tmpP.x, tmpP.y, tmpP.z], i * 3);
+    const edge = Math.exp(-(r - R) / 0.05);
+    const dc = Math.min(Math.hypot(Math.abs(uu) - WA, Math.abs(vv) - WB), 1);
+    const hot = heat * Math.exp(-dc / 0.05);
+    const fade = cl(1 - (rho - 0.5) / 0.4) * sOn;
+    const k = (0.35 + 0.45 * edge * (1 - 0.5 * sq) + 1.6 * hot) * fade;
+    tmpC.copy(AMBER).multiplyScalar(k).lerp(new THREE.Color(k, k * 0.92, k * 0.75), cl(hot)); stCol.set([tmpC.r, tmpC.g, tmpC.b], i * 3);
+  }
+  // particles trapped at the corners: they jitter instead of flowing on
+  TRAP.forEach((p, j) => { const i = SN + j; const cu = (p.c & 1 ? 1 : -1) * WA, cv = (p.c & 2 ? 1 : -1) * WB;
+    const rr = 0.012 + 0.03 * p.r, a = p.a + t * p.w; if (sOn * sq <= 0.02) { stP.set([0, -999, 0], i * 3); return; }
+    skin(HF, cu + Math.sign(cu) * 0.012 + Math.cos(a) * rr, cv + Math.sign(cv) * 0.012 + Math.sin(a) * rr, sOff, tmpP); stP.set([tmpP.x, tmpP.y, tmpP.z], i * 3);
+    const k = 1.1 * heat * sOn; stCol.set([k, k * 0.85, k * 0.6], i * 3); });
+  stG.attributes.position.needsUpdate = true; stG.attributes.color.needsUpdate = true;
+  stMat.size = dist < 1.5 ? 0.03 : 0.04;
+  skin(HF, WA + 0.012, WB + 0.012, sOff + 0.01, cornerGlow.position); cornerGlow.scale.setScalar(0.05 + 0.05 * heat); cornerGlow.material.opacity = sOn * heat * 0.45 + 0.5 * seg(t, wt(0, 'sharp'), wt(0, 'sky')) * (1 - seg(t, S(1), S(1) + 0.4)) * 0;
+  cornerGlow.visible = cornerGlow.material.opacity > 0.01;
+
+  /* cracks: tank window corner (line 8), roof ADF window (line 10) */
+  const c1 = eo(seg(t, T.tore - 0.05, T.win7 + 0.3)) * (1 - seg(t, N(8) - 0.5, N(8)));
+  const c2 = eo(seg(t, T.crack - 0.05, T.crack + 1.6)) * (1 - seg(t, N(9) - 0.2, N(9) + 0.2));
+  let ci = 0;
+  [[CR[0], c1], [CR[1], c2]].forEach(([c, k]) => { c.pts.forEach((q, j) => { if (k > 0 && j / c.pts.length < k) { skin(c.f, q[0], q[1], (c === CR[0] && inside) ? -0.035 : 0.03, tmpP); crP.set([tmpP.x, tmpP.y, tmpP.z], ci * 3); } else crP.set([0, -999, 0], ci * 3); ci++; }); });
+  crG.attributes.position.needsUpdate = true; crack.material.size = dist < 2.5 ? 0.028 : 0.04;
+  ADF.forEach((a, k) => a.m.material.color.copy(AMBER).multiplyScalar(0.4 + (k === 0 ? 0.9 : 0.5) * seg(t, S(9) + 0.4, S(9) + 1.2) * (1 - seg(t, N(9), N(9) + 0.4))));
+
+  /* the tank */
+  waterM.opacity = 0.55 * tankK; glassM.opacity = 0.12 * tankK; tankEdge.material.opacity = 0.7 * tankK; surf.material.opacity = 0.35 * tankK; tank.visible = tankK > 0.01;
+  surf.position.y = 3.0 + Math.sin(t * 2) * 0.03;
+  for (let i = 0; i < BN; i++) { const b = BB[i], y = -3 + ((b.o + t * b.s) % 6); bbP.set([b.x + Math.sin(t + b.o) * 0.1, y, b.z], i * 3); }
+  bbG.attributes.position.needsUpdate = true; bubM.opacity = 0.6 * tankK;
+
+  /* hero window light on the passenger */
+  winL.intensity = inside ? 0.5 : 0;
+
+  /* depth of field: focus on what the camera looks at */
+  bokeh.uniforms.focus.value = dist; bokeh.uniforms.aperture.value = dist < 2 ? 0.0025 : dist < 10 ? 0.0012 : 0.00035;
+  bokeh.uniforms.maxblur.value = 0.006;
+
+  /* headline layer */
+  hl('h1952', t, wt(1, 'world') - 0.2, N(1) - 0.1);
+  document.getElementById('n1952').textContent = Math.round(lerp(1920, 1952, eo(seg(t, wt(1, 'world') - 0.2, wt(1, '1952') + 0.1))));
+  hl('h1954', t, S(2), N(2) + 0.2);
+  document.getElementById('n1954').textContent = Math.round(lerp(1952, 1954, eo(seg(t, S(2), wt(2, '1954') + 0.1))));
+  hl('hBal', t, wt(3, 'every') - 0.1, N(3));
+  hl('hSharp', t, T.sharp - 0.1, N(5));
+  hl('hTank', t, wt(6, 'pumped') - 0.1, N(7) - 0.1);
+  document.getElementById('nTank').textContent = fmt(1830 * Math.pow(seg(t, wt(6, 'pumped'), T.win7), 1.6));
+  hl('hCyc', t, S(8) + 0.05, N(8) - 0.1);
+  const drop = eo(seg(t, T.c1290 - 0.05, T.c1290 + 0.5));
+  document.getElementById('nCyc').textContent = t < T.c1290 - 0.05 ? fmt(16000 * eo(seg(t, S(8), T.c16 + 0.2))) : fmt(lerp(16000, 1290, drop));
+  document.getElementById('cycLab').textContent = t < T.c1290 - 0.3 ? 'De Havilland test fuselage' : 'The Comet that broke up off Elba';
+  document.getElementById('cycBar').style.width = (100 * lerp(1, 1290 / 16000, drop)) + '%';
+  hl('hRoof', t, T.crack + 0.2, N(9) - 0.1);
+  hl('hQ', t, T.would - 0.1, D + 1);
+  const cb = document.getElementById('cbub'); cb.style.opacity = cl((t - wt(10, 'boarded') - 0.1) / 0.3) * (1 - seg(t, D - 0.35, D - 0.1));
+
+  composer.render();
+  Captions.draw(t);
+};
+document.fonts.ready.then(() => { window.STAGE_LOADED = true; });
+</script>
+</body></html>

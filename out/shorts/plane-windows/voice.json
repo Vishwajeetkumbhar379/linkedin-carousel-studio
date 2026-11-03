@@ -1,0 +1,699 @@
+{
+ "estimate": false,
+ "voice": "Drew",
+ "lines": [
+  {
+   "text": "Square windows made planes fall out of the sky.",
+   "start": 0.02,
+   "end": 3.44,
+   "words": [
+    {
+     "w": "Square",
+     "start": 0.02,
+     "end": 0.48
+    },
+    {
+     "w": "windows",
+     "start": 0.48,
+     "end": 1.04
+    },
+    {
+     "w": "made",
+     "start": 1.04,
+     "end": 1.66
+    },
+    {
+     "w": "planes",
+     "start": 1.66,
+     "end": 2.2
+    },
+    {
+     "w": "fall",
+     "start": 2.2,
+     "end": 2.72
+    },
+    {
+     "w": "out",
+     "start": 2.72,
+     "end": 2.9
+    },
+    {
+     "w": "of",
+     "start": 2.9,
+     "end": 3.02
+    },
+    {
+     "w": "the",
+     "start": 3.02,
+     "end": 3.1
+    },
+    {
+     "w": "sky.",
+     "start": 3.1,
+     "end": 3.44
+    }
+   ]
+  },
+  {
+   "text": "This is the Comet. The world's first jet airliner. 1952.",
+   "start": 4.36,
+   "end": 9.9,
+   "words": [
+    {
+     "w": "This",
+     "start": 4.36,
+     "end": 5.08
+    },
+    {
+     "w": "is",
+     "start": 5.08,
+     "end": 5.44
+    },
+    {
+     "w": "the",
+     "start": 5.44,
+     "end": 5.58
+    },
+    {
+     "w": "Comet.",
+     "start": 5.58,
+     "end": 5.9
+    },
+    {
+     "w": "The",
+     "start": 6.38,
+     "end": 6.5
+    },
+    {
+     "w": "world's",
+     "start": 6.5,
+     "end": 7.06
+    },
+    {
+     "w": "first",
+     "start": 7.06,
+     "end": 7.26
+    },
+    {
+     "w": "jet",
+     "start": 7.26,
+     "end": 7.8
+    },
+    {
+     "w": "airliner.",
+     "start": 7.8,
+     "end": 8.46
+    },
+    {
+     "w": "1952.",
+     "start": 9.18,
+     "end": 9.9
+    }
+   ]
+  },
+  {
+   "text": "Then, in 1954, two of them broke apart in mid-air.",
+   "start": 10.58,
+   "end": 14.74,
+   "words": [
+    {
+     "w": "Then,",
+     "start": 10.58,
+     "end": 10.96
+    },
+    {
+     "w": "in",
+     "start": 11.2,
+     "end": 11.32
+    },
+    {
+     "w": "1954,",
+     "start": 11.32,
+     "end": 11.8
+    },
+    {
+     "w": "two",
+     "start": 12.62,
+     "end": 12.8
+    },
+    {
+     "w": "of",
+     "start": 12.8,
+     "end": 12.96
+    },
+    {
+     "w": "them",
+     "start": 12.96,
+     "end": 13.16
+    },
+    {
+     "w": "broke",
+     "start": 13.16,
+     "end": 13.64
+    },
+    {
+     "w": "apart",
+     "start": 13.64,
+     "end": 14.06
+    },
+    {
+     "w": "in",
+     "start": 14.06,
+     "end": 14.46
+    },
+    {
+     "w": "mid-air.",
+     "start": 14.46,
+     "end": 14.74
+    }
+   ]
+  },
+  {
+   "text": "Here's the weird part. Every flight, the cabin inflates like a balloon.",
+   "start": 15.66,
+   "end": 19.56,
+   "words": [
+    {
+     "w": "Here's",
+     "start": 15.66,
+     "end": 16.06
+    },
+    {
+     "w": "the",
+     "start": 16.06,
+     "end": 16.16
+    },
+    {
+     "w": "weird",
+     "start": 16.16,
+     "end": 16.38
+    },
+    {
+     "w": "part.",
+     "start": 16.38,
+     "end": 16.64
+    },
+    {
+     "w": "Every",
+     "start": 17.08,
+     "end": 17.32
+    },
+    {
+     "w": "flight,",
+     "start": 17.32,
+     "end": 17.68
+    },
+    {
+     "w": "the",
+     "start": 17.92,
+     "end": 18.08
+    },
+    {
+     "w": "cabin",
+     "start": 18.08,
+     "end": 18.44
+    },
+    {
+     "w": "inflates",
+     "start": 18.44,
+     "end": 18.94
+    },
+    {
+     "w": "like",
+     "start": 18.94,
+     "end": 19.12
+    },
+    {
+     "w": "a",
+     "start": 19.12,
+     "end": 19.24
+    },
+    {
+     "w": "balloon.",
+     "start": 19.24,
+     "end": 19.56
+    }
+   ]
+  },
+  {
+   "text": "And that stress has to flow around every hole in the skin.",
+   "start": 19.94,
+   "end": 23.7,
+   "words": [
+    {
+     "w": "And",
+     "start": 19.94,
+     "end": 20.18
+    },
+    {
+     "w": "that",
+     "start": 20.18,
+     "end": 20.42
+    },
+    {
+     "w": "stress",
+     "start": 20.42,
+     "end": 20.82
+    },
+    {
+     "w": "has",
+     "start": 20.82,
+     "end": 21.4
+    },
+    {
+     "w": "to",
+     "start": 21.4,
+     "end": 21.6
+    },
+    {
+     "w": "flow",
+     "start": 21.6,
+     "end": 21.8
+    },
+    {
+     "w": "around",
+     "start": 21.8,
+     "end": 22.22
+    },
+    {
+     "w": "every",
+     "start": 22.22,
+     "end": 22.72
+    },
+    {
+     "w": "hole",
+     "start": 22.72,
+     "end": 23.06
+    },
+    {
+     "w": "in",
+     "start": 23.06,
+     "end": 23.26
+    },
+    {
+     "w": "the",
+     "start": 23.26,
+     "end": 23.38
+    },
+    {
+     "w": "skin.",
+     "start": 23.38,
+     "end": 23.7
+    }
+   ]
+  },
+  {
+   "text": "Round edges let it slide past. Sharp corners trap it.",
+   "start": 24.42,
+   "end": 28.76,
+   "words": [
+    {
+     "w": "Round",
+     "start": 24.42,
+     "end": 24.84
+    },
+    {
+     "w": "edges",
+     "start": 24.84,
+     "end": 25.26
+    },
+    {
+     "w": "let",
+     "start": 25.26,
+     "end": 25.7
+    },
+    {
+     "w": "it",
+     "start": 25.7,
+     "end": 25.82
+    },
+    {
+     "w": "slide",
+     "start": 25.82,
+     "end": 26.1
+    },
+    {
+     "w": "past.",
+     "start": 26.1,
+     "end": 26.48
+    },
+    {
+     "w": "Sharp",
+     "start": 27.14,
+     "end": 27.4
+    },
+    {
+     "w": "corners",
+     "start": 27.4,
+     "end": 27.84
+    },
+    {
+     "w": "trap",
+     "start": 27.84,
+     "end": 28.52
+    },
+    {
+     "w": "it.",
+     "start": 28.52,
+     "end": 28.76
+    }
+   ]
+  },
+  {
+   "text": "So they sank a Comet in a water tank and pumped it, flight after flight.",
+   "start": 28.76,
+   "end": 33.44,
+   "words": [
+    {
+     "w": "So",
+     "start": 28.76,
+     "end": 29.32
+    },
+    {
+     "w": "they",
+     "start": 29.32,
+     "end": 29.48
+    },
+    {
+     "w": "sank",
+     "start": 29.48,
+     "end": 29.78
+    },
+    {
+     "w": "a",
+     "start": 29.78,
+     "end": 29.98
+    },
+    {
+     "w": "Comet",
+     "start": 29.98,
+     "end": 30.24
+    },
+    {
+     "w": "in",
+     "start": 30.24,
+     "end": 30.42
+    },
+    {
+     "w": "a",
+     "start": 30.42,
+     "end": 30.52
+    },
+    {
+     "w": "water",
+     "start": 30.52,
+     "end": 30.76
+    },
+    {
+     "w": "tank",
+     "start": 30.76,
+     "end": 31.12
+    },
+    {
+     "w": "and",
+     "start": 31.12,
+     "end": 31.5
+    },
+    {
+     "w": "pumped",
+     "start": 31.5,
+     "end": 31.86
+    },
+    {
+     "w": "it,",
+     "start": 31.86,
+     "end": 32.06
+    },
+    {
+     "w": "flight",
+     "start": 32.32,
+     "end": 32.68
+    },
+    {
+     "w": "after",
+     "start": 32.68,
+     "end": 33.08
+    },
+    {
+     "w": "flight.",
+     "start": 33.08,
+     "end": 33.44
+    }
+   ]
+  },
+  {
+   "text": "It tore open at the corner of a square window.",
+   "start": 34.44,
+   "end": 37.38,
+   "words": [
+    {
+     "w": "It",
+     "start": 34.44,
+     "end": 34.62
+    },
+    {
+     "w": "tore",
+     "start": 34.62,
+     "end": 34.94
+    },
+    {
+     "w": "open",
+     "start": 34.94,
+     "end": 35.32
+    },
+    {
+     "w": "at",
+     "start": 35.32,
+     "end": 35.7
+    },
+    {
+     "w": "the",
+     "start": 35.7,
+     "end": 35.8
+    },
+    {
+     "w": "corner",
+     "start": 35.8,
+     "end": 36.12
+    },
+    {
+     "w": "of",
+     "start": 36.12,
+     "end": 36.4
+    },
+    {
+     "w": "a",
+     "start": 36.4,
+     "end": 36.54
+    },
+    {
+     "w": "square",
+     "start": 36.54,
+     "end": 36.84
+    },
+    {
+     "w": "window.",
+     "start": 36.84,
+     "end": 37.38
+    }
+   ]
+  },
+  {
+   "text": "In testing, it lasted 16,000 cycles. The plane off Elba? 1,290.",
+   "start": 38.04,
+   "end": 43.4,
+   "words": [
+    {
+     "w": "In",
+     "start": 38.04,
+     "end": 38.16
+    },
+    {
+     "w": "testing,",
+     "start": 38.16,
+     "end": 38.56
+    },
+    {
+     "w": "it",
+     "start": 38.86,
+     "end": 38.96
+    },
+    {
+     "w": "lasted",
+     "start": 38.96,
+     "end": 39.3
+    },
+    {
+     "w": "16,000",
+     "start": 39.3,
+     "end": 39.9
+    },
+    {
+     "w": "cycles.",
+     "start": 40.64,
+     "end": 41.12
+    },
+    {
+     "w": "The",
+     "start": 41.72,
+     "end": 41.8
+    },
+    {
+     "w": "plane",
+     "start": 41.8,
+     "end": 42.04
+    },
+    {
+     "w": "off",
+     "start": 42.04,
+     "end": 42.24
+    },
+    {
+     "w": "Elba?",
+     "start": 42.24,
+     "end": 42.6
+    },
+    {
+     "w": "1,290.",
+     "start": 43.12,
+     "end": 43.4
+    }
+   ]
+  },
+  {
+   "text": "And that first crack started at a little square window in the roof.",
+   "start": 45.66,
+   "end": 49.88,
+   "words": [
+    {
+     "w": "And",
+     "start": 45.66,
+     "end": 45.96
+    },
+    {
+     "w": "that",
+     "start": 45.96,
+     "end": 46.14
+    },
+    {
+     "w": "first",
+     "start": 46.14,
+     "end": 46.44
+    },
+    {
+     "w": "crack",
+     "start": 46.44,
+     "end": 46.82
+    },
+    {
+     "w": "started",
+     "start": 46.82,
+     "end": 47.5
+    },
+    {
+     "w": "at",
+     "start": 47.5,
+     "end": 47.94
+    },
+    {
+     "w": "a",
+     "start": 47.94,
+     "end": 48.06
+    },
+    {
+     "w": "little",
+     "start": 48.06,
+     "end": 48.3
+    },
+    {
+     "w": "square",
+     "start": 48.3,
+     "end": 48.62
+    },
+    {
+     "w": "window",
+     "start": 48.62,
+     "end": 49.08
+    },
+    {
+     "w": "in",
+     "start": 49.08,
+     "end": 49.52
+    },
+    {
+     "w": "the",
+     "start": 49.52,
+     "end": 49.66
+    },
+    {
+     "w": "roof.",
+     "start": 49.66,
+     "end": 49.88
+    }
+   ]
+  },
+  {
+   "text": "Now windows are round. So, would you have boarded the Comet?",
+   "start": 51.0,
+   "end": 54.3,
+   "words": [
+    {
+     "w": "Now",
+     "start": 51.0,
+     "end": 51.24
+    },
+    {
+     "w": "windows",
+     "start": 51.24,
+     "end": 51.5
+    },
+    {
+     "w": "are",
+     "start": 51.5,
+     "end": 51.74
+    },
+    {
+     "w": "round.",
+     "start": 51.74,
+     "end": 52.04
+    },
+    {
+     "w": "So,",
+     "start": 52.46,
+     "end": 52.62
+    },
+    {
+     "w": "would",
+     "start": 52.94,
+     "end": 53.14
+    },
+    {
+     "w": "you",
+     "start": 53.14,
+     "end": 53.38
+    },
+    {
+     "w": "have",
+     "start": 53.38,
+     "end": 53.56
+    },
+    {
+     "w": "boarded",
+     "start": 53.56,
+     "end": 53.9
+    },
+    {
+     "w": "the",
+     "start": 53.9,
+     "end": 54.02
+    },
+    {
+     "w": "Comet?",
+     "start": 54.02,
+     "end": 54.3
+    }
+   ]
+  }
+ ],
+ "duration": 54.92
+}
