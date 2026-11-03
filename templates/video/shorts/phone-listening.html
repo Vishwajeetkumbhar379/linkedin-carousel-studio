@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/shorts/shorts.css">
+<script src="/node_modules/gsap/dist/gsap.min.js"></script>
+<script src="/video/shorts/captions.js"></script>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+/* Ep 10 "phone listening": the reference look (README): one continuous world, navy + one amber emissive, camera never stops */
+:root{--navy:#001A2D;--amb:#FDB33E}
+#root{background:var(--navy)}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+#wbox{background:var(--amb)}
+#wbox i{border-color:var(--amb)}
+.hl{position:absolute;left:60px;right:60px;top:270px;text-align:center;z-index:60;opacity:0;pointer-events:none}
+.lab{font:500 28px 'Geist Mono';letter-spacing:.2em;color:var(--amb);text-transform:uppercase}
+.num{font:700 200px/1 'Inter Tight';letter-spacing:-.05em;color:#FBF7F0;font-variant-numeric:tabular-nums;text-shadow:0 0 70px rgba(253,179,62,.45)}
+.term{font:700 116px/0.95 'Inter Tight';letter-spacing:-.04em;color:#FBF7F0;text-transform:uppercase;text-shadow:0 0 60px rgba(253,179,62,.35)}
+.q{font:400 96px/0.98 'Instrument Serif';color:#FBF7F0;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+.q em{font-style:italic;color:var(--amb)}
+#hud{position:absolute;left:64px;top:226px;z-index:70;font:500 24px 'Geist Mono';letter-spacing:.16em;color:#FBF7F0;opacity:0;display:flex;gap:14px;align-items:center}
+#hud b{display:inline-block;width:12px;height:12px;border-radius:50%;background:#6B7A90}
+#hud.on b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+#tag b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+.cbub{position:absolute;right:110px;top:1110px;padding:22px 30px;border-radius:30px;background:#fff;color:#111;font:600 36px 'Inter Tight';box-shadow:0 30px 60px -20px #000;z-index:60;opacity:0}
+#gl.glitch{filter:contrast(1.25) saturate(1.3)}
+</style></head>
+<body><div id="root">
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div class="hl" id="hPitch"><div class="lab">Cox Media Group · pitch to advertisers</div><div class="term">Active<br>Listening</div></div>
+<div class="hl" id="hGoogle"><div class="lab">Google · 2024</div><div class="term">Dropped<br>them</div></div>
+<div class="hl" id="hMeta"><div class="lab">Meta · 2024</div><div class="q">“We don’t use your <em>microphone</em> for ads”</div></div>
+<div class="hl" id="hFtc"><div class="lab">US Federal Trade Commission</div><div class="term">Looked<br>inside</div></div>
+<div class="hl" id="hLists"><div class="lab">FTC · May 2026</div><div class="term">Resold<br>email lists</div></div>
+<div class="hl" id="h930"><div class="lab">Paid to settle with the FTC</div><div class="num" id="n930">$930,000</div></div>
+<div class="hl" id="hApps"><div class="lab">Northeastern Uni · 17,000+ apps</div><div class="term">Mic switched on: <span id="nApps">0</span></div></div>
+<div class="hl" id="hKnows"><div class="lab">What it already has</div><div class="term">Location<br>Searches<br>Friends</div></div>
+<div class="hl" id="hQ"><div class="q">Coincidence, or <em>worse?</em></div></div>
+<div class="cbub" id="cbub">💬 Coincidence / Worse</div>
+<div id="tag"><b></b>INSIDE AI · EP 10</div>
+<div id="handle">@BUILDWITH.VISH</div>
+<div id="hud"><b></b><span id="hudt">MIC: LISTENING?</span></div>
+<div id="cap"><div id="capline"></div></div>
+<div id="vig"></div><div id="grain"></div>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { BokehPass } from "three/addons/postprocessing/BokehPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const W = 1080, H = 1920;
+const SFX = []; window.SFX = SFX;
+const sfx = (t, s) => SFX.push({t: Math.max(0, +t.toFixed(3)), s});
+const cl = x => Math.min(1, Math.max(0, x));
+const seg = (t, a, b) => cl((t - a) / Math.max(1e-4, b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b, k) => a + (b - a) * k;
+const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(29);
+const norm = w => w.toLowerCase().replace(/[^a-z0-9$.']/g, '').replace(/\.$/, '');
+let L, D;
+function wt(i, key) { for (const w of L[i].words) if (norm(w.w).startsWith(key)) return w.start; return L[i].start; }
+const S = i => L[i].start, E = i => L[i].end, N = i => (i + 1 < L.length ? L[i + 1].start : D);
+
+/* ---------- renderer: navy world, ACES, bloom + depth of field ---------- */
+const NAVY = 0x001A2D, AMBER = new THREE.Color(0xFDB33E), METAL = 0x6B7A90;
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true});
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(NAVY);
+scene.fog = new THREE.FogExp2(0x02182a, 0.0022);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.3;
+const camera = new THREE.PerspectiveCamera(40, W / H, 0.05, 6000);
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bokeh = new BokehPass(scene, camera, {focus: 10, aperture: 0.0004, maxblur: 0.006});
+composer.addPass(bokeh);
+const bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 1.0, 0.55, 0.8);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+const moon = new THREE.DirectionalLight(0x9fb6d8, 1.5); moon.position.set(-40, 80, 50); scene.add(moon);
+const hemi = new THREE.HemisphereLight(0x3a5878, 0x000a14, 0.6); scene.add(hemi);
+const phoneL = new THREE.PointLight(0xFDB33E, 0, 40, 2); phoneL.position.set(0, 6, 2); scene.add(phoneL);
+const slideL = new THREE.PointLight(0xFDB33E, 0, 160, 2); slideL.position.set(0, 80, -230); scene.add(slideL);
+
+function dotTex() { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); }
+const DOT = dotTex();
+const metal = (c = METAL, r = 0.35) => new THREE.MeshStandardMaterial({color: c, metalness: 0.8, roughness: r});
+const glowMat = (c = AMBER, o = 1) => new THREE.MeshBasicMaterial({color: c.clone ? c.clone() : c, toneMapped: false, transparent: o < 1, opacity: o});
+const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(1, 1, 1), tmpP = new THREE.Vector3(), tmpC = new THREE.Color(), tmpV = new THREE.Vector3();
+function canvasTex(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return {c, x: c.getContext('2d'), t}; }
+function rr(x, X, Y, w, h, r) { x.beginPath(); x.roundRect(X, Y, w, h, r); }
+
+/* ---------- zone A: the table and the phone (cm, phone at the origin, mic at +z) ---------- */
+const table = new THREE.Mesh(new THREE.PlaneGeometry(5000, 5000), new THREE.MeshStandardMaterial({color: 0x07182a, roughness: 0.55, metalness: 0.15}));
+table.rotation.x = -Math.PI / 2; scene.add(table);
+const phone = new THREE.Group(); scene.add(phone);
+const scr = canvasTex(320, 660);
+{
+  const body = new THREE.Mesh(new RoundedBoxGeometry(7.5, 0.8, 15.5, 4, 0.9), new THREE.MeshStandardMaterial({color: 0x1a2330, metalness: 0.7, roughness: 0.28}));
+  body.position.y = 0.4; phone.add(body);
+  const s = new THREE.Mesh(new THREE.PlaneGeometry(6.9, 14.9), new THREE.MeshBasicMaterial({map: scr.t, toneMapped: false, color: 0xbdbdbd}));
+  s.rotation.x = -Math.PI / 2; s.position.y = 0.815; phone.add(s);
+  for (let i = 0; i < 6; i++) { const h = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.2, 10), new THREE.MeshBasicMaterial({color: 0x02070c})); h.rotation.x = Math.PI / 2; h.position.set(-1.6 + i * 0.64, 0.4, 7.72); phone.add(h); }
+}
+const MIC = new THREE.Vector3(0, 0.42, 7.9);
+function drawScreen(t, notif) {
+  const x = scr.x, w = 320, h = 660;
+  x.fillStyle = '#04111e'; x.fillRect(0, 0, w, h);
+  const g = x.createRadialGradient(160, 520, 10, 160, 520, 380); g.addColorStop(0, 'rgba(253,179,62,.18)'); g.addColorStop(1, 'rgba(253,179,62,0)'); x.fillStyle = g; x.fillRect(0, 0, w, h);
+  x.textAlign = 'center'; x.fillStyle = '#FBF7F0';
+  x.font = '600 84px Inter Tight, sans-serif'; x.fillText('9:41', w / 2, 150);
+  x.fillStyle = '#9fb6d8'; x.font = '500 20px Geist Mono, monospace'; x.fillText('TUESDAY 28 OCTOBER', w / 2, 190);
+  if (notif > 0) {
+    x.globalAlpha = notif; const y = 250 + (1 - notif) * 30;
+    x.fillStyle = 'rgba(20,40,62,.95)'; rr(x, 18, y, 284, 104, 22); x.fill();
+    x.fillStyle = '#FDB33E'; rr(x, 34, y + 20, 64, 64, 14); x.fill();
+    x.fillStyle = '#04111e'; x.font = '700 30px Inter Tight'; x.fillText('AD', 66, y + 63);
+    x.textAlign = 'left'; x.fillStyle = '#FBF7F0'; x.font = '600 22px Inter Tight'; x.fillText('Running shoes, 30% off', 112, y + 46);
+    x.fillStyle = '#9fb6d8'; x.font = '500 18px Inter Tight'; x.fillText('Sponsored · just for you', 112, y + 74);
+    x.globalAlpha = 1; x.textAlign = 'center';
+  }
+  scr.t.needsUpdate = true;
+}
+/* sound rings drifting into the microphone */
+const RN = 14;
+const rings = [];
+for (let i = 0; i < RN; i++) { const m = new THREE.Mesh(new THREE.TorusGeometry(1, 0.05, 8, 64), glowMat(AMBER, 1)); m.material.transparent = true; m.material.depthWrite = false; scene.add(m); rings.push(m); }
+const VOICE = new THREE.Vector3(2, 4.5, 42);
+/* ad cards that pop above the phone */
+const ADS = [['RUNNING SHOES', '30% OFF TODAY'], ['WEEKEND IN ROME', 'FLIGHTS FROM £49'], ['PUPPY FOOD', 'FREE DELIVERY']];
+const adCards = ADS.map(([a, b], i) => {
+  const c = canvasTex(560, 280), x = c.x;
+  x.fillStyle = '#062038'; rr(x, 6, 6, 548, 268, 36); x.fill(); x.lineWidth = 6; x.strokeStyle = '#FDB33E'; rr(x, 6, 6, 548, 268, 36); x.stroke();
+  x.fillStyle = '#FDB33E'; rr(x, 36, 40, 120, 54, 27); x.fill();
+  x.fillStyle = '#04111e'; x.font = '700 30px Inter Tight'; x.textAlign = 'center'; x.fillText('AD', 96, 78);
+  x.textAlign = 'left'; x.fillStyle = '#FBF7F0'; x.font = '700 50px Inter Tight'; x.fillText(a, 36, 170);
+  x.fillStyle = '#FDB33E'; x.font = '500 30px Geist Mono'; x.fillText(b, 36, 228);
+  c.t.needsUpdate = true;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(9, 4.5), new THREE.MeshBasicMaterial({map: c.t, transparent: true, toneMapped: false, depthWrite: false}));
+  m.userData.home = [new THREE.Vector3(-6.5, 10, 1), new THREE.Vector3(1, 14.5, -2), new THREE.Vector3(7, 9.5, 2.5)][i];
+  scene.add(m); return m;
+});
+
+/* ---------- zone B: the pitch-deck slide floating in the dark ---------- */
+const SC = new THREE.Vector3(0, 80, -260), SW = 64, SH = 36;
+const sl = canvasTex(1600, 900);
+const slideMat = new THREE.MeshBasicMaterial({map: sl.t, toneMapped: false, transparent: true, side: THREE.DoubleSide, color: 0xc8c8c8});
+const slide = new THREE.Mesh(new THREE.PlaneGeometry(SW, SH), slideMat); slide.position.copy(SC); scene.add(slide);
+const frameM = new THREE.Mesh(new THREE.BoxGeometry(SW + 1.4, SH + 1.4, 0.6), metal(0x2a3a50, 0.4)); frameM.position.copy(SC).add(new THREE.Vector3(0, 0, -0.45)); scene.add(frameM);
+/* the slide's line-art twin (seen as the camera passes through) */
+const artPts = [];
+{ const hw = SW / 2, hh = SH / 2; const P = (a, b, c, d) => artPts.push(a, b, 0, c, d, 0);
+  P(-hw, -hh, hw, -hh); P(hw, -hh, hw, hh); P(hw, hh, -hw, hh); P(-hw, hh, -hw, -hh);
+  for (let i = 1; i < 16; i++) P(-hw + i * SW / 16, -hh, -hw + i * SW / 16, hh);
+  for (let j = 1; j < 9; j++) P(-hw, -hh + j * SH / 9, hw, -hh + j * SH / 9); }
+const artG = new THREE.BufferGeometry(); artG.setAttribute('position', new THREE.Float32BufferAttribute(artPts, 3));
+const art = new THREE.LineSegments(artG, new THREE.LineBasicMaterial({color: AMBER, transparent: true, opacity: 0, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false}));
+art.position.copy(SC); scene.add(art);
+function micIcon(x, cx, cy, s, col) {
+  x.strokeStyle = col; x.fillStyle = col; x.lineWidth = 10 * s; x.lineCap = 'round';
+  rr(x, cx - 34 * s, cy - 90 * s, 68 * s, 130 * s, 34 * s); x.fill();
+  x.beginPath(); x.arc(cx, cy + 5 * s, 64 * s, 0.05 * Math.PI, 0.95 * Math.PI); x.stroke();
+  x.beginPath(); x.moveTo(cx, cy + 70 * s); x.lineTo(cx, cy + 110 * s); x.moveTo(cx - 40 * s, cy + 110 * s); x.lineTo(cx + 40 * s, cy + 110 * s); x.stroke();
+}
+function drawSlide(t, k) {
+  // k: 0..1 how far the "claimed" diagram has animated
+  const x = sl.x, w = 1600, h = 900;
+  x.fillStyle = '#041a2e'; x.fillRect(0, 0, w, h);
+  x.strokeStyle = 'rgba(159,182,216,.08)'; x.lineWidth = 2; for (let i = 0; i < w; i += 100) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i, h); x.stroke(); }
+  x.fillStyle = '#9fb6d8'; x.font = '500 34px Geist Mono'; x.textAlign = 'left'; x.fillText('CMG · PITCH DECK', 90, 120);
+  x.fillStyle = '#FDB33E'; x.font = '800 150px Inter Tight'; x.fillText('ACTIVE', 84, 300); x.fillText('LISTENING', 84, 445);
+  x.fillStyle = '#FBF7F0'; x.font = '500 46px Inter Tight'; x.fillText('What they told advertisers:', 90, 560);
+  x.font = '600 52px Inter Tight'; x.fillText('voice  →  data  →  ads', 90, 640);
+  x.fillStyle = '#6B7A90'; x.font = '500 30px Geist Mono'; x.fillText('AS REPORTED BY 404 MEDIA, 2023-24', 90, 800);
+  // right: mic -> waves -> ad cards
+  micIcon(x, 1130, 380, 1.3, '#FDB33E');
+  for (let i = 0; i < 4; i++) { const r = 120 + ((t * 120 + i * 60) % 240); x.strokeStyle = `rgba(253,179,62,${0.7 * (1 - (r - 120) / 240) * cl(k * 3)})`; x.lineWidth = 8; x.beginPath(); x.arc(1130, 360, r, -0.5, 0.5); x.stroke(); x.beginPath(); x.arc(1130, 360, r, Math.PI - 0.5, Math.PI + 0.5); x.stroke(); }
+  for (let i = 0; i < 3; i++) { const a = cl(k * 3 - 1 - i * 0.5); if (a <= 0) continue; x.globalAlpha = a; x.fillStyle = '#062038'; rr(x, 980 + i * 120, 640 - i * 20, 230, 120, 18); x.fill(); x.strokeStyle = '#FDB33E'; x.lineWidth = 5; rr(x, 980 + i * 120, 640 - i * 20, 230, 120, 18); x.stroke(); x.fillStyle = '#FDB33E'; x.font = '700 40px Inter Tight'; x.textAlign = 'center'; x.fillText('AD', 1095 + i * 120, 715 - i * 20); x.textAlign = 'left'; x.globalAlpha = 1; }
+  sl.t.needsUpdate = true;
+}
+/* partner badges orbiting the slide */
+const BADGES = ['GOOGLE', 'META', 'AMAZON'].map((n, i) => {
+  const c = canvasTex(400, 400), x = c.x;
+  x.fillStyle = '#062038'; x.beginPath(); x.arc(200, 200, 196, 0, Math.PI * 2); x.fill();
+  x.lineWidth = 14; x.strokeStyle = '#FDB33E'; x.beginPath(); x.arc(200, 200, 182, 0, Math.PI * 2); x.stroke();
+  x.fillStyle = '#9fb6d8'; x.font = '500 30px Geist Mono'; x.textAlign = 'center'; x.fillText('PARTNER', 200, 150);
+  x.fillStyle = '#FBF7F0'; x.font = '800 64px Inter Tight'; x.fillText(n, 200, 230);
+  x.fillStyle = '#FDB33E'; x.font = '700 60px Inter Tight'; x.fillText('✓', 200, 310);
+  c.t.needsUpdate = true;
+  const g = new THREE.Group();
+  const face = new THREE.Mesh(new THREE.CircleGeometry(6, 48), new THREE.MeshBasicMaterial({map: c.t, toneMapped: false, color: 0xffffff, side: THREE.DoubleSide}));
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(6.1, 0.35, 12, 64), metal(0x7b889c, 0.3));
+  g.add(face, rim); g.userData = {face, a0: [0.4, 2.5, 4.6][i]}; scene.add(g); return g;
+});
+/* ad cards flying out of the slide (the claim, visualised) */
+const FLY = 40;
+const flyCards = new THREE.InstancedMesh(new THREE.PlaneGeometry(4.6, 2.4), new THREE.MeshBasicMaterial({color: 0xffffff, toneMapped: false, transparent: true, depthWrite: false, side: THREE.DoubleSide, map: adCards[0].material.map}), FLY);
+scene.add(flyCards);
+const FLYD = [...Array(FLY)].map(() => ({a: rnd() * 6.283, r: 20 + rnd() * 40, off: rnd()}));
+
+/* ---------- zone C: behind the slide: no microphone, just data brokers and email lists ---------- */
+const TOW = [-56, -28, 0, 28, 56].map((x, i) => ({x, z: -400 - Math.abs(x) * 0.35, h: 70 + (i % 2) * 18 + (i === 2 ? 14 : 0)}));
+const winC = canvasTex(64, 256);
+{ const x = winC.x; x.fillStyle = '#000'; x.fillRect(0, 0, 64, 256); x.fillStyle = '#fff'; for (let j = 8; j < 256; j += 16) for (let i = 6; i < 64; i += 14) if (rnd() > 0.3) x.fillRect(i, j, 8, 6); winC.t.needsUpdate = true; winC.t.colorSpace = THREE.NoColorSpace; }
+const towerMat = new THREE.MeshStandardMaterial({color: 0x24344a, metalness: 0.6, roughness: 0.4, emissive: AMBER, emissiveMap: winC.t, emissiveIntensity: 0.0});
+TOW.forEach(tw => { const m = new THREE.Mesh(new THREE.BoxGeometry(14, tw.h, 14), towerMat); m.position.set(tw.x, tw.h / 2, tw.z); scene.add(m); });
+function label(text, s = 1) {
+  const c = canvasTex(512, 96), x = c.x; x.fillStyle = 'rgba(4,17,30,.85)'; rr(x, 4, 4, 504, 88, 44); x.fill(); x.strokeStyle = '#FDB33E'; x.lineWidth = 4; rr(x, 4, 4, 504, 88, 44); x.stroke();
+  x.fillStyle = '#FDB33E'; x.font = '600 40px Geist Mono'; x.textAlign = 'center'; x.fillText(text, 256, 62); c.t.needsUpdate = true;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map: c.t, toneMapped: false, transparent: true, depthWrite: false})); sp.scale.set(26 * s, 4.9 * s, 1); scene.add(sp); return sp;
+}
+const towerLabels = TOW.filter((_, i) => i % 2 === 0).map(tw => { const s = label('DATA BROKER'); s.position.set(tw.x, tw.h + 7, tw.z); return s; });
+/* the microphone that isn't there: a grey, unplugged studio mic */
+const fakeMic = new THREE.Group();
+{ const head = new THREE.Mesh(new THREE.CapsuleGeometry(4.2, 7, 8, 24), new THREE.MeshStandardMaterial({color: 0x3d4b60, metalness: 0.8, roughness: 0.45, wireframe: false}));
+  const grille = new THREE.Mesh(new THREE.CapsuleGeometry(4.35, 7, 8, 24), new THREE.MeshBasicMaterial({color: 0x6B7A90, wireframe: true, transparent: true, opacity: 0.35}));
+  const stand = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 30, 12), metal(0x3d4b60)); stand.position.y = -20;
+  const base = new THREE.Mesh(new THREE.CylinderGeometry(6, 7, 1.4, 32), metal(0x2a3a50)); base.position.y = -35;
+  fakeMic.add(head, grille, stand, base); fakeMic.position.set(0, 42, -320); scene.add(fakeMic); }
+const micLabel = label('MICROPHONE: NONE', 0.9); micLabel.position.set(0, 58, -320);
+/* envelope streams from the towers into the back of the slide */
+const EN = 110, ENV = EN * TOW.length;
+const envC = canvasTex(128, 90);
+{ const x = envC.x; x.fillStyle = '#FDB33E'; x.fillRect(0, 0, 128, 90); x.strokeStyle = '#04111e'; x.lineWidth = 6; x.beginPath(); x.moveTo(4, 4); x.lineTo(64, 52); x.lineTo(124, 4); x.stroke(); envC.t.needsUpdate = true; }
+const envs = new THREE.InstancedMesh(new THREE.PlaneGeometry(3.6, 2.5), new THREE.MeshBasicMaterial({map: envC.t, toneMapped: false, side: THREE.DoubleSide, transparent: true}), ENV);
+scene.add(envs);
+const ENVD = [...Array(ENV)].map((_, k) => ({tw: TOW[k % TOW.length], off: rnd(), sx: (rnd() - .5) * 6, sy: (rnd() - .5) * 6, spin: rnd() * 6.28}));
+const SBACK = SC.clone().add(new THREE.Vector3(0, 0, -1.5));
+
+/* ---------- zone D: 17,000 app tiles around the phone ---------- */
+const GX = 132, GZ = 130, SP = 12;
+const TILES = [];
+for (let i = 0; i < GX; i++) for (let j = 0; j < GZ; j++) { const x = (i - (GX - 1) / 2) * SP, z = (j - (GZ - 1) / 2) * SP; if (Math.abs(x) < 10 && Math.abs(z) < 14) continue; TILES.push({x, z, d: Math.hypot(x, z), r: rnd()}); }
+const tiles = new THREE.InstancedMesh(new RoundedBoxGeometry(9, 1, 9, 1, 0.8), new THREE.MeshStandardMaterial({color: 0xffffff, metalness: 0.4, roughness: 0.5}), TILES.length);
+tiles.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+for (let k = 0; k < TILES.length; k++) tiles.setColorAt(k, tmpC.set(0x1d3149));
+scene.add(tiles);
+
+/* ---------- zone E: the real data trail (city blocks, pins, searches, friends) ---------- */
+const BN = 420, BL = [];
+while (BL.length < BN) { const a = rnd() * 6.283, r = 30 + Math.pow(rnd(), 0.8) * 230; BL.push({x: Math.cos(a) * r, z: Math.sin(a) * r, w: 6 + rnd() * 10, d: 6 + rnd() * 10, h: 2 + rnd() * 14, r}); }
+const blocks = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({color: 0x2a3a50, metalness: 0.5, roughness: 0.55}), BN);
+blocks.instanceMatrix.setUsage(THREE.DynamicDrawUsage); scene.add(blocks);
+const streets = new THREE.GridHelper(560, 28, 0x16405f, 0x0f2d47); streets.position.y = 0.05; streets.material.transparent = true; streets.material.opacity = 0; scene.add(streets);
+const SRC = [];
+const pinG = new THREE.Group(); scene.add(pinG);
+[[70, -60], [-90, -40], [40, 95], [-60, 85]].forEach(([x, z]) => { const g = new THREE.Group(); const c = new THREE.Mesh(new THREE.ConeGeometry(2.6, 8, 24), glowMat(AMBER)); c.rotation.x = Math.PI; c.position.y = 4; const s = new THREE.Mesh(new THREE.SphereGeometry(3.4, 24, 16), glowMat(AMBER)); s.position.y = 10; g.add(c, s); g.position.set(x, 0, z); pinG.add(g); SRC.push({o: g, p: new THREE.Vector3(x, 11, z), kind: 0}); });
+const SEARCH = ['running shoes near me', 'cheap flights rome', 'best puppy food'];
+const searchCards = SEARCH.map((q, i) => {
+  const c = canvasTex(700, 120), x = c.x; x.fillStyle = '#062038'; rr(x, 4, 4, 692, 112, 56); x.fill(); x.strokeStyle = '#FDB33E'; x.lineWidth = 5; rr(x, 4, 4, 692, 112, 56); x.stroke();
+  x.strokeStyle = '#FDB33E'; x.lineWidth = 7; x.beginPath(); x.arc(64, 56, 20, 0, 6.3); x.stroke(); x.beginPath(); x.moveTo(78, 70); x.lineTo(94, 86); x.stroke();
+  x.fillStyle = '#FBF7F0'; x.font = '500 46px Inter Tight'; x.fillText(q, 120, 74); c.t.needsUpdate = true;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map: c.t, toneMapped: false, transparent: true, depthWrite: false})); sp.scale.set(35, 6, 1);
+  sp.position.set([-70, 75, -10][i], [26, 30, 34][i], [10, 20, -95][i]); scene.add(sp); SRC.push({o: sp, p: sp.position.clone(), kind: 1}); return sp;
+});
+const friends = [[-35, -80], [95, 30], [-110, 30], [20, -120], [60, 60]].map(([x, z]) => {
+  const g = new THREE.Group(); const b = new THREE.Mesh(new RoundedBoxGeometry(5, 0.6, 10, 3, 0.6), new THREE.MeshStandardMaterial({color: 0x1a2330, metalness: 0.7, roughness: 0.3}));
+  const s = new THREE.Mesh(new THREE.PlaneGeometry(4.5, 9.4), glowMat(AMBER)); s.rotation.x = -Math.PI / 2; s.position.y = 0.32; s.material.color.multiplyScalar(0.6);
+  g.add(b, s); g.position.set(x, 0.3, z); g.rotation.y = rnd() * 3; scene.add(g); SRC.push({o: g, p: new THREE.Vector3(x, 1, z), kind: 2}); return g; });
+const AP = 32, trailPos = new Float32Array(SRC.length * (AP - 1) * 6), trailCol = new Float32Array(SRC.length * (AP - 1) * 6);
+const trailG = new THREE.BufferGeometry(); trailG.setAttribute('position', new THREE.BufferAttribute(trailPos, 3)); trailG.setAttribute('color', new THREE.BufferAttribute(trailCol, 3));
+const trails = new THREE.LineSegments(trailG, new THREE.LineBasicMaterial({vertexColors: true, transparent: true, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false})); scene.add(trails);
+const ARC = SRC.map(s => { const a = s.p, b = new THREE.Vector3(0, 1.2, 0), m = a.clone().lerp(b, 0.5); m.y += 20 + a.length() * 0.25; return new THREE.QuadraticBezierCurve3(a, m, b); });
+ARC.forEach((c, k) => { const pts = c.getPoints(AP - 1); for (let i = 0; i < AP - 1; i++) trailPos.set([pts[i].x, pts[i].y, pts[i].z, pts[i + 1].x, pts[i + 1].y, pts[i + 1].z], (k * (AP - 1) + i) * 6); });
+/* shared travelling pulses */
+const PN = SRC.length * 3 + 10, pulP = new Float32Array(PN * 3), pulG = new THREE.BufferGeometry(); pulG.setAttribute('position', new THREE.BufferAttribute(pulP, 3));
+scene.add(new THREE.Points(pulG, new THREE.PointsMaterial({size: 3.2, map: DOT, color: AMBER, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false})));
+
+/* ---------- camera: keyframes, eased, with a drift so it never stops ---------- */
+let CK = [];
+const tgt = new THREE.Vector3();
+function camAt(t) {
+  if (window.COVER_CAM) { const c = window.COVER_CAM; camera.position.set(...c.p); camera.lookAt(...c.l); camera.fov = c.f; camera.updateProjectionMatrix(); return Math.hypot(c.p[0] - c.l[0], c.p[1] - c.l[1], c.p[2] - c.l[2]); }
+  let i = 0; while (i < CK.length - 1 && CK[i + 1].t <= t) i++;
+  const a = CK[i], b = CK[Math.min(i + 1, CK.length - 1)];
+  const k = b === a ? 0 : (b.e || eio)(seg(t, a.t, b.t));
+  const p = a.p.map((v, j) => lerp(v, b.p[j], k)), l = a.l.map((v, j) => lerp(v, b.l[j], k));
+  const dist = Math.hypot(p[0] - l[0], p[1] - l[1], p[2] - l[2]), dr = Math.min(0.6, dist * 0.006);
+  camera.position.set(p[0] + Math.sin(t * 0.9) * dr, p[1] + Math.cos(t * 0.7) * dr, p[2] + Math.sin(t * 0.55 + 1) * dr);
+  tgt.set(...l); camera.lookAt(tgt);
+  camera.fov = lerp(a.f || 40, b.f || 40, k); camera.updateProjectionMatrix();
+  return dist;
+}
+const hl = (id, t, a, b, fade = 0.22) => { const el = document.getElementById(id); const o = Math.min(seg(t, a, a + fade), 1 - seg(t, b - fade, b)); el.style.opacity = o; el.style.transform = `translateY(${(1 - eo(seg(t, a, a + 0.4))) * 40}px) scale(${lerp(0.94, 1, eo(seg(t, a, a + 0.4)))})`; };
+
+let T = {};
+window.setup = async function (spec) {
+  L = spec.lines; D = spec.duration;
+  Captions.build(spec);
+  const P0 = [9, 7.5, 21], L0 = [0, 1.5, 3.5];
+  const sc = [SC.x, SC.y, SC.z];
+  T = {
+    ad0: wt(0, 'listening'), drop: wt(3, 'dropped'), meta: wt(4, 'microphone'), thru: S(5) + 1.7,
+    lists: wt(6, 'email'), stop: wt(7, '$930000') + 0.2, scan: S(8) + 1.2, zero: wt(8, 'not'), know: S(9), loc: wt(9, 'location'), srch: wt(9, 'searches'), frnd: wt(9, 'friends'),
+  };
+  CK = [
+    {t: 0, p: P0, l: L0, f: 40},
+    {t: E(0), p: [7, 6, 17], l: [0, 2.5, 3], f: 38},
+    {t: S(1) + 1.3, p: [-4, 30, 40], l: [0, 50, -200], f: 46},
+    {t: N(1), p: [0, 66, -80], l: sc, f: 42},
+    {t: S(2) + 2.2, p: [-6, 78, -150], l: [-4, 80, -260], f: 40},
+    {t: N(2) - 0.3, p: [16, 84, -196], l: [14, 82, -260], f: 42},
+    {t: S(3) + 1.6, p: [-62, 96, -196], l: sc, f: 46},
+    {t: N(3), p: [-58, 74, -176], l: sc, f: 46},
+    {t: N(4) - 0.2, p: [44, 70, -180], l: sc, f: 44},
+    {t: S(5) + 0.9, p: [6, 80, -232], l: [0, 80, -262], f: 42},
+    {t: T.thru, p: [0, 80, -264], l: [0, 70, -400], f: 46},
+    {t: N(5), p: [-30, 64, -300], l: [0, 55, -380], f: 48},
+    {t: T.lists + 0.2, p: [52, 58, -350], l: [0, 62, -380], f: 46},
+    {t: N(6), p: [74, 52, -470], l: [0, 75, -300], f: 48},
+    {t: N(7) - 0.15, p: [80, 80, -500], l: [0, 75, -290], f: 46},
+    {t: S(8) + 1.1, p: [0, 520, 120], l: [0, 0, 0], f: 46},
+    {t: N(8), p: [0, 2400, 240], l: [0, 0, 0], f: 40},
+    {t: S(9) + 1.3, p: [0, 380, 260], l: [0, 0, 0], f: 46},
+    {t: T.frnd, p: [80, 110, 170], l: [0, 6, 0], f: 46},
+    {t: N(9), p: [26, 34, 60], l: [0, 2, 0], f: 44},
+    {t: S(10) + 0.9, p: P0, l: L0, f: 40},
+    {t: D, p: [8, 6.6, 19], l: L0, f: 39},
+  ];
+  // sound map
+  sfx(0, 'thump'); for (let k = 0; k < 4; k++) sfx(0.2 + k * 0.45, 'tick'); sfx(T.ad0, 'pop');
+  sfx(S(1), 'whoosh'); sfx(S(1) + 1.0, 'rise');
+  sfx(S(2), 'whoosh'); sfx(wt(2, 'active'), 'ding'); sfx(wt(2, 'ads'), 'zip');
+  sfx(S(3), 'whoosh'); sfx(T.drop, 'scratch'); sfx(T.drop + 0.6, 'thump');
+  sfx(T.meta, 'click'); sfx(S(4) + 0.2, 'whoosh');
+  sfx(S(5), 'rise'); sfx(T.thru, 'whoosh'); sfx(T.thru + 0.05, 'thump');
+  sfx(wt(6, 'never'), 'scratch'); sfx(T.lists, 'zip');
+  sfx(wt(7, '$930000'), 'thump'); sfx(wt(7, '$930000') + 0.05, 'coin'); sfx(wt(7, 'exist'), 'scratch');
+  sfx(S(8), 'whoosh'); sfx(S(8) + 0.5, 'rise'); sfx(T.zero, 'ding');
+  sfx(S(9), 'whoosh'); sfx(T.loc, 'pop'); sfx(T.srch, 'pop'); sfx(T.frnd, 'pop');
+  sfx(N(9) - 0.2, 'whoosh'); sfx(S(10) + 1.0, 'pop'); sfx(D - 0.25, 'thump');
+  SFX.sort((a, b) => a.t - b.t);
+  window.READY = true;
+};
+
+const hudEl = document.getElementById('hud'), hudT = document.getElementById('hudt');
+window.frame = function (t) {
+  const dist = camAt(t);
+  const cp = camera.position;
+
+  /* zone A: sound rings into the mic, ads popping above the phone */
+  const talk = Math.max(t < E(0) + 0.6 ? 1 : 0, seg(t, S(10) - 0.2, S(10) + 0.4));
+  rings.forEach((m, i) => {
+    const u = (t * 0.55 + i / RN) % 1;
+    m.position.copy(VOICE).lerp(MIC, eio(u)); m.lookAt(VOICE);
+    m.scale.setScalar(lerp(3.2, 0.25, u)); m.material.opacity = talk * Math.sin(u * Math.PI) * 0.9; m.visible = talk > 0;
+  });
+  const adOn = k => {
+    const a = seg(t, T.ad0 + k * 0.18, T.ad0 + k * 0.18 + 0.3) * (1 - seg(t, S(1) + 0.6, S(1) + 1.2));
+    const b = seg(t, S(10) + 0.9 + k * 0.18, S(10) + 1.2 + k * 0.18);
+    const c = seg(t, T.frnd + 0.4 + k * 0.15, T.frnd + 0.7 + k * 0.15) * (1 - seg(t, S(10), S(10) + 0.6));
+    return Math.max(a, b, c);
+  };
+  adCards.forEach((m, k) => { const o = adOn(k); m.visible = o > 0.01; m.material.opacity = o; m.position.copy(m.userData.home); m.position.y += Math.sin(t * 1.3 + k) * 0.3 - (1 - eo(o)) * 3; m.scale.setScalar(lerp(0.6, 1, eo(o))); m.quaternion.copy(camera.quaternion); });
+  drawScreen(t, Math.max(seg(t, T.ad0 + 0.1, T.ad0 + 0.4) * (1 - seg(t, S(1) + 0.6, S(1) + 1.2)), seg(t, S(10) + 1.0, S(10) + 1.3)));
+  phoneL.intensity = 30 + 10 * Math.sin(t * 6);
+
+  /* zone B: slide, diagram, partner badges, ad cards flying out */
+  const slideK = seg(t, S(2) + 0.6, N(2) - 0.5);
+  if (t > S(1) - 0.5 && t < N(7) + 0.5) drawSlide(t, slideK);
+  const thruK = seg(t, T.thru - 0.9, T.thru - 0.1);
+  const flick = t > T.stop ? (Math.sin(t * 47) > 0.2 ? 1 : 0.15) * (1 - seg(t, T.stop, T.stop + 1.4)) : 1;
+  const slideOn = seg(t, S(1) + 0.6, S(1) + 1.6) * (1 - thruK * 0.85) * flick;
+  slideMat.opacity = slideOn; slide.visible = slideOn > 0.01 && t < N(8) + 0.5; frameM.visible = slide.visible;
+  art.material.opacity = (thruK * (1 - seg(t, T.thru + 0.3, T.thru + 1.6)) + (t > T.thru ? 0.35 : 0)) * flick * (1 - seg(t, N(7), N(8)));
+  slideL.intensity = 900 * slideOn;
+  BADGES.forEach((g, i) => {
+    const a = g.userData.a0 + t * 0.35, on = seg(t, S(2) + 0.5 + i * 0.25, S(2) + 1.2 + i * 0.25);
+    g.position.set(SC.x + Math.cos(a) * 44, SC.y + Math.sin(a) * 26, SC.z + 8);
+    g.lookAt(cp); g.visible = on > 0 && t < T.thru + 0.4; g.scale.setScalar(Math.max(eo(on), 0.001));
+    let dim = 1;
+    if (i === 0) { const f = seg(t, T.drop, T.drop + 1.6); g.position.y -= 70 * f * f; g.rotation.z += f * 4; dim = 1 - seg(t, T.drop, T.drop + 0.25) * 0.85; }
+    if (i === 1) dim = 1 - seg(t, T.meta, T.meta + 0.3) * 0.85;
+    if (i === 2) dim = 1 - seg(t, T.meta + 0.6, T.meta + 0.9) * 0.85;
+    g.userData.face.material.color.setScalar(dim);
+  });
+  const flyOn = seg(t, wt(2, 'ads') - 0.2, wt(2, 'ads') + 0.3) * (1 - seg(t, N(2) + 0.6, N(2) + 1.2));
+  flyCards.visible = flyOn > 0;
+  if (flyOn > 0) { FLYD.forEach((f, k) => { const u = (t * 0.45 + f.off) % 1; tmpP.set(SC.x + 12 + Math.cos(f.a) * f.r * u, SC.y - 2 + Math.sin(f.a) * f.r * u * 0.7, SC.z + 2 + u * 70); tmpQ.copy(camera.quaternion); tmpS.setScalar(Math.max(0.001, flyOn * Math.sin(u * Math.PI) * 1.3)); flyCards.setMatrixAt(k, tmpM.compose(tmpP, tmpQ, tmpS)); }); flyCards.instanceMatrix.needsUpdate = true; }
+  tmpS.set(1, 1, 1);
+
+  /* zone C: towers light, envelopes stream into the slide, then stop */
+  const cOn = seg(t, S(5) + 0.8, T.thru + 0.4);
+  towerMat.emissiveIntensity = 2.2 * cOn * (1 - 0.7 * seg(t, T.stop, T.stop + 0.8)) * (1 - seg(t, N(8), N(8) + 1));
+  towerLabels.forEach(s => s.material.opacity = seg(t, T.lists - 0.3, T.lists + 0.2) * (1 - seg(t, N(7) + 0.3, N(7) + 1)));
+  micLabel.material.opacity = seg(t, wt(6, 'never') - 0.1, wt(6, 'never') + 0.3) * (1 - seg(t, T.lists + 0.3, T.lists + 0.8));
+  envs.visible = cOn > 0 && t < N(8);
+  if (envs.visible) {
+    const TT = 2.2, st0 = S(5) + 0.8;
+    ENVD.forEach((e, k) => {
+      const u0 = ((t / TT + e.off) % 1), tl = t - u0 * TT;
+      const ok = tl > st0 - TT && tl < T.stop;
+      const a = tmpP.set(e.tw.x, e.tw.h + 1, e.tw.z), u = eio(u0);
+      const pos = new THREE.Vector3().copy(a).lerp(SBACK, u); pos.y += Math.sin(u * Math.PI) * 30; pos.x += e.sx * Math.sin(u * Math.PI); pos.z += e.sy * Math.sin(u * Math.PI);
+      tmpQ.setFromAxisAngle(tmpV.set(0.3, 1, 0.2).normalize(), e.spin + t * 2);
+      tmpS.setScalar(ok && u0 < 0.97 ? 1 : 0.0001);
+      envs.setMatrixAt(k, tmpM.compose(pos, tmpQ, tmpS));
+    });
+    envs.instanceMatrix.needsUpdate = true; tmpS.set(1, 1, 1);
+  }
+
+  /* zone D: the tile field pops out, an amber scan wave rolls across, every mic stays dark */
+  const tOn = t > S(8) - 0.3 && t < N(9) + 0.3;
+  tiles.visible = tOn;
+  if (tOn) {
+    const Rshow = 1300 * eo(seg(t, S(8) - 0.2, S(8) + 1.4)), Rs = (t - T.scan) * 650, Rgone = (t - S(9) - 0.2) * 520;
+    for (let k = 0; k < TILES.length; k++) {
+      const q = TILES[k]; let h = q.d < Rshow ? 1 : 0;
+      if (q.d < Rgone) h = 0;
+      tmpQ.identity(); tmpS.set(1, Math.max(h, 0.0001), 1);
+      tiles.setMatrixAt(k, tmpM.compose(tmpP.set(q.x, h > 0 ? 0.5 : -5, q.z), tmpQ, tmpS));
+      const w = Math.abs(q.d - Rs); let v = 0;
+      if (Rs > 0 && w < 60) v = 1.6 * (1 - w / 60);
+      tmpC.set(0x1d3149); if (q.d < Rs - 60) tmpC.set(0x2c4562);
+      if (v > 0) tmpC.lerp(AMBER, Math.min(1, v)).multiplyScalar(Math.max(1, v));
+      tiles.setColorAt(k, tmpC);
+    }
+    tiles.instanceMatrix.needsUpdate = true; tiles.instanceColor.needsUpdate = true; tmpS.set(1, 1, 1);
+  }
+
+  /* zone E: city rises, sources light up and send their trail into the phone */
+  const eOn = seg(t, S(9) + 0.2, S(9) + 1.4) * (1 - seg(t, S(10) + 0.4, S(10) + 1.2));
+  blocks.visible = streets.visible = eOn > 0;
+  streets.material.opacity = 0.7 * eOn;
+  if (eOn > 0) { BL.forEach((b, k) => { const g = eo(seg(t, S(9) + 0.2 + b.r / 600, S(9) + 0.8 + b.r / 600)) * eOn; tmpQ.identity(); tmpS.set(b.w, Math.max(b.h * g, 0.001), b.d); blocks.setMatrixAt(k, tmpM.compose(tmpP.set(b.x, b.h * g / 2, b.z), tmpQ, tmpS)); }); blocks.instanceMatrix.needsUpdate = true; tmpS.set(1, 1, 1); }
+  const kOn = [T.loc - 0.1, T.srch - 0.1, T.frnd - 0.1];
+  let pi = 0;
+  SRC.forEach((s, k) => {
+    const on = seg(t, kOn[s.kind], kOn[s.kind] + 0.35) * eOn;
+    s.o.visible = on > 0.01;
+    if (s.kind === 1) s.o.material.opacity = on; else s.o.scale.setScalar(Math.max(eo(on), 0.001));
+    const draw = seg(t, kOn[s.kind] + 0.1, kOn[s.kind] + 0.9);
+    for (let i = 0; i < AP - 1; i++) { const a = (i / (AP - 1) <= draw ? 0.9 : 0) * eOn; trailCol.set([AMBER.r * a, AMBER.g * a, AMBER.b * a, AMBER.r * a, AMBER.g * a, AMBER.b * a], (k * (AP - 1) + i) * 6); }
+    for (let j = 0; j < 3; j++) { const u = (t * 0.6 + j / 3 + k * 0.17) % 1; if (draw >= 1 && eOn > 0.5) { const p = ARC[k].getPoint(u); pulP.set([p.x, p.y, p.z], pi * 3); } else pulP.set([0, -999, 0], pi * 3); pi++; }
+  });
+  trailG.attributes.color.needsUpdate = true; trails.visible = eOn > 0;
+  for (; pi < PN; pi++) pulP.set([0, -999, 0], pi * 3);
+  pulG.attributes.position.needsUpdate = true;
+  phoneL.intensity += 60 * seg(t, T.frnd + 0.6, T.frnd + 1.0) * eOn;
+
+  /* fog thins when the camera is high up so the whole field reads */
+  scene.fog.density = 0.0022 * (1 - seg(cp.y, 200, 700));
+
+  /* depth of field: focus on what the camera looks at */
+  bokeh.uniforms.focus.value = dist; bokeh.uniforms.aperture.value = dist < 30 ? 0.0016 : dist < 120 ? 0.0004 : 0.00006;
+  bokeh.uniforms.maxblur.value = 0.006;
+
+  /* headline layer */
+  hl('hPitch', t, wt(2, 'active') - 0.1, N(2));
+  hl('hGoogle', t, T.drop - 0.2, N(3) + 0.1);
+  hl('hMeta', t, wt(4, 'meta') - 0.1, N(4));
+  hl('hFtc', t, wt(5, 'ftc') - 0.2, N(5) + 0.1);
+  hl('hLists', t, T.lists - 0.15, N(6));
+  hl('h930', t, S(7) + 0.05, N(7));
+  document.getElementById('n930').textContent = '$' + Math.round(lerp(0, 930000, eo(seg(t, S(7) + 0.05, wt(7, '$930000') + 0.25))) / 1000 * 1000).toLocaleString('en-GB');
+  hl('hApps', t, T.scan - 0.2, N(8));
+  hl('hKnows', t, T.loc - 0.15, N(9));
+  hl('hQ', t, wt(10, 'creepy') - 0.1, D + 1);
+  const cb = document.getElementById('cbub'); cb.style.opacity = cl((t - wt(10, 'worse') - 0.1) / 0.3) * (1 - seg(t, D - 0.35, D - 0.1));
+  const hudOn = t < S(2) ? 1 : (t > S(5) && t < S(7)) ? 1 : 0;
+  hudEl.style.opacity = 0.85 * hudOn; hudEl.classList.toggle('on', t < S(5));
+  hudT.textContent = t < S(5) ? 'MIC: LISTENING?' : 'MIC: NEVER USED';
+
+  composer.render();
+  Captions.draw(t);
+};
+document.fonts.ready.then(() => { drawScreen(0, 0); drawSlide(0, 0); window.STAGE_LOADED = true; });
+</script>
+</body></html>

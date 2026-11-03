@@ -1,0 +1,147 @@
+{
+  "slug": "phone-listening",
+  "series": "Inside AI",
+  "episode": 10,
+  "template": "phone-listening",
+  "renderer": "3d",
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "q0IMILNRPxOgtBTS4taI",
+    "name": "Drew",
+    "model": "eleven_v3",
+    "stability": 0.0,
+    "lead": 0.02,
+    "note": "Vish's pick (Drew, eleven_v3 with breaths), 24 Oct 2026"
+  },
+  "look": "Reference look (README): one continuous 3D world, navy + amber emissive, camera never stops, loop ending",
+  "hook_type": "shock claim then the real answer (batch 2 rules, 28 Oct 2026)",
+  "lines": [
+    {
+      "text": "Your phone is listening to you.",
+      "see": "Tight on a phone face up on a dark table, amber sound rings drift into its microphone, an ad card pops up above it",
+      "tag": "[whispers]"
+    },
+    {
+      "text": "At least, that's what one marketing company told advertisers.",
+      "see": "Crane up and back: the phone shrinks, a giant glowing pitch-deck slide rises out of the dark above the table"
+    },
+    {
+      "text": "Cox Media Group called it Active Listening: ads based on what you say near your phone.",
+      "see": "Push into the slide: ACTIVE LISTENING, a microphone icon, voice waves turning into ad cards that fly out to a wall of phones",
+      "tag": "[curious]"
+    },
+    {
+      "text": "Here's the weird part. Google dropped them from its partner programme.",
+      "see": "Three partner badges orbit the slide; one goes dark and falls away into the fog",
+      "pause_after": true
+    },
+    {
+      "text": "And Meta said it doesn't use your microphone for ads.",
+      "see": "Close on the phone's microphone grille: it stays dark grey, a second badge dims"
+    },
+    {
+      "text": "Then America's consumer watchdog, the FTC, looked inside.",
+      "see": "Camera flies through the slide's surface, the slide turns to gold line-art as we pass through it",
+      "pause_after": true,
+      "tag": "[dramatic pause]"
+    },
+    {
+      "text": "It never listened. It was resold email lists from data brokers.",
+      "see": "Behind the slide: no microphones, just data-broker towers pumping streams of amber envelopes into the deck"
+    },
+    {
+      "text": "Three firms paid $930,000 for a microphone that didn't exist.",
+      "see": "Headline $930,000 counts up, the envelope streams cut off, the slide flickers out",
+      "tag": "[excited]"
+    },
+    {
+      "text": "Researchers tested over 17,000 Android apps. Not one switched on the mic.",
+      "see": "Power-of-ten pull out to a field of 17,000 app tiles, an amber scan wave rolls across, every mic stays dark"
+    },
+    {
+      "text": "It doesn't need to hear you. It has your location, your searches, your friends.",
+      "see": "Dive back down to the phone: a city map under the table, location pins, search bars and friends' phones send amber trails into it"
+    },
+    {
+      "text": "So, creepy coincidence, or something worse than listening?",
+      "see": "Back to the same phone on the table (loop to frame 0), the ad card pops, question headline, comment bubble",
+      "tag": "[playful]"
+    }
+  ],
+  "facts": [
+    {
+      "claim": "404 Media reported that a Cox Media Group (CMG) marketing unit claimed it could target ads using 'Active Listening': what people say near device microphones",
+      "source": "https://404media.co/cmg-cox-media-actually-listening-to-phones-smartspeakers-for-ads-marketing/",
+      "date": "2023-12-14"
+    },
+    {
+      "claim": "404 Media obtained a CMG pitch deck for Active Listening; after 404 Media asked for comment, Google removed CMG from its advertising Partners Program",
+      "source": "https://www.404media.co/heres-the-pitch-deck-for-active-listening-ad-targeting/",
+      "date": "2024-08-26"
+    },
+    {
+      "claim": "Meta: 'Meta does not use your phone's microphone for ads and we've been public about this for years'; Amazon Ads said it has never worked with CMG on this program",
+      "source": "https://nysun.com/article/in-new-leak-facebook-partner-brags-about-listening-to-phone-conversations-to-serve-up-ads-report",
+      "date": "2024-09-03"
+    },
+    {
+      "claim": "Facebook newsroom, 2 June 2016: Facebook does not use your phone's microphone to inform ads or to change what you see in News Feed",
+      "source": "https://about.fb.com/news/h/facebook-does-not-use-your-phones-microphone-for-ads-or-news-feed-stories/",
+      "date": "2016-06-02"
+    },
+    {
+      "claim": "FTC: the service 'did not, in fact, listen in on consumers' conversations or use voice data at all'; it 'consisted of reselling, at a significant markup, email lists obtained from other data brokers'. CMG pays $880,000, MindSift and 1010 Digital Works $25,000 each, $930,000 in total",
+      "source": "https://ftc.gov/news-events/news/press-releases/2026/05/ftc-require-cox-media-group-two-other-firms-pay-nearly-1-million-settle-charges-they-deceived",
+      "date": "2026-05-21"
+    },
+    {
+      "claim": "FTC finalised the orders against CMG and the two other firms",
+      "source": "https://www.ftc.gov/legal-library/browse/cases-proceedings/cmg-media-corporation-matter-timeline-item-2026-08-27",
+      "date": "2026-08-27"
+    },
+    {
+      "claim": "Northeastern University researchers tested more than 17,000 popular Android apps: 'not a single app activated the microphone'; some apps sent screenshots and screen video to third parties instead",
+      "source": "https://news.northeastern.edu/2018/07/06/is-your-smartphone-spying-on-you/",
+      "date": "2018-07-06"
+    },
+    {
+      "claim": "Ad tracking works from web searches, social media activity and connections (who you know), not eavesdropping (David Choffnes, Northeastern)",
+      "source": "https://properdata.eng.uci.edu/?p=6723",
+      "date": "2026-10-28"
+    }
+  ],
+  "publish": {
+    "title": "Is your phone listening to you? #shorts",
+    "caption": "A marketing firm told advertisers it could target ads from what you say near your phone. In 2026 the FTC said it never listened at all: it was resold email lists. Your phone doesn't need your voice. It already has your location, your searches and your friends.\n\nCreepy coincidence or worse? 👇\n\nComment LISTENING and I'll send you the 1-page guide with every source.\n\nInside AI, episode 10.\n\n#privacy #smartphone #ads #howitworks #tech",
+    "pinned_comment": "Be honest: has an ad ever shown up for something you only SAID out loud? Tell me what it was 👀",
+    "tags": [
+      "is my phone listening",
+      "phone listening to me",
+      "active listening",
+      "cox media group",
+      "targeted ads",
+      "privacy",
+      "how it works",
+      "explained"
+    ],
+    "comment_keyword": "LISTENING"
+  },
+  "cover": {
+    "line": 0,
+    "at": 0.7,
+    "lines": [
+      "Your phone",
+      "is [listening]",
+      "to you?"
+    ],
+    "kicker": "What the FTC <b>found inside</b>",
+    "circle": {
+      "x": 540,
+      "y": 1000,
+      "rx": 330,
+      "ry": 300
+    },
+    "bgY": 0,
+    "bgScale": 1.0
+  }
+}
