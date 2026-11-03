@@ -1,0 +1,685 @@
+{
+ "estimate": false,
+ "voice": "Drew",
+ "lines": [
+  {
+   "text": "That pigeon isn't bobbing its head. Its head is standing still.",
+   "start": 0.019,
+   "end": 3.738,
+   "words": [
+    {
+     "w": "That",
+     "start": 0.019,
+     "end": 0.262
+    },
+    {
+     "w": "pigeon",
+     "start": 0.262,
+     "end": 0.561
+    },
+    {
+     "w": "isn't",
+     "start": 0.561,
+     "end": 1.121
+    },
+    {
+     "w": "bobbing",
+     "start": 1.121,
+     "end": 1.458
+    },
+    {
+     "w": "its",
+     "start": 1.458,
+     "end": 1.607
+    },
+    {
+     "w": "head.",
+     "start": 1.607,
+     "end": 1.85
+    },
+    {
+     "w": "Its",
+     "start": 2.393,
+     "end": 2.542
+    },
+    {
+     "w": "head",
+     "start": 2.542,
+     "end": 2.804
+    },
+    {
+     "w": "is",
+     "start": 2.804,
+     "end": 3.084
+    },
+    {
+     "w": "standing",
+     "start": 3.084,
+     "end": 3.402
+    },
+    {
+     "w": "still.",
+     "start": 3.402,
+     "end": 3.738
+    }
+   ]
+  },
+  {
+   "text": "Watch the head, not the body.",
+   "start": 4.449,
+   "end": 6.168,
+   "words": [
+    {
+     "w": "Watch",
+     "start": 4.449,
+     "end": 4.86
+    },
+    {
+     "w": "the",
+     "start": 4.86,
+     "end": 5.028
+    },
+    {
+     "w": "head,",
+     "start": 5.028,
+     "end": 5.271
+    },
+    {
+     "w": "not",
+     "start": 5.533,
+     "end": 5.738
+    },
+    {
+     "w": "the",
+     "start": 5.738,
+     "end": 5.907
+    },
+    {
+     "w": "body.",
+     "start": 5.907,
+     "end": 6.168
+    }
+   ]
+  },
+  {
+   "text": "The body walks forward underneath. The head stays locked in space.",
+   "start": 6.636,
+   "end": 10.542,
+   "words": [
+    {
+     "w": "The",
+     "start": 6.636,
+     "end": 6.729
+    },
+    {
+     "w": "body",
+     "start": 6.729,
+     "end": 6.991
+    },
+    {
+     "w": "walks",
+     "start": 6.991,
+     "end": 7.271
+    },
+    {
+     "w": "forward",
+     "start": 7.271,
+     "end": 7.664
+    },
+    {
+     "w": "underneath.",
+     "start": 7.664,
+     "end": 8.037
+    },
+    {
+     "w": "The",
+     "start": 8.729,
+     "end": 8.897
+    },
+    {
+     "w": "head",
+     "start": 8.897,
+     "end": 9.159
+    },
+    {
+     "w": "stays",
+     "start": 9.159,
+     "end": 9.664
+    },
+    {
+     "w": "locked",
+     "start": 9.664,
+     "end": 10.037
+    },
+    {
+     "w": "in",
+     "start": 10.037,
+     "end": 10.262
+    },
+    {
+     "w": "space.",
+     "start": 10.262,
+     "end": 10.542
+    }
+   ]
+  },
+  {
+   "text": "Then, snap. It jumps ahead and locks again.",
+   "start": 11.533,
+   "end": 14.935,
+   "words": [
+    {
+     "w": "Then,",
+     "start": 11.533,
+     "end": 11.832
+    },
+    {
+     "w": "snap.",
+     "start": 12.336,
+     "end": 12.598
+    },
+    {
+     "w": "It",
+     "start": 13.308,
+     "end": 13.421
+    },
+    {
+     "w": "jumps",
+     "start": 13.421,
+     "end": 13.626
+    },
+    {
+     "w": "ahead",
+     "start": 13.626,
+     "end": 13.907
+    },
+    {
+     "w": "and",
+     "start": 13.907,
+     "end": 14.318
+    },
+    {
+     "w": "locks",
+     "start": 14.318,
+     "end": 14.579
+    },
+    {
+     "w": "again.",
+     "start": 14.579,
+     "end": 14.935
+    }
+   ]
+  },
+  {
+   "text": "Here's the weird part. It's not for balance. It's for its eyes.",
+   "start": 15.757,
+   "end": 19.682,
+   "words": [
+    {
+     "w": "Here's",
+     "start": 15.757,
+     "end": 16.093
+    },
+    {
+     "w": "the",
+     "start": 16.093,
+     "end": 16.187
+    },
+    {
+     "w": "weird",
+     "start": 16.187,
+     "end": 16.411
+    },
+    {
+     "w": "part.",
+     "start": 16.411,
+     "end": 16.654
+    },
+    {
+     "w": "It's",
+     "start": 17.178,
+     "end": 17.346
+    },
+    {
+     "w": "not",
+     "start": 17.346,
+     "end": 17.477
+    },
+    {
+     "w": "for",
+     "start": 17.477,
+     "end": 17.664
+    },
+    {
+     "w": "balance.",
+     "start": 17.664,
+     "end": 18.019
+    },
+    {
+     "w": "It's",
+     "start": 18.486,
+     "end": 18.673
+    },
+    {
+     "w": "for",
+     "start": 18.673,
+     "end": 18.953
+    },
+    {
+     "w": "its",
+     "start": 18.953,
+     "end": 19.215
+    },
+    {
+     "w": "eyes.",
+     "start": 19.215,
+     "end": 19.682
+    }
+   ]
+  },
+  {
+   "text": "While the head is frozen, the picture on its eye stays sharp.",
+   "start": 20.43,
+   "end": 24.336,
+   "words": [
+    {
+     "w": "While",
+     "start": 20.43,
+     "end": 20.636
+    },
+    {
+     "w": "the",
+     "start": 20.636,
+     "end": 20.785
+    },
+    {
+     "w": "head",
+     "start": 20.785,
+     "end": 21.028
+    },
+    {
+     "w": "is",
+     "start": 21.028,
+     "end": 21.159
+    },
+    {
+     "w": "frozen,",
+     "start": 21.159,
+     "end": 21.551
+    },
+    {
+     "w": "the",
+     "start": 22.056,
+     "end": 22.15
+    },
+    {
+     "w": "picture",
+     "start": 22.15,
+     "end": 22.43
+    },
+    {
+     "w": "on",
+     "start": 22.43,
+     "end": 22.729
+    },
+    {
+     "w": "its",
+     "start": 22.729,
+     "end": 22.86
+    },
+    {
+     "w": "eye",
+     "start": 22.86,
+     "end": 23.178
+    },
+    {
+     "w": "stays",
+     "start": 23.178,
+     "end": 23.738
+    },
+    {
+     "w": "sharp.",
+     "start": 23.738,
+     "end": 24.336
+    }
+   ]
+  },
+  {
+   "text": "In 1978, a scientist put pigeons on a treadmill.",
+   "start": 24.336,
+   "end": 27.607,
+   "words": [
+    {
+     "w": "In",
+     "start": 24.336,
+     "end": 24.972
+    },
+    {
+     "w": "1978,",
+     "start": 24.972,
+     "end": 25.589
+    },
+    {
+     "w": "a",
+     "start": 25.981,
+     "end": 26.187
+    },
+    {
+     "w": "scientist",
+     "start": 26.187,
+     "end": 26.43
+    },
+    {
+     "w": "put",
+     "start": 26.43,
+     "end": 26.729
+    },
+    {
+     "w": "pigeons",
+     "start": 26.729,
+     "end": 26.972
+    },
+    {
+     "w": "on",
+     "start": 26.972,
+     "end": 27.196
+    },
+    {
+     "w": "a",
+     "start": 27.196,
+     "end": 27.308
+    },
+    {
+     "w": "treadmill.",
+     "start": 27.308,
+     "end": 27.607
+    }
+   ]
+  },
+  {
+   "text": "Their world stopped sliding past. And the bobbing stopped too.",
+   "start": 28.243,
+   "end": 32.355,
+   "words": [
+    {
+     "w": "Their",
+     "start": 28.243,
+     "end": 28.449
+    },
+    {
+     "w": "world",
+     "start": 28.449,
+     "end": 28.841
+    },
+    {
+     "w": "stopped",
+     "start": 28.841,
+     "end": 29.458
+    },
+    {
+     "w": "sliding",
+     "start": 29.458,
+     "end": 30.056
+    },
+    {
+     "w": "past.",
+     "start": 30.056,
+     "end": 30.411
+    },
+    {
+     "w": "And",
+     "start": 30.972,
+     "end": 31.14
+    },
+    {
+     "w": "the",
+     "start": 31.14,
+     "end": 31.234
+    },
+    {
+     "w": "bobbing",
+     "start": 31.234,
+     "end": 31.607
+    },
+    {
+     "w": "stopped",
+     "start": 31.607,
+     "end": 31.944
+    },
+    {
+     "w": "too.",
+     "start": 31.944,
+     "end": 32.355
+    }
+   ]
+  },
+  {
+   "text": "One pigeon, on a belt too slow to walk, held its head so still it fell over.",
+   "start": 33.29,
+   "end": 39.234,
+   "words": [
+    {
+     "w": "One",
+     "start": 33.29,
+     "end": 33.963
+    },
+    {
+     "w": "pigeon,",
+     "start": 33.963,
+     "end": 34.243
+    },
+    {
+     "w": "on",
+     "start": 34.654,
+     "end": 34.822
+    },
+    {
+     "w": "a",
+     "start": 34.822,
+     "end": 34.916
+    },
+    {
+     "w": "belt",
+     "start": 34.916,
+     "end": 35.084
+    },
+    {
+     "w": "too",
+     "start": 35.084,
+     "end": 35.514
+    },
+    {
+     "w": "slow",
+     "start": 35.514,
+     "end": 35.794
+    },
+    {
+     "w": "to",
+     "start": 35.794,
+     "end": 35.925
+    },
+    {
+     "w": "walk,",
+     "start": 35.925,
+     "end": 36.224
+    },
+    {
+     "w": "held",
+     "start": 36.748,
+     "end": 36.916
+    },
+    {
+     "w": "its",
+     "start": 36.916,
+     "end": 37.103
+    },
+    {
+     "w": "head",
+     "start": 37.103,
+     "end": 37.29
+    },
+    {
+     "w": "so",
+     "start": 37.29,
+     "end": 37.589
+    },
+    {
+     "w": "still",
+     "start": 37.589,
+     "end": 37.944
+    },
+    {
+     "w": "it",
+     "start": 38.299,
+     "end": 38.636
+    },
+    {
+     "w": "fell",
+     "start": 38.636,
+     "end": 38.879
+    },
+    {
+     "w": "over.",
+     "start": 38.879,
+     "end": 39.234
+    }
+   ]
+  },
+  {
+   "text": "Its head is frozen about 63% of every walk.",
+   "start": 39.944,
+   "end": 43.589,
+   "words": [
+    {
+     "w": "Its",
+     "start": 39.944,
+     "end": 40.075
+    },
+    {
+     "w": "head",
+     "start": 40.075,
+     "end": 40.299
+    },
+    {
+     "w": "is",
+     "start": 40.299,
+     "end": 40.43
+    },
+    {
+     "w": "frozen",
+     "start": 40.43,
+     "end": 40.841
+    },
+    {
+     "w": "about",
+     "start": 40.841,
+     "end": 41.383
+    },
+    {
+     "w": "63%",
+     "start": 41.383,
+     "end": 41.907
+    },
+    {
+     "w": "of",
+     "start": 42.467,
+     "end": 42.991
+    },
+    {
+     "w": "every",
+     "start": 42.991,
+     "end": 43.252
+    },
+    {
+     "w": "walk.",
+     "start": 43.252,
+     "end": 43.589
+    }
+   ]
+  },
+  {
+   "text": "Chickens do it too. Now you can't unsee it. Genius, or just a silly walk?",
+   "start": 44.505,
+   "end": 51.514,
+   "words": [
+    {
+     "w": "Chickens",
+     "start": 44.505,
+     "end": 44.991
+    },
+    {
+     "w": "do",
+     "start": 44.991,
+     "end": 45.159
+    },
+    {
+     "w": "it",
+     "start": 45.159,
+     "end": 45.29
+    },
+    {
+     "w": "too.",
+     "start": 45.29,
+     "end": 45.495
+    },
+    {
+     "w": "Now",
+     "start": 46.112,
+     "end": 46.336
+    },
+    {
+     "w": "you",
+     "start": 46.336,
+     "end": 46.729
+    },
+    {
+     "w": "can't",
+     "start": 46.729,
+     "end": 47.159
+    },
+    {
+     "w": "unsee",
+     "start": 47.159,
+     "end": 47.664
+    },
+    {
+     "w": "it.",
+     "start": 47.664,
+     "end": 47.832
+    },
+    {
+     "w": "Genius,",
+     "start": 48.654,
+     "end": 49.028
+    },
+    {
+     "w": "or",
+     "start": 49.57,
+     "end": 49.963
+    },
+    {
+     "w": "just",
+     "start": 49.963,
+     "end": 50.822
+    },
+    {
+     "w": "a",
+     "start": 50.822,
+     "end": 51.047
+    },
+    {
+     "w": "silly",
+     "start": 51.047,
+     "end": 51.234
+    },
+    {
+     "w": "walk?",
+     "start": 51.234,
+     "end": 51.514
+    }
+   ]
+  }
+ ],
+ "duration": 52.15,
+ "tempo": 1.07
+}

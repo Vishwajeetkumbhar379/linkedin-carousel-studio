@@ -1,0 +1,142 @@
+{
+  "slug": "pigeon-head",
+  "series": "Inside AI",
+  "episode": 6,
+  "template": "pigeon-head",
+  "renderer": "3d",
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "q0IMILNRPxOgtBTS4taI",
+    "name": "Drew",
+    "model": "eleven_v3",
+    "stability": 0.0,
+    "lead": 0.02,
+    "note": "Vish's pick (Drew, eleven_v3 with breaths), 24 Oct 2026"
+  },
+  "look": "Reference look (README): one continuous 3D world, navy + amber emissive, camera never stops, loop ending",
+  "hook_type": "shock claim then the real answer (Vish's topic direction, 24 Oct 2026)",
+  "lines": [
+    {
+      "text": "That pigeon isn't bobbing its head. Its head is standing still.",
+      "see": "Low side shot of a pigeon strutting on a night pavement, camera tracking the body so the head seems to bob",
+      "tag": "[whispers]"
+    },
+    {
+      "text": "Watch the head, not the body.",
+      "see": "The camera stops tracking and locks in space: the amber eye freezes in frame while the body slides forward under it"
+    },
+    {
+      "text": "The body walks forward underneath. The head stays locked in space.",
+      "see": "Ghost trail: amber head stamps pile up on one spot, grey body ghosts spread out along the pavement"
+    },
+    {
+      "text": "Then, snap. It jumps ahead and locks again.",
+      "see": "The head thrusts forward with an amber streak, a new stamp lands, crane up to show a row of stamps like footprints",
+      "pause_after": true,
+      "tag": "[excited]"
+    },
+    {
+      "text": "Here's the weird part. It's not for balance. It's for its eyes.",
+      "see": "Push in to the side of the head, the amber eye fills the frame",
+      "tag": "[curious]"
+    },
+    {
+      "text": "While the head is frozen, the picture on its eye stays sharp.",
+      "see": "Through the eye: the pigeon's view on a curved retina, crisp while the head holds, smeared when it thrusts"
+    },
+    {
+      "text": "In 1978, a scientist put pigeons on a treadmill.",
+      "see": "Pull back out of the eye into a dark lab, a treadmill under a clear box, headline 1978 counts up"
+    },
+    {
+      "text": "Their world stopped sliding past. And the bobbing stopped too.",
+      "see": "The belt scrolls, the pigeon walks in place, its head stays dead still, ghost stamps sit on one point"
+    },
+    {
+      "text": "One pigeon, on a belt too slow to walk, held its head so still it fell over.",
+      "see": "Belt creeps, the body leans further and further forward under a fixed head until the pigeon tips over",
+      "pause_after": true,
+      "tag": "[dramatic pause]"
+    },
+    {
+      "text": "Its head is frozen about 63% of every walk.",
+      "see": "Crane up over a night plaza of walking pigeons, every head a still amber point, 63% counts up"
+    },
+    {
+      "text": "Chickens do it too. Now you can't unsee it. Genius, or just a silly walk?",
+      "see": "A hen struts past, then back to the same pigeon on the pavement (loop to frame 0), question headline, comment bubble",
+      "tag": "[playful]"
+    }
+  ],
+  "facts": [
+    {
+      "claim": "Head-bobbing whilst walking has two phases: one where the head is 'locked' in space but moves backward relative to the forward-moving body, and another where it is thrust rapidly forward to a new position",
+      "source": "https://doi.org/10.1242/jeb.74.1.187",
+      "date": "1978-06-01"
+    },
+    {
+      "claim": "Head-bobbing is abolished when pigeons walk on a treadmill; if walking velocity matched belt velocity no head-bobbing movements were produced, suggesting it is primarily a visual response rather than one for balance (equilibratory)",
+      "source": "https://doi.org/10.1242/jeb.74.1.187",
+      "date": "1978-06-01"
+    },
+    {
+      "claim": "Frost (1978): the head is stationary approximately 63% of the time during walking; forward head thrusts approximately 0.61 m/s",
+      "source": "https://doi.org/10.1242/jeb.74.1.187",
+      "date": "1978-06-01"
+    },
+    {
+      "claim": "Frost (1978): when the treadmill was accidentally left on a very slow setting, too slow to induce walking, one bird's head was slowly pushed forward until it eventually toppled over; the slow belt was enough to make it stabilise its head even at the cost of balance",
+      "source": "https://doi.org/10.1242/jeb.74.1.187",
+      "date": "1978-06-01"
+    },
+    {
+      "claim": "Head-bobbing occurs in at least 8 of the 27 orders of birds, including pigeons, doves, hens, starlings, pheasants, coots, quail and others (Frost 1978)",
+      "source": "https://doi.org/10.1242/jeb.74.1.187",
+      "date": "1978-06-01"
+    },
+    {
+      "claim": "Troje & Frost (2000): one function of head-bobbing is to stabilise the retinal image during the hold phase; hold phase was 54% and 59% of the time in their two data sets",
+      "source": "https://doi.org/10.1242/jeb.203.5.935",
+      "date": "2000-02-10"
+    },
+    {
+      "claim": "Head-bobbing is widely considered an optokinetic response that ensures retinal image stabilisation during the hold phase (Theunissen & Troje 2017)",
+      "source": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00551/full",
+      "date": "2017-10-05"
+    }
+  ],
+  "publish": {
+    "title": "That pigeon isn't bobbing its head #shorts",
+    "caption": "A walking pigeon's head is locked still in space about 63% of the time, while its body walks forward underneath. It's not for balance, it's to keep its view sharp. Put it on a treadmill and the bobbing stops.\n\nGenius or silly walk? 👇\n\nComment PIGEON and I'll send you the 1-page guide with every source.\n\nInside AI, episode 6.\n\n#pigeon #birds #animalfacts #science #howitworks",
+    "pinned_comment": "Be honest: you're going to stare at every pigeon you see this week, aren't you? 👀",
+    "tags": [
+      "pigeon",
+      "head bobbing",
+      "why do pigeons bob their heads",
+      "bird vision",
+      "animal facts",
+      "science explained",
+      "how it works",
+      "biology"
+    ],
+    "comment_keyword": "PIGEON"
+  },
+  "cover": {
+    "line": 3,
+    "at": 0.7,
+    "lines": [
+      "This pigeon's",
+      "head isn't",
+      "[moving]"
+    ],
+    "kicker": "Why pigeons <b>really</b> bob",
+    "circle": {
+      "x": 560,
+      "y": 1120,
+      "rx": 500,
+      "ry": 190
+    },
+    "bgY": 420,
+    "bgScale": 1.0
+  }
+}

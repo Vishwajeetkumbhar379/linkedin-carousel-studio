@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/video/shorts/shorts.css">
+<script src="/node_modules/gsap/dist/gsap.min.js"></script>
+<script src="/video/shorts/captions.js"></script>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>
+/* Ep 6 "pigeon head": the reference look (README): one continuous world, navy + one amber emissive, camera never stops */
+:root{--navy:#001A2D;--amb:#FDB33E}
+#root{background:var(--navy)}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+#wbox{background:var(--amb)}
+#wbox i{border-color:var(--amb)}
+.hl{position:absolute;left:60px;right:60px;top:270px;text-align:center;z-index:60;opacity:0;pointer-events:none}
+.lab{font:500 28px 'Geist Mono';letter-spacing:.2em;color:var(--amb);text-transform:uppercase}
+.num{font:700 230px/1 'Inter Tight';letter-spacing:-.05em;color:#FBF7F0;font-variant-numeric:tabular-nums;text-shadow:0 0 70px rgba(253,179,62,.45)}
+.term{font:700 120px/0.95 'Inter Tight';letter-spacing:-.04em;color:#FBF7F0;text-transform:uppercase;text-shadow:0 0 60px rgba(253,179,62,.35)}
+.q{font:400 104px/0.98 'Instrument Serif';color:#FBF7F0;text-shadow:0 8px 40px rgba(0,0,0,.6)}
+.q em{font-style:italic;color:var(--amb)}
+#hud{position:absolute;left:64px;top:226px;z-index:70;font:500 24px 'Geist Mono';letter-spacing:.16em;color:#FBF7F0;opacity:0;display:flex;gap:14px;align-items:center}
+#hud b{display:inline-block;width:12px;height:12px;border-radius:50%;background:#6B7A90}
+#hud.on b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+#tag b{background:var(--amb);box-shadow:0 0 14px var(--amb)}
+.cbub{position:absolute;right:110px;top:1110px;padding:22px 30px;border-radius:30px;background:#fff;color:#111;font:600 36px 'Inter Tight';box-shadow:0 30px 60px -20px #000;z-index:60;opacity:0}
+#eyev{position:absolute;inset:0;z-index:55;pointer-events:none;opacity:0;background:radial-gradient(520px 640px at 50% 52%,transparent 62%,rgba(0,8,16,.92) 88%)}
+</style></head>
+<body><div id="root">
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div id="eyev"></div>
+<div class="hl" id="hLock"><div class="lab">Hold phase</div><div class="term">Locked<br>in space</div></div>
+<div class="hl" id="hThrust"><div class="lab">Thrust phase</div><div class="term">Snap<br>forward</div></div>
+<div class="hl" id="hEyes"><div class="lab">Not for balance</div><div class="term">For its<br>eyes</div></div>
+<div class="hl" id="hPov"><div class="lab">Pigeon's-eye view</div><div class="term">Still head,<br>sharp view</div></div>
+<div class="hl" id="h1978"><div class="lab">B. J. Frost · Journal of Experimental Biology</div><div class="num" id="n1978">1978</div></div>
+<div class="hl" id="hNoBob"><div class="lab">On the treadmill</div><div class="term">No bob</div></div>
+<div class="hl" id="hTopple"><div class="lab">Frost, 1978</div><div class="q">“until it eventually <em>toppled over</em>”</div></div>
+<div class="hl" id="h63"><div class="lab">Head frozen while walking</div><div class="num" id="n63">63%</div></div>
+<div class="hl" id="hBirds"><div class="lab">Also doves, quail, starlings</div><div class="term">Chickens<br>too</div></div>
+<div class="hl" id="hQ"><div class="q">Genius, or a <em>silly walk?</em></div></div>
+<div class="cbub" id="cbub">💬 Genius / Silly</div>
+<div id="tag"><b></b>INSIDE AI · EP 6</div>
+<div id="handle">@BUILDWITH.VISH</div>
+<div id="hud"><b></b><span id="hudt">HEAD: HOLD</span></div>
+<div id="cap"><div id="capline"></div></div>
+<div id="vig"></div><div id="grain"></div>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { BokehPass } from "three/addons/postprocessing/BokehPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+
+const W = 1080, H = 1920;
+const SFX = []; window.SFX = SFX;
+const sfx = (t, s) => SFX.push({t: Math.max(0, +t.toFixed(3)), s});
+const cl = x => Math.min(1, Math.max(0, x));
+const seg = (t, a, b) => cl((t - a) / Math.max(1e-4, b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const lerp = (a, b, k) => a + (b - a) * k;
+const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(7);
+const norm = w => w.toLowerCase().replace(/[^a-z0-9$.']/g, '').replace(/\.$/, '');
+let L, D;
+function wt(i, key) { for (const w of L[i].words) if (norm(w.w).startsWith(key)) return w.start; return L[i].start; }
+const S = i => L[i].start, E = i => L[i].end, N = i => (i + 1 < L.length ? L[i + 1].start : D);
+
+/* ---------- renderer: navy world, ACES, bloom + depth of field ---------- */
+const NAVY = 0x001A2D, AMBER = new THREE.Color(0xFDB33E), METAL = 0x6B7A90;
+const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('gl'), antialias: true, preserveDrawingBuffer: true});
+renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(NAVY);
+scene.fog = new THREE.FogExp2(0x02182a, 0.045);
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.35;
+const camera = new THREE.PerspectiveCamera(34, W / H, 0.005, 300);
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bokeh = new BokehPass(scene, camera, {focus: 3, aperture: 0.002, maxblur: 0.008});
+composer.addPass(bokeh);
+const bloom = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.95, 0.5, 0.8);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+const moon = new THREE.DirectionalLight(0x9fb6d8, 1.5); moon.position.set(-6, 12, 9); scene.add(moon);
+const hemi = new THREE.HemisphereLight(0x3a5878, 0x000a14, 0.7); scene.add(hemi);
+const rim = new THREE.DirectionalLight(0x6f8fb8, 1.1); rim.position.set(4, 3, -8); scene.add(rim);
+
+function dotTex() { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); const g = x.createRadialGradient(32, 32, 0, 32, 32, 32); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(.35, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); }
+const DOT = dotTex();
+const metal = (c = METAL, r = 0.35) => new THREE.MeshStandardMaterial({color: c, metalness: 0.8, roughness: r});
+const glowMat = (c = AMBER, o = 1) => new THREE.MeshBasicMaterial({color: c.clone ? c.clone() : c, toneMapped: false, transparent: o < 1, opacity: o});
+const tmpM = new THREE.Matrix4(), tmpQ = new THREE.Quaternion(), tmpS = new THREE.Vector3(1, 1, 1), tmpP = new THREE.Vector3(), tmpE = new THREE.Euler(), tmpC = new THREE.Color(), UP = new THREE.Vector3(0, 1, 0);
+
+/* ---------- the walk: hold (head locked in space, 63% of a cycle) then thrust ---------- */
+const HOLD = 0.63;
+function walk(tau, V, P) {
+  const VP = V * P, k = Math.floor(tau / P), u = tau / P - k;
+  const C = 0.42 + 0.5 * HOLD * VP;
+  const head = k * VP + (u < HOLD ? 0 : eio((u - HOLD) / (1 - HOLD)) * VP) + C;
+  const body = V * tau;
+  const thr = u < HOLD ? 0 : Math.sin(Math.PI * (u - HOLD) / (1 - HOLD));
+  return {body, rel: head - body, hold: u < HOLD, thr, u};
+}
+
+/* ---------- a pigeon (local: feet at y 0, facing +x) ---------- */
+const bodyM = new THREE.MeshStandardMaterial({color: 0x56637a, roughness: 0.62, metalness: 0.15});
+const wingM = new THREE.MeshStandardMaterial({color: 0x3e4a60, roughness: 0.6, metalness: 0.15});
+const darkM = new THREE.MeshStandardMaterial({color: 0x2a3446, roughness: 0.7});
+const neckM = new THREE.MeshStandardMaterial({color: 0x5d7086, roughness: 0.4, metalness: 0.45});
+const beakM = new THREE.MeshStandardMaterial({color: 0x9aa6b8, roughness: 0.5});
+const SPH = new THREE.SphereGeometry(1, 32, 20);
+function makePigeon(o = {}) {
+  const g = new THREE.Group(), s = o.s || 1;
+  const body = new THREE.Mesh(SPH, bodyM); body.scale.set(0.36, 0.24, 0.2); body.position.set(0, 0.5, 0); g.add(body);
+  [1, -1].forEach(sd => { const w = new THREE.Mesh(SPH, wingM); w.scale.set(0.3, 0.13, 0.05); w.position.set(-0.08, 0.55, sd * 0.17); w.rotation.z = 0.12; g.add(w); });
+  const tail = new THREE.Mesh(new RoundedBoxGeometry(0.36, 0.035, 0.16, 2, 0.012), darkM); tail.position.set(-0.43, 0.52, 0); tail.rotation.z = 0.22; g.add(tail);
+  const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.115, 1, 20), neckM); g.add(neck);
+  const hg = new THREE.Group(); g.add(hg);
+  const head = new THREE.Mesh(SPH, bodyM); head.scale.set(0.115, 0.1, 0.095); hg.add(head);
+  const beak = new THREE.Mesh(new THREE.ConeGeometry(0.022, 0.09, 12), beakM); beak.rotation.z = -Math.PI / 2; beak.position.set(0.14, -0.012, 0); hg.add(beak);
+  const eyeM = glowMat(AMBER);
+  const eyes = [1, -1].map(sd => { const e = new THREE.Mesh(new THREE.SphereGeometry(0.024, 16, 12), eyeM); e.position.set(0.04, 0.026, sd * 0.082); hg.add(e); return e; });
+  if (o.comb) { for (let i = 0; i < 3; i++) { const c = new THREE.Mesh(new THREE.SphereGeometry(0.03, 12, 8), glowMat(AMBER.clone().multiplyScalar(0.7))); c.position.set(-0.04 + i * 0.04, 0.1 + (i === 1 ? 0.02 : 0), 0); hg.add(c); } }
+  const halo = new THREE.Sprite(new THREE.SpriteMaterial({map: DOT, color: AMBER, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false}));
+  halo.scale.setScalar(0.5); hg.add(halo);
+  const legs = [1, -1].map(sd => { const lg = new THREE.Group(); lg.position.set(0.02, 0.32, sd * 0.06);
+    const l = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.3, 8), darkM); l.position.y = -0.15; lg.add(l);
+    const f = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.014, 0.05), darkM); f.position.set(0.03, -0.31, 0); lg.add(f); g.add(lg); return lg; });
+  g.scale.setScalar(s);
+  const nb = new THREE.Vector3(0.2, 0.58, 0), hp = new THREE.Vector3(), dir = new THREE.Vector3();
+  function pose(rel, hy, legA) {
+    hg.position.set(rel, hy, 0);
+    hp.set(rel - 0.04, hy - 0.04, 0); dir.subVectors(hp, nb); const len = dir.length();
+    neck.position.copy(nb).addScaledVector(dir, 0.5); neck.quaternion.setFromUnitVectors(UP, dir.normalize()); neck.scale.set(1, len, 1);
+    legs[0].rotation.z = legA; legs[1].rotation.z = -legA;
+  }
+  return {g, hg, eyeM, halo, pose, eyes};
+}
+
+/* ---------- the pavement: slabs, crumbs, lamps ---------- */
+const PX0 = -10, PX1 = 46, PZ0 = -15, PZ1 = 9, SL = 0.62;
+const nX = Math.round((PX1 - PX0) / SL), nZ = Math.round((PZ1 - PZ0) / SL);
+const slabs = new THREE.InstancedMesh(new RoundedBoxGeometry(SL - 0.03, 0.06, SL - 0.03, 2, 0.015), new THREE.MeshStandardMaterial({color: 0xffffff, roughness: 0.92, metalness: 0.05}), nX * nZ);
+{ let k = 0; tmpQ.identity(); for (let i = 0; i < nX; i++) for (let j = 0; j < nZ; j++) { slabs.setMatrixAt(k, tmpM.compose(tmpP.set(PX0 + i * SL, -0.03, PZ0 + j * SL), tmpQ, tmpS)); slabs.setColorAt(k, tmpC.set(0x1a2a3c).multiplyScalar(0.8 + rnd() * 0.35)); k++; } }
+scene.add(slabs);
+const under = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({color: 0x010f1c, roughness: 1})); under.rotation.x = -Math.PI / 2; under.position.y = -0.065; scene.add(under);
+const CRN = 420, crumbs = new THREE.InstancedMesh(new THREE.DodecahedronGeometry(0.018, 0), new THREE.MeshStandardMaterial({color: 0xb9a27c, roughness: 0.8}), CRN);
+for (let i = 0; i < CRN; i++) { tmpQ.setFromEuler(tmpE.set(rnd() * 3, rnd() * 3, 0)); tmpS.setScalar(0.6 + rnd()); crumbs.setMatrixAt(i, tmpM.compose(tmpP.set(-2 + rnd() * 30, 0.012, 0.35 + Math.pow(rnd(), 1.5) * 3.2), tmpQ, tmpS)); }
+tmpS.set(1, 1, 1); scene.add(crumbs);
+const lampL = [];
+for (let i = 0; i < 7; i++) {
+  const x = -4 + i * 7, z = -3.6;
+  const post = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.07, 4.2, 12), metal(0x3d4b60, 0.45)); post.position.set(x, 2.1, z); scene.add(post);
+  const arm = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.05, 0.05), metal(0x3d4b60, 0.45)); arm.position.set(x + 0.3, 4.15, z); scene.add(arm);
+  const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.12, 16, 10), glowMat(new THREE.Color(0xcfe0ff).multiplyScalar(1.3))); bulb.position.set(x + 0.6, 4.05, z); scene.add(bulb);
+  if (i < 5) { const p = new THREE.PointLight(0xa9c2e6, 9, 9, 1.6); p.position.set(x + 0.6, 3.9, z); scene.add(p); lampL.push(p); }
+}
+
+/* ---------- pigeon A (the hero) + ghost trail ---------- */
+const VA = 0.48, PA = 0.75;
+const A = makePigeon(); scene.add(A.g);
+const GH = 90, GB = 18;
+const gHeads = new THREE.InstancedMesh(new THREE.SphereGeometry(0.1, 16, 12), new THREE.MeshBasicMaterial({color: AMBER, toneMapped: false, transparent: true, opacity: 0.1, depthWrite: false, blending: THREE.AdditiveBlending}), GH);
+const gBodies = new THREE.InstancedMesh(SPH, new THREE.MeshStandardMaterial({color: 0x7c889b, roughness: 0.6, transparent: true, opacity: 0.16, depthWrite: false}), GB);
+scene.add(gHeads, gBodies);
+
+/* ---------- the lab: floor, grid wall, treadmill in a clear box, pigeon B ---------- */
+const LAB = new THREE.Vector3(0, 0, -9);
+const lab = new THREE.Group(); scene.add(lab);
+{
+  const fl = new THREE.Mesh(new THREE.BoxGeometry(7, 0.08, 5), new THREE.MeshStandardMaterial({color: 0x0b1a2a, roughness: 0.8})); fl.position.y = 0.04; lab.add(fl);
+  const wall = new THREE.Mesh(new THREE.PlaneGeometry(7, 4), new THREE.MeshStandardMaterial({color: 0x08182a, roughness: 0.9})); wall.position.set(0, 2, -1.6); lab.add(wall);
+  const gw = new THREE.GridHelper(7, 28, 0x1f4466, 0x163453); gw.rotation.x = Math.PI / 2; gw.position.set(0, 2, -1.58); lab.add(gw);
+}
+const BELT_Y = 0.26;
+const beltC = document.createElement('canvas'); beltC.width = 512; beltC.height = 64;
+{ const x = beltC.getContext('2d'); x.fillStyle = '#0b1622'; x.fillRect(0, 0, 512, 64); for (let i = 0; i < 16; i++) { x.fillStyle = i % 4 === 0 ? '#c98a2c' : '#24364d'; x.fillRect(i * 32, 0, i % 4 === 0 ? 5 : 3, 64); } }
+const beltT = new THREE.CanvasTexture(beltC); beltT.wrapS = THREE.RepeatWrapping; beltT.repeat.set(2, 1); beltT.colorSpace = THREE.SRGBColorSpace;
+{
+  const belt = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.12, 0.9), [metal(0x2a3446, 0.5), metal(0x2a3446, 0.5), new THREE.MeshStandardMaterial({map: beltT, roughness: 0.7, emissive: 0xffffff, emissiveMap: beltT, emissiveIntensity: 0.6}), metal(0x2a3446, 0.5), metal(0x2a3446, 0.5), metal(0x2a3446, 0.5)]);
+  belt.position.y = BELT_Y - 0.06; lab.add(belt);
+  [-1.32, 1.32].forEach(x => { const r = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.98, 20), metal(0x7b889c, 0.3)); r.rotation.x = Math.PI / 2; r.position.set(x, BELT_Y - 0.06, 0); lab.add(r); });
+  const bx = new THREE.BoxGeometry(2.4, 1.5, 0.9);
+  const glass = new THREE.Mesh(bx, new THREE.MeshPhysicalMaterial({color: 0x9fb6d8, transparent: true, opacity: 0.07, roughness: 0.05, metalness: 0, depthWrite: false})); glass.position.y = BELT_Y + 0.75; lab.add(glass);
+  const edges = new THREE.LineSegments(new THREE.EdgesGeometry(bx), new THREE.LineBasicMaterial({color: 0x7f9bbf, transparent: true, opacity: 0.6})); edges.position.copy(glass.position); lab.add(edges);
+  const spot = new THREE.SpotLight(0xbcd0ee, 14, 7, 0.7, 0.6, 1.4); spot.position.set(0.3, 3.4, 1.4); spot.target.position.set(0, 0.4, 0); lab.add(spot, spot.target);
+}
+const B = makePigeon(); B.g.position.y = BELT_Y; lab.add(B.g);
+const lockLine = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.004, 1.3, 6), glowMat(AMBER, 0)); lockLine.material.depthWrite = false; lab.add(lockLine);
+lab.position.copy(LAB);
+
+/* ---------- the plaza flock (heads glow while they hold) ---------- */
+const NF = 70, FL = [];
+const fBody = new THREE.InstancedMesh(SPH, bodyM, NF), fHead = new THREE.InstancedMesh(new THREE.SphereGeometry(0.1, 14, 10), new THREE.MeshBasicMaterial({color: 0xffffff, toneMapped: false}), NF);
+const fNeck = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.075, 0.115, 1, 12), neckM, NF);
+scene.add(fBody, fHead, fNeck);
+
+/* ---------- the hen ---------- */
+const HEN = makePigeon({s: 1.65, comb: true}); scene.add(HEN.g);
+const VH = 1.0, PH = 0.6;
+
+/* ---------- timing helpers built in setup ---------- */
+let TAU = [], DT = 1 / 240, LABX = 0, PXC = 0, HEN0 = 0, TM = 0;
+const tauA = t => { const i = Math.min(TAU.length - 1, Math.max(0, t / DT)); const i0 = Math.floor(i); const f = i - i0; return lerp(TAU[i0], TAU[Math.min(TAU.length - 1, i0 + 1)], f); };
+let RATE = [];
+const rateAt = t => { let i = 0; while (i < RATE.length - 1 && RATE[i + 1][0] <= t) i++; const a = RATE[i], b = RATE[Math.min(i + 1, RATE.length - 1)]; return b === a ? a[1] : lerp(a[1], b[1], seg(t, a[0], b[0])); };
+function poseA(t) { return walk(tauA(t), VA, PA); }
+const eyeW = new THREE.Vector3();
+function eyeA(t) { const w = poseA(t); return eyeW.set(w.body + w.rel + 0.04, 0.86 + 0.02 * w.thr + 0.026, 0.09); }
+const henX = t => HEN0 + VH * (t - TM);
+
+/* ---------- camera: keyframes with optional anchors (A body, A eye, hen), eased, with drift ---------- */
+let CK = [];
+const tgt = new THREE.Vector3(), anc = new THREE.Vector3();
+function anchor(fo, t) {
+  if (fo === 'A') return anc.set(poseA(t).body, 0, 0);
+  if (fo === 'E') return anc.copy(eyeA(t));
+  if (fo === 'H') return anc.set(henX(t), 0, -1.3);
+  if (fo === 'L') return anc.copy(LAB);
+  return anc.set(0, 0, 0);
+}
+function res(kf, t) { const a = anchor(kf.fo, t); return {p: [kf.p[0] + a.x, kf.p[1] + a.y, kf.p[2] + a.z], l: [kf.l[0] + a.x, kf.l[1] + a.y, kf.l[2] + a.z]}; }
+let POV = false;
+function camAt(t) {
+  if (window.COVER_CAM) { const c = window.COVER_CAM; camera.position.set(...c.p); camera.lookAt(...c.l); camera.fov = c.f; camera.updateProjectionMatrix(); return Math.hypot(c.p[0] - c.l[0], c.p[1] - c.l[1], c.p[2] - c.l[2]); }
+  let i = 0; while (i < CK.length - 1 && CK[i + 1].t <= t) i++;
+  const a = CK[i], b = CK[Math.min(i + 1, CK.length - 1)];
+  const k = b === a ? 0 : (b.e || eio)(seg(t, a.t, b.t));
+  const ra = res(a, t), rb = res(b, t);
+  const p = ra.p.map((v, j) => lerp(v, rb.p[j], k)), l = ra.l.map((v, j) => lerp(v, rb.l[j], k));
+  POV = !!(a.pov && (b.pov || k < 0.02));
+  const dist = Math.hypot(p[0] - l[0], p[1] - l[1], p[2] - l[2]), dr = POV ? 0 : Math.min(0.012, dist * 0.004);
+  camera.position.set(p[0] + Math.sin(t * 0.9) * dr, p[1] + Math.cos(t * 0.7) * dr, p[2] + Math.sin(t * 0.55 + 1) * dr);
+  tgt.set(...l); camera.lookAt(tgt);
+  camera.fov = lerp(a.f || 34, b.f || 34, k); camera.updateProjectionMatrix();
+  return dist;
+}
+const hl = (id, t, a, b, fade = 0.22) => { const el = document.getElementById(id); const o = Math.min(seg(t, a, a + fade), 1 - seg(t, b - fade, b)); el.style.opacity = o; el.style.transform = `translateY(${(1 - eo(seg(t, a, a + 0.4))) * 40}px) scale(${lerp(0.94, 1, eo(seg(t, a, a + 0.4)))})`; };
+
+let STAMPS = [], BSTAMPS = [];
+window.setup = async function (spec) {
+  L = spec.lines; D = spec.duration;
+  Captions.build(spec);
+  // slow motion for the pigeon: real speed, slow-mo while we study the head, near-freeze for the eye push, then real again
+  RATE = [[0, 1], [S(1) - 0.15, 1], [S(1) + 0.35, 0.3], [S(3) - 0.2, 0.3], [S(3) + 0.2, 0.45], [S(4) - 0.1, 0.45], [S(4) + 0.4, 0.12], [N(4) - 0.2, 0.12], [N(4) + 0.1, 0.5], [N(5) - 0.3, 0.5], [N(5) + 0.4, 1], [D + 2, 1]];
+  TAU = [0]; for (let t = DT; t < D + 2; t += DT) TAU.push(TAU[TAU.length - 1] + rateAt(t) * DT);
+  // ghost stamps over the study window
+  const ta = tauA(S(2) - 0.3), tb = tauA(N(3));
+  for (let k = 0; k < GH; k++) STAMPS.push(ta + (tb - ta) * k / (GH - 1));
+  for (let k = 0; k < GB; k++) BSTAMPS.push(ta + (tb - ta) * k / (GB - 1));
+  // places
+  const bxAt = t => poseA(t).body;
+  LABX = bxAt(S(6)) + 2.5; LAB.set(LABX, 0, -9); lab.position.copy(LAB);
+  TM = S(9) + 2; PXC = bxAt(TM);
+  for (let i = 0; i < NF; i++) {
+    const back = rnd() < 0.72; const z = back ? -2.4 - rnd() * 9 : 3.6 + rnd() * 3.5;
+    const hd = (rnd() < 0.5 ? 0 : Math.PI) + (rnd() - 0.5) * 0.9;
+    let x = PXC + (rnd() - 0.5) * 18; if (Math.abs(x - LABX) < 4.5 && z < -5) x += x < LABX ? -5 : 5;
+    FL.push({x, z, hd, ph: rnd() * 5, s: 0.9 + rnd() * 0.2});
+  }
+  HEN0 = bxAt(S(10)) - 1.6 - VH * (S(10) - TM) + VH * 0.0;
+  HEN0 = bxAt(S(10)) - 1.8 - VH * (S(10) - TM);
+  const e1 = eyeA(S(1) + 0.35).clone(), h1 = e1.x - 0.04;
+  const h2 = eyeA(S(2) + 1.0).x, h3 = eyeA(N(2)).x, h4 = eyeA(wt(3, 'locks')).x;
+  CK = [
+    {t: 0, fo: 'A', p: [0.12, 0.62, 4.0], l: [0.12, 0.66, 0], f: 34},
+    {t: E(0), fo: 'A', p: [0.15, 0.64, 3.7], l: [0.15, 0.66, 0], f: 34},
+    {t: S(1) + 0.4, p: [h1 - 0.1, 0.8, 2.0], l: [h1 - 0.1, 0.74, 0], f: 34},
+    {t: N(1), p: [h1 - 0.05, 0.82, 1.8], l: [h1 - 0.05, 0.75, 0], f: 34},
+    {t: S(2) + 1.3, p: [h2 - 0.35, 1.0, 3.3], l: [h2 - 0.35, 0.62, 0], f: 36},
+    {t: N(2), p: [h3 - 0.3, 1.1, 3.4], l: [h3 - 0.3, 0.6, 0], f: 36},
+    {t: wt(3, 'locks') + 0.3, p: [h4 - 0.4, 2.9, 2.9], l: [h4 - 0.35, 0.4, -0.1], f: 38},
+    {t: N(3) - 0.1, p: [h4 - 0.2, 3.0, 2.6], l: [h4 - 0.2, 0.4, -0.1], f: 38},
+    {t: S(4) + 0.9, fo: 'E', p: [-0.05, 0.08, 1.1], l: [0, -0.02, 0], f: 34},
+    {t: wt(4, 'eyes'), fo: 'E', p: [0, 0.01, 0.3], l: [0, 0, 0], f: 34},
+    {t: N(4) - 0.04, fo: 'E', p: [0, 0, 0.03], l: [0, 0, -0.1], f: 34},
+    {t: N(4), fo: 'E', pov: true, p: [0, 0, 0.012], l: [0.8, -0.5, 3], f: 52},
+    {t: N(5) - 0.25, fo: 'E', pov: true, p: [0, 0, 0.012], l: [0.8, -0.5, 3], f: 52},
+    {t: S(6) + 1.0, fo: 'L', p: [0.5, 1.5, 3.8], l: [0.2, 0.7, 0], f: 38},
+    {t: N(6), fo: 'L', p: [0.1, 1.25, 3.1], l: [0.2, 0.7, 0], f: 38},
+    {t: S(7) + 1.4, fo: 'L', p: [0.2, 1.05, 2.0], l: [0.35, 0.85, 0], f: 36},
+    {t: N(7), fo: 'L', p: [-0.2, 1.1, 2.2], l: [0.3, 0.85, 0], f: 36},
+    {t: S(8) + 1.0, fo: 'L', p: [0.9, 1.0, 2.5], l: [0.35, 0.65, 0], f: 36},
+    {t: N(8), fo: 'L', p: [1.2, 0.8, 2.3], l: [0.5, 0.45, 0], f: 36},
+    {t: S(9) + 1.6, p: [PXC - 1, 8.5, 9.5], l: [PXC, 0, -2.5], f: 48},
+    {t: N(9), p: [PXC + 1, 9.5, 8.5], l: [PXC + 1, 0, -2.5], f: 48},
+    {t: S(10) + 0.7, fo: 'H', p: [0.4, 1.1, 4.4], l: [0.4, 0.9, 0], f: 36},
+    {t: wt(10, 'unsee'), fo: 'A', p: [0.12, 0.62, 4.0], l: [0.12, 0.66, 0], f: 34},
+    {t: D, fo: 'A', p: [0.12, 0.62, 4.0], l: [0.12, 0.66, 0], f: 34},
+  ];
+  // sound map
+  sfx(0, 'thump');
+  for (let t = 0.1; t < E(0); t += PA) { const k = Math.ceil(t / PA); sfx(k * PA + HOLD * PA * 0.9, 'tap'); }
+  sfx(S(1), 'whoosh'); sfx(S(1) + 0.4, 'click');
+  sfx(wt(2, 'locked'), 'ding');
+  for (let k = 1; k < 60; k++) { const tt = TAU.findIndex(v => v >= k * PA); if (tt < 0) break; const t = tt * DT; if (t > S(2) && t < N(3)) sfx(t, 'tick'); }
+  sfx(wt(3, 'snap'), 'scratch'); sfx(N(3) - 0.2, 'whoosh');
+  sfx(wt(4, 'weird'), 'rise'); sfx(wt(4, 'eyes'), 'ding'); sfx(N(4) - 0.1, 'zip');
+  sfx(S(5) + 0.1, 'pop');
+  sfx(N(5) - 0.2, 'whoosh'); sfx(wt(6, '1978'), 'thump'); sfx(wt(6, 'treadmill'), 'click');
+  sfx(S(7), 'zip'); sfx(wt(7, 'stopped'), 'ding');
+  sfx(S(8), 'rise'); sfx(wt(8, 'fell'), 'thump'); sfx(wt(8, 'fell') + 0.12, 'scratch');
+  sfx(N(8) - 0.2, 'whoosh'); sfx(wt(9, '63'), 'coin');
+  sfx(S(10), 'pop'); sfx(wt(10, 'unsee') - 0.2, 'whoosh'); sfx(wt(10, 'genius'), 'pop'); sfx(D - 0.25, 'thump');
+  SFX.sort((a, b) => a.t - b.t);
+  window.READY = true;
+};
+
+const hudEl = document.getElementById('hud'), hudT = document.getElementById('hudt'), glc = document.getElementById('gl'), eyev = document.getElementById('eyev');
+window.frame = function (t) {
+  const dist = camAt(t);
+  /* pigeon A */
+  const w = poseA(t);
+  A.g.position.set(w.body, 0, 0);
+  A.pose(w.rel, 0.86 + 0.02 * w.thr, 0.42 * Math.sin(2 * Math.PI * tauA(t) / (2 * PA)));
+  A.hg.visible = !POV;
+  const study = seg(t, S(1), S(1) + 0.3) * (1 - seg(t, N(3) - 0.3, N(3)));
+  A.halo.material.opacity = study * (w.hold ? 0.3 : 0.05);
+  const eyeClose = camera.position.distanceTo(eyeA(t)) < 0.15;
+  A.eyeM.color.copy(AMBER).multiplyScalar(eyeClose ? 0.6 : 1.5);
+  /* ghost trail */
+  const gv = seg(t, S(2) - 0.4, S(2) + 0.1) * (1 - seg(t, N(3) + 0.2, N(3) + 0.8)), tn = tauA(t);
+  tmpQ.identity();
+  STAMPS.forEach((s, k) => { const g = walk(s, VA, PA); const on = gv > 0 && s <= tn; tmpS.setScalar(on ? 1 : 0.0001); gHeads.setMatrixAt(k, tmpM.compose(tmpP.set(g.body + g.rel, 0.86 + 0.02 * g.thr, 0), tmpQ, tmpS)); });
+  gHeads.instanceMatrix.needsUpdate = true; gHeads.material.opacity = 0.075 * gv;
+  BSTAMPS.forEach((s, k) => { const g = walk(s, VA, PA); const on = gv > 0 && s <= tn; tmpS.set(0.36, 0.24, 0.2).multiplyScalar(on ? 1 : 0.0001); gBodies.setMatrixAt(k, tmpM.compose(tmpP.set(g.body, 0.5, 0), tmpQ, tmpS)); });
+  gBodies.instanceMatrix.needsUpdate = true; gBodies.material.opacity = 0.18 * gv; tmpS.set(1, 1, 1);
+
+  /* pigeon B on the treadmill: walks in place, head dead still; then the slow belt topples it */
+  const t8 = S(8) + 0.2, tf = wt(8, 'fell');
+  const lean = eio(seg(t, t8, tf - 0.15)), fall = seg(t, tf - 0.15, tf + 0.35);
+  const walking = t < t8;
+  B.pose(0.42 + 0.3 * lean, 0.86 - 0.04 * lean, walking ? 0.42 * Math.sin(2 * Math.PI * t / (2 * PA)) : 0.42 * Math.sin(2 * Math.PI * t8 / (2 * PA)) * (1 - lean));
+  B.g.position.x = -0.3 * lean;
+  B.g.rotation.z = -0.32 * lean - 1.25 * (fall * fall);
+  B.g.position.y = BELT_Y + (fall > 0 ? Math.sin(fall * Math.PI) * 0.03 : 0);
+  beltT.offset.x = (walking ? t * VA / 1.3 : t8 * VA / 1.3 + (t - t8) * 0.012) % 1;
+  const ll = seg(t, wt(7, 'stopped') - 0.6, wt(7, 'stopped')) * (1 - seg(t, tf - 0.3, tf));
+  lockLine.material.opacity = 0.9 * ll; lockLine.position.set(0.42 + 0.04, BELT_Y + 0.9, 0.09); lockLine.visible = ll > 0;
+  B.halo.material.opacity = 0.3 * seg(t, S(7), S(7) + 0.4) * (1 - seg(t, tf - 0.2, tf));
+  B.eyeM.color.copy(AMBER).multiplyScalar(1.6);
+
+  /* flock */
+  const fv = t > N(8) + 0.35, fk = eo(seg(t, N(8) + 0.35, N(8) + 0.8));
+  FL.forEach((f, i) => {
+    const g = walk(Math.max(0, t + f.ph), VA, PA), d = VA * (t - TM);
+    const cx = Math.cos(f.hd), cz = -Math.sin(f.hd);
+    const bx = f.x + cx * d, bz = f.z + cz * d, s = fv ? f.s * Math.max(fk, 0.0001) : 0.0001;
+    tmpQ.setFromAxisAngle(UP, f.hd);
+    tmpS.set(0.36 * s, 0.24 * s, 0.2 * s); fBody.setMatrixAt(i, tmpM.compose(tmpP.set(bx, 0.5 * s, bz), tmpQ, tmpS));
+    const hx = bx + cx * g.rel * s, hz = bz + cz * g.rel * s, hy = (0.86 + 0.02 * g.thr) * s;
+    tmpS.set(1.1 * s, s, s); fHead.setMatrixAt(i, tmpM.compose(tmpP.set(hx, hy, hz), tmpQ, tmpS));
+    fHead.setColorAt(i, tmpC.copy(AMBER).multiplyScalar(g.hold ? 1.7 : 0.18));
+    const nbx = bx + cx * 0.2 * s, nbz = bz + cz * 0.2 * s, v = new THREE.Vector3(hx - nbx, hy - 0.58 * s, hz - nbz), len = v.length();
+    tmpQ.setFromUnitVectors(UP, v.clone().normalize()); tmpS.set(s, len, s);
+    fNeck.setMatrixAt(i, tmpM.compose(tmpP.set(nbx + v.x / 2, 0.58 * s + v.y / 2, nbz + v.z / 2), tmpQ, tmpS));
+  });
+  tmpS.set(1, 1, 1);
+  fBody.instanceMatrix.needsUpdate = true; fHead.instanceMatrix.needsUpdate = true; fHead.instanceColor.needsUpdate = true; fNeck.instanceMatrix.needsUpdate = true;
+
+  /* hen */
+  const hv = t > S(10) - 1.2 && t < D;
+  HEN.g.visible = hv;
+  if (hv) { const g = walk(Math.max(0, t - TM + 20), VH, PH); HEN.g.position.set(henX(t), 0, -1.3); HEN.pose(g.rel - (0.42 + 0.5 * HOLD * VH * PH) + 0.42, 0.86 + 0.02 * g.thr, 0.42 * Math.sin(Math.PI * (t - TM) / PH)); }
+
+  /* pigeon's-eye view: vignette + blur while the head thrusts */
+  eyev.style.opacity = POV ? 1 : 0;
+  glc.style.filter = POV && !w.hold ? `blur(${(10 * w.thr).toFixed(1)}px)` : '';
+
+  /* depth of field */
+  bokeh.uniforms.focus.value = POV ? 2.5 : dist; bokeh.uniforms.aperture.value = POV ? 0.0006 : dist < 0.6 ? 0.01 : dist < 4 ? 0.0035 : 0.0006;
+  bokeh.uniforms.maxblur.value = 0.007;
+  scene.fog.density = camera.position.y > 5 ? 0.028 : 0.045;
+
+  /* headline layer */
+  hl('hLock', t, wt(2, 'locked') - 0.3, N(2));
+  hl('hThrust', t, wt(3, 'snap') - 0.1, N(3) - 0.1);
+  hl('hEyes', t, wt(4, 'balance') - 0.2, N(4) - 0.35);
+  hl('hPov', t, S(5) + 0.2, N(5) - 0.1);
+  hl('h1978', t, S(6) + 0.1, N(6));
+  document.getElementById('n1978').textContent = Math.round(lerp(1930, 1978, eo(seg(t, S(6) + 0.1, wt(6, '1978') + 0.2))));
+  hl('hNoBob', t, wt(7, 'bobbing') - 0.2, N(7));
+  hl('hTopple', t, wt(8, 'fell') - 0.2, N(8));
+  hl('h63', t, S(9) + 0.1, N(9));
+  document.getElementById('n63').textContent = Math.round(lerp(0, 63, eo(seg(t, S(9) + 0.1, wt(9, '63') + 0.3)))) + '%';
+  hl('hBirds', t, S(10) - 0.05, wt(10, 'unsee') - 0.1);
+  hl('hQ', t, wt(10, 'genius') - 0.1, D + 1);
+  const cb = document.getElementById('cbub'); cb.style.opacity = cl((t - wt(10, 'silly') - 0.1) / 0.3) * (1 - seg(t, D - 0.35, D - 0.1));
+  const hudOn = (t > S(1) + 0.3 && t < N(3) - 0.2) || POV || (t > S(7) && t < N(8));
+  hudEl.style.opacity = hudOn ? 0.9 : 0;
+  if (t < N(3)) { hudEl.classList.toggle('on', w.hold); hudT.textContent = w.hold ? 'HEAD: HOLD' : 'HEAD: THRUST'; }
+  else if (POV) { hudEl.classList.toggle('on', w.hold); hudT.textContent = w.hold ? 'VIEW: SHARP' : 'VIEW: BLUR'; }
+  else { hudEl.classList.toggle('on', t < tf); hudT.textContent = t < S(8) ? 'BELT: ON · HEAD: STILL' : 'BELT: CREEPING'; }
+
+  composer.render();
+  Captions.draw(t);
+};
+document.fonts.ready.then(() => { window.STAGE_LOADED = true; });
+</script>
+</body></html>
