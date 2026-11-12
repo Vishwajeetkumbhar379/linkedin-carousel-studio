@@ -114,8 +114,8 @@ def validate(deck: dict) -> list[str]:
     """Editorial rules from the style guide. Returns problems; empty means good to render."""
     errs = []
     slides = deck.get("slides", [])
-    if not 5 <= len(slides) <= 12:
-        errs.append(f"Use 5-12 slides (got {len(slides)})")
+    if not 6 <= len(slides) <= 9:
+        errs.append(f"Use 6-9 slides (got {len(slides)})")
     if slides and slides[0].get("type") != "cover":
         errs.append("First slide must be a cover with the hook")
     if slides and slides[-1].get("type") != "cta":

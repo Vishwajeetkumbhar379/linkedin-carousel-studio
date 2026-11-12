@@ -39,7 +39,7 @@ Wrap a word in `*asterisks*` to colour it with the accent.
 
 The renderer refuses decks that break the rules a good carousel follows:
 
-- 5 to 12 slides, starting with a cover and ending with a call to action
+- 6 to 9 slides, starting with a cover and ending with a call to action
 - A hook under 10 words
 - One idea per slide, at most 45 words of body text
 - At most five list items

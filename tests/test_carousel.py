@@ -17,7 +17,7 @@ def test_example_deck_passes_style_rules():
 def test_rules_catch_bad_decks():
     bad = {"slides": [{"type": "point", "title": "x"}] * 3}
     errs = validate(bad)
-    assert any("5-12" in e for e in errs) and any("cover" in e for e in errs) and any("call to action" in e for e in errs)
+    assert any("6-9" in e for e in errs) and any("cover" in e for e in errs) and any("call to action" in e for e in errs)
 
 
 def test_every_slide_type_renders_with_counter_and_handle():
